@@ -141,7 +141,7 @@ require 'db/ConnectDB.php';
               <?php else: ?>
         <li><a class="app-menu__item active" href="index.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Announcements</span></a></li>
 
-        <li><a class="app-menu__item " href="index.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Topics</span></a></li>
+        <li><a class="app-menu__item " href="index.html"><span class="app-menu__label">Topics</span></a></li>
 
         <li><a class="app-menu__item " href="index.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Proposal Project</span></a></li>
 
