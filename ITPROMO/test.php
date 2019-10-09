@@ -1,57 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Add Announcement</title>
-
-  <style>
-    h6{
-      font-family:initial;
-      font-size: 25px;
-    }
-    #header{
-      background-color:#e7e7e7;
-      color: black;
-      text-align: center;
-      padding: 4px;
-    }
-   
-
-  </style>
-
-</head>
-<body>
-
-      <div class="content">
-            <div class="row">
-                 <div class="col-lg-12">
-                       <div class="card">
-                             <div id="header">
-                                  <h6 class="card-title text-bold">Final Project Topic require</h6>
-                              </div>
-                            <div class="card-block">
-
-          <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addtopic" style="margin-bottom: 20px; border-radius: 12px; font-size: 14px;">
-            <i class="fa fa-plus-square"></i>&nbsp; Create New Topic
-          </button>
-
-
-<!-- Data display  -->
-                                                             
 <?php
-        
- $strSQL  = "SELECT * FROM news_topic WHERE member_id='".$_SESSION['id']."'";            
-
+$success = "0";
+if(isset($_GET['success'])){
+  $success = $_GET['success'];
+}
 ?>
 
-     <table class="display datatable table table-stripped" cellspacing="0" width="100%">
+
+
+
+
+              <div class="content">
+                     <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-block">
+                                    <h6 class="card-title text-bold">Default Datatable</h6>                         
+     <?php
+ 
+        
+ $strSQL  = "SELECT * FROM news_topic WHERE member_id='".$_SESSION['id']."'";
+                      
+
+  ?>
+
+
+
+       <table class="display datatable table table-stripped" cellspacing="0" width="100%">
           <thead>
              <tr>
-                     <th>No</th>                     
+                     <th>#</th>                     
                       <th>Topic</th>
                       <th>Detail</th>
                       <th>Date</th>
                       <th>By</th>
-                      <th>Option</th>
 
                  </tr>
                </thead>
@@ -67,23 +48,16 @@
                       <td><?php echo $objResult["news_detail"];?></td>
                       <td><?php echo $objResult["news_date"];?></td>
                       <td><?php echo $_SESSION['name'];?></td>
-
-                      <td>
-
-          <button type="button" data-toggle="modal" data-target="#showtopic">
-           <i class="fa fa-eye" aria-hidden="true"></i>
-          </button>
-           
-          <button type="button" data-toggle="modal" data-target="#addtopic">
-           <i class="fa fa-edit" aria-hidden="true"></i>
-          </button>
-
-          <button type="button" data-toggle="modal" data-target="#addtopic">
-           <i class="fa fa-trash" aria-hidden="true"></i>
-          </button>
-                        
-                      </td>
+                      <td></td>
    
+                      
+          
+                    
+                  
+
+
+
+
                     </tr>
 
                 <?php
@@ -101,17 +75,20 @@
 
 
 
-<!--  <div class="box-body">
+  <div class="box-body">
           <?php if($success == 1): ?>
           <div class="alert alert-success" role="alert">
             <i class="glyphicon glyphicon-ok"></i> Your topic already send to your Advisor. Please wait till He/She accept it!
           </div>
-          <?php endif; ?>-->
+          <?php endif; ?>
 
+      
 
-    <!--form alert add topic-->
+  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addmember" style="margin-bottom: 10px;">
+            <i class="glyphicon glyphicon-plus"></i> Create New Topic
+          </button>
 
-     <div class="modal fade" id="addtopic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+     <div class="modal fade" id="addmember" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content ">
       <div class="modal-header ">
@@ -184,28 +161,10 @@
       </div>
     </div>
   </div>
+</div>
+</form>
 
 
-
-          </form>
-        </div>
-      </div><!-- /.box (box) -->
-
-
-
-
-      <div class="modal fade" id="showtopic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content ">
-      <div class="modal-header ">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i>                                     <h4 class="card-title text-bold">Add Topic</h4>                         
-
-      </div>
-                    
-      </div>
-    </div>
-  </div>
 
 
 

@@ -96,34 +96,64 @@ case 'add_proposal':
 		break;
 
 
+
 	case 'add_general_topic':
 		include('advisor/add_general_topic.php');
 		break;
 
 
+		case 'add_announcement':
+		include('admin/add_announcement.php');
+		break;
+
+	    case 'add_schedule_proposal':
+		include('admin/add_schedule_proposal.php');
+		break;
+		case 'add_schedule_project':
+		include('admin/add_schedule_project.php');
+		break;
+
+#officer
+
+        case 'create_schedule_proposal':
+		include('officer/create_schedule_proposal.php');
+		break;
+
+		case 'create_schedule_project':
+		include('officer/create_schedule_project.php');
+		break;
 
 
+#studnet 		
+
+		case 'create_proposal':
+		include('student/create_proposal.php');
+		break;
+		case 'group_infor':
+		include('student/group_infor.php');
+		break;
 
 
+#menu homepage
     case 'guide':
 		include('guide.php');
 	break;
 
-	case 'value':
-		# code...
+	case 'show_topic':
+	include('show_topic.php');
 		break;
 
-	case 'value':
-		# code...
+	case 'Annoucement':
+	include('Annoucement.php');
 		break;
 
-	case 'value':
-		# code...
+	case 'proposal_project':
+	include('proposal_project.php');
 		break;
 
 
 	default:
-		include('Annoucement.php');
+		//include('Annoucement.php');
 		break;
 }
 

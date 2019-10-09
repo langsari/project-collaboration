@@ -1,4 +1,4 @@
- <!-- Menu ของ admin -->
+
 <?php
 $user_rank = '';
 if(isset($_SESSION['rank'])){
@@ -9,188 +9,255 @@ if($user_rank == "admin"):
 ?>
 <!-- menu สถานะ แอดมิน -->
 
+<li class="active treeview">
+  <a href="#">
+    <i class="fa fa-users"></i> <span>Manage Member</span> 
+  </a>
+  <ul class="treeview-menu">
+    <li>
+      <a href="?page=accept_member">
+        <i class="fa fa-circle-o"></i> <span>Accept Member</span>
+      </a>
+    </li>
+    <li>
+      <a href="?page=choose_committee">
+        <i class="fa fa-circle-o"></i> <span>Choose Committee</span>
+      </a>
+    </li>
+    <li>
+      <a href="?page=all_member">
+        <i class="fa fa-circle-o"></i> <span>View All Member</span>
+      </a>
+    </li>
+  </ul>
+</li>
 
-    <li class="navigation-header">
-                <span>Menu</span>
-                <i class="icon-menu"></i>
-            </li>
-      <li>
-      <a href="#"><i class="fa fa-users"></i> <span>Manage Member</span></a>
-      <ul>
-      <li>  <a href="?page=accept_member"><i class="fa fa-circle-o"></i>  Accept Member</a></li>
-       <li><a href="?page=choose_committee"><i class="fa fa-circle-o"></i>  Choose committee</a></li>
-       <li><a href="?page=all_member"><i class="fa fa-circle-o"></i>  All Member</a></li>
-      </ul>
-       </li>
+<li class="active treeview">
+  <a href="#">
+    <i class="fa fa-calendar"></i> <span>Manage Schedule</span> 
+  </a>
+  <ul class="treeview-menu">
+    <li>
+      <a href="?page=add_schedule_proposal">
+        <i class="fa fa-circle-o"></i> <span>Create Proposal Schedule</span>
+      </a>
+    </li>
+    <li>
+      <a href="?page=add_schedule_project">
+        <i class="fa fa-circle-o"></i> <span>Create Project Schedule</span>
+      </a>
+    </li>
+  </ul>
+</li>
+<li class="active treeview">
+  <a href="#">
+    <i class="fa fa-book"></i> <span>Projects</span>
+  </a>
+  <ul class="treeview-menu">
+    <li>
+      <a href="?page=view_studentstatus">
+        <i class="fa fa-circle-o"></i> Project Track
+      </a>
+    </li>
+    <li>
+      <a href="?page=add_proposal">
+        <i class="fa fa-circle-o"></i>  Student project proposal
+      </a>
+    </li>
+    <li>
+      <a href="?page=proposal_project">
+        <i class="fa fa-circle-o"></i>  All project</a>
+    </li>
+  </ul>
+</li>
+<li class="active treeview">
+  <a href="#">
+    <i class="fa fa-bullhorn"></i> <span>Manage Annoucements</span> 
+  </a>
+  <ul class="treeview-menu">
+    <li>
+      <a href="?page=add_announcement">
+        <i class="fa fa-circle-o"></i> <span>Add Annoucements</span></a>
+    </li>
+  </ul>
+</li> 
+<!-- end Menu ของ admin -->
 
 
-         <li>
-        <a href="#"> <i class="fa fa-calendar"></i><span>Manage Schedule</span></a>
-         <ul>
-        <li><a href="pages_login.html"><i class="fa fa-circle-o"></i> Create Schedule Proposal</a></li>
-         <li><a href="pages_login.html"><i class="fa fa-circle-o"></i> Create Schedule Project</a></li>
-        </ul>
-        </li>
-
-       <li>
-         <a href="#"> <i class="fa fa-book"></i> <span>Projects</span></a>  
-         <ul>
-         <li><a href="?page=view_studentstatus"><i class="fa fa-circle-o"></i> Project Track</a></li>
-         <li><a href="?page=add_proposal"><i class="fa fa-circle-o"></i>  Student project proposal</a></li>
-         <li><a href="pages_register.html"><i class="fa fa-circle-o"></i>  All project</a></li>
-         </ul>
-         </li>
-
-         <li>
-          <a href="index.html"><i class="fa fa-bullhorn"></i> <span>Manage Annoucements</span></a></li>
-         <li>
-          <a href="index.html">    <i class="fa fa-circle-o"></i> <span>Manage Mark</span></a>
-         </li>
-
-
- <!-- /Menu ของ admin -->
-
-
-
-
- <!-- Menu ของ Advisor -->
+<!-- start Menu ของ Advisor -->
 
 <?php elseif($user_rank == "1"): ?>
+<li class="treeview">
+  <a href="?page=view_studentstatus">
+    <i class="fa fa-paper-plane"></i> <span>Request</span>
+  </a>
+</li>
+<li class="active treeview">
+  <a href="#">
+    <i class="fa fa-book"></i> <span>Projects</span> 
+  </a>
+  <ul class="treeview-menu">
+    <li>
+      <a href="?page=view_studentstatus">
+        <i class="fa fa-circle-o"></i> Project Track
+      </a>
+    </li>
+    <li>
+      <a href="pages_register.html">
+        <i class="fa fa-circle-o"></i>  Project Mark
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fa fa-circle-o"></i> <span>All Project</span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fa fa-circle-o"></i> <span>Give Mark as a Committee</span>
+      </a>
+    </li>
+  </ul>
+</li>
+<li class="active treeview">
+  <a href="#">
+    <i class="fa fa-calendar"></i> <span>Schedule</span> 
+  </a>
+  <ul class="treeview-menu">
+    <li>
+      <a href="?page=add_schedule_proposal">
+        <i class="fa fa-circle-o"></i> <span> Proposal Schedule</span>
+      </a>
+    </li>
+    <li>
+      <a href="?page=add_schedule_project">
+        <i class="fa fa-circle-o"></i> <span>Project Schedule</span>
+      </a>
+    </li>
+  </ul>
+</li>
+<li class="treeview">
+  <a href="#">
+    <i class="fa fa-user"></i> <span>Personal Information</span>
+  </a>
+</li>
+ <!-- end Menu ของ advisor -->
 
-      <li class="navigation-header">
-                <span>Menu</span>
-                <i class="icon-menu"></i>
-            </li>
-    
-        <li>
-          <a href="?page=view_studentstatus">  <i class="fa fa-paper-plane"></i><span>Request</span></a></li>
-         <li>
-
-         <li>
-         <a href="#"> <i class="fa fa-book"></i> <span>Projects</span></a>  
-         <ul>
-         <li><a href="?page=view_studentstatus"><i class="fa fa-circle-o"></i> Project Track</a></li>
-         <li><a href="pages_register.html"><i class="fa fa-circle-o"></i>  Project Mark</a></li>
-         </ul>
-         </li>
-
-         <li>
-         <a href="#"> <i class="fa fa-calendar"></i>  <span>Schedule</span></a>  
-         <ul>
-         <li><a href="pages_login.html"><i class="fa fa-circle-o"></i> Create Schedule Proposal</a></li>
-         <li><a href="pages_login.html"><i class="fa fa-circle-o"></i> Create Schedule Project</a></li>
-         </ul>
-         </li>
-
-         <li>
-         <a href="#"> <i class="fa fa-newspaper-o"></i>  <span>News</span></a>  
-         <ul>
-         <li><a href="pages_login.html"><i class="fa fa-circle-o"></i> Annoucements </a></li>
-         <li><a href="?page=add_general_topic"><i class="fa fa-circle-o"></i> Topic </a></li>
-         </ul>
-         </li>
-
-          <li>
-          <a href="index.html"><i class="fa fa-circle-o"></i> <span>All Project</span></a></li>
-         <li>
 
 
-
-
- <!-- /Menu ของ advisor -->
-
-
-
-
-  <!-- Menu ของ Student -->
+  <!-- start Menu ของ Student -->
 
 <?php elseif($user_rank == "3"): ?>
-
-
- <li class="navigation-header">
-                <span>Menu</span>
-                <i class="icon-menu"></i>
-            </li>
-    
-        <li>
-          <a href="?page=view_studentstatus">  <i class="fa fa-group"></i><span>Group Information</span></a></li>
-         <li>
-
-         <li>
-         <a href="#"> <i class="fa fa-calendar"></i>   <span>Schedule</span></a>  
-       <ul>
-         <li><a href="pages_login.html"><i class="fa fa-circle-o"></i>  Schedule Proposal</a></li>
-         <li><a href="pages_login.html"><i class="fa fa-circle-o"></i>  Schedule Project</a></li>
+<li class="active treeview">
+  <a href="?page=group_infor">
+    <i class="fa fa-group"></i> <span>Group Information</span> 
+  </a>
+</li>
+<li class="active treeview">
+    <a href="#"> <i class="fa fa-calendar"></i>  
+     <span>Schedule</span></a>
+  </a>
+  <ul class="treeview-menu">
+    <li>
+      <a href="#">
+        <i class="fa fa-circle-o"></i> <span>Proposal Schedule</span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fa fa-circle-o"></i> <span>Project Schedule</span>
+      </a>
+    </li>
+  </ul>
+</li>
+<li class="active treeview">
+  <a href="#">
+    <i class="fa fa-book"></i> <span>Projects</span> 
+  </a>
+  <ul class="treeview-menu">
+    <li>
+      <a href="?page=view_studentstatus">
+        <i class="fa fa-circle-o"></i> Project Track
+      </a>
+    </li>
+    <li>
+      <a href="?page=create_proposal">
+        <i class="fa fa-circle-o"></i> Add Student Proposal 
+      </a>
+    </li>
+    <li>
+      <a href="?page=proposal_project">
+        <i class="fa fa-circle-o"></i> <span>All Project Topics</span>
+      </a>
+    </li>
+  </ul>
+</li>
+<li class="active treeview">
+  <a href="#">
+    <i class="fa fa-newspaper-o"></i>  <span>News</span>
+  </a>
+  <ul class="treeview-menu">
+         <li><a href="?page=Annoucement"><i class="fa fa-circle-o"></i> Annoucements </a></li>
+         <li><a href="?page=show_topic"><i class="fa fa-circle-o"></i> Topic Require </a></li>
          </ul>
-         </li>
-
-        <li>
-         <a href="#"> <i class="fa fa-book"></i> <span>Projects</span></a>  
-         <ul>
-         <li><a href="?page=view_studentstatus"><i class="fa fa-circle-o"></i> Project Track</a></li>
-         <li><a href="pages_register.html"><i class="fa fa-circle-o"></i> Add Student Proposal </a></li>
-         </ul>
-         </li>
-
-        <li>
-         <a href="#"> <i class="fa fa-newspaper-o"></i>  <span>News</span></a>  
-         <ul>
-         <li><a href="pages_login.html"><i class="fa fa-circle-o"></i> Annoucements </a></li>
-         <li><a href="pages_login.html"><i class="fa fa-circle-o"></i> Topic </a></li>
-         </ul>
-         </li>
-
-         <li>
-          <a href="index.html"><i class="fa fa-circle-o"></i> <span>All Project</span></a></li>
-         <li>
+</li>
+<li class="treeview">
+  <a href="#">
+    <i class="fa fa-user"></i> <span>Personal Information</span>
+  </a>
+</li>
 
 
-         <li>
-          <a href="index.html"><i class="fa fa-glide-g"></i> <span>Guide</span></a></li>
-         <li>
+<!-- end menu of student -->
 
 
-
-  <!-- /Menu ของ Student -->
-
-
-
-
-
-  <!-- Menu ของ Officer -->
-
+<!-- start Menu ของ officer -->
 
 <?php elseif($user_rank == "4"): ?>
 
- <li class="navigation-header">
-                <span>Menu</span>
-                <i class="icon-menu"></i>
-            </li>
-    
-        <li>
-          <a href="?page=view_studentstatus">   <i class="fa fa-paper-plane-o"></i><span>Project Track</span></a></li>
-         <li>
+<li class="active treeview">
+  <a href="?page=view_studentstatus">   
+    <i class="fa fa-paper-plane-o"></i><span>Project Track</span>
+  </a>
+</li>
 
-         <li>
-         <a href="#"> <i class="fa fa-calendar"></i>   <span>Schedule</span></a>  
-       <ul>
-         <li><a href="pages_login.html"><i class="fa fa-circle-o"></i> Create Schedule Proposal</a></li>
-         <li><a href="pages_login.html"><i class="fa fa-circle-o"></i> Create Schedule Project</a></li>
+<li class="active treeview">
+    <a href="#"> <i class="fa fa-calendar"></i>  
+     <span>Schedule</span></a>
+  </a>
+  <ul class="treeview-menu">
+    <li>
+      <a href="?page=create_schedule_proposal">
+        <i class="fa fa-circle-o"></i> Create Schedule Proposal
+      </a>
+    </li>
+    <li>
+      <a href="?page=create_schedule_project">
+        <i class="fa fa-circle-o"></i> Create Schedule Project
+      </a>
+    </li>
+  </ul>
+</li>
+<li class="active treeview">
+  <a href="#">
+    <i class="fa fa-newspaper-o"></i>  <span>News</span>
+  </a>
+  <ul class="treeview-menu">
+         <li><a href="?page=Annoucement"><i class="fa fa-circle-o"></i> Annoucements </a></li>
+         <li><a href="?page=show_topic"><i class="fa fa-circle-o"></i> Topic Require </a></li>
          </ul>
-         </li>
+</li>
+<li class="treeview">
+  <a href="?page=proposal_project">
+    <i class="fa fa-book"></i> <span>All project topics</span>
+  </a>
+</li>
+<li class="treeview">
+  <a href="#">
+    <i class="fa fa-user"></i> <span>Personal Information</span>
+  </a>
+</li>
 
-
-        <li>
-         <a href="#"> <i class="fa fa-newspaper-o"></i>  <span>News</span></a>  
-         <ul>
-         <li><a href="pages_login.html"><i class="fa fa-circle-o"></i> Annoucements </a></li>
-         <li><a href="pages_login.html"><i class="fa fa-circle-o"></i> Topic </a></li>
-         </ul>
-         </li>
-
-         <li>
-          <a href="index.html"><i class="fa fa-circle-o"></i> <span>All Project</span></a></li>
-         <li>
+<!-- end menu of officer -->
 
 <?php endif; ?>
-  <!-- /Menu ของ Officer -->

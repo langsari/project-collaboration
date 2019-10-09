@@ -27,6 +27,14 @@ require 'db/ConnectDB.php';
     <script type="text/javascript" src="assets/js/app.min.js"></script>
     <script type="text/javascript" src="assets/ckeditor/ckeditor.js"></script>
 
+    <!-- PAGE LEVEL STYLESHEETS -->
+    <link rel="stylesheet" href="lib/css/jquery.dataTables.min.css">
+    <!-- /PAGE LEVEL STYLESHEETS -->
+     <!-- PAGE LEVEL SCRIPTS -->
+    <script type="text/javascript" src="lib/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="assets/js/pages_datatables.min.js"></script>
+    <!-- /PAGE LEVEL SCRIPTS -->
+
     
 </head>
 
@@ -79,7 +87,7 @@ require 'db/ConnectDB.php';
                        <a class="nav-link dropdown-toggle dropdown-has-after" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                        
-                          <?php echo $_SESSION['name']; ?></span>
+                         <i class="fa fa-user"></i>  <?php echo $_SESSION['name']; ?></span>
 
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -139,7 +147,7 @@ require 'db/ConnectDB.php';
            
 
              
-                        <?php if(isset($_SESSION['id'])): ?>
+              <?php if(isset($_SESSION['id'])): ?>
                 <?php include('menu/menu.php'); ?>
               <?php else: ?>
 
@@ -148,10 +156,10 @@ require 'db/ConnectDB.php';
         <li><a class="app-menu__item active" href="?page=Annoucement"><i class="fa fa-bullhorn"></i><span class="app-menu__label">Announcements</span></a></li>
 
 <!-- ยังไม่ทำน่ะ.....ทำแค่เปลี่ยน icon-->
-        <li><a class="app-menu__item " href="index.html"><i class="fa fa-file"></i><span class="app-menu__label">Topics</span></a></li>
+        <li><a class="app-menu__item " href="?page=show_topic"><i class="fa fa-file"></i><span class="app-menu__label">Topics</span></a></li>
 
 <!-- ยังไม่ทำน่ะ.....ทำแค่เปลี่ยน icon-->
-        <li><a class="app-menu__item " href="index.html"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label">Proposal Project</span></a></li>
+        <li><a class="app-menu__item " href="?page=proposal_project"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label">Proposal Project</span></a></li>
 
 <!-- Nik ทำ-->
         <li><a class="app-menu__item " href="?page=guide"><i class="fa fa-glide-g"></i><span class="app-menu__label">Guide</span></a></li>
