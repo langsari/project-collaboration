@@ -35,27 +35,17 @@
             ?>
            <tbody>
             <tr>
-                      <td><?php echo $objResult["member_id"];?></td>
+                        <td><?php echo $objResult["member_id"];?></td>
                       <td><?php echo $objResult["member_idcard"];?></td>
                       <td><?php echo $objResult["member_fullname"];?></td>
-                      <td><?php echo $objResult["member_gender"];?></td>
                       <td><?php echo $objResult["member_phone"];?></td>
                       <td><?php echo $objResult["member_email"];?></td>
+                  <td align="center"><font color="red"><?php  $gender = $objResult["member_gender"]; include('function/gender.php');  ?></font> </td>
                
-                     <td align="center">
-                    <font color="red">
-                      <?php 
-                     $position = $objResult["member_pos"];
-                   include('admin/position.php');
-                     ?>
-                    </font>  </td>
+                  <td align="center"> <font color="red"><?php $position = $objResult["member_pos"];include('function/position.php'); ?></font>  </td>
 
-                        <td align="center">
-                    <font color="red">
-                       <?php 
-                     $status = $objResult["admin_id"];
-                   include('admin/status.php');
-                     ?>
+                  <td align="center"> <font color="red"> <?php $status = $objResult["admin_id"];
+                    include('function/status.php'); ?> </font>  </td>
           
                     <td>
                  <a href="?page=edit_member&id=<?php echo $objResult["member_id"];?>"><i class="fa fa-edit" title="Edit"></i>
