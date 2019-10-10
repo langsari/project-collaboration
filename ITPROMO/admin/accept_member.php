@@ -1,7 +1,4 @@
          <!-- PAGE CONTENT -->
-       <button type="button"  class="btn btn-success btn-sm" data-toggle="modal" data-target="#addmember" style="margin-bottom: 10px;">
-  <i class="glyphicon glyphicon-plus"></i> Create New member
-          </button>
   
               <div class="content">
                      <div class="row">
