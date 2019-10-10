@@ -133,6 +133,9 @@ case 'add_proposal':
 		include('student/group_infor.php');
 		break;
 
+	case 'track_project':
+		include('student/track_project.php');
+		break;
 
 #menu homepage
     case 'guide':
