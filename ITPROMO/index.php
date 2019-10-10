@@ -35,6 +35,7 @@ require 'db/ConnectDB.php';
     <script type="text/javascript" src="assets/js/pages_datatables.min.js"></script>
     <!-- /PAGE LEVEL SCRIPTS -->
 
+
         <link rel="stylesheet" href="asset/css/style.css">
 
 </head>
@@ -164,6 +165,15 @@ require 'db/ConnectDB.php';
 
 <!-- Nik ทำ-->
         <li><a class="app-menu__item " href="?page=guide"><i class="fa fa-glide-g"></i><span class="app-menu__label">Guide</span></a></li>
+
+        <li><a class="app-menu__item " href="?page=schedule"><i class="fa fa-calendar"></i><span class="app-menu__label">Schedule</span></a></li>
+
+        <li><a class="app-menu__item " href="?page=form"><i class='fa fa-edit'></i><span class="app-menu__label">Forms</span></a></li>
+
+        <li><a class="app-menu__item " href="?page=booked"><i class='fa fa-book'></i><span class="app-menu__label">Booked</span></a></li>
+
+
+
               <?php endif; ?>
 
             </ul>

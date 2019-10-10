@@ -138,9 +138,6 @@ case 'add_proposal':
 		break;
 
 #menu homepage
-    case 'guide':
-		include('guide.php');
-	break;
 
 	case 'show_topic':
 	include('show_topic.php');
@@ -153,6 +150,23 @@ case 'add_proposal':
 	case 'proposal_project':
 	include('proposal_project.php');
 		break;
+
+	case 'guide':
+		include('guide.php');
+	break;
+
+	case 'schedule':
+		include('schedule.php');
+	break;
+
+	case 'form':
+		include('form.php');
+	break;
+
+	case 'booked':
+		include('booked.php');
+	break;
+
 
 
 	default:
