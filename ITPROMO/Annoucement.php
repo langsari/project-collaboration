@@ -1,8 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-  <style>
+ <!DOCTYPE html>
+ <html>
+ <head>
+   <title></title>
+
+ <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+ <style>
     h6{
       font-family:initial;
       font-size: 25px;
@@ -11,42 +13,39 @@
     #more {display: none;}
     #header{
       background-color:#e7e7e7;
-      color: black;
-    
-      padding: 4px;
     }
   </style>
-  
-</head>
- <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-<link rel="shortcut icon" href="http://montes.if.its.ac.id/favicon.ico" />
+ </head>
+ <body>
+ 
+    <!-- PAGE CONTENT -->
 
-<body>
-  <!-- PAGE CONTENT -->
-  <div class="content">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="card">
-          <div id="header" class="">
-                <h6 class="card-title text-bold">&nbsp;&nbsp;&nbsp;&nbsp;Announcements&nbsp;&nbsp;<i class='fas fa-bullhorn'></i></h6>
-          </div>
-          <div class="card-block">
-            
-             
-               
-    
-               <?php 
-                $strSQL = "SELECT  announcement.announcement_topic, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
+      <div class="content">
+  
+        <div class="row">
+           <div class="col-lg-12">
+                <div class="card">
+                     <div id="header" class="">
+                      </br><h6 class="card-title text-bold">&nbsp;&nbsp;&nbsp;&nbsp;Announcements&nbsp;&nbsp;<i class='fas fa-bullhorn'></i></h6>
+                      </div></br>
+                    <div class="card-block">
+                       
+
+
+     <?php
+
+     $strSQL = "SELECT  announcement.announcement_topic, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
                            FROM announcement,admin 
                            WHERE announcement.admin_id=admin.admin_id
                            ORDER BY announcement.announcement_id";
 
-            ?>
-            <?php
+         ?>
+
+    <?php
             if ($objQuery = $db->query($strSQL)) {
               while ($objResult = mysqli_fetch_array($objQuery)) {
             ?>
-                <table class="display datatable table table-stripped" cellspacing="0" width="100%">
+            <table class="display datatable table table-stripped" cellspacing="0" width="100%">
 
                   <tbody>
                   

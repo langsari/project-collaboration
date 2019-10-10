@@ -13,8 +13,6 @@
     #more {display: none;}
     #header{
       background-color:#e7e7e7;
-      color: black;
-      padding: 4px;
     }
   </style>
  </head>
@@ -28,8 +26,8 @@
            <div class="col-lg-12">
                 <div class="card">
                      <div id="header" class="">
-                      <h6 class="card-title text-bold">&nbsp;&nbsp;&nbsp;&nbsp;All Topics require</h6>
-                      </div>
+                      </br><h6 class="card-title text-bold">&nbsp;&nbsp;&nbsp;&nbsp;All Topics require</h6>
+                      </div></br>
                     <div class="card-block">
                        
 

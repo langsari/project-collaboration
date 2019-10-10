@@ -12,18 +12,12 @@
   </style>
 </head>
 <body>
-
-
-
 <div class="content">
                      <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-block">
  
-
-
-
                                    <h6 class="card-title text-bold"><b>All Final Projects Proposal</h6></b>
      <?php
  
