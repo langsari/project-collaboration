@@ -169,8 +169,10 @@ case 'add_proposal':
 
 
 
+
+
 	default:
-		//include('Annoucement.php');
+		include('homepage.php');
 		break;
 }
 

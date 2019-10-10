@@ -158,13 +158,20 @@
            </div>
              <div class="col-md-9">
              <select class="form-control" name="group_id">
-              <option value="no">- Lecturer Name -</option>
+              <option value="no">- Student Name -</option>
+
                 <?php
+
+              $group_id = get_group_id($_SESSION['id']);
                 
                 $strSQL = "SELECT member_id, member_fullname FROM member WHERE group_id = '$group_id'";
+
                 if($result = $db->query($strSQL)){
+
                   while($objResult = $result->fetch_object()){
+
                     echo "<option value='".$objResult->member_id."'>".$objResult->member_fullname."
+                    
                     </option>";
 
                   }

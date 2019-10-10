@@ -142,7 +142,6 @@ require 'db/ConnectDB.php';
         <ul class="navigation">
 
 
-
           <!-- sidebar: style can be found in sidebar.less -->
       
             <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -196,9 +195,6 @@ require 'db/ConnectDB.php';
             <div class="content-wrapper">
                
      <?php include('page_link.php'); ?>
-
-     
-
                     
 
 
