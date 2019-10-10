@@ -15,17 +15,11 @@
 
 
 
-                                    <h6 class="card-title text-bold">Default Datatable</h6>              
-
+                                    <h6 class="card-title text-bold">Default Datatable</h6>            
      <?php
  
   $strSQL = "SELECT * FROM member  WHERE member_pos  AND admin_id = '0' ORDER BY member_fullname";
         ?>
-
-
-
-
-
        <table class="display datatable table table-stripped" cellspacing="0" width="100%">
           <thead>
              <tr>
