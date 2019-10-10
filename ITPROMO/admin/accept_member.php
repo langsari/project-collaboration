@@ -9,12 +9,9 @@
 
             <i class="glyphicon glyphicon-plus"></i> Create New member
           </button>
-
-
-
-                                    <h6 class="card-title text-bold">Default Datatable</h6>            
+<h6 class="card-title text-bold">Default Datatable</h6>            
      <?php
- 
+    require 'menu/function.php';
   $strSQL = "SELECT * FROM member  WHERE member_pos  AND admin_id = '0' ORDER BY member_fullname";
         ?>
        <table class="display datatable table table-stripped" cellspacing="0" width="100%">
@@ -31,32 +28,21 @@
                       <th>#</th>
                  </tr>
                </thead>
-               <?php
-     if($objQuery = $db->query($strSQL)){
-       while($objResult = mysqli_fetch_array($objQuery)) {
+            <?php
+     if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
             ?>
-
            <tbody>
             <tr>
-                        <td><?php echo $objResult["member_id"];?></td>
-                      <td><?php echo $objResult["member_idcard"];?></td>
-                      <td><?php echo $objResult["member_fullname"];?></td>
-                      <td><?php echo $objResult["member_phone"];?></td>
-                      <td><?php echo $objResult["member_email"];?></td>
-                  <td align="center"><font color="red"><?php  $gender = $objResult["member_gender"]; include('function/gender.php');  ?></font> </td>
-               
-                  <td align="center"> <font color="red"><?php $position = $objResult["member_pos"];include('function/position.php'); ?></font>  </td>
-
-                  <td align="center"> <font color="red"> <?php $status = $objResult["admin_id"];
-                    include('function/status.php'); ?> </font>  </td>
-          
-                    <td>
-                  <a href="admin/check_confirm.php?id=<?php echo $objResult["member_id"];?>" title="Confirm" onclick="return confirm('<?php echo $objResult["member_name"];?>')"> <i class="fa fa-check" aria-hidden="true"></i>
-</i> 
-                      </td>
-
-
-
+                    <td class="text-center"><?php echo $objResult->member_id; ?></td>
+                    <td class="text-center"><?php echo $objResult->member_idcard; ?></td>
+                     <td class="text-center"><?php echo $objResult->member_fullname; ?></td>
+                   <td class="text-center"><?php echo $objResult->member_phone; ?></td>
+                    <td class="text-center"><?php echo $objResult->member_email; ?></td>
+                   <td class="text-center"><?php echo gender($objResult->member_gender); ?></td>
+                    <td class="text-center"><?php echo position($objResult->member_pos); ?></td>
+                    <td class="text-center"><?php echo status($objResult->admin_id); ?></td>
+                    <td><a href="admin/check_confirm.php?id=<?php echo $objResult->member_id; ?>" title="Comfirm" onclick="return confirm_accept('<?php echo $objResult->member_name; ?>')"><i class="fa fa-check" aria-hidden="true"></i> </a></td>
                     </tr>
 
                 <?php
@@ -76,10 +62,6 @@
         
         <div class="box-body">
 
-
-
-
-
           <!-- Modal -->
 <div class="modal fade" id="addmember" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -90,7 +72,6 @@
       </div>
       <div class="modal-body">
             <form id="add" name="add" method ="post" action ="admin/check_accept_member.php" onsubmit="return checkForm()" >
-
 
                             <div class="user-details">
                                 <div class="form-group">
@@ -164,20 +145,14 @@
                           &nbsp;&nbsp; &nbsp;&nbsp; <label class="radio-inline"><input type="radio" name="member_gender" value="f" aria-describedby="basic-addon1">           &nbsp;&nbsp; Female</label>
                                     </div>                                          
                                         </div>
-                           
-              
-
-                         
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">REGISTER</button>
+           
+                     <button type="submit" class="btn btn-primary btn-lg btn-block">REGISTER</button>
 
       </div>
     </div>
   </div>
 </div>
 </form>
-
-
-
 
 </body>
 

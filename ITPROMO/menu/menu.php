@@ -149,10 +149,24 @@ if($user_rank == "admin"):
 
 <?php elseif($user_rank == "3"): ?>
 <li class="active treeview">
-  <a href="?page=group_infor">
+  <a href="#">
     <i class="fa fa-group"></i> <span>Group Information</span> 
   </a>
+  <ul class="treeview-menu">
+    <li>
+      <a href="?page=group_infor">
+        <i class="fa fa-circle-o"></i> <span>Join Group</span>
+      </a>
+    </li>
+     <li>
+      <a href="?page=my_group">
+        <i class="fa fa-circle-o"></i> <span>My group</span>
+      </a>
+    </li>
+  </ul>
+
 </li>
+
 <li class="active treeview">
     <a href="#"> <i class="fa fa-calendar"></i>  
      <span>Schedule</span></a>

@@ -124,7 +124,7 @@ case 'add_proposal':
 		break;
 
 
-#studnet 		
+#studet 		
 
 		case 'create_proposal':
 		include('student/create_proposal.php');
