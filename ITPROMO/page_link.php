@@ -129,13 +129,18 @@ case 'add_proposal':
 		case 'create_proposal':
 		include('student/create_proposal.php');
 		break;
-		case 'group_infor':
-		include('student/group_infor.php');
-		break;
+		//case 'group_infor':
+		//include('student/group_infor.php');
+		//break;
 
-	case 'track_project':
+	   case 'track_project':
 		include('student/track_project.php');
 		break;
+       case 'infor_group':
+		include('student/infor_group.php');
+		break;
+
+
 
 #menu homepage
 
