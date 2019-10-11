@@ -29,6 +29,7 @@
                       <th>position</th>
                       <th>advisor</th>
                       <th>Status</th>
+                      <th>Options</th>
 
 
                  </tr>
@@ -51,7 +52,13 @@
                       <td><?php echo $objResult["advisor"];?></td>
                       <td><?php echo $objResult["status"];?></td>
                       
-          
+            <td>
+                  <a href="delete/check_delete.php?id=<?php echo $objResult["news_id"];?>" title="Confirm" onclick="return confirm('<?php echo $objResult["news_topic"];?>')"> <i class="fa fa-eye" aria-hidden="true"></i></a>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                     <a href="delete/check_delete.php?id=<?php echo $objResult["news_id"];?>" title="Confirm" onclick="return confirm('<?php echo $objResult["news_topic"];?>')"> <i class="fa fa-edit" aria-hidden="true"></i>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                     <a href="delete/check_delete.php?id=<?php echo $objResult["news_id"];?>" title="Confirm" onclick="return confirm('<?php echo $objResult["news_topic"];?>')"> <i class="fa fa-trash" aria-hidden="true"></i>
+                      </td>
                     
                   
 

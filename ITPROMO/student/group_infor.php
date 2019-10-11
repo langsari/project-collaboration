@@ -158,22 +158,14 @@
            </div>
              <div class="col-md-9">
              <select class="form-control" name="group_id">
-              <option value="no">- Lecturer Name -</option>
                 <?php
-                
-                $strSQL = "SELECT member_id, member_fullname FROM member WHERE group_id = '$group_id'";
-                if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-                    echo "<option value='".$objResult->member_id."'>".$objResult->member_fullname."
-                    </option>";
+                     require 'menu/function.php';
+   $sql ="SELECT *FROM member WHERE member_id = '".$_GET["id"]."'";
+              if($rs = $db->query($sql)){
+                while($row = $rs->fetch_object()){
+              ?>
+      <input type="text" class="form-control" value="<?php echo get_member_list($row->group_id); ?>" >
 
-                  }
-                  $db->close();
-                }else{
-                  echo $db->error;
-                  $db->close();
-                }
-                ?>
               </select>
       
             </div>
@@ -187,14 +179,14 @@
 
     <!-- END Select Advisor  -->
 <!-- Table Join  -->
- 
+<?php
+ }
+                }
+                ?>
         
     <!-- END Table Join  -->
 
 
       </div><!-- /.box (box) -->
-    </section>
-  </div>
-</section><!-- /.content -->
-  
+
 
