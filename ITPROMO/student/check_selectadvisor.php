@@ -15,7 +15,7 @@ $group_id=$_POST['group_id'];
 
 	if($rs = $db->query($sql)){
 		$db->close();
-		header("Location: ../index.php?page=my_group");
+		header("Location: ../index.php?page=infor_group");
 	}else{
 		echo $db->error;
 		$db->close();

@@ -76,26 +76,6 @@ require 'db/ConnectDB.php';
 	}
 }
 
-//Function to get project topic of the group
-function get_project_topic($group_id){
-	$rows = "";
-	require 'connection.php';
-	$sql = "SELECT tp_name FROM tb_topic WHERE g_id = '$group_id'";
-	if($rs = $db->query($sql)){
-		if($rs->num_rows > 0){
-			if($row = $rs->fetch_object()){
-				$rows .= $row->tp_name;
-			}
-		}else{
-			$rows = "<i class='text-danger'>- No Project Topic assign to this group yet -</i>";
-		}
-		echo $rows;
-		$db->close();
-	}else{
-		return $db->error;
-		$db->close();
-	}
-}
 
 
 
@@ -117,12 +97,13 @@ require 'db/ConnectDB.php';
 	}
 }
 
-function get_ag_id($g_id){
-	require 'connection.php';
-	$sql = "SELECT ag_id FROM tb_advisegroup WHERE g_id = '$g_id' AND å = '1'";
+
+function get_advisergroup_id($group_id){
+require 'db/ConnectDB.php';
+	$sql = "SELECT  advisergroup_id FROM  advisergroup WHERE group_id = '$group_id' ";
 	if($rs = $db->query($sql)){
 		if($row = $rs->fetch_object()){
-			return $row->ag_id;
+			return $row->advisergroup_id;
 		}
 		$db->close();
 	}else{
@@ -130,6 +111,10 @@ function get_ag_id($g_id){
 		$db->close();
 	}
 }
+
+
+
+
 
 
 //Function to get member of the group
@@ -154,29 +139,19 @@ require 'db/ConnectDB.php';
 }
 
 
-//function to check member is in group or not
-function if_in_group(){
-	$mb_id = $_SESSION['id'];
-	require 'connection.php';
-	$sql = "SELECT g_id FROM tb_member WHERE mb_id = '$mb_id'";
-	if($rs = $db->query($sql)){
-		if($row = $rs->fetch_object()){
-			if($row->g_id == null){
-				return false;
-			}else{
-				return true;
-			}
-		}
-		$db->close();
-	}else{
-		echo $db->error;
-		$db->close();
-	}
-}
+
 
 //Function to get member of the group
 
-
+function status_for_advisor($status){
+	if($status == '0'){
+		return "<span class='text-danger'>Rejected</span>";
+	}else if($status == 'w'){
+		return "<span class='text-info'>Waiting</span>";
+	}else if($status == '1'){
+		return "<span class='text-success'>Approved</span>";
+	}
+}
 
 
 ?>

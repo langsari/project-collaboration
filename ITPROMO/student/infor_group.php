@@ -5,17 +5,51 @@
                           
                         </div>
                     </div>
+  <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-block">
+                                    <h5 class="text-bold card-title">My Information</h5>
+                                     <table class="table">
+                                        <thead class="thead-default">
+                                            MY Group
+                                           <tr>
+                  <th>Student ID</th>
+                  <th>Full Name</th>
+                  <th>Phone</th>
+                </tr>
+                                        </thead>
+                                        <tbody>
+                                          <?php
 
+        $sql = "SELECT member_fullname, member_phone, member_idcard FROM member WHERE member_id='".$_SESSION['id']."'";  
+              if($result = $db->query($sql)){
+                while($objResult = $result->fetch_object()){
+              ?>
+                <tr>
+                  <td><?php echo $objResult->member_idcard; ?></td>
+                  <td><?php echo $objResult->member_fullname; ?></td>
+                  <td><?php echo $objResult->member_phone; ?></td>
+                </tr>
+              <?php
+                }
+              }
+              ?>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
 
-                     <div class="row">
                         <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-block">
 
 
-     <button type="button"  class="btn btn-success btn-sm" data-toggle="modal" data-target="#create_group" style="margin-bottom: 13px;">
-   <i class="glyphicon glyphicon-plus"></i>Add Group
-  </button>
+
+
+
 
                                  
           <!-- Modal -->
@@ -105,11 +139,13 @@
 
 
   <!-- Display Partner -->
+     <button type="button"  class="btn btn-success btn-sm" data-toggle="modal" data-target="#create_group" style="margin-bottom: 13px;">
+   <i class="glyphicon glyphicon-plus"></i>Add Group
+  </button>
 
-
-                                    <table class="table">
+                                    <table class="table">  
                                         <thead class="thead-default">
-                                            MY Group
+                                         
                                            <tr>
                   <th>Student ID</th>
                   <th>Full Name</th>
@@ -117,6 +153,8 @@
                 </tr>
                                         </thead>
                                         <tbody>
+
+
                                           <?php
 
 
@@ -134,10 +172,7 @@
                 </tr>
               <?php
                 }
-                $db->close();
               }else{
-                echo $db->error;
-                $db->close();
               }
               ?>
                                           
@@ -221,10 +256,7 @@
                     
                     </option>";
                   }
-                  $db->close();
                 }else{
-                  echo $db->error;
-                  $db->close();
                 }
                 ?>
               </select>
@@ -239,78 +271,75 @@
 </div>
     <!-- END Select Advisor  -->
 
+
                                  <table class="table">
                                         <thead class="thead-default">
                                             <tr>
-                                                 <th>Student ID</th>
-                  <th>Full Name</th>
-                  <th>Phone</th>
+                                           <th>Group</th>
+                  <th>Title project</th>
+                  <th>Advisor</th>
+                    <th>Status</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>@mdo</td>
-                                            </tr>
-                                            
+
+                            <?php
+
+$my_id = $_SESSION['id'];
+
+$my_group_id = get_group_id($my_id);
+
+          $sql = "SELECT advisergroup.*, partnergroup.group_number,member.member_fullname FROM advisergroup
+          LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+
+        WHERE advisergroup.advisergroup_id = '$my_group_id'";
+
+
+
+              if($rs = $db->query($sql)){
+                while($row = $rs->fetch_object()){
+              ?>
+                <tr>                 
+                  <td><?php echo get_group_id ($row->member_fullname); ?></td>
+                  <td><?php echo $row->advisergroup_topic; ?></td>
+                  <td><?php echo $row->member_fullname; ?></td>
+         <td class="text-center"><?php echo status_for_advisor($row->advisergroup_status); ?></td>
+
+
+
+
+                </tr>
+
+
+               
+              <?php
+                }
+              }else{
+              }
+              ?>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-            <div class="row">
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-block">
-                                    <h5 class="text-bold card-title">Table Headers</h5>
-                                    <table class="table">
-                                        <thead class="thead-default">
-                                            <tr>
-                                                <th>#</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Username</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                            </tr>
-                                            
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-
+          
                     
                         <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-block">
-                                    <h5 class="text-bold card-title">Table Headers</h5>
-                                    <table class="table">
+                                    <h5 class="text-bold card-title">Committee</h5>
+                                   
+                                 <table class="table">
                                         <thead class="thead-default">
                                             <tr>
-                                                <th>#</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Username</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                            </tr>
-                                           
+                                           <th>Group</th>
+                  <th>Title project</th>
+                  <th>Advisor</th>
+                    <th>Status</th>
+                  </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -323,3 +352,6 @@
                 </div>
             </div>
             <!-- /PAGE CONTENT -->
+
+
+
