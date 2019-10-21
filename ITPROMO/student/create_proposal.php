@@ -40,7 +40,7 @@ $my_group_id = get_group_id($my_id);
                                                         <label class="control-label col-form-label">ID Card Student</label>
                                                     </div>
                                                     <div class="col-md-9">
-                                       <input type="text" class="form-control" name="member_idcard" id="member_idcard"  value="<?php echo $objResult->member_idcard; ?>" disabled="disabled" >
+                                       <input type="text" class="form-control" name="member_id"  value="<?php echo $objResult->member_idcard; ?>"  >
                                                     </div>
                                                 </div>
                                        <div class="form-group row">
@@ -48,18 +48,16 @@ $my_group_id = get_group_id($my_id);
                                                         <label class="control-label col-form-label">Fullname </label>
                                                     </div>
                                                     <div class="col-md-9"> 
-                                        <input type="text" class="form-control"   value="<?php echo $_SESSION['name'];?>"  disabled="disabled" >
+                                        <input type="text" class="form-control"   value="<?php echo $_SESSION['name'];?>"   >
                                                     </div>
                                                 </div>
-
-    
 
                                                 <div class="form-group row">
                                                     <div class="col-md-3">
                                                         <label class="control-label col-form-label">Topic</label>
                                                     </div>
                                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" value="<?php echo $objResult->advisergroup_topic; ?>"  disabled="disabled" >
+                                        <input type="text" class="form-control" value="<?php echo $objResult->advisergroup_topic; ?>"  >
                                                     </div>
                                                 </div>
 
@@ -79,7 +77,7 @@ $my_group_id = get_group_id($my_id);
                                                         <label class="control-label col-form-label">Keyword</label>
                                                     </div>
                                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" id="topic_keyword" name="topic_keyword"placeholder="Keyword" autocomplete="off" required aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" id="topic_keyword" name="topic_keyword" placeholder="Keyword" autocomplete="off" required aria-describedby="basic-addon1">
                                                     </div>
                                                 </div>
 
@@ -125,12 +123,12 @@ $my_group_id = get_group_id($my_id);
               ?>
              
        <div class="form-group row">
-                                                    <div class="col-md-3">
-                                                        <label class="control-label col-form-label">Advisor </label>
-                                                    </div>
-                                                    <div class="col-md-9"> 
-                                        <input type="text" class="form-control"  
-                                         value="<?php echo $row->member_fullname; ?>"  disabled="disabled" >
+        <div class="col-md-3">
+        <label class="control-label col-form-label">Advisor </label>
+     </div>
+       <div class="col-md-9"> 
+       <input type="text"    class="form-control"  name="advisergroup_id"
+                                         value="<?php echo $row->member_fullname; ?>"  >
                                                     </div>
                                                 </div>
  <?php
@@ -138,6 +136,9 @@ $my_group_id = get_group_id($my_id);
               }else{
               }
               ?>
+
+
+
 
  <div class="form-group row">           
        <div class="col-md-3">
@@ -158,8 +159,9 @@ $my_group_id = get_group_id($my_id);
                                                     </div>
                                                 </div>
                                             </div>
-                                           
 
+                                           
+          
                                        
                                                      <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
 
