@@ -116,6 +116,8 @@
                             <div class="user-links">
                                 <a href="login.php" class="pull-left">Back To Login</a>
                             </div>
+                                <a href="../index.php" class="pull-left">Go to Homepage</a>
+                            </div>
 
                         </div>
                     </div>

@@ -13,7 +13,7 @@ require '../db/ConnectDB.php';
 	$sql = "UPDATE member SET group_id = '$group_id' WHERE member_id = '$member_id'";
 	if($db->query($sql)){
 		$db->close();
-		header("Location: ../index.php?page=group_infor");
+		header("Location: ../index.php?page=infor_group");
 	}else{
 		echo $db->error;
 		$db->close();

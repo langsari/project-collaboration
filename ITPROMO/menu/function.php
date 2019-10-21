@@ -98,6 +98,8 @@ require 'db/ConnectDB.php';
 }
 
 
+
+
 function get_advisergroup_id($group_id){
 require 'db/ConnectDB.php';
 	$sql = "SELECT  advisergroup_id FROM  advisergroup WHERE group_id = '$group_id' ";
@@ -139,6 +141,27 @@ require 'db/ConnectDB.php';
 }
 
 
+
+//Function to get member of the group
+function get_member_list1($group_id){
+	$rows = "";
+require 'db/ConnectDB.php';
+  $sql = "SELECT member_fullname, member_idcard FROM member WHERE member_id = '$group_id'";
+	if($rs = $db->query($sql)){
+		if($rs->num_rows > 0){
+			while($row = $rs->fetch_object()){
+        $rows .= "<p>".$row->member_idcard." ".$row->member_fullname."</p>";
+			}
+		}else{
+			$rows = "<i class='text-danger'>- No member in this group -</i>";
+		}
+		return $rows;
+		$db->close();
+	}else{
+		echo $db->error;
+		$db->close();
+	}
+}
 
 
 //Function to get member of the group

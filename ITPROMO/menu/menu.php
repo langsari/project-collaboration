@@ -88,7 +88,7 @@ if($user_rank == "admin"):
 
 <?php elseif($user_rank == "1"): ?>
 <li class="treeview">
-  <a href="?page=view_studentstatus">
+  <a href="?page=advisor_request">
     <i class="fa fa-paper-plane"></i> <span>Request</span>
   </a>
 </li>
