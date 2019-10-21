@@ -37,21 +37,7 @@ function status($status){
 	}
 }
 
-function list_of_description($mt_id){
-	$rows = "";
-	require 'connection.php';
-	$sql = "SELECT md_des FROM tb_markdescription WHERE mt_id = '$mt_id'";
-	if($rs = $db->query($sql)){
-		while($row = $rs->fetch_object()){
-			$rows = $rows."<p>".$row->md_des."</p>";
-		}
-		return $rows;
-		$db->close();
-	}else{
-		echo $db->error;
-		$db->close();
-	}
-}
+
 
 
 
@@ -84,6 +70,7 @@ function get_group_id(){
 
 require 'db/ConnectDB.php';
 	$member_id = $_SESSION['id'];
+
 	$sql = "SELECT group_id FROM member WHERE member_id = '$member_id' AND member_pos = '3'";
 
 	if($rs = $db->query($sql)){
@@ -113,9 +100,6 @@ require 'db/ConnectDB.php';
 		$db->close();
 	}
 }
-
-
-
 
 
 
