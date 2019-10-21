@@ -13,9 +13,9 @@
 
       <h2>Guide and Help</h2>
       <p>You will guide and help to achieve you purpose of doing Information Technology Project through this application </p>
-      <p><a href="guide.html" class="btn-primary btn-sm">Guide</a> is present to procedure how to do the project</p>
-      <p><a href="schedule.html" class="btn-primary btn-sm">Schedule</a> is present the schedule time table of the project</p>
-      <p><a href="form.html" class="btn-primary btn-sm">Forms</a> is collection of involve forms</p>
+      <p><a href="?page=guide" class="btn-primary btn-sm">Guide</a> is present to procedure how to do the project</p>
+      <p><a href="?page=schedule" class="btn-primary btn-sm">Schedule</a> is present the schedule time table of the project</p>
+      <p><a href="?page=form" class="btn-primary btn-sm">Forms</a> is collection of involve forms</p>
 
       <hr>
 

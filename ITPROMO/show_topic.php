@@ -11,12 +11,26 @@
       color: green;
     }
     #more {display: none;}
-    #header{
-      background-color:#e7e7e7;
-    }
+    ul.breadcrumb {
+      background-color: #eee;
+      text-align: right;
+      padding: 10px 16px;
+   }
+    ul.breadcrumb li {
+      display: inline;
+   }
+    ul.breadcrumb li+li:before {
+      padding: 8px;
+      content: ">>\00a0";
+}
   </style>
  </head>
  <body>
+
+<ul class="breadcrumb">
+  <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
+  <li class="active">Topic Require</li>
+</ul>
  
     <!-- PAGE CONTENT -->
 
@@ -25,10 +39,8 @@
         <div class="row">
            <div class="col-lg-12">
                 <div class="card">
-                     <div id="header" class="">
-                      </br><h6 class="card-title text-bold">&nbsp;&nbsp;&nbsp;&nbsp;All Topics require</h6>
-                      </div></br>
                     <div class="card-block">
+                       <h6 class="card-title text-bold"><b>All Topics require</h6></b>
                        
 
 

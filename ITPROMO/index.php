@@ -55,7 +55,7 @@ require 'db/ConnectDB.php';
             </span>
         </button>
 
-        <a class="navbar-brand logo" href="#">
+        <a class="navbar-brand logo" href="?page=homepage">
             <img src="assets/img/lo.png" alt="ITPromo">
         </a>
 
