@@ -57,7 +57,7 @@ $my_group_id = get_group_id($my_id);
                                                         <label class="control-label col-form-label">Topic</label>
                                                     </div>
                                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" value="<?php echo $objResult->advisergroup_topic; ?>"  >
+                                        <input type="text" class="form-control" name="topic_topic" value="<?php echo $objResult->advisergroup_topic; ?>"  >
                                                     </div>
                                                 </div>
 
@@ -127,7 +127,7 @@ $my_group_id = get_group_id($my_id);
         <label class="control-label col-form-label">Advisor </label>
      </div>
        <div class="col-md-9"> 
-       <input type="text"    class="form-control"  name="advisergroup_id"
+       <input type="text"    class="form-control"  name="group_id" 
                                          value="<?php echo $row->member_fullname; ?>"  >
                                                     </div>
                                                 </div>
