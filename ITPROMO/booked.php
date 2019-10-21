@@ -1,3 +1,24 @@
+<style>
+ul.breadcrumb {
+  background-color: #eee;
+  text-align: right;
+   padding: 10px 16px;
+}
+ul.breadcrumb li {
+  display: inline;
+}
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  content: ">>\00a0";
+}
+</style>
+
+
+<ul class="breadcrumb">
+ <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
+  <li class="active">Booked</li>
+</ul>
+
 <div class="content">
                      <div class="row">
                         <div class="col-lg-12">
@@ -5,10 +26,10 @@
                                 <div class="card-block">
                                    
  
-    <main role="main" class="container">
+  <main role="main" class="container">
 
   <h2 class="mt-3">Requirement Fulfillment</h2>
-  <h4>This is explanation steps of the <a href="guide.html" class="btn-primary btn-sm">Guide/Process</a> of requirement fulfilment after project presentation</h4>
+  <h4>This is explanation steps of the <a href="?page=guide" class="btn-primary btn-sm">Guide/Process</a> of requirement fulfilment after project presentation</h4>
 
   <hr>
 
@@ -97,3 +118,6 @@
                             </div>
                         </div>
                     </div>
+
+</body>
+</html>
