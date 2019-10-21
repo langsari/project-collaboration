@@ -136,10 +136,14 @@ case 'add_proposal':
 	   case 'track_project':
 		include('student/track_project.php');
 		break;
+		
        case 'infor_group':
 		include('student/infor_group.php');
 		break;
 
+   case 'my_profile':
+		include('student/my_profile.php');
+		break;
 
 
 #menu homepage

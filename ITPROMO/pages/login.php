@@ -76,7 +76,8 @@ if(isset($_GET['error'])){
                             <button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
 
                             <div class="user-links">
-                                <a href="#" class="pull-left">Forgot Password?</a>
+                          <a href="../index.php" class="pull-left">Go to Homepage</a>
+
                                 <a href="register.php" class="pull-right">Register</a>
                             </div>
 

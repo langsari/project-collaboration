@@ -303,7 +303,7 @@ $my_group_id = get_group_id($my_id);
                 while($row = $rs->fetch_object()){
               ?>
                 <tr>                 
-                  <td><?php echo get_group_id ($row->member_fullname); ?></td>
+                  <td><?php echo get_group_id($row->member_fullname); ?></td>
                   <td><?php echo $row->advisergroup_topic; ?></td>
                   <td><?php echo $row->member_fullname; ?></td>
          <td class="text-center"><?php echo status_for_advisor($row->advisergroup_status); ?></td>

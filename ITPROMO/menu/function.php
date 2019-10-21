@@ -37,21 +37,7 @@ function status($status){
 	}
 }
 
-function list_of_description($mt_id){
-	$rows = "";
-	require 'connection.php';
-	$sql = "SELECT md_des FROM tb_markdescription WHERE mt_id = '$mt_id'";
-	if($rs = $db->query($sql)){
-		while($row = $rs->fetch_object()){
-			$rows = $rows."<p>".$row->md_des."</p>";
-		}
-		return $rows;
-		$db->close();
-	}else{
-		echo $db->error;
-		$db->close();
-	}
-}
+
 
 
 
@@ -84,6 +70,7 @@ function get_group_id(){
 
 require 'db/ConnectDB.php';
 	$member_id = $_SESSION['id'];
+
 	$sql = "SELECT group_id FROM member WHERE member_id = '$member_id' AND member_pos = '3'";
 
 	if($rs = $db->query($sql)){
@@ -96,6 +83,8 @@ require 'db/ConnectDB.php';
 		$db->close();
 	}
 }
+
+
 
 
 function get_advisergroup_id($group_id){
@@ -111,9 +100,6 @@ require 'db/ConnectDB.php';
 		$db->close();
 	}
 }
-
-
-
 
 
 
@@ -139,6 +125,27 @@ require 'db/ConnectDB.php';
 }
 
 
+
+//Function to get member of the group
+function get_member_list1($group_id){
+	$rows = "";
+require 'db/ConnectDB.php';
+  $sql = "SELECT member_fullname, member_idcard FROM member WHERE member_id = '$group_id'";
+	if($rs = $db->query($sql)){
+		if($rs->num_rows > 0){
+			while($row = $rs->fetch_object()){
+        $rows .= "<p>".$row->member_idcard." ".$row->member_fullname."</p>";
+			}
+		}else{
+			$rows = "<i class='text-danger'>- No member in this group -</i>";
+		}
+		return $rows;
+		$db->close();
+	}else{
+		echo $db->error;
+		$db->close();
+	}
+}
 
 
 //Function to get member of the group

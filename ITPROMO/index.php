@@ -93,15 +93,10 @@ require 'db/ConnectDB.php';
 
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="?page=my_profile">
                             <i class="fa fa-user"></i> <span>Profile</span></a>
                         </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="fa fa-comment"></i> <span>Messages</span></a>
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="fa fa-cog"></i> <span>Settings</span></a>
-                        </a>
+               
                         <a class="dropdown-item" href="pages/logout.php">
                             <i class="fa fa-sign-out"></i> <span>Logout</span></a>
                         </a>

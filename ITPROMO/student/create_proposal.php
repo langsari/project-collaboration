@@ -1,21 +1,26 @@
-
-<?php
-$success = "0";
-if(isset($_GET['success'])){
-  $success = $_GET['success'];
-}
-?>
+   <!-- PAGE CONTENT -->
 
 
-<?php
- 
-        
- $strSQL  = "SELECT * FROM news_topic WHERE member_id='".$_SESSION['id']."'";
-                      
-
-  ?>
 
   
+<?php
+                     require 'menu/function.php';
+
+$my_id = $_SESSION['id'];
+$my_group_id = get_group_id($my_id);
+     $strSQL = "SELECT  advisergroup.advisergroup_topic, advisergroup.member_id,advisergroup.group_id,member.member_idcard
+                           FROM advisergroup,member 
+                     WHERE advisergroup.advisergroup_id = '$my_group_id' AND member.member_id = '$my_id'";
+
+     if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+            ?>
+             
+
+
+
+
+
  <div class="content">
 
 
@@ -35,7 +40,7 @@ if(isset($_GET['success'])){
                                                         <label class="control-label col-form-label">ID Card Student</label>
                                                     </div>
                                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" id="id_student" name="id_student"placeholder="ID Student" autocomplete="off" required aria-describedby="basic-addon1">
+                                       <input type="text" class="form-control" name="member_idcard" id="member_idcard"  value="<?php echo $objResult->member_idcard; ?>" disabled="disabled" >
                                                     </div>
                                                 </div>
                                        <div class="form-group row">
@@ -43,18 +48,22 @@ if(isset($_GET['success'])){
                                                         <label class="control-label col-form-label">Fullname </label>
                                                     </div>
                                                     <div class="col-md-9"> 
-                                        <input type="text" class="form-control" id="fullname" name="fullname"placeholder="fullname" autocomplete="off" required aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control"   value="<?php echo $_SESSION['name'];?>"  disabled="disabled" >
                                                     </div>
                                                 </div>
+
+    
 
                                                 <div class="form-group row">
                                                     <div class="col-md-3">
                                                         <label class="control-label col-form-label">Topic</label>
                                                     </div>
                                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" id="topic_topic" name="topic_topic"placeholder="Topic" autocomplete="off" required aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" value="<?php echo $objResult->advisergroup_topic; ?>"  disabled="disabled" >
                                                     </div>
                                                 </div>
+
+              
 
                                                 <div class="form-group row">
                                                     <div class="col-md-3">
@@ -99,49 +108,36 @@ if(isset($_GET['success'])){
                                                 </div>
 
 
+  <?php
 
- <div class="form-group row">           
-       <div class="col-md-3">
-             <label class="control-label col-form-label">Advisor</label>
-           </div>
-             <div class="col-md-9">
+$my_id = $_SESSION['id'];
 
-   <select class="form-control" name="advisor">
-              <option value="no">- Select advisor -</option>
-                <?php
-                include '../db/ConnectDB.php';
-                $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_pos ='1'";
-                if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-                    echo "<option value='".$objResult->member_id."'>".$objResult->member_fullname."</option>";
-                  }
-                  $db->close();
-                }else{
-                  echo $db->error;
-                  $db->close();
+$my_group_id = get_group_id($my_id);
+
+          $sql = "SELECT advisergroup.*, partnergroup.group_number,member.member_fullname FROM advisergroup
+          LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+
+        WHERE advisergroup.advisergroup_id = '$my_group_id'";
+              if($rs = $db->query($sql)){
+                while($row = $rs->fetch_object()){
+              ?>
+             
+       <div class="form-group row">
+                                                    <div class="col-md-3">
+                                                        <label class="control-label col-form-label">Advisor </label>
+                                                    </div>
+                                                    <div class="col-md-9"> 
+                                        <input type="text" class="form-control"  
+                                         value="<?php echo $row->member_fullname; ?>"  disabled="disabled" >
+                                                    </div>
+                                                </div>
+ <?php
                 }
-                ?>
-              </select>
-        </div>
-            </div>
-
-
-      
-
- <div class="form-group row">           
-       <div class="col-md-3">
-             <label class="control-label col-form-label">Writter</label>
-           </div>
-             <div class="col-md-9">
-                                    <select class="form-control" name="position" id="position">
-
-       
-                 <option value="2">Student</option>
-                  
-              </select>
-      
-            </div>
-          </div>
+              }else{
+              }
+              ?>
 
  <div class="form-group row">           
        <div class="col-md-3">
@@ -174,7 +170,12 @@ if(isset($_GET['success'])){
                     </div>
 
 
-        
+               <?php
+                 }
+               }
+                   ?>
+
+
                                     </form>
                                 </div>
 
