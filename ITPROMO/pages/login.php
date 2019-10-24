@@ -50,8 +50,8 @@ if(isset($_GET['error'])){
         </div>
         <?php endif; ?>
 
+ 
                         <form action="../function/checklogin.php" method="post">
-
 
                             <div class="user-details">
                                 <div class="form-group">

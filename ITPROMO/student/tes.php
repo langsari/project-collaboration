@@ -80,20 +80,20 @@ $my_group_id = get_group_id($my_id);
                                                 </div>
 
 
-   <!-- PAGE CONTENT 
+
 
 <?php
 
    
 
-//$strSQL = "SELECT  topic_id, topic_abstrack,topic_keyword,topic_fieldstudy,topic_years
-  // FROM topic_project,member
-    //WHERE topic_project.member_idcard = member.member_idcard ='".$_SESSION['id']."'"; 
+$strSQL = "SELECT  topic_id, topic_abstrack,topic_keyword,topic_fieldstudy,topic_years
+   FROM topic_project,member
+    WHERE topic_project.member_idcard = member.member_idcard ='".$_SESSION['id']."'"; 
 
 
-     //if($result = $db->query($strSQL)){
-       ///           while($objResult = $result->fetch_object()){
-            ?>-->
+     if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+            ?>
 
                                                 <div class="form-group row">
                                                     <div class="col-md-3">
@@ -102,7 +102,7 @@ $my_group_id = get_group_id($my_id);
                               
                                                    
                                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" id="topic_abstrack" name="topic_abstrack" placeholder="Enter Abstarck" autocomplete="off" required aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" id="topic_abstrack" name="topic_abstrack" placeholder="topic_abstrack" autocomplete="off" required aria-describedby="basic-addon1"value="<?php echo $objResult->topic_abstrack; ?>">
                                                     </div>
                                                 </div>
                                                 
@@ -111,7 +111,7 @@ $my_group_id = get_group_id($my_id);
                                                         <label class="control-label col-form-label">Keyword</label>
                                                     </div>
                                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" id="topic_keyword" name="topic_keyword" placeholder="Keyword" autocomplete="off" required aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" id="topic_keyword" name="topic_keyword" placeholder="Keyword" autocomplete="off" required aria-describedby="basic-addon1"value="<?php echo $objResult->topic_keyword; ?>">
                                                     </div>
                                                 </div>
 
@@ -135,10 +135,17 @@ $my_group_id = get_group_id($my_id);
                                                         <label class="control-label col-form-label">Years</label>
                                                     </div>
                                                     <div class="col-md-9">
-                                        <input type="DATE" class="form-control" id="topic_years" name="topic_years"placeholder="Years" autocomplete="off" required aria-describedby="basic-addon1" >
+                                        <input type="DATE" class="form-control" id="topic_years" name="topic_years"placeholder="Years" autocomplete="off" required aria-describedby="basic-addon1"value="<?php echo $objResult->topic_years; ?>">
                                                     </div>
                                                 </div>
   
+
+<?php
+}
+
+}
+?>
+
 
    <?php
 

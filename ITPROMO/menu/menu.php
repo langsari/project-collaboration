@@ -188,6 +188,13 @@ if($user_rank == "admin"):
         <i class="fa fa-circle-o"></i> Add Student Proposal 
       </a>
     </li>
+
+        <li>
+      <a href="?page=show_proposal">
+        <i class="fa fa-circle-o"></i> Show Proposal
+      </a>
+    </li>
+
     <li>
       <a href="?page=proposal_project">
         <i class="fa fa-circle-o"></i> <span>All Project Topics</span>

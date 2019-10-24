@@ -145,6 +145,12 @@ case 'add_proposal':
 		include('student/my_profile.php');
 		break;
 
+ case 'show_proposal':
+		include('student/show_proposal.php');
+		break;
+
+
+
 
 #menu homepage
 

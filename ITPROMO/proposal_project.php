@@ -66,8 +66,6 @@
            <tbody>
             <tr>
                    <td><?php echo $objResult["topic_id"];?></td>            
-                    <td><?php echo $objResult["id_student"];?></td>
-                   <td><?php echo $objResult["fullname"];?></td>
                       <td><?php echo $objResult["topic_topic"];?></td>
                       <td><a href="?page=proposal_project&topic_id=<?php echo $objResult["topic_id"];?>" data-toggle="modal" data-target="#addmember" style="margin-bottom: 10px;"><?php echo $objResult["topic_abstrack"];?></td>
                       <td><?php echo $objResult["topic_keyword"];?></td>

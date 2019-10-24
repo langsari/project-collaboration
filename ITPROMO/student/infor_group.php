@@ -1,7 +1,38 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+   <title></title>
+
+ <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+ <style>
+    h6{
+      font-family:initial;
+      font-size: 25px;
+      color: green;
+    }
+    #more {display: none;}
+    ul.breadcrumb {
+      background-color: #eee;
+      text-align: right;
+      padding: 10px 16px;
+    }
+    ul.breadcrumb li {
+     display: inline;
+    }  
+    ul.breadcrumb li+li:before {
+      padding: 8px;
+      content: ">>\00a0";
+}
+    
+  </style>
+
+ <ul class="breadcrumb">
+ <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
+  <li class="active">My Group</li>
+</ul>
    <div class="content">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h4 class="card-title">Tables</h4>
                           
                         </div>
                     </div>
