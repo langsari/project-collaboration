@@ -43,13 +43,13 @@ function status($status){
 
 function fieldstudy($fieldstudy){
 	if($fieldstudy == "1"){
-		return "<font color='blue'><i>Software Engineering</i></font>";
+		return "Software Engineering";
 	}else if($fieldstudy == "2"){
 
-	return "<font color='yellow'><i>Computer Multimedia</i></font>";
+	return "Computer Multimedia";
 	}else if($fieldstudy == "3"){
 		
-			return "<font color='green'><i>Computer Networking</i></font>";
+			return "Computer Networking";
 
 	}
 

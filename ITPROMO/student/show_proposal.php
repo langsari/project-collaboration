@@ -40,7 +40,7 @@ $my_group_id = get_group_id($my_id);
      $strSQL = "SELECT  advisergroup.advisergroup_topic, advisergroup.member_id,advisergroup.group_id,member.member_idcard, topic_project.topic_id, topic_project.topic_abstrack,topic_project.topic_keyword,topic_project.topic_fieldstudy,topic_project.topic_years
    FROM advisergroup,member,topic_project
     WHERE advisergroup.advisergroup_id = '$my_group_id' AND member.member_id = '$my_id'
-   AND topic_project.member_idcard = member.member_idcard    ";
+   AND topic_project.member_idcard = member.member_idcard  ";
 
      if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
@@ -128,13 +128,8 @@ $my_group_id = get_group_id($my_id);
                                           <label class="control-label col-form-label">Filed of Study</label>
                                              </div>
                                          <div class="col-md-9">
-                                       <select class="form-control" name="topic_fieldstudy" id="topic_fieldstudy">
+                           <input type="text" class="form-control" id="topic_fieldstudy" name="topic_fieldstudy" placeholder="Keyword" autocomplete="off" required aria-describedby="basic-addon1"value="<?php echo fieldstudy ($objResult->topic_fieldstudy); ?>">
 
-                                        <option value="no"> Select Filed</option>
-                                        <option value="1">Software Engineering</option>
-                                        <option value="2">Computer Multimedia</option>
-                                        <option value="3">Computer Networking</option>
-                                        </select>
                                           </div>
                                               </div>
 

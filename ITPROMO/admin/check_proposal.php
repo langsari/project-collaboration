@@ -14,12 +14,12 @@ $member_idcard=$_POST['member_idcard'];
 $Student_name=$_POST['Student_name'];
 $group_id=$_POST['group_id'];
 $status=$_POST['status'];
-$admin_id=$_POST['admin_id'];
+$position=$_POST['position'];
 
 
 
 
-  $sql = "INSERT INTO topic_project (topic_topic, topic_abstrack, topic_keyword,topic_fieldstudy,topic_years,member_idcard,group_id,status,Student_name,admin_id) VALUES ('$topic_topic','$topic_abstrack','$topic_keyword','$topic_fieldstudy','$topic_years','$member_idcard','$group_id','$status','$Student_name','$admin_id')";
+  $sql = "INSERT INTO topic_project (topic_topic, topic_abstrack, topic_keyword,topic_fieldstudy,topic_years,member_idcard,group_id,status,Student_name,position) VALUES ('$topic_topic','$topic_abstrack','$topic_keyword','$topic_fieldstudy','$topic_years','$member_idcard','$group_id','$status','$Student_name','$position')";
 
 	if($rs = $db->query($sql)){
 		$db->close();

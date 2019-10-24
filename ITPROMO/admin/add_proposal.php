@@ -162,7 +162,7 @@
              <label class="control-label col-form-label">BY</label>
            </div>
              <div class="col-md-9">
-             <select class="form-control" name="admin_id">
+             <select class="form-control" name="position">
 
                 <?php
                 include '../db/ConnectDB.php';
@@ -206,9 +206,7 @@
 
      <?php
                        require 'menu/function.php';
-
- $strSQL = "SELECT * FROM topic_project   ";
-
+ $strSQL = "SELECT * FROM topic_project  ";
 
 
         ?>
@@ -229,7 +227,7 @@
                      
                  </tr>
                </thead>
-           <?php
+             <?php
      if($objQuery = $db->query($strSQL)){
        while($objResult = mysqli_fetch_array($objQuery)) {
             ?>
@@ -247,8 +245,9 @@
                       <td><?php echo $objResult["topic_keyword"];?></td>
                        <td><?php echo $objResult["topic_fieldstudy"];?></td>
                       <td><?php echo $objResult["topic_years"];?></td>
-                       <td><?php echo $_SESSION["name"];?></td>
+                       <td><?php echo $objResult["position"];?></td>
                        <td><?php echo $objResult["group_id"];?></td>
+
 
 
 
