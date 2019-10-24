@@ -5,19 +5,21 @@ session_start();
 
 require '../db/ConnectDB.php';
 
- $id=$_POST['id'];
 $topic_topic=$_POST['topic_topic'];
 $topic_abstrack=$_POST['topic_abstrack'];
 $topic_keyword=$_POST['topic_keyword'];
 $topic_fieldstudy=$_POST['topic_fieldstudy'];
 $topic_years=$_POST['topic_years'];
-$writer=$_POST['writer'];
-$advisor=$_POST['advisor'];
+$member_idcard=$_POST['member_idcard'];
+$Student_name=$_POST['Student_name'];
+$group_id=$_POST['group_id'];
 $status=$_POST['status'];
+$admin_id=$_POST['admin_id'];
 
 
 
-  $sql = "INSERT INTO topic_project (id, topic_topic, topic_abstrack, topic_keyword,topic_fieldstudy,topic_years,writer,advisor,status) VALUES ('$id','$topic_topic','$topic_abstrack','$topic_keyword','$topic_fieldstudy','$topic_years','$writer','$advisor','$status')";
+
+  $sql = "INSERT INTO topic_project (topic_topic, topic_abstrack, topic_keyword,topic_fieldstudy,topic_years,member_idcard,group_id,status,Student_name,admin_id) VALUES ('$topic_topic','$topic_abstrack','$topic_keyword','$topic_fieldstudy','$topic_years','$member_idcard','$group_id','$status','$Student_name','$admin_id')";
 
 	if($rs = $db->query($sql)){
 		$db->close();

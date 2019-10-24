@@ -36,13 +36,22 @@
 
 $my_id = $_SESSION['id'];
 $my_group_id = get_group_id($my_id);
-     $strSQL = "SELECT  advisergroup.advisergroup_topic, advisergroup.member_id,advisergroup.group_id,member.member_idcard
-   FROM advisergroup,member
-    WHERE advisergroup.advisergroup_id = '$my_group_id' AND member.member_id = '$my_id'";
+
+     $strSQL = "SELECT  advisergroup.advisergroup_topic, advisergroup.member_id,advisergroup.group_id,member.member_idcard, topic_project.topic_id, topic_project.topic_abstrack,topic_project.topic_keyword,topic_project.topic_fieldstudy,topic_project.topic_years
+   FROM advisergroup,member,topic_project
+    WHERE advisergroup.advisergroup_id = '$my_group_id' AND member.member_id = '$my_id'
+   AND topic_project.member_idcard = member.member_idcard    ";
 
      if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
+
+
             ?>
+
+
+
+     
+
  <div class="content">
                     <div class="row">
                         <div class="col-md-12">
@@ -94,15 +103,14 @@ $my_group_id = get_group_id($my_id);
      //if($result = $db->query($strSQL)){
        ///           while($objResult = $result->fetch_object()){
             ?>-->
-
-                                                <div class="form-group row">
+<div class="form-group row">
                                                     <div class="col-md-3">
                                                         <label class="control-label col-form-label">Abstarck</label>
                                                     </div>
                               
                                                    
                                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" id="topic_abstrack" name="topic_abstrack" placeholder="Enter Abstarck" autocomplete="off" required aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" id="topic_abstrack" name="topic_abstrack" placeholder="topic_abstrack" autocomplete="off" required aria-describedby="basic-addon1"value="<?php echo $objResult->topic_abstrack; ?>">
                                                     </div>
                                                 </div>
                                                 
@@ -111,7 +119,7 @@ $my_group_id = get_group_id($my_id);
                                                         <label class="control-label col-form-label">Keyword</label>
                                                     </div>
                                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" id="topic_keyword" name="topic_keyword" placeholder="Keyword" autocomplete="off" required aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" id="topic_keyword" name="topic_keyword" placeholder="Keyword" autocomplete="off" required aria-describedby="basic-addon1"value="<?php echo $objResult->topic_keyword; ?>">
                                                     </div>
                                                 </div>
 
@@ -135,10 +143,11 @@ $my_group_id = get_group_id($my_id);
                                                         <label class="control-label col-form-label">Years</label>
                                                     </div>
                                                     <div class="col-md-9">
-                                        <input type="DATE" class="form-control" id="topic_years" name="topic_years"placeholder="Years" autocomplete="off" required aria-describedby="basic-addon1" >
+                                        <input type="DATE" class="form-control" id="topic_years" name="topic_years"placeholder="Years" autocomplete="off" required aria-describedby="basic-addon1"value="<?php echo $objResult->topic_years; ?>">
                                                     </div>
                                                 </div>
   
+
 
    <?php
 

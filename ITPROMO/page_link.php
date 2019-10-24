@@ -144,8 +144,12 @@ case 'my_profile':
 case 'display_schedule_project':
 		include('student/display_schedule_project.php');
 		break;
+
 case 'display_schedule_proposal':
 		include('student/display_schedule_proposal.php');
+
+ case 'show_proposal':
+		include('student/show_proposal.php');
 		break;
 
 

@@ -29,6 +29,8 @@ else if($position == "4"){
 
 }
 
+
+
 function status($status){
 	if($status != "0"){
 		return "<span class='text-success'><i>Approved</i></span>";
@@ -36,6 +38,24 @@ function status($status){
 		return "<span class='text-danger'><i>Not Approved</i></span>";
 	}
 }
+
+
+
+function fieldstudy($fieldstudy){
+	if($fieldstudy == "1"){
+		return "<font color='blue'><i>Software Engineering</i></font>";
+	}else if($fieldstudy == "2"){
+
+	return "<font color='yellow'><i>Computer Multimedia</i></font>";
+	}else if($fieldstudy == "3"){
+		
+			return "<font color='green'><i>Computer Networking</i></font>";
+
+	}
+
+
+}
+
 
 
 
