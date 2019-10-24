@@ -125,19 +125,19 @@ if($user_rank == "admin"):
   </a>
   <ul class="treeview-menu">
     <li>
-      <a href="?page=add_schedule_proposal">
-        <i class="fa fa-circle-o"></i> <span> Proposal Schedule</span>
+      <a href="?page=display_schedule_proposal">
+        <i class="fa fa-circle-o"></i> <span>Proposal Schedule</span>
       </a>
     </li>
     <li>
-      <a href="?page=add_schedule_project">
+      <a href="?page=display_schedule_project">
         <i class="fa fa-circle-o"></i> <span>Project Schedule</span>
       </a>
     </li>
   </ul>
 </li>
 <li class="treeview">
-  <a href="#">
+  <a href="?page=my_profile">
     <i class="fa fa-user"></i> <span>Personal Information</span>
   </a>
 </li>
@@ -162,12 +162,12 @@ if($user_rank == "admin"):
   </a>
   <ul class="treeview-menu">
     <li>
-      <a href="#">
+      <a href="?page=display_schedule_proposal">
         <i class="fa fa-circle-o"></i> <span>Proposal Schedule</span>
       </a>
     </li>
     <li>
-      <a href="#">
+      <a href="?page=display_schedule_project">
         <i class="fa fa-circle-o"></i> <span>Project Schedule</span>
       </a>
     </li>
@@ -205,7 +205,7 @@ if($user_rank == "admin"):
          </ul>
 </li>
 <li class="treeview">
-  <a href="#">
+  <a href="?page=my_profile">
     <i class="fa fa-user"></i> <span>Personal Information</span>
   </a>
 </li>
@@ -256,7 +256,7 @@ if($user_rank == "admin"):
   </a>
 </li>
 <li class="treeview">
-  <a href="#">
+  <a href="?page=my_profile">
     <i class="fa fa-user"></i> <span>Personal Information</span>
   </a>
 </li>

@@ -125,56 +125,61 @@ case 'add_proposal':
 
 
 #studet 		
-
-		case 'create_proposal':
+case 'create_proposal':
 		include('student/create_proposal.php');
 		break;
-		//case 'group_infor':
-		//include('student/group_infor.php');
-		//break;
-
-	   case 'track_project':
+		
+case 'track_project':
 		include('student/track_project.php');
 		break;
 		
-       case 'infor_group':
+case 'infor_group':
 		include('student/infor_group.php');
 		break;
 
-   case 'my_profile':
+case 'my_profile':
 		include('student/my_profile.php');
 		break;
+
+case 'display_schedule_project':
+		include('student/display_schedule_project.php');
+		break;
+case 'display_schedule_proposal':
+		include('student/display_schedule_proposal.php');
+		break;
+
+
 
 
 #menu homepage
 
-	case 'show_topic':
-	include('show_topic.php');
+case 'show_topic':
+	    include('show_topic.php');
 		break;
 
-	case 'Annoucement':
-	include('Annoucement.php');
+case 'Annoucement':
+	    include('Annoucement.php');
 		break;
 
-	case 'proposal_project':
-	include('proposal_project.php');
+case 'proposal_project':
+     	include('proposal_project.php');
 		break;
 
-	case 'guide':
+case 'guide':
 		include('guide.php');
-	break;
+	    break;
 
-	case 'schedule':
+case 'schedule':
 		include('schedule.php');
-	break;
+	    break;
 
-	case 'form':
+case 'form':
 		include('form.php');
-	break;
+	    break;
 
-	case 'booked':
+case 'booked':
 		include('booked.php');
-	break;
+	    break;
 
 
 
