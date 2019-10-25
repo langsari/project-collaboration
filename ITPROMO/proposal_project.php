@@ -39,6 +39,7 @@
                                    <h6 class="card-title text-bold">All Final Projects Proposal</h6></b>
      <?php
  
+ require 'menu/function.php';
   $strSQL = "SELECT * FROM topic_project ";
         ?>
    
@@ -46,7 +47,7 @@
           <thead bgcolor="gray">
               </br>
              <tr>
-                      <th>No</th>
+                      
                         <th>ID</th>
                       <th>Name</th>
                       <th>Topic</th>
@@ -58,20 +59,20 @@
 
                  </tr>
                </thead>
-               <?php
-     if($objQuery = $db->query($strSQL)){
-       while($objResult = mysqli_fetch_array($objQuery)) {
+ <?php
+     if($result = $db->query($strSQL)){
+             while($objResult = $result->fetch_object()){
             ?>
 
            <tbody>
             <tr>
-                   <td><?php echo $objResult["topic_id"];?></td>            
-                      <td><?php echo $objResult["topic_topic"];?></td>
-                      <td><a href="?page=proposal_project&topic_id=<?php echo $objResult["topic_id"];?>" data-toggle="modal" data-target="#addmember" style="margin-bottom: 10px;"><?php echo $objResult["topic_abstrack"];?></td>
-                      <td><?php echo $objResult["topic_keyword"];?></td>
-                      <td><?php echo $objResult["topic_fieldstudy"];?></td>
-                      <td><?php echo $objResult["status"];?></td>
-                      
+                     <td class="text-center"><?php echo $objResult->member_idcard; ?></td>
+                  <td class="text-center"><?php echo $objResult->Student_name; ?></td>
+                    <td class="text-center"><?php echo $objResult->topic_topic; ?></td>
+                     <td class="text-center"><?php echo $objResult->topic_abstrack; ?></td>
+                     <td class="text-center"><?php echo $objResult->topic_keyword ?></td>
+                <td class="text-center"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
+                 <td class="text-center"><?php echo status($objResult->status); ?></td>
           
                     
                   
