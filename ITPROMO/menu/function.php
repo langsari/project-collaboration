@@ -31,6 +31,7 @@ else if($position == "4"){
 
 
 
+
 function status($status){
 	if($status != "0"){
 		return "<span class='text-success'><i>Approved</i></span>";
@@ -55,9 +56,6 @@ function fieldstudy($fieldstudy){
 
 
 }
-
-
-
 
 
 

@@ -28,23 +28,93 @@
 
  <ul class="breadcrumb">
  <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
-  <li class="active">Add Proposal</li>
+  <li class="active">All Member</li>
 </ul>
 
 
-<div class="content">
+         <!-- PAGE CONTENT -->
+                <div class="content">
                      <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-block">
 
-  <button type="button"  class="btn btn-success btn-sm" data-toggle="modal" data-target="#addproposal" style="margin-bottom: 10px;">
+ <button type="button"  class="btn btn-success btn-sm" data-toggle="modal" data-target="#addproposal" style="margin-bottom: 10px;">
 
-            <i class="glyphicon glyphicon-plus"></i>Add Schedule Proposal
+            <i class="glyphicon glyphicon-plus"></i>Add New Proposal
           </button>
 
 
-          <!-- Modal -->
+                                    <h6 class="card-title text-bold">Default Datatable</h6>
+
+
+     <?php
+require 'menu/function.php';
+ $strSQL = "SELECT * FROM topic_project";
+  
+?>
+   <table class="display datatable table table-stripped" cellspacing="0" width="100%">
+          <thead>
+             <tr>
+                            <th>ID</th>
+                      <th>Name</th>
+                      <th>Topic</th>
+                      <th>Abstrack</th>
+                      <th>Keyword</th>
+                      <th>Field study</th>
+                       <th>Years</th>
+                       <th>By</th>
+                       <th>Advisor</th>
+                       <th>Stutus</th>
+                       <th>#</th>
+
+                 </tr>
+               </thead>
+       <?php
+     if($result = $db->query($strSQL)){
+             while($objResult = $result->fetch_object()){
+            ?>
+           <tbody>
+            <tr>
+                     <td class="text-center"><?php echo $objResult->member_idcard; ?></td>
+                  <td class="text-center"><?php echo $objResult->Student_name; ?></td>
+                    <td class="text-center"><?php echo $objResult->topic_topic; ?></td>
+                     <td class="text-center"><?php echo $objResult->topic_abstrack; ?></td>
+                     <td class="text-center"><?php echo $objResult->topic_keyword ?></td>
+                   <td class="text-center"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
+                   <td class="text-center"><?php echo $objResult->topic_years; ?></td>
+                    <td class="text-center"><?php echo $objResult->position; ?></td>
+                        <td class="text-center"><?php echo $objResult->group_id; ?></td>
+                 <td class="text-center"><?php echo status($objResult->status); ?></td>
+
+                    <td>
+                  <a href="delete/check_delete.php?id=<?php echo $objResult->topic_id;?>" title="Confirm" onclick="return confirm('<?php echo $objResult->topic_topic;?>')"> <i class="fa fa-eye" aria-hidden="true"></i></a>
+     
+                     <a href="delete/check_delete.php?id=<?php echo$objResult->topic_id;?>" title="Confirm" onclick="return confirm('<?php echo  $objResult->topic_topic;?>')"> <i class="fa fa-edit" aria-hidden="true"></i>
+           
+                     <a href="delete/check_delete.php?id=<?php echo $objResult->topic_id;?>" title="Confirm" onclick="return confirm('<?php echo $objResult->topic_topic;?>')"> <i class="fa fa-trash" aria-hidden="true"></i>
+                      </td>
+               
+
+           </tr>
+                <?php
+                 }
+               }
+                   ?>
+
+
+       
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           
+            <!-- /PAGE CONTENT -->
+         <div class="box-body">
+            <!-- Modal -->
 <div class="modal fade" id="addproposal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -200,79 +270,6 @@
                                     </form>
                                 </div>
 
-
-
- <h6 class="card-title text-bold">Schedule Proposal</h6>              
-
-     <?php
-                       require 'menu/function.php';
- $strSQL = "SELECT * FROM topic_project  ";
-
-
-        ?>
-       <table class="display datatable table table-stripped" cellspacing="0" width="100%">
-          <thead>
-             <tr>
-                      <th>ID</th>
-                      <th>Name</th>
-                      <th>Topic</th>
-                      <th>Abstrack</th>
-                      <th>Keyword</th>
-                      <th>Field study</th>
-                       <th>Years</th>
-                       <th>By</th>
-                       <th>Advisor</th>
-                       <th>Stutus</th>
-                     
-                     
-                 </tr>
-               </thead>
-             <?php
-     if($objQuery = $db->query($strSQL)){
-       while($objResult = mysqli_fetch_array($objQuery)) {
-            ?>
-
-           <tbody>
-            <tr>
-
-
-                     
-
-                   <td><?php echo $objResult["member_idcard"];?></td>
-                      <td><?php echo $objResult["Student_name"];?></td>
-                      <td><?php echo $objResult["topic_topic"];?></td>
-                      <td><?php echo $objResult["topic_abstrack"];?></td>
-                      <td><?php echo $objResult["topic_keyword"];?></td>
-                       <td><?php echo $objResult["topic_fieldstudy"];?></td>
-                      <td><?php echo $objResult["topic_years"];?></td>
-                       <td><?php echo $objResult["position"];?></td>
-                       <td><?php echo $objResult["group_id"];?></td>
-
-
-
-
-                          <td>
-                  <a href="delete/check_delete.php?id=<?php echo $objResult["news_id"];?>" title="Confirm" onclick="return confirm('<?php echo $objResult["news_topic"];?>')"> <i class="fa fa-eye" aria-hidden="true"></i></a>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                     <a href="delete/check_delete.php?id=<?php echo $objResult["news_id"];?>" title="Confirm" onclick="return confirm('<?php echo $objResult["news_topic"];?>')"> <i class="fa fa-edit" aria-hidden="true"></i>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                     <a href="delete/check_delete.php?id=<?php echo $objResult["news_id"];?>" title="Confirm" onclick="return confirm('<?php echo $objResult["news_topic"];?>')"> <i class="fa fa-trash" aria-hidden="true"></i>
-                      </td>
-               
-
-                    </tr>
-
-                <?php
-                 }
-               }
-                   ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
 </body>
 

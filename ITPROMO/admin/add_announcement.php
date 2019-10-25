@@ -160,7 +160,13 @@
  
      <?php
  
- $strSQL = "SELECT * FROM announcement  WHERE admin_id='".$_SESSION['id']."'";
+
+
+  $strSQL = "SELECT  announcement.announcement_topic,  announcement.announcement_id, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
+                           FROM announcement,admin 
+                           WHERE announcement.admin_id=admin.admin_id
+                           ORDER BY announcement.announcement_id";
+
         ?>
        <table class="display datatable table table-stripped" cellspacing="0" width="100%">
           <thead>
@@ -175,26 +181,30 @@
                      
                  </tr>
                </thead>
-               <?php
-     if($objQuery = $db->query($strSQL)){
-       while($objResult = mysqli_fetch_array($objQuery)) {
+                <?php
+     if($result = $db->query($strSQL)){
+             while($objResult = $result->fetch_object()){
             ?>
+
            <tbody>
             <tr>
-                      <td><?php echo $objResult["announcement_id"];?></td>
-                      <td><?php echo $objResult["announcement_topic"];?></td>
-                      <td><?php echo $objResult["announcement_detail"];?></td>
-                      <td><?php echo $objResult["announcement_date"];?></td>
-                     <td><?php echo $_SESSION["name"];?></td>
+                  <td class="text-center"><?php echo $objResult->announcement_id; ?></td>
+                  <td class="text-center"><?php echo $objResult->announcement_topic; ?></td>
+                    <td class="text-center"><?php echo $objResult->announcement_detail; ?></td>
+                     <td class="text-center"><?php echo $objResult->announcement_date; ?></td>
+                     <td class="text-center"><?php echo $objResult->admin_fullname ?></td>
+                
 
-                          <td>
-                  <a href="delete/check_delete.php?id=<?php echo $objResult["announcement_id"];?>" title="Confirm" onclick="return confirm('<?php echo $objResult["news_topic"];?>')"> <i class="fa fa-eye" aria-hidden="true"></i></a>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                     <a href="delete/check_delete.php?id=<?php echo $objResult["news_id"];?>" title="Confirm" onclick="return confirm('<?php echo $objResult["news_topic"];?>')"> <i class="fa fa-edit" aria-hidden="true"></i>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                     <a href="delete/check_delete.php?id=<?php echo $objResult["news_id"];?>" title="Confirm" onclick="return confirm('<?php echo $objResult["news_topic"];?>')"> <i class="fa fa-trash" aria-hidden="true"></i>
+
+
+ <td>
+                  <a href="delete/check_delete.php?id=<?php echo $objResult->topic_id;?>" title="Confirm" onclick="return confirm('<?php echo $objResult->topic_topic;?>')"> <i class="fa fa-eye" aria-hidden="true"></i></a>
+     
+                     <a href="delete/check_delete.php?id=<?php echo$objResult->topic_id;?>" title="Confirm" onclick="return confirm('<?php echo  $objResult->topic_topic;?>')"> <i class="fa fa-edit" aria-hidden="true"></i>
+           
+                     <a href="delete/check_delete.php?id=<?php echo $objResult->topic_id;?>" title="Confirm" onclick="return confirm('<?php echo $objResult->topic_topic;?>')"> <i class="fa fa-trash" aria-hidden="true"></i>
                       </td>
-               
+                    </tr>
 
                     </tr>
 

@@ -21,7 +21,7 @@ $advisergroup_id=$_POST['advisergroup_id'];
 
 	if($rs = $db->query($sql)){
 		$db->close();
-		header("Location: ../index.php?page=add_schedule_proposal");
+		header("Location: ../index.php?page=create_schedule_project");
 	}else{
 		echo $db->error;
 		$db->close();
