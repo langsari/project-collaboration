@@ -1,3 +1,5 @@
+
+        <link rel="stylesheet" href="asset/css/style.css">
   
               <div class="content">
    
@@ -156,7 +158,10 @@
             </div>
         </div>
 
-
+ <script src="asset/js/jquery-1.11.1.min.js"></script>
+        <script src="asset/js/jquery.backstretch.min.js"></script>
+        <script src="asset/js/retina-1.1.0.min.js"></script>
+        <script src="asset/js/scripts.js"></script>
        
     </body>
 

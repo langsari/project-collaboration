@@ -59,6 +59,10 @@ function fieldstudy($fieldstudy){
 
 
 
+
+
+
+
 //Function to get group member
 function get_group_member($group_id){
 	$rows = "";
@@ -104,10 +108,10 @@ require 'db/ConnectDB.php';
 
 
 
+function get_advisergroup_id(){
 
-function get_advisergroup_id($group_id){
 require 'db/ConnectDB.php';
-	$sql = "SELECT  advisergroup_id FROM  advisergroup WHERE group_id = '$group_id' ";
+	$sql = "SELECT advisergroup_id FROM advisergroup WHERE group_id ";
 	if($rs = $db->query($sql)){
 		if($row = $rs->fetch_object()){
 			return $row->advisergroup_id;
@@ -118,6 +122,9 @@ require 'db/ConnectDB.php';
 		$db->close();
 	}
 }
+
+
+
 
 
 

@@ -9,7 +9,6 @@
                                      <table class="table">
                                         <thead class="thead-default">
                                            <tr>
-                  <th>Group No</th>
                   <th>Title project</th>
                   <th>Student</th>
                     <th>Status</th>
@@ -37,7 +36,6 @@ $my_id = $_SESSION['id'];
 
             
              <tr>                 
-                  <td><?php echo $row->group_number; ?></td>
                   <td><?php echo $row->advisergroup_topic; ?></td>
                   <td><?php echo get_member_list1($row->group_id); ?></td>
                 <td><?php echo status_for_advisor($row->advisergroup_status); ?></td>

@@ -178,20 +178,24 @@ if($user_rank == "admin"):
     <i class="fa fa-book"></i> <span>Projects</span> 
   </a>
   <ul class="treeview-menu">
-    <li>
-      <a href="?page=track_project">
-        <i class="fa fa-circle-o"></i> Project Track
-      </a>
-    </li>
+
     <li>
       <a href="?page=create_proposal">
-        <i class="fa fa-circle-o"></i> Add Student Proposal 
+        <i class="fa fa-circle-o"></i> Student Proposal 
       </a>
     </li>
 
+
+      <li>
+      <a href="?page=create_project">
+        <i class="fa fa-circle-o"></i> Student Project 
+      </a>
+    </li>
+
+
         <li>
-      <a href="?page=show_proposal">
-        <i class="fa fa-circle-o"></i> Show Proposal
+      <a href="?page=track_project">
+        <i class="fa fa-circle-o"></i> Project Track
       </a>
     </li>
 

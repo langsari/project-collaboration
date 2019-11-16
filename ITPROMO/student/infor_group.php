@@ -294,12 +294,73 @@
       
             </div>
           </div>
+
+          <!-- Select advisor 
+                                                <div class="form-group row">
+                                                    <div class="col-md-3">
+                                                        <label class="control-label col-form-label">Abstarck</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="project_abstrack" name="project_abstrack"autocomplete="off" required aria-describedby="basic-addon1">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group row">
+                                                    <div class="col-md-3">
+                                                        <label class="control-label col-form-label">Keyword</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="project_keyword" name="project_keyword"    autocomplete="off" required aria-describedby="basic-addon1" >
+                                                    </div>
+                                                </div>
+
+                                            <div class="form-group row">           
+                                                 <div class="col-md-3">
+                                          <label class="control-label col-form-label">Filed of Study</label>
+                                             </div>
+                                         <div class="col-md-9">
+                                       <select class="form-control" name="project_fieldstudy" id="project_fieldstudy">
+
+                                        <option value="no"> Select Filed</option>
+                                        <option value="1">Software Engineering</option>
+                                        <option value="2">Computer Multimedia</option>
+                                        <option value="3">Computer Networking</option>
+                                        </select>
+                                          </div>
+                                              </div>
+
+                                            <div class="form-group row">
+                                                    <div class="col-md-3">
+                                                        <label class="control-label col-form-label">Years</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                        <input type="DATE" class="form-control" id="project_years" name="project_years"  autocomplete="off" required aria-describedby="basic-addon1" >
+                                                    </div>
+                                                </div>
+
+                                                 <div class="form-group row">           
+       <div class="col-md-3">
+             <label class="control-label col-form-label">Proposal status</label>
+           </div>
+             <div class="col-md-9">
+             <select class="form-control" name="project_status" name="project_status">
+                <option value="1">Proposal Appoved</option> 
+                <option value="2"> Proposal Not Appoved</option>
+                 <option value="3"> Done </option>
+            
+              </select>
+      
+            </div>
+          </div>-->
+          
              <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
                           
 </div>
 </div>
 </div>
 </div>
+
+
     <!-- END Select Advisor  -->
 
 

@@ -32,11 +32,11 @@ require 'db/ConnectDB.php';
     <!-- /PAGE LEVEL STYLESHEETS -->
      <!-- PAGE LEVEL SCRIPTS -->
     <script type="text/javascript" src="lib/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="assets/js/pages_datatables.min.js"></script>
+        <script type="text/javascript" src="assets/js/pages_datatables.min.js"></script>
+
     <!-- /PAGE LEVEL SCRIPTS -->
 
 
-        <link rel="stylesheet" href="asset/css/style.css">
 
 </head>
 
@@ -209,10 +209,7 @@ require 'db/ConnectDB.php';
           <strong>Copyright &copy; 2019 <a href="index.php">ITPROMO</a>.</strong> All rights reserved.
         </footer>-->
     <!-- ./wrapper -->
-       <script src="asset/js/jquery-1.11.1.min.js"></script>
-        <script src="asset/js/jquery.backstretch.min.js"></script>
-        <script src="asset/js/retina-1.1.0.min.js"></script>
-        <script src="asset/js/scripts.js"></script>
+      
 </body>
 
 </html>
