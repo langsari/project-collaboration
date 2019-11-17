@@ -46,7 +46,7 @@
           $strSQL = "SELECT advisergroup.*, partnergroup.group_number,member.member_fullname,member.member_idcard  FROM advisergroup
           LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
 
-        LEFT JOIN member ON advisergroup.member_id = member.member_id
+        LEFT JOIN member ON advisergroup.group_id = member.member_id
 
         WHERE advisergroup.advisergroup_id ";
 
@@ -60,11 +60,14 @@
              <tr>
                         <th>No</th>   
                         <th>ID</th>
+                        <th>Name</th>
                       <th>Topic</th>
                       <th>Abstrack</th>
                       <th>Keyword</th>
                       <th>Field of Study</th>
                       <th>Status</th>
+                                               <th>View</th>
+
 
 
                  </tr>
@@ -78,14 +81,16 @@
             <tr>
                      <td class="text-center"><?php echo $objResult->advisergroup_id; ?></td>
                      <td class="text-center"><?php echo $objResult->member_idcard; ?></td>
+                     <td class="text-center"><?php echo $objResult->member_fullname; ?></td>
                     <td class="text-center"><?php echo $objResult->advisergroup_topic; ?></td>
-  <td><a href="?page=proposal_project&advisergroup_id=<?php echo $objResult->advisergroup_id; ?>" data-toggle="modal" data-target="#show" style="margin-bottom: 10px;"><?php echo $objResult->project_abstrack; ?></td>
+  <td><a href="#" name="view" value="view" id="<?php echo $objResult->advisergroup_id; ?>" class=" view_data"><?php echo $objResult->project_abstrack; ?></a></td>
 
 
                      <td class="text-center"><?php echo $objResult->project_keyword ?></td>
                 <td class="text-center"><?php echo fieldstudy($objResult->project_fieldstudy); ?></td>
                  <td class="text-center"><?php echo status($objResult->project_status); ?></td>
-          
+                 <td><input type="button" name="view" value="view" id="<?php echo $objResult->advisergroup_id; ?>" class="btn btn-info btn-xs view_data" /></td>  
+
                     
                   
 
@@ -113,51 +118,40 @@
                 </div>
 
       
-  
+   </html>  
+ <div id="dataModal" class="modal fade">  
+      <div class="modal-dialog">  
+           <div class="modal-content">  
+                <div class="modal-header">  
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                     <h4 class="modal-title">Employee Details</h4>  
+                </div>  
+                <div class="modal-body" id="employee_detail">  
+                </div>  
+                <div class="modal-footer">  
+                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                </div>  
+           </div>  
+      </div>  
+ </div>  
+ 
+      
+ <script>  
+    
+      $(document).on('click', '.view_data', function(){  
+           var employee_ids = $(this).attr("id");  
+           if(employee_ids != '')  
+           {  
+                $.ajax({  
+                     url:"select1.php",  
+                     method:"POST",  
+                     data:{employee_ids:employee_ids},  
+                     success:function(data){  
+                          $('#employee_detail').html(data);  
+                          $('#dataModal').modal('show');  
+                     }  
+                });  
+           }            
+      });  
 
-   <!-- Modal -->
-<div class="modal fade" id="show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i> Detail</h4>
-      </div>
-      <div class="modal-body">
-         
-             <?php
-
-  $strSQL = "SELECT * FROM advisergroup WHERE advisergroup_id ";
-?>  <?php
-     if($objQuery = $db->query($strSQL)){
-       while($objResult = mysqli_fetch_array($objQuery)) {
-            ?>
-                           
-                 
-                                               
-                                                <div class="form-group row">
-                                                    <div class="col-md-3">
-                                                        <label class="control-label col-form-label">ID  Student </label>
-                                                    </div>
-                                                    <div class="col-md-9"> 
-                                                <input type="text" class="form-control"   value="<?php echo $objResult->project_abstrack; ?>" >
-                                                    </div>
-                                                </div>
-
-   
-                                            
-                                           
-
-                                        <?php
-                 }
-               }
-                   ?>
-
-
-                                    </form>
-                                </div>
-
-
-</body>
-
-</html>
+ </script>

@@ -154,9 +154,29 @@ require 'db/ConnectDB.php';
 <!-- ยังไม่ทำน่ะ.....ทำแค่เปลี่ยน icon-->
         <li><a class="app-menu__item " href="?page=show_topic"><i class="fa fa-file"></i><span class="app-menu__label">Topics</span></a></li>
 
-<!-- ยังไม่ทำน่ะ.....ทำแค่เปลี่ยน icon-->
-        <li><a class="app-menu__item " href="?page=proposal_project"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label">Proposal Project</span></a></li>
 
+
+
+<!-- ยังไม่ทำน่ะ.....ทำแค่เปลี่ยน icon-->
+          <li class="active treeview">
+  <a href="#">
+    <i class="fa fa-book"></i> <span>Proposal Project</span> 
+  </a>
+  <ul class="treeview-menu">
+
+    <li>
+      <a href="?page=proposal_project">
+        <i class="fa fa-circle-o"></i> Last Proposal 
+      </a>
+    </li>
+
+
+      <li>
+      <a href="?page=old_proposal_project">
+        <i class="fa fa-circle-o"></i> Old Proposal 
+      </a>
+    </li>
+  </ul>
 <!-- Nik ทำ-->
         <li><a class="app-menu__item " href="?page=guide"><i class="fa fa-glide-g"></i><span class="app-menu__label">Guide</span></a></li>
 
@@ -165,6 +185,7 @@ require 'db/ConnectDB.php';
         <li><a class="app-menu__item " href="?page=form"><i class='fa fa-edit'></i><span class="app-menu__label">Forms</span></a></li>
 
         <li><a class="app-menu__item " href="?page=booked"><i class='fa fa-book'></i><span class="app-menu__label">Booked</span></a></li>
+
 
 
 

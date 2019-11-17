@@ -172,6 +172,11 @@ case 'proposal_project':
      	include('proposal_project.php');
 		break;
 
+case 'old_proposal_project':
+     	include('old_proposal_project.php');
+		break;
+
+
 case 'guide':
 		include('guide.php');
 	    break;
