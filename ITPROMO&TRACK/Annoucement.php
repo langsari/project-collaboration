@@ -39,7 +39,7 @@
            <div class="col-lg-12">
                 <div class="card">
                     <div class="card-block">
-                      <h6 class="card-title text-bold"><b>&nbsp;&nbsp;<i class='fas fa-bullhorn'></i></h6></b>
+                      <h6 class="card-title text-bold"><b>Announcements&nbsp;&nbsp;<i class='fas fa-bullhorn'></i></h6></b>
                        
 
 
