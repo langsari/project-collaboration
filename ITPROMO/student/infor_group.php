@@ -136,7 +136,7 @@
               <tbody>
               </tbody>
               <?php
-                     require 'menu/function.php';
+                   //  require 'menu/function.php';
               $sql = "SELECT * FROM partnergroup";
               if($rs = $db->query($sql)){
                 while($row = $rs->fetch_object()){
@@ -270,30 +270,6 @@
                                         <input type="text" class="form-control" id="advisergroup_topic" name="advisergroup_topic"placeholder="Years" autocomplete="off" required aria-describedby="basic-addon1">
                                                     </div>
                                                 </div>
-<div class="form-group row">           
-       <div class="col-md-3">
-             <label class="control-label col-form-label">Partner</label>
-           </div>
-             <div class="col-md-9">
-             <select class="form-control" name="group_id">
-              <option value="no">- Student Name -</option>
-                <?php
-              $group_id = get_group_id($_SESSION['id']);
-                
-                $strSQL = "SELECT member_id, member_fullname FROM member WHERE group_id = '$group_id'";
-                if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-                    echo "<option value='".$objResult->member_id."'>".$objResult->member_fullname."
-                    
-                    </option>";
-                  }
-                }else{
-                }
-                ?>
-              </select>
-      
-            </div>
-          </div>
 
           <!-- Select advisor 
                                                 <div class="form-group row">

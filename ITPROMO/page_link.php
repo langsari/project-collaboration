@@ -25,6 +25,10 @@ case 'add_proposal':
 		include('admin/add_proposal.php');
 		break;
 
+case 'choose_committee':
+		include('admin/choose_committee.php');
+		break;
+
 
 
 	case 'edit_marktype':
@@ -153,6 +157,13 @@ case 'display_schedule_proposal':
 		include('student/create_project.php');
 		break;
 
+ case 'track':
+		include('student/track.php');
+		break;
+
+ case 'show':
+		include('student/show.php');
+		break;
 
 
 

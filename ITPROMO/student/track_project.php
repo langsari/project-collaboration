@@ -4,7 +4,8 @@
               <div class="content">
    
                  
-             
+
+
                 
                     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
                       <form role="form" action="" method="post" class="f1">
@@ -32,6 +33,28 @@
                 
 
                         </div>
+
+
+                            <?php
+                 //    require 'menu/function.php';
+
+$my_id = $_SESSION['id'];
+
+$my_group_id = get_group_id($my_id);
+
+          $sql = "SELECT advisergroup.*, partnergroup.group_number,member.member_fullname FROM advisergroup
+          LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+
+        WHERE advisergroup.advisergroup_id = '$my_group_id'";
+
+
+
+              if($rs = $db->query($sql)){
+                while($row = $rs->fetch_object()){
+              ?>
+
                         
                         <fieldset>
                             <h4>Adviser Proposal Project Approval Letter</h4>
@@ -49,16 +72,44 @@
                                         </thead>
                                         <tbody>
                                             <tr>
+
                                                 <td>Select Topic</td>
-                                                <td> <input type="checkbox" name="file"   id="file"></td>
+                          <td> <input type="checkbox" name="file"   id="file" value="">
+                            <?php echo status_for_advisor($row->advisergroup_status); ?>
+                            
+                          </td>
                                             </tr>
                                             <tr>
                                                 <td>Select Advisor</td>
-                                                 <td> <input type="checkbox" name="file"   id="file"></td>
+                                                 <td> <input type="checkbox" name="file"   id="file"   >
+                                       <?php echo status_for_advisor($row->advisergroup_status); ?>
+                                                 </td>
                                             </tr>
-                                            <tr>
+
+
+ <?php
+                 }
+
+
+               }
+                   ?>
+
+                              <tr>
+              <form class="form-inline" method="post" enctype="multipart/form-data" action="student/check_files.php" style="padding: 30px;">
+
+
                                                 <td>Upload 3 chapter of Proposal  
-                                                  <input type="file" name="file"   id="file"> </td>
+
+                    <input class="form-control" type="file" name="file_num" id="file_num" placeholder="Group Number">
+
+
+      
+
+
+
+                                              </td>
+
+
                                                   <td> <input type="checkbox" name="file"   id="file"></td>
                                                    <tr>
                                                 <td>Dowloand </td>
@@ -76,23 +127,12 @@
                             </div>
                         </div>
 
-                          <div class="form-group">
-                              <label class="sr-only" for="f1-first-name">First name</label>
-                                    <input type="text" name="f1-first-name" placeholder="First name..." class="f1-first-name form-control" id="f1-first-name">
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="f1-last-name">Last name</label>
-                                    <input type="text" name="f1-last-name" placeholder="Last name..." class="f1-last-name form-control" id="f1-last-name">
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="f1-about-yourself">About yourself</label>
-                                    <textarea name="f1-about-yourself" placeholder="About yourself..." 
-                                                       class="f1-about-yourself form-control" id="f1-about-yourself"></textarea>
-                                </div>
+                         
                                 <div class="f1-buttons">
                                     <button type="button" class="btn btn-next">Next</button>
                                 </div>
                             </fieldset>
+                            
 
                             <fieldset>
                                 <h4>Set up your account:</h4>
@@ -120,7 +160,7 @@
                                 <div class="form-group">
                                     <label class="sr-only" for="f1-question">Question</label>
                                     <input type="text" name="f1-question" placeholder="Question..." class="f1-question form-control" id="f1-question">
-                                </div>
+                                </div>  
                                 <div class="form-group">
                                     <label class="sr-only" for="f1-answer">Answer</label>
                                     <input type="text" name="f1-answer" placeholder="Answer..." class="f1-answer form-control" id="f1-answer">
@@ -157,12 +197,15 @@
                     
             </div>
         </div>
-
+ 
  <script src="asset/js/jquery-1.11.1.min.js"></script>
         <script src="asset/js/jquery.backstretch.min.js"></script>
         <script src="asset/js/retina-1.1.0.min.js"></script>
         <script src="asset/js/scripts.js"></script>
-       
+   
+
+
+   
     </body>
 
 </html>

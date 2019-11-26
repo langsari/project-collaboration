@@ -88,8 +88,40 @@
                     <input type="text" class="form-control" id="schedule_years" name="schedule_years"placeholder="Years" autocomplete="off" required aria-describedby="basic-addon1">
                </div>
                    </div>
+                  <!-- Notifications: style can be found in dropdown.less 
 
  <div class="form-group row">           
+       <div class="col-md-3">
+             <label class="control-label col-form-label">Partner Student</label>
+           </div>
+             <div class="col-md-9">
+             <select class="form-control" name="member_id">
+              <option value="no">- Select Partner Student -</option>
+                <?php
+            //   include '../db/ConnectDB.php';
+              //         $strSQL = "SELECT  advisergroup.advisergroup_topic, advisergroup.group_id,member.member_fullname,member.group_id
+                //           FROM advisergroup,member 
+                  //         WHERE advisergroup.group_id=member.member_id
+                    //       ORDER BY advisergroup.advisergroup_id";
+
+                //if($result = $db->query($strSQL)){
+                  //while($objResult = $result->fetch_object()){
+                 //   echo "<option value='".$objResult->advisergroup_id."'>".$objResult->member_fullname."</option>";
+
+  
+
+
+                  
+               // }else{
+                //}
+                //?>
+              </select>
+      
+            </div>
+          </div>
+-->
+
+           <div class="form-group row">           
        <div class="col-md-3">
              <label class="control-label col-form-label">ID Student</label>
            </div>
@@ -110,6 +142,7 @@
       
             </div>
           </div>
+                 
                                              
  <div class="form-group row">           
        <div class="col-md-3">

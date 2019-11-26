@@ -1,7 +1,10 @@
 <?php
 session_start();
-require 'db/ConnectDB.php';
+require 'menu/connect.php';
+include('menu/function.php');
+
 ?>
+
 <!DOCTYPE HTML>
 <html>
 

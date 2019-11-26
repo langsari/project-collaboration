@@ -157,23 +157,6 @@ if($user_rank == "admin"):
 </li>
 
 <li class="active treeview">
-    <a href="#"> <i class="fa fa-calendar"></i>  
-     <span>Schedule</span></a>
-  </a>
-  <ul class="treeview-menu">
-    <li>
-      <a href="?page=display_schedule_proposal">
-        <i class="fa fa-circle-o"></i> <span>Proposal Schedule</span>
-      </a>
-    </li>
-    <li>
-      <a href="?page=display_schedule_project">
-        <i class="fa fa-circle-o"></i> <span>Project Schedule</span>
-      </a>
-    </li>
-  </ul>
-</li>
-<li class="active treeview">
   <a href="#">
     <i class="fa fa-book"></i> <span>Projects</span> 
   </a>
@@ -199,6 +182,19 @@ if($user_rank == "admin"):
       </a>
     </li>
 
+
+      <li>
+      <a href="?page=track">
+        <i class="fa fa-circle-o"></i>  Track
+      </a>
+    </li>
+
+       <li>
+      <a href="?page=show">
+        <i class="fa fa-circle-o"></i>  Show Track
+      </a>
+    </li>
+
     <li>
       <a href="?page=proposal_project">
         <i class="fa fa-circle-o"></i> <span>All Project Topics</span>
@@ -206,6 +202,27 @@ if($user_rank == "admin"):
     </li>
   </ul>
 </li>
+
+
+
+<li class="active treeview">
+    <a href="#"> <i class="fa fa-calendar"></i>  
+     <span>Schedule</span></a>
+  </a>
+  <ul class="treeview-menu">
+    <li>
+      <a href="?page=display_schedule_proposal">
+        <i class="fa fa-circle-o"></i> <span>Proposal Schedule</span>
+      </a>
+    </li>
+    <li>
+      <a href="?page=display_schedule_project">
+        <i class="fa fa-circle-o"></i> <span>Project Schedule</span>
+      </a>
+    </li>
+  </ul>
+</li>
+
 <li class="active treeview">
   <a href="#">
     <i class="fa fa-newspaper-o"></i>  <span>News</span>

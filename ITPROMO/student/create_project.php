@@ -36,7 +36,7 @@
 
  <?php
 
-                     require 'menu/function.php';
+                   //  require 'menu/function.php';
 
 $my_id = $_SESSION['id'];
 
@@ -53,10 +53,6 @@ $my_group_id = get_group_id($my_id);
 
               if($rs = $db->query($sql)){
                 while($row = $rs->fetch_object()){
-
-
-
-
               ?>
 
               

@@ -66,7 +66,7 @@ function fieldstudy($fieldstudy){
 //Function to get group member
 function get_group_member($group_id){
 	$rows = "";
-require 'db/ConnectDB.php';
+require 'connect.php';
   $sql = "SELECT member_fullname, member_idcard FROM member WHERE group_id = '$group_id'";
 	if($rs = $db->query($sql)){
 		if($rs->num_rows > 0){
@@ -90,7 +90,7 @@ require 'db/ConnectDB.php';
 //Get group ID from mb_id as Student
 function get_group_id(){
 
-require 'db/ConnectDB.php';
+require 'connect.php';
 	$member_id = $_SESSION['id'];
 
 	$sql = "SELECT group_id FROM member WHERE member_id = '$member_id' AND member_pos = '3'";
@@ -108,10 +108,10 @@ require 'db/ConnectDB.php';
 
 
 
-function get_advisergroup_id(){
+function get_ag_id($g_id){
 
-require 'db/ConnectDB.php';
-	$sql = "SELECT advisergroup_id FROM advisergroup WHERE group_id ";
+require 'connect.php';
+	$sql = "SELECT advisergroup_id FROM advisergroup WHERE  group_id = '$g_id' ";
 	if($rs = $db->query($sql)){
 		if($row = $rs->fetch_object()){
 			return $row->advisergroup_id;
@@ -125,13 +125,33 @@ require 'db/ConnectDB.php';
 
 
 
+//Function to get adivisor
+function get_advisor($grp_id){
+	
+require 'connect.php';
+
+$sql = "SELECT advisergroup.member_id, member.member_fullname FROM advisergroup
+LEFT JOIN member ON advisergroup.member_id = member.member_id
+					WHERE advisergroup.group_id = '$grp_id' AND advisergroup.advisergroup_status = '1'";
+	if($rs = $db->query($sql)){
+		if($row = $rs->fetch_object()){
+			return $row->member_fullname;
+		}
+		$db->close();
+	}else{
+		echo $db->error;
+		$db->close();
+	}
+}
+
+
 
 
 
 //Function to get member of the group
 function get_member_list($group_id){
 	$rows = "";
-require 'db/ConnectDB.php';
+require 'connect.php';
   $sql = "SELECT member_fullname, member_idcard FROM member WHERE group_id = '$group_id'";
 	if($rs = $db->query($sql)){
 		if($rs->num_rows > 0){
@@ -151,10 +171,11 @@ require 'db/ConnectDB.php';
 
 
 
+
 //Function to get member of the group
 function get_member_list1($group_id){
 	$rows = "";
-require 'db/ConnectDB.php';
+require 'connect.php';
   $sql = "SELECT member_fullname, member_idcard FROM member WHERE member_id = '$group_id'";
 	if($rs = $db->query($sql)){
 		if($rs->num_rows > 0){
@@ -171,7 +192,6 @@ require 'db/ConnectDB.php';
 		$db->close();
 	}
 }
-
 
 //Function to get member of the group
 
