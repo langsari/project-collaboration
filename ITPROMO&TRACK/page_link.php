@@ -59,9 +59,6 @@ case 'add_proposal':
 		include('advisor/advisor_request.php');
 		break;
 
-	case 'advisor_requestfiles':
-		include('advisor/advisor_requestfiles.php');
-		break;
 
 	case 'value':
 		# code...
@@ -122,6 +119,13 @@ case 'add_proposal':
 		case 'create_schedule_project':
 		include('officer/create_schedule_project.php');
 		break;
+
+case 'officer_request':
+		include('officer/officer_request.php');
+		break;
+
+
+	
 
 
 #studet 		
