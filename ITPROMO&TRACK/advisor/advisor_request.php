@@ -17,7 +17,7 @@
                                         </thead>
                                         <tbody>
                                           <?php
-            //        require 'menu/function.php';
+require 'menu/connect.php';
 
 $my_id = $_SESSION['id'];
 
@@ -66,6 +66,8 @@ $my_id = $_SESSION['id'];
 
 
 
+   
+
    <div class="content">
                      <div class="row">
                         <div class="col-md-12">
@@ -80,34 +82,41 @@ $my_id = $_SESSION['id'];
                   <th>Student</th>
                     <th>Status</th>
                 <th></th>
+                <th></th>
                 </tr>
                                         </thead>
                                         <tbody>
               
               <?php
-              //require 'menu/connect.php';
+require 'menu/connect.php';
+
+
+$my_id = $_SESSION['id'];
+
+
+    $strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic FROM advisergroup
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+
+        WHERE advisergroup.member_id = '$my_id'  AND files_status = 'w' 
+
+               ";
 
 
 
+       
 
 
-
-              $sql2 = "SELECT files.*, advisergroup.advisergroup_status,files.files_status FROM files
-                      LEFT JOIN advisergroup ON files.advisergroup_id = advisergroup.advisergroup_id
-              LEFT JOIN topic_project ON files.advisergroup_id = topic_project.topic_id
-
-                      WHERE files.advisergroup_id = '$my_id'";
-
-
-
-              if($rs = $db->query($sql2)){
+              if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
               ?>
                 <tr>
                   <td class="text-center"><?php echo get_member_list($row->group_id); ?></td>
-                        <td class="text-center"><?php echo $row->files_filename; ?></td>
+                        <td class="text-center"><?php echo $row->advisergroup_topic; ?></td>
+                        <td class="text-center"><?php echo $row->files_filename_proposal; ?></td>
                   <td class="text-center"><?php echo status_to_text($row->files_status); ?></td>
-                <td><a href="advisor/check_topic.php?id=<?php echo $row->advisergroup_id; ?>"class="btn btn-success btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->topic_topic; ?>')"><i class='glyphicon glyphicon-ok'></i> Approve</a>
+  <td><a href="advisor/check_topic.php?id=<?php echo $row->files_id; ?>"class="btn btn-success btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i class='glyphicon glyphicon-ok'></i> Approve</a>
 
                 </tr>
                <?php

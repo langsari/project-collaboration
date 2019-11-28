@@ -92,6 +92,14 @@ if($user_rank == "admin"):
     <i class="fa fa-paper-plane"></i> <span>Request</span>
   </a>
 </li>
+
+<li class="treeview">
+  <a href="?page=advisor_requestfiles">
+    <i class="fa fa-paper-plane"></i> <span>Request files</span>
+  </a>
+</li>
+
+
 <li class="active treeview">
   <a href="#">
     <i class="fa fa-book"></i> <span>Projects</span> 

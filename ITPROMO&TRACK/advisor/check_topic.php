@@ -6,7 +6,7 @@ if(isset($_GET['id'])){
 	$sql = "UPDATE files SET files_status = '1' WHERE files_id = '$id'";
 	if($db->query($sql)){
 		$db->close();
-		header("Location: ../index.php?page=advisor_request");
+		header("Location: ../index.php?page=advisor_request&success=1");
 	}else{
 		echo $db->error;
 		$db->close();

@@ -1,4 +1,5 @@
-  
+   <link rel="stylesheet" href="asset/css/style.css">
+     
               <div class="content">
   
      <?php
@@ -13,7 +14,7 @@
 
              
 
-    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename FROM advisergroup
+    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
@@ -93,7 +94,7 @@
 
  <form method="post" action="student/check_files.php">
 
-          <input class="form-control" type="file" name="files_filename" id="files_filename" placeholder="Group Number">
+          <input class="form-control" type="file" name="files_filename_proposal" id="files_filename_proposal" placeholder="Group Number">
 
                 
                  
@@ -128,9 +129,15 @@
 
                 
 
+ 
+ <script src="asset/js/jquery-1.11.1.min.js"></script>
+        <script src="asset/js/jquery.backstretch.min.js"></script>
+        <script src="asset/js/retina-1.1.0.min.js"></script>
+        <script src="asset/js/scripts.js"></script>
+   
 
 
-       
+   
     </body>
 
 </html>

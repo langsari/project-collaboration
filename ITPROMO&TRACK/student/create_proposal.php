@@ -45,7 +45,7 @@ $my_group_id = get_group_id($my_id);
 
 $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id, member.member_id,member.member_fullname,member.member_idcard ,topic_project.topic_abstrack,topic_project.topic_keyword ,topic_project.topic_years,topic_project.topic_fieldstudy FROM advisergroup
 
-          LEFT JOIN topic_project ON advisergroup.group_id = topic_project.topic_id
+          LEFT JOIN topic_project ON advisergroup.advisergroup_id = topic_project.advisergroup_id
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
 

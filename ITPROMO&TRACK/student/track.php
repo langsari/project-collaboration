@@ -5,7 +5,7 @@
 
 
                 
-                    <input class="form-control" type="file" name="files_filename" id="files_filename" placeholder="Group Number">
+                    <input class="form-control" type="file" name="files_filename_proposal" id="files_filename_proposal" placeholder="Group Number">
                 
              
 

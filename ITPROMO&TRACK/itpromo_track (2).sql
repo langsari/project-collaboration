@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2019 at 05:01 AM
+-- Generation Time: Nov 28, 2019 at 03:03 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.39
 
@@ -69,9 +69,9 @@ INSERT INTO `advisergroup` (`advisergroup_id`, `advisergroup_topic`, `advisergro
 (4, 'Application Game ', '1', 18, 4),
 (5, 'Alquran Application', '1', 14, 5),
 (6, 'Carton', '1', 18, 6),
-(7, 'Asian', '1', 8, 7),
-(9, 'Math Student', '1', 8, 8),
-(10, 'okokoko', '1', 14, 9);
+(14, 'Baised ecommerce', '1', 8, 7),
+(15, 'xxxxxxx', '1', 11, 8),
+(16, 'ooooooo', '1', 18, 9);
 
 -- --------------------------------------------------------
 
@@ -110,23 +110,23 @@ INSERT INTO `announcement` (`announcement_id`, `announcement_topic`, `announceme
 
 CREATE TABLE `files` (
   `files_id` int(11) NOT NULL,
-  `files_filename` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `member_id` int(20) NOT NULL,
+  `files_filename_proposal` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `files_filename_project` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `advisergroup_id` int(20) NOT NULL,
-  `files_status` enum('w','1') COLLATE utf8_unicode_ci NOT NULL COMMENT '1: passW: wait to accept'
+  `files_status` enum('w','1','4') COLLATE utf8_unicode_ci NOT NULL COMMENT 'w: wait to accept,1: pass,4:officer approved'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `files`
 --
 
-INSERT INTO `files` (`files_id`, `files_filename`, `member_id`, `advisergroup_id`, `files_status`) VALUES
-(1, 'Proposal.docx', 0, 1, '1'),
-(2, 'last use case.pdf', 0, 2, '1'),
-(17, 'Diagram 1.pdf', 0, 9, 'w'),
-(18, 'Diagram 1.pdf', 0, 5, 'w'),
-(20, 'DB.sql', 0, 10, 'w'),
-(21, 'Doc1.pdf', 0, 10, 'w');
+INSERT INTO `files` (`files_id`, `files_filename_proposal`, `files_filename_project`, `advisergroup_id`, `files_status`) VALUES
+(1, 'Proposal.docx', '', 1, '1'),
+(2, 'last use case.pdf', '', 2, '1'),
+(18, 'Diagram 1.pdf', '', 5, '1'),
+(33, 'card.docx', '', 14, '1'),
+(34, 'ER and DB.docx', '', 15, '1'),
+(35, 'Proposal.docx', '', 16, '1');
 
 -- --------------------------------------------------------
 
@@ -176,7 +176,9 @@ INSERT INTO `member` (`member_id`, `member_idcard`, `member_username`, `member_f
 (22, 57328470, 'bah', 'Misbah ', '1234', '3', '098462734', 'bah@gmail.com', 'f', 1, 8),
 (23, 574398, 'siti', 'Sitisulaiko', '1234', '3', '0496353', 'ti@gmail.com', 'f', 1, 8),
 (24, 608565, 'Ya', 'Nadia', '1234', '3', '08762743', 'ya@gmail.com', 'f', 1, 9),
-(25, 345565, 'mah', 'Marhamah', '1234', '3', '0876793', 'mah', 'f', 1, 9);
+(25, 345565, 'mah', 'Marhamah', '1234', '3', '0876793', 'mah', 'f', 1, 9),
+(27, 649700, 'la', 'nuzula', '1234', '3', '09864899', 'la@gmail.com', 'f', 1, 10),
+(28, 32435, 'lah', 'Kiflah', '1234', '3', '0974624', 'lah@gmail.com', 'f', 1, 10);
 
 -- --------------------------------------------------------
 
@@ -220,6 +222,7 @@ CREATE TABLE `partnergroup` (
 --
 
 INSERT INTO `partnergroup` (`group_id`, `group_number`) VALUES
+(11, 0),
 (1, 1),
 (2, 2),
 (3, 3),
@@ -228,7 +231,8 @@ INSERT INTO `partnergroup` (`group_id`, `group_number`) VALUES
 (6, 6),
 (7, 7),
 (8, 8),
-(9, 9);
+(9, 9),
+(10, 10);
 
 -- --------------------------------------------------------
 
@@ -293,9 +297,9 @@ INSERT INTO `topic_project` (`topic_id`, `topic_topic`, `topic_abstrack`, `topic
 (3, 'MOC', 'A very creative and refreshing approach to dealing with crime', 'Moc Project', '3', '2019-11-15', '1', 3, 'Hunafah', 66, 'Kholed Langsaree', 'Student'),
 (4, 'Application Game ', 'hhhhh', 'hhhhh', '1', '2019-11-10', '1', 4, 'Miskah Kasengteuba', 572431011, 'suaida', 'Student'),
 (5, 'Alquran Application', 'nikikij', 'xgdv', '3', '2019-11-21', '1', 5, 'Anas watih', 57378, 'fatah', 'Student'),
-(6, 'Asian', 'Asian Theare lfffv', 'fff', '3', '2019-11-28', '1', 7, 'Hafizah uma', 57231002, 'Kholed Langsaree', 'Student'),
-(8, 'Math Student', 'ttttttt', 'rrrrrr', '3', '2019-11-23', '1', 9, 'Sitisulaiko', 574398, 'Kholed Langsaree', 'Student'),
-(9, 'okokoko', 'dddddddddddd', 'ddddddddddd', '2', '2019-11-28', '1', 10, 'Marhamah', 345565, 'fatah', 'Student');
+(17, 'Baised ecommerce', 'Ecom', 'sell', '1', '2018-11-29', '1', 14, 'Husni Munoh', 572431018, 'Kholed Langsaree', 'Student'),
+(18, 'xxxxxxx', 'zzzzzzz', 'ccccccccc', '2', '2019-11-23', '1', 15, 'Sitisulaiko', 574398, 'Nurulhusna', 'Student'),
+(19, 'ooooooo', 'lllllll', 'jjjjjjjjjj', '3', '2019-11-08', '1', 16, 'Marhamah', 345565, 'suaida', 'Student');
 
 --
 -- Indexes for dumped tables
@@ -367,7 +371,7 @@ ALTER TABLE `topic_project`
 -- AUTO_INCREMENT for table `advisergroup`
 --
 ALTER TABLE `advisergroup`
-  MODIFY `advisergroup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `advisergroup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `announcement`
@@ -379,13 +383,13 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `files_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `files_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `news_topic`
@@ -397,7 +401,7 @@ ALTER TABLE `news_topic`
 -- AUTO_INCREMENT for table `partnergroup`
 --
 ALTER TABLE `partnergroup`
-  MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `schedule`
@@ -409,7 +413,7 @@ ALTER TABLE `schedule`
 -- AUTO_INCREMENT for table `topic_project`
 --
 ALTER TABLE `topic_project`
-  MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

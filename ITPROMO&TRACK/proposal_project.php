@@ -37,24 +37,39 @@
                                 <div class="card-block">
  
                                    <h6 class="card-title text-bold">All Final Projects Proposal</h6></b>
-     <?php
- 
-// require 'menu/function.php';
-  $strSQL = "SELECT * FROM topic_project ";
-        ?>
-   
+   <?php
+
+                  //   require 'menu/function.php';
+
+
+
+$strSQL = "SELECT advisergroup.*,  topic_project.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id,topic_project.Student_name,topic_project.member_idcard,topic_project.topic_abstrack,topic_project.topic_keyword ,topic_project.topic_years,topic_project.topic_fieldstudy,topic_project.status FROM advisergroup
+
+          LEFT JOIN topic_project ON advisergroup.advisergroup_id = topic_project.advisergroup_id
+
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+
+        
+        WHERE advisergroup.group_id ";
+
+
+              ?>
+
+
       <table class="display datatable table table-stripped" cellspacing="0" width="100%">
           <thead bgcolor="gray">
               </br>
              <tr>
-                      
+                        <th>No</th>   
                         <th>ID</th>
-                      <th>Name</th>
+                        <th>Name</th>
                       <th>Topic</th>
                       <th>Abstrack</th>
                       <th>Keyword</th>
-                      <th>Field</th>
+                      <th>Field of Study</th>
                       <th>Status</th>
+                                               <th>View</th>
+
 
 
                  </tr>
@@ -66,14 +81,18 @@
 
            <tbody>
             <tr>
+                     <td class="text-center"><?php echo $objResult->advisergroup_id; ?></td>
                      <td class="text-center"><?php echo $objResult->member_idcard; ?></td>
-                  <td class="text-center"><?php echo $objResult->Student_name; ?></td>
-                    <td class="text-center"><?php echo $objResult->topic_topic; ?></td>
-                     <td class="text-center"><?php echo $objResult->topic_abstrack; ?></td>
+                     <td class="text-center"><?php echo $objResult->Student_name; ?></td>
+                    <td class="text-center"><?php echo $objResult->advisergroup_topic; ?></td>
+  <td><a href="#" name="view" value="view" id="<?php echo $objResult->advisergroup_id; ?>" class=" view_data"><?php echo $objResult->topic_abstrack; ?></a></td>
+
+
                      <td class="text-center"><?php echo $objResult->topic_keyword ?></td>
                 <td class="text-center"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
                  <td class="text-center"><?php echo status($objResult->status); ?></td>
-          
+                 <td><input type="button" name="view" value="view" id="<?php echo $objResult->advisergroup_id; ?>" class="btn btn-info btn-xs view_data" /></td>  
+
                     
                   
 
@@ -82,10 +101,15 @@
 
                     </tr>
 
-                <?php
-                 }
+                             
+  <?php
+    }
                }
                    ?>
+
+
+ 
+
        
                                         </tbody>
                                     </table>
@@ -96,51 +120,40 @@
                 </div>
 
       
-  
+   </html>  
+ <div id="dataModal" class="modal fade">  
+      <div class="modal-dialog">  
+           <div class="modal-content">  
+                <div class="modal-header">  
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                     <h4 class="modal-title"> Details</h4>  
+                </div>  
+                <div class="modal-body" id="employee_detail">  
+                </div>  
+                <div class="modal-footer">  
+                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                </div>  
+           </div>  
+      </div>  
+ </div>  
+ 
+      
+ <script>  
+    
+      $(document).on('click', '.view_data', function(){  
+           var employee_ids = $(this).attr("id");  
+           if(employee_ids != '')  
+           {  
+                $.ajax({  
+                     url:"select1.php",  
+                     method:"POST",  
+                     data:{employee_ids:employee_ids},  
+                     success:function(data){  
+                          $('#employee_detail').html(data);  
+                          $('#dataModal').modal('show');  
+                     }  
+                });  
+           }            
+      });  
 
-   <!-- Modal -->
-<div class="modal fade" id="addmember" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i> Detail</h4>
-      </div>
-      <div class="modal-body">
-         
-             <?php
-
-  $strSQL = "SELECT * FROM topic_project WHERE topic_id ";
-?>  <?php
-     if($objQuery = $db->query($strSQL)){
-       while($objResult = mysqli_fetch_array($objQuery)) {
-            ?>
-                           
-                 
-                                               
-                                                <div class="form-group row">
-                                                    <div class="col-md-3">
-                                                        <label class="control-label col-form-label">ID  Student </label>
-                                                    </div>
-                                                    <div class="col-md-9"> 
-                                                <input type="text" class="form-control"   value="<?php echo $objResult["id"]; ?>" >
-                                                    </div>
-                                                </div>
-
-   
-                                            
-                                           
-
-                                        <?php
-                 }
-               }
-                   ?>
-
-
-                                    </form>
-                                </div>
-
-
-</body>
-
-</html>
+ </script>

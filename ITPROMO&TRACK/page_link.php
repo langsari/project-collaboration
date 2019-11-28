@@ -59,8 +59,8 @@ case 'add_proposal':
 		include('advisor/advisor_request.php');
 		break;
 
-	case 'value':
-		# code...
+	case 'advisor_requestfiles':
+		include('advisor/advisor_requestfiles.php');
 		break;
 
 	case 'value':
