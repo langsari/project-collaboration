@@ -93,11 +93,6 @@ if($user_rank == "admin"):
   </a>
 </li>
 
-<li class="treeview">
-  <a href="?page=advisor_requestfiles">
-    <i class="fa fa-paper-plane"></i> <span>Request files</span>
-  </a>
-</li>
 
 
 <li class="active treeview">
@@ -257,7 +252,7 @@ if($user_rank == "admin"):
 <?php elseif($user_rank == "4"): ?>
 
 <li class="active treeview">
-  <a href="?page=view_studentstatus">   
+  <a href="?page=officer_request">   
     <i class="fa fa-paper-plane-o"></i><span>Project Track</span>
   </a>
 </li>

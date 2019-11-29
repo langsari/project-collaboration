@@ -243,4 +243,15 @@ function status_to_text($status){
 	}
 }
 
+
+function status_to_text1($status){
+	
+	if($status == ''){
+		return "<span class='text-info'>Waiting</span>";
+	}else if($status == '4'){
+		return "<span class='text-success'>Approved</span>";
+	}
+}
+
+
 ?>
