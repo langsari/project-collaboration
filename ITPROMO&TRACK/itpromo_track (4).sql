@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2019 at 03:03 AM
+-- Generation Time: Nov 29, 2019 at 06:24 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.39
 
@@ -71,7 +71,8 @@ INSERT INTO `advisergroup` (`advisergroup_id`, `advisergroup_topic`, `advisergro
 (6, 'Carton', '1', 18, 6),
 (14, 'Baised ecommerce', '1', 8, 7),
 (15, 'xxxxxxx', '1', 11, 8),
-(16, 'ooooooo', '1', 18, 9);
+(16, 'ooooooo', '1', 18, 9),
+(17, 'bbbbb', '1', 14, 10);
 
 -- --------------------------------------------------------
 
@@ -105,6 +106,30 @@ INSERT INTO `announcement` (`announcement_id`, `announcement_topic`, `announceme
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `committeegroup`
+--
+
+CREATE TABLE `committeegroup` (
+  `committeegroup_id` int(11) NOT NULL,
+  `member_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `committeegroup`
+--
+
+INSERT INTO `committeegroup` (`committeegroup_id`, `member_id`, `group_id`) VALUES
+(1, 14, 1),
+(2, 18, 1),
+(3, 8, 2),
+(4, 11, 2),
+(5, 8, 3),
+(6, 14, 3);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `files`
 --
 
@@ -113,20 +138,9 @@ CREATE TABLE `files` (
   `files_filename_proposal` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `files_filename_project` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `advisergroup_id` int(20) NOT NULL,
-  `files_status` enum('w','1','4') COLLATE utf8_unicode_ci NOT NULL COMMENT 'w: wait to accept,1: pass,4:officer approved'
+  `files_status` enum('w','1') COLLATE utf8_unicode_ci NOT NULL COMMENT 'w: wait to accept,1: pass,4:officer approved',
+  `member_id` enum('w','4') COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `files`
---
-
-INSERT INTO `files` (`files_id`, `files_filename_proposal`, `files_filename_project`, `advisergroup_id`, `files_status`) VALUES
-(1, 'Proposal.docx', '', 1, '1'),
-(2, 'last use case.pdf', '', 2, '1'),
-(18, 'Diagram 1.pdf', '', 5, '1'),
-(33, 'card.docx', '', 14, '1'),
-(34, 'ER and DB.docx', '', 15, '1'),
-(35, 'Proposal.docx', '', 16, '1');
 
 -- --------------------------------------------------------
 
@@ -172,7 +186,7 @@ INSERT INTO `member` (`member_id`, `member_idcard`, `member_username`, `member_f
 (18, 572294, 'da', 'suaida', '1234', '1', '058679875', 'gg@gmail.com', 'f', 1, NULL),
 (19, 57231002, 'Hafizah', 'Hafizah uma', '1234', '3', '083186321', 'Hafizah@gnail.com', 'f', 1, 7),
 (20, 572431029, 'tylas', 'Mouet Tylas', '1234', '3', '0847538593', 'tylas@gmail.com', 'f', 1, 1),
-(21, 571386628, 'Wa', 'Anur Smile', '1234', '', '07436847', 'wa@gmail.com', 'm', 1, NULL),
+(21, 571386628, 'Wa', 'Anur Smile', '1234', '3', '07436847', 'wa@gmail.com', 'm', 1, NULL),
 (22, 57328470, 'bah', 'Misbah ', '1234', '3', '098462734', 'bah@gmail.com', 'f', 1, 8),
 (23, 574398, 'siti', 'Sitisulaiko', '1234', '3', '0496353', 'ti@gmail.com', 'f', 1, 8),
 (24, 608565, 'Ya', 'Nadia', '1234', '3', '08762743', 'ya@gmail.com', 'f', 1, 9),
@@ -222,7 +236,6 @@ CREATE TABLE `partnergroup` (
 --
 
 INSERT INTO `partnergroup` (`group_id`, `group_number`) VALUES
-(11, 0),
 (1, 1),
 (2, 2),
 (3, 3),
@@ -299,7 +312,8 @@ INSERT INTO `topic_project` (`topic_id`, `topic_topic`, `topic_abstrack`, `topic
 (5, 'Alquran Application', 'nikikij', 'xgdv', '3', '2019-11-21', '1', 5, 'Anas watih', 57378, 'fatah', 'Student'),
 (17, 'Baised ecommerce', 'Ecom', 'sell', '1', '2018-11-29', '1', 14, 'Husni Munoh', 572431018, 'Kholed Langsaree', 'Student'),
 (18, 'xxxxxxx', 'zzzzzzz', 'ccccccccc', '2', '2019-11-23', '1', 15, 'Sitisulaiko', 574398, 'Nurulhusna', 'Student'),
-(19, 'ooooooo', 'lllllll', 'jjjjjjjjjj', '3', '2019-11-08', '1', 16, 'Marhamah', 345565, 'suaida', 'Student');
+(20, 'bbbbb', 'phpphp', 'vfllgldgf', '1', '2019-11-16', '1', 17, 'Kiflah', 32435, 'fatah', 'Student'),
+(21, 'ooooooo', 'xxxxx', 'xxxxxxxx', '2', '2019-11-30', '1', 16, 'Marhamah', 345565, 'suaida', 'Student');
 
 --
 -- Indexes for dumped tables
@@ -324,6 +338,12 @@ ALTER TABLE `announcement`
   ADD PRIMARY KEY (`announcement_id`),
   ADD KEY `announcement_id` (`announcement_id`),
   ADD KEY `admin_id` (`admin_id`);
+
+--
+-- Indexes for table `committeegroup`
+--
+ALTER TABLE `committeegroup`
+  ADD PRIMARY KEY (`committeegroup_id`);
 
 --
 -- Indexes for table `files`
@@ -371,7 +391,7 @@ ALTER TABLE `topic_project`
 -- AUTO_INCREMENT for table `advisergroup`
 --
 ALTER TABLE `advisergroup`
-  MODIFY `advisergroup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `advisergroup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `announcement`
@@ -380,10 +400,16 @@ ALTER TABLE `announcement`
   MODIFY `announcement_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT for table `committeegroup`
+--
+ALTER TABLE `committeegroup`
+  MODIFY `committeegroup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `files_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `files_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `member`
@@ -413,7 +439,7 @@ ALTER TABLE `schedule`
 -- AUTO_INCREMENT for table `topic_project`
 --
 ALTER TABLE `topic_project`
-  MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

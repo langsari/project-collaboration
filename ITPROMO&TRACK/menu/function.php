@@ -167,6 +167,27 @@ LEFT JOIN member ON advisergroup.member_id = member.member_id
 
 
 
+//Function to get Committee lsit
+function get_committee($group_id){
+require 'connect.php';
+	$rows = "";
+	$sql = "SELECT committeegroup.committeegroup_id, member.member_fullname FROM committeegroup
+					LEFT JOIN member ON committeegroup.member_id = member.member_id
+					WHERE committeegroup.group_id = '$group_id'";
+	if($rs = $db->query($sql)){
+		while($row = $rs->fetch_object()){
+			$rows .= "<p>".$row->member_fullname." <a href='admin/sql_removecommittee.php?id=".$row->committeegroup_id."' title='Remove this committee' onclick='return confirm_removecommittee()' class='btn btn-link btn-xs'><i class='glyphicon glyphicon-remove'></i></a></p>";
+		}
+		return $rows;
+		$db->close();
+	}else{
+		echo $db->error;
+		$db->close();
+	}
+}
+
+
+
 //Function to get member of the group
 function get_member_list($group_id){
 	$rows = "";

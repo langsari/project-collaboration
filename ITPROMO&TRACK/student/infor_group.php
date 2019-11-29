@@ -401,26 +401,44 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
                                 <div class="card-block">
                                     <h5 class="text-bold card-title">Committee</h5>
                                    
-                                 <table class="table">
+                                <table class="table">  
                                         <thead class="thead-default">
-                                            <tr>
-                                           <th>Group</th>
-                  <th>Title project</th>
-                  <th>Advisor</th>
-                    <th>Status</th>
-                  </tr>
+                                         
+                                           <tr>
+                  <th>Student ID</th>
+                  <th>Full Name</th>
+                  <th>Phone</th>
+                </tr>
+                                        </thead>
+                                        <tbody>
+
+
+                                          <?php
+
+             
+          $sql = "SELECT committeegroup.committeegroup_id, member.member_fullname,member.member_idcard ,member.member_phone FROM committeegroup
+          LEFT JOIN member ON committeegroup.member_id = member.member_id
+          WHERE committeegroup.group_id = '$group_id'";
+
+              if($rs = $db->query($sql)){
+                while($row = $rs->fetch_object()){
+              ?>
+                <tr>
+                  <td><?php echo $row->member_idcard; ?></td>
+                  <td><?php echo $row->member_fullname; ?></td>
+                  <td><?php echo $row->member_phone; ?></td>
+                </tr>
+              <?php
+                }
+              }else{
+              }
+              ?>
+                                          
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                   
-                    </div>
-                </div>
-            </div>
-            <!-- /PAGE CONTENT -->
 
 
 

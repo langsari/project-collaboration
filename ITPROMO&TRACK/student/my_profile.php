@@ -35,7 +35,7 @@
 
 
     <?php
-    require 'menu/function.php';
+   
   $strSQL = "SELECT * FROM member  WHERE member_id='".$_SESSION['id']."'";      
         ?>
         <?php

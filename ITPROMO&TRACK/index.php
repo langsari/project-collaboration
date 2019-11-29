@@ -160,26 +160,9 @@ include('menu/function.php');
 
 
 
-<!-- ยังไม่ทำน่ะ.....ทำแค่เปลี่ยน icon-->
-          <li class="active treeview">
-  <a href="#">
-    <i class="fa fa-book"></i> <span>Proposal Project</span> 
-  </a>
-  <ul class="treeview-menu">
-
-    <li>
-      <a href="?page=proposal_project">
-        <i class="fa fa-circle-o"></i> Last Proposal 
-      </a>
-    </li>
 
 
-      <li>
-      <a href="?page=old_proposal_project">
-        <i class="fa fa-circle-o"></i> Old Proposal 
-      </a>
-    </li>
-  </ul>
+  <li><a class="app-menu__item " href="?page=proposal_project"> <i class="fa fa-book"></i><span class="app-menu__label">Proposal Project</span></a></li>
 <!-- Nik ทำ-->
         <li><a class="app-menu__item " href="?page=guide"><i class="fa fa-glide-g"></i><span class="app-menu__label">Guide</span></a></li>
 

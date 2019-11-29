@@ -232,11 +232,6 @@ img { max-width: 50%; }
 
 
 
-                 <?php
-                 } }
-                   ?>
-
-
                             <fieldset>
                                 <h4>Security question:</h4>
                                 <div class="form-group">
@@ -273,6 +268,11 @@ img { max-width: 50%; }
                                 </div>
                             </fieldset>
                       
+
+                 <?php
+                 } }
+                   ?>
+
                       </form>
                     </div>
                 </div>
