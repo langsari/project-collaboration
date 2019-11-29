@@ -11,7 +11,7 @@
 
                                     <h6 class="card-title text-bold">Default Datatable</h6>
      <?php
-                      require 'menu/function.php';
+                      //require 'menu/function.php';
 
   $strSQL = "SELECT * FROM topic_project ";
         ?>
@@ -45,7 +45,7 @@
                 <td class="text-center"><?php echo $objResult->member_idcard; ?></td>
                 <td class="text-center"><?php echo $objResult->Student_name; ?></td>
                 <td class="text-center"><?php echo $objResult->topic_topic; ?></td>
-  <td><a href="#" name="view" value="view" id="<?php echo $objResult->topic_id; ?>" class=" view_data"><?php echo $objResult->topic_abstrack; ?></a></td>
+                <td><a href="#" name="view" value="view" id="<?php echo $objResult->topic_id; ?>" class=" view_data"><?php echo $objResult->topic_abstrack; ?></a></td>
                 <td class="text-center"><?php echo $objResult->topic_keyword; ?></td>
                 <td class="text-center"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
                 <td class="text-center"><?php echo status($objResult->status); ?></td>

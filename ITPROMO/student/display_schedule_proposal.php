@@ -1,7 +1,4 @@
-<style>
-thead {color:green;}
 
-</style>
 <div class="content">
                      <div class="row">
                         <div class="col-lg-12">
@@ -26,9 +23,6 @@ thead {color:green;}
                                           <th>Room</th>
                                         </thead>
                                         <tbody>
-
-
-
      <?php
  
   $strSQL = "SELECT * 

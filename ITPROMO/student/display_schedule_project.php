@@ -1,7 +1,24 @@
 <style>
-thead {color:green;}
+    ul.breadcrumb {
+      background-color: #eee;
+      text-align: right;
+      padding: 10px 16px;
+    }
+    ul.breadcrumb li {
+     display: inline;
+    }  
+    ul.breadcrumb li+li:before {
+      padding: 8px;
+      content: ">>\00a0";
+}
+  </style>
 
-</style>
+
+ <ul class="breadcrumb">
+ <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
+  <li class="active">View schedule project</li>
+</ul>
+
 <div class="content">
                      <div class="row">
                         <div class="col-lg-12">

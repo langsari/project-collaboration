@@ -1,34 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
 
-  <style>
-    h6{
-      font-family:initial;
-      font-size: 25px;
-      color: green;
-    }
-    ul.breadcrumb {
-      background-color: #eee;
-      text-align: right;
-      padding: 10px 16px;
-   }
-    ul.breadcrumb li {
-      display: inline;
-   }
-    ul.breadcrumb li+li:before {
-      padding: 8px;
-      content: ">>\00a0";
-}
-  </style>
-</head>
 <body>
   
-<ul class="breadcrumb">
-  <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
-  <li class="active">Final Projects Proposal</li>
-</ul>
 
 <div class="content">
                      <div class="row">
@@ -57,8 +29,7 @@ $strSQL = "SELECT advisergroup.*,  topic_project.advisergroup_id, advisergroup.a
 
 
       <table class="display datatable table table-stripped" cellspacing="0" width="100%">
-          <thead bgcolor="gray">
-              </br>
+          <thead>
              <tr>
                         <th>No</th>   
                         <th>ID</th>
@@ -66,7 +37,7 @@ $strSQL = "SELECT advisergroup.*,  topic_project.advisergroup_id, advisergroup.a
                       <th>Topic</th>
                       <th>Abstrack</th>
                       <th>Keyword</th>
-                      <th>Field of Study</th>
+                      <th>Field </th>
                       <th>Status</th>
                                                <th>View</th>
 
