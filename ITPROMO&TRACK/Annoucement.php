@@ -2,15 +2,8 @@
  <html>
  <head>
    <title></title>
-
  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
  <style>
-    h6{
-      font-family:initial;
-      font-size: 25px;
-      color: green;
-    }
-    #more {display: none;}
     ul.breadcrumb {
       background-color: #eee;
       text-align: right;
@@ -109,24 +102,6 @@
     </div>
     
   </div>
-
-  <script>
-function myFunction() {
-  var dots = document.getElementById("dots");
-  var moreText = document.getElementById("more");
-  var btnText = document.getElementById("myBtn");
-
-  if (dots.style.display === "none") {
-    dots.style.display = "inline";
-    btnText.innerHTML = "Read more"; 
-    moreText.style.display = "none";
-  } else {
-    dots.style.display = "none";
-    btnText.innerHTML = "Read less"; 
-    moreText.style.display = "inline";
-  }
-}
-</script>
 
 </body>
 </html>

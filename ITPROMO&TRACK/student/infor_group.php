@@ -43,7 +43,7 @@
                                     <h5 class="text-bold card-title">My Information</h5>
                                      <table class="table">
                                         <thead class="thead-default">
-                                            MY Group
+                                            Mine
                                            <tr>
                   <th>Student ID</th>
                   <th>Full Name</th>
@@ -98,7 +98,7 @@
    <i class="glyphicon glyphicon-plus"></i>Join Partner
   </button>
   <p>
-                    <label>Group Number</label>
+                    <label>Create Group</label>
                     <input class="form-control" type="number" name="group_number" id="group_number" placeholder="Group Number">
                 </div>
                    <div class="modal-footer">
@@ -174,9 +174,10 @@
    <i class="glyphicon glyphicon-plus"></i>Add Group
   </button>
 
+
                                     <table class="table">  
                                         <thead class="thead-default">
-                                         
+                                         My Group partner
                                            <tr>
                   <th>Student ID</th>
                   <th>Full Name</th>
@@ -267,7 +268,7 @@
                                <label class="control-label col-form-label">Topic</label>
                                  </div>
                        <div class="col-md-9">
-                                        <input type="text" class="form-control" id="advisergroup_topic" name="advisergroup_topic"placeholder="Years" autocomplete="off" required aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" id="advisergroup_topic" name="advisergroup_topic"placeholder="project topic name" autocomplete="off" required aria-describedby="basic-addon1">
                                                     </div>
                                                 </div>
 

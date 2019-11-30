@@ -79,7 +79,7 @@
                                         <span class="input-group-addon" id="basic-addon1">
                                                 <i class="fa fa-user-o"></i>
                                             </span>
-                                        <input type="text" class="form-control" placeholder="Number ID " aria-describedby="basic-addon1" id="member_idcard" name="member_idcard" autocomplete="off" required>
+                                        <input type="text" class="form-control" placeholder="User ID " aria-describedby="basic-addon1" id="member_idcard" name="member_idcard" autocomplete="off" required>
                                     </div>
                                 </div>
 
