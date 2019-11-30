@@ -151,12 +151,13 @@ function get_advisor($group_id){
 	
 require 'connect.php';
 
-$sql = "SELECT advisergroup.member_id, member.member_fullname FROM advisergroup
+$sql = "SELECT advisergroup.member_id, member.member_fullname,advisergroup.advisergroup_topic FROM advisergroup
 LEFT JOIN member ON advisergroup.member_id = member.member_id
 					WHERE advisergroup.group_id = '$group_id' AND advisergroup.advisergroup_status = '1'";
 	if($rs = $db->query($sql)){
 		if($row = $rs->fetch_object()){
 			return $row->member_fullname;
+			       $row->advisergroup_topic;
 		}
 		$db->close();
 	}else{
@@ -165,6 +166,24 @@ LEFT JOIN member ON advisergroup.member_id = member.member_id
 	}
 }
 
+//Function to get topic project
+function get_topic($group_id){
+	
+require 'connect.php';
+
+$sql = "SELECT advisergroup.member_id,advisergroup.advisergroup_topic FROM advisergroup
+LEFT JOIN member ON advisergroup.member_id = member.member_id
+					WHERE advisergroup.group_id = '$group_id' AND advisergroup.advisergroup_status = '1'";
+	if($rs = $db->query($sql)){
+		if($row = $rs->fetch_object()){
+			return $row->advisergroup_topic;
+		}
+		$db->close();
+	}else{
+		echo $db->error;
+		$db->close();
+	}
+}
 
 
 //Function to get Committee lsit

@@ -47,6 +47,7 @@ function add_committee(group_id){
                 <tr>
                   <th class="text-center" style="width: 50px;">#</th>
                   <th class="text-left">Members</th>
+                  <th class="text-left">Project Topic</th>
                   <th class="text-left">Advisor</th>
                   <th class="text-left">Committee</th>
                   <th class="text-center" style="width: 240px;"></th>
@@ -60,10 +61,11 @@ function add_committee(group_id){
                 while($row = $rs->fetch_object()){
               ?>
                 <tr>
-            <td class="text-center"><?php echo $row->group_number; ?></td>
+                  <td class="text-center"><?php echo $row->group_number; ?></td>
                   <td><?php echo get_member_list($row->group_id); ?></td>
+                  <td class="text-left"><?php echo get_topic($row->group_id); ?></td>
                   <td class="text-left"><?php echo get_advisor($row->group_id); ?></td>
-            <td class="text-left"><?php echo get_committee($row->group_id); ?></td>
+                  <td class="text-left"><?php echo get_committee($row->group_id); ?></td>
                   <td class="text-center">
                  
                     <button type="button" class="btn btn-info btn-xs" onclick="add_committee('<?php echo $row->group_id; ?>')" data-toggle="modal" data-target="#add_committee"><i class="fa fa-user-plus"></i> Add Committee</button>
