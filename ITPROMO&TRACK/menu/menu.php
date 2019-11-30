@@ -191,11 +191,6 @@ if($user_rank == "admin"):
   
 
 
-   <li>
-      <a href="?page=tes">
-        <i class="fa fa-circle-o"></i>  Test
-      </a>
-    </li>
 
   
 
