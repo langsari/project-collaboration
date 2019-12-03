@@ -1,10 +1,35 @@
-<?php
-$success = "0";
-if(isset($_GET['success'])){
-  $success = $_GET['success'];
-}
-?>
+ <!DOCTYPE html>
+ <html>
+ <head>
+   <title></title>
 
+ <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+ <style>
+    h6{
+      font-family:initial;
+      font-size: 25px;
+      color: green;
+    }
+    #more {display: none;}
+    ul.breadcrumb {
+      background-color: #eee;
+      text-align: right;
+      padding: 10px 16px;
+    }
+    ul.breadcrumb li {
+     display: inline;
+    }  
+    ul.breadcrumb li+li:before {
+      padding: 8px;
+      content: ">>\00a0";
+}
+    
+  </style>
+
+ <ul class="breadcrumb">
+ <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
+  <li class="active">Add Schedule Proposal</li>
+</ul>
 
 <div class="content">
                      <div class="row">
@@ -28,73 +53,40 @@ if(isset($_GET['success'])){
       </div>
       <div class="modal-body">
          
-       <form id="add" name="add" method ="post" action ="officer/check_schedule_proposal.php"onsubmit="return checkForm()" >
+       <form id="add" name="add" method ="post" action ="admin/check_schedule_proposal.php" onsubmit="return checkForm()" >
                   
 
-                  <div class="form-group row">           
-       <div class="col-md-3">
-             <label class="control-label col-form-label">Round</label>
-           </div>
-             <div class="col-md-9">
-                                    <select class="form-control" name="schedule_round" id="schedule_round">
-              
-               <option value="1">1</option>
-           
-              </select>
-            </div>
-          </div>
-
-         <div class="form-group row">           
-       <div class="col-md-3">
-             <label class="control-label col-form-label">Type</label>
-           </div>
-             <div class="col-md-9">
-                                    <select class="form-control" name="schedule_type" id="schedule_type">
-               <option value="1">Proposal</option>
-              </select>
-            </div>
-          </div>
-
+ 
             <div class="form-group row">
                     <div class="col-md-3">
-                         <label class="control-label col-form-label">Years</label>
+                         <label class="control-label col-form-label">Topic</label>
                     </div>
                      <div class="col-md-9">
-                    <input type="text" class="form-control" id="schedule_years" name="schedule_years"placeholder="Years" autocomplete="off" required aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" id="schedule_topic" name="schedule_topic"placeholder="Topic" autocomplete="off" required aria-describedby="basic-addon1">
                </div>
                    </div>
 
- <div class="form-group row">           
-       <div class="col-md-3">
-             <label class="control-label col-form-label">ID Student</label>
-           </div>
-             <div class="col-md-9">
-             <select class="form-control" name="member_id">
-              <option value="no">- Select ID Student -</option>
-                <?php
-                require '../menu/connect.php';
-                $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_pos ='3'";
-                if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-                    echo "<option value='".$objResult->member_id."'>".$objResult->member_fullname."</option>";
-                  }
-                }else{
-                }
-                ?>
-              </select>
-      
-            </div>
-          </div>
-                                             
- <div class="form-group row">           
+   <div class="form-group row">
+                    <div class="col-md-3">
+                         <label class="control-label col-form-label">Status </label>
+                    </div>
+                     <div class="col-md-9">
+                    <input type="text" class="form-control" id="schedule_status" name="schedule_status"placeholder="Status" autocomplete="off" required aria-describedby="basic-addon1">
+               </div>
+                   </div>
+
+
+
+     
+           <div class="form-group row">           
        <div class="col-md-3">
              <label class="control-label col-form-label">Title Project</label>
            </div>
              <div class="col-md-9">
-             <select class="form-control" name="advisergroup_id">
+             <select class="form-control" name="group_id">
               <option value="no">- Select Title Project-</option>
                 <?php
-                require '../menu/connect.php';
+                include '../menu/connect.php';
                 $strSQL = "SELECT advisergroup_id, advisergroup_topic FROM advisergroup WHERE advisergroup_id";
                 if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
@@ -110,7 +102,10 @@ if(isset($_GET['success'])){
             </div>
           </div>
 
-                                     
+      
+
+                                             
+         
                                         <div class="form-group row">
                     <div class="col-md-3">
                          <label class="control-label col-form-label">Date</label>
@@ -125,7 +120,7 @@ if(isset($_GET['success'])){
                          <label class="control-label col-form-label">Time</label>
                     </div>
                      <div class="col-md-9">
-                    <input type="text" class="form-control" id="schedule_time" name="schedule_time"placeholder="Time" autocomplete="off" required aria-describedby="basic-addon1">
+                    <input type="time" class="form-control" id="schedule_time" name="schedule_time"placeholder="Time" autocomplete="off" required aria-describedby="basic-addon1">
                </div>
                    </div>
 
@@ -141,12 +136,13 @@ if(isset($_GET['success'])){
                                               
   <div class="form-group row">           
        <div class="col-md-3">
-             <label class="control-label col-form-label">BY</label>
+           
            </div>
              <div class="col-md-9">
-             <select class="form-control" name="admin_id">
+             <select class="form-control" name="member_id" hidden="">
 
-                        <?php
+              
+                    <?php
                 require '../menu/connect.php';
                 $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_id ='".$_SESSION['id']."'";
                 if($result = $db->query($strSQL)){
@@ -157,10 +153,12 @@ if(isset($_GET['success'])){
                 
                 }
                 ?>
+                
               </select>
       
             </div>
           </div>
+                  <input type="text" class="form-control" id="schedule_type" name="schedule_type" value="1" hidden="">
 
                <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
 
@@ -171,51 +169,60 @@ if(isset($_GET['success'])){
                                 </div>
 
 
-
-
  <h6 class="card-title text-bold">Schedule Proposal</h6>              
 
      <?php
+ 
+ //require 'menu/function.php';
 
 
-   $strSQL = "SELECT  schedule.schedule_id, schedule.schedule_round,  schedule.schedule_type, schedule.schedule_years,schedule.schedule_time,schedule.schedule_date,schedule.member_id,schedule.advisergroup_id,schedule.admin_id,member.member_fullname
-                           FROM schedule,member 
-                           WHERE schedule.admin_id=member.member_id AND  schedule.schedule_round ='1'AND member.member_pos ='4'
-                           ORDER BY schedule.schedule_id";
+ 
+
+         $sql = "SELECT schedule.*, partnergroup.group_id,partnergroup.group_number,member.member_fullname FROM schedule
+                   LEFT JOIN partnergroup ON schedule.group_id = partnergroup.group_id
+
+                        LEFT JOIN member ON schedule.member_id = member.member_id
+
+                      WHERE   schedule.schedule_type ='1'
+
+                        ORDER BY schedule.schedule_type";
         ?>
+
 
        <table class="display datatable table table-stripped" cellspacing="0" width="100%">
           <thead>
              <tr>
                       <th>No</th>
-                      <th>Round</th>
-                      <th>Type</th>
-                      <th>Years</th>
-                      <th>Time</th>
-                      <th>Date</th>
-                       <th>Member</th>
-                       <th>Topic</th>
-                       <th>By</th>
-                       <th>Option</th>
-                     
-                     
+                      <th>Group</th>
+                      <th>Name</th>
+                      <th>Title Project</th>
+                      <th>Status Presentaiton</th>
+                      <th>Advisor</th>
+                       <th>Committee</th>
+                       <th>Date</th>
+                       <th>Time</th>
+                       <th>Room</th>
+                   
+
                  </tr>
                </thead>
-                <?php
-     if($result = $db->query($strSQL)){
+       <?php
+     if($result = $db->query($sql)){
              while($objResult = $result->fetch_object()){
             ?>
            <tbody>
             <tr>
-                     <td class="text-center"><?php echo $objResult->schedule_id; ?></td>
-                  <td class="text-center"><?php echo $objResult->schedule_round; ?></td>
-                    <td class="text-center"><?php echo $objResult->schedule_type; ?></td>
-                     <td class="text-center"><?php echo $objResult->schedule_years; ?></td>
-                     <td class="text-center"><?php echo $objResult->schedule_time ?></td>
-                       <td class="text-center"><?php echo $objResult->schedule_date; ?></td>
-                     <td class="text-center"><?php echo $objResult->member_id ?></td>
-                         <td class="text-center"><?php echo $objResult->advisergroup_id; ?></td>
-                     <td class="text-center"><?php echo $objResult->member_fullname ?></td>
+                       <td class="text-center"><?php echo $objResult->schedule_id; ?></td>
+                        <td class="text-center"> <?php echo $objResult->group_number; ?></td>
+                  <td class="text-center"><?php echo get_member_list($objResult->group_id); ?></td>
+                  <td class="text-center"><?php echo get_topic($objResult->group_id); ?></td>
+                    <td class="text-center"><?php echo $objResult->schedule_status ?></td>
+                    <td class="text-center"><?php echo get_advisor($objResult->group_id); ?></td>
+                     <td class="text-center"><?php echo get_committee($objResult->group_id); ?></td>
+                     <td class="text-center"><?php echo $objResult->schedule_date ?></td>
+                       <td class="text-center"><?php echo $objResult->schedule_time; ?></td>
+                     <td class="text-center"><?php echo $objResult->schedule_room ?></td>
+                    
 
 
  <td>
