@@ -53,7 +53,7 @@
       </div>
       <div class="modal-body">
          
-       <form id="add" name="add" method ="post" action ="admin/check_schedule_proposal.php" onsubmit="return checkForm()" >
+       <form id="add" name="add" method ="post" action ="officer/check_schedule_proposal.php" onsubmit="return checkForm()" >
                   
 
  
@@ -141,19 +141,16 @@
              <div class="col-md-9">
              <select class="form-control" name="member_id" hidden="">
 
-              
-                    <?php
-                require '../menu/connect.php';
+                <?php
+                include '../menu/connect.php';
                 $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_id ='".$_SESSION['id']."'";
                 if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
                     echo "<option value='".$objResult->member_id."'>".$objResult->member_fullname."</option>";
                   }
                 }else{
-                
                 }
                 ?>
-                
               </select>
       
             </div>
@@ -170,6 +167,7 @@
 
 
  <h6 class="card-title text-bold">Schedule Proposal</h6>              
+           
 
      <?php
  
@@ -183,9 +181,8 @@
 
                         LEFT JOIN member ON schedule.member_id = member.member_id
 
-                      WHERE   schedule.schedule_type ='1'
+                      WHERE   schedule.schedule_type ='1' AND member.member_id='".$_SESSION['id']."'";
 
-                        ORDER BY schedule.schedule_type";
         ?>
 
 
@@ -226,12 +223,7 @@
 
 
  <td>
-                  <a href="delete/check_delete.php?id=<?php echo $objResult->topic_id;?>" title="Confirm" onclick="return confirm('<?php echo $objResult->topic_topic;?>')"> <i class="fa fa-eye" aria-hidden="true"></i></a>
-     
-                     <a href="delete/check_delete.php?id=<?php echo$objResult->topic_id;?>" title="Confirm" onclick="return confirm('<?php echo  $objResult->topic_topic;?>')"> <i class="fa fa-edit" aria-hidden="true"></i>
-           
-                     <a href="delete/check_delete.php?id=<?php echo $objResult->topic_id;?>" title="Confirm" onclick="return confirm('<?php echo $objResult->topic_topic;?>')"> <i class="fa fa-trash" aria-hidden="true"></i>
-                      </td>
+                  <a type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editPS" onclick="edit_ps(<?php echo $objResult->schedule_id; ?>)"><i class="fa fa-edit" aria-hidden="true"></i>
                     </tr>
 
                 <?php
@@ -245,6 +237,135 @@
                         </div>
                     </div>
                 </div>
+
+<!-- Modal -->
+
+  
+
+<div class="modal fade" id="editPS" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i> Edit Project Schedule</h4>
+      </div>
+    <div class="modal-body">
+         
+       <form id="add" name="add" method ="post" action ="officer/check_schedule_project.php" onsubmit="return checkForm()" >
+                  
+
+ 
+            <div class="form-group row">
+                    <div class="col-md-3">
+                         <label class="control-label col-form-label">Topic</label>
+                    </div>
+                     <div class="col-md-9">
+                    <input type="text" class="form-control" id="schedule_topic" name="schedule_topic" placeholder="Topic" autocomplete="off" required aria-describedby="basic-addon1">
+               </div>
+                   </div>
+
+   <div class="form-group row">
+                    <div class="col-md-3">
+                         <label class="control-label col-form-label">Status </label>
+                    </div>
+                     <div class="col-md-9">
+                    <input type="text" class="form-control" id="schedule_status" name="schedule_status"placeholder="Status" autocomplete="off" required aria-describedby="basic-addon1"  >
+               </div>
+                   </div>
+
+
+
+     
+           <div class="form-group row">           
+       <div class="col-md-3">
+             <label class="control-label col-form-label">Title Project</label>
+           </div>
+             <div class="col-md-9">
+             <select class="form-control" name="group_id">
+              <option value="no">- Select Title Project-</option>
+                <?php
+                include '../menu/connect.php';
+                $strSQL = "SELECT advisergroup_id, advisergroup_topic FROM advisergroup WHERE advisergroup_id";
+                if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+                    echo "<option value='".$objResult->advisergroup_id."'>".$objResult->advisergroup_topic."</option>";
+                  }
+               
+                }else{
+              
+                }
+                ?>
+              </select>
+      
+            </div>
+          </div>
+
+      
+
+                                             
+         
+                                        <div class="form-group row">
+                    <div class="col-md-3">
+                         <label class="control-label col-form-label">Date</label>
+                    </div>
+                     <div class="col-md-9">
+                    <input type="DATE" class="form-control" id="schedule_date" name="schedule_date"placeholder="Years" autocomplete="off" required aria-describedby="basic-addon1">
+               </div>
+                   </div>
+
+                    <div class="form-group row">
+                    <div class="col-md-3">
+                         <label class="control-label col-form-label">Time</label>
+                    </div>
+                     <div class="col-md-9">
+                    <input type="time" class="form-control" id="schedule_time" name="schedule_time"placeholder="Time" autocomplete="off" required aria-describedby="basic-addon1">
+               </div>
+                   </div>
+
+                     <div class="form-group row">
+                    <div class="col-md-3">
+                         <label class="control-label col-form-label">Room</label>
+                    </div>
+                     <div class="col-md-9">
+                    <input type="text" class="form-control" id="schedule_room" name="schedule_room"placeholder="Room" autocomplete="off" required aria-describedby="basic-addon1"  >
+               </div>
+                   </div>
+
+                                              
+  <div class="form-group row">           
+       <div class="col-md-3">
+           
+           </div>
+             <div class="col-md-9">
+             <select class="form-control" name="member_id" hidden="">
+
+                <?php
+                include '../menu/connect.php';
+                $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_id ='".$_SESSION['id']."'";
+                if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+                    echo "<option value='".$objResult->member_id."'>".$objResult->member_fullname."</option>";
+                  }
+                }else{
+                }
+                ?>
+              </select>
+      
+            </div>
+          </div>
+                  <input type="text" class="form-control" id="schedule_type" name="schedule_type" value="2" hidden="">
+
+               <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
+
+      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+
+
 
 </body>
 
