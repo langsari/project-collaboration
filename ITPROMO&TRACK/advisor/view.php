@@ -1,3 +1,4 @@
+      
         <link rel="stylesheet" href="asset/css/style.css">
 
               <div class="content">
@@ -33,17 +34,17 @@
                 
 
                         </div>
- <?php
-            $g_id = get_group_id();
-              $ag_id = get_ag_id($g_id);
+     <?php
 
+  
     $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.member_id FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.advisergroup_id = '$ag_id'";                 
+        WHERE advisergroup.advisergroup_id";                 
      if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
-            ?>  
+            ?> 
+
                         <fieldset>
                             <h4>Adviser Proposal Project Approval Letter</h4>
                        <div class="row">

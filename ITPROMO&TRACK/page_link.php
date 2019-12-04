@@ -65,6 +65,9 @@ case 'choose_committee':
 	case 'advisor_request':
 		include('advisor/advisor_request.php');
 		break;
+	case 'view':
+		include('advisor/view.php');
+		break;
 
 
 	case 'value':
@@ -105,6 +108,9 @@ case 'choose_committee':
 		include('advisor/add_general_topic.php');
 		break;
 
+	case 'student_track_ptoject':
+		include('advisor/student_track_ptoject.php');
+		break;
 
 		case 'add_announcement':
 		include('admin/add_announcement.php');

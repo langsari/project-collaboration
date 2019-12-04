@@ -101,11 +101,20 @@ if($user_rank == "admin"):
   </a>
   <ul class="treeview-menu">
     <li>
-      <a href="?page=view_studentstatus">
+      <a href="?page=student_track_ptoject">
         <i class="fa fa-circle-o"></i> Project Track
       </a>
     </li>
     <li>
+
+         <li>
+      <a href="?page=view">
+        <i class="fa fa-circle-o"></i> View
+      </a>
+    </li>
+    <li>
+
+
       <a href="pages_register.html">
         <i class="fa fa-circle-o"></i>  Project Mark
       </a>
