@@ -65,6 +65,7 @@ case 'choose_committee':
 	case 'advisor_request':
 		include('advisor/advisor_request.php');
 		break;
+		
 	case 'view':
 		include('advisor/view.php');
 		break;

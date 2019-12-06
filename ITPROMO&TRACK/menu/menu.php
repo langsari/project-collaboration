@@ -107,13 +107,7 @@ if($user_rank == "admin"):
     </li>
     <li>
 
-         <li>
-      <a href="?page=view">
-        <i class="fa fa-circle-o"></i> View
-      </a>
-    </li>
-    <li>
-
+       
 
       <a href="pages_register.html">
         <i class="fa fa-circle-o"></i>  Project Mark

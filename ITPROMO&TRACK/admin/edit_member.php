@@ -49,7 +49,7 @@ $dbname = "itpromo&track";
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "itpromo";
+        $dbname = "itpromo_track";
 
    $conn = mysqli_connect($servername,$username,$password,$dbname);
    $sql ="SELECT *FROM member WHERE member_id = '".$_GET["id"]."'";
