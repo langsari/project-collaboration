@@ -173,7 +173,7 @@ function get_ag_id1(){
 require 'connect.php';
 	$member_id = $_SESSION['id'];
 
-$sql = "SELECT advisergroup_id FROM advisergroup WHERE member_id = '$member_id' and group_id  ";
+$sql = "SELECT advisergroup_id FROM advisergroup WHERE group_id = '$member_id' ";
 
 
 	if($rs = $db->query($sql)){

@@ -1,3 +1,5 @@
+ 
+
  <!DOCTYPE html>
  <html>
  <head>
@@ -32,32 +34,14 @@
 </ul>
 
    <!-- PAGE CONTENT -->
-            <?php
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "itpromo&track";
-
-   $id = null;
+          <?php
    
-   if(isset($_GET["id"]))
-   {
-       $lect_ID = $_GET["id"];
-   }
-  
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "itpromo_track";
-
-   $conn = mysqli_connect($servername,$username,$password,$dbname);
-   $sql ="SELECT *FROM member WHERE member_id = '".$_GET["id"]."'";
-$query = mysqli_query($conn,$sql);
-
-   $Result=mysqli_fetch_array($query,MYSQLI_ASSOC);
-  
-   ?> 
+  $strSQL = "SELECT * FROM member  WHERE member_id='".$_GET['id']."'";      
+        ?>
+        <?php
+     if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+            ?>
 
                 <div class="content">
                     <div class="row">
@@ -65,7 +49,12 @@ $query = mysqli_query($conn,$sql);
                             <div class="card">
                                 <div class="card-block">
                                     <h5 class="card-title">Edit</h5>
-                                    <form action="#" class="form-horizontal">
+
+                 
+
+                    <form action="admin/check_editmember.php?id=<?php echo $_GET["id"];?>"name="fromEdit" method="post"onsubmit="return checkForm()">
+
+
                                         <div class="form-group row margin-top-30">
 
                                             <div class="col-md-3">
@@ -73,7 +62,7 @@ $query = mysqli_query($conn,$sql);
                                             </div>
 
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" name="member_idcard" id="member_idcard"  value="<?php echo $Result["member_idcard"]; ?>" >
+                                                <input type="text" class="form-control" name="member_idcard" id="member_idcard"  value="<?php echo $objResult->member_idcard; ?>" >
                                             </div>
                                         </div>
 
@@ -83,7 +72,15 @@ $query = mysqli_query($conn,$sql);
                                                 <label class="control-label col-form-label">Fullname</label>
                                             </div>
                                             <div class="col-md-9">
-                                            <input type="text" class="form-control" name="member_fullname" id="member_fullname"  value="<?php echo $Result["member_fullname"]; ?>" >                                            </div>
+                                            <input type="text" class="form-control" name="member_fullname" id="member_fullname"  value="<?php echo $objResult->member_fullname; ?>" >                                            </div>
+                                        </div>
+
+                                                <div class="form-group row">
+                                            <div class="col-md-3">
+                                                <label class="control-label col-form-label">Usename</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                            <input type="text" class="form-control" name="member_username" id="member_username"  value="<?php echo $objResult->member_username; ?>" >                                            </div>
                                         </div>
 
                                         <div class="form-group row">
@@ -91,17 +88,11 @@ $query = mysqli_query($conn,$sql);
                                                 <label class="control-label col-form-label">Phone</label>
                                             </div>
                                             <div class="col-md-9">
-                                      <input type="text" class="form-control" name="member_phone" id="member_phone"  value="<?php echo $Result["member_phone"]; ?>" >                                            </div>
+                                      <input type="text" class="form-control" name="member_phone" id="member_phone"  value="<?php echo $objResult->member_phone; ?>" >                                            </div>
                                         </div>
 
 
-                                         <div class="form-group row">
-                                            <div class="col-md-3">
-                                                <label class="control-label col-form-label">Gender</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                     <input type="text" class="form-control" name="member_gender" id="member_gender"  value="<?php echo $Result["member_gender"]; ?>" >                                            </div>
-                                        </div>
+                                    
 
 
                                         <div class="form-group row">
@@ -114,13 +105,18 @@ $query = mysqli_query($conn,$sql);
                                                       <i class="fa fa-user"></i>
                                                     </span>
         
-                                                       <input type="text" class="form-control" name="member_email" id="member_email"  value="<?php echo $Result["member_email"]; ?>" >
+                                                       <input type="text" class="form-control" name="member_email" id="member_email"  value="<?php echo $objResult->member_email; ?>" >
                                                 </div>
                                             </div>
                                         </div>
 
+
+
                                      
                                         <div class="pull-right">
+
+                                     <input type="hidden" name="member_id" value="<?php echo $objResult->member_id;?>"/>
+
                                             <button type="reset" class="btn btn-secondary">
                                                 Reset
                                                 <i class="fa fa-refresh position-right"></i>
@@ -135,4 +131,7 @@ $query = mysqli_query($conn,$sql);
                                 </div>
                             </div>
                         </div>
-                   
+                                <?php
+                 }
+               }
+                   ?>

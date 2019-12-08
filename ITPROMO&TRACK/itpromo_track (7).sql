@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2019 at 06:24 PM
+-- Generation Time: Dec 08, 2019 at 03:17 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.39
 
@@ -63,16 +63,11 @@ CREATE TABLE `advisergroup` (
 --
 
 INSERT INTO `advisergroup` (`advisergroup_id`, `advisergroup_topic`, `advisergroup_status`, `member_id`, `group_id`) VALUES
-(1, 'ITPROMO &TRACK', '1', 8, 1),
-(2, 'Rerairing ', '1', 14, 2),
-(3, 'MOC', '1', 8, 3),
-(4, 'Application Game ', '1', 18, 4),
-(5, 'Alquran Application', '1', 14, 5),
-(6, 'Carton', '1', 18, 6),
-(14, 'Baised ecommerce', '1', 8, 7),
-(15, 'xxxxxxx', '1', 11, 8),
-(16, 'ooooooo', '1', 18, 9),
-(17, 'bbbbb', '1', 14, 10);
+(1, 'iTPROMO AND TRACK', '1', 8, 1),
+(2, 'Moc', '1', 11, 2),
+(3, 'Repair', '1', 8, 3),
+(4, 'Math Game ', '1', 18, 4),
+(5, 'Cartoon', '1', 18, 5);
 
 -- --------------------------------------------------------
 
@@ -106,6 +101,58 @@ INSERT INTO `announcement` (`announcement_id`, `announcement_topic`, `announceme
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `chat`
+--
+
+CREATE TABLE `chat` (
+  `chat_id` int(10) NOT NULL,
+  `chat_massage` varchar(255) NOT NULL,
+  `chat_date_time` datetime NOT NULL,
+  `advisergroup_id` int(20) NOT NULL,
+  `member_id` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `chat`
+--
+
+INSERT INTO `chat` (`chat_id`, `chat_massage`, `chat_date_time`, `advisergroup_id`, `member_id`) VALUES
+(11, 'Assalamualaikum', '0000-00-00 00:00:00', 1, 1),
+(12, 'Waalaikummussalm', '0000-00-00 00:00:00', 1, 20),
+(15, 'llllllll', '0000-00-00 00:00:00', 0, 11),
+(16, 'How are u everyone', '0000-00-00 00:00:00', 0, 8),
+(17, 'tttt', '0000-00-00 00:00:00', 0, 8),
+(18, 'fffffffffffff', '0000-00-00 00:00:00', 0, 8),
+(19, 'dd', '0000-00-00 00:00:00', 1, 8),
+(20, 'Hi', '0000-00-00 00:00:00', 4, 18),
+(21, 'how about?', '0000-00-00 00:00:00', 4, 4),
+(22, 'SoS', '0000-00-00 00:00:00', 4, 16);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment`
+--
+
+CREATE TABLE `comment` (
+  `comment_id` int(11) NOT NULL,
+  `parent_comment_id` int(11) NOT NULL,
+  `comment` varchar(200) NOT NULL,
+  `comment_sender_name` varchar(40) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`comment_id`, `parent_comment_id`, `comment`, `comment_sender_name`, `date`) VALUES
+(1, 0, 'hi', 'koko', '2019-12-04 06:12:26'),
+(2, 0, 'ddd', 'dd', '2019-12-04 06:12:37');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `committeegroup`
 --
 
@@ -120,12 +167,11 @@ CREATE TABLE `committeegroup` (
 --
 
 INSERT INTO `committeegroup` (`committeegroup_id`, `member_id`, `group_id`) VALUES
-(1, 14, 1),
-(2, 18, 1),
-(3, 8, 2),
-(4, 11, 2),
-(5, 8, 3),
-(6, 14, 3);
+(1, 29, 1),
+(2, 14, 1),
+(3, 33, 1),
+(4, 8, 2),
+(5, 18, 2);
 
 -- --------------------------------------------------------
 
@@ -141,6 +187,17 @@ CREATE TABLE `files` (
   `files_status` enum('w','1') COLLATE utf8_unicode_ci NOT NULL COMMENT 'w: wait to accept,1: pass,4:officer approved',
   `member_id` enum('w','4') COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `files`
+--
+
+INSERT INTO `files` (`files_id`, `files_filename_proposal`, `files_filename_project`, `advisergroup_id`, `files_status`, `member_id`) VALUES
+(1, 'Proposal.docx', '', 1, '1', '4'),
+(2, 'ER and DB.docx', '', 2, '1', '4'),
+(3, 'ER-and-DB.docx', '', 3, '1', 'w'),
+(4, 'itpromo_track (6).sql', '', 4, '1', 'w'),
+(5, 'ขั้นตอนการสร้าง-QR-code.pdf', '', 5, '1', 'w');
 
 -- --------------------------------------------------------
 
@@ -167,32 +224,36 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`member_id`, `member_idcard`, `member_username`, `member_fullname`, `member_password`, `member_pos`, `member_phone`, `member_email`, `member_gender`, `admin_id`, `group_id`) VALUES
-(1, 572431003, 'Husnee', 'Nik-Hunsee Nik-Uma', '1234', '3', '08343243455', 'nikhusne1003@gmail.com', 'f', 1, 1),
-(2, 572431005, 'Ida', 'Nur-ida Che-loh', '1234', '3', '0852758463', 'ida@gmail.com', 'f', 1, 3),
-(3, 572431009, 'Han', 'Norihan Ha', '1234', '3', '0747346826', 'han@gmail.com', 'f', 1, 6),
+(1, 572431003, 'Husnee', 'Nik-Hunsee Nik-Uma', '1234', '3', '08343243455', 'nikhusne1003@gmail.com', '', 1, 1),
+(2, 572431005, 'Ida', 'Nur-ida Che-loh', '1234', '3', '08535935', 'ida@gmail.com', 'f', 1, 2),
+(3, 572431009, 'Han', 'Norihan Ha', '1234', '3', '0747346826', 'han@gmail.com', 'f', 1, 5),
 (4, 572431011, 'Misk', 'Miskah Kasengteuba', '1234', '3', '075683633', 'misk@gmail.com', 'f', 1, 4),
-(5, 572431014, 'Win', 'Wilada Yalaphanee', '1234', '3', '0856658897', 'win@gmail.com', 'f', 1, 6),
-(6, 572431016, 'Sunee', 'Sunee Kasem', '1234', '3', '245764', 'sunee@gmailcom', 'f', 1, 2),
-(7, 572431018, 'husni', 'Husni Munoh', '1234', '3', '33442233', 'ni@gmail.com', 'f', 1, 7),
+(5, 572431014, 'Win', 'Wilada Yalaphanee', '1234', '3', '0856658897', 'win@gmail.com', 'f', 1, 5),
+(6, 572431016, 'Sunee', 'Sunee Kasem', '1234', '3', '245764', 'sunee@gmailcom', 'f', 1, 3),
+(7, 572431018, 'husni', 'Husni Munoh', '1234', '3', '33442233', 'ni@gmail.com', 'f', 1, NULL),
 (8, 503253762, 'Kholed', 'Kholed Langsaree', '1234', '1', '0857638634', 'kholed@gmail.com', 'm', 1, NULL),
-(9, 572431001, 'Adam', 'Adam Wokbah', '1234', '3', '0847183624', 'husna@gmail.com', 'm', 1, 5),
+(9, 572431001, 'Adam', 'Adam Wokbah', '1234', '3', '0847183624', 'husna@gmail.com', 'm', 1, NULL),
 (11, 1001, 'husna', 'Nurulhusna', '1234', '1', '0856375367', 'husna@gmail.com', 'f', 1, NULL),
 (12, 57329877, 'nani', 'Rusnanee Utea', '1234', '4', '08567637858', 'nani@gmail.com', 'f', 1, NULL),
-(13, 57378, 'Anas', 'Anas watih', '1234', '3', '0986382', 'anas@gmail.com', 'm', 1, 5),
+(13, 57378, 'Anas', 'Anas watih', '1234', '3', '0986382', 'anas@gmail.com', 'm', 1, NULL),
 (14, 462444, 'fatah', 'fatah', '1234', '1', '35664', 'male@gmail.com', 'm', 1, NULL),
-(15, 66, 'Hunafah', 'Hunafah', '1234', '3', '22', 's@gmail.com', 'f', 1, 3),
+(15, 66, 'Hunafah', 'Hunafah', '1234', '3', '22', 's@gmail.com', 'f', 1, 2),
 (16, 572431021, 'Afifah', 'Afifah mamat', '1234', '3', '083171632', 'yah@gmail.com', 'f', 1, 4),
-(17, 572431923, 'ilham', 'ilham', '1234', '3', '0842148244', 'murni@gmail.com', 'f', 1, 2),
+(17, 572431923, 'ilham', 'ilham', '1234', '3', '0842148244', 'murni@gmail.com', 'f', 1, 3),
 (18, 572294, 'da', 'suaida', '1234', '1', '058679875', 'gg@gmail.com', 'f', 1, NULL),
-(19, 57231002, 'Hafizah', 'Hafizah uma', '1234', '3', '083186321', 'Hafizah@gnail.com', 'f', 1, 7),
+(19, 57231002, 'Hafizah', 'Hafizah uma', '1234', '3', '083186321', 'Hafizah@gnail.com', 'f', 1, NULL),
 (20, 572431029, 'tylas', 'Mouet Tylas', '1234', '3', '0847538593', 'tylas@gmail.com', 'f', 1, 1),
 (21, 571386628, 'Wa', 'Anur Smile', '1234', '3', '07436847', 'wa@gmail.com', 'm', 1, NULL),
-(22, 57328470, 'bah', 'Misbah ', '1234', '3', '098462734', 'bah@gmail.com', 'f', 1, 8),
-(23, 574398, 'siti', 'Sitisulaiko', '1234', '3', '0496353', 'ti@gmail.com', 'f', 1, 8),
-(24, 608565, 'Ya', 'Nadia', '1234', '3', '08762743', 'ya@gmail.com', 'f', 1, 9),
-(25, 345565, 'mah', 'Marhamah', '1234', '3', '0876793', 'mah', 'f', 1, 9),
-(27, 649700, 'la', 'nuzula', '1234', '3', '09864899', 'la@gmail.com', 'f', 1, 10),
-(28, 32435, 'lah', 'Kiflah', '1234', '3', '0974624', 'lah@gmail.com', 'f', 1, 10);
+(22, 57328470, 'bah', 'Misbah ', '1234', '3', '098462734', 'bah@gmail.com', 'f', 1, NULL),
+(23, 574398, 'siti', 'Sitisulaiko', '1234', '3', '0496353', 'ti@gmail.com', 'f', 1, NULL),
+(24, 608565, 'Ya', 'Nadia', '1234', '3', '08762743', 'ya@gmail.com', 'f', 1, NULL),
+(25, 345565, 'mah', 'Marhamah', '1234', '3', '0876793', 'mah', 'f', 1, NULL),
+(27, 649700, 'la', 'nuzula', '1234', '3', '09864899', 'la@gmail.com', 'f', 1, NULL),
+(28, 32435, 'lah', 'Kiflah', '1234', '3', '0974624', 'lah@gmail.com', 'f', 1, 10),
+(29, 12345678, 'Ib', 'Ibtisam', '1234', '2', '0974356678', 'ib@gmail.com', 'f', 1, NULL),
+(30, 46577, 'bee', 'Hasbee', '1234', '3', '0487759', 'bee@gmail.com', 'f', 0, NULL),
+(33, 332, 'huda', 'Norhuda', '1234', '2', '87467', 'da@gmail.com', 'f', 1, NULL),
+(34, 571431031, 'Asri', 'Asri Yaee', '1234', '3', '0833749', 'ri@gmail.com', 'm', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -240,12 +301,7 @@ INSERT INTO `partnergroup` (`group_id`, `group_number`) VALUES
 (2, 2),
 (3, 3),
 (4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10);
+(5, 5);
 
 -- --------------------------------------------------------
 
@@ -255,29 +311,24 @@ INSERT INTO `partnergroup` (`group_id`, `group_number`) VALUES
 
 CREATE TABLE `schedule` (
   `schedule_id` int(11) NOT NULL,
-  `schedule_round` enum('1','2') COLLATE utf8_unicode_520_ci NOT NULL COMMENT '1=round 1,2= round 2',
+  `schedule_topic` varchar(255) COLLATE utf8_unicode_520_ci NOT NULL,
   `schedule_type` enum('1','2') COLLATE utf8_unicode_520_ci NOT NULL COMMENT '1=Proposal,2=Project',
-  `schedule_years` year(4) NOT NULL,
+  `schedule_room` int(10) NOT NULL,
   `schedule_time` time NOT NULL,
   `schedule_date` date NOT NULL,
+  `schedule_status` varchar(255) COLLATE utf8_unicode_520_ci NOT NULL,
   `member_id` int(20) NOT NULL,
-  `admin_id` int(20) NOT NULL,
-  `advisergroup_id` int(20) NOT NULL
+  `group_id` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_520_ci;
 
 --
 -- Dumping data for table `schedule`
 --
 
-INSERT INTO `schedule` (`schedule_id`, `schedule_round`, `schedule_type`, `schedule_years`, `schedule_time`, `schedule_date`, `member_id`, `admin_id`, `advisergroup_id`) VALUES
-(3, '1', '1', 2019, '02:04:00', '2019-09-08', 6, 1, 2),
-(4, '2', '2', 2018, '19:00:00', '2019-09-07', 1, 1, 1),
-(5, '2', '2', 2017, '00:00:12', '2019-09-14', 2, 1, 5),
-(6, '1', '1', 0000, '00:00:22', '2019-09-13', 5, 1, 3),
-(7, '1', '1', 2044, '00:00:22', '2019-09-21', 6, 12, 7),
-(8, '1', '1', 0000, '00:00:03', '2019-10-05', 1, 12, 0),
-(9, '1', '1', 0000, '00:00:22', '2019-10-12', 4, 12, 0),
-(10, '1', '1', 0000, '00:00:00', '2019-10-01', 1, 12, 1);
+INSERT INTO `schedule` (`schedule_id`, `schedule_topic`, `schedule_type`, `schedule_room`, `schedule_time`, `schedule_date`, `schedule_status`, `member_id`, `group_id`) VALUES
+(21, 'Presentation ', '1', 123, '22:58:00', '2019-10-30', 'Proposal', 12, 1),
+(22, 'Presentation', '2', 145, '09:58:00', '2019-11-30', 'Project progress 100%', 12, 2),
+(23, 'vv', '2', 88, '21:58:00', '2020-01-01', 'vvv', 12, 2);
 
 -- --------------------------------------------------------
 
@@ -305,15 +356,11 @@ CREATE TABLE `topic_project` (
 --
 
 INSERT INTO `topic_project` (`topic_id`, `topic_topic`, `topic_abstrack`, `topic_keyword`, `topic_fieldstudy`, `topic_years`, `status`, `advisergroup_id`, `Student_name`, `member_idcard`, `adviser`, `position`) VALUES
-(1, 'ITPROMO &TRACK', 'Information and Technology', 'track', '1', '2019-11-09', '1', 1, 'Nik-Hunsee Nik-Uma', 572431003, 'Kholed Langsaree', 'Student'),
-(2, 'Rerairing ', 'Getting pulled over by the police is almost never', 'Rerairing  general', '2', '2019-11-14', '1', 2, 'Sunee Kasem', 572431016, 'fatah', 'Student'),
-(3, 'MOC', 'A very creative and refreshing approach to dealing with crime', 'Moc Project', '3', '2019-11-15', '1', 3, 'Hunafah', 66, 'Kholed Langsaree', 'Student'),
-(4, 'Application Game ', 'hhhhh', 'hhhhh', '1', '2019-11-10', '1', 4, 'Miskah Kasengteuba', 572431011, 'suaida', 'Student'),
-(5, 'Alquran Application', 'nikikij', 'xgdv', '3', '2019-11-21', '1', 5, 'Anas watih', 57378, 'fatah', 'Student'),
-(17, 'Baised ecommerce', 'Ecom', 'sell', '1', '2018-11-29', '1', 14, 'Husni Munoh', 572431018, 'Kholed Langsaree', 'Student'),
-(18, 'xxxxxxx', 'zzzzzzz', 'ccccccccc', '2', '2019-11-23', '1', 15, 'Sitisulaiko', 574398, 'Nurulhusna', 'Student'),
-(20, 'bbbbb', 'phpphp', 'vfllgldgf', '1', '2019-11-16', '1', 17, 'Kiflah', 32435, 'fatah', 'Student'),
-(21, 'ooooooo', 'xxxxx', 'xxxxxxxx', '2', '2019-11-30', '1', 16, 'Marhamah', 345565, 'suaida', 'Student');
+(1, 'iTPROMO AND TRACK', 'In most of the curriculums in information technology (IT) undergraduate programmes, it is common that students are expected to complete the Information Technology  Project Course (IT Project) in their final year studies. ', 'TRACK', '2', '2019-11-15', '1', 1, 'Mouet Tylas', 572431029, 'Kholed Langsaree', 'Student'),
+(2, 'Moc', 'xxxxxx', 'xxxxxxx', '3', '2019-12-21', '1', 2, 'Hunafah', 66, 'Nurulhusna', 'Student'),
+(3, 'Repair', 'xxxxxxxxxxx', 'xxxxxx', '3', '2019-12-07', '1', 3, 'Sunee Kasem', 572431016, 'Kholed Langsaree', 'Student'),
+(4, 'Math Game ', 'xxxxxxxxxx', 'xx', '2', '2019-12-15', '1', 4, 'Afifah mamat', 572431021, 'suaida', 'Student'),
+(5, 'Cartoon', 'aaaaaaaaaa', 'aaa', '2', '2020-01-04', '', 5, 'Wilada Yalaphanee', 572431014, 'suaida', 'Student');
 
 --
 -- Indexes for dumped tables
@@ -338,6 +385,18 @@ ALTER TABLE `announcement`
   ADD PRIMARY KEY (`announcement_id`),
   ADD KEY `announcement_id` (`announcement_id`),
   ADD KEY `admin_id` (`admin_id`);
+
+--
+-- Indexes for table `chat`
+--
+ALTER TABLE `chat`
+  ADD PRIMARY KEY (`chat_id`);
+
+--
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`comment_id`);
 
 --
 -- Indexes for table `committeegroup`
@@ -391,7 +450,7 @@ ALTER TABLE `topic_project`
 -- AUTO_INCREMENT for table `advisergroup`
 --
 ALTER TABLE `advisergroup`
-  MODIFY `advisergroup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `advisergroup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `announcement`
@@ -400,22 +459,34 @@ ALTER TABLE `announcement`
   MODIFY `announcement_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT for table `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `chat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `committeegroup`
 --
 ALTER TABLE `committeegroup`
-  MODIFY `committeegroup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `committeegroup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `files_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `files_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `news_topic`
@@ -427,19 +498,19 @@ ALTER TABLE `news_topic`
 -- AUTO_INCREMENT for table `partnergroup`
 --
 ALTER TABLE `partnergroup`
-  MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `topic_project`
 --
 ALTER TABLE `topic_project`
-  MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -48,7 +48,10 @@
                             <div class="card">
                                 <div class="card-block"> 
 
-        <form action="student/check_editprofile.php?id=<?php echo $_GET["id"];?>" method="post"onsubmit="return checkForm()">
+
+<form action="student/check_editprofile.php?id=<?php echo $_GET["id"];?>"name="fromEdit" method="post"onsubmit="return checkForm()">
+
+           
 
                                         <div class="form-group row margin-top-30">
  
@@ -103,17 +106,11 @@
                                             </div>
                                         </div>
 
-                                     
-                                        <div class="pull-right">
-                                            <button type="reset" class="btn btn-secondary">
-                                                Reset
-                                                <i class="fa fa-refresh position-right"></i>
-                                            </button>
+                                     <input type="hidden" name="member_id" value="<?php echo $objResult->member_id;?>"/>
 
-                                            <button type="submit" class="btn btn-primary">
-                                                Submit
-                                                <i class="fa fa-arrow-right position-right"></i>
-                                            </button>
+                                        <div class="pull-right">
+                                                            <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Save</button>
+
                                         </div>
                                     </form>
                                 </div>

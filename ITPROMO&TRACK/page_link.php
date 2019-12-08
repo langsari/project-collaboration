@@ -32,6 +32,16 @@ case 'choose_committee':
 		break;
 
 
+case 'student_track':
+		include('admin/student_track.php');
+		break;
+
+
+
+
+	case 'view1':
+		include('admin/view1.php');
+		break;
 
 
 	case 'edit_marktype':
@@ -168,9 +178,6 @@ case 'display_schedule_proposal':
 	break;
 
  
- case 'track':
-		include('student/track.php');
-		break;
 
 
 
@@ -189,9 +196,7 @@ case 'proposal_project':
      	include('proposal_project.php');
 		break;
 
-case 'old_proposal_project':
-     	include('old_proposal_project.php');
-		break;
+
 
 case 'guide':
 		include('guide.php');
@@ -209,6 +214,11 @@ case 'booked':
 		include('booked.php');
 	    break;
 
+
+
+case 'views':
+		include('views.php');
+	    break;
 
 
 

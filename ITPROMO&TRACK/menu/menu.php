@@ -55,7 +55,7 @@ if($user_rank == "admin"):
   </a>
   <ul class="treeview-menu">
     <li>
-      <a href="?page=view_studentstatus">
+      <a href="?page=student_track">
         <i class="fa fa-circle-o"></i> Project Track
       </a>
     </li>
@@ -175,16 +175,6 @@ if($user_rank == "admin"):
       </a>
     </li>
 
-
-   
-
-    
-    
-    <li>
-      <a href="?page=track">
-        <i class="fa fa-circle-o"></i>  Track
-      </a>
-    </li>
         <li>
       <a href="?page=track_project">
         <i class="fa fa-circle-o"></i> Project Track
