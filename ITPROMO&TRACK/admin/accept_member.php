@@ -131,18 +131,18 @@
                                     <div class="form-group">
                       <select class="form-control" name="member_pos" id="member_pos">
            <option value="#">Select Position</option>
-             <option value="2">Advisor</option>
-              <option value="1">Comittee</option>
-              <option value="3">Student</option>
-              <option value="4">Officer</option>
+             <option value="Advisor">Advisor</option>
+              <option value="Committee">Committee</option>
+              <option value="Student">Student</option>
+              <option value="Officer">Officer</option>
 
             </select>
                   </div>
 
                                         <div class="col-md-5">
                                             <div class="input-group">
-                   Gender:   &nbsp;&nbsp; &nbsp;&nbsp;<label class="radio-inline"> <input type="radio" name="member_gender" value="m" required aria-describedby="basic-addon1">          &nbsp;&nbsp;  Male</label> 
-                          &nbsp;&nbsp; &nbsp;&nbsp; <label class="radio-inline"><input type="radio" name="member_gender" value="f" aria-describedby="basic-addon1">           &nbsp;&nbsp; Female</label>
+                   Gender:   &nbsp;&nbsp; &nbsp;&nbsp;<label class="radio-inline"> <input type="radio" name="member_gender" value="Male" required aria-describedby="basic-addon1">          &nbsp;&nbsp;  Male</label> 
+                          &nbsp;&nbsp; &nbsp;&nbsp; <label class="radio-inline"><input type="radio" name="member_gender" value="Female" aria-describedby="basic-addon1">           &nbsp;&nbsp; Female</label>
                                     </div>                                          
                                         </div>
            

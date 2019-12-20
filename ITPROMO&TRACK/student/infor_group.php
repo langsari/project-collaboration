@@ -251,7 +251,7 @@
               <option value="no">- Lecturer Name -</option>
                 <?php
                 
-                $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_pos ='1'";
+                $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_pos ='Advisor'";
                 if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
                     echo "<option value='".$objResult->member_id."'>".$objResult->member_fullname."</option>";

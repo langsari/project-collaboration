@@ -92,7 +92,13 @@
                                         </div>
 
 
-                                    
+                                           <div class="form-group row">
+                                            <div class="col-md-3">
+                                                <label class="control-label col-form-label">Gender</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                     <input type="text" class="form-control" name="member_gender" id="member_gender"  value="<?php echo gender($objResult->member_gender); ?>" >                                            </div>
+                                        </div>
 
 
                                         <div class="form-group row">

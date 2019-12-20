@@ -139,9 +139,9 @@ $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id, advisergroup.ad
                                        <select class="form-control" name="topic_fieldstudy" id="topic_fieldstudy" value="<?php echo $objResult->topic_fieldstudy; ?>" >
 
                                         <option value="no"> Select Filed</option>
-                                        <option value="1">Software Engineering</option>
-                                        <option value="2">Computer Multimedia</option>
-                                        <option value="3">Computer Networking</option>
+                                        <option value="Software Engineering">Software Engineering</option>
+                                        <option value="Computer Multimedia">Computer Multimedia</option>
+                                        <option value="Computer Networking">Computer Networking</option>
                                         </select>
                                           </div>
                                               </div>
@@ -166,14 +166,17 @@ $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id, advisergroup.ad
                                                     </div>
                                                 </div>
 
+
+                                                
+
  <div class="form-group row">           
        <div class="col-md-3">
              <label class="control-label col-form-label">Proposal status</label>
            </div>
              <div class="col-md-9">
              <select class="form-control" name="status" name="status" value="<?php echo $objResult->status; ?>"   >
-                <option value="1">Proposal Appoved</option> 
-                <option value="2"> Proposal Not Appoved</option>
+                <option value="Proposal Approve">Proposal Appoved</option> 
+                <option value="Proposal not Approve"> Proposal Not Appoved</option>
             
               </select>
       

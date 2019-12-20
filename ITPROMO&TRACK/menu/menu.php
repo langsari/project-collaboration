@@ -86,7 +86,7 @@ if($user_rank == "admin"):
 
 <!-- start Menu ของ Advisor -->
 
-<?php elseif($user_rank == "1"): ?>
+<?php elseif($user_rank == "Advisor" AND "Officer"): ?>
 <li class="treeview">
   <a href="?page=advisor_request">
     <i class="fa fa-paper-plane"></i> <span>Request</span>
@@ -153,7 +153,7 @@ if($user_rank == "admin"):
 
   <!-- start Menu ของ Student -->
 
-<?php elseif($user_rank == "3"): ?>
+<?php elseif($user_rank == "Student"): ?>
 <li class="active treeview">
   <a href="?page=infor_group">
     <i class="fa fa-group"></i> <span>Group Information</span> 
@@ -237,7 +237,7 @@ if($user_rank == "admin"):
 
 <!-- start Menu ของ officer -->
 
-<?php elseif($user_rank == "4"): ?>
+<?php elseif($user_rank == "Officer"): ?>
 
 <li class="active treeview">
   <a href="?page=officer_request">   

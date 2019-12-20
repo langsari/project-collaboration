@@ -51,9 +51,11 @@
      <?php
 //require 'menu/function.php';
 
- $strSQL = "SELECT * FROM topic_project";
-  
+ $strSQL = "SELECT * FROM topic_project ";
+
 ?>
+
+
    <table class="display datatable table table-stripped" cellspacing="0" width="100%">
           <thead>
              <tr>
@@ -87,7 +89,7 @@
                    <td class="text-center"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
                    <td class="text-center"><?php echo $objResult->topic_years; ?></td>
                     <td class="text-center"><?php echo $objResult->position; ?></td>
-                        <td class="text-center"><?php echo $objResult->adviser; ?></td>
+                        <td class="text-center"><?php echo get_id_advisor($objResult->adviser); ?>  </td>
                  <td class="text-center"><?php echo status($objResult->status); ?></td>
 
                     <td>
@@ -187,11 +189,11 @@
                                     <select class="form-control" name="topic_fieldstudy" id="topic_fieldstudy">
 
         
-              <option value="no"> Select Filed</option>
-               <option value="1">Software Engineering</option>
-                 <option value="2">Computer Multimedia</option>
-                   <option value="3">Computer Networking</option>
-              </select>
+           <option value="no"> Select Filed</option>
+                                        <option value="Software Engineering">Software Engineering</option>
+                                        <option value="Computer Multimedia">Computer Multimedia</option>
+                                        <option value="Computer Networking">Computer Networking</option>
+                                        </select>
       
             </div>
           </div>
@@ -216,7 +218,7 @@
               <option value="no">- Select Lecturer -</option>
                 <?php
                 include '../menu/connect.php';
-                $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_pos ='1'";
+                $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_pos ='Advisor'";
                 if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
                     echo "<option value='".$objResult->member_id."'>".$objResult->member_fullname."</option>";
@@ -237,12 +239,11 @@
              <label class="control-label col-form-label">Proposal status</label>
            </div>
              <div class="col-md-9">
-             <select class="form-control" name="status" >
-                <option value="1">Proposal Appoved</option> 
-                <option value="2"> Proposal Not Appoved</option>
+           <select class="form-control" name="status" name="status" value="<?php echo $objResult->status; ?>"   >
+                <option value="Proposal Approve">Proposal Appoved</option> 
+                <option value="Proposal not Approve"> Proposal Not Appoved</option>
             
               </select>
-      
             </div>
           </div>
 

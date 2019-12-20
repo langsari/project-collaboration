@@ -5,7 +5,7 @@
 
 $rows = array();
 
-$sql = "SELECT member_id, member_fullname FROM member WHERE member_pos != '3' AND admin_id != '0'";
+$sql = "SELECT member_id, member_fullname FROM member WHERE member_pos != 'Student' AND admin_id != '0'";
 if($rs = $db->query($sql)){
 	while($row = $rs->fetch_object()){
 		$rows[] = $row;

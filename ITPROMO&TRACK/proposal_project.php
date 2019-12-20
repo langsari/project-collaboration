@@ -110,7 +110,7 @@ $strSQL = "SELECT advisergroup.*,  topic_project.advisergroup_id, advisergroup.a
   <td><a href="#" name="view" value="view" id="<?php echo $objResult->advisergroup_id; ?>" class=" view_data"><?php echo $objResult->topic_abstrack; ?></a></td>
 
 
-                     <td class="text-center"><?php echo $objResult->topic_keyword ?></td>
+                     <td class="text-center"><?php echo $objResult->topic_keyword; ?></td>
                 <td class="text-center"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
                  <td class="text-center"><?php echo status($objResult->status); ?></td>
 

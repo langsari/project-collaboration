@@ -98,8 +98,8 @@
 
                                         <div class="col-md-5">
                                             <div class="input-group">
-                   Gender:   &nbsp;&nbsp; &nbsp;&nbsp;<label class="radio-inline"> <input type="radio" name="member_gender" value="m" required aria-describedby="basic-addon1">          &nbsp;&nbsp;  Male</label> 
-                          &nbsp;&nbsp; &nbsp;&nbsp; <label class="radio-inline"><input type="radio" name="member_gender" value="f" aria-describedby="basic-addon1">           &nbsp;&nbsp; Female</label>
+                   Gender:   &nbsp;&nbsp; &nbsp;&nbsp;<label class="radio-inline"> <input type="radio" name="member_gender" value="Male" required aria-describedby="basic-addon1">          &nbsp;&nbsp;  Male</label> 
+                          &nbsp;&nbsp; &nbsp;&nbsp; <label class="radio-inline"><input type="radio" name="member_gender" value="Female" aria-describedby="basic-addon1">           &nbsp;&nbsp; Female</label>
                                     </div>                                          
                                         </div>
                            

@@ -3,7 +3,7 @@
 //All projects function is here and it is includeed in index.php
 
 function gender($gender){
-	if($gender == "m"){
+	if($gender == "Male"){
 		return "Male";
 	}else{
 		return "Female";
@@ -11,17 +11,19 @@ function gender($gender){
 }
 
 function position($position){
-	if($position == "1"){
+	if($position == "Advisor"){
 		return "<font color='blue'><i>Advisor</i></font>";
-	}else if($position == "2"){
+
+	}else if($position == "Committee"){
 
 	return "<font color='yellow'><i>Committee</i></font>";
-	}else if($position == "3"){
+
+	}else if($position == "Student"){
 		
 			return "<font color='green'><i>Student</i></font>";
 
 	}
-else if($position == "4"){
+else if($position == "Officer"){
 		
 			return "<font color='black'><i>Officer</i></font>";
 
@@ -43,12 +45,12 @@ function status($status){
 
 
 function fieldstudy($fieldstudy){
-	if($fieldstudy == "1"){
+	if($fieldstudy == "Software Engineering"){
 		return "Software Engineering";
-	}else if($fieldstudy == "2"){
+	}else if($fieldstudy == "Computer Multimedia"){
 
 	return "Computer Multimedia";
-	}else if($fieldstudy == "3"){
+	}else if($fieldstudy == "Computer Networking"){
 		
 			return "Computer Networking";
 
@@ -58,6 +60,19 @@ function fieldstudy($fieldstudy){
 }
 
 
+function get_id_advisor($member_id){
+require 'connect.php';
+	$sql = "SELECT member_fullname FROM member WHERE member_id = '$member_id' AND member_pos = 'Advisor'";
+	if($rs = $db->query($sql)){
+		if($row = $rs->fetch_object()){
+			return $row->member_fullname;
+		}
+		$db->close();
+	}else{
+		echo $db->error;
+		$db->close();
+	}
+}
 
 
 
@@ -93,7 +108,7 @@ function get_adviser1(){
 require 'connect.php';
 	$member_id = $_SESSION['id'];
 
-	$sql = "SELECT group_id FROM member WHERE member_id = '$member_id' AND member_pos = '1'";
+	$sql = "SELECT group_id FROM member WHERE member_id = '$member_id' AND member_pos = 'Advisor'";
 
 	if($rs = $db->query($sql)){
 		if($row = $rs->fetch_object()){
@@ -114,7 +129,7 @@ function get_group_id(){
 require 'connect.php';
 	$member_id = $_SESSION['id'];
 
-	$sql = "SELECT group_id FROM member WHERE member_id = '$member_id' AND member_pos = '3'";
+	$sql = "SELECT group_id FROM member WHERE member_id = '$member_id' AND member_pos = 'Student'";
 
 	if($rs = $db->query($sql)){
 		if($row = $rs->fetch_object()){
