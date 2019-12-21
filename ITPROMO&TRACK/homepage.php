@@ -6,7 +6,7 @@
 
 <main role="main" class="container">
       <h1 class="mt-3">Welcome to Information Technology Project</h1>
-      <p class="lead">ITPromo or Information Technology Project Monitoring.</p>
+      <p class="lead">ITPromot or Information Technology Project Monitoring and Tracking System.</p>
 
       <hr>
 
