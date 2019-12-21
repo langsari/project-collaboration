@@ -59,7 +59,7 @@
                             <div class="card">
                                 <div class="card-block">
  
-                                   <h6 class="card-title text-bold">All Final Projects Proposal</h6></b>
+                                   <h4 class="mt-3">All Final Projects Proposal</h4>
    <?php
 
                   //   require 'menu/function.php';

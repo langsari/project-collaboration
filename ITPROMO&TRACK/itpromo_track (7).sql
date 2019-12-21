@@ -211,7 +211,7 @@ CREATE TABLE `member` (
   `member_username` varchar(255) COLLATE utf8_unicode_520_ci NOT NULL,
   `member_fullname` varchar(255) COLLATE utf8_unicode_520_ci NOT NULL,
   `member_password` varchar(255) COLLATE utf8_unicode_520_ci NOT NULL,
-  `member_pos` enum('1','2','3','4') COLLATE utf8_unicode_520_ci NOT NULL COMMENT '1=Advisor, 2=Committee, 3=Student, 4=Officer',
+  `member_pos` enum('Advisor','Committee','Student','Officer') COLLATE utf8_unicode_520_ci NOT NULL COMMENT '1=Advisor, 2=Committee, 3=Student, 4=Officer',
   `member_phone` varchar(255) COLLATE utf8_unicode_520_ci NOT NULL,
   `member_email` varchar(255) COLLATE utf8_unicode_520_ci NOT NULL,
   `member_gender` enum('m','f') COLLATE utf8_unicode_520_ci NOT NULL COMMENT 'm=Male, f=female',

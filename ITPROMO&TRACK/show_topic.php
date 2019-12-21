@@ -34,7 +34,7 @@
                             <div class="card">
                                 <div class="card-block">
  
-                                   <h6 class="card-title text-bold">All Topics require</h6></b>
+                                   <h4 class="mt-3">All Topics require</h4>
 
 
      <?php

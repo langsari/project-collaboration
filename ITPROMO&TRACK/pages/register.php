@@ -104,7 +104,7 @@
                                         </div>
                            
               
-       <input type="text" class="form-control" id="member_pos" name="member_pos" value="3" hidden="" >
+       <input type="text" class="form-control" id="member_pos" name="member_pos" value="Student" hidden="" >
 
                          
                             <button type="submit" class="btn btn-primary btn-lg btn-block">REGISTER</button>

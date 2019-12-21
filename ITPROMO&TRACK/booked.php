@@ -10,6 +10,10 @@ ul.breadcrumb li {
 ul.breadcrumb li+li:before {
   padding: 8px;
   content: ">>\00a0";
+
+}
+li{
+  font-size: 16px;
 }
 </style>
 
@@ -28,8 +32,9 @@ ul.breadcrumb li+li:before {
  
   <main role="main" class="container">
 
-  <h2 class="mt-3">Requirement Fulfillment</h2>
-  <h4>This is explanation steps of the <a href="?page=guide" class="btn-primary btn-sm">Guide/Process</a> of requirement fulfilment after project presentation</h4>
+    <h4 class="mt-3">Requirement Fulfillment </br>
+     <small class="text-muted">This is explanation steps of the <a href="?page=guide" class="btn-primary btn-sm">Guide/Process</a> of requirement fulfilment after project presentation</small>
+    </h4>
 
   <hr>
 
