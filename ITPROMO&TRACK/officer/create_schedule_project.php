@@ -28,7 +28,7 @@
 
  <ul class="breadcrumb">
  <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
-  <li class="active">Add Schedule Proposal</li>
+  <li class="active">Add Schedule Project</li>
 </ul>
 
 <div class="content">
@@ -39,7 +39,7 @@
 
   <button type="button"  class="btn btn-success btn-sm" data-toggle="modal" data-target="#addmember" style="margin-bottom: 10px;">
 
-            <i class="glyphicon glyphicon-plus"></i>Add Schedule Proposal
+            <i class="glyphicon glyphicon-plus"></i>Add Schedule Project
           </button>
 
 
@@ -49,7 +49,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i> Add Schedule Proposal</h4>
+        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i> Add Schedule Project</h4>
       </div>
       <div class="modal-body">
          
@@ -166,7 +166,7 @@
                                 </div>
 
 
- <h6 class="card-title text-bold">Schedule Proposal</h6>              
+ <h6 class="card-title text-bold">Schedule Project</h6>              
            
 
      <?php
