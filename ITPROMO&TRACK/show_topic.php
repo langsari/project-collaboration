@@ -24,7 +24,7 @@
 
 <ul class="breadcrumb">
   <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
-  <li class="active">Topic Require</li>
+  <li class="active">Proposed topics</li>
 </ul>
  
     <!-- PAGE CONTENT -->
@@ -33,8 +33,9 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-block">
- 
-                                   <h6 class="card-title text-bold">All Topics require</h6></b>
+                                   <h5 class="mt-3">All Proposed topics</h5>
+                                     <small class="text-muted">For student who's interenst</small>
+                                   </h5>
 
 
      <?php

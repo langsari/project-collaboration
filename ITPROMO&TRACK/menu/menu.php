@@ -94,7 +94,9 @@ if($user_rank == "admin"):
 <!-- end Menu ของ admin -->
 
 
+
 <!-- start Menu ของ Advisor -->
+
 
 <?php elseif($user_rank == "Advisor" AND "Officer"): ?>
 <li class="treeview">
@@ -153,6 +155,7 @@ if($user_rank == "admin"):
   </ul>
 </li>
 
+<<<<<<< HEAD
 
 <li class="treeview">
   <a href="?page=contact1">
@@ -161,6 +164,20 @@ if($user_rank == "admin"):
 </li>
 
 
+=======
+<li class="active treeview">
+  <a href="#">
+    <i class="fa fa-newspaper-o"></i>  <span>News</span>
+  </a>
+  <ul class="treeview-menu">
+         <li><a href="?page=Annoucement"><i class="fa fa-circle-o"></i> Annoucements </a></li>
+         <li><a href="?page=add_general_topic"><i class="fa fa-circle-o"></i> Topic Require </a></li>
+ </ul>
+</li>
+
+
+
+>>>>>>> d92b0b715b193ed66b09436f10f0effba8ff6765
 <li class="treeview">
   <a href="?page=my_profile">
     <i class="fa fa-user"></i> <span>Personal Information</span>
@@ -199,15 +216,6 @@ if($user_rank == "admin"):
         <i class="fa fa-circle-o"></i> Project Track
       </a>
     </li>
-
-  
-
-
-
-  
-
-     
-
     <li>
       <a href="?page=proposal_project">
         <i class="fa fa-circle-o"></i> <span>All Project Topics</span>
@@ -251,6 +259,13 @@ if($user_rank == "admin"):
     <i class="fa fa-user"></i> <span>Personal Information</span>
   </a>
 </li>
+<li><a class="app-menu__item " href="?page=guide"><i class="fa fa-glide-g"></i><span class="app-menu__label">Guide</span></a></li>
+
+        <li><a class="app-menu__item " href="?page=schedule"><i class="fa fa-calendar"></i><span class="app-menu__label">course syllabus</span></a></li>
+
+        <li><a class="app-menu__item " href="?page=form"><i class='fa fa-edit'></i><span class="app-menu__label">Forms</span></a></li>
+
+        <li><a class="app-menu__item " href="?page=booked"><i class='fa fa-book'></i><span class="app-menu__label">Booked</span></a></li>
 
 
 <!-- end menu of student -->

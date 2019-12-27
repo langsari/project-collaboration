@@ -35,8 +35,6 @@
   }
 
 
-
-
   function confirm_deleteps(){
     var x = confirm("Please confirm to delete!");
     if(x){
@@ -48,10 +46,29 @@
 
 
 </script>
+<style>
+    ul.breadcrumb {
+      background-color: #eee;
+      text-align: right;
+      padding: 10px 16px;
+    }
+    ul.breadcrumb li {
+     display: inline;
+    }  
+    ul.breadcrumb li+li:before {
+      padding: 8px;
+      content: ">>\00a0";
+}
+    
+  </style>
 
 
 
 <body>
+   <ul class="breadcrumb">
+ <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
+  <li class="active">All Project Topics</li>
+</ul>
   
 <div class="content">
                      <div class="row">
@@ -59,7 +76,7 @@
                             <div class="card">
                                 <div class="card-block">
  
-                                   <h6 class="card-title text-bold">All Final Projects Proposal</h6></b>
+                                   <h5 class="mt-3">All Final Project Topics</h5>
    <?php
 
                   //   require 'menu/function.php';
