@@ -9,11 +9,15 @@ if($user_rank == "admin"):
 ?>
 <!-- menu สถานะ แอดมิน -->
 
+
+
 <li class="active treeview">
   <a href="#">
     <i class="fa fa-users"></i> <span>Manage Member</span> 
   </a>
   <ul class="treeview-menu">
+
+
     <li>
       <a href="?page=accept_member">
         <i class="fa fa-circle-o"></i> <span>Accept Member</span>
@@ -81,6 +85,12 @@ if($user_rank == "admin"):
     </li>
   </ul>
 </li> 
+<li class="treeview">
+  <a href="?page=notification">
+     <i class="fa fa-comments"></i><span>Notification Member</span>
+  </a>
+</li>
+
 <!-- end Menu ของ admin -->
 
 
@@ -142,6 +152,15 @@ if($user_rank == "admin"):
     </li>
   </ul>
 </li>
+
+
+<li class="treeview">
+  <a href="?page=contact1">
+    <i class="fa fa-user"></i> <span>Contact</span>
+  </a>
+</li>
+
+
 <li class="treeview">
   <a href="?page=my_profile">
     <i class="fa fa-user"></i> <span>Personal Information</span>
@@ -225,6 +244,8 @@ if($user_rank == "admin"):
          <li><a href="?page=show_topic"><i class="fa fa-circle-o"></i> Topic Require </a></li>
          </ul>
 </li>
+
+
 <li class="treeview">
   <a href="?page=my_profile">
     <i class="fa fa-user"></i> <span>Personal Information</span>

@@ -12,6 +12,7 @@
                   <th>Title project</th>
                   <th>Student</th>
                     <th>Status</th>
+                  <th>Contact</th>
                 <th></th>
                 </tr>
                                         </thead>
@@ -45,7 +46,8 @@ $my_id = $_SESSION['id'];
                <td><a href="?page=view&id=<?php echo $row->files_id;?>"class="btn btn-success btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i class='glyphicon glyphicon-ok'></i> View Track</a>
 
 
-              
+                             <td><a href="?page=contact&id=<?php echo $row->files_id;?>"class="btn btn-success btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i class='glyphicon glyphicon-ok'></i>Contact</a>
+
 
                     </td>
 

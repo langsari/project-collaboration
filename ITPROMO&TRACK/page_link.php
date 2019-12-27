@@ -9,6 +9,11 @@ switch ($page) {
 		include('admin/all_member.php');
 		break;
 
+
+case 'accept':
+		include('admin/accept.php');
+		break;
+
 	case 'accept_member':
 		include('admin/accept_member.php');
 		break;
@@ -36,6 +41,13 @@ case 'student_track':
 		include('admin/student_track.php');
 		break;
 
+case 'notification':
+		include('notification/notification.php');
+	break;
+
+case 'dashboard':
+		include('admin/dashboard.php');
+	break;
 
 
 
@@ -79,6 +91,11 @@ case 'student_track':
 	case 'view':
 		include('advisor/view.php');
 		break;
+
+ case 'notification':
+		include('advisor/notification.php');
+	break;
+
 
 
 	case 'value':
@@ -177,8 +194,15 @@ case 'display_schedule_proposal':
 		include('student/display_schedule_proposal.php');
 	break;
 
- 
 
+
+case 'contact':
+		include('advisor/contact.php');
+	break;
+
+case 'contact1':
+		include('phpmailer/contact1.php');
+	break;
 
 
 

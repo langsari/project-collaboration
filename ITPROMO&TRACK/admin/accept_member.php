@@ -42,7 +42,7 @@
                    <td class="text-center"><?php echo gender($objResult->member_gender); ?></td>
                     <td class="text-center"><?php echo position($objResult->member_pos); ?></td>
                     <td class="text-center"><?php echo status($objResult->admin_id); ?></td>
-                    <td><a href="admin/check_confirm.php?id=<?php echo $objResult->member_id; ?>" title="Comfirm" onclick="return confirm_accept('<?php echo $objResult->member_name; ?>')"><i class="fa fa-check" aria-hidden="true"></i> </a></td>
+                   <td><a href="?page=accept&id=<?php echo $objResult->member_id;?>"><i class="fa fa-edit" title="View"></i></a></td>
                     </tr>
 
                 <?php
