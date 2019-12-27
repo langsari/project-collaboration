@@ -38,7 +38,6 @@ case 'student_track':
 		include('admin/student_track.php');
 		break;
 
-<<<<<<< HEAD
 case 'notification':
 		include('notification/notification.php');
 	break;
@@ -49,8 +48,7 @@ case 'dashboard':
 
 
 
-=======
->>>>>>> d92b0b715b193ed66b09436f10f0effba8ff6765
+
 	case 'view1':
 		include('admin/view1.php');
 		break;
@@ -88,7 +86,7 @@ case 'dashboard':
 		include('advisor/view.php');
 		break;
 
-<<<<<<< HEAD
+
  case 'notification':
 		include('advisor/notification.php');
 	break;
@@ -103,8 +101,6 @@ case 'dashboard':
 		# code...
 		break;
 
-=======
->>>>>>> d92b0b715b193ed66b09436f10f0effba8ff6765
 	case 'topic_request':
 		include('student/topic_request.php');
 		break;
@@ -203,7 +199,7 @@ case 'display_schedule_proposal':
 	break;
 
 
-<<<<<<< HEAD
+
 
 case 'contact':
 		include('advisor/contact.php');
@@ -215,8 +211,7 @@ case 'contact1':
 
 
 
-=======
->>>>>>> d92b0b715b193ed66b09436f10f0effba8ff6765
+
 #menu homepage
 
 case 'show_topic':
