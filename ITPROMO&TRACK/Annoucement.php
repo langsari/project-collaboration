@@ -32,7 +32,7 @@
            <div class="col-lg-12">
                 <div class="card">
                     <div class="card-block">
-                      <h4 class="mt-3">Announcements&nbsp;&nbsp;<i class='fas fa-bullhorn'></i></h4>
+                      <h5 class="mt-3">Announcements&nbsp;&nbsp;<i class='fas fa-bullhorn'></i></h5>
                        
 
 
