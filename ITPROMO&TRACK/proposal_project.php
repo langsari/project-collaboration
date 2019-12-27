@@ -35,8 +35,6 @@
   }
 
 
-
-
   function confirm_deleteps(){
     var x = confirm("Please confirm to delete!");
     if(x){
