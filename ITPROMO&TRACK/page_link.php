@@ -25,19 +25,13 @@ case 'add_proposal':
 		include('admin/add_proposal.php');
 		break;
 
-
-
 case 'choose_committee':
 		include('admin/choose_committee.php');
 		break;
 
-
 case 'student_track':
 		include('admin/student_track.php');
 		break;
-
-
-
 
 	case 'view1':
 		include('admin/view1.php');
@@ -68,25 +62,12 @@ case 'student_track':
 		include('admin/create_presentschedule.php');
 		break;
 
-	case 'value':
-		# code...
-		break;
-
 	case 'advisor_request':
 		include('advisor/advisor_request.php');
 		break;
 		
 	case 'view':
 		include('advisor/view.php');
-		break;
-
-
-	case 'value':
-		# code...
-		break;
-
-	case 'value':
-		# code...
 		break;
 
 	case 'topic_request':
@@ -114,14 +95,9 @@ case 'student_track':
 		break;
 
 
+	
 
-	case 'add_general_topic':
-		include('advisor/add_general_topic.php');
-		break;
-
-	case 'student_track_ptoject':
-		include('advisor/student_track_ptoject.php');
-		break;
+	
 
 		case 'add_announcement':
 		include('admin/add_announcement.php');
@@ -133,6 +109,20 @@ case 'student_track':
 		case 'add_schedule_project':
 		include('admin/add_schedule_project.php');
 		break;
+
+#Lecturer
+
+		case 'student_track_ptoject':
+		include('advisor/student_track_ptoject.php');
+		break;
+
+		case 'add_general_topic':
+		include('advisor/add_general_topic.php');
+		break;
+
+
+
+
 
 #officer
 
@@ -178,9 +168,6 @@ case 'display_schedule_proposal':
 	break;
 
  
-
-
-
 
 #menu homepage
 

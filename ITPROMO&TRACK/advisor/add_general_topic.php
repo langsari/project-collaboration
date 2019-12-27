@@ -4,14 +4,10 @@
   <title>Add Announcement</title>
 
   <style>
-    h6{
-      font-family:initial;
-      font-size: 25px;
-    }
+    
     #header{
       background-color:#e7e7e7;
       color: black;
-      text-align: center;
       padding: 4px;
     }
    
@@ -26,7 +22,8 @@
                  <div class="col-lg-12">
                        <div class="card">
                              <div id="header">
-                                  <h6 class="card-title text-bold">Final Project Topic require</h6>
+                                  <h5>Project Proposed Topic</h5>
+
                               </div>
                             <div class="card-block">
 

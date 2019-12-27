@@ -84,7 +84,9 @@ if($user_rank == "admin"):
 <!-- end Menu ของ admin -->
 
 
+
 <!-- start Menu ของ Advisor -->
+
 
 <?php elseif($user_rank == "Advisor" AND "Officer"): ?>
 <li class="treeview">
@@ -142,6 +144,19 @@ if($user_rank == "admin"):
     </li>
   </ul>
 </li>
+
+<li class="active treeview">
+  <a href="#">
+    <i class="fa fa-newspaper-o"></i>  <span>News</span>
+  </a>
+  <ul class="treeview-menu">
+         <li><a href="?page=Annoucement"><i class="fa fa-circle-o"></i> Annoucements </a></li>
+         <li><a href="?page=add_general_topic"><i class="fa fa-circle-o"></i> Topic Require </a></li>
+ </ul>
+</li>
+
+
+
 <li class="treeview">
   <a href="?page=my_profile">
     <i class="fa fa-user"></i> <span>Personal Information</span>
