@@ -155,7 +155,7 @@ if($user_rank == "admin"):
   </ul>
 </li>
 
-<<<<<<< HEAD
+
 
 <li class="treeview">
   <a href="?page=contact1">
@@ -164,7 +164,7 @@ if($user_rank == "admin"):
 </li>
 
 
-=======
+
 <li class="active treeview">
   <a href="#">
     <i class="fa fa-newspaper-o"></i>  <span>News</span>
@@ -177,7 +177,7 @@ if($user_rank == "admin"):
 
 
 
->>>>>>> d92b0b715b193ed66b09436f10f0effba8ff6765
+
 <li class="treeview">
   <a href="?page=my_profile">
     <i class="fa fa-user"></i> <span>Personal Information</span>

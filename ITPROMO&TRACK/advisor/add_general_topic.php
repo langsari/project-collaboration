@@ -7,7 +7,7 @@
     
     #header{
       background-color:#e7e7e7;
-      color: black;
+      color: black;​
       padding: 4px;
     }
    
