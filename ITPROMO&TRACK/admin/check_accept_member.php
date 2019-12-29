@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root" ;
 $password = "";
-$dbname = "itpromo";
+$dbname = "itpromo_track";
 
 $db = mysqli_connect($servername,$username,$password,$dbname);
 
@@ -21,7 +21,7 @@ $member_pos=$_POST['member_pos'];
 $member_gender=$_POST['member_gender'];
 
 
-$sql="INSERT INTO member(member_idcard,member_username,member_fullname,member_password,member_phone,member_email,member_pos,member_gender,admin_id)values('$member_idcard','$member_username','$member_fullname','$member_password','$member_phone','$member_email','$member_pos','$member_gender')";
+$sql="INSERT INTO member(member_idcard,member_username,member_fullname,member_password,member_phone,member_email,member_pos,member_gender,admin_id)values('$member_idcard','$member_username','$member_fullname','$member_password','$member_phone','$member_email','$member_pos','$member_gender','1')";
 
 
 	if($rs = $db->query($sql)){

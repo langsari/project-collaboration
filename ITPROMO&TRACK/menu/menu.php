@@ -98,7 +98,8 @@ if($user_rank == "admin"):
 <!-- start Menu ของ Advisor -->
 
 
-<?php elseif($user_rank == "Advisor" AND "Officer"): ?>
+<?php elseif($user_rank == "Lecturer"):
+ ?>
 <li class="treeview">
   <a href="?page=advisor_request">
     <i class="fa fa-paper-plane"></i> <span>Request</span>

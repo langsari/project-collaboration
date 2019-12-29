@@ -131,8 +131,7 @@
                                     <div class="form-group">
                       <select class="form-control" name="member_pos" id="member_pos">
            <option value="#">Select Position</option>
-             <option value="Advisor">Advisor</option>
-              <option value="Committee">Committee</option>
+             <option value="Lecturer">Lecturer</option>
               <option value="Student">Student</option>
               <option value="Officer">Officer</option>
 
