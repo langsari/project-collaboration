@@ -15,6 +15,9 @@ include('menu/function.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600,800" rel="stylesheet">
+        <!-- PAGE LEVEL STYLESHEETS -->
+    <link rel="stylesheet" href="lib/css/jquery.dataTables.min.css">
+    <!-- /PAGE LEVEL STYLESHEETS -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/core.css">
@@ -38,6 +41,7 @@ include('menu/function.php');
         <script type="text/javascript" src="assets/js/pages_datatables.min.js"></script>
 
     <!-- /PAGE LEVEL SCRIPTS -->
+
 
 
 

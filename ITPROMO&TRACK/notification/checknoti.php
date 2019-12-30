@@ -18,7 +18,7 @@ $result=mysqli_query($db, $sql)or die ("Error in query: $sql ".mysqli_error());
 //line notify
 define('LINE_API',"https://notify-api.line.me/api/notify");
  
-$token = "hR2WScGm6aGHpepANtavvJHFw8yutb2rl9YMmVZmj1R"; //ใส่Token ที่copy เอาไว้
+$token = "qNr0NHmEzbKIqQp3NEi4J34mD9637oEdkFz42LL3fWq"; //ใส่Token ที่copy เอาไว้
 $str = 
 'Topic:'.$topic_text. 
 'Detail: '.$msg_text;

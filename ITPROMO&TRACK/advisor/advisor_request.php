@@ -131,3 +131,6 @@ $my_id = $_SESSION['id'];
                             </div>
                         </div>
 
+          <?php
+include 'advisor/text.php';
+?>
