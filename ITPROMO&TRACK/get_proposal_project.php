@@ -1,9 +1,15 @@
 <?php
 
+
 if(isset($_POST['id'])){
 	$rows = array();
 	$id = $_POST['id'];
 
+require 'menu/connect.php';
+
+if(isset($_POST['id'])){
+	$rows = array();
+	$id = $_POST['id'];
 require 'menu/connect.php';
 
 	$sql = "SELECT * FROM topic_project WHERE topic_id = '$id'";
@@ -18,5 +24,7 @@ require 'menu/connect.php';
 		$db->close();
 	}
 }
+
+
 
 ?>

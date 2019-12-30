@@ -11,12 +11,8 @@ function gender($gender){
 }
 
 function position($position){
-	if($position == "Advisor"){
-		return "<font color='blue'><i>Advisor</i></font>";
-
-	}else if($position == "Committee"){
-
-	return "<font color='yellow'><i>Committee</i></font>";
+	if($position == "Lecturer"){
+		return "<font color='blue'><i>Lecturer</i></font>";
 
 	}else if($position == "Student"){
 		
