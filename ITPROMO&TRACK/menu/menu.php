@@ -217,6 +217,13 @@ if($user_rank == "admin"):
         <i class="fa fa-circle-o"></i> Project Track
       </a>
     </li>
+
+   <li>
+      <a href="?page=track">
+        <i class="fa fa-circle-o"></i> Test upload file
+      </a>
+    </li>
+
     <li>
       <a href="?page=proposal_project">
         <i class="fa fa-circle-o"></i> <span>All Project Topics</span>

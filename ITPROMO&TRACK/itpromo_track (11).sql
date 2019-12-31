@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2019 at 03:17 PM
+-- Generation Time: Dec 31, 2019 at 12:08 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.39
 
@@ -141,7 +141,9 @@ INSERT INTO `apps_notification` (`msg_id`, `member_token`, `msg_text`, `topic_te
 (20, '', 'Everyone has to prepare for Present', 'Present Proposal', 0, '2019-12-27 13:30:55'),
 (21, '', 'Everyone has to prepare for Present', 'test', 0, '2019-12-27 13:32:39'),
 (22, '', 'ff', 'ff', 0, '2019-12-27 13:33:53'),
-(23, '', 'yyy', 'd', 0, '2019-12-27 13:35:07');
+(23, '', 'yyy', 'd', 0, '2019-12-27 13:35:07'),
+(24, '', 'testtttt', 'itpromo123@gmail.com', 0, '2019-12-29 07:04:16'),
+(25, '', 'TESTTT', 'itpromo123@gmail.com', 0, '2019-12-29 07:04:55');
 
 -- --------------------------------------------------------
 
@@ -259,8 +261,31 @@ INSERT INTO `files` (`files_id`, `files_filename_proposal`, `files_filename_proj
 (1, 'Proposal.docx', '', 1, '1', '4'),
 (2, 'ER and DB.docx', '', 2, '1', '4'),
 (3, 'ER-and-DB.docx', '', 3, '1', 'w'),
-(4, 'itpromo_track (6).sql', '', 4, '1', 'w'),
-(5, 'ขั้นตอนการสร้าง-QR-code.pdf', '', 5, '1', 'w');
+(32, '1577781560-119580-329909-1-SM.pdf', '', 4, 'w', 'w'),
+(33, '1577790396-lastusecase.pdf', '', 6, 'w', 'w');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fileupload`
+--
+
+CREATE TABLE `fileupload` (
+  `fileID` int(11) NOT NULL,
+  `fileupload` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `fileupload2` varchar(255) NOT NULL,
+  `dateup` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `files_status` enum('w','1') NOT NULL,
+  `advisergroup_id` int(20) NOT NULL,
+  `member_id` enum('w','4') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `fileupload`
+--
+
+INSERT INTO `fileupload` (`fileID`, `fileupload`, `fileupload2`, `dateup`, `files_status`, `advisergroup_id`, `member_id`) VALUES
+(4, '1577780783-ขั้นตอนการสร้าง-QR-code.pdf', '', '2019-12-31 08:26:23', 'w', 6, 'w');
 
 -- --------------------------------------------------------
 
@@ -320,33 +345,6 @@ INSERT INTO `member` (`member_id`, `member_idcard`, `member_username`, `member_f
 (35, 54, 'ff', 'ff', '1234', 'Student', '0853534', 'nn@gmail.com', 'Female', 1, NULL),
 (38, 444, 'ee', 'ee', '111', 'Committee', '45344', 'nn@gmail.com', 'Female', 1, NULL),
 (39, 4443, 'dd', 'ss', '111', 'Advisor', '232222', 'kk@gmail.com', 'Male', 1, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `message`
---
-
-CREATE TABLE `message` (
-  `MessageID` int(5) UNSIGNED ZEROFILL NOT NULL,
-  `Subject` varchar(100) NOT NULL,
-  `Description` varchar(500) NOT NULL,
-  `New` enum('Yes','No') NOT NULL DEFAULT 'Yes'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `message`
---
-
-INSERT INTO `message` (`MessageID`, `Subject`, `Description`, `New`) VALUES
-(00001, 'Subject 1 Subject 1 Subject 1', 'Description 1 Description 1 Description 1 ', 'Yes'),
-(00002, 'Subject 2 Subject 2 Subject 2', 'Description 2 Description 2 Description 2', 'No'),
-(00003, 'Subject 3 Subject 3 Subject 3', 'Description 3 Description 3 Description 3', 'No'),
-(00004, 'Subject 4 Subject 4 Subject 4', 'Description 4 Description 4 Description 4', 'No'),
-(00005, 'dd', 'sdd', 'Yes'),
-(00006, 'hi', 'kkkkkkk', 'Yes'),
-(00007, 'tt', 'tt', 'Yes'),
-(00008, 'kkkkkkkkkkkkkkkkkkkkkkk', 'oooooooooossssssssss', 'Yes');
 
 -- --------------------------------------------------------
 
@@ -427,6 +425,35 @@ INSERT INTO `schedule` (`schedule_id`, `schedule_topic`, `schedule_type`, `sched
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_product`
+--
+
+CREATE TABLE `tbl_product` (
+  `p_id` int(11) NOT NULL,
+  `t_id` int(11) NOT NULL,
+  `p_name` varchar(200) NOT NULL,
+  `p_detial` text NOT NULL,
+  `p_price` float(10,2) NOT NULL,
+  `p_img1` longblob NOT NULL,
+  `date_save` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `member_id` enum('w','4') NOT NULL,
+  `advisergroup_id` int(20) NOT NULL,
+  `files_status` enum('w','1') NOT NULL COMMENT 'w: wait to accept,1: pass,4:officer approved'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_product`
+--
+
+INSERT INTO `tbl_product` (`p_id`, `t_id`, `p_name`, `p_detial`, `p_price`, `p_img1`, `date_save`, `member_id`, `advisergroup_id`, `files_status`) VALUES
+(25, 0, '', '', 0.00, '', '2019-12-31 06:48:54', 'w', 0, 'w'),
+(26, 0, '', '', 0.00, '', '2019-12-31 06:49:28', 'w', 0, 'w'),
+(27, 0, '', '', 0.00, '', '2019-12-31 06:50:43', 'w', 0, 'w'),
+(28, 0, '', '', 0.00, '', '2019-12-31 06:59:27', 'w', 0, 'w');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `topic_project`
 --
 
@@ -457,7 +484,11 @@ INSERT INTO `topic_project` (`topic_id`, `topic_topic`, `topic_abstrack`, `topic
 (5, 'Cartoon', 'aaaaaaaaaa', 'aaa', 'Computer Multimedia', '2020-01-04', '', 5, 'Wilada Yalaphanee', 572431014, 'suaida', 'Student'),
 (6, 'Monitor system', 'kkkkkkkkkkkkkk', 'kkkkkkkk', 'Computer Multimedia', '2017-11-30', 'Proposal Approve', 6, 'Asri Yaee', 571431031, 'fatah', 'Student'),
 (7, 'ssss', 'sssssssssssssssssssss', 'ssssssssss', 'Computer Networking', '2019-12-11', 'Proposal Approve', 0, 'ssssss', 9999, '18', 'Admin'),
-(8, 'ttt', 'tttttttt', 'tttt', 'Computer Multimedia', '2019-12-25', 'Proposal Approve', 0, 'tt', 66, '8', 'Admin');
+(8, 'ttt', 'tttttttt', 'tttt', 'Computer Multimedia', '2019-12-25', 'Proposal Approve', 0, 'tt', 66, '8', 'Admin'),
+(9, 'kkk', 'llll', 'lll', 'Software Engineering', '2019-12-30', 'Proposal Approve', 0, 'kkk', 9788, '8', 'Admin'),
+(10, 'ss', 'sss', 'ss', 'Computer Networking', '2018-11-29', 'Proposal Approve', 0, 'sss', 9876, '8', 'Admin'),
+(11, 'nnn', 'nnn', 'nnnn', 'Computer Multimedia', '2017-11-30', 'Proposal Approve', 0, 'nnn', 666, '11', 'Admin'),
+(12, 'mmm', 'mmm', 'mmm', 'Computer Multimedia', '2017-10-29', 'Proposal Approve', 0, 'mmm', 4456, '14', 'Admin');
 
 --
 -- Indexes for dumped tables
@@ -514,17 +545,17 @@ ALTER TABLE `files`
   ADD PRIMARY KEY (`files_id`);
 
 --
+-- Indexes for table `fileupload`
+--
+ALTER TABLE `fileupload`
+  ADD PRIMARY KEY (`fileID`);
+
+--
 -- Indexes for table `member`
 --
 ALTER TABLE `member`
   ADD PRIMARY KEY (`member_id`),
   ADD KEY `am_id` (`admin_id`);
-
---
--- Indexes for table `message`
---
-ALTER TABLE `message`
-  ADD PRIMARY KEY (`MessageID`);
 
 --
 -- Indexes for table `news_topic`
@@ -544,6 +575,12 @@ ALTER TABLE `partnergroup`
 --
 ALTER TABLE `schedule`
   ADD PRIMARY KEY (`schedule_id`);
+
+--
+-- Indexes for table `tbl_product`
+--
+ALTER TABLE `tbl_product`
+  ADD PRIMARY KEY (`p_id`);
 
 --
 -- Indexes for table `topic_project`
@@ -571,7 +608,7 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `apps_notification`
 --
 ALTER TABLE `apps_notification`
-  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `chat`
@@ -595,19 +632,19 @@ ALTER TABLE `committeegroup`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `files_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `files_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT for table `fileupload`
+--
+ALTER TABLE `fileupload`
+  MODIFY `fileID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
   MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
-
---
--- AUTO_INCREMENT for table `message`
---
-ALTER TABLE `message`
-  MODIFY `MessageID` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `news_topic`
@@ -628,10 +665,16 @@ ALTER TABLE `schedule`
   MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
+-- AUTO_INCREMENT for table `tbl_product`
+--
+ALTER TABLE `tbl_product`
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
 -- AUTO_INCREMENT for table `topic_project`
 --
 ALTER TABLE `topic_project`
-  MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

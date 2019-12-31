@@ -1,16 +1,19 @@
 
+<div class="content">
+                  <div class="row">
+                        <div class="col-lg-12">
+                          
+                        </div>
+                    </div>
+  <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-block">
+<form action="student/check.php" method="post" enctype="multipart/form-data">
 
 
- <form class="form" method="post" action="student/check_files.php">
-
-
-                
-                    <input class="form-control" type="file" name="files_filename_proposal" id="files_filename_proposal" placeholder="Group Number">
-                
-             
-
-
-                  <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Save</button>
+              <input type="file" name="file">
+    <input type="submit" name="submit" value="Upload">
               
  
         

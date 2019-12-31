@@ -1,7 +1,9 @@
         <link rel="stylesheet" href="asset/css/style.css">
 
               <div class="content">
-                 <form method="post" action="student/check_files.php" >
+               <form action="student/check_files.php" method="post" enctype="multipart/form-data" name="upfile" id="upfile">
+
+
                     <div class="col-sm-8 col-sm-offset-1 
                     col-md-11 col-md-offset-4 
                     col-lg-15 col-lg-offset-5 form-box">
@@ -75,8 +77,12 @@
 
 
                                                 <td> 3 chapter of Proposal  
-      <input class="form-control" type="file" name="files_filename_proposal" id="files_filename_proposal" placeholder="Group Number">
-     <button type="submit" name="submit" class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Save</button>
+
+        <input type="file" name="files_filename_proposal" id="files_filename_proposal"  required="required"/>
+
+      <td bgcolor="#EDEDED"><input type="submit" name="button" id="button" value="Upload" /></td>
+
+
                 </td>
    <td> <input type="checkbox" name="file"   id="file"> <?php echo status_to_text($objResult->files_status); ?></td>
        

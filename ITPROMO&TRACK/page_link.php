@@ -211,6 +211,11 @@ case 'contact1':
 
 
 
+case 'track':
+		include('student/track.php');
+		break;
+		
+
 
 #menu homepage
 
