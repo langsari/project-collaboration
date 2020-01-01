@@ -12,7 +12,7 @@
           $('#announcement_topic').val(o.announcement_topic);
         $('#announcement_date').val(o.announcement_date);
        $('#announcement_detail').val(o.announcement_detail);
-     
+         $('#admin_fullname').val(o.admin_fullname);
           $('#announcement_id').val(o.announcement_id);
         });
       },
@@ -159,7 +159,14 @@
                                             </div>
 
                                           
-                                         
+                                            <div class="form-group row">
+                      <div class="col-md-2">
+                          <label class="control-label col-form-label">By</label></div>
+
+                          <div class="col-md-10">
+                              <input type="text" class="form-control" name="admin_fullname" id="admin_fullname">
+                          </div>
+                  </div>
                                  
 
                                             <div class="form-group row">
