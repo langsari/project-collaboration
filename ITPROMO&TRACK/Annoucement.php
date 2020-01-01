@@ -7,17 +7,11 @@
       dataType: 'JSON',
       success: function(data){
         $.each(data, function(i, o){
-        $('#announcement_topic').val(o.announcement_topic);
+          $('#announcement_topic').val(o.announcement_topic);
         $('#announcement_date').val(o.announcement_date);
-<<<<<<< HEAD
        $('#announcement_detail').val(o.announcement_detail);
          $('#admin_fullname').val(o.admin_fullname);
           $('#announcement_id').val(o.announcement_id);
-=======
-        $('#announcement_detail').val(o.announcement_detail);
-        $('#announcement_id').val(o.announcement_id);
-        $('#admin_fullname').val(o.admin_fullname);
->>>>>>> 48eb0acf9f421238388bebd1c7fc5b454a698245
         });
       },
       error: function (request, error) {
@@ -28,7 +22,13 @@
     });
   }
 
+
+
+
+
 </script>
+
+
 
  <!DOCTYPE html>
  <html>
@@ -42,42 +42,46 @@
       padding: 10px 16px;
     }
     ul.breadcrumb li {
-      display: inline;
+     display: inline;
     }  
     ul.breadcrumb li+li:before {
       padding: 8px;
       content: ">>\00a0";
-    }  
- </style>
-    <ul class="breadcrumb">
-      <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
-      <li class="active">Announcement</li>
-    </ul>
+}
+    
+  </style>
 
+
+ <ul class="breadcrumb">
+ <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
+  <li class="active">Announcement</li>
+</ul>
     <!-- PAGE CONTENT -->
 
       <div class="content">
-
+  
         <div class="row">
            <div class="col-lg-12">
-              <div class="card">
-                <div class="card-block">
-                  <h5 class="mt-3">Announcements&nbsp;&nbsp;<i class='fas fa-bullhorn'></i></h5>
+                <div class="card">
+                    <div class="card-block">
+                      <h5 class="mt-3">Announcements&nbsp;&nbsp;<i class='fas fa-bullhorn'></i></h5>
+                       
 
-                <?php
 
-                   $strSQL = "SELECT  announcement.announcement_id,announcement.announcement_topic, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
+     <?php
+
+     $strSQL = "SELECT  announcement.announcement_id,announcement.announcement_topic, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
                            FROM announcement,admin 
                            WHERE announcement.admin_id=admin.admin_id
                            ORDER BY announcement.announcement_id";
 
-                ?>
-                <?php
+         ?>
+
+    <?php
             
-                   if($objQuery = $db->query($strSQL)){
-                   while($objResult = $objQuery->fetch_object()){
-                ?>
-            
+                 if($objQuery = $db->query($strSQL)){
+             while($objResult = $objQuery->fetch_object()){
+            ?>
             <table class="display datatable table table-stripped" cellspacing="0" width="100%">
 
                   <tbody>
@@ -138,28 +142,22 @@
       </div>
 
       <div class="modal-body">
+        <form class="form-horizontal" method="post" >
 
-<<<<<<< HEAD
+                      <legend class="text-bold">Read More</legend>
+                                    <fieldset class="content-group">
+                                         <form action="#">
+                                            <div class="form-group row margin-top-10">
+                                                <div class="col-md-2">
+                                       <label class="control-label col-form-label">Topic</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" name="announcement_topic" id="announcement_topic"  >
+                                                </div>
+                                            </div>
+
                                           
                                             <div class="form-group row">
-=======
-    <form class="form-horizontal" method="post" >
-        <legend class="text-bold">Read More</legend>
-            <fieldset class="content-group">
-              <form action="#">
-                <div class="form-group row margin-top-10">
-                  <div class="col-md-2">
-                      <label class="control-label col-form-label">Topic</label>
-                  </div>
-
-                  <div class="col-md-10">
-                      <input class="form-control" name="announcement_topic" id="announcement_topic"  >
-                  </div>
-                </div>
-
-
-                <div class="form-group row">
->>>>>>> 48eb0acf9f421238388bebd1c7fc5b454a698245
                       <div class="col-md-2">
                           <label class="control-label col-form-label">By</label></div>
 
@@ -167,7 +165,6 @@
                               <input type="text" class="form-control" name="admin_fullname" id="admin_fullname">
                           </div>
                   </div>
-<<<<<<< HEAD
                                  
 
                                             <div class="form-group row">
@@ -178,17 +175,6 @@
                                                     <input type="text" class="form-control" name="announcement_date" id="announcement_date">
                                                 </div>
                                             </div>
-=======
-                                            
-                  <div class="form-group row">
-                      <div class="col-md-2">
-                          <label class="control-label col-form-label">Date</label></div>
-
-                          <div class="col-md-10">
-                              <input type="text" class="form-control" name="announcement_date" id="announcement_date">
-                          </div>
-                  </div>
->>>>>>> 48eb0acf9f421238388bebd1c7fc5b454a698245
 
 
   <div class="form-group row">

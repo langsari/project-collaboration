@@ -6,7 +6,15 @@ if(isset($_POST['id'])){
 
 require 'menu/connect.php';
 
-  $sql = "SELECT * FROM news_topic WHERE news_id = '$id'";
+
+  $sql = "SELECT   news_topic.news_id,news_topic.news_topic, news_topic.news_detail, news_topic.news_date,member.member_fullname
+                           FROM news_topic,member 
+                           WHERE news_topic.member_id=member.member_id
+                           ORDER BY news_topic.news_id = '$id'";
+
+
+
+
   if($rs = $db->query($sql)){
     while($row = $rs->fetch_object()){
       $rows[] = $row;
@@ -20,3 +28,4 @@ require 'menu/connect.php';
 }
 
 ?>
+
