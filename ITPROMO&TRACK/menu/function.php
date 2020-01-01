@@ -290,7 +290,7 @@ require 'connect.php';
 	if($rs = $db->query($sql)){
 		if($rs->num_rows > 0){
 			while($row = $rs->fetch_object()){
-        $rows .= "<p>".$row->member_idcard." ".$row->member_fullname."</p>";
+        $rows .= "<p>".$row->member_idcard." &nbsp&nbsp&nbsp&nbsp ".$row->member_fullname."</p>";
 			}
 		}else{
 			$rows = "<i class='text-danger'>- No member in this group -</i>";

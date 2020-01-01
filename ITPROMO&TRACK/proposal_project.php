@@ -83,7 +83,7 @@
 
 
 
-$strSQL = "SELECT advisergroup.*,  topic_project.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id,topic_project.Student_name,topic_project.member_idcard,topic_project.topic_abstrack,topic_project.topic_keyword ,topic_project.topic_years,topic_project.topic_fieldstudy,topic_project.status FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  topic_project.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id,topic_project.Student_name,topic_project.member_idcard,topic_project.topic_abstrack,topic_project.topic_keyword ,topic_project.topic_years,topic_project.topic_fieldstudy,topic_project.status,topic_project.group_number FROM advisergroup
 
           LEFT JOIN topic_project ON advisergroup.advisergroup_id = topic_project.advisergroup_id
 
@@ -100,7 +100,8 @@ $strSQL = "SELECT advisergroup.*,  topic_project.advisergroup_id, advisergroup.a
           <thead>
              <tr>
                         <th>No</th>   
-                        <th>ID</th>
+                        <th>ID Project</th>
+                        <th>Std ID</th>
                         <th>Name</th>
                       <th>Topic</th>
                       <th>Abstrack</th>
@@ -121,6 +122,7 @@ $strSQL = "SELECT advisergroup.*,  topic_project.advisergroup_id, advisergroup.a
            <tbody>
             <tr>
                      <td class="text-center"><?php echo $objResult->advisergroup_id; ?></td>
+                     <td class="text-center"><?php echo $objResult->group_number; ?></td>
                      <td class="text-center"><?php echo $objResult->member_idcard; ?></td>
                      <td class="text-center"><?php echo $objResult->Student_name; ?></td>
                     <td class="text-center"><?php echo $objResult->advisergroup_topic; ?></td>

@@ -8,6 +8,7 @@ session_start();
  include("../menu/connect.php");
  require '../menu/function.php';
 
+$group_number=$_POST['group_number'];
 $topic_abstrack=$_POST['topic_abstrack'];
 $topic_keyword=$_POST['topic_keyword'];
 $topic_topic=$_POST['topic_topic'];
@@ -19,9 +20,10 @@ $adviser=$_POST['adviser'];
 $Student_name=$_POST['Student_name'];
 $position=$_POST['position'];
 $advisergroup_id = get_ag_id(get_group_id());
+$Owner = get_member_list(get_group_id());
 
 
-	  $sql = "INSERT INTO topic_project (topic_abstrack, topic_keyword,topic_fieldstudy, topic_years,status,member_idcard,adviser,topic_topic,Student_name,advisergroup_id,position) VALUES ('$topic_abstrack','$topic_keyword','$topic_fieldstudy','$topic_years','$status','$member_idcard','$adviser','$topic_topic','$Student_name','$advisergroup_id','$position')";
+	  $sql = "INSERT INTO topic_project (group_number,topic_abstrack, topic_keyword,topic_fieldstudy, topic_years,status,member_idcard,adviser,topic_topic,Student_name,advisergroup_id,position,Owner) VALUES ('$group_number','$topic_abstrack','$topic_keyword','$topic_fieldstudy','$topic_years','$status','$member_idcard','$adviser','$topic_topic','$Student_name','$advisergroup_id','$position','$Owner')";
 
 
 	if($rs = $db->query($sql)){
