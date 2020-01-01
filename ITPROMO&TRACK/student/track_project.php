@@ -86,9 +86,14 @@
                 </td>
    <td> <input type="checkbox" name="file"   id="file"> <?php echo status_to_text($objResult->files_status); ?></td>
        
+
+    <td><a href="student/download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>">Download</a></td>
+
                                             </tr>
                                         </tbody>
                                     </table>
+
+
 
        <div class="progress">
     <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>

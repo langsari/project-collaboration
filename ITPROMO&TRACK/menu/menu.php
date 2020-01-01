@@ -99,7 +99,15 @@ if($user_rank == "admin"):
 
 
 <?php elseif($user_rank == "Lecturer"):
+  
  ?>
+
+ <li class="treeview">
+  <a href="?page=monitoring">
+    <i class="fa fa-paper-plane"></i> <span>Monitoring</span>
+  </a>
+</li>
+
 <li class="treeview">
   <a href="?page=advisor_request">
     <i class="fa fa-paper-plane"></i> <span>Request</span>
@@ -218,11 +226,7 @@ if($user_rank == "admin"):
       </a>
     </li>
 
-   <li>
-      <a href="?page=track">
-        <i class="fa fa-circle-o"></i> Test upload file
-      </a>
-    </li>
+  
 
     <li>
       <a href="?page=proposal_project">

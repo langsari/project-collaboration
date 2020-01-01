@@ -114,7 +114,8 @@ $my_id = $_SESSION['id'];
                 <tr>
                   <td class="text-center"><?php echo get_member_list($row->group_id); ?></td>
                         <td class="text-center"><?php echo $row->advisergroup_topic; ?></td>
-                        <td class="text-center"><?php echo $row->files_filename_proposal; ?></td>
+
+           <td><a href="student/download.php?pdf=<?php echo $row->files_filename_proposal ;?>">Download</a></td>
                   <td class="text-center"><?php echo status_to_text($row->files_status); ?></td>
   <td><a href="advisor/check_topic.php?id=<?php echo $row->files_id; ?>"class="btn btn-success btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i class='glyphicon glyphicon-ok'></i> Approve</a>
 

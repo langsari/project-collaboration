@@ -93,9 +93,9 @@ case 'dashboard':
 
 
 
-	case 'value':
-		# code...
-		break;
+	case 'monitoring':
+			include('advisor/monitoring.php');
+	break;
 
 	case 'value':
 		# code...
@@ -211,10 +211,6 @@ case 'contact1':
 
 
 
-case 'track':
-		include('student/track.php');
-		break;
-		
 
 
 #menu homepage
