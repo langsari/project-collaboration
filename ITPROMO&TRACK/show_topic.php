@@ -12,7 +12,8 @@
           $('#news_topic').val(o.news_topic);
         $('#news_date').val(o.news_date);
        $('#news_detail').val(o.news_detail);
-     
+      $('#member_fullname').val(o.member_fullname);
+
           $('#news_id').val(o.news_id);
         });
       },
@@ -154,7 +155,15 @@
                                                     <input type="text" class="form-control" name="news_date" id="news_date">
                                                 </div>
                                             </div>
+                           <div class="form-group row">
+                      <div class="col-md-2">
+                          <label class="control-label col-form-label">By</label></div>
 
+                          <div class="col-md-10">
+                              <input type="text" class="form-control" name="member_fullname" id="member_fullname">
+                          </div>
+                  </div>
+                         
 
   <div class="form-group row">
                                                 <div class="col-md-2">

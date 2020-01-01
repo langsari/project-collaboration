@@ -93,8 +93,13 @@ case 'dashboard':
 
 
 
-	case 'monitoring':
-			include('advisor/monitoring.php');
+	case 'dashboard1':
+			include('advisor/dashboard1.php');
+	break;
+
+
+	case 'users':
+			include('advisor/users.php');
 	break;
 
 	case 'value':

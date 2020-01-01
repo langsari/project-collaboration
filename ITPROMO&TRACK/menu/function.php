@@ -58,7 +58,7 @@ function fieldstudy($fieldstudy){
 
 function get_id_advisor($member_id){
 require 'connect.php';
-	$sql = "SELECT member_fullname FROM member WHERE member_id = '$member_id' AND member_pos = 'Advisor'";
+	$sql = "SELECT member_fullname FROM member WHERE member_id = '$member_id' AND member_pos = 'Lecturer'";
 	if($rs = $db->query($sql)){
 		if($row = $rs->fetch_object()){
 			return $row->member_fullname;
@@ -124,7 +124,7 @@ function get_adviser1(){
 require 'connect.php';
 	$member_id = $_SESSION['id'];
 
-	$sql = "SELECT group_id FROM member WHERE member_id = '$member_id' AND member_pos = 'Advisor'";
+	$sql = "SELECT group_id FROM member WHERE member_id = '$member_id' AND member_pos = 'Lecturer'";
 
 	if($rs = $db->query($sql)){
 		if($row = $rs->fetch_object()){
