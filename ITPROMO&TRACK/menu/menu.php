@@ -103,8 +103,8 @@ if($user_rank == "admin"):
  ?>
 
  <li class="treeview">
-  <a href="?page=monitoring">
-    <i class="fa fa-paper-plane"></i> <span>Monitoring</span>
+  <a href="?page=dashboard1">
+    <i class="fa fa-paper-plane"></i> <span>Dashboard</span>
   </a>
 </li>
 
