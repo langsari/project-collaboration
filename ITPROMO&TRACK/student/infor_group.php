@@ -99,7 +99,7 @@
   </button>
   <p>
                     <label>Create Group</label>
-                    <input class="form-control" type="number" name="group_number" id="group_number" placeholder="Group Number">
+                    <input class="form-control" type="text" name="group_number" id="group_number" placeholder="Group Code">
                 </div>
                    <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Close</button>
@@ -251,7 +251,7 @@
               <option value="no">- Lecturer Name -</option>
                 <?php
                 
-                $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_pos ='Advisor'";
+                $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_pos ='Lecturer'";
                 if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
                     echo "<option value='".$objResult->member_id."'>".$objResult->member_fullname."</option>";
@@ -336,7 +336,7 @@
            <input type="hidden" name="group_id" value="<?php echo $group_id; ?>">
             <input type="hidden" name="advisergroup_id" value="<?php echo $advisergroup_id; ?>">
           
-             <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
+             <button type="submit" class="btn btn-primary btn-lg btn-block">Send request</button>
                           
 </div>
 </div>
@@ -347,17 +347,17 @@
     <!-- END Select Advisor  -->
 
 
-                                 <table class="table">
-                                        <thead class="thead-default">
-                                            <tr>
-                                           <th>Group</th>
-                  <th>Title project</th>
-                  <th>Advisor</th>
-                    <th>Status</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+      <table class="table">
+         <thead class="thead-default">
+            <tr>
+              <th>GroupNo</th>
+              <th>GroupCode</th>
+              <th>Title project</th>
+              <th>Advisor</th>
+              <th>Status</th>
+           </tr>
+          </thead>
+    <tbody>
 
     <?php
 
@@ -367,16 +367,17 @@ $my_group_id = get_group_id($my_id);
 //Initialise Value to variable
 
 
-$sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id, member.member_id,member.member_fullname FROM advisergroup
-        LEFT JOIN member ON advisergroup.member_id = member.member_id
+$sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id,member.member_id,member.member_fullname FROM advisergroup
+         JOIN member ON advisergroup.member_id = member.member_id
         
-        WHERE advisergroup.group_id = '$my_group_id'";
+         WHERE advisergroup.group_id = '$my_group_id'";
 
               if($rs = $db->query($sql)){
                 while($row = $rs->fetch_object()){
               ?>
                 <tr>                 
-                  <td><?php echo get_group_id($row->member_id); ?></td>
+                  <td><?php echo get_group_id($row->group_id); ?></td>
+                  <td><?php echo get_groupcode($row->group_id); ?></td>
                   <td><?php echo $row->advisergroup_topic; ?></td>
                   <td><?php echo $row->member_fullname; ?></td>
          <td class="text-center"><?php echo status_for_advisor($row->advisergroup_status); ?></td>

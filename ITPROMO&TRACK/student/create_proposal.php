@@ -66,7 +66,9 @@ $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id, advisergroup.ad
      if($result = $db->query($strSQL)){
                   while($row = $result->fetch_object()){
 ?>
-                                      
+
+                            <td><?php echo get_member_list($row->group_id); ?></td>
+                            
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row margin-top-10">

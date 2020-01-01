@@ -96,6 +96,26 @@ require 'connect.php';
 }
 
 
+//Get group code from mb_id as Student
+function get_groupcode(){
+
+require 'connect.php';
+	$member_id = $_SESSION['id'];
+
+	$sql = "SELECT group_number FROM partnergroup ";
+
+	if($rs = $db->query($sql)){
+		if($row = $rs->fetch_object()){
+			return $row->group_number;
+		}
+		$db->close();
+	}else{
+		echo $db->error;
+		$db->close();
+	}
+}
+
+
 
 
 //Get group ID from mb_id as Student
