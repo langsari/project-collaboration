@@ -67,7 +67,7 @@ $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id, advisergroup.ad
                   while($row = $result->fetch_object()){
 ?>
 
-                            <td><?php echo get_member_list($row->group_id); ?></td>
+                            <td><?php echo get_member_list($objResult->group_id); ?></td>
                             
                                         <div class="row">
                                             <div class="col-md-6">

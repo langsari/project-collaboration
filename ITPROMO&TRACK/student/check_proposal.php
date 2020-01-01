@@ -6,7 +6,7 @@ session_start();
 
 
  include("../menu/connect.php");
-require '../menu/function.php';
+ require '../menu/function.php';
 
 $topic_abstrack=$_POST['topic_abstrack'];
 $topic_keyword=$_POST['topic_keyword'];
