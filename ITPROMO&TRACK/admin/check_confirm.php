@@ -38,7 +38,7 @@ $mail->addAttachment('/var/tmp/file.tar.gz');
 $mail->addAttachment('/var/image.jpg','new.jpg');
 $mail->isHTML(true);
 $mail->Subject = 'IT Project';
-$mail->Body = 'Hi'.$_POST['con'];
+$mail->Body = 'Welcome .... You are member of IT Project Cause. Go to http://localhost/ITPROMO/Web-Application-IT-Project-Collaboration/itpromo&track/index.php';
 
 
 

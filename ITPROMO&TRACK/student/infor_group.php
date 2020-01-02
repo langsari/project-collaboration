@@ -273,7 +273,27 @@
                                                 </div>
 
 
+ <div class="form-group row">           
+       <div class="col-md-3">
+           
+           </div>
+             <div class="col-md-9">
+             <select class="form-control" name="admin_id" hidden="">
 
+                <?php
+                include '../menu/connect.php';
+                $strSQL = "SELECT admin_id FROM member WHERE member_id ='".$_SESSION['id']."'";
+                if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+                    echo "<option value='".$objResult->admin_id."'></option>";
+                  }
+                }else{
+                }
+                ?>
+              </select>
+      
+            </div>
+          </div>
 
           <!-- Select advisor 
                                                 <div class="form-group row">

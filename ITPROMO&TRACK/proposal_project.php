@@ -9,18 +9,15 @@
       dataType: 'JSON',
       success: function(data){
         $.each(data, function(i, o){
+              $('#Owner').val(o.Owner);
           $('#topic_topic').val(o.topic_topic);
           $('#topic_abstrack').val(o.topic_abstrack);
      $('#topic_keyword').val(o.topic_keyword);
-
           $('#topic_fieldstudy').val(o.topic_fieldstudy);
             $('#topic_years').val(o.topic_years);
           $('#status').val(o.status);
             $('#advisergroup_id').val(o.advisergroup_id);
-          $('#Student_name').val(o.Student_name);
-           $('#member_idcard').val(o.member_idcard);
-            $('#adviser').val(o.adviser);
-          $('#position').val(o.position);
+       
 
 
           $('#topic_id').val(o.topic_id);
@@ -82,15 +79,8 @@
                   //   require 'menu/function.php';
 
 
+ $strSQL = "SELECT * FROM topic_project  ";
 
-$strSQL = "SELECT advisergroup.*,  topic_project.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id,topic_project.Student_name,topic_project.member_idcard,topic_project.topic_abstrack,topic_project.topic_keyword ,topic_project.topic_years,topic_project.topic_fieldstudy,topic_project.status,topic_project.group_number FROM advisergroup
-
-          LEFT JOIN topic_project ON advisergroup.advisergroup_id = topic_project.advisergroup_id
-
-        LEFT JOIN member ON advisergroup.member_id = member.member_id
-
-        
-        WHERE advisergroup.group_id ";
 
 
               ?>
@@ -100,9 +90,8 @@ $strSQL = "SELECT advisergroup.*,  topic_project.advisergroup_id, advisergroup.a
           <thead>
              <tr>
                         <th>No</th>   
-                        <th>ID Project</th>
-                        <th>Std ID</th>
-                        <th>Name</th>
+                           <th>Group Code</th>
+                            <th>Owner Project</th>
                       <th>Topic</th>
                       <th>Abstrack</th>
                       <th>Keyword</th>
@@ -121,12 +110,13 @@ $strSQL = "SELECT advisergroup.*,  topic_project.advisergroup_id, advisergroup.a
 
            <tbody>
             <tr>
-                     <td class="text-center"><?php echo $objResult->advisergroup_id; ?></td>
+                     <td class="text-center"><?php echo $objResult->topic_id; ?></td>
                      <td class="text-center"><?php echo $objResult->group_number; ?></td>
-                     <td class="text-center"><?php echo $objResult->member_idcard; ?></td>
-                     <td class="text-center"><?php echo $objResult->Student_name; ?></td>
-                    <td class="text-center"><?php echo $objResult->advisergroup_topic; ?></td>
-  <td><a href="#" name="view" value="view" id="<?php echo $objResult->advisergroup_id; ?>" class=" view_data"><?php echo $objResult->topic_abstrack; ?></a></td>
+
+                     <td class="text-center"><?php echo substr($objResult->Owner, 0, 50); ?></td>
+                    <td class="text-center"><?php echo $objResult->topic_topic; ?></td>
+
+                     <td class="text-center"><?php echo substr($objResult->topic_abstrack, 0, 50); ?></td>
 
 
                      <td class="text-center"><?php echo $objResult->topic_keyword; ?></td>
@@ -177,14 +167,13 @@ $strSQL = "SELECT advisergroup.*,  topic_project.advisergroup_id, advisergroup.a
                                          <form action="#">
                                             <div class="form-group row margin-top-10">
                                                 <div class="col-md-2">
-                                       <label class="control-label col-form-label">Student Name</label>
+                                                    <label class="control-label col-form-label">Owner</label>
                                                 </div>
                                                 <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="member_idcard" id="member_idcard"  >
+                                                    <input type="text" class="form-control" name="Owner" id="Owner" disabled="">
                                                 </div>
                                             </div>
 
-                                          
                                          
                                             <div class="form-group row">
                                                 <div class="col-md-2">
@@ -195,15 +184,7 @@ $strSQL = "SELECT advisergroup.*,  topic_project.advisergroup_id, advisergroup.a
                                                 </div>
                                             </div>
 
-                                            <div class="form-group row">
-                                                <div class="col-md-2">
-                                                    <label class="control-label col-form-label">Advisor</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="adviser" id="adviser" disabled="">
-                                                </div>
-                                            </div>
-
+                                      
 
 
                                             <div class="form-group row">
@@ -237,6 +218,9 @@ $strSQL = "SELECT advisergroup.*,  topic_project.advisergroup_id, advisergroup.a
                                                     <input type="text" class="form-control" name="topic_years" id="topic_years" disabled="">
                                                 </div>
                                             </div>
+
+                                              
+
 
                                                <div class="form-group row">
                                                 <div class="col-md-2">

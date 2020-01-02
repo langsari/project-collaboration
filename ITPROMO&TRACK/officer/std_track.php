@@ -19,7 +19,7 @@
                                           <?php
 require 'menu/connect.php';
 
-$my_id = $_SESSION['id'];
+
 
 
       $strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic FROM advisergroup
@@ -27,7 +27,7 @@ $my_id = $_SESSION['id'];
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.member_id = '$my_id'  AND files_status = '1' 
+        WHERE advisergroup.member_id  AND files_status = '1' 
                ";
 
 
@@ -42,7 +42,7 @@ $my_id = $_SESSION['id'];
                   <td><?php echo get_member_list($row->group_id); ?></td>
 
 
-               <td><a href="?page=view&id=<?php echo $row->files_id;?>"class="btn btn-success btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i class='glyphicon glyphicon-ok'></i> View Track</a>
+               <td><a href="?page=view2&id=<?php echo $row->files_id;?>"class="btn btn-success btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i class='glyphicon glyphicon-ok'></i> View Track</a>
 
 
               

@@ -34,11 +34,17 @@
 
 <!-- Data display  -->
                                                              
-<?php
-        
- $strSQL  = "SELECT * FROM news_topic WHERE member_id='".$_SESSION['id']."'";            
+         
 
-?>
+
+  <?php
+
+     $strSQL = "SELECT  news_topic.news_id,news_topic.news_topic, news_topic.news_detail, news_topic.news_date,member.member_fullname
+         FROM news_topic,member 
+         WHERE news_topic.member_id=member.member_id
+         ORDER BY news_topic.news_id='".$_SESSION['id']."'";
+
+         ?>
 
      <table class="display datatable table table-stripped" cellspacing="0" width="100%">
           <thead>
@@ -52,18 +58,22 @@
 
                  </tr>
                </thead>
-               <?php
-     if($objQuery = $db->query($strSQL)){
-       while($objResult = mysqli_fetch_array($objQuery)) {
-            ?>
+              
 
+ <?php
+     if($result = $db->query($strSQL)){
+             while($objResult = $result->fetch_object()){
+            ?>
            <tbody>
             <tr>
-                      <td><?php echo $objResult["news_id"];?></td>
-                      <td><?php echo $objResult["news_topic"];?></td>
-                      <td><?php echo $objResult["news_detail"];?></td>
-                      <td><?php echo $objResult["news_date"];?></td>
-                      <td><?php echo $_SESSION['name'];?></td>
+        <td class="text-center"><?php echo $objResult->news_id; ?></td>
+             <td class="text-center"><?php echo substr($objResult->news_topic, 0, 30); ?></td>
+                 <td class="text-center"><?php echo substr($objResult->news_detail, 0, 30); ?></td>
+
+                    <td class="text-center"><?php echo $objResult->news_date; ?></td>
+                        <td class="text-center"><?php echo $objResult->member_fullname; ?></td>
+
+               
 
                       <td>
 
@@ -119,12 +129,11 @@
       <div class="modal-body">
             <form id="add" name="add" method ="post" action ="advisor/check_newstopic.php" onsubmit="return checkForm()" >
                             <div class="user-details">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                      
-                                        <input type="text" class="form-control" placeholder="Topic" aria-describedby="basic-addon1" id="news_topic" name="news_topic" autocomplete="off" required>
-                                    </div>
-                                </div>
+                           
+                                      <div class="form-group">
+            <div class="col-sm-10">
+                  <input type="text" class="form-control" placeholder="Topic" aria-describedby="basic-addon1" id="news_topic" name="news_topic" autocomplete="off" required>
+        </div>    
 
                                 
                                                      <div class="form-group">
@@ -134,25 +143,21 @@
 
 
 
-
- <div class="form-group ">           
+ <div class="form-group row">           
        <div class="col-md-3">
-             <label class="control-label col-form-label">Lecturer</label>
+           
            </div>
              <div class="col-md-9">
-             <select class="form-control" name="member_id">
-            
+             <select class="form-control" name="member_id" hidden="">
+
                 <?php
-                require '../menu/connect.php';
+                include '../menu/connect.php';
                 $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_id ='".$_SESSION['id']."'";
                 if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
                     echo "<option value='".$objResult->member_id."'>".$objResult->member_fullname."</option>";
                   }
-                  $db->close();
                 }else{
-                  echo $db->error;
-                  $db->close();
                 }
                 ?>
               </select>

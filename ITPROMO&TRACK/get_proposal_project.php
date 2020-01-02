@@ -1,12 +1,8 @@
 <?php
-
-
-
 if(isset($_POST['id'])){
 	$rows = array();
 	$id = $_POST['id'];
 require 'menu/connect.php';
-
 	$sql = "SELECT * FROM topic_project WHERE topic_id = '$id'";
 	if($rs = $db->query($sql)){
 		while($row = $rs->fetch_object()){
@@ -19,7 +15,4 @@ require 'menu/connect.php';
 		$db->close();
 	}
 }
-
-
-
 ?>

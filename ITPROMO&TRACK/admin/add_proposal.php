@@ -51,7 +51,7 @@
      <?php
 //require 'menu/function.php';
 
- $strSQL = "SELECT * FROM topic_project ";
+ $strSQL = "SELECT * FROM topic_project where position='Admin'";
 
 ?>
 
@@ -59,9 +59,10 @@
    <table class="display datatable table table-stripped" cellspacing="0" width="100%">
           <thead>
              <tr>
-              <th>No</th>
-                            <th>ID</th>
-                      <th>Name</th>
+       
+                            <th>No</th>
+                      <th>Group Code</th>
+                      <th>Owner Project</th>
                       <th>Topic</th>
                       <th>Abstrack</th>
                       <th>Keyword</th>
@@ -81,10 +82,11 @@
            <tbody>
             <tr>                    
              <td class="text-center"><?php echo $objResult->topic_id; ?></td>
-                     <td class="text-center"><?php echo $objResult->member_idcard; ?></td>
-                  <td class="text-center"><?php echo $objResult->Student_name; ?></td>
+         <td class="text-center"><?php echo $objResult->group_number; ?></td>
+
+             <td class="text-center"><?php echo substr($objResult->Owner, 0, 20); ?></td>
                     <td class="text-center"><?php echo $objResult->topic_topic; ?></td>
-                     <td class="text-center"><?php echo $objResult->topic_abstrack; ?></td>
+                     <td class="text-center"><?php echo substr($objResult->topic_abstrack, 0, 40); ?></td>
                      <td class="text-center"><?php echo $objResult->topic_keyword ?></td>
                    <td class="text-center"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
                    <td class="text-center"><?php echo $objResult->topic_years; ?></td>
@@ -130,28 +132,37 @@
       <div class="modal-body">
          
        <form id="add" name="add" method ="post" action ="admin/check_proposal.php" onsubmit="return checkForm()" >
-                  
 
-
-                  <div class="form-group row">
-                                                    <div class="col-md-3">
-                                                        <label class="control-label col-form-label">ID  Student </label>
+            <div class="form-group row">
+                             <div class="col-md-3">
+                              <label class="control-label col-form-label">Group Code </label>
                                                     </div>
                                                     <div class="col-md-9"> 
-                                        <input type="text" class="form-control" id="member_idcard" name="member_idcard"placeholder="ID Student" autocomplete="off" required aria-describedby="basic-addon1">
+
+                    <input class="form-control" type="text" name="group_number" id="group_number" placeholder="Group Code">
+
+
+
+
+                                                    </div>
+                                                </div>
+
+    <div class="form-group row">
+                             <div class="col-md-3">
+                              <label class="control-label col-form-label">Owner Project </label>
+                                                    </div>
+                                                    <div class="col-md-9"> 
+
+             <textarea rows="7" class="form-control" id="Owner" name="Owner" placeholder="Abstarck"></textarea>
+
+
                                                     </div>
                                                 </div>
 
    
-                                                <div class="form-group row">
-                                                    <div class="col-md-3">
-                                                        <label class="control-label col-form-label">Fullname </label>
-                                                    </div>
-                                                    <div class="col-md-9"> 
-                                        <input type="text" class="form-control" id="Student_name" name="Student_name"placeholder="Name of Student" autocomplete="off" required aria-describedby="basic-addon1">
-                                                    </div>
-                                                </div>
 
+   
+                                              
 
                                                 <div class="form-group row">
                                                     <div class="col-md-3">
@@ -218,7 +229,7 @@
               <option value="no">- Select Lecturer -</option>
                 <?php
                 include '../menu/connect.php';
-                $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_pos ='Advisor'";
+                $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_pos ='Lecturer'";
                 if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
                     echo "<option value='".$objResult->member_id."'>".$objResult->member_fullname."</option>";

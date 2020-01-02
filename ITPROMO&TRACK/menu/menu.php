@@ -330,6 +330,13 @@ if($user_rank == "admin"):
   </a>
 </li>
 
+<li class="treeview">
+  <a href="?page=std_track">
+    <i class="fa fa-book"></i> <span>Std track</span>
+  </a>
+</li>
+
+
 <!-- end menu of officer -->
 
 <?php endif; ?>

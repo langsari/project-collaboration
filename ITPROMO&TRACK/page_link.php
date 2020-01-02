@@ -54,6 +54,7 @@ case 'dashboard':
 		break;
 
 
+
 	case 'edit_marktype':
 		include('admin/edit_marktype.php');
 		break;
@@ -174,9 +175,14 @@ case 'officer_request':
 		include('officer/officer_request.php');
 		break;
 
+case 'view2':
+		include('officer/view2.php');
+		break;
 
-	
 
+case 'std_track':
+		include('officer/std_track.php');
+		break;
 
 #studet 		
 case 'create_proposal':

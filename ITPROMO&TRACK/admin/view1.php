@@ -36,17 +36,21 @@
  <?php
  require 'menu/connect.php';
 
-            $g_id = get_group_id1();
+            $g_id = get_group_id2();
 
-    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.member_id FROM advisergroup
+    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.member_id,member.admin_id FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.advisergroup_id = '$g_id'";                 
+
+        WHERE advisergroup.advisergroup_id = '$g_id'" ;                 
      if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
             ?>  
                         <fieldset>
                             <h4>Adviser Proposal Project Approval Letter</h4>
+
+                                                 <td class="form-control" ><?php echo get_member_list($objResult->group_id); ?></td>
+
                        <div class="row">
                             <div class="card">
                                 <div class="card-block">

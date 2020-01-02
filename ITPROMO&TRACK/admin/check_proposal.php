@@ -10,16 +10,16 @@ $topic_abstrack=$_POST['topic_abstrack'];
 $topic_keyword=$_POST['topic_keyword'];
 $topic_fieldstudy=$_POST['topic_fieldstudy'];
 $topic_years=$_POST['topic_years'];
-$member_idcard=$_POST['member_idcard'];
-$Student_name=$_POST['Student_name'];
+$Owner=$_POST['Owner'];
 $adviser=$_POST['adviser'];
 $status=$_POST['status'];
 $position=$_POST['position'];
+$group_number=$_POST['group_number'];
 
 
 
 
-  $sql = "INSERT INTO topic_project (topic_topic, topic_abstrack, topic_keyword,topic_fieldstudy,topic_years,member_idcard,adviser,status,Student_name,position) VALUES ('$topic_topic','$topic_abstrack','$topic_keyword','$topic_fieldstudy','$topic_years','$member_idcard','$adviser','$status','$Student_name','$position')";
+  $sql = "INSERT INTO topic_project (topic_topic, topic_abstrack, topic_keyword,topic_fieldstudy,topic_years,adviser,status,Owner,position,group_number) VALUES ('$topic_topic','$topic_abstrack','$topic_keyword','$topic_fieldstudy','$topic_years','$adviser','$status','$Owner','$position','$group_number')";
 
 	if($rs = $db->query($sql)){
 		$db->close();

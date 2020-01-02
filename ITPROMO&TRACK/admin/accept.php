@@ -117,19 +117,6 @@
                                         </div>
 
 
-          <div class="form-group row">
-                                            <div class="col-md-3">
-                                                <label class="control-label col-form-label">Pass or Not</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                    </span>
-        
-                                                       <input type="text" class="form-control" name="con" id="con"   >
-                                                </div>
-                                            </div>
-                                        </div>
 
                                      
                                         <div class="pull-right">

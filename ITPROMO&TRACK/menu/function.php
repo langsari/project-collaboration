@@ -161,6 +161,7 @@ require 'connect.php';
 
 
 
+
 //Get group ID from mb_id as Student
 function get_group_id1(){
 
@@ -180,6 +181,25 @@ require 'connect.php';
 	}
 }
 
+
+//Get group ID from admin_id as Student
+function get_group_id2(){
+
+require 'connect.php';
+	$admin_id = $_SESSION['id'];
+
+	$sql = "SELECT advisergroup_id FROM advisergroup WHERE admin_id = '$admin_id' ";
+
+	if($rs = $db->query($sql)){
+		if($row = $rs->fetch_object()){
+			return $row->advisergroup_id;
+		}
+		$db->close();
+	}else{
+		echo $db->error;
+		$db->close();
+	}
+}
 
 
 

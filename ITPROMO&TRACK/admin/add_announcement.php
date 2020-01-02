@@ -1,4 +1,37 @@
 
+<script type="text/javascript">
+  function view_annouce(id){
+    $.ajax({
+      url: 'admin/readmore_annouce.php',
+
+      data: ({id: id}),
+      type: 'POST',
+      dataType: 'JSON',
+      success: function(data){
+        $.each(data, function(i, o){
+          $('#announcement_topic1').val(o.announcement_topic);
+        $('#announcement_date1').val(o.announcement_date);
+       $('#announcement_detail1').val(o.announcement_detail);
+         $('#admin_fullname1').val(o.admin_fullname);
+          $('#announcement_id').val(o.announcement_id);
+        });
+      },
+      error: function (request, error) {
+        console.log(error);
+        console.log(arguments);
+        alert("Network Error!");
+      }
+    });
+  }
+
+
+
+
+
+</script>
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -109,12 +142,24 @@
 
 
 
+
+                     <div class="form-group row">
+                    <div class="col-md-3">
+                         <label class="control-label col-form-label">Detail</label>
+                    </div>
+                     <div class="col-md-9">
+ <textarea rows="10" width="40" class="form-control" id="announcement_detail" name="announcement_detail" placeholder="Project Description"></textarea>
+                <script>
+                  CKEDITOR.replace( 'announcement_detail' );
+                </script>               </div>
+                   </div>
+
+                                              
  <div class="form-group row">           
        <div class="col-md-3">
-             <label class="control-label col-form-label">BY</label>
            </div>
              <div class="col-md-9">
-             <select class="form-control" name="admin_id">
+             <select class="form-control" name="admin_id" hidden="">
 
                 <?php
                 include '../menu/connect.php';
@@ -130,19 +175,6 @@
       
             </div>
           </div>
-
-                     <div class="form-group row">
-                    <div class="col-md-3">
-                         <label class="control-label col-form-label">Detail</label>
-                    </div>
-                     <div class="col-md-9">
- <textarea rows="10" width="40" class="form-control" id="announcement_detail" name="announcement_detail" placeholder="Project Description"></textarea>
-                <script>
-                  CKEDITOR.replace( 'announcement_detail' );
-                </script>               </div>
-                   </div>
-
-                                              
 
 
                <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
@@ -162,12 +194,14 @@
  
 
 
-  $strSQL = "SELECT  announcement.announcement_topic,  announcement.announcement_id, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
+  $strSQL = "SELECT  announcement.announcement_topic, announcement.announcement_id, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
                            FROM announcement,admin 
                            WHERE announcement.admin_id=admin.admin_id
                            ORDER BY announcement.announcement_id";
 
         ?>
+
+
        <table class="display datatable table table-stripped" cellspacing="0" width="100%">
           <thead>
              <tr>
@@ -189,8 +223,11 @@
            <tbody>
             <tr>
                   <td class="text-center"><?php echo $objResult->announcement_id; ?></td>
-                  <td class="text-center"><?php echo $objResult->announcement_topic; ?></td>
-                    <td class="text-center"><?php echo $objResult->announcement_detail; ?></td>
+               
+               <td class="text-center"><?php echo substr($objResult->announcement_topic, 0, 60); ?></td>
+
+               <td class="text-center"><?php echo substr($objResult->announcement_detail, 0, 60); ?></td>
+
                      <td class="text-center"><?php echo $objResult->announcement_date; ?></td>
                      <td class="text-center"><?php echo $objResult->admin_fullname ?></td>
                 
@@ -198,10 +235,14 @@
 
 
  <td>
-                  <a href="delete/check_delete.php?id=<?php echo $objResult->topic_id;?>" title="Confirm" onclick="return confirm('<?php echo $objResult->topic_topic;?>')"> <i class="fa fa-eye" aria-hidden="true"></i></a>
+
+                     <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#view" onclick="view_annouce(<?php echo $objResult->announcement_id; ?>)"><i class="fa fa-edit"></i></button>
+
+
+
+
+  
      
-                     <a href="delete/check_delete.php?id=<?php echo$objResult->topic_id;?>" title="Confirm" onclick="return confirm('<?php echo  $objResult->topic_topic;?>')"> <i class="fa fa-edit" aria-hidden="true"></i>
-           
                      <a href="delete/check_delete.php?id=<?php echo $objResult->topic_id;?>" title="Confirm" onclick="return confirm('<?php echo $objResult->topic_topic;?>')"> <i class="fa fa-trash" aria-hidden="true"></i>
                       </td>
                     </tr>
@@ -220,6 +261,67 @@
                     </div>
                 </div>
 
-</body>
+<!-- Modal View-->
+      
+<div id="view" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg"> 
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" >&times;</span></button>
+      </div>
 
-</html>
+      <div class="modal-body">
+        <form class="form-horizontal" method="post" action="check_editannouce.php" >
+
+                      <legend class="text-bold">Read More</legend>
+                                    <fieldset class="content-group">
+                                         <form action="#">
+                                            <div class="form-group row margin-top-10">
+                                                <div class="col-md-2">
+                                       <label class="control-label col-form-label">Topic</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" name="announcement_topic1" id="announcement_topic1"  >
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                      <div class="col-md-2">
+                          <label class="control-label col-form-label">By</label></div>
+                          <div class="col-md-10">
+                              <input type="text" class="form-control" name="admin_fullname1" id="admin_fullname1">
+                          </div>
+                  </div>
+                         <div class="form-group row">
+                                                <div class="col-md-2">
+                                                    <label class="control-label col-form-label">Date</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control" name="announcement_date1" id="announcement_date1">
+                                                </div>
+                                            </div>
+                                     <div class="form-group row">
+                                                <div class="col-md-2">
+                                                    <label class="control-label col-form-label">Detail</label>
+                                                </div>
+                                                <div class="col-md-10">
+
+                            <textarea class="form-control" rows="10" name="announcement_detail1" id="announcement_detail1"  required></textarea>
+                                              </div>
+                                            </div>
+
+                         <input type="hidden" name="announcement_id" id="announcement_id">
+                 
+                   <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Close</button>
+        <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+</fieldset>
+</form>
+</div>
+            <!-- /PAGE CONTENT -->
+
+          
