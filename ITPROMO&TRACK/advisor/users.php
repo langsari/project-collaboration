@@ -11,7 +11,7 @@ require 'menu/connect.php';
 $my_id = $_SESSION['id'];
 
 
-      $strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic FROM advisergroup
+      $strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,advisergroup.advisergroup_id FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
@@ -44,9 +44,8 @@ $my_id = $_SESSION['id'];
             <tr>
             	<td class="text-center"><?php echo get_groupcode($row->group_id); ?>s</td>
                      <td class="text-center"><?php echo $row->advisergroup_topic; ?></td>
-                     <td class="text-center"><?php echo get_member_list($row->group_id); ?></td>
+              <td class="text-center"><?php echo get_member_list($row->group_id); ?></td>
                     
-
 
 
                     </tr>

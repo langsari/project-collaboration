@@ -158,6 +158,22 @@ require 'connect.php';
 	}
 }
 
+function get_ag_id($group_id){
+require 'connect.php';
+	$sql = "SELECT advisergroup_id FROM advisergroup WHERE group_id = '$group_id' ";
+	if($rs = $db->query($sql)){
+		if($row = $rs->fetch_object()){
+			return $row->advisergroup_id;
+		}
+		$db->close();
+	}else{
+		echo $db->error;
+		$db->close();
+	}
+}
+
+
+
 
 
 
@@ -204,8 +220,11 @@ require 'connect.php';
 
 
 
-function get_ag_id($group_id){
+
+
+function get_group_all($group_id){
 require 'connect.php';
+
 	$sql = "SELECT advisergroup_id FROM advisergroup WHERE group_id = '$group_id' ";
 	if($rs = $db->query($sql)){
 		if($row = $rs->fetch_object()){
@@ -219,14 +238,13 @@ require 'connect.php';
 }
 
 
+
+
 function get_ag_id1(){
 
 require 'connect.php';
 	$member_id = $_SESSION['id'];
-
 $sql = "SELECT advisergroup_id FROM advisergroup WHERE group_id = '$member_id' ";
-
-
 	if($rs = $db->query($sql)){
 		if($row = $rs->fetch_object()){
 			return $row->advisergroup_id;

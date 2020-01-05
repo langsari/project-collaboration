@@ -35,7 +35,7 @@
                         </div>
  <?php
  require 'menu/connect.php';
-$my_id = $_SESSION['id'];
+  $my_id = $_SESSION['id'];
 
             $g_id = get_group_id1($my_id);
 

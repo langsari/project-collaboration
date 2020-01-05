@@ -99,13 +99,18 @@ case 'dashboard':
 	break;
 
 
+
+
+	case 'proposal_status':
+			include('advisor/proposal_status.php');
+	break;
+
+
+
 	case 'users':
 			include('advisor/users.php');
 	break;
 
-	case 'value':
-		# code...
-		break;
 
 	case 'topic_request':
 		include('student/topic_request.php');

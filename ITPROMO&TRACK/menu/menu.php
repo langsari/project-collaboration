@@ -126,10 +126,14 @@ if($user_rank == "admin"):
         <i class="fa fa-circle-o"></i> Project Track
       </a>
     </li>
+
+        <li>
+      <a href="?page=proposal_status">
+        <i class="fa fa-circle-o"></i> Proposal Status
+      </a>
+    </li>
+
     <li>
-
-       
-
       <a href="pages_register.html">
         <i class="fa fa-circle-o"></i>  Project Mark
       </a>
@@ -235,6 +239,8 @@ if($user_rank == "admin"):
     </li>
   </ul>
 </li>
+
+
 
 
 <li class="active treeview">
