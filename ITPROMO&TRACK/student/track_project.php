@@ -61,15 +61,15 @@
                                        <tbody>
                                             <tr>
                                              <td>Select Topic</td>
-                          <td> <input type="checkbox" name="file"   id="file" value="">
-                            <?php echo status_for_advisor($objResult->advisergroup_status); ?>
+                          <td> 
+                            <font color='green'><?php echo $objResult->advisergroup_status; ?></font>
                             
                           </td>
                                             </tr>
                                             <tr>
                                          <td>Select Advisor</td>
-                                        <td> <input type="checkbox" name="file"   id="file"   >
-                             <?php echo status_for_advisor($objResult->advisergroup_status); ?>
+                                        <td> 
+                             <font color='green'> <?php echo $objResult->advisergroup_status; ?></font>
                                                  </td>
                                             </tr>
                             
@@ -84,7 +84,7 @@
 
 
                 </td>
-   <td> <input type="checkbox" name="file"   id="file"> <?php echo status_to_text($objResult->files_status); ?></td>
+   <td> <font color='green'> <?php echo $objResult->files_status; ?> </font></td>
        
 
     <td><a href="student/download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>">Download</a></td>
@@ -120,8 +120,8 @@
                                        <tbody>
                                             <tr>
                                              <td>Select Topic</td>
-                          <td> <input type="checkbox" name="file"   id="file" value="">
-                            <?php echo  status_to_text1($objResult->member_id); ?>  
+                          <td> 
+                           <font color='green'> <?php echo $objResult->member_id; ?> </font> 
                           </td>
                            </tr>
                                            

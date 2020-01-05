@@ -294,7 +294,7 @@ require 'connect.php';
 
 $sql = "SELECT advisergroup.member_id, member.member_fullname,advisergroup.advisergroup_topic FROM advisergroup
 LEFT JOIN member ON advisergroup.member_id = member.member_id
-					WHERE advisergroup.group_id = '$group_id' AND advisergroup.advisergroup_status = '1'";
+					WHERE advisergroup.group_id = '$group_id' AND advisergroup.advisergroup_status = 'Approve'";
 	if($rs = $db->query($sql)){
 		if($row = $rs->fetch_object()){
 			return $row->member_fullname;

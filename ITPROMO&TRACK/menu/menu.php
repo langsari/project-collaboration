@@ -293,11 +293,30 @@ if($user_rank == "admin"):
 
 <?php elseif($user_rank == "Officer"): ?>
 
+
+
+
+
 <li class="active treeview">
-  <a href="?page=officer_request">   
-    <i class="fa fa-paper-plane-o"></i><span>Project Track</span>
+  <a href="#">
+    <i class="fa fa-book"></i> <span>Projects</span> 
   </a>
+  <ul class="treeview-menu">
+    <li>
+      <a href="?page=officer_request">
+        <i class="fa fa-circle-o"></i> Project Track
+      </a>
+    </li>
+
+        <li>
+      <a href="?page=view_track">
+        <i class="fa fa-circle-o"></i> Student Track
+      </a>
+    </li>
+
+</ul>
 </li>
+
 
 <li class="active treeview">
     <a href="#"> <i class="fa fa-calendar"></i>  
@@ -336,11 +355,6 @@ if($user_rank == "admin"):
   </a>
 </li>
 
-<li class="treeview">
-  <a href="?page=std_track">
-    <i class="fa fa-book"></i> <span>Std track</span>
-  </a>
-</li>
 
 
 <!-- end menu of officer -->

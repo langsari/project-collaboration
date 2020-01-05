@@ -23,7 +23,7 @@ $admin_id = $_POST['admin_id'];
   }else{
 
 
- $sql = "UPDATE advisergroup SET member_id = '$member_id', advisergroup_status = 'w' WHERE advisergroup_id = '$advisergroup_id'";
+ $sql = "UPDATE advisergroup SET member_id = '$member_id', advisergroup_status = 'Waiting' WHERE advisergroup_id = '$advisergroup_id'";
     if($db->query($sql)){
       $db->close();
       header("Location: ../index.php?page=infor_group");

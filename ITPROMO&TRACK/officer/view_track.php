@@ -1,7 +1,137 @@
-        <link rel="stylesheet" href="asset/css/style.css">
 
-              <div class="content">
-                 <form method="post" action="student/check_files.php">
+
+
+<script type="text/javascript">
+  function edit_ps(id){
+    $.ajax({
+      url: 'get_track.php',
+      data: ({id: id}),
+      type: 'POST',
+      dataType: 'JSON',
+      success: function(data){
+        $.each(data, function(i, o){
+          
+
+        $('#advisergroup_status').val(o.advisergroup_status);
+            $('#files_status').val(o.files_status);
+            $('#advisergroup_id').val(o.advisergroup_id);         
+                 $('#member_id').val(o.member_id);
+
+          $('#files_id').val(o.files_id);
+        });
+      },
+      error: function (request, error) {
+        console.log(error);
+        console.log(arguments);
+        alert("Network Error!");
+      }
+    });
+  }
+
+
+
+
+  function confirm_deleteps(){
+    var x = confirm("Please confirm to delete!");
+    if(x){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+
+
+</script>
+
+  
+<div class="content">
+                     <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-block">
+ 
+                                   <h5 class="mt-3">All Track</h5>
+   <?php
+
+                  //   require 'menu/function.php';
+
+      $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic FROM advisergroup
+
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+
+        WHERE advisergroup.member_id   ";
+
+
+              ?>
+
+
+      <table class="display datatable table table-stripped" cellspacing="0" width="100%">
+          <thead>
+             <tr>
+                         <th>Title project</th>
+                  <th>Student</th>
+                    <th>Status</th>
+                <th></th>
+
+
+                 </tr>
+               </thead>
+ <?php
+     if($result = $db->query($strSQL)){
+             while($objResult = $result->fetch_object()){
+            ?>
+
+           <tbody>
+            <tr>
+        <td class="text-center"><?php echo $objResult->advisergroup_topic; ?></td>
+                     <td class="text-center"><?php echo get_member_list($objResult->group_id); ?></td>
+
+                  
+                  
+         
+
+                           <td><button type="button" class="btn btn-success btn-xs"  data-toggle="modal" data-target="#editPS" onclick="edit_ps(<?php echo $objResult->advisergroup_id; ?>)"><i class="fa fa-edit">View Track</i></button>
+</td> 
+
+
+
+
+                    </tr>
+
+                             
+  <?php
+    }
+               }
+                   ?>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+    
+
+  
+            <link rel="stylesheet" href="asset/css/style.css">
+
+  <!-- Modal -->
+
+<div class="modal fade" id="editPS" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+
+
+      <div class="modal-body">
+       <form method="post" action="student/check_files.php">
                     <div class="col-sm-8 col-sm-offset-1 
                     col-md-11 col-md-offset-4 
                     col-lg-15 col-lg-offset-5 form-box">
@@ -33,23 +163,10 @@
                 
 
                         </div>
- <?php
- require 'menu/connect.php';
-
-            $g_id = get_group_id2();
-
-    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.member_id,member.admin_id FROM advisergroup
-          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
-        LEFT JOIN member ON advisergroup.member_id = member.member_id
-
-        WHERE advisergroup.advisergroup_id = '$g_id'" ;                 
-     if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-            ?>  
+ 
                         <fieldset>
                             <h4>Adviser Proposal Project Approval Letter</h4>
 
-                                                 <td class="form-control" ><?php echo get_member_list($objResult->group_id); ?></td>
 
                        <div class="row">
                             <div class="card">
@@ -63,27 +180,19 @@
                                         </thead>
                                        <tbody>
                                             <tr>
-                                             <td>Select Topic</td>
-                          <td> <input type="checkbox" name="file"   id="file" value="">
-                            <?php echo status_for_advisor($objResult->advisergroup_status); ?>
+                                             <td>Select Topic and Advisor</td>
+                          <td> <input type="text" class="form-control" name="advisergroup_status" id="advisergroup_status" disabled="">
                             
                           </td>
                                             </tr>
-                                            <tr>
-                                         <td>Select Advisor</td>
-                                        <td> <input type="checkbox" name="file"   id="file"   >
-                             <?php echo status_for_advisor($objResult->advisergroup_status); ?>
-                                                 </td>
-                                            </tr>
+                                       
                             
                                   <tr>
 
 
                                                 <td> 3 chapter of Proposal  
-        <input class="form-control" type="file" name="files_filename_proposal" id="files_filename_proposal" placeholder="Group Number">
-     <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Save</button>
                 </td>
-   <td> <input type="checkbox" name="file"   id="file"> <?php echo status_to_text($objResult->files_status); ?></td>
+   <td>  <input type="text" class="form-control" name="files_status" id="files_status" disabled=""> </td>
        
                                             </tr>
                                         </tbody>
@@ -114,9 +223,8 @@
                                        <tbody>
                                             <tr>
                                              <td>Select Topic</td>
-                          <td> <input type="checkbox" name="file"   id="file" value="">
-                            <?php echo  status_to_text1($objResult->member_id); ?>  
-                          </td>
+   <td> <input type="text" class="form-control" name="member_id" id="member_id" disabled=""> </td>
+                     
                            </tr>
                                            
                          </tbody>
@@ -170,11 +278,7 @@
                             </fieldset>
                       
 
-                 <?php
-                 } }
-                   ?>
-
-                      
+              
 
      
 

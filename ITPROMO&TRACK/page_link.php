@@ -185,8 +185,9 @@ case 'view2':
 		break;
 
 
-case 'std_track':
-		include('officer/std_track.php');
+
+case 'view_track':
+		include('officer/view_track.php');
 		break;
 
 #studet 		

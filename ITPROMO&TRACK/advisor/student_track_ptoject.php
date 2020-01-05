@@ -10,9 +10,13 @@
       dataType: 'JSON',
       success: function(data){
         $.each(data, function(i, o){
+          
+
         $('#advisergroup_status').val(o.advisergroup_status);
             $('#files_status').val(o.files_status);
-            $('#advisergroup_id').val(o.advisergroup_id);
+            $('#advisergroup_id').val(o.advisergroup_id);         
+                 $('#member_id').val(o.member_id);
+
           $('#files_id').val(o.files_id);
         });
       },
@@ -25,6 +29,8 @@
   }
 
 
+
+
   function confirm_deleteps(){
     var x = confirm("Please confirm to delete!");
     if(x){
@@ -33,6 +39,7 @@
       return false;
     }
   }
+
 
 
 </script>
@@ -119,10 +126,12 @@ $my_id = $_SESSION['id'];
     
 
   
-  
+            <link rel="stylesheet" href="asset/css/style.css">
+
   <!-- Modal -->
+
 <div class="modal fade" id="editPS" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -130,50 +139,183 @@ $my_id = $_SESSION['id'];
 
 
       <div class="modal-body">
-        <form class="form-horizontal" method="post" action="advisor/check_status.php">
+       <form method="post" action="student/check_files.php">
+                    <div class="col-sm-8 col-sm-offset-1 
+                    col-md-11 col-md-offset-4 
+                    col-lg-15 col-lg-offset-5 form-box">
+                      <div  class="f1">
+                        <div class="f1-steps">
+                          <div class="f1-progress">
+                              <div class="f1-progress-line" data-now-value="12.5" data-number-of-steps="4" style="width: 12.5%; " ></div>
+                          </div>
+                          <div class="f1-step active">
+                            <div class="f1-step-icon">PF01</div>
+                            <p>FormPF01</p>
+                          </div>
+                          <div class="f1-step">
+                        <div class="f1-step-icon">PF02</div>
+                              <p>FormPF02</p>
+                          </div>
+                          <div class="f1-step">
+                   <div class="f1-step-icon">PF03</div>
+                             <p>FormPF03</p>
+                          </div>
+                            <div class="f1-step">
+                 <div class="f1-step-icon">PF04</div>
+                             <p>FormPF04</p>
+                          </div>
+                                  <div class="f1-step">
+                 <div class="f1-step-icon">PF05</div>
+                             <p>FormPF045</p>
+                          </div>
+                
 
-                      <legend class="text-bold">Basic Inputs</legend>
-                                    <fieldset class="content-group">
-                                         <form action="#">
-                                            <div class="form-group row margin-top-10">
-                                                <div class="col-md-2">
-                                                    <label class="control-label col-form-label">Topic and Advisor</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="advisergroup_status" id="advisergroup_status">
-                                                </div>
-                                            </div>
-
-                                        
-                                                  <div class="form-group row">
-                                                <div class="col-md-2">
-                                                    <label class="control-label col-form-label">3 chapter</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="files_status" id="files_status" disabled="">
-                                                </div>
-                                            </div>
-
-
-         <input type="hidden" name="advisergroup_id" id="advisergroup_id">
-
-           <input type="hidden" name="files_id" id="files_id">
- 
-
-                          <button ype="submit" class="btn btn-primary btn-lg btn-block">Create</button>
-
-                      
-                          
                         </div>
-                        
-                                        </form>
-                                    </fieldset>
+ 
+                        <fieldset>
+                            <h4>Adviser Proposal Project Approval Letter</h4>
+
+
+                       <div class="row">
+                            <div class="card">
+                                <div class="card-block">
+                                    <table class="table">
+                                        <thead class="thead-default">
+                                            <tr>
+                                                <th>To do list</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                       <tbody>
+                                            <tr>
+                                             <td>Select Topic and Advisor</td>
+                          <td> <input type="text" class="form-control" name="advisergroup_status" id="advisergroup_status" disabled="">
+                            
+                          </td>
+                                            </tr>
+                                       
+                            
+                                  <tr>
+
+
+                                                <td> 3 chapter of Proposal  
+                </td>
+   <td>  <input type="text" class="form-control" name="files_status" id="files_status" disabled=""> </td>
+       
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+       <div class="progress">
+    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
+                                </div>
+                            </div>
+                        </div>
 
                          
+        <div class="f1-buttons">
+  <button type="button"   class="btn btn-next">Next</button>
+                                </div>
+                            </fieldset>
+                            
+                            <fieldset>
+                           <table class="table">
+                                        <thead class="thead-default">
+                                            <tr>
+                                                <th>To do list</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                       <tbody>
+                                            <tr>
+                                             <td>Select Topic</td>
+   <td> <input type="text" class="form-control" name="member_id" id="member_id" disabled=""> </td>
+                     
+                           </tr>
+                                           
+                         </tbody>
+                        </table>
 
-          
+                            
+                    
+                          <div class="f1-buttons">
+                                    <button type="button" class="btn btn-previous">Previous</button>
+                                    <button type="button" class="btn btn-next">Next</button>
+                                </div>
+                            </fieldset>
+
+
+
+
+                            <fieldset>
+                                <h4>Security question:</h4>
+                                <div class="form-group">
+                                    <label class="sr-only" for="f1-question">Question</label>
+                                    <input type="text" name="f1-question" placeholder="Question..." class="f1-question form-control" id="f1-question">
+                                </div>  
+                                <div class="form-group">
+                                    <label class="sr-only" for="f1-answer">Answer</label>
+                                    <input type="text" name="f1-answer" placeholder="Answer..." class="f1-answer form-control" id="f1-answer">
+                                </div>
+                                <div class="f1-buttons">
+                                    <button type="button" class="btn btn-previous">Previous</button>
+                                    <button type="button" class="btn btn-next">Next</button>
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                                <h4>Social media profiles:</h4>
+                                <div class="form-group">
+                                    <label class="sr-only" for="f1-facebook">Facebook</label>
+                                    <input type="text" name="f1-facebook" placeholder="Facebook..." class="f1-facebook form-control" id="f1-facebook">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="f1-twitter">Twitter</label>
+                                    <input type="text" name="f1-twitter" placeholder="Twitter..." class="f1-twitter form-control" id="f1-twitter">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="f1-google-plus">Google plus</label>
+                                    <input type="text" name="f1-google-plus" placeholder="Google plus..." class="f1-google-plus form-control" id="f1-google-plus">
+                                </div>
+                                <div class="f1-buttons">
+                                    <button type="button" class="btn btn-previous">Previous</button>
+                                    <button type="submit" class="btn btn-submit">Submit</button>
+                                </div>
+                            </fieldset>
+                      
+
+              
+
+     
+
+                    </div>
+
+
+
+                </div>
+                   
+              </form>
+ 
+
+
+</div>
+</div>
+</div>
+</form>
+
+
+ <script src="asset/js/jquery-1.11.1.min.js"></script>
+        <script src="asset/js/jquery.backstretch.min.js"></script>
+        <script src="asset/js/retina-1.1.0.min.js"></script>
+        <script src="asset/js/scripts.js"></script>
+   
+
+
 
 
    
+    </body>
 
-            <!-- /PAGE CONTENT -->
+</html>

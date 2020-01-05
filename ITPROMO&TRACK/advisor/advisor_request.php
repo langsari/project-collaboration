@@ -24,7 +24,7 @@ $my_id = $_SESSION['id'];
 
           $sql = "SELECT advisergroup.*, partnergroup.group_number FROM advisergroup
           LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
-         WHERE advisergroup.member_id = '$my_id' AND advisergroup_status = 'w'
+         WHERE advisergroup.member_id = '$my_id' AND advisergroup_status = 'Waiting'
           ORDER BY advisergroup.advisergroup_id DESC";
 
 
@@ -38,7 +38,7 @@ $my_id = $_SESSION['id'];
              <tr>                 
                   <td><?php echo $row->advisergroup_topic; ?></td>
                   <td><?php echo get_member_list($row->group_id); ?></td>
-                <td><?php echo status_for_advisor($row->advisergroup_status); ?></td>
+                <td><font color='blue'><?php echo $row->advisergroup_status; ?></font></td>
 
 
                     <td><a href="advisor/check_approve.php?id=<?php echo $row->advisergroup_id; ?>"class="btn btn-success btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i class='glyphicon glyphicon-ok'></i> Approve</a>
@@ -99,7 +99,7 @@ $my_id = $_SESSION['id'];
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.member_id = '$my_id'  AND files_status = 'w' 
+        WHERE advisergroup.member_id = '$my_id'  AND files_status = 'Waiting' 
 
                ";
 
@@ -116,7 +116,9 @@ $my_id = $_SESSION['id'];
                         <td class="text-center"><?php echo $row->advisergroup_topic; ?></td>
 
            <td><a href="student/download.php?pdf=<?php echo $row->files_filename_proposal ;?>">Download</a></td>
-                  <td class="text-center"><?php echo status_to_text($row->files_status); ?></td>
+
+               <td class="text-center"><font color='blue'><?php echo $row->files_status; ?></font></td>
+
   <td><a href="advisor/check_topic.php?id=<?php echo $row->files_id; ?>"class="btn btn-success btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i class='glyphicon glyphicon-ok'></i> Approve</a>
 
                 </tr>
