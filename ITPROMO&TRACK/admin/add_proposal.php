@@ -92,7 +92,7 @@
                    <td class="text-center"><?php echo $objResult->topic_years; ?></td>
                     <td class="text-center"><?php echo $objResult->position; ?></td>
                         <td class="text-center"><?php echo get_id_advisor($objResult->adviser); ?>  </td>
-                 <td class="text-center"><?php echo status($objResult->status); ?></td>
+  <td class="text-center"><?php echo get_status_project($objResult->status); ?></td>
 
                     <td>
                   <a href="delete/check_delete.php?id=<?php echo $objResult->topic_id;?>" title="Confirm" onclick="return confirm('<?php echo $objResult->topic_topic;?>')"> <i class="fa fa-eye" aria-hidden="true"></i></a>
@@ -250,11 +250,15 @@
              <label class="control-label col-form-label">Proposal status</label>
            </div>
              <div class="col-md-9">
-           <select class="form-control" name="status" name="status" value="<?php echo $objResult->status; ?>"   >
-                <option value="Proposal Approve">Proposal Appoved</option> 
-                <option value="Proposal not Approve"> Proposal Not Appoved</option>
-            
-              </select>
+           <select class="form-control" name="status" id="status" >
+                    <option value="1">Wait for the proposal Trail</option> 
+                    <option value="2">Revision Proposal</option>
+                    <option value="3">OK</option> 
+                    <option value="4">Reject</option>
+                    <option value="5">Cancel</option> 
+                    <option value="6">Graduate</option>
+                    <option value="7">Not Pass</option> 
+                                </select>
             </div>
           </div>
 

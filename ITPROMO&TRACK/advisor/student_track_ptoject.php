@@ -22,12 +22,13 @@ require 'menu/connect.php';
 $my_id = $_SESSION['id'];
 
 
-      $strSQL = "SELECT advisergroup.*,  advisergroup.group_id,files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic FROM advisergroup
+      $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic FROM advisergroup
+
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.member_id = '$my_id'  AND files_status = '1' 
+        WHERE advisergroup.member_id = '$my_id'   
                ";
 
 
@@ -42,7 +43,7 @@ $my_id = $_SESSION['id'];
                   <td><?php echo get_member_list($row->group_id); ?></td>
 
 
-               <td><a href="?page=view&id=<?php echo $row->group_id;?>"class="btn btn-success btn-xs"  ><i class='glyphicon glyphicon-ok'></i> View Track</a>
+               <td><a href="?page=view&id=<?php echo $row->advisergroup_id;?>"class="btn btn-success btn-xs"  ><i class='glyphicon glyphicon-ok'></i> View Track</a>
 
 
               

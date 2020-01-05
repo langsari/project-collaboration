@@ -15,7 +15,6 @@
      $('#topic_keyword').val(o.topic_keyword);
           $('#topic_fieldstudy').val(o.topic_fieldstudy);
             $('#topic_years').val(o.topic_years);
-          $('#status').val(o.status);
             $('#advisergroup_id').val(o.advisergroup_id);
        
 
@@ -121,7 +120,7 @@
 
                      <td class="text-center"><?php echo $objResult->topic_keyword; ?></td>
                 <td class="text-center"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
-                 <td class="text-center"><?php echo status($objResult->status); ?></td>
+  <td class="text-center"><?php echo get_status_project($objResult->status); ?></td>
 
                     
                            <td>            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editPS" onclick="edit_ps(<?php echo $objResult->advisergroup_id; ?>)"><i class="fa fa-edit"></i></button>
@@ -222,15 +221,7 @@
                                               
 
 
-                                               <div class="form-group row">
-                                                <div class="col-md-2">
-                                                    <label class="control-label col-form-label">Status</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="status" id="status" disabled="">
-                                                </div>
-                                            </div>
-
+                                           
 
                                             <div class="form-group row">
                                                 <div class="col-md-2">

@@ -30,6 +30,34 @@ else if($position == "Officer"){
 
 
 
+
+
+function get_status_project($statuspro){
+	if($statuspro == "1"){
+		return "<font color='blue'><i>Wait for the proposal Trail</i></font>";
+	}else if($statuspro == "2"){	
+			return "<font color='green'><i>Revision Proposal</i></font>";
+	}
+else if($statuspro == "3"){
+			return "<font color='black'><i>OK</i></font>";
+	}
+	else if($statuspro == "4"){
+			return "<font color='black'><i>Reject</i></font>";
+	}
+	else if($statuspro == "5"){
+			return "<font color='black'><i>Cancel</i></font>";
+	}
+	else if($statuspro == "6"){
+			return "<font color='black'><i>Graduate</i></font>";
+	}
+	else if($statuspro == "7"){
+			return "<font color='black'><i>Not Pass</i></font>";
+	}
+
+}
+
+
+
 function status($status){
 	if($status != "0"){
 		return "<span class='text-success'><i>Approved</i></span>";

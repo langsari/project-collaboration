@@ -41,7 +41,7 @@
 
   //Initialise Value to variable
 
-      $strSQL="SELECT advisergroup.*,advisergroup.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id, member.member_id,member.member_fullname,member.member_idcard ,topic_project.topic_id,topic_project.topic_abstrack,topic_project.topic_keyword ,topic_project.topic_years,topic_project.topic_fieldstudy,partnergroup.group_id,partnergroup.group_number
+      $strSQL="SELECT advisergroup.*,advisergroup.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id, member.member_id,member.member_fullname,member.member_idcard ,topic_project.topic_id,topic_project.topic_abstrack,topic_project.topic_keyword ,topic_project.topic_years,topic_project.topic_fieldstudy,partnergroup.group_id,partnergroup.group_number,topic_project.status
         FROM advisergroup
         LEFT JOIN topic_project ON advisergroup.advisergroup_id = topic_project.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
@@ -218,12 +218,8 @@
                                 
                               </div>
                               <div class="col-md-9">
-                                <select class="form-control" name="status" name="status" value="<?php echo $objResult->status; ?>"   >
-                                 <option value="Proposal Approve">Proposal Appoved</option> 
-                                 <option value="Proposal not Approve"> Proposal Not Appoved</option>
-            
-                                </select>
-                                
+  <td class="form-control" name="status"><?php echo get_status_project($objResult->status); ?></td>
+
                               </div>
                                
                              </div>

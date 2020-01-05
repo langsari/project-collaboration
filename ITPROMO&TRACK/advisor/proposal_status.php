@@ -16,7 +16,6 @@
      $('#topic_keyword').val(o.topic_keyword);
           $('#topic_fieldstudy').val(o.topic_fieldstudy);
             $('#topic_years').val(o.topic_years);
-          $('#status').val(o.status);
             $('#advisergroup_id').val(o.advisergroup_id);
           $('#topic_id').val(o.topic_id);
         });
@@ -59,7 +58,7 @@
 $my_id = $_SESSION['id'];
 
 
-$strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_abstrack,topic_project.topic_keyword ,topic_project.topic_years,topic_project.topic_fieldstudy,topic_project.status,topic_project.group_number FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number FROM advisergroup
           LEFT JOIN topic_project ON advisergroup.advisergroup_id = topic_project.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         
@@ -76,9 +75,7 @@ $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,to
                            <th>Group Code</th>
                             <th>Owner Project</th>
                       <th>Topic</th>
-                      <th>Abstrack</th>
-                      <th>Keyword</th>
-                      <th>Field </th>
+                     
                       <th>Status</th>
                                                <th>View</th>
 
@@ -99,12 +96,9 @@ $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,to
                      <td class="text-center"><?php echo substr($objResult->Owner, 0, 50); ?></td>
                     <td class="text-center"><?php echo $objResult->topic_topic; ?></td>
 
-                     <td class="text-center"><?php echo substr($objResult->topic_abstrack, 0, 50); ?></td>
-
-
-                     <td class="text-center"><?php echo $objResult->topic_keyword; ?></td>
-                <td class="text-center"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
-                 <td class="text-center"><?php echo status($objResult->status); ?></td>
+                  
+         
+  <td class="text-center"><?php echo get_status_project($objResult->status); ?></td>
 
                     
                            <td>            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editPS" onclick="edit_ps(<?php echo $objResult->advisergroup_id; ?>)"><i class="fa fa-edit"></i></button>
@@ -143,7 +137,7 @@ $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,to
 
 
       <div class="modal-body">
-        <form class="form-horizontal" method="post" action="admin/sql_editprojectschedule.php">
+        <form class="form-horizontal" method="post" action="advisor/check_status.php">
 
                       <legend class="text-bold">Basic Inputs</legend>
                                     <fieldset class="content-group">
@@ -205,15 +199,6 @@ $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,to
                                               
 
 
-                                               <div class="form-group row">
-                                                <div class="col-md-2">
-                                                    <label class="control-label col-form-label">Status</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="status" id="status" disabled="">
-                                                </div>
-                                            </div>
-
 
                                             <div class="form-group row">
                                                 <div class="col-md-2">
@@ -223,8 +208,6 @@ $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,to
               <textarea class="form-control" rows="10" name="topic_abstrack" id="topic_abstrack"  required></textarea>
                                                 </div>
                                             </div>
-                         <input type="hidden" name="topic_id" id="topic_id">
-                             <input type="hidden" name="advisergroup_id" id="advisergroup_id">
 
                              <!--get project Proposal status -->
                       
@@ -234,9 +217,14 @@ $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,to
                                 
                               </div>
                               <div class="col-md-9">
-                                <select class="form-control" name="status" name="status" value="<?php echo $objResult->status; ?>"   >
-                                 <option value="Proposal Approve">Proposal Appoved</option> 
-                                 <option value="Proposal not Approve"> Proposal Not Appoved</option>
+                            <select class="form-control" name="status" id="status" >
+                    <option value="1">Wait for the proposal Trail</option> 
+                    <option value="2">Revision Proposal</option>
+                    <option value="3">OK</option> 
+                    <option value="4">Reject</option>
+                    <option value="5">Cancel</option> 
+                    <option value="6">Graduate</option>
+                    <option value="7">Not Pass</option> 
             
                                 </select>
                                 
@@ -246,7 +234,13 @@ $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,to
                             
                           </div>
 
-      
+
+
+
+         <input type="hidden" name="advisergroup_id" id="advisergroup_id">
+
+                <input type="hidden" name="topic_id" id="topic_id">
+ 
 
                           <button ype="submit" class="btn btn-primary btn-lg btn-block">Create</button>
 
