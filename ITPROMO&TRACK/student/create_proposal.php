@@ -37,20 +37,15 @@
   // require 'menu/function.php';
   $my_id = $_SESSION['id'];
   $my_group_id = get_group_id($my_id);
-
-
   //Initialise Value to variable
-
       $strSQL="SELECT advisergroup.*,advisergroup.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id, member.member_id,member.member_fullname,member.member_idcard ,topic_project.topic_id,topic_project.topic_abstrack,topic_project.topic_keyword ,topic_project.topic_years,topic_project.topic_fieldstudy,partnergroup.group_id,partnergroup.group_number,topic_project.status
         FROM advisergroup
         LEFT JOIN topic_project ON advisergroup.advisergroup_id = topic_project.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
         WHERE advisergroup.group_id = '$my_group_id' AND partnergroup.group_id= '$my_group_id'";
-
       if ($result = $db->query($strSQL)) {
           while ($objResult = $result->fetch_object()) {
-
         ?>
 
           <div class="content">
@@ -69,25 +64,19 @@
                       <form action="#" class="form-horizontal">
 
                         <?php
-
                         $strSQL="SELECT * FROM member  WHERE member_id='".$_SESSION['id']."'";
-
                         ?>
 
                         <?php
-
                         if ($result = $db->query($strSQL)) {
                           while ($row = $result->fetch_object()) {
                         ?>
 
                         <?php
                         $sql ="SELECT * FROM member WHERE group_id = '$my_group_id'";
-
                         if ($rs = $db->query($sql)) {
-
                           if ($rs->num_rows > 0) {
                             while ($ro = $rs->fetch_object()) {
-
                               
                             }
                           }
@@ -227,6 +216,8 @@
                           </div>
 
                           <input type="text" class="form-control" id="position" name="position" value="2" hidden="">
+
+
 
 <td><div align="center"> <input type="hidden" name="topic_id" value="<?php echo $objResult->topic_id; ?>" /></div></td></tr>
 

@@ -1,6 +1,5 @@
 
 
-
 <script type="text/javascript">
   function edit_ps(id){
     $.ajax({
@@ -27,8 +26,6 @@
       }
     });
   }
-
-
   function confirm_deleteps(){
     var x = confirm("Please confirm to delete!");
     if(x){
@@ -37,8 +34,6 @@
       return false;
     }
   }
-
-
 </script>
 
   
@@ -50,21 +45,13 @@
  
                                    <h5 class="mt-3">All Final Project Topics</h5>
    <?php
-
                   //   require 'menu/function.php';
-
-
-
 $my_id = $_SESSION['id'];
-
-
 $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number FROM advisergroup
           LEFT JOIN topic_project ON advisergroup.advisergroup_id = topic_project.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         
          WHERE advisergroup.member_id = '$my_id'";
-
-
               ?>
 
 

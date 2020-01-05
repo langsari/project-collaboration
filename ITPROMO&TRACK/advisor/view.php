@@ -35,14 +35,14 @@
                         </div>
  <?php
  require 'menu/connect.php';
-  $my_id = $_SESSION['id'];
 
-            $g_id = get_group_id1($my_id);
+
+        
 
     $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.member_id FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.advisergroup_id = '$g_id'";           
+        WHERE advisergroup.advisergroup_id";           
 
 
      if($result = $db->query($strSQL)){
