@@ -39,7 +39,7 @@
             $g_id = get_group_id();
               $ag_id = get_ag_id($g_id);
 
-    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.member_id FROM advisergroup
+    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.member_id,files.Owner FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.advisergroup_id = '$ag_id'";                 
@@ -75,6 +75,13 @@
                             
                                   <tr>
 
+
+<!--get Project Owner  -->
+                   
+                                <td class="form-control" name="Owner" hidden=""><?php echo get_member_list1($objResult->group_id); ?></td>
+                                
+                          
+<!--get Topic   -->
 
                                                 <td> 3 chapter of Proposal  
 

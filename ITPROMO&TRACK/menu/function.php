@@ -370,6 +370,28 @@ require 'connect.php';
 }
 
 
+
+//Function to get member of the group
+function get_member_list1($group_id){
+	$rows = "";
+require 'connect.php';
+  $sql = "SELECT member_fullname, member_idcard FROM member WHERE group_id = '$group_id'";
+	if($rs = $db->query($sql)){
+		if($rs->num_rows > 0){
+			while($row = $rs->fetch_object()){
+        $rows .= "".$row->member_idcard." ".$row->member_fullname."";
+			}
+		}else{
+			
+		}
+		return $rows;
+		$db->close();
+	}else{
+		echo $db->error;
+		$db->close();
+	}
+}
+
 //Select topic name from TABLE_REQEUST_TOPIC
 function get_files($files_id){
 require 'connect.php';
