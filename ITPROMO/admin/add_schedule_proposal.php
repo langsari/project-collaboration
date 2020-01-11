@@ -231,8 +231,7 @@
  <h6 class="card-title text-bold">Schedule Proposal</h6>              
 
      <?php
- 
- require 'menu/function.php';
+
 
 
    $strSQL = "SELECT  schedule.schedule_id, schedule.schedule_round,  schedule.schedule_type, schedule.schedule_years,schedule.schedule_time,schedule.schedule_date,schedule.member_id,schedule.advisergroup_id,schedule.admin_id,admin.admin_fullname

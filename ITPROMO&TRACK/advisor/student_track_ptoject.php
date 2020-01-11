@@ -130,6 +130,7 @@ $my_id = $_SESSION['id'];
 
   <!-- Modal -->
 
+
 <div class="modal fade" id="editPS" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -168,10 +169,8 @@ $my_id = $_SESSION['id'];
                  <div class="f1-step-icon">PF05</div>
                              <p>FormPF045</p>
                           </div>
-                
-
-                        </div>
- 
+        
+</div>
                         <fieldset>
                             <h4>Adviser Proposal Project Approval Letter</h4>
 
@@ -319,3 +318,4 @@ $my_id = $_SESSION['id'];
     </body>
 
 </html>
+

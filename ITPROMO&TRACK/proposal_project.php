@@ -1,47 +1,4 @@
 
-
-<script type="text/javascript">
-  function edit_ps(id){
-    $.ajax({
-      url: 'get_proposal_project.php',
-      data: ({id: id}),
-      type: 'POST',
-      dataType: 'JSON',
-      success: function(data){
-        $.each(data, function(i, o){
-              $('#Owner').val(o.Owner);
-          $('#topic_topic').val(o.topic_topic);
-          $('#topic_abstrack').val(o.topic_abstrack);
-     $('#topic_keyword').val(o.topic_keyword);
-          $('#topic_fieldstudy').val(o.topic_fieldstudy);
-            $('#topic_years').val(o.topic_years);
-            $('#advisergroup_id').val(o.advisergroup_id);
-       
-
-
-          $('#topic_id').val(o.topic_id);
-        });
-      },
-      error: function (request, error) {
-        console.log(error);
-        console.log(arguments);
-        alert("Network Error!");
-      }
-    });
-  }
-
-
-  function confirm_deleteps(){
-    var x = confirm("Please confirm to delete!");
-    if(x){
-      return true;
-    }else{
-      return false;
-    }
-  }
-
-
-</script>
 <style>
     ul.breadcrumb {
       background-color: #eee;
@@ -115,16 +72,21 @@
                      <td class="text-center"><?php echo substr($objResult->Owner, 0, 50); ?></td>
                     <td class="text-center"><?php echo $objResult->topic_topic; ?></td>
 
-                     <td class="text-center"><?php echo substr($objResult->topic_abstrack, 0, 50); ?></td>
+                     <td class="text-center"><?php echo substr($objResult->topic_abstrack, 0, 30); ?></td>
 
 
                      <td class="text-center"><?php echo $objResult->topic_keyword; ?></td>
                 <td class="text-center"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
-  <td class="text-center"><?php echo get_status_project($objResult->status); ?></td>
+           <td class="text-center"><?php echo get_status_project($objResult->status); ?></td>
 
                     
-                           <td>            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editPS" onclick="edit_ps(<?php echo $objResult->advisergroup_id; ?>)"><i class="fa fa-edit"></i></button>
+             <td>            <button type="button" class="btn btn-primary btn-xs  view_data" name="view" value="view" id="<?php echo $objResult->topic_id; ?>"><i class="fa fa-eye"></i></button>
 </td> 
+
+                         
+
+
+                             
 
 
 
@@ -149,97 +111,47 @@
 
   
   
-  <!-- Modal -->
-<div class="modal fade" id="editPS" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-
-
-      <div class="modal-body">
-        <form class="form-horizontal" method="post" action="admin/sql_editprojectschedule.php">
-
-                      <legend class="text-bold">Basic Inputs</legend>
-                                    <fieldset class="content-group">
-                                         <form action="#">
-                                            <div class="form-group row margin-top-10">
-                                                <div class="col-md-2">
-                                                    <label class="control-label col-form-label">Owner</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="Owner" id="Owner" disabled="">
-                                                </div>
-                                            </div>
-
-                                         
-                                            <div class="form-group row">
-                                                <div class="col-md-2">
-                                                    <label class="control-label col-form-label">Topic Project</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="topic_topic" id="topic_topic" disabled="">
-                                                </div>
-                                            </div>
-
-                                      
-
-
-                                            <div class="form-group row">
-                                                <div class="col-md-2">
-                                                    <label class="control-label col-form-label">Keyword</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control"  name="topic_keyword" id="topic_keyword"disabled="">
-                                                </div>
-                                            </div>
-
-
-
-                                            <div class="form-group row">
-                                                <div class="col-md-2">
-                                                    <label class="control-label col-form-label">Field of study</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="topic_fieldstudy" id="topic_fieldstudy" >
-                                                </div>
-                                            </div>
-
-
-
-
-                                            <div class="form-group row">
-                                                <div class="col-md-2">
-                                                    <label class="control-label col-form-label">Years</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="topic_years" id="topic_years" disabled="">
-                                                </div>
-                                            </div>
-
-                                              
-
-
-                                           
-
-                                            <div class="form-group row">
-                                                <div class="col-md-2">
-                                                    <label class="control-label col-form-label">Placeholder</label>
-                                                </div>
-                                                <div class="col-md-10">
-              <textarea class="form-control" rows="10" name="topic_abstrack" id="topic_abstrack"  required></textarea>
-                                                </div>
-                                            </div>
-                         <input type="hidden" name="topic_id" id="topic_id">
-                                        </form>
-                                    </fieldset>
-
-                         
 
           
 
 
    
 
-            <!-- /PAGE CONTENT -->
+            <!-- /PAGE CONTENT --></html>  
+
+ <div id="dataModal" class="modal fade">  
+      <div class="modal-dialog">  
+           <div class="modal-content">  
+                <div class="modal-header">  
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                     <h4 class="modal-title"> Details</h4>  
+                </div>  
+                <div class="modal-body" id="employee_detail">  
+                </div>  
+                <div class="modal-footer">  
+                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                </div>  
+           </div>  
+      </div>  
+ </div>  
+ 
+      
+ <script>  
+    
+      $(document).on('click', '.view_data', function(){  
+           var id = $(this).attr("id");  
+           if(id != '')  
+           {  
+                $.ajax({  
+                     url:"get_proposal_project.php",  
+                     type:"POST",  
+                     data:{id:id},  
+                     success:function(data){  
+                          $('#employee_detail').html(data);  
+                          $('#dataModal').modal('show');  
+                     }  
+                });  
+           }            
+      });  
+
+ </script>

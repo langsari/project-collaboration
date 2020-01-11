@@ -1,5 +1,4 @@
-
-   <div class="content">
+<div class="content">
                      <div class="row">
                         <div class="col-md-12">
                             <div class="card">
@@ -18,18 +17,11 @@
                                         <tbody>
                                           <?php
 require 'menu/connect.php';
-
 $my_id = $_SESSION['id'];
-
-
           $sql = "SELECT advisergroup.*, partnergroup.group_number FROM advisergroup
           LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
          WHERE advisergroup.member_id = '$my_id' AND advisergroup_status = 'Waiting'
           ORDER BY advisergroup.advisergroup_id DESC";
-
-
-
-
               if($rs = $db->query($sql)){
                 while($row = $rs->fetch_object()){
               ?>
@@ -89,25 +81,13 @@ $my_id = $_SESSION['id'];
               
               <?php
 require 'menu/connect.php';
-
-
 $my_id = $_SESSION['id'];
-
-
-    $strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic FROM advisergroup
+    $strSQL = "SELECT advisergroup.*,  files.files_status,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
-
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-
         WHERE advisergroup.member_id = '$my_id'  AND files_status = 'Waiting' 
-
                ";
-
-
-
        
-
-
               if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
               ?>

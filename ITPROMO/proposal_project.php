@@ -39,32 +39,26 @@
                                    <h6 class="card-title text-bold">All Final Projects Proposal</h6></b>
    <?php
 
-                     require 'menu/function.php';
+                  //   require 'menu/function.php';
 
 
+ $strSQL = "SELECT * FROM topic_project  ";
 
-          $strSQL = "SELECT advisergroup.*, partnergroup.group_number,member.member_fullname,member.member_idcard  FROM advisergroup
-          LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
-
-        LEFT JOIN member ON advisergroup.group_id = member.member_id
-
-        WHERE advisergroup.advisergroup_id ";
 
 
               ?>
 
 
       <table class="display datatable table table-stripped" cellspacing="0" width="100%">
-          <thead bgcolor="gray">
-              </br>
+          <thead>
              <tr>
                         <th>No</th>   
-                        <th>ID</th>
-                        <th>Name</th>
+                           <th>Group Code</th>
+                            <th>Owner Project</th>
                       <th>Topic</th>
                       <th>Abstrack</th>
                       <th>Keyword</th>
-                      <th>Field of Study</th>
+                      <th>Field </th>
                       <th>Status</th>
                                                <th>View</th>
 
@@ -79,20 +73,23 @@
 
            <tbody>
             <tr>
-                     <td class="text-center"><?php echo $objResult->advisergroup_id; ?></td>
-                     <td class="text-center"><?php echo $objResult->member_idcard; ?></td>
-                     <td class="text-center"><?php echo $objResult->member_fullname; ?></td>
-                    <td class="text-center"><?php echo $objResult->advisergroup_topic; ?></td>
-  <td><a href="#" name="view" value="view" id="<?php echo $objResult->advisergroup_id; ?>" class=" view_data"><?php echo $objResult->project_abstrack; ?></a></td>
+                     <td class="text-center"><?php echo $objResult->topic_id; ?></td>
+                     <td class="text-center"><?php echo $objResult->group_number; ?></td>
+
+                     <td class="text-center"><?php echo substr($objResult->Owner, 0, 50); ?></td>
+                    <td class="text-center"><?php echo $objResult->topic_topic; ?></td>
+
+                     <td class="text-center"><?php echo substr($objResult->topic_abstrack, 0, 50); ?></td>
 
 
-                     <td class="text-center"><?php echo $objResult->project_keyword ?></td>
-                <td class="text-center"><?php echo fieldstudy($objResult->project_fieldstudy); ?></td>
-                 <td class="text-center"><?php echo status($objResult->project_status); ?></td>
-                 <td><input type="button" name="view" value="view" id="<?php echo $objResult->advisergroup_id; ?>" class="btn btn-info btn-xs view_data" /></td>  
+                     <td class="text-center"><?php echo $objResult->topic_keyword; ?></td>
+                <td class="text-center"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
+  <td class="text-center"><?php echo get_status_project($objResult->status); ?></td>
 
                     
-                  
+                           <td>           <td><input type="button" name="view" value="view" id="<?php echo $objResult->advisergroup_id; ?>" class="btn btn-info btn-xs view_data" /></td>  
+
+</td> 
 
 
 
@@ -105,10 +102,6 @@
                }
                    ?>
 
-
- 
-
-       
                                         </tbody>
                                     </table>
                                 </div>
@@ -117,8 +110,12 @@
                     </div>
                 </div>
 
+    
+
+  
       
    </html>  
+
  <div id="dataModal" class="modal fade">  
       <div class="modal-dialog">  
            <div class="modal-content">  
@@ -139,13 +136,13 @@
  <script>  
     
       $(document).on('click', '.view_data', function(){  
-           var employee_ids = $(this).attr("id");  
-           if(employee_ids != '')  
+           var id = $(this).attr("id");  
+           if(id != '')  
            {  
                 $.ajax({  
                      url:"select1.php",  
                      method:"POST",  
-                     data:{employee_ids:employee_ids},  
+                     data:{id:id},  
                      success:function(data){  
                           $('#employee_detail').html(data);  
                           $('#dataModal').modal('show');  

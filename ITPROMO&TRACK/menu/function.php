@@ -32,30 +32,31 @@ else if($position == "Officer"){
 
 
 
-function get_status_project($statuspro){
-	if($statuspro == "1"){
-		return "<font color='blue'><i>Wait for the proposal Trail</i></font>";
-	}else if($statuspro == "2"){	
-			return "<font color='green'><i>Revision Proposal</i></font>";
+
+
+function get_status_track($track){
+	if($track == "1"){
+		return "<font color='blue'><i>PF01</i></font>";
+	}else if($track == "2"){	
+			return "<font color='green'><i>PF02</i></font>";
 	}
-else if($statuspro == "3"){
-			return "<font color='black'><i>OK</i></font>";
+else if($track == "3"){
+			return "<font color='black'><i>PF03</i></font>";
 	}
-	else if($statuspro == "4"){
+	else if($track == "4"){
 			return "<font color='black'><i>Reject</i></font>";
 	}
-	else if($statuspro == "5"){
+	else if($track == "5"){
 			return "<font color='black'><i>Cancel</i></font>";
 	}
-	else if($statuspro == "6"){
+	else if($track == "6"){
 			return "<font color='black'><i>Graduate</i></font>";
 	}
-	else if($statuspro == "7"){
+	else if($track == "7"){
 			return "<font color='black'><i>Not Pass</i></font>";
 	}
 
 }
-
 
 
 function status($status){
@@ -314,7 +315,7 @@ require 'connect.php';
 
 $sql = "SELECT advisergroup.member_id,advisergroup.advisergroup_topic FROM advisergroup
 LEFT JOIN member ON advisergroup.member_id = member.member_id
-					WHERE advisergroup.group_id = '$group_id' AND advisergroup.advisergroup_status = '1'";
+					WHERE advisergroup.group_id = '$group_id' AND advisergroup.advisergroup_status = 'Approve'";
 	if($rs = $db->query($sql)){
 		if($row = $rs->fetch_object()){
 			return $row->advisergroup_topic;
@@ -438,12 +439,59 @@ function status_for_advisor($status){
 }
 
 
-function status_to_text($status){
+function status_files($status){
 	if($status == 'w'){
 		return "<span class='text-info'>Waiting</span>";
 	}else if($status == '1'){
 		return "<span class='text-success'>Approved</span>";
 	}
+	else if($statuspro == "2"){
+			return "<font color='black'><i>OK</i></font>";
+	}
+	else if($statuspro == "3"){
+			return "<font color='black'><i>Reject</i></font>";
+	}
+	else if($statuspro == "4"){
+			return "<font color='black'><i>Cancel</i></font>";
+	}
+	else if($statuspro == "5"){
+			return "<font color='black'><i>Graduate</i></font>";
+	}
+	else if($statuspro == "6"){
+			return "<font color='black'><i>Not Pass</i></font>";
+	}
+
+else if($statuspro == "67"){
+			return "<font color='black'><i>Not Pass</i></font>";
+	}
+
+}
+
+
+
+
+function get_status_project($statuspro){
+	if($statuspro == "1"){
+		return "<font color='blue'><i>Wait for the proposal Trail</i></font>";
+	}else if($statuspro == "2"){	
+			return "<font color='green'><i>Revision Proposal</i></font>";
+	}
+else if($statuspro == "3"){
+			return "<font color='black'><i>OK</i></font>";
+	}
+	else if($statuspro == "4"){
+			return "<font color='black'><i>Reject</i></font>";
+	}
+	else if($statuspro == "5"){
+			return "<font color='black'><i>Cancel</i></font>";
+	}
+	else if($statuspro == "6"){
+			return "<font color='black'><i>Graduate</i></font>";
+	}
+	else if($statuspro == "7"){
+			return "<font color='black'><i>Not Pass</i></font>";
+	}
+
 }
 
 

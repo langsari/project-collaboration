@@ -28,13 +28,13 @@ mysql_select_db($dbname,$link) or die ("Could not select $dbname database");
 $my_id = $_SESSION['id'];
 
 
-     $sql = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,files.Owner,advisergroup.advisergroup_topic,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number FROM advisergroup
+     $sql = "SELECT advisergroup.*,  files.files_status,files.pf,files.files_id,files.files_filename_proposal,files.Owner,advisergroup.advisergroup_topic,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.member_id = '$my_id'  AND files_status  
+        WHERE advisergroup.member_id = '$my_id'  AND pf  
                ";
 
 $result = mysql_query($sql) or die("Couldn't execute query");
@@ -49,12 +49,14 @@ $result = mysql_query($sql) or die("Couldn't execute query");
       google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Group', 'Status'  ],
+          ['Group', 'PF'  ],
         
   <?php
 while ($row= mysql_fetch_array($result)) { 
 ?>
-   ['<?=$row["Owner"]?>', <?=$row["files_status"]?>],     
+      
+   ['<?php echo $row["Owner"]?>', <?php echo $row["pf"]?>],
+
 
 
  <?php

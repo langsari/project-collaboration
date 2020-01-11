@@ -400,8 +400,7 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
                   <td><?php echo get_groupcode($row->group_id); ?></td>
                   <td><?php echo $row->advisergroup_topic; ?></td>
                   <td><?php echo $row->member_fullname; ?></td>
-         <td class="text-center" ><font color='blue'><?php echo $row->advisergroup_status; ?></font></td>
-
+ <td class="text-center"><?php echo $row->advisergroup_status; ?></td>
                 </tr>
 
 

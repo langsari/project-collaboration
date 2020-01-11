@@ -3,7 +3,7 @@
 <script type="text/javascript">
   function edit_ps(id){
     $.ajax({
-      url: 'get_proposal_project.php',
+      url: 'more.php',
       data: ({id: id}),
       type: 'POST',
       dataType: 'JSON',

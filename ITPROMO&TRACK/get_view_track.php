@@ -9,13 +9,18 @@ $rows = array();
  
       $output = '';  
       $connect = mysqli_connect("localhost", "root", "", "itpromo_track");     
-       $query = "SELECT * FROM topic_project WHERE topic_id = '$id'";
+       $query = "SELECT * FROM files WHERE files_id = '$id'";
       $objQuery = $connect->query($query);
       $output .= '  
+
+
       <div class="table-responsive">  
            <table class="table table-bordered">';  
+
+           
                         while($row = $objQuery->fetch_object()){
      $output .= '  
+
 
                  <tr>  
 

@@ -23,5 +23,9 @@ require 'menu/connect.php';
 		echo $db->error;
 		$db->close();
 	}
+
+
+	
 }
+
 ?>

@@ -1,4 +1,4 @@
-        <link rel="stylesheet" href="asset/css/style.css">
+     <link rel="stylesheet" href="asset/css/style.css">
 
               <div class="content">
                <form action="student/check_files.php" method="post" enctype="multipart/form-data" name="upfile" id="upfile">
@@ -38,7 +38,6 @@
  <?php
             $g_id = get_group_id();
               $ag_id = get_ag_id($g_id);
-
     $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.member_id,files.Owner FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
@@ -201,7 +200,6 @@
  
  <?php
 include("student/chat.php");
-
  ?>
 
 

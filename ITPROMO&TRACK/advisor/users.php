@@ -16,7 +16,7 @@ $my_id = $_SESSION['id'];
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.member_id = '$my_id'  AND files_status = '1' 
+        WHERE advisergroup.member_id = '$my_id'  AND files_status  
                ";
 
 
