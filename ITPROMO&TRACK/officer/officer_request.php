@@ -3,22 +3,20 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-block">
-                                    <legend class="text-bold margin-top-2.5"> Advisor Request</legend>
+                                    <legend class="text-bold margin-top-2.5"> Proposal Project and PF01 Request</legend>
 
                                      <table class="table">
                                         <thead class="thead-default">
                                            <tr>
                   <th>Title project</th>
                   <th>Student</th>
-                    <th>Status</th>
-                <th></th>
-                <th></th>
+                <th>Files</th>
+                <th>Options</th>
                 </tr>
                                         </thead>
                                         <tbody>
       <?php
 require 'menu/connect.php';
-
 $my_id = $_SESSION['id'];
 
     $strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic ,files.member_id FROM advisergroup
@@ -34,11 +32,12 @@ $my_id = $_SESSION['id'];
                 while($row = $rs->fetch_object()){
               ?>
                <tr>
-                  <td class="text-center"><?php echo get_member_list($row->group_id); ?></td>
-                        <td class="text-center"><?php echo $row->advisergroup_topic; ?></td>
-                       <td><a href="student/download.php?pdf=<?php echo $row->files_filename_proposal ;?>">Download</a></td>
+                  <td ><?php echo get_member_list($row->group_id); ?></td>
+                        <td ><?php echo $row->advisergroup_topic; ?></td>
 
-               <td class="text-center"><font color='blue'><?php echo $row->member_id; ?></font></td>
+
+                       <td><a href="student/download.php?pdf=<?php echo $row->files_filename_proposal ;?>"><i class="fa fa-download"></i></a></td>
+
                  <td><a href="officer/check_approved.php?id=<?php echo $row->files_id; ?>"class="btn btn-success btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i class='glyphicon glyphicon-ok'></i> Approve</a>
 
                 </tr>

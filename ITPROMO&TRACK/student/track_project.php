@@ -61,14 +61,14 @@
                                             <tr>
                                              <td>Select Topic</td>
                           <td> 
-                            <font color='green'><?php echo $objResult->advisergroup_status; ?></font>
+                            <span class="badge badge-success"> <?php echo $objResult->advisergroup_status; ?></span>
                             
                           </td>
                                             </tr>
                                             <tr>
                                          <td>Select Advisor</td>
                                         <td> 
-                             <font color='green'> <?php echo $objResult->advisergroup_status; ?></font>
+                             <span class="badge badge-success"> <?php echo $objResult->advisergroup_status; ?></span>
                                                  </td>
                                             </tr>
                             
@@ -90,10 +90,10 @@
 
 
                 </td>
-   <td> <font color='green'> <?php echo $objResult->files_status; ?> </font></td>
+   <td> <span class="badge badge-success"> <?php echo $objResult->files_status; ?></span><p><font color='red'> *For Advisor</font></td>
        
 
-    <td><a href="student/download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>">Download</a></td>
+    <td><a href="student/download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>"><i class="fa fa-download"></i></a></td>
 
                                             </tr>
                                         </tbody>
@@ -127,7 +127,7 @@
                                             <tr>
                                              <td>Select Topic</td>
                           <td> 
-                           <font color='green'> <?php echo $objResult->member_id; ?> </font> 
+                  <span class="badge badge-success"><?php echo $objResult->member_id; ?> </span> <p> <font color='red'> *For Officer</font>
                           </td>
                            </tr>
                                            

@@ -3,7 +3,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-block">
-                                    <legend class="text-bold margin-top-2.5"> Advisor Request</legend>
+                                    <h4><legend class="text-bold margin-top-2.5"> Advisor and Topic Request</legend></h4>
 
                                      <table class="table">
                                         <thead class="thead-default">
@@ -30,11 +30,12 @@ $my_id = $_SESSION['id'];
              <tr>                 
                   <td><?php echo $row->advisergroup_topic; ?></td>
                   <td><?php echo get_member_list($row->group_id); ?></td>
-                <td><font color='blue'><?php echo $row->advisergroup_status; ?></font></td>
+                <td><h6> <span class="badge badge-danger"><?php echo $row->advisergroup_status; ?></span></td>
 
 
-                    <td><a href="advisor/check_approve.php?id=<?php echo $row->advisergroup_id; ?>"class="btn btn-success btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i class='glyphicon glyphicon-ok'></i> Approve</a>
-               <a href="advisor/check_approve.php?id=<?php echo $row->advisergroup_id; ?>"class="btn btn-danger btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i class='glyphicon glyphicon-ok'></i> Reject</a>
+           <td><a href="advisor/check_approve.php?id=<?php echo $row->advisergroup_id; ?>"class="btn btn-success btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i class='glyphicon glyphicon-ok'></i> Approve</a>
+
+          <a href="advisor/check_approve.php?id=<?php echo $row->advisergroup_id; ?>"class="btn btn-danger btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i class='glyphicon glyphicon-ok'></i> Reject</a>
 
                     </td>
 
@@ -53,19 +54,15 @@ $my_id = $_SESSION['id'];
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
-                        </div>
+                              </div>
 
 
-
-   
-
-   <div class="content">
+                        
                      <div class="row">
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-block">
-                                    <legend class="text-bold margin-top-2.5"> Advisor Request</legend>
+                                    <legend class="text-bold margin-top-2.5"> 3 chapter of Proposal   Request</legend>
 
                                      <table class="table">
                                         <thead class="thead-default">
@@ -92,12 +89,10 @@ $my_id = $_SESSION['id'];
                 while($row = $rs->fetch_object()){
               ?>
                 <tr>
-                  <td class="text-center"><?php echo get_member_list($row->group_id); ?></td>
-                        <td class="text-center"><?php echo $row->advisergroup_topic; ?></td>
-
-           <td><a href="student/download.php?pdf=<?php echo $row->files_filename_proposal ;?>">Download</a></td>
-
-               <td class="text-center"><font color='blue'><?php echo $row->files_status; ?></font></td>
+                        <td ><?php echo $row->advisergroup_topic; ?></td>
+                  <td ><?php echo get_member_list($row->group_id); ?></td>
+               <td><h6> <span class="badge badge-danger"><?php echo $row->files_status; ?></span></td>
+  <td><a href="student/download.php?pdf=<?php echo $row->files_filename_proposal ;?>"><i class="fa fa-download"></i></a></td>
 
   <td><a href="advisor/check_topic.php?id=<?php echo $row->files_id; ?>"class="btn btn-success btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i class='glyphicon glyphicon-ok'></i> Approve</a>
 
@@ -113,6 +108,15 @@ $my_id = $_SESSION['id'];
                                 </div>
                             </div>
                         </div>
+
+                            </div>
+                        </div>
+
+
+
+   
+
+  
 
           <?php
 include 'advisor/text.php';

@@ -41,7 +41,7 @@
                                     <h6 class="card-title text-bold">Default Datatable</h6>                         
      <?php
 //require 'menu/function.php';
- $strSQL = "SELECT * FROM member  ";
+ $strSQL = "SELECT * FROM member ORDER BY admin_id desc  ";
   
 ?>
    <table class="display datatable table table-stripped" cellspacing="0" width="100%">

@@ -268,7 +268,7 @@
                                <label class="control-label col-form-label">Topic</label>
                                  </div>
                        <div class="col-md-9">
-                                        <input type="text" class="form-control" id="advisergroup_topic" name="advisergroup_topic"placeholder="project topic name" autocomplete="off" required aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" id="advisergroup_topic" name="advisergroup_topic"placeholder="project topic name" autocomplete="off"  aria-describedby="basic-addon1">
                                                     </div>
                                                 </div>
 
@@ -400,7 +400,7 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
                   <td><?php echo get_groupcode($row->group_id); ?></td>
                   <td><?php echo $row->advisergroup_topic; ?></td>
                   <td><?php echo $row->member_fullname; ?></td>
- <td class="text-center"><?php echo $row->advisergroup_status; ?></td>
+ <td class="text-center"><span class="badge badge-success"><?php echo $row->advisergroup_status;?></span> <font color='red'> *For Advisor</font> </td>
                 </tr>
 
 

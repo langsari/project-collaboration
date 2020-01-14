@@ -12,10 +12,9 @@ thead {color:green;}
                                         <thead class="thead-default">
                                                               
                       <th>No</th>
-                      <th>Group</th>
                       <th>Name</th>
                       <th>Title Project</th>
-                      <th>Status Presentaiton</th>
+                      <th>Status</th>
                       <th>Advisor</th>
                        <th>Committee</th>
                        <th>Date</th>
@@ -27,10 +26,11 @@ thead {color:green;}
 
 
     <?php
+  $strSQL = "SELECT schedule.*, partnergroup.group_id,partnergroup.group_number,member.member_fullname,schedule.writer,schedule.group_id,advisergroup.group_id,advisergroup.advisergroup_topic FROM schedule
+                     LEFT JOIN advisergroup ON schedule.group_id = advisergroup.advisergroup_id
 
-  $strSQL = "SELECT schedule.*, partnergroup.group_id,partnergroup.group_number,member.member_fullname FROM schedule
-               LEFT JOIN partnergroup ON schedule.group_id = partnergroup.group_id
-               LEFT JOIN member ON schedule.member_id = member.member_id
+                   LEFT JOIN partnergroup ON schedule.group_id = partnergroup.group_id
+                        LEFT JOIN member ON schedule.writer = member.member_id
                WHERE   schedule.schedule_type ='2' ";
         ?>
        
@@ -41,7 +41,6 @@ thead {color:green;}
            <tbody>
             <tr>
                         <td class="text-center"><?php echo $objResult->schedule_id; ?></td>
-                        <td class="text-center"> <?php echo $objResult->group_number; ?></td>
                   <td class="text-center"><?php echo get_member_list($objResult->group_id); ?></td>
                   <td class="text-center"><?php echo get_topic($objResult->group_id); ?></td>
                     <td class="text-center"><?php echo $objResult->schedule_status ?></td>

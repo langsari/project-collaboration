@@ -4,7 +4,7 @@
 <script type="text/javascript">
   function edit_ps(id){
     $.ajax({
-      url: 'get_track.php',
+      url: 'advisor/get_track.php',
       data: ({id: id}),
       type: 'POST',
       dataType: 'JSON',

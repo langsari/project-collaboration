@@ -295,27 +295,19 @@ if($user_rank == "admin"):
 
 
 
-
-
-<li class="active treeview">
-  <a href="#">
-    <i class="fa fa-book"></i> <span>Projects</span> 
+<li class="treeview">
+  <a href="?page=officer_request">
+    <i class="fa fa-paper-plane"></i> <span>Request</span>
   </a>
-  <ul class="treeview-menu">
-    <li>
-      <a href="?page=officer_request">
-        <i class="fa fa-circle-o"></i> Project Track
-      </a>
-    </li>
-
-        <li>
-      <a href="?page=view_track">
-        <i class="fa fa-circle-o"></i> Student Track
-      </a>
-    </li>
-
-</ul>
 </li>
+
+
+<li class="treeview">
+  <a href="?page=view_track">
+    <i class="fa fa-book"></i> <span>Student Track</span>
+  </a>
+</li>
+
 
 
 <li class="active treeview">

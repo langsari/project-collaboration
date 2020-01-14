@@ -3,7 +3,7 @@
 <script type="text/javascript">
   function edit_ps(id){
     $.ajax({
-      url: 'more.php',
+     url: 'advisor/read_more.php',
       data: ({id: id}),
       type: 'POST',
       dataType: 'JSON',

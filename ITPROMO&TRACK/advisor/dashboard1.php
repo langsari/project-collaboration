@@ -1,5 +1,18 @@
  
 
+ 
+         
+                    <div class="card-block">
+                         
+
+          <button type="button"    style="height:110px; width:210px"  class="btn btn-secondary"><h2><i class="fa fa-users position-left"></i></h2><a href="?page=users"><h5>Users</button></a>
+
+          <button type="button" style="height:110px; width:210px"  class="btn btn-info"><h2><i class="fa fa-users position-left"></i></h2><a href="?page=users"><h4>Users</button></a>
+
+
+          <button type="button"      style="height:110px; width:210px"  class="btn btn-primary"><i class="fa fa-users position-left"></i><a href="?page=users"><h4>Users</button></a>
+
+
 
  <div class="content">
             <div class="row">
@@ -8,8 +21,7 @@
                              <div id="header">
 
                               </div>
-                            <div class="card-block">
-
+        <center>
 
 <?php
 
@@ -83,7 +95,7 @@ while ($row= mysql_fetch_array($result)) {
 
   <body>
 
-          <div id="deawxchart" style="min-width: 320px; height: 380px; margin: 0 auto"></div>       
+          <div id="deawxchart" style="min-width: 320px; height: 380px; margin: 0 auto "></div>       
 
   
   </body>
@@ -97,41 +109,7 @@ while ($row= mysql_fetch_array($result)) {
  <!-- Icon Cards-->
 
 
-        <div class="row">
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-primary o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-comments"></i>
-                </div>
-                <div class="mr-5">View Users</div>
-              </div>
-              <a  href="?page=users">
-                
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-           <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-warning o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-list"></i>
-                </div>
-                <div class="mr-5">11 New Tasks!</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">View Details</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-
-            </div>
-
-          </div>
+       
 </div>
 </div>
 </div>

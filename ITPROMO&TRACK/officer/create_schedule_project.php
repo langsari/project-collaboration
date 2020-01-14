@@ -139,7 +139,7 @@
            
            </div>
              <div class="col-md-9">
-             <select class="form-control" name="member_id" hidden="">
+             <select class="form-control" name="writer" hidden="">
 
                 <?php
                 include '../menu/connect.php';
@@ -176,10 +176,11 @@
 
  
 
-         $sql = "SELECT schedule.*, partnergroup.group_id,partnergroup.group_number,member.member_fullname FROM schedule
-                   LEFT JOIN partnergroup ON schedule.group_id = partnergroup.group_id
+          $sql = "SELECT schedule.*, partnergroup.group_id,partnergroup.group_number,member.member_fullname,schedule.writer,schedule.group_id,advisergroup.group_id,advisergroup.advisergroup_topic FROM schedule
+                     LEFT JOIN advisergroup ON schedule.group_id = advisergroup.advisergroup_id
 
-                        LEFT JOIN member ON schedule.member_id = member.member_id
+                   LEFT JOIN partnergroup ON schedule.group_id = partnergroup.group_id
+                        LEFT JOIN member ON schedule.writer = member.member_id
 
                       WHERE   schedule.schedule_type ='2' AND member.member_id='".$_SESSION['id']."'";
 
@@ -208,11 +209,9 @@
              while($objResult = $result->fetch_object()){
             ?>
            <tbody>
-            <tr>
-                       <td class="text-center"><?php echo $objResult->schedule_id; ?></td>
-                        <td class="text-center"> <?php echo $objResult->group_number; ?></td>
-                  <td class="text-center"><?php echo get_member_list($objResult->group_id); ?></td>
-                  <td class="text-center"><?php echo get_topic($objResult->group_id); ?></td>
+            <tr> <td class="text-center"><?php echo $objResult->schedule_id; ?></td>
+                  <td class="text-center"><?php echo get_member_list1($objResult->group_id); ?></td>
+                  <td class="text-center"><?php echo $objResult->advisergroup_topic; ?></td>
                     <td class="text-center"><?php echo $objResult->schedule_status ?></td>
                     <td class="text-center"><?php echo get_advisor($objResult->group_id); ?></td>
                      <td class="text-center"><?php echo get_committee($objResult->group_id); ?></td>

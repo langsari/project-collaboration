@@ -2,10 +2,7 @@
 if(isset($_POST['id'])){
 	$rows = array();
 	$id = $_POST['id'];
-require 'menu/connect.php';
-
-
-  
+require '../menu/connect.php';
 
         $sql = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.member_id FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
