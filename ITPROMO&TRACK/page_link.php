@@ -222,10 +222,6 @@ case 'contact':
 		include('advisor/contact.php');
 	break;
 
-case 'contact1':
-		include('phpmailer/contact1.php');
-	break;
-
 
 
 

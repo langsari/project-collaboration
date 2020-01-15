@@ -241,8 +241,13 @@ $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,to
                          
 
           
+</form>
+</div>
+</div>
+</div>
+</div>
 
-
+ 
    
 
             <!-- /PAGE CONTENT -->

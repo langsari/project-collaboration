@@ -45,8 +45,9 @@ $my_id = $_SESSION['id'];
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
+         LEFT JOIN admin ON advisergroup.admin_id = admin.admin_id
 
-        WHERE advisergroup.member_id = '$my_id'  AND pf  
+        WHERE advisergroup.admin_id = '$my_id'  AND pf  
                ";
 
 $result = mysql_query($sql) or die("Couldn't execute query");

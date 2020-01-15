@@ -296,13 +296,14 @@ $my_id = $_SESSION['id'];
                 </div>
                    
               </form>
- 
+ </div>
+</div>
+</div>
+</div>
 
 
-</div>
-</div>
-</div>
-</form>
+
+   
 
 
  <script src="asset/js/jquery-1.11.1.min.js"></script>

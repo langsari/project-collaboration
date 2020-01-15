@@ -118,6 +118,3 @@ $my_id = $_SESSION['id'];
 
   
 
-          <?php
-include 'advisor/text.php';
-?>

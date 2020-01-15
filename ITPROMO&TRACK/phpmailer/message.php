@@ -81,35 +81,42 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 
 
-<button class="open-button" onclick="openForm()"><i class="fa fa-comments" style="font-size:21px;color:white">&nbsp;&nbsp;&nbsp;&nbsp; Message</i></button>
+<button class="open-button" onclick="openForm()"><i class="fa fa-envelope-square" style="font-size:21px;color:white">&nbsp;&nbsp;&nbsp;&nbsp; Contact</i></button>
+
+
+
+
+
 
 <div class="chat-popup" id="myForm">
-  <form action="notification/checknoti.php" class="form-container" method="post">
+  <form action="phpmailer/check_message.php" class="form-container" method="post">
+    
+
+
     <h1>Message</h1>
 
+         <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1">
+                                                <i class="fa fa-user-md"></i>
+                                            </span>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" autocomplete="off" required aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
 
-    <label for="msg_text"><b><h4>Message</b></label>    <textarea placeholder="Type message.." name="msg_text" id="msg_text"  required  style="font-size:18px;"></textarea>
-                                           
- <div class="form-group row">           
-       <div class="col-md-3">
-           </div>
-             <div class="col-md-9">
-             <select class="form-control" name="member_id" hidden="">
+<div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1">
+                                               <i class="fa fa-envelope-square"></i>
+                                            </span>
+                                        <input type="text" class="form-control" id="email" name="email" placeholder="Email" autocomplete="off" required aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
 
-                <?php
-                include '../menu/connect.php';
-                $strSQL = "SELECT admin_id, admin_fullname FROM admin WHERE admin_id ='".$_SESSION['id']."'";
-                if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-                    echo "<option value='".$objResult->admin_id."'>".$objResult->admin_fullname."</option>";
-                  }
-                }else{
-                }
-                ?>
-              </select>
-      
-            </div>
-          </div>
+    <label for="msg_text"><b><h4>Message</b></label>
+    <textarea placeholder="Type message.." name="con" id="con"   required  style="font-size:18px;"></textarea>
+
+       
 
 
     <button type="submit" class="btn">Send</button>

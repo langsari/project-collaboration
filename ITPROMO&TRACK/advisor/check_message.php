@@ -1,17 +1,15 @@
 <meta charset="utf-8">
 <?php
-include("../menu/function.php");
 require '../menu/connect.php';
 
 
-  $msg_text = $_POST['msg_text'];
-    $member_id = $_POST['member_id'];
-  
+
+	$msg_text = $_POST['msg_text'];
 
 
-  
+	
 
-  $sql = "INSERT INTO apps_notification (msg_text,member_id) VALUES ('$msg_text','$member_id')";
+	$sql = "INSERT INTO apps_notification (msg_text) VALUES ('$msg_text')";
 
 
 $result=mysqli_query($db, $sql)or die ("Error in query: $sql ".mysqli_error());
@@ -22,6 +20,7 @@ define('LINE_API',"https://notify-api.line.me/api/notify");
  
 $token = "qNr0NHmEzbKIqQp3NEi4J34mD9637oEdkFz42LL3fWq"; //ใส่Token ที่copy เอาไว้
 $str = 
+
 'Detail: '.$msg_text;
 
 

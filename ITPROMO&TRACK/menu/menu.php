@@ -11,6 +11,12 @@ if($user_rank == "admin"):
 
 
 
+ <li class="treeview">
+  <a href="?page=dashboard">
+    <i class="fa fa-paper-plane"></i> <span>Dashboard</span>
+  </a>
+</li>
+
 <li class="active treeview">
   <a href="#">
     <i class="fa fa-users"></i> <span>Manage Member</span> 
@@ -85,11 +91,14 @@ if($user_rank == "admin"):
     </li>
   </ul>
 </li> 
-<li class="treeview">
-  <a href="?page=notification">
-     <i class="fa fa-comments"></i><span>Notification Member</span>
-  </a>
-</li>
+
+
+
+
+   <?php
+        
+include 'notification/notification.php';
+?>
 
 <!-- end Menu ของ admin -->
 
@@ -139,7 +148,7 @@ if($user_rank == "admin"):
       </a>
     </li>
     <li>
-      <a href="#">
+      <a href="?page=proposal_project">
         <i class="fa fa-circle-o"></i> <span>All Project</span>
       </a>
     </li>
@@ -170,12 +179,6 @@ if($user_rank == "admin"):
 
 
 
-<li class="treeview">
-  <a href="?page=contact1">
-    <i class="fa fa-user"></i> <span>Contact</span>
-  </a>
-</li>
-
 
 
 <li class="active treeview">
@@ -196,6 +199,12 @@ if($user_rank == "admin"):
     <i class="fa fa-user"></i> <span>Personal Information</span>
   </a>
 </li>
+      
+        <?php
+
+include 'phpmailer/message.php';
+?>
+
  <!-- end Menu ของ advisor -->
 
 
