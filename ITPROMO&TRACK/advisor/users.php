@@ -4,7 +4,7 @@
                             <div class="card">
                                 <div class="card-block">
  
-                                   <h5 class="mt-3">All Users</h5>
+                                   <h5 class="mt-3">Recent Users</h5>
                                 <?php
 require 'menu/connect.php';
 
@@ -42,7 +42,7 @@ $my_id = $_SESSION['id'];
 
            <tbody>
             <tr>
-            	<td class="text-center"><?php echo get_groupcode($row->group_id); ?>s</td>
+            	<td class="text-center"><?php echo get_groupcode($row->group_id); ?></td>
                      <td class="text-center"><?php echo $row->advisergroup_topic; ?></td>
               <td class="text-center"><?php echo get_member_list($row->group_id); ?></td>
                     

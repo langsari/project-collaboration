@@ -13,7 +13,7 @@ if($user_rank == "admin"):
 
  <li class="treeview">
   <a href="?page=dashboard">
-    <i class="fa fa-paper-plane"></i> <span>Dashboard</span>
+    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
   </a>
 </li>
 
@@ -113,7 +113,7 @@ include 'notification/notification.php';
 
  <li class="treeview">
   <a href="?page=dashboard1">
-    <i class="fa fa-paper-plane"></i> <span>Dashboard</span>
+    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
   </a>
 </li>
 
@@ -130,11 +130,7 @@ include 'notification/notification.php';
     <i class="fa fa-book"></i> <span>Projects</span> 
   </a>
   <ul class="treeview-menu">
-    <li>
-      <a href="?page=student_track_ptoject">
-        <i class="fa fa-circle-o"></i> Project Track
-      </a>
-    </li>
+  
 
         <li>
       <a href="?page=proposal_status">
@@ -179,7 +175,11 @@ include 'notification/notification.php';
 
 
 
-
+ <li class="treeview">
+  <a href="?page=committee_request">
+    <i class="fa fa-tasks"></i> <span>For Committee</span>
+  </a>
+</li>
 
 <li class="active treeview">
   <a href="#">
@@ -199,6 +199,8 @@ include 'notification/notification.php';
     <i class="fa fa-user"></i> <span>Personal Information</span>
   </a>
 </li>
+
+
       
         <?php
 

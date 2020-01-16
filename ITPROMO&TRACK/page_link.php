@@ -100,6 +100,9 @@ case 'dashboard':
 
 
 
+case 'committee_request':
+		include('committee/committee_request.php');
+		break;
 
 	case 'proposal_status':
 			include('advisor/proposal_status.php');
