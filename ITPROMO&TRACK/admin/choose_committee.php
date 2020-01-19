@@ -45,7 +45,8 @@ function add_committee(group_id){
    <table class="display datatable table table-stripped" cellspacing="0" width="100%">
               <thead>
                 <tr>
-                  <th class="text-center" style="width: 50px;">#</th>
+                  <th class="text-center" style="width: 50px;">No</th>
+                  <th class="text-center" style="width: 50px;">Project</th>
                   <th class="text-left">Members</th>
                   <th class="text-left">Project Topic</th>
                   <th class="text-left">Advisor</th>
@@ -55,12 +56,20 @@ function add_committee(group_id){
               </thead>
               <tbody>
               <?php
-              $sql = "SELECT * FROM partnergroup";
+
+ $sql = "SELECT advisergroup.*,  files.files_status,files.pf,files.files_id,files.files_filename_proposal,files.member_id,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id FROM advisergroup
+
+           LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+        WHERE advisergroup.group_id AND files.member_id = 'Approve' 
+               ";
 
               if($rs = $db->query($sql)){
                 while($row = $rs->fetch_object()){
               ?>
                 <tr>
+                   <td class="text-center"><?php echo $row->files_id; ?></td>
                   <td class="text-center"><?php echo $row->group_number; ?></td>
                   <td><?php echo get_member_list($row->group_id); ?></td>
                   <td class="text-left"><?php echo get_topic($row->group_id); ?></td>

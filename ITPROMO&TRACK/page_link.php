@@ -92,6 +92,11 @@ case 'dashboard':
 		include('advisor/notification.php');
 	break;
 
+ case 'status_presentation':
+		include('committee/status_presentation.php');
+	break;
+
+
 
 
 	case 'dashboard1':

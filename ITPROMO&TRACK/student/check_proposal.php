@@ -2,6 +2,7 @@
 session_start();
  include("../menu/connect.php");
 require '../menu/function.php';
+
   $topic_id = $_POST['topic_id'];
 $group_number=$_POST['group_number'];
 $topic_abstrack=$_POST['topic_abstrack'];

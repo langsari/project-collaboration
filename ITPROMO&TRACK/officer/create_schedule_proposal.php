@@ -351,6 +351,9 @@
       
             </div>
           </div>
+
+
+
                   <input type="text" class="form-control" id="schedule_type" name="schedule_type" value="2" hidden="">
 
                <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>

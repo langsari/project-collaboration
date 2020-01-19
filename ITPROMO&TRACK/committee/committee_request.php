@@ -6,24 +6,25 @@
                             <div class="card">
                                 <div class="card-block">
  
-                                   <h5 class="mt-3">All Final Project Topics</h5>
+                                   <h5 class="mt-3">Proposal Presentation</h5>
  <?php
- 
-
-      
-
 require 'menu/connect.php';
 $my_id = $_SESSION['id'];
 
-      $strSQL = "SELECT committeegroup.*,  partnergroup.group_number,advisergroup.group_id,committeegroup.member_id,committeegroup.group_id,schedule.schedule_status,files.committeegroup_id,files.files_id FROM committeegroup
-        LEFT JOIN member ON committeegroup.member_id = member.member_id
-           LEFT JOIN partnergroup ON committeegroup.group_id = partnergroup.group_id
- LEFT JOIN files ON committeegroup.member_id = files.committeegroup_id
-         LEFT JOIN schedule ON committeegroup.group_id = schedule.group_id
-
+      $strSQL = "SELECT committeegroup.*,  files.files_status,files.pf,files.status_presentation,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,committeegroup.member_id,committeegroup.group_id,schedule.schedule_status,schedule.schedule_type
+       FROM committeegroup
         LEFT JOIN advisergroup ON committeegroup.member_id = advisergroup.member_id
-    WHERE committeegroup.member_id  ='$my_id'  ";
-        ?>
+        LEFT JOIN member ON committeegroup.member_id = member.member_id
+       LEFT JOIN partnergroup ON committeegroup.group_id = partnergroup.group_id
+       LEFT JOIN files ON committeegroup.member_id = files.member_id
+      LEFT JOIN schedule ON committeegroup.group_id = schedule.group_id
+
+    WHERE committeegroup.member_id  ='$my_id' AND schedule_type='1'  ";
+
+               ?>
+
+
+
 
       <table class="display datatable table table-stripped" cellspacing="0" width="100%">
           <thead>
@@ -34,7 +35,7 @@ $my_id = $_SESSION['id'];
                         <th>Advisor</th>
                         <th>Status</th>
                         <th>Result</th>
-                        <th>View</th>
+                        <th>Options</th>
 
 
 
@@ -47,19 +48,21 @@ $my_id = $_SESSION['id'];
 
            <tbody>
             <tr>
-            <td class="text-center"><?php echo $objResult->group_number; ?></td>
+          <td class="text-center"><?php echo $objResult->group_number; ?></td>
             <td class="text-center"><?php echo get_member_list($objResult->group_id); ?></td>
              <td class="text-center"><?php echo get_topic($objResult->group_id); ?></td>
             <td class="text-center"><?php echo get_advisor($objResult->group_id); ?></td>
             <td class="text-center"><?php echo $objResult->schedule_status; ?></td>
-            <td class="text-center"><?php echo $objResult->committeegroup_id; ?></td>
+        <td class="text-center"><?php echo $objResult->status_presentation; ?></td>
+
              
-              <td><a href="committee/check_pass.php?id=<?php echo $objResult->files_id; ?>"class="btn btn-success btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $objResult->files_status; ?>')"><i class='glyphicon glyphicon-ok'></i> Pass Presentation</a>
+        
 
 
-<a href="advisor/check_confirm.php?id=<?php echo $objResult->files_id; ?>" title="Comfirm" onclick="return confirm_accept('<?php echo $objResult->member_name; ?>')"><i class="fa fa-close" aria-hidden="true"> Not Pass Presentation</i> </a>
+
 
              </td>
+                   <td><a href="?page=status_presentation&id=<?php echo $objResult->group_id;?>"><i class="fa fa-check" title="Pass"></i></a></td>
 
 
 
