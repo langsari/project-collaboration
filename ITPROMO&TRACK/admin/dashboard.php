@@ -68,7 +68,7 @@ $result = mysql_query($sql) or die("Couldn't execute query");
 while ($row= mysql_fetch_array($result)) { 
 ?>
       
-   ['<?php echo $row["Owner"]?>', <?php echo $row["pf"]?>],
+   ['<?php echo $row["group_id"]?> ', <?php echo $row["pf"]?>],
 
 
 

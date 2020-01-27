@@ -348,6 +348,44 @@ require 'connect.php';
 }
 
 
+//Function to get Committee lsit
+function get_status_committee($group_id){
+require 'connect.php';
+	$rows = "";
+	$sql = "SELECT  member.member_fullname,committeegroup.status_presentation FROM committeegroup
+					LEFT JOIN member ON committeegroup.member_id = member.member_id
+					WHERE committeegroup.group_id = '$group_id'";
+	if($rs = $db->query($sql)){
+		while($row = $rs->fetch_object()){
+	$rows .= "<p>".$row->status_presentation." &nbsp;&nbsp;&nbsp;&nbsp; ".$row->member_fullname."  </p>";
+		}
+		return $rows;
+		$db->close();
+	}else{
+		echo $db->error;
+		$db->close();
+	}
+}
+
+
+
+
+function get_id_committee($member_id){
+require 'connect.php';
+	$sql = "SELECT member_fullname  FROM member WHERE member_id = '$member_id' AND member_pos = 'Lecturer'";
+	if($rs = $db->query($sql)){
+		if($row = $rs->fetch_object()){
+			return $row->member_fullname;
+		}
+		$db->close();
+	}else{
+		echo $db->error;
+		$db->close();
+	}
+}
+
+
+
 
 //Function to get member of the group
 function get_member_list($group_id){

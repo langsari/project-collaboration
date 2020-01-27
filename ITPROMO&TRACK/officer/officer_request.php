@@ -19,12 +19,12 @@
 require 'menu/connect.php';
 $my_id = $_SESSION['id'];
 
-    $strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic ,files.member_id FROM advisergroup
+    $strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic ,files.by_officer FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.member_id  AND files.member_id = ''
+        WHERE advisergroup.member_id  AND files.by_officer = ''
 
                ";
 

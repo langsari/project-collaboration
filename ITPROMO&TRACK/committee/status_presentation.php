@@ -34,12 +34,14 @@
    <!-- PAGE CONTENT -->
 
 
-    <?php
 
+
+
+    <?php
 $id = $_GET['id'];
 
 
-        $strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.advisergroup_status,files.files_status,files.member_id,files.committeegroup_id,files.status_presentation,files.files_id FROM advisergroup
+        $sql = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.advisergroup_status,files.files_status,files.by_officer,files.member_id,files.status_presentation,files.files_id,files.advisergroup_id,committeegroup.group_id,files.files_filename_proposal,files.pf,files.Owner FROM advisergroup
               LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
           LEFT JOIN committeegroup ON advisergroup.group_id = committeegroup.group_id
 
@@ -49,10 +51,9 @@ $id = $_GET['id'];
 
 
 
-   
         ?>
         <?php
-     if($result = $db->query($strSQL)){
+     if($result = $db->query($sql)){
                   while($objResult = $result->fetch_object()){
             ?>
                 <div class="content">
@@ -62,9 +63,11 @@ $id = $_GET['id'];
                                 <div class="card-block"> 
 
 
-<form action="student/check_editprofile.php?id=<?php echo $_GET["id"];?>"name="fromEdit" method="post"onsubmit="return checkForm()">
+<form action="committee/check.php?id=<?php echo $_GET["id"];?>"name="fromEdit" method="post"onsubmit="return checkForm()">
 
-           
+
+
+
 
                                         <div class="form-group row margin-top-30">
  
@@ -73,40 +76,132 @@ $id = $_GET['id'];
                                             </div>
 
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" name="member_idcard" id="member_idcard"  value="<?php echo $objResult->group_number; ?>" >
+                                                <input type="text" class="form-control"  value="<?php echo $objResult->group_number; ?>" >
                                             </div>
                                         </div>
 
 
-                                        <div class="form-group row">
+        <div class="form-group row">
+                              <div class="col-md-3">
+                                <label class="control-label col-form-label">Advisor id</label>
+                                
+                              </div>
+                              <div class="col-md-9">
+                                
+                                <td class="form-control" >
+  <input type="text" class="form-control" name="advisergroup_id" id="advisergroup_id"  value="<?php echo $objResult->advisergroup_id; ?>"  hidden=''> 
+                                  </td>
+                              </div>
+                            </div>
+
+                                      <div class="form-group row">
+                              <div class="col-md-3">
+                                <label class="control-label col-form-label">Project Owner</label>
+                                
+                              </div>
+                              <div class="col-md-9">
+                                
+                                <td class="form-control" >
+  <input type="text" class="form-control" name="Owner" id="Owner"  value="<?php echo $objResult->Owner; ?>" > 
+                                  </td>
+                              </div>
+                            </div>
+
+          
+                                        <div class="
+                                        form-group row">
                                             <div class="col-md-3">
-                                                <label class="control-label col-form-label">Fullname</label>
+                                                <label class="control-label col-form-label">Topic</label>
                                             </div>
                                             <div class="col-md-9">
-                                            <input type="text" class="form-control" name="member_fullname" id="member_fullname"  value="<?php echo get_member_list($objResult->group_id); ?>" >                                            </div>
+                                      <input type="text" class="form-control"   value="<?php echo get_topic($objResult->group_id); ?>" >                                            </div>
                                         </div>
 
-                                        <div class="form-group row">
+
+                                      
+
+                                     <div class="form-group row">
                                             <div class="col-md-3">
-                                                <label class="control-label col-form-label">Phone</label>
+                                                <label class="control-label col-form-label">status of presentation</label>
                                             </div>
                                             <div class="col-md-9">
-                                      <input type="text" class="form-control" name="member_phone" id="member_phone"  value="<?php echo get_topic($objResult->group_id); ?>" >                                            </div>
-                                        </div>
+                      <select name="status_presentation" id="status_presentation">
+           <option value="#">Select</option>
+             <option value="Pass">Pass</option>
+              <option value="No">No Pas</option>
+
+            </select>
+                  </div>
+              </div>
 
 
-                                         <div class="form-group row">
-                                            <div class="col-md-3">
-                                                <label class="control-label col-form-label">Gender</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                     <input type="text" class="form-control" name="member_gender" id="member_gender"  value="<?php echo get_advisor($objResult->group_id); ?>" >                                            </div>
-                                        </div>
 
 
-                                     <input type="hidden" name="member_id" value="<?php echo $objResult->member_id;?>"/>
+   <div class="form-group row">
+                              <div class="col-md-3">
+                                <label class="control-label col-form-label">Files </label>
+                                
+                              </div>
+                              <div class="col-md-9">
+                    
+                  <input type="text" class="form-control" name="files_filename_proposal" id="files_filename_proposal"  value="<?php echo $objResult->files_filename_proposal; ?>" hidden=''>
 
-                                        <div class="pull-right">
+                              </div>
+                            </div>
+
+
+                              <div class="form-group row">
+                              <div class="col-md-3">
+                                <label class="control-label col-form-label">status </label>
+                                
+                              </div>
+                              <div class="col-md-9">
+                    
+                  <input type="text" class="form-control" name="files_status" id="files_status"  value="<?php echo $objResult->files_status; ?>" hidden=''>
+
+                              </div>
+                            </div>
+<!--get Topic   -->
+      <div class="form-group row">
+                              <div class="col-md-3">
+                                <label class="control-label col-form-label">status officer </label>
+                                
+                              </div>
+                              <div class="col-md-9">
+                    
+                  <input type="text" class="form-control" name="by_officer" id="by_officer"  value="<?php echo $objResult->by_officer; ?>" hidden=''>
+
+                              </div>
+                            </div>
+
+                            <!--get Topic   -->
+      <div class="form-group row">
+                              <div class="col-md-3">
+                                <label class="control-label col-form-label">status PF </label>
+                                
+                              </div>
+                              <div class="col-md-9">
+                    
+                  <input type="text" class="form-control" name="pf" id="pf"  value="<?php echo $objResult->pf; ?>" hidden=''>
+
+                              </div>
+                            </div>
+<!--get Topic   -->
+
+
+
+
+
+
+
+
+
+
+           <input type="hidden" name="files_id" value="<?php echo $objResult->files_id;?>"/>
+       
+
+
+         <div class="pull-right">
                                                             <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Save</button>
 
                                         </div>

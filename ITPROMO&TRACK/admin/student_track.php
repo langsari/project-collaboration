@@ -15,7 +15,7 @@
         $('#advisergroup_status').val(o.advisergroup_status);
             $('#files_status').val(o.files_status);
             $('#advisergroup_id').val(o.advisergroup_id);         
-                 $('#member_id').val(o.member_id);
+                 $('#by_officer').val(o.by_officer);
 
           $('#files_id').val(o.files_id);
         });
@@ -223,7 +223,7 @@
                                        <tbody>
                                             <tr>
                                              <td>Select Topic</td>
-   <td> <input type="text" class="form-control" name="member_id" id="member_id" disabled=""> </td>
+   <td> <input type="text" class="form-control" name="by_officer" id="by_officer" disabled=""> </td>
                      
                            </tr>
                                            

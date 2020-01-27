@@ -1,4 +1,4 @@
-     <link rel="stylesheet" href="asset/css/style.css">
+      <link rel="stylesheet" href="asset/css/style.css">
 
               <div class="content">
                <form action="student/check_files.php" method="post" enctype="multipart/form-data" name="upfile" id="upfile">
@@ -38,10 +38,10 @@
  <?php
             $g_id = get_group_id();
               $ag_id = get_ag_id($g_id);
-    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.member_id,files.Owner FROM advisergroup
+    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.committeegroup_id,files.advisergroup_id,files.status_presentation,files.pf FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.advisergroup_id = '$ag_id'";                 
+        WHERE advisergroup.advisergroup_id = '$ag_id' ";                 
      if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
             ?>  
@@ -127,7 +127,7 @@
                                             <tr>
                                              <td>Select Topic</td>
                           <td> 
-                  <span class="badge badge-success"><?php echo $objResult->member_id; ?> </span> <p> <font color='red'> *For Officer</font>
+                  <span class="badge badge-success"><?php echo $objResult->by_officer; ?> </span> <p> <font color='red'> *For Officer</font>
                           </td>
                            </tr>
                                            
@@ -143,19 +143,42 @@
                             </fieldset>
 
 
+ <?php
+          
+    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.committeegroup_id,files.advisergroup_id,committeegroup.status_presentation,files.pf FROM advisergroup
+              LEFT JOIN committeegroup ON advisergroup.group_id = committeegroup.group_id
 
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+        WHERE advisergroup.advisergroup_id = '$ag_id' ";                 
+     if($result = $db->query($strSQL)){
+                  while($row = $result->fetch_object()){
+            ?>  
 
-                            <fieldset>
-                                <h4>Security question:</h4>
-                                <div class="form-group">
-                                    <label class="sr-only" for="f1-question">Question</label>
-                                    <input type="text" name="f1-question" placeholder="Question..." class="f1-question form-control" id="f1-question">
-                                </div>  
-                                <div class="form-group">
-                                    <label class="sr-only" for="f1-answer">Answer</label>
-                                    <input type="text" name="f1-answer" placeholder="Answer..." class="f1-answer form-control" id="f1-answer">
-                                </div>
-                                <div class="f1-buttons">
+                          <fieldset>
+                           <table class="table">
+                                        <thead class="thead-default">
+                                            <tr>ghh
+                                                <th>To do list</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                       <tbody>
+                                            <tr>
+                                             <td>Select Topic</td>
+          <td> 
+             <span ><?php echo get_status_committee($row->group_id); ?></span> <p> 
+
+              <font color='red'> *For Committee</font>
+                          </td>
+                           </tr>
+                                           
+                         </tbody>
+                        </table>
+
+                            
+                    
+                          <div class="f1-buttons">
                                     <button type="button" class="btn btn-previous">Previous</button>
                                     <button type="button" class="btn btn-next">Next</button>
                                 </div>
@@ -186,9 +209,12 @@
                  } }
                    ?>
 
-                      
+   
+                
 
-     
+                 <?php
+                 } }
+                   ?>
 
                     </div>
 

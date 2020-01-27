@@ -57,12 +57,12 @@ function add_committee(group_id){
               <tbody>
               <?php
 
- $sql = "SELECT advisergroup.*,  files.files_status,files.pf,files.files_id,files.files_filename_proposal,files.member_id,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id FROM advisergroup
+ $sql = "SELECT advisergroup.*,  files.files_status,files.pf,files.files_id,files.files_filename_proposal,files.by_officer,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id FROM advisergroup
 
            LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
-        WHERE advisergroup.group_id AND files.member_id = 'Approve' 
+        WHERE advisergroup.group_id AND files.by_officer = 'Approve' 
                ";
 
               if($rs = $db->query($sql)){
@@ -74,7 +74,9 @@ function add_committee(group_id){
                   <td><?php echo get_member_list($row->group_id); ?></td>
                   <td class="text-left"><?php echo get_topic($row->group_id); ?></td>
                   <td class="text-left"><?php echo get_advisor($row->group_id); ?></td>
-                  <td class="text-left"><?php echo get_committee($row->group_id); ?></td>
+                 
+ <td class="text-center"><span class="badge badge-danger"><?php echo get_committee($row->group_id); ?></span>  </td>
+
                   <td class="text-center">
                  
                     <button type="button" class="btn btn-info btn-xs" onclick="add_committee('<?php echo $row->group_id; ?>')" data-toggle="modal" data-target="#add_committee"><i class="fa fa-user-plus"></i> Add Committee</button>
