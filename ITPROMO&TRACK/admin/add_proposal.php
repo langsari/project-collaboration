@@ -81,18 +81,18 @@
             ?>
            <tbody>
             <tr>                    
-             <td class="text-center"><?php echo $objResult->topic_id; ?></td>
-         <td class="text-center"><?php echo $objResult->group_number; ?></td>
+             <td class="text-left"><?php echo $objResult->topic_id; ?></td>
+         <td class="text-left"><?php echo $objResult->group_number; ?></td>
 
-             <td class="text-center"><?php echo substr($objResult->Owner, 0, 20); ?></td>
-                    <td class="text-center"><?php echo $objResult->topic_topic; ?></td>
-                     <td class="text-center"><?php echo substr($objResult->topic_abstrack, 0, 40); ?></td>
-                     <td class="text-center"><?php echo $objResult->topic_keyword ?></td>
-                   <td class="text-center"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
-                   <td class="text-center"><?php echo $objResult->topic_years; ?></td>
-                    <td class="text-center"><?php echo $objResult->position; ?></td>
-                        <td class="text-center"><?php echo get_id_advisor($objResult->adviser); ?>  </td>
-  <td class="text-center"><?php echo get_status_project($objResult->status); ?></td>
+             <td class="text-left"><?php echo substr($objResult->Owner, 0, 20); ?></td>
+                    <td class="text-left"><?php echo $objResult->topic_topic; ?></td>
+                     <td class="text-left"><?php echo substr($objResult->topic_abstrack, 0, 40); ?></td>
+                     <td class="text-left"><?php echo $objResult->topic_keyword ?></td>
+                   <td class="text-left"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
+                   <td class="text-left"><?php echo $objResult->topic_years; ?></td>
+                    <td class="text-left"><?php echo $objResult->position; ?></td>
+                        <td class="text-left"><?php echo get_id_advisor($objResult->adviser); ?>  </td>
+  <td class="text-left"><?php echo get_status_project($objResult->status); ?></td>
 
                     <td>
                   <a href="delete/check_delete.php?id=<?php echo $objResult->topic_id;?>" title="Confirm" onclick="return confirm('<?php echo $objResult->topic_topic;?>')"> <i class="fa fa-eye" aria-hidden="true"></i></a>

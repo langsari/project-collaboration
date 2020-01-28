@@ -61,7 +61,7 @@ include('menu/function.php');
         </button>
 
         <a class="navbar-brand logo" href="?page=homepage">
-            <img src="assets/img/lo.png" alt="ITPromo">
+            <img src="assets/img/lo.png" >
         </a>
 
         <div class="collapse navbar-collapse" id="navbarNav">

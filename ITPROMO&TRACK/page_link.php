@@ -207,6 +207,20 @@ case 'track_project':
 		include('student/track_project.php');
 		break;
 		
+
+		case 'pf01':
+		include('form_pf/pf01.php');
+		break;
+		
+	case 'pf02':
+		include('form_pf/pf02.php');
+		break;
+		
+			case 'pf03':
+		include('form_pf/pf03.php');
+		break;
+		
+
 case 'infor_group':
 		include('student/infor_group.php');
 		break;

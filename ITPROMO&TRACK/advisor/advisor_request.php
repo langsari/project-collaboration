@@ -3,7 +3,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-block">
-                                    <h4><legend class="text-bold margin-top-2.5"> Advisor and Topic Request</legend></h4>
+                                    <h4><legend class="text-bold margin-top-2.5"> Advisor and Topic Request (PF01)</legend></h4>
 
                                      <table class="table">
                                         <thead class="thead-default">
@@ -51,10 +51,16 @@ $my_id = $_SESSION['id'];
               }
               ?>
                                             
-                                        </tbody>
+                                  
+             </tbody>
                                     </table>
                                 </div>
+                            </div>
                      
+                   
+
+
+  
 
 
                         
@@ -62,7 +68,7 @@ $my_id = $_SESSION['id'];
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-block">
-                                    <legend class="text-bold margin-top-2.5"> 3 chapter of Proposal   Request</legend>
+                                    <legend class="text-bold margin-top-2.5"> 3 chapter of Proposal   Request (PF01)</legend>
 
                                      <table class="table">
                                         <thead class="thead-default">
@@ -107,11 +113,8 @@ $my_id = $_SESSION['id'];
                                     </table>
                                 </div>
                             </div>
-                        </div>
-
-                            </div>
-                        </div>
-
+                        
+                       
 
 
    
@@ -120,7 +123,7 @@ $my_id = $_SESSION['id'];
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-block">
-                                    <legend class="text-bold margin-top-2.5"> 3 chapter of Proposal   Request</legend>
+                                    <legend class="text-bold margin-top-2.5"> Proposal Revision Request (PF03)</legend>
 
                                      <table class="table">
                                         <thead class="thead-default">
@@ -128,20 +131,24 @@ $my_id = $_SESSION['id'];
                   <th>Title project</th>
                   <th>Student</th>
                     <th>Status</th>
-                <th></th>
-                <th></th>
+              
+          
                 </tr>
                                         </thead>
                                         <tbody>
               
               <?php
+
+
 require 'menu/connect.php';
 $my_id = $_SESSION['id'];
-    $strSQL = "SELECT advisergroup.*,  files.files_status,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic FROM advisergroup
+    $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.status_advisor FROM advisergroup
+
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  AND files_status = 'Waiting' 
+        WHERE advisergroup.member_id = '$my_id'  AND pf='2' And status_advisor=''
                ";
+
        
               if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
@@ -149,10 +156,10 @@ $my_id = $_SESSION['id'];
                 <tr>
                         <td ><?php echo $row->advisergroup_topic; ?></td>
                   <td ><?php echo get_member_list($row->group_id); ?></td>
-               <td><h6> <span class="badge badge-danger"><?php echo $row->files_status; ?></span></td>
-  <td><a href="student/download.php?pdf=<?php echo $row->files_filename_proposal ;?>"><i class="fa fa-download"></i></a></td>
 
-  <td><a href="advisor/check_topic.php?id=<?php echo $row->files_id; ?>"class="btn btn-success btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i class='glyphicon glyphicon-ok'></i> Approve</a>
+  <td><a href="advisor/check_proposal_revision.php?id=<?php echo $row->files_id; ?>"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i class="fa fa-check" aria-hidden="true"></i> </a>
+
+                  
 
                 </tr>
                <?php
@@ -165,12 +172,8 @@ $my_id = $_SESSION['id'];
                                     </table>
                                 </div>
                             </div>
-                        </div>
-
-                            </div>
-                        </div>
-
-
+                    
+                           
 
   
 

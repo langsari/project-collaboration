@@ -209,15 +209,15 @@
              while($objResult = $result->fetch_object()){
             ?>
            <tbody>
-            <tr> <td class="text-center"><?php echo $objResult->schedule_id; ?></td>
-                  <td class="text-center"><?php echo get_member_list1($objResult->group_id); ?></td>
-                  <td class="text-center"><?php echo $objResult->advisergroup_topic; ?></td>
-                    <td class="text-center"><?php echo $objResult->schedule_status ?></td>
-                    <td class="text-center"><?php echo get_advisor($objResult->group_id); ?></td>
-                     <td class="text-center"><?php echo get_committee($objResult->group_id); ?></td>
-                     <td class="text-center"><?php echo $objResult->schedule_date ?></td>
-                       <td class="text-center"><?php echo $objResult->schedule_time; ?></td>
-                     <td class="text-center"><?php echo $objResult->schedule_room ?></td>
+            <tr> <td class="text-left"><?php echo $objResult->schedule_id; ?></td>
+                  <td class="text-left"><?php echo get_member_list1($objResult->group_id); ?></td>
+                  <td class="text-left"><?php echo $objResult->advisergroup_topic; ?></td>
+                    <td class="text-left"><?php echo $objResult->schedule_status ?></td>
+                    <td class="text-left"><?php echo get_advisor($objResult->group_id); ?></td>
+                     <td class="text-left"><?php echo get_committee($objResult->group_id); ?></td>
+                     <td class="text-left"><?php echo $objResult->schedule_date ?></td>
+                       <td class="text-left"><?php echo $objResult->schedule_time; ?></td>
+                     <td class="text-left"><?php echo $objResult->schedule_room ?></td>
                     
 
 

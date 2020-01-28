@@ -222,14 +222,14 @@
 
            <tbody>
             <tr>
-                  <td class="text-center"><?php echo $objResult->announcement_id; ?></td>
+                  <td class="text-left"><?php echo $objResult->announcement_id; ?></td>
                
-               <td class="text-center"><?php echo substr($objResult->announcement_topic, 0, 60); ?></td>
+               <td class="text-left"><?php echo substr($objResult->announcement_topic, 0, 60); ?></td>
 
-               <td class="text-center"><?php echo substr($objResult->announcement_detail, 0, 60); ?></td>
+               <td class="text-left"><?php echo substr($objResult->announcement_detail, 0, 60); ?></td>
 
-                     <td class="text-center"><?php echo $objResult->announcement_date; ?></td>
-                     <td class="text-center"><?php echo $objResult->admin_fullname ?></td>
+                     <td class="text-left"><?php echo $objResult->announcement_date; ?></td>
+                     <td class="text-left"><?php echo $objResult->admin_fullname ?></td>
                 
 
 

@@ -77,15 +77,15 @@ $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,to
 
            <tbody>
             <tr>
-        <td class="text-center"><?php echo $objResult->topic_id; ?></td>
-                     <td class="text-center"><?php echo $objResult->group_number; ?></td>
+        <td class="text-left"><?php echo $objResult->topic_id; ?></td>
+                     <td class="text-left"><?php echo $objResult->group_number; ?></td>
 
-                     <td class="text-center"><?php echo substr($objResult->Owner, 0, 50); ?></td>
-                    <td class="text-center"><?php echo $objResult->topic_topic; ?></td>
+                     <td class="text-left"><?php echo substr($objResult->Owner, 0, 50); ?></td>
+                    <td class="text-left"><?php echo $objResult->topic_topic; ?></td>
 
                   
          
-  <td class="text-center"><?php echo get_status_project($objResult->status); ?></td>
+  <td class="text-left"><?php echo get_status_project($objResult->status); ?></td>
 
                     
                            <td>            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editPS" onclick="edit_ps(<?php echo $objResult->advisergroup_id; ?>)"><i class="fa fa-edit"></i></button>

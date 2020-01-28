@@ -66,18 +66,18 @@
 
            <tbody>
             <tr>
-                     <td class="text-center"><?php echo $objResult->topic_id; ?></td>
-                     <td class="text-center"><?php echo $objResult->group_number; ?></td>
+                     <td class="text-left"><?php echo $objResult->topic_id; ?></td>
+                     <td class="text-left"><?php echo $objResult->group_number; ?></td>
 
-                     <td class="text-center"><?php echo substr($objResult->Owner, 0, 50); ?></td>
-                    <td class="text-center"><?php echo $objResult->topic_topic; ?></td>
+                     <td class="text-left"><?php echo substr($objResult->Owner, 0, 50); ?></td>
+                    <td class="text-left"><?php echo $objResult->topic_topic; ?></td>
 
-                     <td class="text-center"><?php echo substr($objResult->topic_abstrack, 0, 30); ?></td>
+                     <td class="text-left"><?php echo substr($objResult->topic_abstrack, 0, 30); ?></td>
 
 
-                     <td class="text-center"><?php echo $objResult->topic_keyword; ?></td>
-                <td class="text-center"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
-           <td class="text-center"><?php echo get_status_project($objResult->status); ?></td>
+                     <td class="text-left"><?php echo $objResult->topic_keyword; ?></td>
+                <td class="text-left"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
+           <td class="text-left"><?php echo get_status_project($objResult->status); ?></td>
 
                     
              <td>            <button type="button" class="btn btn-primary btn-xs  view_data" name="view" value="view" id="<?php echo $objResult->topic_id; ?>"><i class="fa fa-eye"></i></button>

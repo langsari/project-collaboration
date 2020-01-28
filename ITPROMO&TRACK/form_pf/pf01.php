@@ -36,15 +36,17 @@
                 
 
                         </div>
+
  <?php
+
             $g_id = get_group_id();
               $ag_id = get_ag_id($g_id);
-    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf,committeegroup.status_presentation,files.status_advisor FROM advisergroup
+    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
           LEFT JOIN committeegroup ON advisergroup.group_id = committeegroup.group_id
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.advisergroup_id = '$ag_id' ";             
+        WHERE advisergroup.advisergroup_id = '$ag_id'  ";             
 
 
        
@@ -116,94 +118,14 @@
                         </div>
 
                          
-        <div class="f1-buttons">
-  <button type="button"   class="btn btn-next">Next</button>
+
+   <div class="button" align="right"> 
+                                    <button> <a href ="?page=pf02"  type="button"   class="btn btn-next">Next</button></a>
                                 </div>
+
                             </fieldset>
-
-                            <fieldset>
-                           <table class="table">
-                                        <thead class="thead-default">
-                                            <tr>
-                                                <th>To do list</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>
-                                       <tbody>
-                                            <tr>
-                                             <td>Select Topic</td>
-                          <td> 
-                  <span class="badge badge-success"><?php echo $objResult->by_officer; ?> </span> <p> <font color='red'> *For Officer</font>
-                          </td>
-                           </tr>
-                                           
-                         </tbody>
-                        </table>
-
-                            
-                    
-                          <div class="f1-buttons">
-                                    <button type="button" class="btn btn-previous">Previous</button>
-                                    <button type="button" class="btn btn-next">Next</button>
-                                </div>
-                            </fieldset>
-
 
  
-                          <fieldset>
-                           <table class="table">
-                                        <thead class="thead-default">
-                                            <tr>
-                                                <th>To do list</th>
-                                                  <th>Status of Revision  </br><font color='red'> *For Advisor</font></th>
-                                                <th>Status of Proposal Revision  </br><font color='red'> *For Committee</font></th>
-                                            </tr>
-                                        </thead>
-                                       <tbody>
-                                            <tr>
-                                             <td>Proposal Revisoin
-</td>
-                              <td><font color='succes'> <?php echo $objResult->status_advisor; ?> </font>  <span >  <?php echo get_advisor($objResult->group_id); ?></span></td>
-          <td> 
-
-
-             <span ><?php echo get_status_committee($objResult->group_id); ?></span> <p> 
-
-              <font color='red'> *For Committee</font>
-                          </td>
-                           </tr>
-                                           
-                         </tbody>
-                        </table>
-
-                            
-                    
-                          <div class="f1-buttons">
-                                    <button type="button" class="btn btn-previous">Previous</button>
-                                    <button type="button" class="btn btn-next">Next</button>
-                                </div>
-                            </fieldset>
-
-                            <fieldset>
-                                <h4>Social media profiles:</h4>
-                                <div class="form-group">
-                                    <label class="sr-only" for="f1-facebook">Facebook</label>
-                                    <input type="text" name="f1-facebook" placeholder="Facebook..." class="f1-facebook form-control" id="f1-facebook">
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="f1-twitter">Twitter</label>
-                                    <input type="text" name="f1-twitter" placeholder="Twitter..." class="f1-twitter form-control" id="f1-twitter">
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="f1-google-plus">Google plus</label>
-                                    <input type="text" name="f1-google-plus" placeholder="Google plus..." class="f1-google-plus form-control" id="f1-google-plus">
-                                </div>
-                                <div class="f1-buttons">
-                                    <button type="button" class="btn btn-previous">Previous</button>
-                                    <button type="submit" class="btn btn-submit">Submit</button>
-                                </div>
-                            </fieldset>
-                      
 
                  <?php
                  } }

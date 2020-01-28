@@ -64,14 +64,14 @@
             ?>
            <tbody>
             <tr>
-                    <td class="text-center"><?php echo $objResult->member_id; ?></td>
-                    <td class="text-center"><?php echo $objResult->member_idcard; ?></td>
-                    <td class="text-center"><?php echo $objResult->member_fullname; ?></td>
-                    <td class="text-center"><?php echo $objResult->member_phone; ?></td>
-                    <td class="text-center"><?php echo $objResult->member_email; ?></td>
-                    <td class="text-center"><?php echo gender($objResult->member_gender); ?></td>
-                    <td class="text-center"><?php echo position($objResult->member_pos); ?></td>
-                    <td class="text-center"><?php echo status($objResult->admin_id); ?></td>
+                    <td class="text-left"><?php echo $objResult->member_id; ?></td>
+                    <td class="text-left"><?php echo $objResult->member_idcard; ?></td>
+                    <td class="text-left"><?php echo $objResult->member_fullname; ?></td>
+                    <td class="text-left"><?php echo $objResult->member_phone; ?></td>
+                    <td class="text-left"><?php echo $objResult->member_email; ?></td>
+                    <td class="text-left"><?php echo gender($objResult->member_gender); ?></td>
+                    <td class="text-left"><?php echo position($objResult->member_pos); ?></td>
+                    <td class="text-left"><?php echo status($objResult->admin_id); ?></td>
                    <td><a href="?page=edit_member&id=<?php echo $objResult->member_id;?>"><i class="fa fa-edit" title="Edit"></i></a></td>
            </tr>
                 <?php

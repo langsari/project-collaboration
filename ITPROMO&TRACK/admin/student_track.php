@@ -86,8 +86,8 @@
 
            <tbody>
             <tr>
-        <td class="text-center"><?php echo $objResult->advisergroup_topic; ?></td>
-                     <td class="text-center"><?php echo get_member_list($objResult->group_id); ?></td>
+        <td class="text-left"><?php echo $objResult->advisergroup_topic; ?></td>
+                     <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
 
                   
                   

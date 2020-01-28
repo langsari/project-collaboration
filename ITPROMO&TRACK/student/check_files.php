@@ -8,6 +8,9 @@ require '../menu/connect.php';
 $advisergroup_id = get_ag_id(get_group_id());
 $Owner = get_member_list1(get_group_id());
 
+	$files_status = 'Waiting';
+
+
 
 $files_filename_proposal = $_REQUEST['files_filename_proposal']; //รับค่าไฟล์จากฟอร์ม		
 $date = date("d-m-Y"); //กำหนดวันที่และเวลา
@@ -31,8 +34,8 @@ move_uploaded_file($_FILES['files_filename_proposal']['tmp_name'],$path_copy);
 	}
 	// เพิ่มไฟล์เข้าไปในตาราง uploadfile
 	
-$sql = "INSERT INTO files (files_filename_proposal,advisergroup_id,Owner) 
-		VALUES('$newname','$advisergroup_id','$Owner')";
+$sql = "INSERT INTO files (files_filename_proposal,advisergroup_id,Owner,files_status) 
+		VALUES('$newname','$advisergroup_id','$Owner','$files_status')";
 		
 		$result = mysqli_query($db, $sql) or die ("Error in query: $sql " . mysqli_error());
 	

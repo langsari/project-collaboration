@@ -66,12 +66,12 @@
             ?>
            <tbody>
             <tr>
-        <td class="text-center"><?php echo $objResult->news_id; ?></td>
-             <td class="text-center"><?php echo substr($objResult->news_topic, 0, 30); ?></td>
-                 <td class="text-center"><?php echo substr($objResult->news_detail, 0, 30); ?></td>
+        <td class="text-left"><?php echo $objResult->news_id; ?></td>
+             <td class="text-left"><?php echo substr($objResult->news_topic, 0, 30); ?></td>
+                 <td class="text-left"><?php echo substr($objResult->news_detail, 0, 30); ?></td>
 
-                    <td class="text-center"><?php echo $objResult->news_date; ?></td>
-                        <td class="text-center"><?php echo $objResult->member_fullname; ?></td>
+                    <td class="text-left"><?php echo $objResult->news_date; ?></td>
+                        <td class="text-left"><?php echo $objResult->member_fullname; ?></td>
 
                
 

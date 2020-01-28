@@ -8,6 +8,7 @@
                                      <table class="table">
                                         <thead class="thead-default">
                                            <tr>
+                                             <th>No</th>
                   <th>Title project</th>
                   <th>Student</th>
                 <th>Files</th>
@@ -16,6 +17,7 @@
                                         </thead>
                                         <tbody>
       <?php
+
 require 'menu/connect.php';
 $my_id = $_SESSION['id'];
 
@@ -24,14 +26,16 @@ $my_id = $_SESSION['id'];
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.member_id  AND files.by_officer = ''
-
+        WHERE advisergroup.member_id  AND files.by_officer = '' 
+        Order By files_id
                ";
 
               if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
               ?>
                <tr>
+                        <td ><?php echo $row->files_id; ?></td>
+
                   <td ><?php echo get_member_list($row->group_id); ?></td>
                         <td ><?php echo $row->advisergroup_topic; ?></td>
 

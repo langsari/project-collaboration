@@ -357,7 +357,7 @@ require 'connect.php';
 					WHERE committeegroup.group_id = '$group_id'";
 	if($rs = $db->query($sql)){
 		while($row = $rs->fetch_object()){
-	$rows .= "<p>".$row->status_presentation." &nbsp;&nbsp;&nbsp;&nbsp; ".$row->member_fullname."  </p>";
+	$rows .= "<p> <font color='succes'> ".$row->status_presentation." </font>&nbsp;&nbsp;&nbsp;&nbsp; ".$row->member_fullname."  </p>";
 		}
 		return $rows;
 		$db->close();

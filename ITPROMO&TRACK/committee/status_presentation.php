@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
  <html>
  <head>
    <title></title>
@@ -41,11 +41,10 @@
 $id = $_GET['id'];
 
 
-        $sql = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.advisergroup_status,files.files_status,files.by_officer,files.member_id,files.status_presentation,files.files_id,files.advisergroup_id,committeegroup.group_id,files.files_filename_proposal,files.pf,files.Owner FROM advisergroup
+        $sql = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,committeegroup.status_presentation,committeegroup.group_id,files.Owner,advisergroup.group_id,files.status_advisor FROM advisergroup
               LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
           LEFT JOIN committeegroup ON advisergroup.group_id = committeegroup.group_id
-
-          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+          LEFT JOIN files ON advisergroup.group_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.group_id  ='".$_GET['id']."'";  
 
@@ -76,7 +75,7 @@ $id = $_GET['id'];
                                             </div>
 
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control"  value="<?php echo $objResult->group_number; ?>" >
+                                               <?php echo $objResult->group_number; ?>
                                             </div>
                                         </div>
 
@@ -89,7 +88,7 @@ $id = $_GET['id'];
                               <div class="col-md-9">
                                 
                                 <td class="form-control" >
-  <input type="text" class="form-control" name="advisergroup_id" id="advisergroup_id"  value="<?php echo $objResult->advisergroup_id; ?>"  hidden=''> 
+            <td class="text-left"><?php echo get_advisor($objResult->group_id); ?></td>      
                                   </td>
                               </div>
                             </div>
@@ -102,7 +101,7 @@ $id = $_GET['id'];
                               <div class="col-md-9">
                                 
                                 <td class="form-control" >
-  <input type="text" class="form-control" name="Owner" id="Owner"  value="<?php echo $objResult->Owner; ?>" > 
+            <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
                                   </td>
                               </div>
                             </div>
@@ -114,7 +113,8 @@ $id = $_GET['id'];
                                                 <label class="control-label col-form-label">Topic</label>
                                             </div>
                                             <div class="col-md-9">
-                                      <input type="text" class="form-control"   value="<?php echo get_topic($objResult->group_id); ?>" >                                            </div>
+                                             <td class="text-left"><?php echo get_topic($objResult->group_id); ?></td>
+                                        </div>
                                         </div>
 
 
@@ -136,58 +136,14 @@ $id = $_GET['id'];
 
 
 
-
    <div class="form-group row">
-                              <div class="col-md-3">
-                                <label class="control-label col-form-label">Files </label>
-                                
+                    <div class="col-md-3">
+                         <label class="control-label col-form-label">Comment</label>
+                    </div>
+                     <div class="col-md-9">
+ <textarea rows="5" width="30" class="form-control" id="comment" name="comment" placeholder="Comment"></textarea>
                               </div>
-                              <div class="col-md-9">
-                    
-                  <input type="text" class="form-control" name="files_filename_proposal" id="files_filename_proposal"  value="<?php echo $objResult->files_filename_proposal; ?>" hidden=''>
-
-                              </div>
-                            </div>
-
-
-                              <div class="form-group row">
-                              <div class="col-md-3">
-                                <label class="control-label col-form-label">status </label>
-                                
-                              </div>
-                              <div class="col-md-9">
-                    
-                  <input type="text" class="form-control" name="files_status" id="files_status"  value="<?php echo $objResult->files_status; ?>" hidden=''>
-
-                              </div>
-                            </div>
-<!--get Topic   -->
-      <div class="form-group row">
-                              <div class="col-md-3">
-                                <label class="control-label col-form-label">status officer </label>
-                                
-                              </div>
-                              <div class="col-md-9">
-                    
-                  <input type="text" class="form-control" name="by_officer" id="by_officer"  value="<?php echo $objResult->by_officer; ?>" hidden=''>
-
-                              </div>
-                            </div>
-
-                            <!--get Topic   -->
-      <div class="form-group row">
-                              <div class="col-md-3">
-                                <label class="control-label col-form-label">status PF </label>
-                                
-                              </div>
-                              <div class="col-md-9">
-                    
-                  <input type="text" class="form-control" name="pf" id="pf"  value="<?php echo $objResult->pf; ?>" hidden=''>
-
-                              </div>
-                            </div>
-<!--get Topic   -->
-
+                   </div>
 
 
 

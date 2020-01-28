@@ -1,4 +1,3 @@
- 
 
  
          
@@ -43,10 +42,8 @@ $my_id = $_SESSION['id'];
      $sql = "SELECT advisergroup.*,  files.files_status,files.pf,files.files_id,files.files_filename_proposal,files.Owner,advisergroup.advisergroup_topic,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
-
         LEFT JOIN member ON advisergroup.member_id = member.member_id
          LEFT JOIN admin ON advisergroup.admin_id = admin.admin_id
-
         WHERE advisergroup.admin_id = '$my_id'  AND pf  
                ";
 
