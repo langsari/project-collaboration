@@ -11,11 +11,11 @@
                                     <div class="f1-progress-line" data-now-value="3" data-number-of-steps="13" style="width: 3%;"></div>
                                 </div>
 
-                                                 <div class="f1-step  ">
+                                                 <div class="f1-step active ">
                             <div class="f1-step-icon">PF01</div>
                             <p>FormPF01</p>
                           </div>
-                          <div class="f1-step  ">
+                          <div class="f1-step active ">
                         <div class="f1-step-icon">PF02</div>
                               <p>FormPF02</p>
                           </div>

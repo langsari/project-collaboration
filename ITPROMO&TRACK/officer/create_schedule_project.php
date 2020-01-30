@@ -1,91 +1,103 @@
 <!DOCTYPE html>
- <html>
- <head>
-   <title></title>
+<html>
 
- <script src='https://kit.fontawesome.com/a076d05399.js'></script>
- <style>
-    h6{
-      font-family:initial;
+<head>
+  <title></title>
+
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <style>
+    h6 {
+      font-family: initial;
       font-size: 25px;
       color: green;
     }
-    #more {display: none;}
+
+    #more {
+      display: none;
+    }
+
     ul.breadcrumb {
       background-color: #eee;
       text-align: right;
       padding: 10px 16px;
     }
+
     ul.breadcrumb li {
-     display: inline;
-    }  
+      display: inline;
+    }
+
     ul.breadcrumb li+li:before {
       padding: 8px;
       content: ">>\00a0";
-}
-    
+    }
   </style>
 
- <ul class="breadcrumb">
- <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
-  <li class="active">Add Schedule Project</li>
-</ul>
+  <ul class="breadcrumb">
+    <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
+    <li class="active">Add Schedule Project</li>
+  </ul>
 
-<div class="content">
-                     <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-block">
+  <div class="content">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-block">
 
-  <button type="button"  class="btn btn-success btn-sm" data-toggle="modal" data-target="#addmember" style="margin-bottom: 10px;">
+            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addmember"
+              style="margin-bottom: 10px;">
 
-            <i class="glyphicon glyphicon-plus"></i>Add Schedule Project
-          </button>
+              <i class="glyphicon glyphicon-plus"></i>Add Schedule Project
+            </button>
 
 
-          <!-- Modal -->
-<div class="modal fade" id="addmember" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i> Add Schedule Project</h4>
-      </div>
-      <div class="modal-body">
-         
-       <form id="add" name="add" method ="post" action ="officer/check_schedule_project.php" onsubmit="return checkForm()" >
-                  
+            <!-- Modal -->
+            <div class="modal fade" id="addmember" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i> Add Schedule
+                      Project</h4>
+                  </div>
+                  <div class="modal-body">
 
- 
-            <div class="form-group row">
-                    <div class="col-md-3">
-                         <label class="control-label col-form-label">Topic</label>
-                    </div>
-                     <div class="col-md-9">
-                    <input type="text" class="form-control" id="schedule_topic" name="schedule_topic"placeholder="Topic" autocomplete="off" required aria-describedby="basic-addon1">
-               </div>
-                   </div>
-
-   <div class="form-group row">
-                    <div class="col-md-3">
-                         <label class="control-label col-form-label">Status </label>
-                    </div>
-                     <div class="col-md-9">
-                    <input type="text" class="form-control" id="schedule_status" name="schedule_status"placeholder="Status" autocomplete="off" required aria-describedby="basic-addon1">
-               </div>
-                   </div>
+                    <form id="add" name="add" method="post" action="officer/check_schedule_project.php"
+                      onsubmit="return checkForm()">
 
 
 
-     
-           <div class="form-group row">           
-       <div class="col-md-3">
-             <label class="control-label col-form-label">Title Project</label>
-           </div>
-             <div class="col-md-9">
-             <select class="form-control" name="group_id">
-              <option value="no">- Select Title Project-</option>
-                <?php
+                      <div class="form-group row">
+                        <div class="col-md-3">
+                          <label class="control-label col-form-label">Topic</label>
+                        </div>
+                        <div class="col-md-9">
+                          <input type="text" class="form-control" id="schedule_topic" name="schedule_topic"
+                            placeholder="Topic" autocomplete="off" required aria-describedby="basic-addon1">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-md-3">
+                          <label class="control-label col-form-label">Status </label>
+                        </div>
+                        <div class="col-md-9">
+                          <input type="text" class="form-control" id="schedule_status" name="schedule_status"
+                            placeholder="Status" autocomplete="off" required aria-describedby="basic-addon1">
+                        </div>
+                      </div>
+
+
+
+
+                      <div class="form-group row">
+                        <div class="col-md-3">
+                          <label class="control-label col-form-label">Title Project</label>
+                        </div>
+                        <div class="col-md-9">
+                          <select class="form-control" name="group_id">
+                            <option value="no">- Select Title Project-</option>
+                            <?php
                 include '../menu/connect.php';
                 $strSQL = "SELECT advisergroup_id, advisergroup_topic FROM advisergroup WHERE advisergroup_id";
                 if($result = $db->query($strSQL)){
@@ -97,51 +109,54 @@
               
                 }
                 ?>
-              </select>
-      
-            </div>
-          </div>
+                          </select>
 
-      
+                        </div>
+                      </div>
 
-                                             
-         
-                                        <div class="form-group row">
-                    <div class="col-md-3">
-                         <label class="control-label col-form-label">Date</label>
-                    </div>
-                     <div class="col-md-9">
-                    <input type="DATE" class="form-control" id="schedule_date" name="schedule_date"placeholder="Years" autocomplete="off" required aria-describedby="basic-addon1">
-               </div>
-                   </div>
 
-                    <div class="form-group row">
-                    <div class="col-md-3">
-                         <label class="control-label col-form-label">Time</label>
-                    </div>
-                     <div class="col-md-9">
-                    <input type="time" class="form-control" id="schedule_time" name="schedule_time"placeholder="Time" autocomplete="off" required aria-describedby="basic-addon1">
-               </div>
-                   </div>
 
-                     <div class="form-group row">
-                    <div class="col-md-3">
-                         <label class="control-label col-form-label">Room</label>
-                    </div>
-                     <div class="col-md-9">
-                    <input type="text" class="form-control" id="schedule_room" name="schedule_room"placeholder="Room" autocomplete="off" required aria-describedby="basic-addon1">
-               </div>
-                   </div>
 
-                                              
-  <div class="form-group row">           
-       <div class="col-md-3">
-           
-           </div>
-             <div class="col-md-9">
-             <select class="form-control" name="writer" hidden="">
 
-                <?php
+                      <div class="form-group row">
+                        <div class="col-md-3">
+                          <label class="control-label col-form-label">Date</label>
+                        </div>
+                        <div class="col-md-9">
+                          <input type="DATE" class="form-control" id="schedule_date" name="schedule_date"
+                            placeholder="Years" autocomplete="off" required aria-describedby="basic-addon1">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-md-3">
+                          <label class="control-label col-form-label">Time</label>
+                        </div>
+                        <div class="col-md-9">
+                          <input type="time" class="form-control" id="schedule_time" name="schedule_time"
+                            placeholder="Time" autocomplete="off" required aria-describedby="basic-addon1">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-md-3">
+                          <label class="control-label col-form-label">Room</label>
+                        </div>
+                        <div class="col-md-9">
+                          <input type="text" class="form-control" id="schedule_room" name="schedule_room"
+                            placeholder="Room" autocomplete="off" required aria-describedby="basic-addon1">
+                        </div>
+                      </div>
+
+
+                      <div class="form-group row">
+                        <div class="col-md-3">
+
+                        </div>
+                        <div class="col-md-9">
+                          <select class="form-control" name="writer" hidden="">
+
+                            <?php
                 include '../menu/connect.php';
                 $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_id ='".$_SESSION['id']."'";
                 if($result = $db->query($strSQL)){
@@ -151,25 +166,26 @@
                 }else{
                 }
                 ?>
-              </select>
-      
+                          </select>
+
+                        </div>
+                      </div>
+                      <input type="text" class="form-control" id="schedule_type" name="schedule_type" value="2"
+                        hidden="">
+
+                      <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
+
+                  </div>
+                </div>
+              </div>
+              </form>
             </div>
-          </div>
-                  <input type="text" class="form-control" id="schedule_type" name="schedule_type" value="2" hidden="">
-
-               <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    </form>
-                                </div>
 
 
- <h6 class="card-title text-bold">Schedule Project</h6>              
-           
+            <h6 class="card-title text-bold">Schedule Project</h6>
 
-     <?php
+
+            <?php
  
  //require 'menu/function.php';
 
@@ -187,107 +203,114 @@
         ?>
 
 
-       <table class="display datatable table table-stripped" cellspacing="0" width="100%">
-          <thead>
-             <tr>
-                      <th>No</th>
-                      <th>Group</th>
-                      <th>Name</th>
-                      <th>Title Project</th>
-                      <th>Status Presentaiton</th>
-                      <th>Advisor</th>
-                       <th>Committee</th>
-                       <th>Date</th>
-                       <th>Time</th>
-                       <th>Room</th>
-                   
+            <table class="display datatable table table-stripped" cellspacing="0" width="100%">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Group</th>
+                  <th>Name</th>
+                  <th>Title Project</th>
+                  <th>Status Presentaiton</th>
+                  <th>Advisor</th>
+                  <th>Committee</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Room</th>
 
-                 </tr>
-               </thead>
-       <?php
+
+                </tr>
+              </thead>
+              <?php
      if($result = $db->query($sql)){
              while($objResult = $result->fetch_object()){
             ?>
-           <tbody>
-            <tr> <td class="text-left"><?php echo $objResult->schedule_id; ?></td>
+              <tbody>
+                <tr>
+                  <td class="text-left"><?php echo $objResult->schedule_id; ?></td>
                   <td class="text-left"><?php echo get_member_list1($objResult->group_id); ?></td>
                   <td class="text-left"><?php echo $objResult->advisergroup_topic; ?></td>
-                    <td class="text-left"><?php echo $objResult->schedule_status ?></td>
-                    <td class="text-left"><?php echo get_advisor($objResult->group_id); ?></td>
-                     <td class="text-left"><?php echo get_committee($objResult->group_id); ?></td>
-                     <td class="text-left"><?php echo $objResult->schedule_date ?></td>
-                       <td class="text-left"><?php echo $objResult->schedule_time; ?></td>
-                     <td class="text-left"><?php echo $objResult->schedule_room ?></td>
-                    
+                  <td class="text-left"><?php echo $objResult->schedule_status ?></td>
+                  <td class="text-left"><?php echo get_advisor($objResult->group_id); ?></td>
+                  <td class="text-left"><?php echo get_committee($objResult->group_id); ?></td>
+                  <td class="text-left"><?php echo $objResult->schedule_date ?></td>
+                  <td class="text-left"><?php echo $objResult->schedule_time; ?></td>
+                  <td class="text-left"><?php echo $objResult->schedule_room ?></td>
 
 
- <td>
-                       <a type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editPS" onclick="edit_ps(<?php echo $objResult->schedule_id; ?>)"><i class="fa fa-edit" aria-hidden="true"></i>
 
-           
-                 
-                      </td>
-                    </tr>
+                  <td>
+                    <a type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editPS"
+                      onclick="edit_ps(<?php echo $objResult->schedule_id; ?>)"><i class="fa fa-edit"
+                        aria-hidden="true"></i>
+
+
+
+                  </td>
+                </tr>
 
                 <?php
                  }
                }
                    ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-<!-- Modal -->
-
-  
-
-<div class="modal fade" id="editPS" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i> Edit Project Schedule</h4>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-    <div class="modal-body">
-         
-       <form id="add" name="add" method ="post" action ="officer/check_schedule_project.php" onsubmit="return checkForm()" >
-                  
+    </div>
+  </div>
 
- 
+
+  <!-- Modal -->
+
+
+
+  <div class="modal fade" id="editPS" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i> Edit Project Schedule</h4>
+        </div>
+        <div class="modal-body">
+
+          <form id="add" name="add" method="post" action="officer/check_schedule_project.php"
+            onsubmit="return checkForm()">
+
+
+
             <div class="form-group row">
-                    <div class="col-md-3">
-                         <label class="control-label col-form-label">Topic</label>
-                    </div>
-                     <div class="col-md-9">
-                    <input type="text" class="form-control" id="schedule_topic" name="schedule_topic" placeholder="Topic" autocomplete="off" required aria-describedby="basic-addon1">
-               </div>
-                   </div>
+              <div class="col-md-3">
+                <label class="control-label col-form-label">Topic</label>
+              </div>
+              <div class="col-md-9">
+                <input type="text" class="form-control" id="schedule_topic" name="schedule_topic" placeholder="Topic"
+                  autocomplete="off" required aria-describedby="basic-addon1">
+              </div>
+            </div>
 
-   <div class="form-group row">
-                    <div class="col-md-3">
-                         <label class="control-label col-form-label">Status </label>
-                    </div>
-                     <div class="col-md-9">
-                    <input type="text" class="form-control" id="schedule_status" name="schedule_status"placeholder="Status" autocomplete="off" required aria-describedby="basic-addon1"  >
-               </div>
-                   </div>
+            <div class="form-group row">
+              <div class="col-md-3">
+                <label class="control-label col-form-label">Status </label>
+              </div>
+              <div class="col-md-9">
+                <input type="text" class="form-control" id="schedule_status" name="schedule_status" placeholder="Status"
+                  autocomplete="off" required aria-describedby="basic-addon1">
+              </div>
+            </div>
 
 
 
-     
-           <div class="form-group row">           
-       <div class="col-md-3">
-             <label class="control-label col-form-label">Title Project</label>
-           </div>
-             <div class="col-md-9">
-             <select class="form-control" name="group_id">
-              <option value="no">- Select Title Project-</option>
-                <?php
+
+            <div class="form-group row">
+              <div class="col-md-3">
+                <label class="control-label col-form-label">Title Project</label>
+              </div>
+              <div class="col-md-9">
+                <select class="form-control" name="group_id">
+                  <option value="no">- Select Title Project-</option>
+                  <?php
                 include '../menu/connect.php';
                 $strSQL = "SELECT advisergroup_id, advisergroup_topic FROM advisergroup WHERE advisergroup_id";
                 if($result = $db->query($strSQL)){
@@ -299,51 +322,54 @@
               
                 }
                 ?>
-              </select>
-      
+                </select>
+
+              </div>
             </div>
-          </div>
 
-      
 
-                                             
-         
-                                        <div class="form-group row">
-                    <div class="col-md-3">
-                         <label class="control-label col-form-label">Date</label>
-                    </div>
-                     <div class="col-md-9">
-                    <input type="DATE" class="form-control" id="schedule_date" name="schedule_date"placeholder="Years" autocomplete="off" required aria-describedby="basic-addon1">
-               </div>
-                   </div>
 
-                    <div class="form-group row">
-                    <div class="col-md-3">
-                         <label class="control-label col-form-label">Time</label>
-                    </div>
-                     <div class="col-md-9">
-                    <input type="time" class="form-control" id="schedule_time" name="schedule_time"placeholder="Time" autocomplete="off" required aria-describedby="basic-addon1">
-               </div>
-                   </div>
 
-                     <div class="form-group row">
-                    <div class="col-md-3">
-                         <label class="control-label col-form-label">Room</label>
-                    </div>
-                     <div class="col-md-9">
-                    <input type="text" class="form-control" id="schedule_room" name="schedule_room"placeholder="Room" autocomplete="off" required aria-describedby="basic-addon1"  >
-               </div>
-                   </div>
 
-                                              
-  <div class="form-group row">           
-       <div class="col-md-3">
-           
-           </div>
-             <div class="col-md-9">
-             <select class="form-control" name="member_id" hidden="">
+            <div class="form-group row">
+              <div class="col-md-3">
+                <label class="control-label col-form-label">Date</label>
+              </div>
+              <div class="col-md-9">
+                <input type="DATE" class="form-control" id="schedule_date" name="schedule_date" placeholder="Years"
+                  autocomplete="off" required aria-describedby="basic-addon1">
+              </div>
+            </div>
 
-                <?php
+            <div class="form-group row">
+              <div class="col-md-3">
+                <label class="control-label col-form-label">Time</label>
+              </div>
+              <div class="col-md-9">
+                <input type="time" class="form-control" id="schedule_time" name="schedule_time" placeholder="Time"
+                  autocomplete="off" required aria-describedby="basic-addon1">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-3">
+                <label class="control-label col-form-label">Room</label>
+              </div>
+              <div class="col-md-9">
+                <input type="text" class="form-control" id="schedule_room" name="schedule_room" placeholder="Room"
+                  autocomplete="off" required aria-describedby="basic-addon1">
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <div class="col-md-3">
+
+              </div>
+              <div class="col-md-9">
+                <select class="form-control" name="member_id" hidden="">
+
+                  <?php
                 include '../menu/connect.php';
                 $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_id ='".$_SESSION['id']."'";
                 if($result = $db->query($strSQL)){
@@ -353,24 +379,24 @@
                 }else{
                 }
                 ?>
-              </select>
-      
+                </select>
+
+              </div>
             </div>
-          </div>
-                  <input type="text" class="form-control" id="schedule_type" name="schedule_type" value="2" hidden="">
+            <input type="text" class="form-control" id="schedule_type" name="schedule_type" value="2" hidden="">
 
-               <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
 
-      </div>
+        </div>
         </form>
+      </div>
     </div>
   </div>
-</div>
 
 
 
 
 
-</body>
+  </body>
 
 </html>

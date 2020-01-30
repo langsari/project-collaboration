@@ -1,11 +1,11 @@
 <div class="content">
-                     <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-block">
- 
-                                   <h5 class="mt-3">Recent Users</h5>
-                                <?php
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-block">
+
+                    <h5 class="mt-3">Recent Users</h5>
+                    <?php
 require 'menu/connect.php';
 
 $my_id = $_SESSION['id'];
@@ -23,45 +23,43 @@ $my_id = $_SESSION['id'];
               ?>
 
 
-      <table class="display datatable table table-stripped" cellspacing="0" width="100%">
-          <thead>
-             <tr>
-                   	<th class="text-center">No</th>  
-                        <th class="text-center">Topic</th>   
-                        <th class="text-center">ID-Student</th>
-                       
+                    <table class="display datatable table table-stripped" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th class="text-center">No</th>
+                                <th class="text-center">Topic</th>
+                                <th class="text-center">ID-Student</th>
 
 
-                 </tr>
-               </thead>
- <?php
+
+                            </tr>
+                        </thead>
+                        <?php
      
               if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
               ?>
 
-           <tbody>
-            <tr>
-            	<td class="text-center"><?php echo get_groupcode($row->group_id); ?></td>
-                     <td class="text-center"><?php echo $row->advisergroup_topic; ?></td>
-              <td class="text-center"><?php echo get_member_list($row->group_id); ?></td>
-                    
+                        <tbody>
+                            <tr>
+                                <td class="text-center"><?php echo get_groupcode($row->group_id); ?></td>
+                                <td class="text-center"><?php echo $row->advisergroup_topic; ?></td>
+                                <td class="text-center"><?php echo get_member_list($row->group_id); ?></td>
 
 
-                    </tr>
 
-                             
-  <?php
+                            </tr>
+
+
+                            <?php
     }
                }
                    ?>
 
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
-
-    
+            </div>
+        </div>
+    </div>
+</div>

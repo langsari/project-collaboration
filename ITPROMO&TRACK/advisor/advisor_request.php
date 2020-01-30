@@ -1,21 +1,23 @@
 <div class="content">
-                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-block">
-                                    <h4><legend class="text-bold margin-top-2.5"> Advisor and Topic Request (PF01)</legend></h4>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-block">
+          <h4>
+            <legend class="text-bold margin-top-2.5"> Advisor and Topic Request (PF01)</legend>
+          </h4>
 
-                                     <table class="table">
-                                        <thead class="thead-default">
-                                           <tr>
-                  <th>Title project</th>
-                  <th>Student</th>
-                    <th>Status</th>
+          <table class="table">
+            <thead class="thead-default">
+              <tr>
+                <th>Title project</th>
+                <th>Student</th>
+                <th>Status</th>
                 <th></th>
-                </tr>
-                                        </thead>
-                                        <tbody>
-                                          <?php
+              </tr>
+            </thead>
+            <tbody>
+              <?php
 require 'menu/connect.php';
 $my_id = $_SESSION['id'];
           $sql = "SELECT advisergroup.*, partnergroup.group_number FROM advisergroup
@@ -26,63 +28,71 @@ $my_id = $_SESSION['id'];
                 while($row = $rs->fetch_object()){
               ?>
 
-            
-             <tr>                 
-                  <td><?php echo $row->advisergroup_topic; ?></td>
-                  <td><?php echo get_member_list($row->group_id); ?></td>
-                <td><h6> <span class="badge badge-danger"><?php echo $row->advisergroup_status; ?></span></td>
+
+              <tr>
+                <td><?php echo $row->advisergroup_topic; ?></td>
+                <td><?php echo get_member_list($row->group_id); ?></td>
+                <td>
+                  <h6> <span class="badge badge-danger"><?php echo $row->advisergroup_status; ?></span>
+                </td>
 
 
-           <td><a href="advisor/check_approve.php?id=<?php echo $row->advisergroup_id; ?>"class="btn btn-success btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i class='glyphicon glyphicon-ok'></i> Approve</a>
+                <td><a href="advisor/check_approve.php?id=<?php echo $row->advisergroup_id; ?>"
+                    class="btn btn-success btn-xs" title="Comfirm"
+                    onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
+                      class='glyphicon glyphicon-ok'></i> Approve</a>
 
-          <a href="advisor/check_approve.php?id=<?php echo $row->advisergroup_id; ?>"class="btn btn-danger btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i class='glyphicon glyphicon-ok'></i> Reject</a>
+                  <a href="advisor/check_approve.php?id=<?php echo $row->advisergroup_id; ?>"
+                    class="btn btn-danger btn-xs" title="Comfirm"
+                    onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
+                      class='glyphicon glyphicon-ok'></i> Reject</a>
 
-                    </td>
+                </td>
 
 
 
-                </tr>
+              </tr>
 
 
-               
+
               <?php
                 }
               }else{
               }
               ?>
-                                            
-                                  
-             </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                     
-                   
 
 
-  
+            </tbody>
+          </table>
+        </div>
+      </div>
 
 
-                        
-                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-block">
-                                    <legend class="text-bold margin-top-2.5"> 3 chapter of Proposal   Request (PF01)</legend>
 
-                                     <table class="table">
-                                        <thead class="thead-default">
-                                           <tr>
-                  <th>Title project</th>
-                  <th>Student</th>
+
+
+
+
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-block">
+              <legend class="text-bold margin-top-2.5"> 3 chapter of Proposal Request (PF01)</legend>
+
+              <table class="table">
+                <thead class="thead-default">
+                  <tr>
+                    <th>Title project</th>
+                    <th>Student</th>
                     <th>Status</th>
-                <th></th>
-                <th></th>
-                </tr>
-                                        </thead>
-                                        <tbody>
-              
-              <?php
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <?php
 require 'menu/connect.php';
 $my_id = $_SESSION['id'];
     $strSQL = "SELECT advisergroup.*,  files.files_status,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic FROM advisergroup
@@ -94,50 +104,56 @@ $my_id = $_SESSION['id'];
               if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
               ?>
-                <tr>
-                        <td ><?php echo $row->advisergroup_topic; ?></td>
-                  <td ><?php echo get_member_list($row->group_id); ?></td>
-               <td><h6> <span class="badge badge-danger"><?php echo $row->files_status; ?></span></td>
-  <td><a href="student/download.php?pdf=<?php echo $row->files_filename_proposal ;?>"><i class="fa fa-download"></i></a></td>
+                  <tr>
+                    <td><?php echo $row->advisergroup_topic; ?></td>
+                    <td><?php echo get_member_list($row->group_id); ?></td>
+                    <td>
+                      <h6> <span class="badge badge-danger"><?php echo $row->files_status; ?></span>
+                    </td>
+                    <td><a href="student/download.php?pdf=<?php echo $row->files_filename_proposal ;?>"><i
+                          class="fa fa-download"></i></a></td>
 
-  <td><a href="advisor/check_topic.php?id=<?php echo $row->files_id; ?>"class="btn btn-success btn-xs"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i class='glyphicon glyphicon-ok'></i> Approve</a>
+                    <td><a href="advisor/check_topic.php?id=<?php echo $row->files_id; ?>"
+                        class="btn btn-success btn-xs" title="Comfirm"
+                        onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
+                          class='glyphicon glyphicon-ok'></i> Approve</a>
 
-                </tr>
-               <?php
+                  </tr>
+                  <?php
                 }
               }else{
               }
               ?>
 
-             </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        
-                       
+                </tbody>
+              </table>
+            </div>
+          </div>
 
 
-   
-       
-                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-block">
-                                    <legend class="text-bold margin-top-2.5"> Proposal Revision Request (PF03)</legend>
 
-                                     <table class="table">
-                                        <thead class="thead-default">
-                                           <tr>
-                  <th>Title project</th>
-                  <th>Student</th>
-                    <th>Status</th>
-              
-          
-                </tr>
-                                        </thead>
-                                        <tbody>
-              
-              <?php
+
+
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-block">
+                  <legend class="text-bold margin-top-2.5"> Proposal Revision Request (PF03)</legend>
+
+                  <table class="table">
+                    <thead class="thead-default">
+                      <tr>
+                        <th>Title project</th>
+                        <th>Student</th>
+                        <th>Status</th>
+
+
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <?php
 
 
 require 'menu/connect.php';
@@ -153,27 +169,24 @@ $my_id = $_SESSION['id'];
               if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
               ?>
-                <tr>
-                        <td ><?php echo $row->advisergroup_topic; ?></td>
-                  <td ><?php echo get_member_list($row->group_id); ?></td>
+                      <tr>
+                        <td><?php echo $row->advisergroup_topic; ?></td>
+                        <td><?php echo get_member_list($row->group_id); ?></td>
 
-  <td><a href="advisor/check_proposal_revision.php?id=<?php echo $row->files_id; ?>"  title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i class="fa fa-check" aria-hidden="true"></i> </a>
+                        <td><a href="advisor/check_proposal_revision.php?id=<?php echo $row->files_id; ?>"
+                            title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
+                              class="fa fa-check" aria-hidden="true"></i> </a>
 
-                  
 
-                </tr>
-               <?php
+
+                      </tr>
+                      <?php
                 }
               }else{
               }
               ?>
 
-             </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                    
-                           
-
-  
-
+                    </tbody>
+                  </table>
+                </div>
+              </div>

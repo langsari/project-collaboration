@@ -1,13 +1,11 @@
-
-  
 <div class="content">
-                     <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-block">
- 
-                                   <h5 class="mt-3">Proposal Presentation</h5>
- <?php
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-block">
+
+          <h5 class="mt-3">Proposal Presentation</h5>
+          <?php
 require 'menu/connect.php';
 $my_id = $_SESSION['id'];
 
@@ -26,80 +24,83 @@ $my_id = $_SESSION['id'];
 
 
 
-      <table class="display datatable table table-stripped" cellspacing="0" width="100%">
-          <thead>
-             <tr>
-                        <th>Group Code</th>   
-                        <th>Owner Project</th>
-                        <th>Title</th>
-                        <th>Advisor</th>
-                        <th>Committee</th>
-                        <th>Status</th>
-                        <th>Options</th>
+          <table class="display datatable table table-stripped" cellspacing="0" width="100%">
+            <thead>
+              <tr>
+                <th>Group Code</th>
+                <th>Owner Project</th>
+                <th>Title</th>
+                <th>Advisor</th>
+                <th>Committee</th>
+                <th>Status</th>
+                <th>Options</th>
 
 
 
-                 </tr>
-               </thead>
- <?php
+              </tr>
+            </thead>
+            <?php
      if($result = $db->query($strSQL)){
              while($objResult = $result->fetch_object()){
             ?>
 
-           <tbody>
-            <tr>
-          <td class="text-left"><?php echo $objResult->group_number; ?></td>
-            <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
-             <td class="text-left"><?php echo get_topic($objResult->group_id); ?></td>
-            <td class="text-left"><?php echo get_advisor($objResult->group_id); ?></td>      
-             <td class="text-left"><?php echo get_committee($objResult->group_id); ?></td>
+            <tbody>
+              <tr>
+                <td class="text-left"><?php echo $objResult->group_number; ?></td>
+                <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
+                <td class="text-left"><?php echo get_topic($objResult->group_id); ?></td>
+                <td class="text-left"><?php echo get_advisor($objResult->group_id); ?></td>
+                <td class="text-left"><?php echo get_committee($objResult->group_id); ?></td>
 
-            <td class="text-left"><?php echo $objResult->schedule_status; ?></td>
-
-                 
-
-  <td><a href="committee/check_pass_present.php?id=<?php echo $objResult->group_id; ?>"  title="Pass" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i class="fa fa-check" aria-hidden="true"></i> </a>
-
-                   <td><a href="?page=status_presentation&id=<?php echo $objResult->group_id;?>"><i class="fa fa-edit" title="View"></i></a>
+                <td class="text-left"><?php echo $objResult->schedule_status; ?></td>
 
 
 
+                <td><a href="committee/check_pass_present.php?id=<?php echo $objResult->group_id; ?>" title="Pass"
+                    onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i class="fa fa-check"
+                      aria-hidden="true"></i> </a>
 
-</td>
+                <td><a href="?page=status_presentation&id=<?php echo $objResult->group_id;?>"><i class="fa fa-edit"
+                      title="View"></i></a>
 
 
-                    </tr>
 
-                             
-  <?php
+
+                </td>
+
+
+              </tr>
+
+
+              <?php
     }
                }
                    ?>
 
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    
 
-  
-  
-                         
 
-          
+
+
+
+
+
 </form>
 </div>
 </div>
 </div>
 </div>
 
- 
-   
-   
+
+
+
 <!-- add committee section -->
 <!-- Modal 
 <div class="modal fade" id="add_committee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -133,4 +134,4 @@ $my_id = $_SESSION['id'];
 </div>
 -->
 
-            <!-- /PAGE CONTENT -->
+<!-- /PAGE CONTENT -->

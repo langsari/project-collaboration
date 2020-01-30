@@ -34,86 +34,104 @@
                             </div>
 
                             <h4 class="text-light">Register</h4>
-               <form id="add" name="add" method ="post" action ="../function/checkregis.php" onsubmit="return checkForm()" >
+                            <form id="add" name="add" method="post" action="../function/checkregis.php"
+                                onsubmit="return checkForm()">
 
 
-                            <div class="user-details">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="basic-addon1">
+                                <div class="user-details">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">
                                                 <i class="fa fa-user-o"></i>
                                             </span>
-                                        <input type="text" class="form-control" placeholder="User ID " aria-describedby="basic-addon1" id="member_idcard" name="member_idcard" autocomplete="off" required>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="basic-addon1">
-                                                <i class="fa fa-user-o"></i>
-                                            </span>
-                                        <input type="text" class="form-control" placeholder="Username" id="member_username" name="member_username" autocomplete="off" required aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-
-                                 
-
-                      <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="basic-addon1">
-                                                <i class="fa fa-user-md"></i>
-                                            </span>
-                                        <input type="text" class="form-control" id="member_fullname" name="member_fullname" placeholder="Fullname" autocomplete="off" required aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-
-                         
-                                                      <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="basic-addon1">
-                                                <i class="fa fa-user-md"></i>
-                                            </span>
-                                        <input type="password" class="form-control" id="member_password" name="member_password" placeholder="Password" autocomplete="off" required aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-
-                                             <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="basic-addon1">
-                                                <i class="fa fa-user-md"></i>
-                                            </span>
-                                        <input type="text" class="form-control" id="member_phone" name="member_phone" placeholder="Phone Number" autocomplete="off" required aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-
-                   <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="basic-addon1">
-                                                <i class="fa fa-user-md"></i>
-                                            </span>
-                                        <input type="text" class="form-control" id="member_email" name="member_email" placeholder="Email" autocomplete="off" required aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                      
-
-                                        <div class="col-md-5">
-                                            <div class="input-group">
-                   Gender:   &nbsp;&nbsp; &nbsp;&nbsp;<label class="radio-inline"> <input type="radio" name="member_gender" value="Male" required aria-describedby="basic-addon1">          &nbsp;&nbsp;  Male</label> 
-                          &nbsp;&nbsp; &nbsp;&nbsp; <label class="radio-inline"><input type="radio" name="member_gender" value="Female" aria-describedby="basic-addon1">           &nbsp;&nbsp; Female</label>
-                                    </div>                                          
+                                            <input type="text" class="form-control" placeholder="User ID "
+                                                aria-describedby="basic-addon1" id="member_idcard" name="member_idcard"
+                                                autocomplete="off" required>
                                         </div>
-                           
-              
-       <input type="text" class="form-control" id="member_pos" name="member_pos" value="Student" hidden="" >
+                                    </div>
 
-                         
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">REGISTER</button>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">
+                                                <i class="fa fa-user-o"></i>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Username"
+                                                id="member_username" name="member_username" autocomplete="off" required
+                                                aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
 
-                            <div class="user-links">
-                                <a href="login.php" class="pull-left">Back To Login</a>
-                            </div>
-                                <a href="../index.php" class="pull-left">Go to Homepage</a>
-                            </div>
+
+
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">
+                                                <i class="fa fa-user-md"></i>
+                                            </span>
+                                            <input type="text" class="form-control" id="member_fullname"
+                                                name="member_fullname" placeholder="Fullname" autocomplete="off"
+                                                required aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">
+                                                <i class="fa fa-user-md"></i>
+                                            </span>
+                                            <input type="password" class="form-control" id="member_password"
+                                                name="member_password" placeholder="Password" autocomplete="off"
+                                                required aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">
+                                                <i class="fa fa-user-md"></i>
+                                            </span>
+                                            <input type="text" class="form-control" id="member_phone"
+                                                name="member_phone" placeholder="Phone Number" autocomplete="off"
+                                                required aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">
+                                                <i class="fa fa-user-md"></i>
+                                            </span>
+                                            <input type="text" class="form-control" id="member_email"
+                                                name="member_email" placeholder="Email" autocomplete="off" required
+                                                aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-5">
+                                        <div class="input-group">
+                                            Gender: &nbsp;&nbsp; &nbsp;&nbsp;<label class="radio-inline"> <input
+                                                    type="radio" name="member_gender" value="Male" required
+                                                    aria-describedby="basic-addon1"> &nbsp;&nbsp; Male</label>
+                                            &nbsp;&nbsp; &nbsp;&nbsp; <label class="radio-inline"><input type="radio"
+                                                    name="member_gender" value="Female" aria-describedby="basic-addon1">
+                                                &nbsp;&nbsp; Female</label>
+                                        </div>
+                                    </div>
+
+
+                                    <input type="text" class="form-control" id="member_pos" name="member_pos"
+                                        value="Student" hidden="">
+
+
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">REGISTER</button>
+
+                                    <div class="user-links">
+                                        <a href="login.php" class="pull-left">Back To Login</a>
+                                    </div>
+                                    <a href="../index.php" class="pull-left">Go to Homepage</a>
+                                </div>
 
                         </div>
                     </div>

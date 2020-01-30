@@ -44,42 +44,47 @@ if(isset($_GET['error'])){
 
                             <h4 class="text-light">Login</h4>
 
-    <?php if($error == 1): ?>
-        <div class="alert alert-danger" role="alert">
-          <i class="glyphicon glyphicon-alert"></i> Invalid username or password, or you are not activated by Administrator!
-        </div>
-        <?php endif; ?>
+                            <?php if($error == 1): ?>
+                            <div class="alert alert-danger" role="alert">
+                                <i class="glyphicon glyphicon-alert"></i> Invalid username or password, or you are not
+                                activated by Administrator!
+                            </div>
+                            <?php endif; ?>
 
- 
-                        <form action="../function/checklogin.php" method="post">
 
-                            <div class="user-details">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="basic-addon1">
+                            <form action="../function/checklogin.php" method="post">
+
+                                <div class="user-details">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">
                                                 <i class="fa fa-user-o"></i>
                                             </span>
-                                        <input type="text" class="form-control" id="username" name="username"placeholder="Enter Username" autocomplete="off" required aria-describedby="basic-addon1">
+                                            <input type="text" class="form-control" id="username" name="username"
+                                                placeholder="Enter Username" autocomplete="off" required
+                                                aria-describedby="basic-addon1">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="basic-addon1">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">
                                                 <i class="fa fa-key"></i>
                                             </span>
-                                        <input type="password" class="form-control"id="password" name="password"placeholder="Password" autocomplete="off" required aria-describedby="basic-addon1">
+                                            <input type="password" class="form-control" id="password" name="password"
+                                                placeholder="Password" autocomplete="off" required
+                                                aria-describedby="basic-addon1">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
 
-                            <div class="user-links">
-                          <a href="../index.php" class="pull-left">Go to Homepage</a>
+                                <div class="user-links">
+                                    <a href="../index.php" class="pull-left">Go to Homepage</a>
 
-                                <a href="register.php" class="pull-right">Register</a>
-                            </div>
+                                    <a href="register.php" class="pull-right">Register</a>
+                                </div>
 
                         </div>
                     </div>

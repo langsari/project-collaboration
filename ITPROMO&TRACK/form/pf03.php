@@ -1,74 +1,74 @@
       <link rel="stylesheet" href="assets/css/style.css">
 
-              <div class="content">
-               <form action="student/check_files.php" method="post" enctype="multipart/form-data" name="upfile" id="upfile">
-
-        
-                      <div  class="f1">
-             
-             <div class="f1-steps">
-                                <div class="f1-progress">
-                                    <div class="f1-progress-line" data-now-value="3" data-number-of-steps="13" style="width: 3%;"></div>
-                                </div>
-
-                                                 <div class="f1-step  ">
-                            <div class="f1-step-icon">PF01</div>
-                            <p>FormPF01</p>
-                          </div>
-                          <div class="f1-step  ">
-                        <div class="f1-step-icon">PF02</div>
-                              <p>FormPF02</p>
-                          </div>
-                          <div class="f1-step active">
-                   <div class="f1-step-icon">PF03</div>
-                             <p>FormPF03</p>
-                          </div>
-                            <div class="f1-step">
-                 <div class="f1-step-icon">PF04</div>
-                             <p>FormPF04</p>
-                          </div>
-                                  <div class="f1-step">
-                 <div class="f1-step-icon">PF05</div>
-                             <p>FormPF05</p>
-                          </div>
-                    <div class="f1-step">
-                   <div class="f1-step-icon">PF06</div>
-                             <p>FormPF06</p>
-                          </div>
-                            <div class="f1-step">
-                 <div class="f1-step-icon">PF07</div>
-                             <p>FormPF07</p>
-                          </div>
-                                  <div class="f1-step">
-                 <div class="f1-step-icon">PF08</div>
-                             <p>FormPF08</p>
-                          </div>
- <div class="f1-step">
-                   <div class="f1-step-icon">PF09</div>
-                             <p>FormPF09</p>
-                          </div>
-                            <div class="f1-step">
-                 <div class="f1-step-icon">PF10</div>
-                             <p>FormPF10</p>
-                          </div>
-                                  <div class="f1-step">
-                 <div class="f1-step-icon">PF11</div>
-                             <p>FormPF11</p>
-                          </div>
+      <div class="content">
+        <form action="student/check_files.php" method="post" enctype="multipart/form-data" name="upfile" id="upfile">
 
 
- <div class="f1-step">
-                   <div class="f1-step-icon">PF12</div>
-                             <p>FormPF12</p>
-                          </div>
-                            <div class="f1-step">
-                 <div class="f1-step-icon">PF13</div>
-                             <p>FormPF13</p>
-                          </div>
-                                
+          <div class="f1">
 
-                            </div>
-<?php
+            <div class="f1-steps">
+              <div class="f1-progress">
+                <div class="f1-progress-line" data-now-value="3" data-number-of-steps="13" style="width: 3%;"></div>
+              </div>
+
+              <div class="f1-step  ">
+                <div class="f1-step-icon">PF01</div>
+                <p>FormPF01</p>
+              </div>
+              <div class="f1-step  ">
+                <div class="f1-step-icon">PF02</div>
+                <p>FormPF02</p>
+              </div>
+              <div class="f1-step active">
+                <div class="f1-step-icon">PF03</div>
+                <p>FormPF03</p>
+              </div>
+              <div class="f1-step">
+                <div class="f1-step-icon">PF04</div>
+                <p>FormPF04</p>
+              </div>
+              <div class="f1-step">
+                <div class="f1-step-icon">PF05</div>
+                <p>FormPF05</p>
+              </div>
+              <div class="f1-step">
+                <div class="f1-step-icon">PF06</div>
+                <p>FormPF06</p>
+              </div>
+              <div class="f1-step">
+                <div class="f1-step-icon">PF07</div>
+                <p>FormPF07</p>
+              </div>
+              <div class="f1-step">
+                <div class="f1-step-icon">PF08</div>
+                <p>FormPF08</p>
+              </div>
+              <div class="f1-step">
+                <div class="f1-step-icon">PF09</div>
+                <p>FormPF09</p>
+              </div>
+              <div class="f1-step">
+                <div class="f1-step-icon">PF10</div>
+                <p>FormPF10</p>
+              </div>
+              <div class="f1-step">
+                <div class="f1-step-icon">PF11</div>
+                <p>FormPF11</p>
+              </div>
+
+
+              <div class="f1-step">
+                <div class="f1-step-icon">PF12</div>
+                <p>FormPF12</p>
+              </div>
+              <div class="f1-step">
+                <div class="f1-step-icon">PF13</div>
+                <p>FormPF13</p>
+              </div>
+
+
+            </div>
+            <?php
 
             $g_id = get_group_id();
               $ag_id = get_ag_id($g_id);
@@ -84,62 +84,68 @@
      if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
             ?>
-                <fieldset>
+            <fieldset>
               <h4>Project Proposal Revision Sheet
-</h4>
-                           <div class="card">
-                                <div class="card-block">
-                              <div class="row">
-                                    <table class="table">
-                                        <thead class="thead-default">
-                                            <tr>
-                                                <th>To do list</th>
-                                                  <th>Status of Revision  </br><font color='red'> *For Advisor</font></th>
-                                                <th>Status of Proposal Revision  </br><font color='red'> *For Committee</font></th>
-                                            </tr>
-                                        </thead>
-                                       <tbody>
-                                            <tr>
-                                             <td>Proposal Revisoin
-</td>
-                              <td><font color='succes'> <?php echo $objResult->status_advisor; ?> </font>  <span >  <?php echo get_advisor($objResult->group_id); ?></span></td>
-          <td> 
-
-
-             <span ><?php echo get_status_committee($objResult->group_id); ?></span> <p> 
-
-              <font color='red'> *For Committee</font>
+              </h4>
+              <div class="card">
+                <div class="card-block">
+                  <div class="row">
+                    <table class="table">
+                      <thead class="thead-default">
+                        <tr>
+                          <th>To do list</th>
+                          <th>Status of Revision </br>
+                            <font color='red'> *For Advisor</font>
+                          </th>
+                          <th>Status of Proposal Revision </br>
+                            <font color='red'> *For Committee</font>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Proposal Revisoin
                           </td>
-                           </tr>
-                                           
-                         </tbody>
-                        </table>
+                          <td>
+                            <font color='succes'> <?php echo $objResult->status_advisor; ?> </font> <span>
+                              <?php echo get_advisor($objResult->group_id); ?></span>
+                          </td>
+                          <td>
 
-                            </div>
-                    
-                 <div class="button" align="right"> 
 
-                               <button> <a href ="?page=pf02"  type="button"   class="btn previous">Previous</button></a>
-                                 <button> <a href ="?page=pf04"  type="button"   class="btn next">Next</button></a>
-                                </div>
-                            </fieldset>
+                            <span><?php echo get_status_committee($objResult->group_id); ?></span>
+                            <p>
 
-                 <?php
+                              <font color='red'> *For Committee</font>
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+
+                  </div>
+
+                  <div class="button" align="right">
+
+                    <button> <a href="?page=pf02" type="button" class="btn previous">Previous</button></a>
+                    <button> <a href="?page=pf04" type="button" class="btn next">Next</button></a>
+                  </div>
+            </fieldset>
+
+            <?php
                  } }
                    ?>
 
-   
-     
-
-                    </div>
 
 
 
-                </div>
-                   
-              </form>
- 
+          </div>
 
+
+
+      </div>
+
+      </form>
 
 
 
@@ -148,14 +154,16 @@
 
 
 
-    <div class="content">
-                     <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-block">
 
-                                   <h6 class="card-title text-bold">Comments For Committee</h6></b>
-        <?php
+
+      <div class="content">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-block">
+
+                <h6 class="card-title text-bold">Comments For Committee</h6></b>
+                <?php
             $g_id = get_group_id();
               $ag_id = get_ag_id($g_id);
               
@@ -175,47 +183,48 @@ $strSQL = "SELECT  member.member_fullname,committeegroup.comment FROM committeeg
 
 
 
-   
-            <table class="display datatable table table-stripped" cellspacing="0" width="100%">
+
+                <table class="display datatable table table-stripped" cellspacing="0" width="100%">
 
                   <tbody>
-                  
-                      <td> 
-                     
-         </br><b>
-                                     
 
-                  
-                   <h5> &nbsp;&nbsp;<span class="badge badge-primary"> <?php echo $objResult->member_fullname;?></h5></span> </br>
+                    <td>
+
+                      </br><b>
 
 
-                    <h6>  &nbsp;&nbsp; <font color='green'> <?php echo $objResult->comment;?>  </h6></br></font>
-                     
-              
+
+                        <h5> &nbsp;&nbsp;<span class="badge badge-primary"> <?php echo $objResult->member_fullname;?>
+                        </h5></span> </br>
+
+
+                        <h6> &nbsp;&nbsp; <font color='green'> <?php echo $objResult->comment;?> </h6></br></font>
+
+
 
 
                         <div class="col-md-12" align="right">
-                          
+
                         </div>
 
-                        </td> 
-             
-                <?php
+                    </td>
+
+                    <?php
                  }
                }
                    ?>
-</tbody>
-             </table>
- <script src="assets/js/jquery-1.11.1.min.js"></script>
-        <script src="assets/js/jquery.backstretch.min.js"></script>
-        <script src="assets/js/retina-1.1.0.min.js"></script>
-        <script src="assets/js/scripts.js"></script>
-   
+                  </tbody>
+                </table>
+                <script src="assets/js/jquery-1.11.1.min.js"></script>
+                <script src="assets/js/jquery.backstretch.min.js"></script>
+                <script src="assets/js/retina-1.1.0.min.js"></script>
+                <script src="assets/js/scripts.js"></script>
 
 
 
 
-   
-    </body>
 
-</html>
+
+                </body>
+
+                </html>
