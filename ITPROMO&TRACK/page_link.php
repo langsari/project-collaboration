@@ -209,19 +209,19 @@ case 'track_project':
 		
 
 		case 'pf01':
-		include('form/pf01.php');
+		include('form_pf/pf01.php');
 		break;
 		
 	case 'pf02':
-		include('form/pf02.php');
+		include('form_pf/pf02.php');
 		break;
 		
 			case 'pf03':
-		include('form/pf03.php');
+		include('form_pf/pf03.php');
 		break;
 		
 case 'pf04':
-		include('form/pf04.php');
+		include('form_pf/pf04.php');
 		break;
 		
 case 'infor_group':
