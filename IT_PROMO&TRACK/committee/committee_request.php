@@ -63,9 +63,6 @@ $my_id = $_SESSION['id'];
                 <td><a href="?page=status_presentation&id=<?php echo $objResult->group_id;?>"><i class="fa fa-edit"
                       title="View"></i></a>
 
-
-
-
                 </td>
 
 

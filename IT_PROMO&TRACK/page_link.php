@@ -97,7 +97,9 @@ case 'dashboard':
 	break;
 
 
-
+	case 'student_Track':
+		include('advisor/view_track/student_Track.php');
+		break;
 
 	case 'dashboard1':
 			include('advisor/dashboard1.php');
@@ -170,11 +172,34 @@ case 'committee_request':
 		include('advisor/add_general_topic.php');
 		break;
 
+	
+		case 'view_track':
+			include('advisor/view_track.php');
+			break;
 
 
+			case 'pf1':
+				include('advisor/view_track/pf1.php');
+				break;
 
+				case 'pf2':
+					include('advisor/view_track/pf2.php');
+					break;
+					case 'pf3':
+						include('advisor/view_track/pf3.php');
+						break;
+
+
+						case 'pf4':
+							include('advisor/view_track/pf4.php');
+							break;
+
+							
 
 #officer
+
+
+
 
         case 'create_schedule_proposal':
 		include('officer/create_schedule_proposal.php');
@@ -212,17 +237,77 @@ case 'track_project':
 		include('form01/pf01.php');
 		break;
 		
-	case 'pf02':
-		include('form02/pf02.php');
+	    case 'pf02':
+	  	include('form02/pf02.php');
 		break;
 		
-			case 'pf03':
-	include('form03/pf03.php');
+		case 'pf03':
+	    include('form03/pf03.php');
 		break;
 		
-case 'pf04':
-		include('form03/pf04.php');
+        case 'pf04':
+		include('form04/pf04.php');
 		break;
+	
+	    case 'pf05':
+			include('form05/pf05.php');
+			break;
+			
+			case 'pf06':
+			  include('form06/pf06.php');
+			break;
+			
+			case 'pf07':
+			include('form07/pf07.php');
+			break;
+			
+			case 'pf08':
+			include('form08/pf08.php');
+			break;
+	  case 'pf05':
+			include('form05/pf05.php');
+			break;
+			
+			case 'pf06':
+			  include('form06/pf06.php');
+			break;
+			
+			case 'pf07':
+			include('form07/pf07.php');
+			break;
+			
+			case 'pf08':
+			include('form08/pf08.php');
+			break;
+
+			case 'pf09':
+				include('form09/pf09.php');
+				break;
+				
+				case 'pf10':
+				  include('form10/pf10.php');
+				break;
+				
+				case 'pf11':
+				include('form11/pf11.php');
+				break;
+				
+				case 'pf12':
+				include('form12/pf12.php');
+				break;
+		
+	
+				case 'pf13':
+					include('form13/pf13.php');
+					break;
+			
+		
+
+
+
+
+
+
 		
 case 'infor_group':
 		include('student/infor_group.php');

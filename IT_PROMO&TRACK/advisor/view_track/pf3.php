@@ -23,7 +23,7 @@
           <div class="f1-step-icon">PF03</div>
           <p>FormPF03</p>
         </div>
-        <div class="f1-step active">
+        <div class="f1-step">
           <div class="f1-step-icon">PF04</div>
           <p>FormPF04</p>
         </div>
@@ -69,14 +69,14 @@
       </div>
       <?php
 
-      $g_id = get_group_id();
-        $ag_id = get_ag_id($g_id);
+$id = $_GET['id'];
+
 $strSQL = "SELECT advisergroup.*,  files.by_officer,files.Owner,files.advisergroup_id,files.pf,files.status_advisor  FROM advisergroup
     LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
     LEFT JOIN committeegroup ON advisergroup.group_id = committeegroup.group_id
 
   LEFT JOIN member ON advisergroup.member_id = member.member_id
-  WHERE advisergroup.advisergroup_id = '$ag_id' ";             
+  WHERE advisergroup.advisergroup_id = '$id'";    
 
 
  
@@ -127,8 +127,8 @@ if($result = $db->query($strSQL)){
 
             <div class="button" align="right">
 
-              <button> <a href="?page=pf03" type="button" class="btn previous">Previous</button></a>
-              <button> <a href="?page=pf05" type="button" class="btn next">Next</button></a>
+              <button> <a href="?page=pf2&id=<?php echo $objResult->advisergroup_id;?>" type="button" class="btn previous">Previous</button></a>
+              <button> <a href="?page=pf4&id=<?php echo $objResult->advisergroup_id;?>" type="button" class="btn next">Next</button></a>
             </div>
       </fieldset>
       <?php
@@ -161,14 +161,13 @@ if($result = $db->query($strSQL)){
 
           <h6 class="card-title text-bold">Comments For Committee</h6></b>
           <?php
-      $g_id = get_group_id();
-        $ag_id = get_ag_id($g_id);
+ $id = $_GET['id'];
         
 
 
 $strSQL = "SELECT  member.member_fullname,committeegroup.comment FROM committeegroup
     LEFT JOIN member ON committeegroup.member_id = member.member_id
-    WHERE committeegroup.group_id = '$ag_id'";
+    WHERE committeegroup.group_id = '$id'";
 
 if($result = $db->query($strSQL)){
             while($objResult = $result->fetch_object()){

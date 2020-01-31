@@ -48,6 +48,7 @@
         <div class="card-block">
 
           <h5 class="mt-3">All Tracking Project</h5>
+
           <?php
 
                   //   require 'menu/function.php';
@@ -75,6 +76,7 @@ $my_id = $_SESSION['id'];
           <table class="display datatable table table-stripped" cellspacing="0" width="100%">
             <thead>
               <tr>
+              <th>#</th>
                 <th>Title project</th>
                 <th>Student</th>
                 <th>Status</th>
@@ -90,11 +92,12 @@ $my_id = $_SESSION['id'];
 
             <tbody>
               <tr>
+              <td class="text-center"><?php echo $objResult->group_id; ?></td>
                 <td class="text-center"><?php echo $objResult->advisergroup_topic; ?></td>
                 <td class="text-center"><?php echo get_member_list($objResult->group_id); ?></td>
 
 
-                <td><a href="?page=view_track&id=<?php echo $objResult->advisergroup_id;?>"><i class="fa fa-edit"
+                <td><a href="?page=pf1&id=<?php echo $objResult->advisergroup_id;?>"><i class="fa fa-edit"
                       title="View">View Track</i></a>
 
                 </td>

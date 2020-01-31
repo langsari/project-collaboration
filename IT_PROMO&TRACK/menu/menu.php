@@ -131,10 +131,16 @@ include 'notification/notification.php';
   </a>
   <ul class="treeview-menu">
   
-
+  
         <li>
       <a href="?page=proposal_status">
         <i class="fa fa-circle-o"></i> Proposal Status
+      </a>
+    </li>
+
+    <li>
+      <a href="?page=student_Track">
+        <i class="fa fa-circle-o"></i>Project Track
       </a>
     </li>
 
