@@ -116,20 +116,24 @@
                             <span><?php echo get_status_committee($objResult->group_id); ?></span>
                             <p>
 
-                              <font color='red'> *For Committee</font>
                           </td>
+                        
+
                         </tr>
 
                       </tbody>
                     </table>
 
                   </div>
-
+                  <h6><font color='red'> Note*** Advisor or committee will sign this form when student completed project project revision </font>
+                  </h6>
                   <div class="button" align="right">
 
                     <button> <a href="?page=pf02" type="button" class="btn previous">Previous</button></a>
                     <button> <a href="?page=pf04" type="button" class="btn next">Next</button></a>
                   </div>
+
+
             </fieldset>
             <?php
                  } }

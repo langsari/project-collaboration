@@ -84,28 +84,31 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
             ?>
             <fieldset>
               <h4>Adviser Proposal Project Approval Letter</h4>
-              <div class="row">
                 <div class="card">
                   <div class="card-block">
                     <table class="table">
                       <thead class="thead-default">
                         <tr>
-                          <th>To do list</th>
-                          <th>Status</th>
+                        <th><h6><b>To do list</h6><b></th>
+
+                     
+                          <th><h6><b>Status</h6><b></th>
+                          
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Select Topic</td>
-                          <td>
+                          <td><h6>Select Topic</h6></td>
+                          <td><h6>
                             <span class="badge badge-success"> <?php echo $objResult->advisergroup_status; ?></span>
-
+                  </h6>
                           </td>
                         </tr>
                         <tr>
-                          <td>Select Advisor</td>
-                          <td>
+                          <td><h6>Select Advisor</h6></td>
+                          <td><h6>
                             <span class="badge badge-success"> <?php echo $objResult->advisergroup_status; ?></span>
+                  </h6>
                           </td>
                         </tr>
 
@@ -120,16 +123,16 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
                           <!--get Topic   -->
 
-                          <td> 3 chapter of Proposal
+                          <td> <h6>3 chapter of Proposal</h6>
 
                             <input type="file" name="files_filename_proposal" id="files_filename_proposal"
                               required="required" />
 
-                          <td bgcolor="#EDEDED"><input type="submit" name="button" id="button" value="Upload" /></td>
+                       <input type="submit" name="button" id="button" value="Upload" />
 
 
                           </td>
-                          <td> <span class="badge badge-success"> <?php echo $objResult->files_status; ?></span>
+                          <td><h6> <span class="badge badge-success"> <?php echo $objResult->files_status; ?></h6></span>
                             <p>
                               <font color='red'> *For Advisor</font>
                           </td>
@@ -151,9 +154,12 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
                   </div>
                 </div>
-              </div>
+              
 
-
+              <h6><font color='red'>*** Note student have to upload file of 3 chapter of Proposal
+             </br> *** Note Adviser, Waiting advisor Approve your proposal 
+ </font>
+                  </h6>
               <div class="f1-buttons">
                 <button> <a href="?page=pf02" type="button" class="btn btn-next">Next</button></a>
               </div>

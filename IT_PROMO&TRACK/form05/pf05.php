@@ -71,7 +71,7 @@
 
             $g_id = get_group_id();
               $ag_id = get_ag_id($g_id);
-    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
+    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf,files.by_officer05 FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
           LEFT JOIN committeegroup ON advisergroup.group_id = committeegroup.group_id
 
@@ -85,7 +85,7 @@
             ?>
 
             <fieldset>
-              <h4>This form is with officer
+              <h4>FORM OF SUBMIT/RECEIVE COMPLETED PROJECT PROPOSAL
               </h4>
               <div class="card">
                 <div class="card-block">
@@ -99,9 +99,10 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Officer receive copy of Project Proposal</td>
+                          <td>Officer Receive Completed Project Proposal</td>
                           <td>
-                            <span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
+                          
+                            <span class="badge badge-success" required> <?php echo $objResult->by_officer05; ?> </span>
                             <p>
                               <font color='red'> *For Officer</font>
                           </td>

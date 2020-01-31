@@ -111,7 +111,10 @@
                     </table>
 
                   </div>
-
+                  <h6><font color='red'>*** As Students, I have already submitted the copies of document (Proposal Project and PF01)
+             </br> *** As Officer,Student have to wait for Officer Approve PF02
+ </font>
+                  </h6>
                   <div class="button" align="right">
 
                     <button> <a href="?page=pf01" type="button" class="btn previous">Previous</button></a>

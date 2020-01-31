@@ -4,7 +4,7 @@
       <div class="card">
         <div class="card-block">
 
-          <h5 class="mt-3">Proposal Presentation</h5>
+          <h5 class="mt-3">Project Proposal Revision (PF03)</h5>
           <?php
 require 'menu/connect.php';
 $my_id = $_SESSION['id'];
@@ -80,10 +80,9 @@ $my_id = $_SESSION['id'];
       </div>
     </div>
   </div>
+
+
 </div>
-
-
-
 
 
 
@@ -98,37 +97,3 @@ $my_id = $_SESSION['id'];
 
 
 
-<!-- add committee section -->
-<!-- Modal 
-<div class="modal fade" id="add_committee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><i class="fa fa-user-plus"></i> Add Committee</h4>
-      </div>
-      <div class="modal-body">
-        <form class="form" method="post" action="committee/check_pass_present.php">
-          <label>Committee</label>
-              <select class="form-control" name="status_presentation" id="status_presentation">
-           <option value="#">Select </option>
-             <option value="Pass">Pass</option>
-              <option value="No">No</option>
-       
-
-            </select>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Close</button>
-          <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Save</button>
-        </div>
-        <input type="hidden" name="group_id" id="group_id">
-        <input type="hidden" name="member_id" id="member_id">
-
- 
-    </div>
-  </div>
-</div>
--->
-
-<!-- /PAGE CONTENT -->

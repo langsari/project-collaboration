@@ -70,14 +70,15 @@
             </div>
             <?php
 
-            $g_id = get_group_id();
-              $ag_id = get_ag_id($g_id);
-    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
-          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
-          LEFT JOIN committeegroup ON advisergroup.group_id = committeegroup.group_id
+$g_id = get_group_id();
+$ag_id = get_ag_id($g_id);
+$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf,files.by_advisor06 FROM advisergroup
+LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+LEFT JOIN committeegroup ON advisergroup.group_id = committeegroup.group_id
 
-        LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.advisergroup_id = '$ag_id'  ";             
+LEFT JOIN member ON advisergroup.member_id = member.member_id
+WHERE advisergroup.advisergroup_id = '$ag_id'  ";             
+
 
 
        
@@ -86,7 +87,8 @@
             ?>
 
             <fieldset>
-              <h4>This form is with officer
+              <h4>IT Project Consultation Log Book	
+
               </h4>
               <div class="card">
                 <div class="card-block">
@@ -100,9 +102,10 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Officer receive copy of Project Proposal</td>
+                          <td>Consultation Log Book	
+</td>
                           <td>
-                            <span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
+                            <span class="badge badge-success" required> <?php echo $objResult->by_advisor06; ?> </span>
                             <p>
                               <font color='red'> *For Officer</font>
                           </td>
@@ -112,7 +115,9 @@
                     </table>
 
                   </div>
-
+                  <h6><font color='red'>          <h6><font color='red'> Note*** Advisor or committee will sign this form when student completed project project revision </font>
+                  </h6> </font>
+                  </h6>
                   <div class="button" align="right">
 
                     <button> <a href="?page=pf05" type="button" class="btn previous">Previous</button></a>

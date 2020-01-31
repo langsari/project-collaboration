@@ -94,17 +94,17 @@ if($result = $db->query($strSQL)){
                 <thead class="thead-default">
                   <tr>
                     <th>To do list</th>
-                    <th>Status of Revision </br>
-                      <font color='red'> *For Advisor</font>
+                    <th>Project Proposal Approval  </br>
+                      <font color='red'> *Agree by Advisor</font>
                     </th>
-                    <th>Status of Proposal Revision </br>
-                      <font color='red'> *For Committee</font>
+                    <th>Project Proposal Approval  </br>
+                      <font color='red'> *Agree by Committee</font>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Proposal Revisoin
+                    <td>Project Proposal Approval
                     </td>
                     <td>
                       <font color='succes'> <?php echo $objResult->status_advisor; ?> </font> <span>
@@ -116,7 +116,6 @@ if($result = $db->query($strSQL)){
                       <span><?php echo get_status_committee($objResult->group_id); ?></span>
                       <p>
 
-                        <font color='red'> *For Committee</font>
                     </td>
                   </tr>
 
@@ -153,65 +152,6 @@ if($result = $db->query($strSQL)){
 
 
 
-<div class="content">
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-block">
-
-          <h6 class="card-title text-bold">Comments For Committee</h6></b>
-          <?php
-      $g_id = get_group_id();
-        $ag_id = get_ag_id($g_id);
-        
-
-
-$strSQL = "SELECT  member.member_fullname,committeegroup.comment FROM committeegroup
-    LEFT JOIN member ON committeegroup.member_id = member.member_id
-    WHERE committeegroup.group_id = '$ag_id'";
-
-if($result = $db->query($strSQL)){
-            while($objResult = $result->fetch_object()){
-
-?>
-
-
-
-
-
-
-
-          <table class="display datatable table table-stripped" cellspacing="0" width="100%">
-
-            <tbody>
-
-              <td>
-
-                </br><b>
-
-
-
-                  <h5> &nbsp;&nbsp;<span class="badge badge-primary"> <?php echo $objResult->member_fullname;?>
-                  </h5></span> </br>
-
-
-                  <h6> &nbsp;&nbsp; <font color='green'> <?php echo $objResult->comment;?> </h6></br></font>
-
-
-
-
-                  <div class="col-md-12" align="right">
-
-                  </div>
-
-              </td>
-
-              <?php
-           }
-         }
-             ?>
-            </tbody>
-          </table>
 
           <script src="asset/js/jquery-1.11.1.min.js"></script>
           <script src="asset/js/jquery.backstretch.min.js"></script>
