@@ -70,14 +70,18 @@
       </div>
       <?php
 
+
+
+      
+
 $g_id = get_group_id();
 $ag_id = get_ag_id($g_id);
-$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_id,files.by_advisor08,files.files_filename_project,files.by_officer,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
+
+$strSQL = "SELECT advisergroup.*, advisergroup.group_id,advisergroup.advisergroup_status,files.files_id,files.by_advisor08,files.files_filename_project,files.by_officer,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
 LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
 LEFT JOIN member ON advisergroup.member_id = member.member_id
 WHERE advisergroup.advisergroup_id = '$ag_id'  ";             
-
 
         
 if($result = $db->query($strSQL)){
@@ -108,7 +112,9 @@ if($result = $db->query($strSQL)){
                       <?php echo get_member_list1($objResult->group_id); ?>
 
 
-                      <form action="form08/check_pf8.php?id=<?php echo $objResult->files_id;?>" name="fromEdit" method="post"
+           
+
+              <form action="form08/check_pf8.php?id=<?php echo $objResult->group_id; ?>" method="post"
               onsubmit="return checkForm()">
 
                     <!--get Topic   -->
@@ -118,22 +124,20 @@ if($result = $db->query($strSQL)){
                       <input type="file" name="files_filename_project" id="files_filename_project"
                         required="required" />
 
-                        <input type="hidden" name="advisergroup_id" id="advisergroup_id">
 
-                        <input type="hidden" name="files_id" id="files_id" value="<?php echo $objResult->files_id;?>" >
+
+                     
 
 
                  <input type="submit" name="button" id="button" value="Upload" />
 
-
-                    </td>
                     <td><h6> <span class="badge badge-success"> <?php echo $objResult->by_advisor08; ?></h6></span>
                       <p>
                         <font color='red'> *For Advisor</font>
                     </td>
 
 
-                    <td><a href="student/download.php?pdf=<?php echo $objResult->files_filename_project ;?>"><i
+                    <td><a href="form08/download.php?pdf=<?php echo $objResult->files_filename_project ;?>"><i
                           class="fa fa-download"></i></a></td>
 
                   </tr>
