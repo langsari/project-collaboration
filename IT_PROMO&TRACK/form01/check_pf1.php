@@ -18,7 +18,7 @@ $date = date("d-m-Y"); //กำหนดวันที่และเวลา
 $upload=$_FILES['files_filename_proposal'];
 if($upload <> '') {   //not select file
 //โฟลเดอร์ที่จะ upload file เข้าไป 
-$path="fileupload/";  
+$path="filesupload/";  
 
 //เอาชื่อไฟล์ที่มีอักขระแปลกๆออก
 	$remove_these = array(' ','`','"','\'','\\','/','_');
@@ -27,7 +27,7 @@ $path="fileupload/";
 	//ตั้งชื่อไฟล์ใหม่โดยเอาเวลาไว้หน้าชื่อไฟล์เดิม
 	$newname = time().'-'.$newname;
 $path_copy=$path.$newname;
-$path_link="fileupload/".$newname;
+$path_link="filesupload/".$newname;
 
 //คัดลอกไฟล์ไปเก็บที่เว็บเซริ์ฟเวอร์
 move_uploaded_file($_FILES['files_filename_proposal']['tmp_name'],$path_copy);  	
@@ -45,8 +45,7 @@ $sql = "INSERT INTO files (files_filename_proposal,advisergroup_id,Owner,files_s
 	if($result){
 	echo "<script type='text/javascript'>";
 	echo "alert('Upload File Succesfuly');";
-			header("Location: ../index.php?page=pf01");
-
+	header("Location: ../index.php?page=pf01&success=1");
 	echo "</script>";
 	}
 	else{
@@ -54,6 +53,4 @@ $sql = "INSERT INTO files (files_filename_proposal,advisergroup_id,Owner,files_s
 	echo "alert('Error back to upload again');";
 	echo "</script>";
 }
-
-
 ?>

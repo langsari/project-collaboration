@@ -94,10 +94,10 @@
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th>Status of Revision </br>
+                          <th>Status of Revision 
                             <font color='red'> *For Advisor</font>
                           </th>
-                          <th>Status of Proposal Revision </br>
+                          <th>Status of Proposal Revision 
                             <font color='red'> *For Committee</font>
                           </th>
                         </tr>

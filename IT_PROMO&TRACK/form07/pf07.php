@@ -71,7 +71,7 @@
 
             $g_id = get_group_id();
               $ag_id = get_ag_id($g_id);
-    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
+    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_id,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf,files.by_advisor07 FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
           LEFT JOIN committeegroup ON advisergroup.group_id = committeegroup.group_id
 
@@ -85,7 +85,8 @@
             ?>
 
             <fieldset>
-              <h4>This form is with officer
+              <h4>Project Seminar	
+
               </h4>
               <div class="card">
                 <div class="card-block">
@@ -94,16 +95,16 @@
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th>Status</th>
+                          <th>   <font color='red'> *Sign by advisor</font>
+</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Officer receive copy of Project Proposal</td>
+                          <td> Seminar	Pre-Project</td>
                           <td>
-                            <span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
+                            <span class="badge badge-success" required> <?php echo $objResult->by_advisor07; ?> </span>
                             <p>
-                              <font color='red'> *For Officer</font>
                           </td>
                         </tr>
 
@@ -115,7 +116,9 @@
                   <div class="button" align="right">
 
                     <button> <a href="?page=pf06" type="button" class="btn previous">Previous</button></a>
-                    <button> <a href="?page=pf08" type="button" class="btn next">Next</button></a>
+
+                    <button> <a href="?page=pf08&id=<?php echo $objResult->files_id;?>" type="button" class="btn next">Next</button></a>
+
                   </div>
             </fieldset>
             <?php

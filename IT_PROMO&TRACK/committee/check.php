@@ -5,6 +5,7 @@ $member_id = $_SESSION['id'];
 if(isset($_GET['id'])){
                 require '../menu/connect.php';
   $id = $_GET['id'];
+  
   $status_presentation=$_POST['status_presentation'];
 
   $comment=$_POST['comment'];

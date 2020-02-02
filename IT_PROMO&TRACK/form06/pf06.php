@@ -87,7 +87,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
             ?>
 
             <fieldset>
-              <h4>IT Project Consultation Log Book	
+              <h4>IT Project Consultation Log Book	Progress
 
               </h4>
               <div class="card">
@@ -97,17 +97,15 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th>Status</th>
-                        </tr>
+                         <th> <font color='red'> *Sign by Advisor</font></th>                        </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Consultation Log Book	
+                          <td>Student has to meet with advisor at leat 8 times	
 </td>
                           <td>
                             <span class="badge badge-success" required> <?php echo $objResult->by_advisor06; ?> </span>
                             <p>
-                              <font color='red'> *For Officer</font>
                           </td>
                         </tr>
 
@@ -115,7 +113,8 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                     </table>
 
                   </div>
-                  <h6><font color='red'>          <h6><font color='red'> Note*** Advisor or committee will sign this form when student completed project project revision </font>
+                  <h6><font color='red'>     
+                   <h6><font color='red'> Note*** Condition for funal project presentation minimum is 8x Consultation discussion </font>
                   </h6> </font>
                   </h6>
                   <div class="button" align="right">
