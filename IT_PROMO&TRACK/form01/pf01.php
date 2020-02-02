@@ -13,56 +13,56 @@
 
               <div class="f1-step active ">
                 <div class="f1-step-icon">PF01</div>
-                <p>FormPF01</p>
+                <p>PF01</p>
               </div>
               <div class="f1-step ">
                 <div class="f1-step-icon">PF02</div>
-                <p>FormPF02</p>
+                <p>PF02</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF03</div>
-                <p>FormPF03</p>
+                <p>PF03</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF04</div>
-                <p>FormPF04</p>
+                <p>PF04</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF05</div>
-                <p>FormPF05</p>
+                <p>PF05</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF06</div>
-                <p>FormPF06</p>
+                <p>PF06</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF07</div>
-                <p>FormPF07</p>
+                <p>PF07</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF08</div>
-                <p>FormPF08</p>
+                <p>PF08</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF09</div>
-                <p>FormPF09</p>
+                <p>PF09</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF10</div>
-                <p>FormPF10</p>
+                <p>PF10</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF11</div>
-                <p>FormPF11</p>
+                <p>PF11</p>
               </div>
 
               <div class="f1-step">
                 <div class="f1-step-icon">PF12</div>
-                <p>FormPF12</p>
+                <p>PF12</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF13</div>
-                <p>FormPF13</p>
+                <p>PF13</p>
               </div>
 
 
@@ -83,32 +83,38 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                   while($objResult = $result->fetch_object()){
             ?>
             <fieldset>
-              <h4>Adviser Proposal Project Approval Letter</h4>
+            </br>
+              <h4>Proposal Project Approval Letter 
+              </br><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+
+              </h4>
                 <div class="card">
                   <div class="card-block">
                     <table class="table">
                       <thead class="thead-default">
                         <tr>
-                        <th><h6><b>To do list</h6><b></th>
+                        <th>To do list</th>
 
                      
-                          <th><h6><b>Status</h6><b></th>
+                          <th><font color='red'> Sign by advisor</font></th>
                           <th></th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td><h6>Select Topic</h6></td>
-                          <td><h6>
+                          <td>Proposal Topic Selection</td>
+                          <td>
+                            Status
                             <span class="badge badge-success"> <?php echo $objResult->advisergroup_status; ?></span>
-                  </h6>
+                  
                           </td>
                         </tr>
                         <tr>
-                          <td><h6>Select Advisor</h6></td>
-                          <td><h6>
+                          <td>Select Advisor</td>
+                          <td>
+                            Status
                             <span class="badge badge-success"> <?php echo $objResult->advisergroup_status; ?></span>
-                  </h6>
+                  
                           </td>
                         </tr>
 
@@ -123,7 +129,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
                           <!--get Topic   -->
 
-                          <td> <h6>3 chapter of Proposal</h6>
+                          <td> 3 chapter of Proposal
 
                             <input type="file" name="files_filename_proposal" id="files_filename_proposal"
                               required="required" />
@@ -132,9 +138,9 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
 
                           </td>
-                          <td><h6> <span class="badge badge-success"> <?php echo $objResult->files_status; ?></h6></span>
-                            <p>
-                              <font color='red'> *For Advisor</font>
+                          <td>
+                            Staus
+                            <span class="badge badge-success"> <?php echo $objResult->files_status; ?></span>
                           </td>
 
 
@@ -156,12 +162,13 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                 </div>
               
 
-              <h6><font color='red'>*** Note student have to upload file of 3 chapter of Proposal
-             </br> *** Note Adviser, Waiting advisor Approve your proposal 
- </font>
-                  </h6>
+              <h7><font color='red'>*** Note
+              </br>  Student have to upload file of 3 chapter of Proposal
+              </br>  Adviser, Waiting advisor Approve your proposal 
+              </font>
+                  </h7>
               <div class="f1-buttons">
-                <button> <a href="?page=pf02" type="button" class="btn btn-next">Next</button></a>
+                <button> <a href="?page=pf02" type="button" class="next">Next&raquo;</button></a>
               </div>
             </fieldset>
 

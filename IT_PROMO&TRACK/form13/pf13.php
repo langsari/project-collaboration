@@ -108,6 +108,7 @@
                           </br> 5). Journal / Seminar
                           </br> 6). PF10, PF11 and PF12
                           <td>
+                            Staus
                             <span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
                           </td>
                         </tr>
@@ -119,8 +120,7 @@
                 
                   <div class="button" align="right">
 
-                    <button> <a href="?page=pf12" type="button" class="btn previous">Previous</button></a>
-                    <button> <a href="?page=pf13" type="button" class="btn next">Next</button></a>
+                    <button> <a href="?page=pf12" type="button" class="previous">&laquo; Previous</button></a>
                   </div>
             </fieldset>
             <?php
@@ -128,8 +128,8 @@
                    ?>
 
                   <h7><font color='red'> Note*** 
-                      </br>  As Students, I have already submitted the completed project document and relate resource
-                      </br>  As Officer, I have already received the completed project document and relate resource  </font>
+                      </br>  As Students,I have already submitted the completed project document and relate resource
+                      </br>  As Officer,I have already received the completed project document and relate resource </font>
                   </h7
 
 

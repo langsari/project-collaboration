@@ -108,7 +108,7 @@
                           </br> 5). Journal / Seminar
                           
                           </td>
-                          <td>
+                          <td>Status
                             <span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
                           </td>
                         </tr>
@@ -120,8 +120,8 @@
 
                   <div class="button" align="right">
 
-                    <button> <a href="?page=pf11" type="button" class="btn previous">Previous</button></a>
-                    <button> <a href="?page=pf13" type="button" class="btn next">Next</button></a>
+                    <button> <a href="?page=pf11" type="button" class="previous">&laquo; Previous</button></a>
+                    <button> <a href="?page=pf13" type="button" class="next">Next &raquo;</button></a>
                   </div>
             </fieldset>
             <?php

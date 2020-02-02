@@ -94,10 +94,11 @@
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th><font color='red'> *Sign by Advisor</font></th>
+                          <th><font color='red'> Status</font></th>
+                     <!--     <th><font color='red'> *Sign by Advisor</font></th>
                           <th><font color='red'> *Sign by Committee</font></th>
                           <th><font color='red'> * Sign by Head of Department</font></th>
-                          <th><font color='red'> * Sign by Dean of Faculty</font></th>
+                          <th><font color='red'> * Sign by Dean of Faculty</font></th> -->
                         </tr>
                       </thead>
                       <tbody>
@@ -109,18 +110,14 @@
                           </br> 1). Dean, Faculty of Science and Technology
                           </td>
                           <td>
+                          </br>
                             <span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
+                          </br><span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
+                          </br><span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
+                          </br><span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
+
+
                           </td>
-                          <td>
-                            <span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
-                          </td>
-                          <td>
-                            <span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
-                          </td>
-                          <td>
-                            <span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
-                          </td>
-                          
                         </tr>
 
                       </tbody>
@@ -131,8 +128,8 @@
 
                   <div class="button" align="right">
 
-                    <button> <a href="?page=pf10" type="button" class="btn previous">Previous</button></a>
-                    <button> <a href="?page=pf12" type="button" class="btn next">Next</button></a>
+                    <button> <a href="?page=pf10" type="button" class="previous">&laquo; Previous</button></a>
+                    <button> <a href="?page=pf12" type="button" class="next">Next &raquo;</button></a>
                   </div>
             </fieldset>
             <?php

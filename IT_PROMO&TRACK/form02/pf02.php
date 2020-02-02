@@ -13,56 +13,56 @@
 
               <div class="f1-step active ">
                 <div class="f1-step-icon">PF01</div>
-                <p>FormPF01</p>
+                <p>PF01</p>
               </div>
               <div class="f1-step active">
                 <div class="f1-step-icon">PF02</div>
-                <p>FormPF02</p>
+                <p>PF02</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF03</div>
-                <p>FormPF03</p>
+                <p>PF03</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF04</div>
-                <p>FormPF04</p>
+                <p>PF04</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF05</div>
-                <p>FormPF05</p>
+                <p>PF05</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF06</div>
-                <p>FormPF06</p>
+                <p>PF06</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF07</div>
-                <p>FormPF07</p>
+                <p>PF07</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF08</div>
-                <p>FormPF08</p>
+                <p>PF08</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF09</div>
-                <p>FormPF09</p>
+                <p>PF09</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF10</div>
-                <p>FormPF10</p>
+                <p>PF10</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF11</div>
-                <p>FormPF11</p>
+                <p>PF11</p>
               </div>
 
               <div class="f1-step">
                 <div class="f1-step-icon">PF12</div>
-                <p>FormPF12</p>
+                <p>PF12</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF13</div>
-                <p>FormPF13</p>
+                <p>PF13</p>
               </div>
 
 
@@ -85,7 +85,8 @@
             ?>
 
             <fieldset>
-              <h4>This form is with officer
+              <h4>Officer receive copy of Project Proposal
+               </br><small class="text-muted">This form is with officer</small>  
               </h4>
               <div class="card">
                 <div class="card-block">
@@ -99,7 +100,11 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Officer receive copy of Project Proposal</td>
+                          <td>Student, Submit copies of Proposal, PF01 and related documentit 
+                          </br><u>Condition:</u>
+                          </br>(1) 4 copies of proposal, 1 copy for advisor and 3 for committees
+                          </br>(2) submit proposal one week before presentation day
+                          </td>
                           <td>
                             <span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
                             <p>
@@ -111,20 +116,23 @@
                     </table>
 
                   </div>
-                  <h6><font color='red'>*** As Students, I have already submitted the copies of document (Proposal Project and PF01)
-             </br> *** As Officer,Student have to wait for Officer Approve PF02
- </font>
-                  </h6>
+                  
                   <div class="button" align="right">
 
-                    <button> <a href="?page=pf01" type="button" class="btn previous">Previous</button></a>
-                    <button> <a href="?page=pf03" type="button" class="btn next">Next</button></a>
+                    <button> <a href="?page=pf01" type="button" class="previous">&laquo;Previous</button></a>
+                    <button> <a href="?page=pf03" type="button" class="next">Next&raquo;</button></a>
                   </div>
             </fieldset>
             <?php
                  } }
                    ?>
 
+                  <h7><font color='red'>***Note
+                  </br> As Students, I have already submitted the copies of document (PF02/2)
+                  </br> As Officer, I have already received the copies of document and PF01 (PF02/1)
+                  </h7>
+              </font>
+                  
 
 
 
