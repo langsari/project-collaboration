@@ -228,10 +228,7 @@ case 'create_proposal':
 		include('student/create_proposal.php');
 		break;
 		
-case 'track_project':
-		include('student/track_project.php');
-		break;
-		
+
 
 		case 'pf01':
 		include('form01/pf01.php');
@@ -264,7 +261,7 @@ case 'track_project':
 			case 'pf08':
 			include('form08/pf08.php');
 			break;
-	  case 'pf05':
+        	  case 'pf05':
 			include('form05/pf05.php');
 			break;
 			

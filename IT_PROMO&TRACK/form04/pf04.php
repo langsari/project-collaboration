@@ -94,11 +94,11 @@ if($result = $db->query($strSQL)){
                 <thead class="thead-default">
                   <tr>
                     <th>To do list</th>
-                    <th>Project Proposal Approval  </br>
-                      <font color='red'> *Agree by Advisor</font>
+                    <th>
+                      <font color='red'> *Approval by Advisor</font>
                     </th>
-                    <th>Project Proposal Approval  </br>
-                      <font color='red'> *Agree by Committee</font>
+                    <th>
+                      <font color='red'> *Approval by Committee</font>
                     </th>
                   </tr>
                 </thead>

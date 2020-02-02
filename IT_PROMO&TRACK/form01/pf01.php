@@ -93,7 +93,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
                      
                           <th><h6><b>Status</h6><b></th>
-                          
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -138,7 +138,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                           </td>
 
 
-                          <td><a href="student/download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>"><i
+                          <td><a href="form01/download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>"><i
                                 class="fa fa-download"></i></a></td>
 
                         </tr>

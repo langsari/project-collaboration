@@ -94,17 +94,18 @@
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th>Status</th>
+                          <th>
+                          <font color='red'> *Sign by Officer</font></th>
+
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Officer Receive Completed Project Proposal</td>
+                          <td>Submit complete project proposal document</td>
                           <td>
                           
                             <span class="badge badge-success" required> <?php echo $objResult->by_officer05; ?> </span>
                             <p>
-                              <font color='red'> *For Officer</font>
                           </td>
                         </tr>
 

@@ -2,40 +2,47 @@
 <?php
 //1. เชื่อมต่อ database: 
 	session_start();
+
+	$member_id = $_SESSION['id'];
+
 include("../menu/function.php");
 require '../menu/connect.php';
   //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้าน้ี
-$advisergroup_id = get_ag_id(get_group_id());
-$Owner = get_member_list1(get_group_id());
+  if(isset($_GET['id'])){
+$id = $_GET['id'];
 
-	$files_status = 'Waiting';
+  $by_advisor08 = $_POST['by_advisor08'];
 
 
+$files_filename_project = $_REQUEST['files_filename_project']; //รับค่าไฟล์จากฟอร์ม		
 
-$files_filename_proposal = $_REQUEST['files_filename_proposal']; //รับค่าไฟล์จากฟอร์ม		
 $date = date("d-m-Y"); //กำหนดวันที่และเวลา
 //เพิ่มไฟล์
-$upload=$_FILES['files_filename_proposal'];
+$upload=$_FILES['files_filename_project'];
 if($upload <> '') {   //not select file
 //โฟลเดอร์ที่จะ upload file เข้าไป 
-$path="fileupload/";  
+$path="filesupload/";  
 
 //เอาชื่อไฟล์ที่มีอักขระแปลกๆออก
 	$remove_these = array(' ','`','"','\'','\\','/','_');
-	$newname = str_replace($remove_these, '', $_FILES['files_filename_proposal']['name']);
+	$newname = str_replace($remove_these, '', $_FILES['files_filename_project']['name']);
  
 	//ตั้งชื่อไฟล์ใหม่โดยเอาเวลาไว้หน้าชื่อไฟล์เดิม
 	$newname = time().'-'.$newname;
 $path_copy=$path.$newname;
-$path_link="fileupload/".$newname;
+$path_link="filesupload/".$newname;
 
 //คัดลอกไฟล์ไปเก็บที่เว็บเซริ์ฟเวอร์
-move_uploaded_file($_FILES['files_filename_proposal']['tmp_name'],$path_copy);  	
+move_uploaded_file($_FILES['files_filename_project']['tmp_name'],$path_copy);  	
 	}
 	// เพิ่มไฟล์เข้าไปในตาราง uploadfile
 	
-$sql = "INSERT INTO files (files_filename_proposal,advisergroup_id,Owner,files_status) 
-		VALUES('$newname','$advisergroup_id','$Owner','$files_status')";
+
+
+
+$sql = "UPDATE files SET files_filename_project='$newname',
+ by_advisor08 = '$by_advisor08', pf ='8' WHERE files_id  = '$id'";
+
 		
 		$result = mysqli_query($db, $sql) or die ("Error in query: $sql " . mysqli_error());
 	
@@ -45,7 +52,8 @@ $sql = "INSERT INTO files (files_filename_proposal,advisergroup_id,Owner,files_s
 	if($result){
 	echo "<script type='text/javascript'>";
 	echo "alert('Upload File Succesfuly');";
-	header("Location: ../index.php?page=track_project&success=1");
+			header("Location: ../index.php?page=pf08");
+
 	echo "</script>";
 	}
 	else{
@@ -53,4 +61,6 @@ $sql = "INSERT INTO files (files_filename_proposal,advisergroup_id,Owner,files_s
 	echo "alert('Error back to upload again');";
 	echo "</script>";
 }
+  }
+
 ?>
