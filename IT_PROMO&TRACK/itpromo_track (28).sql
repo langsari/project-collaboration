@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2020 at 06:17 PM
+-- Generation Time: Feb 02, 2020 at 08:22 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.39
 
@@ -70,7 +70,8 @@ INSERT INTO `advisergroup` (`advisergroup_id`, `advisergroup_topic`, `advisergro
 (3, 'Houseware repair', 'Approve', 33, 3, '1'),
 (4, 'Math Game', 'Approve', 18, 4, '1'),
 (5, 'Provide in Islam', 'Approve', 11, 5, '1'),
-(6, 'FTU Cooperative Education,Industrial Training', 'Approve', 46, 6, '1');
+(6, 'FTU Cooperative Education,Industrial Training', 'Approve', 46, 6, '1'),
+(7, 'xxxx', 'Approve', 8, 7, '1');
 
 -- --------------------------------------------------------
 
@@ -203,7 +204,7 @@ INSERT INTO `committeegroup` (`committeegroup_id`, `member_id`, `group_id`, `sta
 (15, 45, 6, 'Pass', 'Greate ... Graduate'),
 (16, 41, 6, '', ''),
 (17, 19, 5, '', ''),
-(18, 11, 5, '', ''),
+(18, 11, 5, 'Pass', 'Graduate finish Project'),
 (19, 18, 5, '', '');
 
 -- --------------------------------------------------------
@@ -214,27 +215,32 @@ INSERT INTO `committeegroup` (`committeegroup_id`, `member_id`, `group_id`, `sta
 
 CREATE TABLE `files` (
   `files_id` int(11) NOT NULL,
+  `Owner` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `files_filename_proposal` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `files_filename_project` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `proposal_revision` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `advisergroup_id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `files_status` enum('','Waiting','Approve') COLLATE utf8_unicode_ci NOT NULL,
   `by_officer` enum('','Waiting','Approve') COLLATE utf8_unicode_ci NOT NULL,
-  `Owner` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `status_advisor` enum('','Pass','No') COLLATE utf8_unicode_ci NOT NULL,
   `pf` enum('1','2','3','4','5','6','7') COLLATE utf8_unicode_ci NOT NULL,
-  `status_advisor` enum('','Pass','No') COLLATE utf8_unicode_ci NOT NULL
+  `by_officer05` enum('','Pass','No') COLLATE utf8_unicode_ci NOT NULL,
+  `by_advisor06` enum('','Pass','No') COLLATE utf8_unicode_ci NOT NULL,
+  `by_advisor07` enum('','Pass','No') COLLATE utf8_unicode_ci NOT NULL,
+  `by_advisor08` enum('','Waiting','Pass','No') COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `files`
 --
 
-INSERT INTO `files` (`files_id`, `files_filename_proposal`, `files_filename_project`, `proposal_revision`, `advisergroup_id`, `files_status`, `by_officer`, `Owner`, `pf`, `status_advisor`) VALUES
-(1, '1580400891-personalassesment.pdf', '', '', '6', 'Approve', 'Approve', '571386628 Anur Smile571431031 Asri Yaee', '3', 'Pass'),
-(2, '1580402049-1577846542-Project.pdf', '', '', '1', 'Approve', 'Approve', '572431003 Nik-Husnee Nik-Uma572431029 Mout  Tylas', '3', 'Pass'),
-(3, '1580402092-HousewaresRepairingWebapp.pdf', '', '', '3', 'Approve', 'Approve', '572431016 Sunee Kasem572431923 ilham', '2', ''),
-(4, '1580402186-บท1-3.pdf', '', '', '5', 'Approve', 'Approve', '572431009 Norihan Ha572431014 Wilada Yalaphanee', '2', ''),
-(5, '1580403023-last2.pdf', '', '', '4', 'Approve', 'Approve', '572431011 Miskah Kasengteuba572431021 Afifah mamat', '2', '');
+INSERT INTO `files` (`files_id`, `Owner`, `files_filename_proposal`, `files_filename_project`, `advisergroup_id`, `files_status`, `by_officer`, `status_advisor`, `pf`, `by_officer05`, `by_advisor06`, `by_advisor07`, `by_advisor08`) VALUES
+(1, '571386628 Anur Smile571431031 Asri Yaee', '1580400891-personalassesment.pdf', '', '6', 'Approve', 'Approve', 'Pass', '5', 'Pass', '', '', ''),
+(2, '572431003 Nik-Husnee Nik-Uma572431029 Mout  Tylas', '1580402049-1577846542-Project.pdf', '', '1', 'Approve', 'Approve', 'Pass', '', 'Pass', 'Pass', 'Pass', ''),
+(3, '572431016 Sunee Kasem572431923 ilham', '1580402092-HousewaresRepairingWebapp.pdf', '', '3', 'Approve', 'Approve', '', '2', '', '', '', ''),
+(4, '572431009 Norihan Ha572431014 Wilada Yalaphanee', '1580402186-บท1-3.pdf', '', '5', 'Approve', 'Approve', 'Pass', '3', '', '', '', ''),
+(5, '572431011 Miskah Kasengteuba572431021 Afifah mamat', '1580403023-last2.pdf', '', '4', 'Approve', 'Approve', '', '2', '', '', '', ''),
+(6, '572431005 Nur-ida Che-loh66 Hunafah', '1580451024-SensoryEvaluationapplication.pdf', '', '2', 'Approve', 'Approve', '', '2', '', '', '', ''),
+(16, '57328470 Misbah ', '1580627324-PF12-ITProject-FreeFromAdviserLetter.pdf', '', '7', 'Waiting', '', '', '1', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -279,7 +285,7 @@ INSERT INTO `member` (`member_id`, `member_idcard`, `member_username`, `member_f
 (18, 572294, 'da', 'suaida', '1234', 'Lecturer', '058679875', 'gg@gmail.com', 'Female', 1, NULL),
 (19, 57231002, 'Mafaisu', 'Mafaisu', '1234', 'Lecturer', '083186321', 'Hafizah@gnail.com', 'Male', 1, NULL),
 (21, 571386628, 'Wa', 'Anur Smile', '1234', 'Student', '07436847', 'wa@gmail.com', 'Male', 1, 6),
-(22, 57328470, 'bah', 'Misbah ', '1234', 'Student', '098462734', 'bah@gmail.com', 'Female', 0, NULL),
+(22, 57328470, 'bah', 'Misbah ', '1234', 'Student', '098462734', 'bah@gmail.com', 'Female', 1, 7),
 (23, 574398, 'siti', 'Sitisulaiko', '1234', 'Student', '0496353', 'ti@gmail.com', 'Female', 0, NULL),
 (24, 608565, 'Ya', 'Nadia', '1234', 'Student', '08762743', 'ya@gmail.com', 'Female', 0, NULL),
 (25, 345565, 'Hanani', 'Hanani Dalor', '1234', 'Student', '0876793', 'advisorfst123@gmail.com\r\n', 'Female', 1, NULL),
@@ -340,7 +346,8 @@ INSERT INTO `partnergroup` (`group_id`, `group_number`) VALUES
 (3, 'PS10003'),
 (4, 'PS10004'),
 (5, 'PS10005'),
-(6, 'PS10006');
+(6, 'PS10006'),
+(7, 'PS10007');
 
 -- --------------------------------------------------------
 
@@ -369,7 +376,8 @@ INSERT INTO `schedule` (`schedule_id`, `schedule_topic`, `schedule_type`, `sched
 (2, 'Fisrt Presentation', '1', 'IT-121', '09:00:00', '2020-02-05', 'Proposal', 12, 2),
 (3, 'Fisrt Presentation', '1', 'IT-324', '23:01:00', '2020-02-05', 'Proposal', 12, 3),
 (4, 'Fisrt Presentation', '1', 'IT-432', '00:10:00', '2020-02-05', 'Proposal', 12, 4),
-(5, 'Fisrt Presentation', '1', 'IT-235', '05:01:00', '2020-02-05', 'Proposal', 12, 6);
+(5, 'Fisrt Presentation', '1', 'IT-235', '05:01:00', '2020-02-05', 'Proposal', 12, 6),
+(6, 'First Presentation', '1', 'IT-333', '17:01:00', '2020-02-05', 'Proposal', 12, 5);
 
 -- --------------------------------------------------------
 
@@ -403,7 +411,8 @@ INSERT INTO `topic_project` (`topic_id`, `group_number`, `Owner`, `topic_topic`,
 (4, 'PS10004', '<p>572431011 &nbsp&nbsp&nbsp&nbsp Miskah Kasengteuba</p><p>572431021 &nbsp&nbsp&nbsp&nbsp Afifah mamat</p>', 'Math Game', 'Engage Elementary Kids with Fun, Team Based STEM Activities Free Download, Upload Score to See Local State National World Rankings Engage your Students Online Competition Low Cost Supplies Free Activity', 'Math,Calculator', 'Computer Multimedia', '2020-01-18', 4, 'suaida', 'Student', '2'),
 (5, 'PS20010', '562431003 Awatif Mareh\r\n562431008 Sawana Mamu\r\n', 'Activity Application', 'Top and latest apps available! Millions have downloaded, have you? Reliable reviews Everything you need Recommended for you Android devices only Wide variety Types: Music Apps, Messaging Apps, Game Apps, Utility Apps, Lifestyle Apps', 'Application,Card', 'Software Engineering', '2018-01-28', 0, '19', 'Admin', '6'),
 (6, 'PS10005', '<p>572431009 &nbsp&nbsp&nbsp&nbsp Norihan Ha</p><p>572431014 &nbsp&nbsp&nbsp&nbsp Wilada Yalaphanee</p>', 'Provide in Islam', 'Provide of islam Applications', 'App', 'Computer Multimedia', '2020-01-24', 5, 'Nurulhusna', 'Student', '1'),
-(7, 'PS10006', '<p>571386628 &nbsp&nbsp&nbsp&nbsp Anur Smile</p><p>571431031 &nbsp&nbsp&nbsp&nbsp Asri Yaee</p>', 'FTU Cooperative Education,Industrial Training', 'Industrial Training refers to a program which aims to provide supervised practical training within a specified timeframe. This training can be carried out either', 'Industrial Training', 'Computer Multimedia', '2020-01-18', 6, 'Fausan Mapa', 'Student', '2');
+(7, 'PS10006', '<p>571386628 &nbsp&nbsp&nbsp&nbsp Anur Smile</p><p>571431031 &nbsp&nbsp&nbsp&nbsp Asri Yaee</p>', 'FTU Cooperative Education,Industrial Training', 'Industrial Training refers to a program which aims to provide supervised practical training within a specified timeframe. This training can be carried out either', 'Industrial Training', 'Computer Multimedia', '2020-01-18', 6, 'Fausan Mapa', 'Student', '2'),
+(8, 'PS10007', '<p>57328470 &nbsp&nbsp&nbsp&nbsp Misbah </p>', 'xxxx', 'zzzzzzzzzzzzzzzzzz', 'zcccccc', 'Software Engineering', '2020-02-21', 7, 'Kholed Langsaree', 'Student', '1');
 
 --
 -- Indexes for dumped tables
@@ -499,7 +508,7 @@ ALTER TABLE `topic_project`
 -- AUTO_INCREMENT for table `advisergroup`
 --
 ALTER TABLE `advisergroup`
-  MODIFY `advisergroup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `advisergroup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `announcement`
@@ -535,7 +544,7 @@ ALTER TABLE `committeegroup`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `files_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `files_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `member`
@@ -553,19 +562,19 @@ ALTER TABLE `news_topic`
 -- AUTO_INCREMENT for table `partnergroup`
 --
 ALTER TABLE `partnergroup`
-  MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `topic_project`
 --
 ALTER TABLE `topic_project`
-  MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
