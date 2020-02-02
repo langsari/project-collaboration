@@ -13,56 +13,56 @@
 
               <div class="f1-step active ">
                 <div class="f1-step-icon">PF01</div>
-                <p>FormPF01</p>
+                <p>PF01</p>
               </div>
               <div class="f1-step active">
                 <div class="f1-step-icon">PF02</div>
-                <p>FormPF02</p>
+                <p>PF02</p>
               </div>
               <div class="f1-step active">
                 <div class="f1-step-icon">PF03</div>
-                <p>FormPF03</p>
+                <p>PF03</p>
               </div>
               <div class="f1-step active">
                 <div class="f1-step-icon">PF04</div>
-                <p>FormPF04</p>
+                <p>PF04</p>
               </div>
               <div class="f1-step active">
                 <div class="f1-step-icon">PF05</div>
-                <p>FormPF05</p>
+                <p>PF05</p>
               </div>
               <div class="f1-step active">
                 <div class="f1-step-icon">PF06</div>
-                <p>FormPF06</p>
+                <p>PF06</p>
               </div>
               <div class="f1-step active">
                 <div class="f1-step-icon">PF07</div>
-                <p>FormPF07</p>
+                <p>PF07</p>
               </div>
               <div class="f1-step active">
                 <div class="f1-step-icon">PF08</div>
-                <p>FormPF08</p>
+                <p>PF08</p>
               </div>
               <div class="f1-step active">
                 <div class="f1-step-icon">PF09</div>
-                <p>FormPF09</p>
+                <p>PF09</p>
               </div>
               <div class="f1-step active">
                 <div class="f1-step-icon">PF10</div>
-                <p>FormPF10</p>
+                <p>PF10</p>
               </div>
-              <div class="f1-step active">
+              <div class="f1-step active ">
                 <div class="f1-step-icon">PF11</div>
-                <p>FormPF11</p>
+                <p>PF11</p>
               </div>
 
               <div class="f1-step active">
                 <div class="f1-step-icon">PF12</div>
-                <p>FormPF12</p>
+                <p>PF12</p>
               </div>
               <div class="f1-step active">
                 <div class="f1-step-icon">PF13</div>
-                <p>FormPF13</p>
+                <p>PF13</p>
               </div>
 
 
@@ -85,7 +85,8 @@
             ?>
 
             <fieldset>
-              <h4>This form is with officer
+              <h4>Signed Form and Stamped (PF13)
+              </br><small class="text-muted">By officer</small>
               </h4>
               <div class="card">
                 <div class="card-block">
@@ -94,16 +95,20 @@
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th>Status</th>
+                          <th><font color='red'> *Sige by Officer</font></th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Officer receive copy of Project Proposal</td>
+                          <td>Submit the completed project document and relate resource to officer 
+                          </br> 1). Project Book (already in Printed and Booked)
+                          </br> 2). Softcopy Program/Application and Project Book (in Flash disk, DVD or CD form)
+                          </br> 3). Project Poster in soft and hard copy
+                          </br> 4). Project Vinyl in soft and hard copy
+                          </br> 5). Journal / Seminar
+                          </br> 6). PF10, PF11 and PF12
                           <td>
                             <span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
-                            <p>
-                              <font color='red'> *For Officer</font>
                           </td>
                         </tr>
 
@@ -111,7 +116,7 @@
                     </table>
 
                   </div>
-
+                
                   <div class="button" align="right">
 
                     <button> <a href="?page=pf12" type="button" class="btn previous">Previous</button></a>
@@ -121,6 +126,11 @@
             <?php
                  } }
                    ?>
+
+                  <h7><font color='red'> Note*** 
+                      </br>  As Students, I have already submitted the completed project document and relate resource
+                      </br>  As Officer, I have already received the completed project document and relate resource  </font>
+                  </h7
 
 
 
