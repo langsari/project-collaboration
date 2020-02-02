@@ -220,9 +220,12 @@ case 'view2':
 
 
 case 'view_track':
-		include('officer/view_track.php');
+		include('officer/view_track/std_track.php');
 		break;
 
+
+	
+	
 #studet 		
 case 'create_proposal':
 		include('student/create_proposal.php');

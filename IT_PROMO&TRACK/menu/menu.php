@@ -320,7 +320,7 @@ include 'phpmailer/message.php';
 
 
 <li class="treeview">
-  <a href="?page=view_track">
+  <a href="?page=std_track">
     <i class="fa fa-book"></i> <span>Student Track</span>
   </a>
 </li>

@@ -152,10 +152,11 @@ if($result = $db->query($sql)){
           </div>
         </div>
 
-       
+
 
         <div class="f1-buttons">
-          <button> <a href="?page=pf2&id=<?php echo $objResult->advisergroup_id;?>" type="button" class="btn btn-next">Next</button></a>
+          <button> <a href="?page=pf2&id=<?php echo $objResult->advisergroup_id;?>" type="button"
+              class="btn btn-next">Next</button></a>
         </div>
       </fieldset>
 
