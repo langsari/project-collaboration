@@ -1,5 +1,3 @@
-
-
 <html>
   <head>
     <!--Load the AJAX API-->
@@ -62,7 +60,31 @@
 				}	
 			}).responseText;
   }
-
+  function line_chart() 
+  {
+	  	var jsonData = $.ajax({
+			url: 'column_chart.php',
+    		dataType:"json",
+    		async: false,
+			success: function(jsonData)
+				{
+					var options = 
+					{
+						legend: 'none',
+						hAxis: { minValue: 0, maxValue: 9 },
+						curveType: 'function',
+						pointSize: 7,
+						dataOpacity: 0.3
+					};
+					var data = new google.visualization.arrayToDataTable(jsonData);	
+        			 var chart = new google.visualization.LineChart(document.getElementById('line_chart'));
+                     chart.draw(data, options);
+					
+				}	
+			}).responseText;
+	  
+    }
+	
     </script>
   </head>
 
@@ -72,9 +94,12 @@
    <div id="piechart_div"></div>
    <div style="font: 21px arial; padding: 10px 0 0 100px;">Column Chart</div>
 	<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
-	<div style="font: 21px arial; padding: 10px 0 0 100px;">Bar Chart</div>
-	<div id="bar_chart" style="width: 900px; height: 300px;"></div>
+
+
+	<div style="font: 10px arial; padding: 5px 0 0 60px;">Bar Chart</div>
+	<div id="bar_chart" style="width: 1500px; height: 300px;"></div>
+
 	<div style="font: 21px arial; padding: 10px 0 0 100px;">Line Chart</div>
-	<div id="line_chart" style="width: 900px; height: 300px;"></div>
+	<div id="line_chart" style="width: 1500pxpx; height: 950px;"></div>
   </body>
 </html>

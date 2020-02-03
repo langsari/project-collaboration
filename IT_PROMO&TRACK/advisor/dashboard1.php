@@ -7,10 +7,10 @@
 <head>
  <meta charset="utf-8">
  <title>TechJunkGigs</title>
- <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+ <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  <script type="text/javascript">
 
  google.load("visualization", "1", {packages:["corechart"]});
@@ -18,7 +18,7 @@
  function drawChart() {
  var data = google.visualization.arrayToDataTable([
 
- ['Owner','pf'],
+ ['group_id','pf'],
 
  <?php 
 		$my_id = $_SESSION['id'];
@@ -34,7 +34,7 @@
 			 $exec = mysqli_query($con,$query);
 			 while($row = mysqli_fetch_array($exec)){
 
-       echo "['".$row['Owner']."',".$row['pf']."],";
+       echo "['".$row['group_id']."',".$row['pf']."],";
        
     
 			 }
@@ -44,25 +44,35 @@
 
  var options = {
  title: 'Owner Group Project',
-  pieHole: 0.4,
+  pieHole: 0.3,
           pieSliceTextStyle: {
             color: 'black',
           },
           legend: 'none'
-          
+    
  };
- var chart = new google.visualization.PieChart(document.getElementById("columnchart12"));
+ var chart = new google.visualization.BarChart(document.getElementById("columnchart12"));
  chart.draw(data,options);
  }
+
+
+ 
 	
     </script>
 
 </head>
 <body>
-
+<br>
  <div class="container-fluid">
- <div id="columnchart12" style="width: 100%; height: 500px;"></div>
+
+ <div id="columnchart12" style="height: 290px; width: 600px"></div>
+
  </div>
 
+
+
+
+
+ 
 </body>
 </html>
