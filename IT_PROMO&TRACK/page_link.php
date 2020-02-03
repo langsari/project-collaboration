@@ -105,6 +105,9 @@ case 'dashboard':
 			include('advisor/dashboard1.php');
 	break;
 
+	case 'graph':
+		include('graph.php');
+break;
 
 
 case 'committee_request':

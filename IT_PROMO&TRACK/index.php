@@ -31,6 +31,8 @@ include('menu/function.php');
   <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
 
   <script type="text/javascript" src="lib/js/chartist.min.js"></script>
+  <script type="text/javascript" src="assets/js/charts_chartist.min.js"></script>
+
   <script type="text/javascript" src="assets/js/app.min.js"></script>
   <script type="text/javascript" src="assets/ckeditor/ckeditor.js"></script>
 
