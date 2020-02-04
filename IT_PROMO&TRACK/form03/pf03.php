@@ -85,7 +85,7 @@
             ?>
 
             <fieldset>
-              <h4>Project Proposal Revision Sheet
+              <h4>Project Proposal Revision 
               </h4>
               <div class="card">
                 <div class="card-block">
@@ -94,25 +94,23 @@
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th>Status of Revision 
-                            <font color='red'> *For Advisor</font>
-                          </th>
-                          <th>Status of Proposal Revision 
-                            <font color='red'> *For Committee</font>
-                          </th>
+                          <th><font color='red'> *Sign by Advisor</font></th>
+                          <th><font color='red'> *Sign by Committee</font></th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Proposal Revisoin
-                          </td>
+                          <td>1).Project Presentation
+                          </br>2).Project Revision</td>
+
                           <td>
+                          </br>
                             <font color='succes'> <?php echo $objResult->status_advisor; ?> </font> <span>
                               <?php echo get_advisor($objResult->group_id); ?></span>
                           </td>
+
                           <td>
-
-
+                          </br>
                             <span><?php echo get_status_committee($objResult->group_id); ?></span>
                             <p>
 
@@ -125,8 +123,7 @@
                     </table>
 
                   </div>
-                  <h6><font color='red'> Note*** Advisor or committee will sign this form when student completed project project revision </font>
-                  </h6>
+                  
                   <div class="button" align="right">
 
                     <button> <a href="?page=pf02" type="button" class="previous">&laquo;Previous</button></a>
@@ -139,6 +136,9 @@
                  } }
                    ?>
 
+              <h7><font color='red'> Note*** 
+              </br>Advisor and committee will sign this form when student completed project proposal revision </font>
+              </h7>
 
 
 

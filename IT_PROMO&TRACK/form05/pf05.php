@@ -13,56 +13,56 @@
 
               <div class="f1-step active ">
                 <div class="f1-step-icon">PF01</div>
-                <p>FormPF01</p>
+                <p>PF01</p>
               </div>
               <div class="f1-step active">
                 <div class="f1-step-icon">PF02</div>
-                <p>FormPF02</p>
+                <p>PF02</p>
               </div>
               <div class="f1-step active">
                 <div class="f1-step-icon">PF03</div>
-                <p>FormPF03</p>
+                <p>PF03</p>
               </div>
               <div class="f1-step active">
                 <div class="f1-step-icon">PF04</div>
-                <p>FormPF04</p>
+                <p>PF04</p>
               </div>
               <div class="f1-step active">
                 <div class="f1-step-icon">PF05</div>
-                <p>FormPF05</p>
+                <p>PF05</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF06</div>
-                <p>FormPF06</p>
+                <p>PF06</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF07</div>
-                <p>FormPF07</p>
+                <p>PF07</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF08</div>
-                <p>FormPF08</p>
+                <p>PF08</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF09</div>
-                <p>FormPF09</p>
+                <p>PF09</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF10</div>
-                <p>FormPF10</p>
+                <p>PF10</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF11</div>
-                <p>FormPF11</p>
+                <p>PF11</p>
               </div>
 
               <div class="f1-step">
                 <div class="f1-step-icon">PF12</div>
-                <p>FormPF12</p>
+                <p>PF12</p>
               </div>
               <div class="f1-step">
                 <div class="f1-step-icon">PF13</div>
-                <p>FormPF13</p>
+                <p>PF13</p>
               </div>
 
 
@@ -85,7 +85,7 @@
             ?>
 
             <fieldset>
-              <h4>FORM OF SUBMIT/RECEIVE COMPLETED PROJECT PROPOSAL
+              <h4>Submit Completed Proposal
               </h4>
               <div class="card">
                 <div class="card-block">
@@ -101,7 +101,11 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Submit complete project proposal document</td>
+                          <td>Submit complete project proposal document and PF03 to officer
+                          </br><u>Condition:</u>
+                          </br>1). Copy the completed proposal with soft cover
+
+                          </td>
                           <td>
                           
                             <span class="badge badge-success" required> <?php echo $objResult->by_officer05; ?> </span>
@@ -124,7 +128,12 @@
                  } }
                    ?>
 
+              <h7><font color='red'> Note*** After Submit/Receive
+              </br>As Officer, I have already received the copies of documents Project Proposal Booked, PF03, and PF04 (PF05/1)
 
+            </br>As Student, I have already submited the copies of documents Project Proposal Booked, PF03, and PF04 (PF05/2)
+              </font>
+              </h7>
 
 
 

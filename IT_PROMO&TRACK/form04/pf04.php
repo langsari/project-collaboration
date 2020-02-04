@@ -85,7 +85,8 @@ if($result = $db->query($strSQL)){
       ?>
 
       <fieldset>
-        <h4>Project Proposal Revision Sheet
+        <h4>Approve Proposal Revision 
+        </br><small class="text-muted">By Advisor and Committees</small>
         </h4>
         <div class="card">
           <div class="card-block">
@@ -95,16 +96,16 @@ if($result = $db->query($strSQL)){
                   <tr>
                     <th>To do list</th>
                     <th>
-                      <font color='red'> *Approval by Advisor</font>
+                      <font color='red'> *Approve by Advisor</font>
                     </th>
                     <th>
-                      <font color='red'> *Approval by Committee</font>
+                      <font color='red'> *Approve by Committee</font>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Project Proposal Approval
+                    <td>1). Project Proposal Approval
                     </td>
                     <td>
                       <font color='succes'> <?php echo $objResult->status_advisor; ?> </font> <span>

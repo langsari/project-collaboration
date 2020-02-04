@@ -6,15 +6,40 @@
 
 
   <button type="button" style="height:110px; width:210px" class="btn btn-danger">
-    <h2><i class="fa fa-users position-left"></i></h2><a href="?page=users">
-      <h5>Recent Users
-  </button></a>
+    <h5><i class="fa fa-users position-left"></i>Total Users</h5><a href="?page=users">
+              <?php
+              $con = mysqli_connect('localhost','root','','itpromo_track');
+
+                $query="SELECT member_id FROM member ORDER BY  member_id";
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
+
+                ?>
+    
+  </button>
   <span style="padding-left:50px"> </span>
 
   <button type="button" style="height:110px; width:210px" class="btn btn-success">
-    <h2><i class="fa fa-users position-left"></i></h2><a href="?page=student_track_ptoject">
-      <h4>Tracking
-  </button></a>
+    <h5><i class="fa fa-users position-left"></i>Total Group</h5><a href="?page=student_track_ptoject">
+      
+         <?php
+              $con = mysqli_connect('localhost','root','','itpromo_track');
+              $my_id = $_SESSION['id'];
+
+                $query="SELECT advisergroup_id FROM advisergroup 
+                  WHERE member_id='$my_id'
+                   ORDER BY advisergroup_id";
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+
+                  echo '<h1>'.$row.'</h1>';
+                
+                ?>
+
+  </button>
 
   <span style="padding-left:50px"> </span>
 
@@ -54,7 +79,7 @@
  ['group_id','pf'],
 
  <?php 
-		$my_id = $_SESSION['id'];
+    $my_id = $_SESSION['id'];
             
             
     $query = "SELECT advisergroup.*,  files.pf,files.Owner,advisergroup.advisergroup_id,
@@ -64,14 +89,14 @@
        LEFT JOIN member ON advisergroup.member_id = member.member_id
        WHERE advisergroup.member_id = '$my_id'  AND pf  
               ";
-			 $exec = mysqli_query($con,$query);
-			 while($row = mysqli_fetch_array($exec)){
+       $exec = mysqli_query($con,$query);
+       while($row = mysqli_fetch_array($exec)){
 
        echo "['".$row['group_id']."',".$row['pf']."],";
        
     
-			 }
-			 ?> 
+       }
+       ?> 
  
  ]);
 
@@ -90,7 +115,7 @@
 
 
  
-	
+  
     </script>
 
 </head>
@@ -129,7 +154,7 @@
 
     ['Owner','pf'],
  <?php 
-			$my_id = $_SESSION['id'];
+      $my_id = $_SESSION['id'];
             
             
             $query = "SELECT advisergroup.*,  files.pf,files.Owner,advisergroup.advisergroup_id,
@@ -139,12 +164,12 @@
                LEFT JOIN member ON advisergroup.member_id = member.member_id
                WHERE advisergroup.member_id = '$my_id'  AND pf  
                       ";
-			 $exec = mysqli_query($con,$query);
-			 while($row = mysqli_fetch_array($exec)){
+       $exec = mysqli_query($con,$query);
+       while($row = mysqli_fetch_array($exec)){
 
-			 echo "['".$row['Owner']."',".$row['pf']."],";
-			 }
-			 ?> 
+       echo "['".$row['Owner']."',".$row['pf']."],";
+       }
+       ?> 
  
  ]);
 
@@ -158,7 +183,7 @@
  var chart = new google.visualization.PieChart(document.getElementById("columnchart13"));
  chart.draw(data,options);
  }
-	
+  
     </script>
 
 </head>
