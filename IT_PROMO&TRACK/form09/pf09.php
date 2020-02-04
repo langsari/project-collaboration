@@ -71,7 +71,7 @@
 
             $g_id = get_group_id();
               $ag_id = get_ag_id($g_id);
-    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
+    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer09,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
           LEFT JOIN committeegroup ON advisergroup.group_id = committeegroup.group_id
 
@@ -108,7 +108,7 @@
 
                           </td>
                           <td> Status
-                            <span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
+                            <span class="badge badge-success" required> <?php echo $objResult->by_officer09; ?> </span>
                           </td>
                         </tr>
 

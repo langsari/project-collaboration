@@ -68,6 +68,7 @@
                 while($row = $rs->fetch_object()){
               ?>
                   <tr>
+                  
                     <td class="text-left"><?php echo $row->files_id; ?></td>
                     <td class="text-left"><?php echo $row->group_number; ?></td>
                     <td><?php echo get_member_list($row->group_id); ?></td>

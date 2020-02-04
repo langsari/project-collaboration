@@ -60,6 +60,8 @@ if(isset($_GET['error'])){
                                                 <i class="fa fa-user-o"></i>
                                             </span>
                                         <input type="text" class="form-control" id="username" name="username"placeholder="Enter Username" autocomplete="off" required aria-describedby="basic-addon1">
+          
+          
                                     </div>
                                 </div>
 

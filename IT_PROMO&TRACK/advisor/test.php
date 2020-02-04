@@ -45,7 +45,7 @@
           pieHole: 0.4,
         };
      
- var chart = new google.visualization.PieChart(document.getElementById("columnchart12"));
+ var chart = new google.visualization.PieChart(document.getElementById("columnchart13"));
  chart.draw(data,options);
  }
 	
@@ -54,7 +54,7 @@
 </head>
 <body>
  <div class="container-fluid">
- <div id="columnchart12" style="width: 50%; height: 300px;"></div>
+ <div id="columnchart13" style="width: 50%; height: 300px;"></div>
  </div>
 
 </body>

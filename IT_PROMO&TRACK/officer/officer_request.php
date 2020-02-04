@@ -8,7 +8,7 @@
           <table class="table">
             <thead class="thead-default">
               <tr>
-                <th>No</th>
+              <th>No</th>
                 <th>Title project</th>
                 <th>Student</th>
                 <th>Files</th>
@@ -29,12 +29,12 @@ $my_id = $_SESSION['id'];
         WHERE advisergroup.member_id  AND files.by_officer = '' 
         Order By files_id
                ";
-
+$i = 1;
               if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
               ?>
               <tr>
-                <td><?php echo $row->files_id; ?></td>
+              <td><div align="center"><?php echo $i;?></div></td>
 
                 <td><?php echo get_member_list($row->group_id); ?></td>
                 <td><?php echo $row->advisergroup_topic; ?></td>
@@ -68,7 +68,7 @@ $my_id = $_SESSION['id'];
 
                   <table class="table">
                     <thead class="thead-default">
-                      <tr>
+                      <tr><th>No</th>
                         <th>Title project</th>
                         <th>Student</th>
                         <th>Status</th>
@@ -95,16 +95,85 @@ $my_id = $_SESSION['id'];
         Order By files_id
                ";
 
-
+$i = 1;
        
               if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
               ?>
                       <tr>
+                      <td><div align="center"><?php echo $i;?></div></td>
+
                         <td><?php echo $row->advisergroup_topic; ?></td>
                         <td><?php echo get_member_list($row->group_id); ?></td>
 
                         <td><a href="officer/check_pf05.php?id=<?php echo $row->files_id; ?>"
+                            title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
+                              class="fa fa-check" aria-hidden="true"></i> </a>
+
+
+
+                      </tr>
+                      <?php
+                }
+              }else{
+              }
+              ?>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+
+
+              <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-block">
+      <legend class="text-bold margin-top-2.5">Officer Receive Copy Of 5 Chapters Project	
+ (PF09)</legend>
+
+                  <table class="table">
+                    <thead class="thead-default">
+                      <tr><th>No</th>
+                        <th>Title project</th>
+                        <th>Student</th>
+                        <th>Status</th>
+
+
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <?php
+
+
+
+
+require 'menu/connect.php';
+$my_id = $_SESSION['id'];
+
+    $strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic ,files.by_advisor08,files.by_officer05 FROM advisergroup
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+
+        WHERE advisergroup.member_id  AND pf='8' And by_advisor08 ='Pass' 
+        Order By files_id
+               ";
+
+
+$i = 1;
+              if($rs = $db->query($strSQL)){
+                while($row = $rs->fetch_object()){
+              ?>
+                      <tr>
+                      <td><div align="center"><?php echo $i;?></div></td>
+
+                        <td><?php echo $row->advisergroup_topic; ?></td>
+                        <td><?php echo get_member_list($row->group_id); ?></td>
+
+                        <td><a href="officer/check_pf09.php?id=<?php echo $row->files_id; ?>"
                             title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
                               class="fa fa-check" aria-hidden="true"></i> </a>
 

@@ -368,6 +368,24 @@ require 'connect.php';
 }
 
 
+//Function to get Committee lsit
+function get_status_committee1($group_id){
+	require 'connect.php';
+		$rows = "";
+		$sql = "SELECT  member.member_fullname,committeegroup.status_project FROM committeegroup
+						LEFT JOIN member ON committeegroup.member_id = member.member_id
+						WHERE committeegroup.group_id = '$group_id'";
+		if($rs = $db->query($sql)){
+			while($row = $rs->fetch_object()){
+		$rows .= "<p> <font color='succes'> ".$row->status_project." </font>&nbsp;&nbsp;&nbsp;&nbsp; ".$row->member_fullname."  </p>";
+			}
+			return $rows;
+			$db->close();
+		}else{
+			echo $db->error;
+			$db->close();
+		}
+	}
 
 //Function to get Committee lsit
 function get_comment_committee($group_id){

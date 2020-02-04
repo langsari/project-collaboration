@@ -82,6 +82,10 @@ case 'dashboard':
 	case 'advisor_request':
 		include('advisor/advisor_request.php');
 		break;
+
+		case 'advisor_request':
+			include('advisor/advisor_request.php');
+			break;
 		
 	case 'view':
 		include('advisor/view.php');
@@ -96,6 +100,11 @@ case 'dashboard':
 		include('committee/status_presentation.php');
 	break;
 
+	case 'status_project':
+		include('committee/status_project.php');
+	break;
+
+	
 
 	case 'student_Track':
 		include('advisor/view_track/student_Track.php');
@@ -184,6 +193,7 @@ case 'committee_request':
 			include('advisor/view_track.php');
 			break;
 
+			
 
 			case 'pf1':
 				include('advisor/view_track/pf1.php');

@@ -71,7 +71,7 @@
 
             $g_id = get_group_id();
               $ag_id = get_ag_id($g_id);
-    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
+    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.by_advisor10,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
           LEFT JOIN committeegroup ON advisergroup.group_id = committeegroup.group_id
 
@@ -103,12 +103,15 @@
                           <td>1).Project Presentation
                           </br>2).Project Revision</td>
                           <td>
-                          </br>Status
-                            <span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
+                          </br>Status</br>
+                            <span class="badge badge-success" required> <?php echo $objResult->by_advisor10; ?>  </span> <?php echo get_advisor($objResult->group_id); ?>
                           </td>
                           <td>
                             </br>Status
-                            <span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
+                            <span> 
+                           <?php echo get_status_committee1($objResult->group_id); ?>
+                            
+                             </span>
                           </td>
                         </tr>
 
@@ -140,21 +143,77 @@
 
       </form>
 
-      <?php
-include("student/chat.php");
- ?>
+    
+      <div class="content">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-block">
+
+                <h6 class="card-title text-bold">Comments For Committee</h6></b>
+                <?php
+            $g_id = get_group_id();
+              $ag_id = get_ag_id($g_id);
+              
 
 
-      <script src="asset/js/jquery-1.11.1.min.js"></script>
-      <script src="asset/js/jquery.backstretch.min.js"></script>
-      <script src="asset/js/retina-1.1.0.min.js"></script>
-      <script src="asset/js/scripts.js"></script>
+$strSQL = "SELECT  member.member_fullname,committeegroup.comment_project FROM committeegroup
+          LEFT JOIN member ON committeegroup.member_id = member.member_id
+          WHERE committeegroup.group_id = '$ag_id'";
+
+     if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+
+   ?>
 
 
 
 
 
 
-      </body>
 
-      </html>
+                <table class="display datatable table table-stripped" cellspacing="0" width="100%">
+
+                  <tbody>
+
+                    <td>
+
+                      </br><b>
+
+
+
+                        <h5> &nbsp;&nbsp;<span class="badge badge-primary"> <?php echo $objResult->member_fullname;?>
+                        </h5></span> </br>
+
+
+                        <h6> &nbsp;&nbsp; <font color='green'> <?php echo $objResult->comment_project;?> </h6></br></font>
+
+
+
+
+                        <div class="col-md-12" align="right">
+
+                        </div>
+
+                    </td>
+
+                    <?php
+                 }
+               }
+                   ?>
+                  </tbody>
+                </table>
+
+                <script src="asset/js/jquery-1.11.1.min.js"></script>
+                <script src="asset/js/jquery.backstretch.min.js"></script>
+                <script src="asset/js/retina-1.1.0.min.js"></script>
+                <script src="asset/js/scripts.js"></script>
+
+
+
+
+
+
+                </body>
+
+                </html>

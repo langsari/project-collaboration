@@ -117,7 +117,7 @@ $my_id = $_SESSION['id'];
 
 
 
-  <!-- PF01-->
+  <!-- END FORM Partner -->
 
 
 
@@ -178,12 +178,13 @@ $my_id = $_SESSION['id'];
                             </div>
                         </div>
 
-          <!-- PF01-->
+          <!-- END Partner-->
 
 
 
 
-        <!-- PF03-->
+
+          <!-- Select advisor -->
           <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-block">
@@ -242,10 +243,7 @@ $i = 1;
                                 </div>
                             </div>
                         </div>
-            
-            
-            
-            <!-- PF04-->
+          
                     
                         <div class="col-lg-6">
                             <div class="card">
@@ -310,7 +308,7 @@ $i = 1;
 
 
 
-  <!-- PF06-->
+
           <!-- Select advisor -->
           <div class="col-lg-6">
                             <div class="card">
@@ -368,7 +366,7 @@ $i = 1;
                             </div>
                         </div>
           
-                      <!-- PF07-->
+                    
                         <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-block">
@@ -410,129 +408,6 @@ $i = 1;
                         <td><?php echo get_member_list($row->group_id); ?></td>
 
                         <td><a href="advisor/check_07.php?id=<?php echo $row->files_id; ?>"
-                            title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                              class="fa fa-check" aria-hidden="true"></i> </a>
-
-
-
-                      </tr>
-                      <?php
-                }
-              }else{
-              }
-              ?>
-                                          
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                         <!-- PF08--> 
-
-
-          <!-- Select advisor -->
-          <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-block">
-                                <legend class="text-bold margin-top-2.5">Adviser Project Approval Letter (PF08)</legend>
-                                <table class="table">
-                    <thead class="thead-default">
-                      <tr>
-                      <th>No</th>
-
-                        <th>Title project</th>
-                        <th>Student</th>
-                        <th>Status</th>
-           </tr>
-          </thead>
-    <tbody>
-
-    <?php
-
-
-require 'menu/connect.php';
-$my_id = $_SESSION['id'];
-    $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_advisor07 FROM advisergroup
-
-          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
-        LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  AND pf='8' And by_advisor08 ='Waiting'   ";
-
-$i = 1;
-              if($rs = $db->query($strSQL)){
-                while($row = $rs->fetch_object()){
-              ?>
-                  <tr>
-                  <td><div align="center"><?php echo $i;?></div></td>
-
-                        <td><?php echo $row->advisergroup_topic; ?></td>
-                        <td><?php echo get_member_list($row->group_id); ?></td>
-
-                        <td><a href="advisor/check_08.php?id=<?php echo $row->files_id; ?>"
-                            title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                              class="fa fa-check" aria-hidden="true"></i> </a>
-
-
-
-                      </tr>
-                      <?php
-                }
-              }else{
-              }
-              ?>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-          
-                    
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-block">
-                                <legend class="text-bold margin-top-2.5">Project Revision (PF10)</legend>
-                                <table class="table">
-                    <thead class="thead-default">
-                      <tr>
-                      <th>No</th>
-
-                        <th>Title project</th>
-                        <th>Student</th>
-                        <th>Status</th>
-
-
-                </tr>
-                                        </thead>
-                                        <tbody>
-
-
-                                        <?php
-
-
-require 'menu/connect.php';
-$my_id = $_SESSION['id'];
-$strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_advisor07 FROM advisergroup
-
-LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
-LEFT JOIN member ON advisergroup.member_id = member.member_id
-WHERE advisergroup.member_id = '$my_id'  AND pf='9' And by_advisor10 =''   ";
- 
-
-$i = 1;
-              if($rs = $db->query($strSQL)){
-                while($row = $rs->fetch_object()){
-              ?>
-                    <tr>
-                    <td><div align="center"><?php echo $i;?></div></td>
-
-                        <td><?php echo $row->advisergroup_topic; ?></td>
-                        <td><?php echo get_member_list($row->group_id); ?></td>
-
-                        <td><a href="advisor/check_10.php?id=<?php echo $row->files_id; ?>"
                             title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
                               class="fa fa-check" aria-hidden="true"></i> </a>
 
