@@ -103,11 +103,6 @@ $my_id = $_SESSION['id'];
                 </td>
 
 
-                <td><button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#editPS"
-                    onclick="edit_ps(<?php echo $objResult->advisergroup_id; ?>)"><i class="fa fa-edit">View
-                      Track</i></button>
-                </td>
-
 
 
 

@@ -2,27 +2,11 @@
 
       <div class="row">
 <div class="card-block">
-<span style="padding-left:70px"> </span>
 
-
-  <button type="button" style="height:110px; width:210px" class="btn btn-danger">
-    <h5><i class="fa fa-users position-left"></i>Total Users</h5><a href="?page=users">
-              <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-
-                $query="SELECT member_id FROM member ORDER BY  member_id";
-
-                $query_num=mysqli_query($con,$query);
-                $row=mysqli_num_rows($query_num);
-                echo '<h1>'.$row.'</h1>';
-
-                ?>
-    
-  </button>
   <span style="padding-left:50px"> </span>
 
   <button type="button" style="height:110px; width:210px" class="btn btn-success">
-    <h5><i class="fa fa-users position-left"></i>Total Group</h5><a href="?page=student_track_ptoject">
+    <h5><i class="fa fa-users position-left"></i>Total Group</h5>
       
          <?php
               $con = mysqli_connect('localhost','root','','itpromo_track');
@@ -44,9 +28,10 @@
   <span style="padding-left:50px"> </span>
 
   <button type="button" class="btn btn-warning" style="height:110px; width:210px" ><i
-      class="fa fa-users position-left"></i><a href="?page=users">
-      <h4>Users</button></a>
-
+      class="fa fa-users position-left"></i>
+      <h5>Users
+    
+</button>
 
 
   <div class="content">
@@ -101,7 +86,7 @@
  ]);
 
  var options = {
- title: 'Owner Group Project',
+ title: ' Group Track Project',
   pieHole: 0.3,
           pieSliceTextStyle: {
             color: 'black',
@@ -176,7 +161,7 @@
 
  
  var options = {
-          title: 'Number of Students according to their class',
+          title: 'Number of Students Track Project',
           pieHole: 0.4,
         };
      

@@ -109,7 +109,7 @@
                           
                           </td>
                           <td>Status
-                            <span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
+                            <span class="badge badge-success" required>  </span>
                           </td>
                         </tr>
                         

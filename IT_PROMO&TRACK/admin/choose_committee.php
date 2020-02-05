@@ -44,13 +44,13 @@
               <table class="display datatable table table-stripped" cellspacing="0" width="100%">
                 <thead>
                   <tr>
-                    <th class="text-center" style="width: 50px;">No</th>
-                    <th class="text-center" style="width: 50px;">Project</th>
-                    <th class="text-left">Members</th>
-                    <th class="text-left">Project Topic</th>
-                    <th class="text-left">Advisor</th>
-                    <th class="text-left">Committee</th>
-                    <th class="text-center" style="width: 240px;"></th>
+                    <th class="text-left" >No</th>
+                    <th class="text-left" >Project</th>
+                    <th class="text-left" style="width: 300px;">Members</th>
+                    <th class="text-left" style="width: 250px;">Project Topic</th>
+                    <th class="text-left"style="width: 150px;">Advisor</th>
+                    <th class="text-left" style="width: 240px;">Committee</th>
+                 
                   </tr>
                 </thead>
                 <tbody>
@@ -71,18 +71,17 @@
                   
                     <td class="text-left"><?php echo $row->files_id; ?></td>
                     <td class="text-left"><?php echo $row->group_number; ?></td>
-                    <td><?php echo get_member_list($row->group_id); ?></td>
+                    <td class="text-left"><?php echo get_member_list($row->group_id); ?></td>
                     <td class="text-left"><?php echo get_topic($row->group_id); ?></td>
                     <td class="text-left"><?php echo get_advisor($row->group_id); ?></td>
 
-                    <td class="text-left"><span
-                        class="badge badge-danger"><?php echo get_committee($row->group_id); ?></span> </td>
+                    <td class="text-left"><?php echo get_committee($row->group_id); ?></span> </td>
 
                     <td class="text-left">
 
                       <button type="button" class="btn btn-info btn-xs"
                         onclick="add_committee('<?php echo $row->group_id; ?>')" data-toggle="modal"
-                        data-target="#add_committee"><i class="fa fa-user-plus"></i> Add Committee</button>
+                        data-target="#add_committee"><i class="fa fa-user-plus"></i> Add </button>
                     </td>
                   </tr>
                   <?php

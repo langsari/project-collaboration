@@ -56,9 +56,8 @@ $my_id = $_SESSION['id'];
 
 
 
-                <td><a href="committee/check_pass_present.php?id=<?php echo $objResult->group_id; ?>" title="Pass"
-                    onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i class="fa fa-check"
-                      aria-hidden="true"></i> </a>
+            
+
 
                 <td><a href="?page=status_presentation&id=<?php echo $objResult->group_id;?>"><i class="fa fa-edit"
                       title="View"></i></a>

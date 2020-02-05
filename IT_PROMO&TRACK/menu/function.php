@@ -339,6 +339,8 @@ require 'connect.php';
 		while($row = $rs->fetch_object()){
 			$rows .= "<p>".$row->member_fullname." <a href='admin/sql_removecommittee.php?id=".$row->committeegroup_id."' title='Remove this committee' onclick='return confirm_removecommittee()' class='btn btn-link btn-xs'><i class='glyphicon glyphicon-remove'></i></a></p>";
 		}
+
+
 		return $rows;
 		$db->close();
 	}else{

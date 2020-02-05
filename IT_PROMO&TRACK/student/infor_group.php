@@ -426,7 +426,7 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
                                         <thead class="thead-default">
                                          
                                            <tr>
-                  <th>Student ID</th>
+                  <th>Lecturer ID</th>
                   <th>Full Name</th>
                   <th>Phone</th>
                 </tr>

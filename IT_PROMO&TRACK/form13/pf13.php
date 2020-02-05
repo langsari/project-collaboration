@@ -109,7 +109,7 @@
                           </br> 6). PF10, PF11 and PF12
                           <td>
                             Staus
-                            <span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
+                            <span class="badge badge-success" required> </span>
                           </td>
                         </tr>
 
