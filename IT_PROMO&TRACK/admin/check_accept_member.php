@@ -26,7 +26,12 @@ $sql="INSERT INTO member(member_idcard,member_username,member_fullname,member_pa
 
 	if($rs = $db->query($sql)){
 		$db->close();
-		header("Location: ../index.php?page=accept_member");
+
+
+		 echo "<script>alert('You are member Now But!  you are not activated by Administrator!' )</script>";
+
+
+		 		  	  echo "<script>window.open('../index.php?page=accept_member','_self')</script>";
 	}else{
 		echo $db->error;
 		$db->close();
