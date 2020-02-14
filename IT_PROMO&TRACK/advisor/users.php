@@ -11,14 +11,13 @@ require 'menu/connect.php';
 $my_id = $_SESSION['id'];
 
 
-      $strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,advisergroup.advisergroup_id FROM advisergroup
-          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
-        LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.member_id = '$my_id'  AND files_status  
-               ";
+$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_topic,advisergroup.advisergroup_id FROM advisergroup
+LEFT JOIN member ON advisergroup.member_id = member.member_id
 
+WHERE advisergroup.member_id='$my_id'
+ ORDER BY advisergroup.advisergroup_id";
 
               ?>
 
@@ -26,9 +25,9 @@ $my_id = $_SESSION['id'];
                     <table class="display datatable table table-stripped" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th class="text-center">No</th>
-                                <th class="text-center">Topic</th>
-                                <th class="text-center">ID-Student</th>
+                                <th class="text-left">Group</th>
+                                <th class="text-left">Topic</th>
+                                <th class="text-left">ID-Student</th>
 
 
 
@@ -42,9 +41,9 @@ $my_id = $_SESSION['id'];
 
                         <tbody>
                             <tr>
-                                <td class="text-center"><?php echo get_groupcode($row->group_id); ?></td>
-                                <td class="text-center"><?php echo $row->advisergroup_topic; ?></td>
-                                <td class="text-center"><?php echo get_member_list($row->group_id); ?></td>
+                                <td class="text-left"><?php echo get_groupcode($row->group_id); ?></td>
+                                <td class="text-left"><?php echo $row->advisergroup_topic; ?></td>
+                                <td class="text-left"><?php echo get_member_list($row->group_id); ?></td>
 
 
 

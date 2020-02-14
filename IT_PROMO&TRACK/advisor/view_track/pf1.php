@@ -82,78 +82,88 @@ if($result = $db->query($sql)){
             while($objResult = $result->fetch_object()){
       ?>
       <fieldset>
-        <h4>Adviser Proposal Project Approval Letter</h4>
-        <div class="row">
-          <div class="card">
-            <div class="card-block">
-              <table class="table">
-                <thead class="thead-default">
-                  <tr>
-                    <th>To do list</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Select Topic</td>
-                    <td>
-                      <span class="badge badge-success"> <?php echo $objResult->advisergroup_status; ?></span>
+            </br>
+              <h4>Proposal Project Approval Letter 
+              </br><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
 
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Select Advisor</td>
-                    <td>
-                      <span class="badge badge-success"> <?php echo $objResult->advisergroup_status; ?></span>
-                    </td>
-                  </tr>
+              </h4>
+                <div class="card">
+                  <div class="card-block">
+                    <table class="table">
+                      <thead class="thead-default">
+                        <tr>
+                        <th>To do list</th>
 
-                  <tr>
+                     
+                          <th><font color='red'> Sign by advisor</font></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Proposal Topic Selection</td>
+                          <td>
+                            Status
+                            <span class="badge badge-success"> <?php echo $objResult->advisergroup_status; ?></span>
+                  
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Select Advisor</td>
+                          <td>
+                            Status
+                            <span class="badge badge-success"> <?php echo $objResult->advisergroup_status; ?></span>
+                  
+                          </td>
+                        </tr>
 
-
-                    <!--get Project Owner  -->
-
-                    <td class="form-control" name="Owner" hidden="">
-                      <?php echo get_member_list1($objResult->group_id); ?></td>
-
-
-                    <!--get Topic   -->
-
-                    <td> 3 chapter of Proposal
-
-                      <input type="file" name="files_filename_proposal" id="files_filename_proposal"
-                        required="required" />
-
-                    <td bgcolor="#EDEDED"><input type="submit" name="button" id="button" value="Upload" /></td>
+                        <tr>
 
 
-                    </td>
-                    <td> <span class="badge badge-success"> <?php echo $objResult->files_status; ?></span>
-                      <p>
-                        <font color='red'> *For Advisor</font>
-                    </td>
+                          <!--get Project Owner  -->
+
+                          <td class="form-control" name="Owner" hidden="">
+                            <?php echo get_member_list1($objResult->group_id); ?></td>
 
 
-                    <td><a href="student/download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>"><i
-                          class="fa fa-download"></i></a></td>
+                          <!--get Topic   -->
 
-                  </tr>
-                </tbody>
-              </table>
+                          <td> 3 chapter of Proposal
 
+                          
 
 
-              <div class="progress">
-                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
-                  aria-valuemax="100"></div>
-              </div>
+                          </td>
+                          <td>
+                            Staus
+                            <span class="badge badge-success"> <?php echo $objResult->files_status; ?></span>
+                          </td>
 
-            </div>
-          </div>
-        </div>
+
+                          <td><a href="form01/download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>"><i
+                                class="fa fa-download"></i></a></td>
+
+                        </tr>
+                      </tbody>
+                    </table>
 
 
 
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                    </div>
+
+                  </div>
+                </div>
+              
+
+              <h7><font color='red'>*** Note
+              </br>  Student have to upload file of 3 chapter of Proposal
+              </br>  Adviser, Waiting advisor Approve your proposal 
+              </font>
+                  </h7>
+              
         <div class="f1-buttons">
           <button> <a href="?page=pf2&id=<?php echo $objResult->advisergroup_id;?>" type="button"
               class="btn btn-next">Next</button></a>
@@ -164,9 +174,9 @@ if($result = $db->query($sql)){
 
 
 
-      <?php
-           } }
-             ?>
+            <?php
+                 } }
+                   ?>
 
     </div>
 

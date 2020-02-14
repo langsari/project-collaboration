@@ -7,7 +7,7 @@
  <style>
     h6{
       font-family:initial;
-      font-size: 29px;
+      font-size: 18px;
       color: green;
     }
     #more {display: none;}

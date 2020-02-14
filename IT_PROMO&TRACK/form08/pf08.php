@@ -97,7 +97,8 @@ if($result = $db->query($strSQL)){
                   <th><h6><b>To do list</h6><b></th>
 
                
-                    <th><h6><b>Status</h6><b></th>
+                  <th>   <font color='red'> *Sign by advisor</font>
+</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -109,7 +110,6 @@ if($result = $db->query($strSQL)){
 
                     <!--get Project Owner  -->
 
-                      <?php echo get_member_list1($objResult->group_id); ?>
 
 
            
@@ -133,7 +133,6 @@ if($result = $db->query($strSQL)){
 
                     <td><h6> <span class="badge badge-success"> <?php echo $objResult->by_advisor08; ?></h6></span>
                       <p>
-                        <font color='red'> *For Advisor</font>
                     </td>
 
 

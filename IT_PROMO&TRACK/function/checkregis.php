@@ -26,11 +26,24 @@ $sql="INSERT INTO member(member_idcard,member_username,member_fullname,member_pa
 
 	if($rs = $db->query($sql)){
 		$db->close();
-		header("Location: ../pages/register.php?success=1");
+
+
+
+		 echo "<script>alert('You are member Now But!  you are not activated by Administrator!' )</script>";
+
+		 		  	  echo "<script>window.open('../pages/register.php','_self')</script>";
+
+		
+
 	}else{
 		echo $db->error;
 		$db->close();
+		
+		 echo "<script>alert('MAY YOUR Email Or ID are USED! Please! Try Again')</script>";
+	  echo "<script>window.open('../pages/register.php','_self')</script>";
 	}
+
+
 
 
 

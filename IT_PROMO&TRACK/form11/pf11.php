@@ -112,14 +112,12 @@
                             </br> 1). Dean, Faculty of Science and Technology
                           </td>
                           <td>
-                            </br>
-                            <span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
-                            </br><span class="badge badge-success" required> <?php echo $objResult->by_officer; ?>
-                            </span>
-                            </br><span class="badge badge-success" required> <?php echo $objResult->by_officer; ?>
-                            </span>
-                            </br><span class="badge badge-success" required> <?php echo $objResult->by_officer; ?>
-                            </span>
+                          </br>
+                            <span class="badge badge-success" required> </span>
+                          </br><span class="badge badge-success" required> </span>
+                          </br><span class="badge badge-success" required> </span>
+                          </br><span class="badge badge-success" required> </span>
+
 
 
                           </td>

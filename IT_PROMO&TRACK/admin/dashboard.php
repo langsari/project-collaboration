@@ -1,10 +1,26 @@
+
+
+      <div class="row">
 <div class="card-block">
+<span style="padding-left:70px"> </span>
 
 
-  <button type="button" style="height:110px; width:210px" class="btn btn-secondary">
-    <h2><i class="fa fa-users position-left"></i></h2><a href="?page=users">
-      <h5>Users
-  </button></a>
+  <button type="button" style="height:110px; width:210px" class="btn btn-danger">
+    <h5><i class="fa fa-users position-left"></i>Total Users</h5>
+              <?php
+              $con = mysqli_connect('localhost','root','','itpromo_track');
+
+                $query="SELECT member_id FROM member ORDER BY  member_id";
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
+
+                ?>
+  
+  </button>
+  <span style="padding-left:50px"> </span>
+
 
   <button type="button" style="height:110px; width:210px" class="btn btn-info">
     <h2><i class="fa fa-users position-left"></i></h2><a href="?page=users">
@@ -27,24 +43,36 @@
           </div>
           <center>
 
-            <?php
+          
 
-$servername = "localhost";
-$username = "root" ;
-$password = "";
-$dbname = "itpromo_track";
+<?php
+ $con = mysqli_connect('localhost','root','','itpromo_track');
+?>
 
-global $link;
-$link=mysql_connect($servername, $username, $password) or die("Couldn't execute query");
-mysql_query("SET NAMES UTF8",$link);
-mysql_select_db($dbname,$link) or die ("Could not select $dbname database");
+<!DOCTYPE HTML>
+<html>
+<head>
+ <meta charset="utf-8">
+ <title>TechJunkGigs</title>
+ <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script type="text/javascript">
+ google.load("visualization", "1", {packages:["corechart"]});
+ google.setOnLoadCallback(drawChart);
+ function drawChart() {
+ var data = google.visualization.arrayToDataTable([
+
+    ['Owner','pf'],
+ <?php 
+      $my_id = $_SESSION['id'];
+            
+            
+     
 
 
-
-$my_id = $_SESSION['id'];
-
-
-     $sql = "SELECT advisergroup.*,  files.pf,files.files_id,files.Owner,advisergroup.advisergroup_id,partnergroup.group_id FROM advisergroup
+     $query = "SELECT advisergroup.*,  files.pf,files.files_id,files.Owner,advisergroup.advisergroup_id,partnergroup.group_id FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
@@ -52,80 +80,41 @@ $my_id = $_SESSION['id'];
         WHERE advisergroup.admin_id = '$my_id'  AND pf  
                ";
 
-$result = mysql_query($sql) or die("Couldn't execute query");
+       $exec = mysqli_query($con,$query);
+       while($row = mysqli_fetch_array($exec)){
 
-?>
-
-
-
-            <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-            <script type="text/javascript">
-              google.load("visualization", "1.5", {
-                packages: ["bar"]
-              });
-              google.setOnLoadCallback(drawChart);
-
-              function drawChart() {
-                var data = google.visualization.arrayToDataTable([
-                  ['Group', 'PF'],
-
-                  <
-                  ? php
-                  while ($row = mysql_fetch_array($result)) {
-                    ?
-                    >
-
-                    ['<?php echo $row["group_id"]?> ', < ? php echo $row["pf"] ? > ],
+       echo "['".$row['Owner']."',".$row['pf']."],";
+       }
+       ?> 
+ 
+ ]);
 
 
+ 
+ var options = {
+          title: 'Number of Students Track Project',
+          pieHole: 0.4,
+        };
+     
+ var chart = new google.visualization.PieChart(document.getElementById("columnchart13"));
+ chart.draw(data,options);
+ }
+  
+    </script>
 
-                    <
-                    ? php
-                  } ?
-                  >
-
-                ]);
-
-                var options = {
-                  legend: {
-                    position: 'none'
-                  },
-                  width: 650,
-                  height: 350,
-                  chart: {
-                    title: 'Monitoring',
-                    subtitle: 'Tracking',
-                  }
-                };
-
-                var chart = new google.charts.Bar(document.getElementById('deawxchart'));
-                chart.draw(data, options);
-              }
-            </script>
-            </head>
-
-            <body>
-
-              <div id="deawxchart" style="min-width: 320px; height: 380px; margin: 0 auto "></div>
-
-
-            </body>
-
-            </html>
+</head>
+<body>
+ <div class="container-fluid">
+ <div id="columnchart13" style="height: 290px; width: 600px"></div>
+ </div>
 
 
 
 
 
 
-            <!-- Icon Cards-->
+
+</body>
+</html>
 
 
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-</div>
