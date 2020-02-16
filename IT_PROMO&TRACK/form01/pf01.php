@@ -105,7 +105,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                           <td>Proposal Topic Selection</td>
                           <td>
                             Status
-                            <span class="badge badge-success"> <?php echo $objResult->advisergroup_status; ?></span>
+                    <?php echo status_01($objResult->advisergroup_status); ?></span>
                   
                           </td>
                         </tr>
@@ -113,7 +113,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                           <td>Select Advisor</td>
                           <td>
                             Status
-                            <span class="badge badge-success"> <?php echo $objResult->advisergroup_status; ?></span>
+                 <?php echo status_01($objResult->advisergroup_status); ?></span>
                   
                           </td>
                         </tr>
@@ -140,7 +140,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                           </td>
                           <td>
                             Staus
-                            <span class="badge badge-success"> <?php echo $objResult->files_status; ?></span>
+                            <?php echo status_01_file($objResult->files_status); ?>
                           </td>
 
 

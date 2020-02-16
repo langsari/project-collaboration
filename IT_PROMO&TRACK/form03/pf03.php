@@ -105,7 +105,7 @@
 
                           <td>
                           </br>
-                            <font color='succes'> <?php echo $objResult->status_advisor; ?> </font> <span>
+                            <?php echo status_03($objResult->status_advisor); ?> 
                               <?php echo get_advisor($objResult->group_id); ?></span>
                           </td>
 

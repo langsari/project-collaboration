@@ -106,7 +106,7 @@
                           </br>(2) submit proposal one week before presentation day
                           </td>
                           <td>
-                            <span class="badge badge-success" required> <?php echo $objResult->by_officer; ?> </span>
+                           <?php echo status_02($objResult->by_officer); ?> 
                             <p>
                               <font color='red'> *For Officer</font>
                           </td>
