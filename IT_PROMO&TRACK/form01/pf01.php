@@ -129,12 +129,24 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
                           <!--get Topic   -->
 
-                          <td> 3 chapter of Proposal
+                          <td class="hidden"> 3 chapter of Proposal
 
                             <input type="file" name="files_filename_proposal" id="files_filename_proposal"
                               required="required" />
+                    
 
-                       <input type="submit" name="button" id="button" value="Upload" />
+                              <?php
+                              $x=($objResult->files_filename_proposal);
+                              if ($x>0) {
+                                $class="btn btn-warning disabled";
+                                $button="btn disabled";
+                              }else{
+                                $class="btn btn-info";
+                                $button="btn btn-primary";
+                              }
+                              ?>
+
+                       <input class="<?php echo $class; ?>"  type="submit" name="button" id="button" value="Upload" />
 
 
                           </td>
@@ -168,7 +180,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
               </font>
                   </h7>
               <div class="f1-buttons">
-                <button> <a href="?page=pf02" type="button" class="next">Next&raquo;</button></a>
+                <button class="<?php echo $button; ?>"> <a href="?page=pf02" type="button" class="next">Next&raquo;</button></a>
               </div>
             </fieldset>
 

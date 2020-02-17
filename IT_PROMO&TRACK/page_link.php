@@ -4,6 +4,18 @@ if(isset($_GET['page'])){
 	$page = $_GET['page'];
 }
 
+//session_start();
+//require 'menu/connect.php';
+//include('menu/function.php');
+
+		/*$g_id = get_group_id();
+        $strSQL = "SELECT pf FROM files
+        WHERE advisergroup_id = '$g_id' ";
+        if($rs = $db->query($strSQL)){
+        	echo
+		}*/
+		
+
 switch ($page) {
 	case 'all_member':
 		include('admin/all_member.php');
@@ -162,11 +174,6 @@ case 'committee_request':
 		include('student/request_advisor.php');
 		break;
 
-
-	
-
-	
-
 		case 'add_announcement':
 		include('admin/add_announcement.php');
 		break;
@@ -247,8 +254,7 @@ case 'view_track':
 case 'create_proposal':
 		include('student/create_proposal.php');
 		break;
-		
-
+		//PF
 
 		case 'pf01':
 		include('form01/pf01.php');
@@ -270,62 +276,54 @@ case 'create_proposal':
 			include('form05/pf05.php');
 			break;
 			
-			case 'pf06':
-			  include('form06/pf06.php');
-			break;
-			
-			case 'pf07':
-			include('form07/pf07.php');
-			break;
-			
-			case 'pf08':
-			include('form08/pf08.php');
-			break;
-        	  case 'pf05':
-			include('form05/pf05.php');
-			break;
-			
-			case 'pf06':
-			  include('form06/pf06.php');
-			break;
-			
-			case 'pf07':
-			include('form07/pf07.php');
-			break;
-			
-			case 'pf08':
-			include('form08/pf08.php');
-			break;
-
-			case 'pf09':
-				include('form09/pf09.php');
-				break;
-				
-				case 'pf10':
-				  include('form10/pf10.php');
-				break;
-				
-				case 'pf11':
-				include('form11/pf11.php');
-				break;
-				
-				case 'pf12':
-				include('form12/pf12.php');
-				break;
+		case 'pf06':
+		  include('form06/pf06.php');
+		break;
 		
+		case 'pf07':
+		include('form07/pf07.php');
+		break;
+		
+		case 'pf08':
+		include('form08/pf08.php');
+		break;
+    	  case 'pf05':
+		include('form05/pf05.php');
+		break;
+		
+		case 'pf06':
+		  include('form06/pf06.php');
+		break;
+		
+		case 'pf07':
+		include('form07/pf07.php');
+		break;
+		
+		case 'pf08':
+		include('form08/pf08.php');
+		break;
+
+		case 'pf09':
+			include('form09/pf09.php');
+			break;
+				
+		case 'pf10':
+		  include('form10/pf10.php');
+		break;
+		
+		case 'pf11':
+		include('form11/pf11.php');
+		break;
+		
+		case 'pf12':
+		include('form12/pf12.php');
+		break;
+
+
+		case 'pf13':
+			include('form13/pf13.php');
+			break;
 	
-				case 'pf13':
-					include('form13/pf13.php');
-					break;
-			
-		
-
-
-
-
-
-
-		
 case 'infor_group':
 		include('student/infor_group.php');
 		break;

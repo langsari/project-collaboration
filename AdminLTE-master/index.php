@@ -1,3 +1,8 @@
+<?php
+require 'menu/connect.php';
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,25 +41,10 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+  
     </ul>
 
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
+   
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -75,7 +65,7 @@ to get the desired effect
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="index.php" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ITPROMO</span>
@@ -105,7 +95,7 @@ to get the desired effect
        
          
           <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="show_topic.php" class="nav-link">
               <i class="nav-icon fa fa-file"></i>
               <p>
                 Topics
@@ -115,7 +105,7 @@ to get the desired effect
 
     
           <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="proposal_project.php" class="nav-link">
               <i class="nav-icon fa fa-book"></i>
               <p>
                 Proposal Project
@@ -125,7 +115,7 @@ to get the desired effect
 
 
           <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="guide.php" class="nav-link">
               <i class="nav-icon fa fa-glide-g"></i>
               <p>
                 Guide
@@ -134,7 +124,7 @@ to get the desired effect
           </li>
 
                     <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="course_syllabus.php" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
                 Schedule
@@ -143,7 +133,7 @@ to get the desired effect
           </li>
 
                     <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="form.php" class="nav-link">
               <i class="nav-icon fa fa-edit"></i>
               <p>
                 Forms
@@ -153,7 +143,7 @@ to get the desired effect
 
 
   <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="booked.php" class="nav-link">
               <i class="nav-icon fa fa-book"></i>
               <p>
                 Books
