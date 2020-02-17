@@ -100,7 +100,7 @@ to get the desired effect
 
     
           <li class="nav-item">
-            <a href="proposal_project.php" class="nav-link active">
+            <a href="proposal_project.php" class="nav-link ">
               <i class="nav-icon fa fa-book"></i>
               <p>
                 Proposal Project
@@ -110,7 +110,7 @@ to get the desired effect
 
 
           <li class="nav-item">
-            <a href="guide.php" class="nav-link">
+            <a href="guide.php" class="nav-link active">
               <i class="nav-icon fa fa-glide-g"></i>
               <p>
                 Guide

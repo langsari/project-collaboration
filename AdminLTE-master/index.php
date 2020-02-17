@@ -81,7 +81,7 @@ to get the desired effect
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
+          <li class="nav-item has-treeview ">
             <a href="Annoucement.php" class="nav-link ">
              
               <i class="nav-icon fa fa-bullhorn"></i>
@@ -161,28 +161,69 @@ to get the desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    
-    </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashbord</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+    <!-- Main content -->
+    <section class="content">
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.3-pre
-    </div>
-  </footer>
-</div>
-<!-- ./wrapper -->
+      <!-- Default box -->
+      <div class="card card-solid">
+        <div class="card-body pb-0">
+          <div class="row d-flex align-items-stretch">
+            <div class="col-15 col-sm-8 col-md-12 d-flex align-items-stretch">
+                             <main role="main" class="container">
+
+               
+            
+
+                        <h1 class="mt-3">Welcome to Information Technology Project</h1>
+                        <p class="lead">ITPromot or Information Technology Project Monitoring and Tracking System.</p>
+
+                        <hr>
+
+
+                        <h2>Guide and Help</h2>
+                        <p>You will guide and help to achieve you purpose of doing Information Technology Project
+                            through this application </p>
+                        <p><a href="?page=guide" class="btn-primary btn-sm">Guide</a> is present to procedure how to do
+                            the project</p>
+                        <p><a href="?page=schedule" class="btn-primary btn-sm">Schedule</a> is present the schedule time
+                            table of the project</p>
+                        <p><a href="?page=form" class="btn-primary btn-sm">Forms</a> is collection of involve forms</p>
+
+                        <hr>
+
+
+
+                        <h2>The Guide for both:</h2>
+                        <p class="text-dark"><kbd>IT234-232</kbd> - Information Technology Project
+                            (โครงงานเทคโนโลยีสารสนเทศ)</p>
+                        <p class="text-dark"><kbd>IT2301-321</kbd> - Information Technology Project 1
+                            (โครงงานเทคโนโลยีสารสนเทศ I )</p>
+                        <p class="text-dark"><kbd>IT2301-322</kbd> - Information Technology Project 2
+                            (โครงงานเทคโนโลยีสารสนเทศ II )</p>
+
+                    </main>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
 
 <!-- REQUIRED SCRIPTS -->
 

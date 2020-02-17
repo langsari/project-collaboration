@@ -93,7 +93,7 @@ to get the desired effect
                    <li class="nav-item has-treeview ">
             <a href="index.php" class="nav-link active">
              
-              <i class="nav-icon fa fa-group"></i>
+              <i class="nav-icon fa fa-dashboard"></i>
               <p>
                 Dashbord
                 <span class="right badge badge-danger"></span>
@@ -109,7 +109,7 @@ to get the desired effect
             </a>
           </li>
     
-
+ 
   
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
