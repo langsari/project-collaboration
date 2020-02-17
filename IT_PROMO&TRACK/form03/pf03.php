@@ -85,7 +85,7 @@
             ?>
 
             <fieldset>
-              <h4>Project Proposal Revision
+              <h4>Project Proposal Revision 
               </h4>
               <div class="card">
                 <div class="card-block">
@@ -94,32 +94,28 @@
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th>
-                            <font color='red'> *Sign by Advisor</font>
-                          </th>
-                          <th>
-                            <font color='red'> *Sign by Committee</font>
-                          </th>
+                          <th><font color='red'> *Sign by Advisor</font></th>
+                          <th><font color='red'> *Sign by Committee</font></th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <td>1).Project Presentation
-                            </br>2).Project Revision</td>
+                          </br>2).Project Revision</td>
 
                           <td>
-                            </br>
-                            <font color='succes'> <?php echo $objResult->status_advisor; ?> </font> <span>
+                          </br>
+                            <?php echo status_03($objResult->status_advisor); ?> 
                               <?php echo get_advisor($objResult->group_id); ?></span>
                           </td>
 
                           <td>
-                            </br>
+                          </br>
                             <span><?php echo get_status_committee($objResult->group_id); ?></span>
                             <p>
 
                           </td>
-
+                        
 
                         </tr>
 
@@ -127,7 +123,7 @@
                     </table>
 
                   </div>
-
+                  
                   <div class="button" align="right">
 
                     <button> <a href="?page=pf02" type="button" class="previous">&laquo;Previous</button></a>
@@ -140,10 +136,9 @@
                  } }
                    ?>
 
-            <h7>
-              <font color='red'> Note***
-                </br>Advisor and committee will sign this form when student completed project proposal revision </font>
-            </h7>
+              <h7><font color='red'> Note*** 
+              </br>Advisor and committee will sign this form when student completed project proposal revision </font>
+              </h7>
 
 
 

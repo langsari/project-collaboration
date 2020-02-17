@@ -94,10 +94,8 @@
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th>
-                            <font color='red'> Status</font>
-                          </th>
-                          <!--     <th><font color='red'> *Sign by Advisor</font></th>
+                          <th><font color='red'> Status</font></th>
+                     <!--     <th><font color='red'> *Sign by Advisor</font></th>
                           <th><font color='red'> *Sign by Committee</font></th>
                           <th><font color='red'> * Sign by Head of Department</font></th>
                           <th><font color='red'> * Sign by Dean of Faculty</font></th> -->
@@ -106,10 +104,10 @@
                       <tbody>
                         <tr>
                           <td>Project approve sign by
-                            </br> 1). Advisor
-                            </br> 1). Committee
-                            </br> 1). Head, Department of Information Technology
-                            </br> 1). Dean, Faculty of Science and Technology
+                          </br> 1). Advisor
+                          </br> 1). Committee
+                          </br> 1). Head, Department of Information Technology
+                          </br> 1). Dean, Faculty of Science and Technology
                           </td>
                           <td>
                           </br>
@@ -119,7 +117,6 @@
                           </br><span class="badge badge-success" required> </span>
 
 
-
                           </td>
                         </tr>
 
@@ -127,7 +124,7 @@
                     </table>
 
                   </div>
-
+                  
 
                   <div class="button" align="right">
 
@@ -139,10 +136,9 @@
                  } }
                    ?>
 
-            <h7>
-              <font color='red'> Note***
-                </br> student </font>
-            </h7>
+                   <h7><font color='red'> Note*** 
+                      </br>  student  </font>
+                  </h7>
 
 
 

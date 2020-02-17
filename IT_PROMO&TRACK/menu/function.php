@@ -30,35 +30,6 @@ else if($position == "Officer"){
 
 
 
-
-
-
-
-function get_status_track($track){
-	if($track == "1"){
-		return "<font color='blue'><i>PF01</i></font>";
-	}else if($track == "2"){	
-			return "<font color='green'><i>PF02</i></font>";
-	}
-else if($track == "3"){
-			return "<font color='black'><i>PF03</i></font>";
-	}
-	else if($track == "4"){
-			return "<font color='black'><i>Reject</i></font>";
-	}
-	else if($track == "5"){
-			return "<font color='black'><i>Cancel</i></font>";
-	}
-	else if($track == "6"){
-			return "<font color='black'><i>Graduate</i></font>";
-	}
-	else if($track == "7"){
-			return "<font color='black'><i>Not Pass</i></font>";
-	}
-
-}
-
-
 function status($status){
 	if($status != "0"){
 		return "<span class='text-success'><i>Approved</i></span>";
@@ -517,34 +488,6 @@ function status_for_advisor($status){
 }
 
 
-function status_files($status){
-	if($status == 'w'){
-		return "<span class='text-info'>Waiting</span>";
-	}else if($status == '1'){
-		return "<span class='text-success'>Approved</span>";
-	}
-	else if($statuspro == "2"){
-			return "<font color='black'><i>OK</i></font>";
-	}
-	else if($statuspro == "3"){
-			return "<font color='black'><i>Reject</i></font>";
-	}
-	else if($statuspro == "4"){
-			return "<font color='black'><i>Cancel</i></font>";
-	}
-	else if($statuspro == "5"){
-			return "<font color='black'><i>Graduate</i></font>";
-	}
-	else if($statuspro == "6"){
-			return "<font color='black'><i>Not Pass</i></font>";
-	}
-
-else if($statuspro == "67"){
-			return "<font color='black'><i>Not Pass</i></font>";
-	}
-
-}
-
 
 
 
@@ -582,5 +525,48 @@ function status_to_text1($status){
 	}
 }
 
+
+function status_01($status){
+
+
+	if($status == '0'){
+		return "<span class='text-danger'></span>";
+	}else if($status == 'Waiting'){
+		return "<span class='badge badge-danger'>Waiting</span>";
+	}else if($status == 'Approve'){
+		return "<span class='badge badge-success'>Approved</span>";
+	}
+}
+
+
+function status_01_file($status){
+	if($status == ''){
+		return "<span class='text-danger'></span>";
+	}else if($status == 'Waiting'){
+		return "<span class='badge badge-danger'>Waiting</span>";
+	}else if($status == 'Approve'){
+		return "<span class='badge badge-success'>Approved</span>";
+	}
+}
+
+function status_02($status){
+	if($status == ''){
+		return "<span class='text-danger'></span>";
+	}else if($status == 'Waiting'){
+		return "<span class='badge badge-danger'>Waiting</span>";
+	}else if($status == 'Approve'){
+		return "<span class='badge badge-success'>Approved</span>";
+	}
+}
+
+function status_03($status){
+	if($status == ''){
+		return "<span class='text-danger'></span>";
+	}else if($status == 'No'){
+		return "<span class='badge badge-danger'>Waiting</span>";
+	}else if($status == 'Pass'){
+		return "<span class='badge badge-success'>Approved</span>";
+	}
+}
 
 ?>

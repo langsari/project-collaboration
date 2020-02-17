@@ -105,7 +105,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                           <td>Proposal Topic Selection</td>
                           <td>
                             Status
-                            <span class="badge badge-success"> <?php echo $objResult->advisergroup_status; ?></span>
+                    <?php echo status_01($objResult->advisergroup_status); ?></span>
                   
                           </td>
                         </tr>
@@ -113,7 +113,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                           <td>Select Advisor</td>
                           <td>
                             Status
-                            <span class="badge badge-success"> <?php echo $objResult->advisergroup_status; ?></span>
+                 <?php echo status_01($objResult->advisergroup_status); ?></span>
                   
                           </td>
                         </tr>
@@ -129,30 +129,18 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
                           <!--get Topic   -->
 
-                          <td class="hidden"> 3 chapter of Proposal
+                          <td> 3 chapter of Proposal
 
                             <input type="file" name="files_filename_proposal" id="files_filename_proposal"
                               required="required" />
-                    
 
-                              <?php
-                              $x=($objResult->files_filename_proposal);
-                              if ($x>0) {
-                                $class="btn btn-warning disabled";
-                                $button="btn disabled";
-                              }else{
-                                $class="btn btn-info";
-                                $button="btn btn-primary";
-                              }
-                              ?>
-
-                       <input class="<?php echo $class; ?>"  type="submit" name="button" id="button" value="Upload" />
+                       <input type="submit" name="button" id="button" value="Upload" />
 
 
                           </td>
                           <td>
                             Staus
-                            <span class="badge badge-success"> <?php echo $objResult->files_status; ?></span>
+                            <?php echo status_01_file($objResult->files_status); ?>
                           </td>
 
 
@@ -180,7 +168,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
               </font>
                   </h7>
               <div class="f1-buttons">
-                <button class="<?php echo $button; ?>"> <a href="?page=pf02" type="button" class="next">Next&raquo;</button></a>
+                <button> <a href="?page=pf02" type="button" class="next">Next&raquo;</button></a>
               </div>
             </fieldset>
 
