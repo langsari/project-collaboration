@@ -1,31 +1,30 @@
+
+
 <?php
+
 require '../menu/connect.php';
 
-$strSQL = "UPDATE member SET ";
-$strSQL .="member_idcard = '".$_POST['member_idcard']."' ";
-$strSQL .=",member_username = '".$_POST["member_username"]."' ";
-$strSQL .=",member_fullname = '".$_POST["member_fullname"]."' ";
-$strSQL .=",member_phone = '".$_POST["member_phone"]."' ";
-$strSQL .=",member_email = '".$_POST["member_email"]."' ";
-$strSQL .=",member_pos = '".$_POST["member_pos"]."' ";
-$strSQL .=",member_gender = '".$_POST["member_gender"]."' ";
+if(isset($_POST['member_fullname']) && isset($_POST['member_phone'])){
+	$member_id = $_GET['id'];
+	$member_idcard = $_POST['member_idcard'];
+	$member_username = $_POST['member_username'];
+	$member_fullname = $_POST['member_fullname'];
+	$member_phone = $_POST['member_phone'];
+	$member_email = $_POST['member_email'];
 
 
 
+		$sql = "UPDATE member SET member_idcard = '$member_idcard', member_username = '$member_username', member_fullname = '$member_fullname', member_phone = '$member_phone', member_email = '$member_email'
+	WHERE member_id = '$member_id'";
 
-$strSQL .="WHERE member_id = '".$_POST["member_id"]."' ";
 
-if($db->query($strSQL)){
+	if($db->query($sql)){
 		$db->close();
-		header("Location: ../index.php?page=my_profile&id=".$id."&success=1");
+		header("Location:index.php");
+
 	}else{
 		echo $db->error;
 		$db->close();
 	}
+}
 ?>
- 
-
-</body>
-
-</html>
-
