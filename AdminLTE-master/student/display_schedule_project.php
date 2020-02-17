@@ -47,25 +47,10 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+      
     </ul>
 
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
+   
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -85,7 +70,7 @@ to get the desired effect
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="index.php" class="brand-link">
       <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ITPROMO</span>
@@ -126,7 +111,7 @@ to get the desired effect
           </li>
     
 
- <li class="nav-item has-treeview menu-open">
+ <li class="nav-item has-treeview ">
             <a href="#" class="nav-link ">
 
               <i class="nav-icon fas fa-table"></i>
@@ -157,8 +142,8 @@ to get the desired effect
             </ul>
           </li>
           
- <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link ">
+ <li class="nav-item has-treeview ">
+            <a href="#" class="nav-link active">
 
               <i class="nav-icon fas fa-calendar"></i>
               <p>
@@ -174,7 +159,7 @@ to get the desired effect
                 </a>
               </li>
               <li class="nav-item">
-                <a href="display_schedule_project.php" class="nav-link ">
+                <a href="display_schedule_project.php" class="nav-link active ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Schedule</p>
                 </a>
@@ -185,7 +170,7 @@ to get the desired effect
 
 
   <li class="nav-item has-treeview">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
                 News
@@ -194,13 +179,13 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="annouce.php" class="nav-link active">
+                <a href="annouce.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Annoucements</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../show_topic.php" class="nav-link">
+                <a href="show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Topic Require</p>
                 </a>
@@ -210,7 +195,7 @@ to get the desired effect
           </li>
 
   <li class="nav-item">
-            <a href="../my_profile.php" class="nav-link">
+            <a href="my_profile.php" class="nav-link">
               <i class="nav-icon fa fa-user"></i>
               <p>
                 Personal Information
@@ -222,7 +207,7 @@ to get the desired effect
 
 
           <li class="nav-item">
-            <a href="../guide.php" class="nav-link">
+            <a href="guide.php" class="nav-link">
               <i class="nav-icon fa fa-glide-g"></i>
               <p>
                 Guide
@@ -231,7 +216,7 @@ to get the desired effect
           </li>
 
                     <li class="nav-item">
-            <a href="../schedule.php" class="nav-link">
+            <a href="course_syllabus.php" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
                 course syllabus
@@ -240,7 +225,7 @@ to get the desired effect
           </li>
 
                     <li class="nav-item">
-            <a href="../form.php" class="nav-link">
+            <a href="form.php" class="nav-link">
               <i class="nav-icon fa fa-edit"></i>
               <p>
                 Forms
@@ -250,7 +235,7 @@ to get the desired effect
 
 
   <li class="nav-item">
-            <a href="../booked.php" class="nav-link">
+            <a href="booked.php" class="nav-link">
               <i class="nav-icon fa fa-book"></i>
               <p>
                 Books
@@ -273,7 +258,6 @@ to get the desired effect
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Project Schedule</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -288,19 +272,16 @@ to get the desired effect
     <!-- Main content -->
     <section class="content">
 
-      <!-- Default box -->
-      <div class="card card-solid">
-        <div class="card-body pb-0">
-          <div class="row d-flex align-items-stretch">
-            <div class="col-15 col-sm-8 col-md-12 d-flex align-items-stretch">
-                             <main role="main" class="container">
-                              
- 
-
-                                  <h5>Round 2 Project Presentation of semester 2/2018
-</h5></br>
-                                     <table class="table">
-                                        <thead class="thead-default">
+ <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Round 2 Project Presentation of semester 2/2018</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
                                                               
                       <th>No</th>
                       <th>Name</th>
@@ -311,6 +292,7 @@ to get the desired effect
                        <th>Date</th>
                        <th>Time</th>
                        <th>Room</th>
+                     </tr>
                                         </thead>
                                         <tbody>
 
@@ -329,7 +311,7 @@ to get the desired effect
      if($result = $db->query($strSQL)){
              while($objResult = $result->fetch_object()){
             ?>
-           <tbody>
+        
             <tr>
                         <td class="text-left"><?php echo $objResult->schedule_id; ?></td>
                   <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
@@ -348,15 +330,30 @@ to get the desired effect
                }
                    ?>
                                         </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-        </script>
-
-
-</body>
-</html>
+                <tfoot>
+                <tr>
+                  <th>No</th>
+                      <th>Name</th>
+                      <th>Title Project</th>
+                      <th>Status</th>
+                      <th>Advisor</th>
+                       <th>Committee</th>
+                       <th>Date</th>
+                       <th>Time</th>
+                       <th>Room</th>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
 
     <!-- /.content -->
  
