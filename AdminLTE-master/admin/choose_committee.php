@@ -1,3 +1,38 @@
+<script type="text/javascript">
+  function confirm_removecommittee() {
+    var x = confirm("Are you sure?");
+    if (x) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+
+  //Add committeee function
+  function add_committee(group_id) {
+    $('#group_id3').val(group_id);
+
+    $.ajax({
+      url: '../admin/get_committee.php',
+      dataType: 'JSON',
+      success: function (data) {
+        $('#select_committee').html(null);
+        var rows = "<option value='no'>- Select Committee -</option>";
+        $.each(data, function (i, o) {
+          rows += "<option value='" + o.member_id + "'>" + o.member_fullname + "</option>";
+        });
+        $('#select_committee').append(rows);
+      },
+      error: function (request, error) {
+        console.log(error);
+        console.log(arguments);
+      }
+    });
+  }
+</script>
+
 <?php
 session_start();
 require '../menu/connect.php';
@@ -118,13 +153,13 @@ include('../menu/function.php');
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../admin/accept_member.php" class="nav-link active">
+                <a href="../admin/accept_member.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>User Request</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../admin/choose_committee.php" class="nav-link">
+                <a href="../admin/choose_committee.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Choose Committee</p>
                 </a>
@@ -241,7 +276,7 @@ include('../menu/function.php');
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../admin/index.php">Home</a></li>
-              <li class="breadcrumb-item active">User request</li>
+              <li class="breadcrumb-item active">Choose Committee</li>
             </ol>
           </div>
         </div>
@@ -255,10 +290,8 @@ include('../menu/function.php');
           <div class="card card-primary card-outline">
             <div class="card-header">
                <h3 class="card-title">
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addmember">
-                  <i class="nav-icon fas fa-plus"></i>
-                  Add New User
-                </button>
+                  <i class="fas fa-edit"></i>
+                  Choose Committee to student
                 </h3>
         
             </div>
@@ -268,44 +301,45 @@ include('../menu/function.php');
                 <thead align="center">
                   <tr>
                       <th>No</th>
-                      <th>User ID</th>
-                      <th>Name</th>
-                      <th>Phone</th>
-                      <th>Email</th>
-                      <th>Gender</th>
-                      <th>Position</th>
-                      <th>Status</th>
+                      <th>Project ID</th>
+                      <th>Owner</th>
+                      <th>Project Topic</th>
+                      <th>Advisor</th>
+                      <th>Committee</th>
                       <th>Action</th>
                      </tr>
                   </thead>
                   <tbody align="center">
-        <?php
+  <?php
 
-       $strSQL = "SELECT * FROM member  WHERE member_pos  AND admin_id = '0' ORDER BY member_fullname";
-        
-        ?>
-        <?php
-     if($result = $db->query($strSQL)){
-             while($objResult = $result->fetch_object()){
-            ?>
-            <tr>
-                 <td class="text-left"><?php echo $objResult->member_id; ?></td>
-                 <td class="text-left"><?php echo $objResult->member_idcard; ?></td>
-                 <td class="text-left"><?php echo $objResult->member_fullname; ?></td>
-                 <td class="text-left"><?php echo $objResult->member_phone; ?></td>
-                 <td class="text-left"><?php echo $objResult->member_email; ?></td>
-                 <td class="text-left"><?php echo gender($objResult->member_gender); ?></td>
-                 <td class="text-left"><?php echo position($objResult->member_pos); ?></td>
-                 <td class="text-left"><?php echo status($objResult->admin_id); ?></td>
+  $sql = "SELECT advisergroup.*,  files.files_status,files.pf,files.files_id,files.files_filename_proposal,files.by_officer,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id FROM advisergroup
 
-                 <td>
-                  <a href="../admin/accept.php?id=<?php echo $objResult->member_id;?>"class="btn btn-primary btn-sm"> Detail <i class="fa fa-eye" title="Detail"></i></a>
+           LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
 
-                  <a href="?page=accept&id=<?php echo $objResult->member_id;?>"class="btn btn-danger btn-sm">Delete
-                  <i class="fa fa-trash" title="Delete"></i></a>
-                </td>
-                 
-            </tr>
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+        WHERE advisergroup.group_id AND files.by_officer = 'Approve' 
+               ";
+
+              if($rs = $db->query($sql)){
+                while($row = $rs->fetch_object()){
+              ?>
+                  <tr>
+                  
+                    <td class="text-left"><?php echo $row->files_id; ?></td>
+                    <td class="text-left"><?php echo $row->group_number; ?></td>
+                    <td class="text-left"><?php echo get_member_list($row->group_id); ?></td>
+                    <td class="text-left"><?php echo get_topic($row->group_id); ?></td>
+                    <td class="text-left"><?php echo get_advisor($row->group_id); ?></td>
+
+                    <td class="text-left"><?php echo get_committee($row->group_id); ?></span> </td>
+
+                    <td class="text-left">
+
+                      <button type="button" class="btn btn-info btn-sm"
+                        onclick="add_committee('<?php echo $row->group_id; ?>')" data-toggle="modal"
+                        data-target="#add_committee"><i class="fa fa-user-plus"></i> Add </button>
+                    </td>
+                  </tr>
 
             <?php
               }
@@ -327,97 +361,61 @@ include('../menu/function.php');
   <!-- /.content-wrapper -->
 
 
-<div class="modal fade" id="addmember">
+<!-- add committee section 
+      <!- Modal --
+      <div class="modal fade" id="add_committee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel"><i class="fa fa-user-plus"></i> Add Committee</h4>
+            </div>
+            <div class="modal-body">
+              <form class="form" method="post" action="admin/check_committee.php">
+                <label>Committee</label>
+                <select class="form-control" id="select_committee" name="committee">
+                  <!- jQuery Ajax will render HTML here --
+                </select>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal"><i
+                  class="glyphicon glyphicon-remove"></i> Close</button>
+              <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Save</button>
+            </div>
+            <input type="hidden" name="group_id" id="group_id3">
+            </form>
+          </div>
+        </div>
+      </div> -->
+
+
+      <div class="modal fade" id="add_committee">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Add New User</h4>
+              <h4 class="modal-title">Add Committee</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
               
-    <form id="add" name="add" method="post" action="../admin/check_accept_member.php"
-                                 onsubmit="return checkForm()">
+    <form class="form" method="post" action="../admin/check_committee.php">
       <div class="user-details">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" id="member_idcard" name="member_idcard" placeholder="UserID" autocomplete="off" required aria-describedby="basic-addon1" onkeypress='validate(event)'  maxlength="9">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-id-card"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Username" id="member_username" name="member_username" autocomplete="off" required aria-describedby="basic-addon1">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" id="member_fullname" name="member_fullname" placeholder="Full name"   autocomplete="off" required aria-describedby="basic-addon1">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" name="member_password" id="member_password" onKeyUp="passwordStrength(this.value)"  class="form-control"  autocomplete="off" required aria-describedby="basic-addon1">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fa fa-lock"></span>
-            </div>
-          </div>
-          <center>
-          <div id="passwordDescription"></div>
-          <div id="passwordStrength" class="strength0"></div>
-          </center>
-        </div>
-        <div class="input-group mb-3">
-          <input type="tel" class="form-control" placeholder="Phone: 123-4567-8901" id="member_phone" name="member_phone" autocomplete="off" required aria-describedby="basic-addon1" onkeypress='validate(event)'  maxlength="10">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-phone"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="....@gmail.com" id="member_email" name="member_email" autocomplete="off"  aria-describedby="basic-addon1" pattern="^[a-zA-Z0-9]+@gmail\.com$" required>
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div>
         <div class="form-group">
-        <select class="form-control" name="member_pos" id="member_pos">
-             <option value="#">Select Position</option>
-             <option value="Lecturer">Lecturer</option>
-             <option value="Student">Student</option>
-             <option value="Officer">Officer</option>
-
+          <label>Committee</label>
+        <select class="form-control" id="select_committee" name="committee">
+                  <!-- jQuery Ajax will render HTML here -->
         </select>
        </div>
-       <center>
-       <div class="input-group">
-
-      Gender: &nbsp;&nbsp; &nbsp;&nbsp;
-      <label class="radio-inline"> 
-        <input type="radio" name="member_gender" value="Male" required aria-describedby="basic-addon1"> &nbsp;&nbsp; Male</label>&nbsp;&nbsp; &nbsp;&nbsp; 
-        <label class="radio-inline"><input type="radio"name="member_gender" value="Female"aria-describedby="basic-addon1"> &nbsp;&nbsp; Female</label>
+       
       </div>
-
-      </div>
-                
-            </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">REGISTER</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times "></i> Close</button>
+              <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Save</button>
             </div>
+            <input type="hidden" name="group_id" id="group_id3">
 
             </form>
           </div>
@@ -425,6 +423,9 @@ include('../menu/function.php');
         </div>
         <!-- /.modal-dialog -->
       </div>
+    </div>
+
+
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
