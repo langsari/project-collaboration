@@ -360,15 +360,68 @@ to get the desired effect
                   </ul>
                 </div>
               </div><!-- /.card-header -->
+
               <div class="card-body">
                 <div class="tab-content p-0">
                   <!-- Morris chart - Sales -->
-                  <div class="chart tab-pane active" id="revenue-chart"
-                       style="position: relative; height: 300px;">
-                      <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>                         
-                   </div>
-                  <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                    <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>                         
+
+                  
+
+               
+          
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title></title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $.getJSON("get_data.php", function (result) {
+
+          var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    title:{
+        text: "Project Owner"
+    },
+    axisY: {  
+        title: "Forms",
+        prefix: "PF",
+        suffix:  ""
+    },
+    data: [{
+        type: "bar",
+        yValueFormatString: "PF#",
+        indexLabel: "{y}",
+        indexLabelPlacement: "inside",
+        indexLabelFontWeight: "bolder",
+        indexLabelFontColor: "white",
+                            dataPoints: result
+    }]
+});
+                chart.render();
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <div id="chartContainer" style="height: 300px; width: 90%;"></div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+                                         
                   </div>  
                 </div>
               </div><!-- /.card-body -->
