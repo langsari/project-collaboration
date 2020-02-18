@@ -1,42 +1,3 @@
-<script type="text/javascript">
-  function edit_ps(id) {
-    $.ajax({
-      url: 'read_more.php',
-      data: ({
-        id: id
-      }),
-      type: 'POST',
-      dataType: 'JSON',
-      success: function (data) {
-        $.each(data, function (i, o) {
-          $('#Owner').val(o.Owner);
-          $('#topic_topic').val(o.topic_topic);
-          $('#topic_abstrack').val(o.topic_abstrack);
-          $('#topic_keyword').val(o.topic_keyword);
-          $('#topic_fieldstudy').val(o.topic_fieldstudy);
-          $('#topic_years').val(o.topic_years);
-          $('#advisergroup_id').val(o.advisergroup_id);
-          $('#topic_id').val(o.topic_id);
-        });
-      },
-      error: function (request, error) {
-        console.log(error);
-        console.log(arguments);
-        alert("Network Error!");
-      }
-    });
-  }
-
-  function confirm_deleteps() {
-    var x = confirm("Please confirm to delete!");
-    if (x) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-</script>
-
 <?php
 session_start();
 require '../menu/connect.php';
@@ -105,7 +66,7 @@ to get the desired effect
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index.php" class="brand-link">
+    <a href="../advisor/index.php" class="brand-link">
       <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ITPROMO</span>
@@ -130,7 +91,7 @@ to get the desired effect
                with font-awesome or any other icon font library -->
 
                    <li class="nav-item has-treeview ">
-            <a href="index.php" class="nav-link ">
+            <a href="../advisor/index.php" class="nav-link ">
              
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -141,7 +102,7 @@ to get the desired effect
           </li>
 
          <li class="nav-item">
-            <a href="advisor_request.php" class="nav-link ">
+            <a href="../advisor/advisor_request.php" class="nav-link ">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
        Request              </p>
@@ -151,7 +112,7 @@ to get the desired effect
  
   
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Projects
@@ -160,33 +121,33 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="proposal_status.php" class="nav-link active">
+                <a href="../advisor/proposal_status.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Proposal Status</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="student_Track.php" class="nav-link">
+                <a href="../advisor/student_Track.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Track</p>
                 </a>
               </li>
          
               <li class="nav-item">
-                <a href="proposal_project.php" class="nav-link">
+                <a href="../advisor/proposal_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
                 </a>
               </li>
                        <li class="nav-item">
-                <a href="manage_mark.php" class="nav-link">
+                <a href="../advisor/manage_mark.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Mark</p>
                 </a>
               </li>
 
                        <li class="nav-item">
-                <a href="give_mark.php" class="nav-link">
+                <a href="../advisor/give_mark.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Give Mark as a Committee</p>
                 </a>
@@ -205,13 +166,13 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="display_schedule_proposal.php" class="nav-link">
+                <a href="../advisor/display_schedule_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Proposal Schedule</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="display_schedule_project.php" class="nav-link">
+                <a href="../advisor/display_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Schedule</p>
                 </a>
@@ -224,7 +185,7 @@ to get the desired effect
     
 
   <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
                 News
@@ -233,13 +194,13 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="Annoucement.php" class="nav-link">
+                <a href="../advisor/Annoucement.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Annoucements</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="add_general_topic.php" class="nav-link">
+                <a href="../advisor/add_general_topic.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Topic Require</p>
                 </a>
@@ -249,7 +210,7 @@ to get the desired effect
           </li>
 
   <li class="nav-item">
-            <a href="../committee/committee_request.php" class="nav-link">
+            <a href="../committee/committee_request.php" class="nav-link active">
          <i class="nav-icon fa fa-tasks"></i> 
               <p>
                 For Committee
@@ -258,7 +219,7 @@ to get the desired effect
           </li>
 
   <li class="nav-item">
-            <a href="my_profile.php" class="nav-link">
+            <a href="../advisor/my_profile.php" class="nav-link">
               <i class="nav-icon fa fa-user"></i>
               <p>
                 Personal Information
@@ -296,7 +257,7 @@ to get the desired effect
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">All Project Topics
+              <li class="breadcrumb-item active">For Committee
 </li>
             </ol>
           </div>
@@ -309,55 +270,67 @@ to get the desired effect
         
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">All Final Project Topics</h3>
+           
+
+                 
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>No</th>
-                <th>Group Code</th>
+                 <th>Group Code</th>
                 <th>Owner Project</th>
-                <th>Topic</th>
-
+                <th>Title</th>
+                <th>Advisor</th>
+                <th>Committee</th>
                 <th>Status</th>
-                <th>View</th>
-
+                <th>Options</th>
                 </tr>
                 </thead>
                 <tbody>
-                      <?php
-                  //   require 'menu/function.php';
+                       
+            <?php
+require '../menu/connect.php';
 $my_id = $_SESSION['id'];
-$strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number FROM advisergroup
-          LEFT JOIN topic_project ON advisergroup.advisergroup_id = topic_project.advisergroup_id
-        LEFT JOIN member ON advisergroup.member_id = member.member_id
-        
-         WHERE advisergroup.member_id = '$my_id'";
-              ?>
- <?php
+
+      $strSQL = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,committeegroup.member_id,committeegroup.group_id,schedule.schedule_status,schedule.schedule_id,schedule.schedule_type,files.advisergroup_id,committeegroup.status_presentation,committeegroup.group_id
+      FROM committeegroup
+        LEFT JOIN advisergroup ON committeegroup.member_id = advisergroup.member_id
+        LEFT JOIN member ON committeegroup.member_id = member.member_id
+       LEFT JOIN partnergroup ON committeegroup.group_id = partnergroup.group_id
+          LEFT JOIN files ON committeegroup.committeegroup_id = files.files_id
+      LEFT JOIN schedule ON committeegroup.group_id = schedule.group_id
+
+    WHERE committeegroup.member_id  ='$my_id'   and schedule.schedule_type='1' and status_presentation= '' ";
+
+               ?>
+
+              <?php
      if($result = $db->query($strSQL)){
              while($objResult = $result->fetch_object()){
             ?>
 
+
                 
                     <tr>
-                   <td class="text-left"><?php echo $objResult->topic_id; ?></td>
-                <td class="text-left"><?php echo $objResult->group_number; ?></td>
+                    <td class="text-left"><?php echo $objResult->group_number; ?></td>
+                <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
+                <td class="text-left"><?php echo get_topic($objResult->group_id); ?></td>
+                <td class="text-left"><?php echo get_advisor($objResult->group_id); ?></td>
+                <td class="text-left"><?php echo get_committee($objResult->group_id); ?></td>
 
-                <td class="text-left"><?php echo substr($objResult->Owner, 0, 50); ?></td>
-                <td class="text-left"><?php echo $objResult->topic_topic; ?></td>
-
-
-
-                <td class="text-left"><?php echo get_status_project($objResult->status); ?></td>
+                <td class="text-left"><?php echo $objResult->schedule_status; ?></td>
 
 
-                <td> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editPS"
-                    onclick="edit_ps(<?php echo $objResult->advisergroup_id; ?>)"><i class="fa fa-edit"></i></button>
+
+            
+
+
+                <td><a href="?page=status_presentation&id=<?php echo $objResult->group_id;?>"><i class="fa fa-edit"
+                      title="View"></i></a>
+
                 </td>
-
 
                
                     </tr>          
@@ -370,19 +343,99 @@ $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,to
 
 
                 </tbody>
-                <tfoot>
+               
+
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+     
+
+
+
+<!-- Main content -->
+   
+        
+          <div class="card">
+            <div class="card-header">
+           
+
+                 
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
                 <tr>
-                <th>No</th>
-                <th>Group Code</th>
+              <th>Group Code</th>
                 <th>Owner Project</th>
-                <th>Topic</th>
-
+                <th>Title</th>
+                <th>Advisor</th>
+                <th>Committee</th>
                 <th>Status</th>
-                <th>View</th>
+                <th>Options</th>
 
-                </tr>   
+                </tr>
+                </thead>
+                <tbody>
+                       
+            <?php
+require '../menu/connect.php';
+$my_id = $_SESSION['id'];
 
-                </tfoot>
+      $strSQL = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,committeegroup.member_id,committeegroup.group_id,schedule.schedule_status,schedule.schedule_id,schedule.schedule_type,files.advisergroup_id,committeegroup.status_project,committeegroup.group_id
+      FROM committeegroup
+        LEFT JOIN advisergroup ON committeegroup.member_id = advisergroup.member_id
+        LEFT JOIN member ON committeegroup.member_id = member.member_id
+       LEFT JOIN partnergroup ON committeegroup.group_id = partnergroup.group_id
+          LEFT JOIN files ON committeegroup.committeegroup_id = files.files_id
+      LEFT JOIN schedule ON committeegroup.group_id = schedule.group_id
+
+    WHERE committeegroup.member_id  ='$my_id'   and schedule.schedule_type='2' and status_project= ''  ";
+
+               ?>
+
+
+               <?php
+     if($result = $db->query($strSQL)){
+             while($objResult = $result->fetch_object()){
+            ?>
+
+
+
+                
+                    <tr>
+                    <td class="text-left"><?php echo $objResult->group_number; ?></td>
+                <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
+                <td class="text-left"><?php echo get_topic($objResult->group_id); ?></td>
+                <td class="text-left"><?php echo get_advisor($objResult->group_id); ?></td>
+                <td class="text-left"><?php echo get_committee($objResult->group_id); ?></td>
+
+                <td class="text-left"><?php echo $objResult->schedule_status; ?></td>
+
+
+
+              
+
+                <td><a href="?page=status_project&id=<?php echo $objResult->group_id;?>"><i class="fa fa-edit"
+                      title="View"></i></a>
+
+                </td>
+                
+               
+                    </tr>          
+
+
+                                    <?php
+    }
+               }
+                   ?>
+
+
+                </tbody>
+               
+
               </table>
             </div>
             <!-- /.card-body -->
@@ -395,140 +448,9 @@ $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,to
     </section>
     <!-- /.content -->
 
-<!-- Modal -->
-<div class="modal fade" id="editPS" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-            aria-hidden="true">&times;</span></button>
-      </div>
-
-
-      <div class="modal-body">
-        <form class="form-horizontal" method="post" action="advisor/check_status.php">
-
-          <legend class="text-bold">Basic Inputs</legend>
-          <fieldset class="content-group">
-            <form action="#">
-              <div class="form-group row margin-top-10">
-                <div class="col-md-2">
-                  <label class="control-label col-form-label">Owner</label>
-                </div>
-                <div class="col-md-10">
-                  <input type="text" class="form-control" name="Owner" id="Owner" disabled="">
-                </div>
-              </div>
-
-
-              <div class="form-group row">
-                <div class="col-md-2">
-                  <label class="control-label col-form-label">Topic Project</label>
-                </div>
-                <div class="col-md-10">
-                  <input type="text" class="form-control" name="topic_topic" id="topic_topic" disabled="">
-                </div>
-              </div>
 
 
 
-
-              <div class="form-group row">
-                <div class="col-md-2">
-                  <label class="control-label col-form-label">Keyword</label>
-                </div>
-                <div class="col-md-10">
-                  <input type="text" class="form-control" name="topic_keyword" id="topic_keyword" disabled="">
-                </div>
-              </div>
-
-
-
-              <div class="form-group row">
-                <div class="col-md-2">
-                  <label class="control-label col-form-label">Field of study</label>
-                </div>
-                <div class="col-md-10">
-                  <input type="text" class="form-control" name="topic_fieldstudy" id="topic_fieldstudy">
-                </div>
-              </div>
-
-
-
-
-              <div class="form-group row">
-                <div class="col-md-2">
-                  <label class="control-label col-form-label">Years</label>
-                </div>
-                <div class="col-md-10">
-                  <input type="text" class="form-control" name="topic_years" id="topic_years" disabled="">
-                </div>
-              </div>
-
-
-
-
-
-              <div class="form-group row">
-                <div class="col-md-2">
-                  <label class="control-label col-form-label">Placeholder</label>
-                </div>
-                <div class="col-md-10">
-                  <textarea class="form-control" rows="10" name="topic_abstrack" id="topic_abstrack"
-                    required></textarea>
-                </div>
-              </div>
-
-              <!--get project Proposal status -->
-
-              <div class="form-group row">
-                <div class="col-md-3">
-                  <label class="control-label col-form-label">Proposal status</label>
-
-                </div>
-                <div class="col-md-9">
-                  <select class="form-control" name="status" id="status">
-                    <option value="1">Wait for the proposal Trail</option>
-                    <option value="2">Revision Proposal</option>
-                    <option value="3">OK</option>
-                    <option value="4">Reject</option>
-                    <option value="5">Cancel</option>
-                    <option value="6">Graduate</option>
-                    <option value="7">Not Pass</option>
-
-                  </select>
-
-                </div>
-
-              </div>
-
-      </div>
-
-
-
-
-      <input type="hidden" name="advisergroup_id" id="advisergroup_id">
-
-      <input type="hidden" name="topic_id" id="topic_id">
-
-
-      <button ype="submit" class="btn btn-primary btn-lg btn-block">Create</button>
-
-
-
-    </div>
-
-    </form>
-    </fieldset>
-
-
-
-
-    </form>
-  </div>
-</div>
-</div>
-</div>
 
 
 <!-- ./wrapper -->

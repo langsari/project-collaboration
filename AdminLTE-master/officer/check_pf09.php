@@ -3,10 +3,10 @@
 if(isset($_GET['id'])){
                 require '../menu/connect.php';
 	$id = $_GET['id'];
-	$sql = "UPDATE advisergroup SET advisergroup_status = 'Approve' WHERE advisergroup_id = '$id'";
+	$sql = "UPDATE files SET by_officer09 = 'Approve', pf ='9' WHERE files_id = '$id'";
 	if($db->query($sql)){
 		$db->close();
-		header("Location:advisor_request.php");
+		header("Location: ../index.php?page=officer_request&success=1");
 	}else{
 		echo $db->error;
 		$db->close();

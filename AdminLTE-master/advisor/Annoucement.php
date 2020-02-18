@@ -1,42 +1,3 @@
-<script type="text/javascript">
-  function edit_ps(id) {
-    $.ajax({
-      url: 'read_more.php',
-      data: ({
-        id: id
-      }),
-      type: 'POST',
-      dataType: 'JSON',
-      success: function (data) {
-        $.each(data, function (i, o) {
-          $('#Owner').val(o.Owner);
-          $('#topic_topic').val(o.topic_topic);
-          $('#topic_abstrack').val(o.topic_abstrack);
-          $('#topic_keyword').val(o.topic_keyword);
-          $('#topic_fieldstudy').val(o.topic_fieldstudy);
-          $('#topic_years').val(o.topic_years);
-          $('#advisergroup_id').val(o.advisergroup_id);
-          $('#topic_id').val(o.topic_id);
-        });
-      },
-      error: function (request, error) {
-        console.log(error);
-        console.log(arguments);
-        alert("Network Error!");
-      }
-    });
-  }
-
-  function confirm_deleteps() {
-    var x = confirm("Please confirm to delete!");
-    if (x) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-</script>
-
 <?php
 session_start();
 require '../menu/connect.php';
@@ -151,7 +112,7 @@ to get the desired effect
  
   
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Projects
@@ -160,7 +121,7 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="proposal_status.php" class="nav-link active">
+                <a href="proposal_status.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Proposal Status</p>
                 </a>
@@ -173,7 +134,7 @@ to get the desired effect
               </li>
          
               <li class="nav-item">
-                <a href="proposal_project.php" class="nav-link">
+                <a href="proposal_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
                 </a>
@@ -196,7 +157,7 @@ to get the desired effect
 
 
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
                 Schedule
@@ -205,7 +166,7 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="display_schedule_proposal.php" class="nav-link">
+                <a href="display_schedule_proposal.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Proposal Schedule</p>
                 </a>
@@ -224,7 +185,7 @@ to get the desired effect
     
 
   <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
                 News
@@ -233,7 +194,7 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="Annoucement.php" class="nav-link">
+                <a href="Annoucement.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Annoucements</p>
                 </a>
@@ -286,265 +247,142 @@ to get the desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  
+
+
 <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-     
+            <h1></h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">All Project Topics
-</li>
+              <li class="breadcrumb-item active">Annoucements</li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
-  <!-- Main content -->
+
+  
+<!-- Main content -->
     <section class="content">
-   
-        
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">All Final Project Topics</h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>No</th>
-                <th>Group Code</th>
-                <th>Owner Project</th>
-                <th>Topic</th>
+      <div class="container-fluid">
+        <div class="row">
+       
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
+                
+                </ul>
+              </div><!-- /.card-header -->
 
-                <th>Status</th>
-                <th>View</th>
+      
 
-                </tr>
-                </thead>
-                <tbody>
-                      <?php
-                  //   require 'menu/function.php';
-$my_id = $_SESSION['id'];
-$strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number FROM advisergroup
-          LEFT JOIN topic_project ON advisergroup.advisergroup_id = topic_project.advisergroup_id
-        LEFT JOIN member ON advisergroup.member_id = member.member_id
-        
-         WHERE advisergroup.member_id = '$my_id'";
-              ?>
- <?php
-     if($result = $db->query($strSQL)){
-             while($objResult = $result->fetch_object()){
+     <?php
+
+     $strSQL = "SELECT  announcement.announcement_id,announcement.announcement_topic, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
+                           FROM announcement,admin 
+                           WHERE announcement.admin_id=admin.admin_id
+                           ORDER BY announcement.announcement_id";
+
+         ?>
+
+    <?php
+            
+                 if($objQuery = $db->query($strSQL)){
+             while($objResult = $objQuery->fetch_object()){
             ?>
 
-                
-                    <tr>
-                   <td class="text-left"><?php echo $objResult->topic_id; ?></td>
-                <td class="text-left"><?php echo $objResult->group_number; ?></td>
+   
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="active tab-pane" id="activity">
+                    <!-- Post -->
+                    <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image">
+                        <span class="username">
+                          <a href="#"><?php echo $objResult->admin_fullname; ?> </a>
+                        </span>
+                        <span class="description">Shared publicly - <?php echo $objResult->announcement_date; ?></span>
+                      </div>
+                      <!-- /.user-block -->
+                      <p><b><?php echo $objResult->announcement_topic; ?></b></p>
+                      <p>
+                    <?php echo $objResult->announcement_detail; ?>
+                      </p>
 
-                <td class="text-left"><?php echo substr($objResult->Owner, 0, 50); ?></td>
-                <td class="text-left"><?php echo $objResult->topic_topic; ?></td>
+                      <p>
+                        <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
+                        <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
+                        <span class="float-right">
+                          <a href="#" class="link-black text-sm">
+                            <i class="far fa-comments mr-1"></i> Comments (5)
+                          </a>
+                        </span>
+                      </p>
 
-
-
-                <td class="text-left"><?php echo get_status_project($objResult->status); ?></td>
-
-
-                <td> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editPS"
-                    onclick="edit_ps(<?php echo $objResult->advisergroup_id; ?>)"><i class="fa fa-edit"></i></button>
-                </td>
-
-
-               
-                    </tr>          
-
-
-                                    <?php
-    }
+                      <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
+                    </div>
+                    <!-- /.post -->
+    <?php
+                 }
                }
                    ?>
+                 
+                  <!-- /.tab-pane -->
+                  
+                      </div>
+                     </div>
+              
 
-
-                </tbody>
-                <tfoot>
-                <tr>
-                <th>No</th>
-                <th>Group Code</th>
-                <th>Owner Project</th>
-                <th>Topic</th>
-
-                <th>Status</th>
-                <th>View</th>
-
-                </tr>   
-
-                </tfoot>
-              </table>
+                    </div>
+                  </div>
+                  <!-- /.tab-pane -->
+     
+                 
+                  <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
             </div>
-            <!-- /.card-body -->
+            <!-- /.nav-tabs-custom -->
           </div>
-          <!-- /.card -->
+          <!-- /.col -->
         </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 
-<!-- Modal -->
-<div class="modal fade" id="editPS" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-            aria-hidden="true">&times;</span></button>
-      </div>
-
-
-      <div class="modal-body">
-        <form class="form-horizontal" method="post" action="advisor/check_status.php">
-
-          <legend class="text-bold">Basic Inputs</legend>
-          <fieldset class="content-group">
-            <form action="#">
-              <div class="form-group row margin-top-10">
-                <div class="col-md-2">
-                  <label class="control-label col-form-label">Owner</label>
-                </div>
-                <div class="col-md-10">
-                  <input type="text" class="form-control" name="Owner" id="Owner" disabled="">
-                </div>
-              </div>
-
-
-              <div class="form-group row">
-                <div class="col-md-2">
-                  <label class="control-label col-form-label">Topic Project</label>
-                </div>
-                <div class="col-md-10">
-                  <input type="text" class="form-control" name="topic_topic" id="topic_topic" disabled="">
-                </div>
-              </div>
 
 
 
 
-              <div class="form-group row">
-                <div class="col-md-2">
-                  <label class="control-label col-form-label">Keyword</label>
-                </div>
-                <div class="col-md-10">
-                  <input type="text" class="form-control" name="topic_keyword" id="topic_keyword" disabled="">
-                </div>
-              </div>
-
-
-
-              <div class="form-group row">
-                <div class="col-md-2">
-                  <label class="control-label col-form-label">Field of study</label>
-                </div>
-                <div class="col-md-10">
-                  <input type="text" class="form-control" name="topic_fieldstudy" id="topic_fieldstudy">
-                </div>
-              </div>
-
-
-
-
-              <div class="form-group row">
-                <div class="col-md-2">
-                  <label class="control-label col-form-label">Years</label>
-                </div>
-                <div class="col-md-10">
-                  <input type="text" class="form-control" name="topic_years" id="topic_years" disabled="">
-                </div>
-              </div>
-
-
-
-
-
-              <div class="form-group row">
-                <div class="col-md-2">
-                  <label class="control-label col-form-label">Placeholder</label>
-                </div>
-                <div class="col-md-10">
-                  <textarea class="form-control" rows="10" name="topic_abstrack" id="topic_abstrack"
-                    required></textarea>
-                </div>
-              </div>
-
-              <!--get project Proposal status -->
-
-              <div class="form-group row">
-                <div class="col-md-3">
-                  <label class="control-label col-form-label">Proposal status</label>
-
-                </div>
-                <div class="col-md-9">
-                  <select class="form-control" name="status" id="status">
-                    <option value="1">Wait for the proposal Trail</option>
-                    <option value="2">Revision Proposal</option>
-                    <option value="3">OK</option>
-                    <option value="4">Reject</option>
-                    <option value="5">Cancel</option>
-                    <option value="6">Graduate</option>
-                    <option value="7">Not Pass</option>
-
-                  </select>
-
-                </div>
-
-              </div>
-
-      </div>
-
-
-
-
-      <input type="hidden" name="advisergroup_id" id="advisergroup_id">
-
-      <input type="hidden" name="topic_id" id="topic_id">
-
-
-      <button ype="submit" class="btn btn-primary btn-lg btn-block">Create</button>
-
-
-
-    </div>
-
-    </form>
-    </fieldset>
-
-
-
-
-    </form>
-  </div>
-</div>
-</div>
-</div>
-
-
+    <!-- /.content -->
+ 
 <!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
+<!-- Bootstrap -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE -->
+<script src="../dist/js/adminlte.js"></script>
+
+<!-- OPTIONAL SCRIPTS -->
+<script src="../plugins/chart.js/Chart.min.js"></script>
+<script src="../dist/js/demo.js"></script>
+<script src="../dist/js/pages/dashboard3.js"></script>
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<!-- AdminLTE App -->
-<script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
-<!-- page script -->
 <script>
   $(function () {
     $("#example1").DataTable();

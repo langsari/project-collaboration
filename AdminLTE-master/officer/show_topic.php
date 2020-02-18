@@ -12,7 +12,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO</title>
+  <title>AdminLTE 3 | Dashboard 3</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -44,9 +44,10 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+    
     </ul>
 
+  
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -84,15 +85,12 @@ to get the desired effect
         </div>
       </div>
 
-      <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-
-                   <li class="nav-item has-treeview ">
-            <a href="index.php" class="nav-link active">
-             
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -102,27 +100,48 @@ to get the desired effect
           </li>
 
          <li class="nav-item">
-            <a href="officer_request.php" class="nav-link">
-             <i class="nav-icon fa fa-paper-plane"></i>
+            <a href="infor_group.php" class="nav-link ">
+              <i class="nav-icon fa fa-group"></i>
               <p>
-       Request              </p>
-            </a>
-          </li>
-    
- 
-     <li class="nav-item">
-            <a href="view_track.php" class="nav-link">
-             <i class="nav-icon fa fa-paper-plane"></i>
-              <p>
-       Student Track              </p>
+       Group Information              </p>
             </a>
           </li>
     
 
-  
+ <li class="nav-item has-treeview ">
+            <a href="#" class="nav-link ">
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Projects
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="create_proposal.php" class="nav-link " >
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Proposal</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tables/data.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Project Track</p>
+                </a>
+              </li>
+             <li class="nav-item">
+                <a href="proposal_project.php" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Project Topics</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
+ <li class="nav-item has-treeview ">
+            <a href="#" class="nav-link ">
+
               <i class="nav-icon fas fa-calendar"></i>
               <p>
                 Schedule
@@ -131,15 +150,15 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="create_schedule_proposal.php" class="nav-link">
+                <a href="display_schedule_proposal.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Proposal</p>
+                  <p>Proposal Schedule</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="create_schedule_project.php" class="nav-link">
+                <a href="display_schedule_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Project</p>
+                  <p>Project Schedule</p>
                 </a>
               </li>
               
@@ -147,10 +166,8 @@ to get the desired effect
           </li>
 
 
-    
-
   <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
                 News
@@ -159,13 +176,13 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="Annoucement.php" class="nav-link">
+                <a href="annouce.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Annoucements</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="show_topic.php" class="nav-link">
+                <a href="show_topic.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Topic Require</p>
                 </a>
@@ -173,17 +190,6 @@ to get the desired effect
               
             </ul>
           </li>
-
-
-     <li class="nav-item">
-            <a href="proposal_project.php" class="nav-link">
-             <i class="nav-icon fa fa-paper-plane"></i>
-              <p>
-       All project topics        </p>
-            </a>
-          </li>
-    
-
 
   <li class="nav-item">
             <a href="my_profile.php" class="nav-link">
@@ -193,9 +199,46 @@ to get the desired effect
               </p>
             </a>
           </li>
+    
 
-       
 
+
+          <li class="nav-item">
+            <a href="guide.php" class="nav-link">
+              <i class="nav-icon fa fa-glide-g"></i>
+              <p>
+                Guide
+              </p>
+            </a>
+          </li>
+
+                    <li class="nav-item">
+            <a href="course_syllabus.php" class="nav-link">
+              <i class="nav-icon fa fa-calendar"></i>
+              <p>
+                course syllabus
+              </p>
+            </a>
+          </li>
+
+                    <li class="nav-item">
+            <a href="form.php" class="nav-link">
+              <i class="nav-icon fa fa-edit"></i>
+              <p>
+                Forms
+              </p>
+            </a>
+          </li>
+
+
+  <li class="nav-item">
+            <a href="booked.php" class="nav-link">
+              <i class="nav-icon fa fa-book"></i>
+              <p>
+                Books
+              </p>
+            </a>
+          </li>
 
         </ul>
       </nav>
@@ -207,76 +250,117 @@ to get the desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  
+
+
+
 <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
+  
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashbord</li>
+              <li class="breadcrumb-item active">Topic Require</li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
-<!-- Main content -->
+  <!-- Main content -->
     <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+       
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
+                
+                </ul>
+              </div><!-- /.card-header -->
 
-      <!-- Default box -->
-      <div class="card card-solid">
-        <div class="card-body pb-0">
-          <div class="row d-flex align-items-stretch">
-            <div class="col-15 col-sm-8 col-md-12 d-flex align-items-stretch">
-                             <main role="main" class="container">
+              <?php
 
-               
-            
+     $strSQL = "SELECT  news_topic.news_id,news_topic.news_topic, news_topic.news_detail, news_topic.news_date,member.member_fullname
+         FROM news_topic,member 
+         WHERE news_topic.member_id=member.member_id
+         ORDER BY news_topic.news_id";
+         ?>
+    <?php
+                 if($objQuery = $db->query($strSQL)){
+             while($objResult = $objQuery->fetch_object()){
+            ?>
 
-                        <h1 class="mt-3">Welcome to Information Technology Project</h1>
-                        <p class="lead">ITPromot or Information Technology Project Monitoring and Tracking System.</p>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="active tab-pane" id="activity">
+                    <!-- Post -->
+                    <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image">
+                        <span class="username">
+                          <a href="#"><?php echo $objResult->member_fullname; ?> </a>
+                        </span>
+                        <span class="description">Shared publicly - <?php echo $objResult->news_date; ?></span>
+                      </div>
+                      <!-- /.user-block -->
+                      <p><b><?php echo $objResult->news_topic; ?></b></p>
+                      <p>
+                       <?php echo $objResult->news_detail; ?>
+                      </p>
 
-                        <hr>
+                      <p>
+                        <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
+                        <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
+                        <span class="float-right">
+                          <a href="#" class="link-black text-sm">
+                            <i class="far fa-comments mr-1"></i> Comments (5)
+                          </a>
+                        </span>
+                      </p>
 
-
-                        <h2>Guide and Help</h2>
-                        <p>You will guide and help to achieve you purpose of doing Information Technology Project
-                            through this application </p>
-                        <p><a href="?page=guide" class="btn-primary btn-sm">Guide</a> is present to procedure how to do
-                            the project</p>
-                        <p><a href="?page=schedule" class="btn-primary btn-sm">Schedule</a> is present the schedule time
-                            table of the project</p>
-                        <p><a href="?page=form" class="btn-primary btn-sm">Forms</a> is collection of involve forms</p>
-
-                        <hr>
-
-
-
-                        <h2>The Guide for both:</h2>
-                        <p class="text-dark"><kbd>IT234-232</kbd> - Information Technology Project
-                            (โครงงานเทคโนโลยีสารสนเทศ)</p>
-                        <p class="text-dark"><kbd>IT2301-321</kbd> - Information Technology Project 1
-                            (โครงงานเทคโนโลยีสารสนเทศ I )</p>
-                        <p class="text-dark"><kbd>IT2301-322</kbd> - Information Technology Project 2
-                            (โครงงานเทคโนโลยีสารสนเทศ II )</p>
-
-                    </main>
+                      <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
+                    </div>
+                    <!-- /.post -->
+    <?php
+                 }
+               }
+                   ?>
+                 
+                  <!-- /.tab-pane -->
+                  
+                      </div>
+                     </div>
               
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
 
+                    </div>
+                  </div>
+                  <!-- /.tab-pane -->
      
-
+                 
+                  <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
     <!-- /.content -->
- 
-<!-- ./wrapper -->
+
+
+
+
+
+
 
 <!-- REQUIRED SCRIPTS -->
 

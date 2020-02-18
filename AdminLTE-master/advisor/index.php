@@ -210,7 +210,7 @@ to get the desired effect
           </li>
 
   <li class="nav-item">
-            <a href="committee_request.php" class="nav-link">
+            <a href="../committee/committee_request.php" class="nav-link">
          <i class="nav-icon fa fa-tasks"></i> 
               <p>
                 For Committee
@@ -263,45 +263,95 @@ to get the desired effect
       </div><!-- /.container-fluid -->
     </section>
 
+
+  <span style="padding-left:50px"> </span>
+
+  <button type="button" style="height:110px; width:210px" class="btn btn-success">
+    <h5><i class="fa fa-users position-left"></i>Total Group</h5>
+      
+         <?php
+              $con = mysqli_connect('localhost','root','','itpromo_track');
+              $my_id = $_SESSION['id'];
+
+                $query="SELECT advisergroup_id FROM advisergroup 
+                  WHERE member_id='$my_id'
+                   ORDER BY advisergroup_id";
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+
+                  echo '<h1>'.$row.'</h1>';
+                
+                ?>
+
+  </button>
+
+  <span style="padding-left:50px"> </span>
+
+  <button type="button" class="btn btn-warning" style="height:110px; width:210px" ><i
+      class="fa fa-users position-left"></i>
+      <h5>Users
+    
+</button>
+
+<p>
+
+
     <!-- Main content -->
     <section class="content">
 
       <!-- Default box -->
       <div class="card card-solid">
-        <div class="card-body pb-0">
-          <div class="row d-flex align-items-stretch">
-            <div class="col-15 col-sm-8 col-md-12 d-flex align-items-stretch">
-                             <main role="main" class="container">
 
                
-            
+          
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title></title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.js"></script>
 
-                        <h1 class="mt-3">Welcome to Information Technology Project</h1>
-                        <p class="lead">ITPromot or Information Technology Project Monitoring and Tracking System.</p>
+    <script type="text/javascript">
+        $(document).ready(function () {
 
-                        <hr>
+            $.getJSON("get_data.php", function (result) {
+
+          var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    title:{
+        text: "Project Owner"
+    },
+    axisY: {  
+        title: "Forms",
+        prefix: "PF",
+        suffix:  ""
+    },
+    data: [{
+        type: "bar",
+        yValueFormatString: "PF#",
+        indexLabel: "{y}",
+        indexLabelPlacement: "inside",
+        indexLabelFontWeight: "bolder",
+        indexLabelFontColor: "white",
+                            dataPoints: result
+    }]
+});
+                chart.render();
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <div id="chartContainer" style="height: 300px; width: 90%;"></div>
 
 
-                        <h2>Guide and Help</h2>
-                        <p>You will guide and help to achieve you purpose of doing Information Technology Project
-                            through this application </p>
-                        <p><a href="?page=guide" class="btn-primary btn-sm">Guide</a> is present to procedure how to do
-                            the project</p>
-                        <p><a href="?page=schedule" class="btn-primary btn-sm">Schedule</a> is present the schedule time
-                            table of the project</p>
-                        <p><a href="?page=form" class="btn-primary btn-sm">Forms</a> is collection of involve forms</p>
-
-                        <hr>
+</body>
+</html>
 
 
 
-                        <h2>The Guide for both:</h2>
-                        <p class="text-dark"><kbd>IT234-232</kbd> - Information Technology Project
-                            (โครงงานเทคโนโลยีสารสนเทศ)</p>
-                        <p class="text-dark"><kbd>IT2301-321</kbd> - Information Technology Project 1
-                            (โครงงานเทคโนโลยีสารสนเทศ I )</p>
-                        <p class="text-dark"><kbd>IT2301-322</kbd> - Information Technology Project 2
-                            (โครงงานเทคโนโลยีสารสนเทศ II )</p>
+
 
                     </main>
               
