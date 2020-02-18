@@ -127,21 +127,21 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="accept_member.php" class="nav-link">
+                <a href="../admin/accept_member.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Accept Member</p>
+                  <p>User Request</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="tables/data.html" class="nav-link">
+                <a href="../admin/choose_committee.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Choose Committee</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="tables/jsgrid.html" class="nav-link">
+                <a href="../admin/all_member.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>View All Member</p>
+                  <p>View All Users</p>
                 </a>
               </li>
             </ul>
@@ -408,11 +408,13 @@ to get the desired effect
 </div>
 <!-- ./wrapper -->
 
+<!--include message  -->
 
-   <?php
+<?php
         
 include '../notification/notification.php';
 ?>
+ <!--end for include message  -->
 
 
 <script src="../plugins/jquery/jquery.min.js"></script>

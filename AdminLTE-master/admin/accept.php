@@ -120,7 +120,7 @@ include('../menu/function.php');
               <li class="nav-item">
                 <a href="../admin/accept_member.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>User Request</p>
+                  <p>Accept Member</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -132,7 +132,7 @@ include('../menu/function.php');
               <li class="nav-item">
                 <a href="../admin/all_member.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>View All Users</p>
+                  <p>View All Member</p>
                 </a>
               </li>
             </ul>
@@ -251,68 +251,107 @@ include('../menu/function.php');
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-12">
+        <div class="col-8">
           <div class="card card-primary card-outline">
             <div class="card-header">
                <h3 class="card-title">
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addmember">
-                  <i class="nav-icon fas fa-plus"></i>
-                  Add New User
-                </button>
+                 User Detail
                 </h3>
-        
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead align="center">
-                  <tr>
-                      <th>No</th>
-                      <th>User ID</th>
-                      <th>Name</th>
-                      <th>Phone</th>
-                      <th>Email</th>
-                      <th>Gender</th>
-                      <th>Position</th>
-                      <th>Status</th>
-                      <th>Action</th>
-                     </tr>
-                  </thead>
-                  <tbody align="center">
-        <?php
+            <form action="../admin/check_confirm.php?id=<?php echo $_GET["id"];?>" name="fromEdit"
+                             method="post" onsubmit="return checkForm()">
 
-       $strSQL = "SELECT * FROM member  WHERE member_pos  AND admin_id = '0' ORDER BY member_fullname";
-        
+                             <?php
+   
+  $strSQL = "SELECT * FROM member  WHERE member_id='".$_GET['id']."'";      
         ?>
-        <?php
+     <?php
      if($result = $db->query($strSQL)){
-             while($objResult = $result->fetch_object()){
+                  while($objResult = $result->fetch_object()){
             ?>
-            <tr>
-                 <td class="text-left"><?php echo $objResult->member_id; ?></td>
-                 <td class="text-left"><?php echo $objResult->member_idcard; ?></td>
-                 <td class="text-left"><?php echo $objResult->member_fullname; ?></td>
-                 <td class="text-left"><?php echo $objResult->member_phone; ?></td>
-                 <td class="text-left"><?php echo $objResult->member_email; ?></td>
-                 <td class="text-left"><?php echo gender($objResult->member_gender); ?></td>
-                 <td class="text-left"><?php echo position($objResult->member_pos); ?></td>
-                 <td class="text-left"><?php echo status($objResult->admin_id); ?></td>
+                <div class="form-group row ">
+                                 <div class="col-md-2">
+                                     <label class="control-label col-form-label">ID card</label>
+                                 </div>
 
-                 <td>
-                  <a href="../admin/accept.php?id=<?php echo $objResult->member_id;?>"class="btn btn-primary btn-sm"> Detail <i class="fa fa-eye" title="Detail"></i></a>
+                                 <div class="col-md-9">
+                                     <input type="text" class="form-control" name="member_idcard" id="member_idcard"
+                                         value="<?php echo $objResult->member_idcard; ?>">
+                                 </div>
+                             </div>
 
-                  <a href="?page=accept&id=<?php echo $objResult->member_id;?>"class="btn btn-danger btn-sm">Delete
-                  <i class="fa fa-trash" title="Delete"></i></a>
-                </td>
-                 
-            </tr>
+                             <div class="form-group row">
+                                 <div class="col-md-2">
+                                     <label class="control-label col-form-label">Fullname</label>
+                                 </div>
+                                 <div class="col-md-9">
+                                     <input type="text" class="form-control" name="member_fullname" id="member_fullname"
+                                         value="<?php echo $objResult->member_fullname; ?>"> </div>
+                             </div>
 
+                             <div class="form-group row">
+                                 <div class="col-md-2">
+                                     <label class="control-label col-form-label">Usename</label>
+                                 </div>
+                                 <div class="col-md-9">
+                                     <input type="text" class="form-control" name="member_username" id="member_username"
+                                         value="<?php echo $objResult->member_username; ?>"> </div>
+                             </div>
+
+                             <div class="form-group row">
+                                 <div class="col-md-2">
+                                     <label class="control-label col-form-label">Phone</label>
+                                 </div>
+                                 <div class="col-md-9">
+                                     <input type="text" class="form-control" name="member_phone" id="member_phone"
+                                         value="<?php echo $objResult->member_phone; ?>"> </div>
+                             </div>
+                             <div class="form-group row">
+                                 <div class="col-md-2">
+                                     <label class="control-label col-form-label">Gender</label>
+                                 </div>
+                                 <div class="col-md-9">
+                                     <input type="text" class="form-control" name="member_gender" id="member_gender"
+                                         value="<?php echo gender($objResult->member_gender); ?>"> </div>
+                             </div>
+                             <div class="form-group row">
+                                 <div class="col-md-2">
+                                     <label class="control-label col-form-label">Email Address</label>
+                                 </div>
+                                 <div class="col-md-9">
+                                     <div class="input-group">
+                                         
+                                         <input type="text" class="form-control" name="member_email" id="member_email"
+                                             value="<?php echo $objResult->member_email; ?>">
+                                     </div>
+                                 </div>
+                             </div>
+
+                             <div class="pull-right">
+
+                                 <input type="hidden" name="member_id" value="<?php echo $objResult->member_id;?>" />
+
+                                 <button type="reset" class="btn btn-danger">
+                                     Reject
+                                     <i class="fa fa-refresh position-right"></i>
+                                 </button>
+
+                                 <button type="submit" class="btn btn-primary">
+                                     Approve
+                                     <i class="fa fa-arrow-right position-right"></i>
+                                 </button>
+                             </div>
+
+
+            </form>
             <?php
-              }
+                 }
                }
                    ?>
-                
-              </table>
+              
+                  
             </div>
             <!-- /.card-body -->
           </div>
@@ -327,104 +366,7 @@ include('../menu/function.php');
   <!-- /.content-wrapper -->
 
 
-<div class="modal fade" id="addmember">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Add New User</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              
-    <form id="add" name="add" method="post" action="../admin/check_accept_member.php"
-                                 onsubmit="return checkForm()">
-      <div class="user-details">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" id="member_idcard" name="member_idcard" placeholder="UserID" autocomplete="off" required aria-describedby="basic-addon1" onkeypress='validate(event)'  maxlength="9">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-id-card"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Username" id="member_username" name="member_username" autocomplete="off" required aria-describedby="basic-addon1">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" id="member_fullname" name="member_fullname" placeholder="Full name"   autocomplete="off" required aria-describedby="basic-addon1">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" name="member_password" id="member_password" onKeyUp="passwordStrength(this.value)"  class="form-control"  autocomplete="off" required aria-describedby="basic-addon1">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fa fa-lock"></span>
-            </div>
-          </div>
-          <center>
-          <div id="passwordDescription"></div>
-          <div id="passwordStrength" class="strength0"></div>
-          </center>
-        </div>
-        <div class="input-group mb-3">
-          <input type="tel" class="form-control" placeholder="Phone: 123-4567-8901" id="member_phone" name="member_phone" autocomplete="off" required aria-describedby="basic-addon1" onkeypress='validate(event)'  maxlength="10">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-phone"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="....@gmail.com" id="member_email" name="member_email" autocomplete="off"  aria-describedby="basic-addon1" pattern="^[a-zA-Z0-9]+@gmail\.com$" required>
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-        <select class="form-control" name="member_pos" id="member_pos">
-             <option value="#">Select Position</option>
-             <option value="Lecturer">Lecturer</option>
-             <option value="Student">Student</option>
-             <option value="Officer">Officer</option>
 
-        </select>
-       </div>
-       <center>
-       <div class="input-group">
-
-      Gender: &nbsp;&nbsp; &nbsp;&nbsp;
-      <label class="radio-inline"> 
-        <input type="radio" name="member_gender" value="Male" required aria-describedby="basic-addon1"> &nbsp;&nbsp; Male</label>&nbsp;&nbsp; &nbsp;&nbsp; 
-        <label class="radio-inline"><input type="radio"name="member_gender" value="Female"aria-describedby="basic-addon1"> &nbsp;&nbsp; Female</label>
-      </div>
-
-      </div>
-                
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">REGISTER</button>
-            </div>
-
-            </form>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
