@@ -1,3 +1,45 @@
+
+<script type="text/javascript">
+  function edit_ps(id) {
+    $.ajax({
+      url: 'get_track.php',
+      data: ({
+        id: id
+      }),
+      type: 'POST',
+      dataType: 'JSON',
+      success: function (data) {
+        $.each(data, function (i, o) {
+
+
+          $('#advisergroup_status').val(o.advisergroup_status);
+          $('#files_status').val(o.files_status);
+          $('#advisergroup_id').val(o.advisergroup_id);
+          $('#by_officer').val(o.by_officer);
+
+          $('#files_id').val(o.files_id);
+        });
+      },
+      error: function (request, error) {
+        console.log(error);
+        console.log(arguments);
+        alert("Network Error!");
+      }
+    });
+  }
+
+
+
+
+  function confirm_deleteps() {
+    var x = confirm("Please confirm to delete!");
+    if (x) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+</script>
 <?php
 session_start();
 require '../menu/connect.php';
@@ -222,94 +264,7 @@ to get the desired effect
       </div><!-- /.container-fluid -->
     </section>
   <!-- Main content -->
-    <section class="content">
-   
-        
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">All Final Project Topics</h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>No</th>   
-                           <th>Group Code</th>
-                            <th>Owner Project</th>
-                      <th>Topic</th>
-                      <th>Abstrack</th>
-                      <th>Keyword</th>
-                      <th>Field </th>
-                      <th>Status</th>
-                                               <th>View</th>
-                </tr>
-                </thead>
-                <tbody>
-                         <?php
-                  //   require 'menu/function.php';
- $strSQL = "SELECT * FROM topic_project  ";
-              ?>
- <?php
-     if($result = $db->query($strSQL)){
-             while($objResult = $result->fetch_object()){
-            ?>
-
-                
-                    <tr>
-                     <td class="text-left"><?php echo $objResult->topic_id; ?></td>
-                     <td class="text-left"><?php echo $objResult->group_number; ?></td>
-
-                     <td class="text-left"><?php echo substr($objResult->Owner, 0, 50); ?></td>
-                    <td class="text-left"><?php echo $objResult->topic_topic; ?></td>
-
-                     <td class="text-left"><?php echo substr($objResult->topic_abstrack, 0, 30); ?></td>
-
-
-                     <td class="text-left"><?php echo $objResult->topic_keyword; ?></td>
-                <td class="text-left"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
-           <td class="text-left"><?php echo get_status_project($objResult->status); ?></td>
-
-                    
-             <td>            <button type="button" class="btn btn-primary btn-xs  view_data" name="view" value="view" id="<?php echo $objResult->topic_id; ?>"><i class="fa fa-eye"></i></button>
-</td> 
-
-               
-                    </tr>          
-
-
-                                    <?php
-    }
-               }
-                   ?>
-
-
-                </tbody>
-                <tfoot>
-                <tr>
-                 <th>No</th>   
-                           <th>Group Code</th>
-                            <th>Owner Project</th>
-                      <th>Topic</th>
-                      <th>Abstrack</th>
-                      <th>Keyword</th>
-                      <th>Field </th>
-                      <th>Status</th>
-                          <th>View</th>
-       
-                </tr>   
-
-                </tfoot>
-              </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
+    
     <!-- /.content -->
 
 
