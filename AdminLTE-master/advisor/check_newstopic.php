@@ -16,7 +16,7 @@ $member_id=$_POST['member_id'];
 
 	if($rs = $db->query($sql)){
 		$db->close();
-		header("Location: ../index.php?page=add_general_topic");
+		header("Location:add_general_topic.php");
 	}else{
 		echo $db->error;
 		$db->close();
