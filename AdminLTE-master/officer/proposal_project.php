@@ -102,7 +102,7 @@ to get the desired effect
           </li>
 
          <li class="nav-item">
-            <a href="advisor_request.php" class="nav-link ">
+            <a href="officer_request.php" class="nav-link  ">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
        Request              </p>
@@ -110,54 +110,18 @@ to get the desired effect
           </li>
     
  
-  
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-book"></i>
+  <li class="nav-item">
+            <a href="view_track.php" class="nav-link">
+             <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-                Projects
-                <i class="fas fa-angle-left right"></i>
-              </p>
+       Student Track              </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="proposal_status.php" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Proposal Status</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="student_Track.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Track</p>
-                </a>
-              </li>
-         
-              <li class="nav-item">
-                <a href="proposal_project.php" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>All Project Topics</p>
-                </a>
-              </li>
-                       <li class="nav-item">
-                <a href="manage_mark.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Mark</p>
-                </a>
-              </li>
-
-                       <li class="nav-item">
-                <a href="give_mark.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Give Mark as a Committee</p>
-                </a>
-              </li>
-            </ul>
           </li>
+    
 
-
+ 
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
                 Schedule
@@ -166,15 +130,15 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="display_schedule_proposal.php" class="nav-link">
+                <a href="create_schedule_proposal.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Proposal Schedule</p>
+                  <p>Create Schedule Proposal</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="display_schedule_project.php" class="nav-link">
+                <a href="create_schedule_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Project Schedule</p>
+                  <p>Create Schedule Project</p>
                 </a>
               </li>
               
@@ -182,10 +146,12 @@ to get the desired effect
           </li>
 
 
+
+
     
 
   <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
                 News
@@ -194,13 +160,13 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="Annoucement.php" class="nav-link">
+                <a href="Annoucement.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Annoucements</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="add_general_topic.php" class="nav-link">
+                <a href="show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Topic Require</p>
                 </a>
@@ -209,14 +175,12 @@ to get the desired effect
             </ul>
           </li>
 
-  <li class="nav-item">
-            <a href="../committee/committee_request.php" class="nav-link">
-         <i class="nav-icon fa fa-tasks"></i> 
-              <p>
-                For Committee
-              </p>
-            </a>
-          </li>
+   <li class="nav-item">
+                <a href="proposal_project.php" class="nav-link  active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Project Topics</p>
+                </a>
+              </li>
 
   <li class="nav-item">
             <a href="my_profile.php" class="nav-link">
@@ -227,14 +191,7 @@ to get the desired effect
             </a>
           </li>
 
-           <li class="nav-item">
-            <a href="line_message.php" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
-              <p>
-               Line notify
-              </p>
-            </a>
-          </li>
+      
 
 
         </ul>

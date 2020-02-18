@@ -102,7 +102,7 @@ to get the desired effect
           </li>
 
          <li class="nav-item">
-            <a href="officer_request.php" class="nav-link ">
+            <a href="officer_request.php" class="nav-link  ">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
        Request              </p>
@@ -121,7 +121,7 @@ to get the desired effect
 
  
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
                 Schedule
@@ -130,13 +130,13 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="create_schedule_proposal.php" class="nav-link">
+                <a href="create_schedule_proposal.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create Schedule Proposal</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="create_schedule_project.php" class="nav-link">
+                <a href="create_schedule_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create Schedule Project</p>
                 </a>
@@ -151,7 +151,7 @@ to get the desired effect
     
 
   <li class="nav-item has-treeview">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
                 News
@@ -160,13 +160,13 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="Annoucement.php" class="nav-link active">
+                <a href="Annoucement.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Annoucements</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="show_topic.php" class="nav-link">
+                <a href="show_topic.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Topic Require</p>
                 </a>
@@ -176,14 +176,14 @@ to get the desired effect
           </li>
 
    <li class="nav-item">
-                <a href="proposal_project.php" class="nav-link ">
+                <a href="proposal_project.php" class="nav-link  ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
                 </a>
               </li>
 
   <li class="nav-item">
-            <a href="my_profile.php" class="nav-link">
+            <a href="my_profile.php" class="nav-link active">
               <i class="nav-icon fa fa-user"></i>
               <p>
                 Personal Information
@@ -201,124 +201,127 @@ to get the desired effect
     <!-- /.sidebar -->
   </aside>
 
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
+  
 
+  <!-- PAGE CONTENT -->
 
-<section class="content-header">
+        <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1></h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Annoucements</li>
+              <li class="breadcrumb-item active">Personal Information</li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
-  
-<!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-       
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header p-2">
-                <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
-                
-                </ul>
-              </div><!-- /.card-header -->
-
-      
-
-     <?php
-
-     $strSQL = "SELECT  announcement.announcement_id,announcement.announcement_topic, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
-                           FROM announcement,admin 
-                           WHERE announcement.admin_id=admin.admin_id
-                           ORDER BY announcement.announcement_id";
-
-         ?>
+  <!-- Main content -->
+   <form action="check_editprofile.php?id=<?php echo $_GET["id"];?>"name="submit" method="get"onsubmit="return checkForm()">
 
     <?php
-            
-                 if($objQuery = $db->query($strSQL)){
-             while($objResult = $objQuery->fetch_object()){
+   
+  $strSQL = "SELECT * FROM member  WHERE member_id='".$_SESSION['id']."'";      
+
+  
+        ?>
+        <?php
+     if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
             ?>
 
-   
+
+      <div class="container-fluid">
+        <div class="row">
+   <span style="padding-left:110px"> </span>      <div class="col-md-10">
+
+            <!-- Profile Image -->
+        
+            <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle"
+                       src="../dist/img/user4-128x128.jpg"
+                       alt="User profile picture">
+                </div>
+
+                
+      
+      
+              <!-- /.card-body -->
+ 
+            <!-- /.card -->
+
+            <!-- About Me Box -->
+       
+              <!-- /.card-header -->
               <div class="card-body">
-                <div class="tab-content">
-                  <div class="active tab-pane" id="activity">
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image">
-                        <span class="username">
-                          <a href="#"><?php echo $objResult->admin_fullname; ?> </a>
-                        </span>
-                        <span class="description">Shared publicly - <?php echo $objResult->announcement_date; ?></span>
-                      </div>
-                      <!-- /.user-block -->
-                      <p><b><?php echo $objResult->announcement_topic; ?></b></p>
-                      <p>
-                    <?php echo $objResult->announcement_detail; ?>
-                      </p>
+                <strong><i class="fas fa-book mr-1"></i> ID Card Student</strong>
 
-                      <p>
-                        <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
-                        <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
-                        <span class="float-right">
-                          <a href="#" class="link-black text-sm">
-                            <i class="far fa-comments mr-1"></i> Comments (5)
-                          </a>
-                        </span>
-                      </p>
+                <p class="text-muted">
+                     <input type="text" class="form-control" name="member_idcard" id="member_idcard"  value="<?php echo $objResult->member_idcard; ?>" >
+                </p>
 
-                      <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
-                    </div>
-                    <!-- /.post -->
-    <?php
+                <hr>
+
+                <strong><i class="fas fa-map-marker-alt mr-1"></i> Name-Lastname</strong>
+
+             <input type="text" class="form-control" name="member_fullname" id="member_fullname"  value="<?php echo $objResult->member_fullname; ?>" >                                            
+
+
+                <hr>
+
+                <strong><i class="fas fa-pencil-alt mr-1"></i> Tel:</strong>
+
+                                                   <input type="text" class="form-control" name="member_phone" id="member_phone"  value="<?php echo $objResult->member_phone; ?>" >                                     
+
+
+                <hr>
+
+                <strong><i class="far fa-file-alt mr-1"></i> Gender</strong>
+
+                 <input type="text" class="form-control" name="member_gender" id="member_gender"  value="<?php echo gender($objResult->member_gender); ?>" >
+
+
+                <hr>
+
+                <strong><i class="far fa-file-alt mr-1"></i> Email</strong>
+
+ <input type="text" class="form-control" name="member_email" id="member_email"  value="<?php echo $objResult->member_email; ?>" >
+
+                                     <input type="hidden" name="member_id" value="<?php echo $objResult->member_id;?>"/>
+
+
+
+<br>
+
+
+    <button type="submit" class="btn btn-primary">
+                                     Submit
+                                     <i class="fa fa-arrow-right position-right"></i>
+                                 </button>
+                             </div>
+                         </form>
+              <!-- /.card-body -->
+                          <?php
                  }
                }
                    ?>
-                 
-                  <!-- /.tab-pane -->
-                  
-                      </div>
-                     </div>
-              
-
-                    </div>
-                  </div>
-                  <!-- /.tab-pane -->
-     
-                 
-                  <!-- /.tab-pane -->
-                </div>
-                <!-- /.tab-content -->
-              </div><!-- /.card-body -->
             </div>
-            <!-- /.nav-tabs-custom -->
+            <!-- /.card -->
           </div>
-          <!-- /.col -->
+         
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-
-
-
-
 
     <!-- /.content -->
  

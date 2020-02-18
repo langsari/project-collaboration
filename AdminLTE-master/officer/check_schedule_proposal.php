@@ -18,7 +18,7 @@ $schedule_room=$_POST['schedule_room'];
 
 	if($rs = $db->query($sql)){
 		$db->close();
-		header("Location: ../index.php?page=create_schedule_proposal");
+		header("Location: create_schedule_proposal.php");
 	}else{
 		echo $db->error;
 		$db->close();

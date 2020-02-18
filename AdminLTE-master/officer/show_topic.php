@@ -12,7 +12,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>ITPROMO</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -44,10 +44,9 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-    
+     
     </ul>
 
-  
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -85,12 +84,15 @@ to get the desired effect
         </div>
       </div>
 
+      <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+
+                   <li class="nav-item has-treeview ">
+            <a href="index.php" class="nav-link ">
+             
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -100,48 +102,26 @@ to get the desired effect
           </li>
 
          <li class="nav-item">
-            <a href="infor_group.php" class="nav-link ">
-              <i class="nav-icon fa fa-group"></i>
+            <a href="officer_request.php" class="nav-link  ">
+             <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Group Information              </p>
+       Request              </p>
+            </a>
+          </li>
+    
+ 
+  <li class="nav-item">
+            <a href="view_track.php" class="nav-link">
+             <i class="nav-icon fa fa-paper-plane"></i>
+              <p>
+       Student Track              </p>
             </a>
           </li>
     
 
- <li class="nav-item has-treeview ">
+ 
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link ">
-
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Projects
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="create_proposal.php" class="nav-link " >
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Proposal</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="tables/data.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Track</p>
-                </a>
-              </li>
-             <li class="nav-item">
-                <a href="proposal_project.php" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>All Project Topics</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          
- <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link ">
-
               <i class="nav-icon fas fa-calendar"></i>
               <p>
                 Schedule
@@ -150,21 +130,25 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="display_schedule_proposal.php" class="nav-link ">
+                <a href="create_schedule_proposal.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Proposal Schedule</p>
+                  <p>Create Schedule Proposal</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="display_schedule_project.php" class="nav-link ">
+                <a href="create_schedule_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Project Schedule</p>
+                  <p>Create Schedule Project</p>
                 </a>
               </li>
               
             </ul>
           </li>
 
+
+
+
+    
 
   <li class="nav-item has-treeview">
             <a href="#" class="nav-link active">
@@ -176,7 +160,7 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="annouce.php" class="nav-link ">
+                <a href="Annoucement.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Annoucements</p>
                 </a>
@@ -191,6 +175,13 @@ to get the desired effect
             </ul>
           </li>
 
+   <li class="nav-item">
+                <a href="proposal_project.php" class="nav-link  ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Project Topics</p>
+                </a>
+              </li>
+
   <li class="nav-item">
             <a href="my_profile.php" class="nav-link">
               <i class="nav-icon fa fa-user"></i>
@@ -199,46 +190,9 @@ to get the desired effect
               </p>
             </a>
           </li>
-    
 
+      
 
-
-          <li class="nav-item">
-            <a href="guide.php" class="nav-link">
-              <i class="nav-icon fa fa-glide-g"></i>
-              <p>
-                Guide
-              </p>
-            </a>
-          </li>
-
-                    <li class="nav-item">
-            <a href="course_syllabus.php" class="nav-link">
-              <i class="nav-icon fa fa-calendar"></i>
-              <p>
-                course syllabus
-              </p>
-            </a>
-          </li>
-
-                    <li class="nav-item">
-            <a href="form.php" class="nav-link">
-              <i class="nav-icon fa fa-edit"></i>
-              <p>
-                Forms
-              </p>
-            </a>
-          </li>
-
-
-  <li class="nav-item">
-            <a href="booked.php" class="nav-link">
-              <i class="nav-icon fa fa-book"></i>
-              <p>
-                Books
-              </p>
-            </a>
-          </li>
 
         </ul>
       </nav>
