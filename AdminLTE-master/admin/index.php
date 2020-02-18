@@ -408,6 +408,13 @@ to get the desired effect
 </div>
 <!-- ./wrapper -->
 
+
+   <?php
+        
+include '../notification/notification.php';
+?>
+
+
 <script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

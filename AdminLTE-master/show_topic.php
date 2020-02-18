@@ -210,7 +210,7 @@ to get the desired effect
                     <!-- Post -->
                     <div class="post">
                       <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="dist/img/user1-128x128.jpg" alt="user image">
+                        <img class="img-circle img-bordered-sm" src="dist/img/user.png" alt="user image">
                         <span class="username">
                           <a href="#"><?php echo $objResult->member_fullname; ?> </a>
                         </span>

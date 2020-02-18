@@ -78,7 +78,7 @@ to get the desired effect
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../dist/img/user1.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block"><?php echo $_SESSION['name']; ?></a>
@@ -253,37 +253,6 @@ to get the desired effect
 
 
 
-
-<script type="text/javascript">
-  function edit_ps(id){
-    $.ajax({
-      url: '../get_readmore_news.php',
-      data: ({id: id}),
-      type: 'POST',
-      dataType: 'JSON',
-      success: function(data){
-        $.each(data, function(i, o){
-          $('#news_topic').val(o.news_topic);
-        $('#news_date').val(o.news_date);
-       $('#news_detail').val(o.news_detail);
-      $('#member_fullname').val(o.member_fullname);
-
-          $('#news_id').val(o.news_id);
-        });
-      },
-      error: function (request, error) {
-        console.log(error);
-        console.log(arguments);
-        alert("Network Error!");
-      }
-    });
-  }
-        
-
-
-
-</script>
-
 <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -300,166 +269,98 @@ to get the desired effect
       </div><!-- /.container-fluid -->
     </section>
 
-    <!-- Main content -->
+  <!-- Main content -->
     <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+       
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
+                
+                </ul>
+              </div><!-- /.card-header -->
 
-      <!-- Default box -->
-      <div class="card card-solid">
-        <div class="card-body pb-0">
-          <div class="row d-flex align-items-stretch">
-            <div class="col-15 col-sm-8 col-md-12 d-flex align-items-stretch">
-                             <main role="main" class="container">
-
-               
-              
-
-
-
-     <?php
+              <?php
 
      $strSQL = "SELECT  news_topic.news_id,news_topic.news_topic, news_topic.news_detail, news_topic.news_date,member.member_fullname
          FROM news_topic,member 
          WHERE news_topic.member_id=member.member_id
          ORDER BY news_topic.news_id";
-
          ?>
-
     <?php
                  if($objQuery = $db->query($strSQL)){
              while($objResult = $objQuery->fetch_object()){
             ?>
-            <table class="display datatable table table-stripped" cellspacing="0" width="100%">
 
-                  <tbody>
-                  
-                      <td> 
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="active tab-pane" id="activity">
+                    <!-- Post -->
+                    <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image">
+                        <span class="username">
+                          <a href="#"><?php echo $objResult->member_fullname; ?> </a>
+                        </span>
+                        <span class="description">Shared publicly - <?php echo $objResult->news_date; ?></span>
+                      </div>
+                      <!-- /.user-block -->
+                      <p><b><?php echo $objResult->news_topic; ?></b></p>
+                      <p>
+                       <?php echo $objResult->news_detail; ?>
+                      </p>
 
+                      <p>
+                        <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
+                        <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
+                        <span class="float-right">
+                          <a href="#" class="link-black text-sm">
+                            <i class="far fa-comments mr-1"></i> Comments (5)
+                          </a>
+                        </span>
+                      </p>
 
-                          <!--<div class="col-md-12" align="right">
-                            Status: <button> <?php echo $objResult->announcement_date; ?>  </button>
-                            
-                          </div>-->
- </br><b> <font color="blue" size="5">  <?php echo $objResult->news_topic; ?> </font> </br></b>
-          </br> <i class='far fa-user-circle' style='font-size:20px'></i>​ 
-                    &nbsp;&nbsp;<?php echo $objResult->member_fullname; ?>   </br>
-                   </br><i class='far fa-calendar-alt' style='font-size:20px'> </i>&nbsp;&nbsp;&nbsp; <?php echo $objResult->news_date; ?>   </br>
-                     &nbsp;&nbsp;&nbsp;<?php echo substr($objResult->news_detail, 0, 50); ?> </br>
-                       
-                        <div class="col-md-12" align="right">
-                     <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editPS" onclick="edit_ps(<?php echo $objResult->news_id; ?>)"><i class="fa fa-eye"></i>Read more</button>
-                          
-                        </div>
-
-                        </td> 
-             
-                <?php
+                      <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
+                    </div>
+                    <!-- /.post -->
+    <?php
                  }
                }
                    ?>
-             </tbody>
-             </table>
-            
-          </div>
+                 
+                  <!-- /.tab-pane -->
+                  
+                      </div>
+                     </div>
+              
 
-          
-        </div>
-        
-      </div>
-    </div>
-    
-  </div>
-
-<!-- Modal -->
-      
-<div id="editPS" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg"> 
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" >&times;</span></button>
-      </div>
-
-      <div class="modal-body">
-        <form class="form-horizontal" method="post" >
-
-                      <legend class="text-bold">Read More</legend>
-                                    <fieldset class="content-group">
-                                         <form action="#">
-                                            <div class="form-group row margin-top-10">
-                                                <div class="col-md-2">
-                                       <label class="control-label col-form-label">Topic</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" name="news_topic" id="news_topic"  >
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <div class="col-md-2">
-                                                    <label class="control-label col-form-label">Date</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="news_date" id="news_date">
-                                                </div>
-                                            </div>
-                           <div class="form-group row">
-                      <div class="col-md-2">
-                          <label class="control-label col-form-label">By</label></div>
-
-                          <div class="col-md-10">
-                              <input type="text" class="form-control" name="member_fullname" id="member_fullname">
-                          </div>
+                    </div>
                   </div>
-                         
-
-  <div class="form-group row">
-                                                <div class="col-md-2">
-                                                    <label class="control-label col-form-label">Detail</label>
-                                                </div>
-                                                <div class="col-md-10">
-
-                            <textarea class="form-control" rows="10" name="news_detail" id="news_detail"  required></textarea>
-
-
-                                                </div>
-                                            </div>
-
-                         <input type="hidden" name="news_id" id="news_id">
-</form>
-                
-          
-
-
-
-
-
-
-
-  <script>
-function myFunction() {
-  var dots = document.getElementById("dots");
-  var moreText = document.getElementById("more");
-  var btnText = document.getElementById("myBtn");
-
-  if (dots.style.display === "none") {
-    dots.style.display = "inline";
-    btnText.innerHTML = "Read more"; 
-    moreText.style.display = "none";
-  } else {
-    dots.style.display = "none";
-    btnText.innerHTML = "Read less"; 
-    moreText.style.display = "inline";
-  }
-}
-</script>
-
-</body>
-</html>
-</body>
-</html>
-
+                  <!-- /.tab-pane -->
+     
+                 
+                  <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
     <!-- /.content -->
- 
-<!-- ./wrapper -->
+
+
+
+
+
+
 
 <!-- REQUIRED SCRIPTS -->
 
