@@ -108,35 +108,30 @@ include('../menu/function.php');
             </a>
           </li>
 
-         <li class="nav-item has-treeview">
+         li class="nav-item has-treeview">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fa fa-users"></i>
+              <i class="nav-icon fa fa-calendar"></i>
               <p>
-                Manage User
+                Manage Schedule 
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="accept_member.php" class="nav-link">
+                <a href="../admin/add_schedule_proposal.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>User Request</p>
+                  <p>Create Proposal Schedule</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../admin/choose_committee.php" class="nav-link">
+                <a href="../admin/add_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Choose Committee</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../admin/all_member.php" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View All Users</p>
+                  <p>Create Project Schedule</p>
                 </a>
               </li>
             </ul>
           </li>
+    
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -174,19 +169,19 @@ include('../menu/function.php');
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="create_proposal.php" class="nav-link">
+                <a href="../admin/student_track.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Track</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="tables/data.html" class="nav-link">
+                <a href="../admin/add_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Student project proposal</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="tables/jsgrid.html" class="nav-link">
+                <a href="../admin/view_all_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
                 </a>
@@ -205,7 +200,7 @@ include('../menu/function.php');
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="display_schedule_proposal.php" class="nav-link">
+                <a href="../admin/add_announcement.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Annoucements</p>
                 </a>
@@ -215,7 +210,7 @@ include('../menu/function.php');
           </li>
 
       <li class="nav-item">
-            <a href="../schedule.php" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
                 course syllabus

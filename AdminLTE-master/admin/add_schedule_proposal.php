@@ -109,7 +109,7 @@ include('../menu/function.php');
           </li>
 
          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fa fa-users"></i>
               <p>
                 Manage User
@@ -118,7 +118,7 @@ include('../menu/function.php');
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../admin/accept_member.php" class="nav-link active">
+                <a href="../admin/accept_member.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>User Request</p>
                 </a>
@@ -139,7 +139,7 @@ include('../menu/function.php');
           </li>
 
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
                 Manage Schedule 
@@ -148,7 +148,7 @@ include('../menu/function.php');
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../admin/add_schedule_proposal.php" class="nav-link">
+                <a href="../admin/add_schedule_proposal.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create Proposal Schedule</p>
                 </a>
@@ -241,7 +241,7 @@ include('../menu/function.php');
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../admin/index.php">Home</a></li>
-              <li class="breadcrumb-item active">User request</li>
+              <li class="breadcrumb-item active"> Schedule Proposal</li>
             </ol>
           </div>
         </div>
@@ -257,7 +257,7 @@ include('../menu/function.php');
                <h3 class="card-title">
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addmember">
                   <i class="nav-icon fas fa-plus"></i>
-                  Add New User
+                  Add Proposal Schedule
                 </button>
                 </h3>
         
@@ -268,42 +268,49 @@ include('../menu/function.php');
                 <thead align="center">
                   <tr>
                       <th>No</th>
-                      <th>User ID</th>
-                      <th>Name</th>
-                      <th>Phone</th>
-                      <th>Email</th>
-                      <th>Gender</th>
-                      <th>Position</th>
-                      <th>Status</th>
-                      <th>Action</th>
+                      <th>Project Title</th>
+                      <th>Presentation Status</th>
+                      <th>Advisor</th>
+                      <th>Date</th>
+                      <th>Time</th>
+                      <th>Room</th>
+                      <th>action</th>
                      </tr>
                   </thead>
                   <tbody align="center">
         <?php
 
-       $strSQL = "SELECT * FROM member  WHERE member_pos  AND admin_id = '0' ORDER BY member_fullname";
+       $sql = "SELECT schedule.*, partnergroup.group_id,partnergroup.group_number,member.member_fullname,schedule.writer,schedule.group_id,advisergroup.group_id,advisergroup.advisergroup_topic FROM schedule
+                     LEFT JOIN advisergroup ON schedule.group_id = advisergroup.advisergroup_id
+
+                   LEFT JOIN partnergroup ON schedule.group_id = partnergroup.group_id
+                        LEFT JOIN member ON schedule.writer = member.member_id
+                      WHERE   schedule.schedule_type ='1'
+                        ORDER BY schedule.schedule_type";
         
         ?>
         <?php
-     if($result = $db->query($strSQL)){
+     if($result = $db->query($sql)){
              while($objResult = $result->fetch_object()){
             ?>
             <tr>
-                 <td class="text-left"><?php echo $objResult->member_id; ?></td>
-                 <td class="text-left"><?php echo $objResult->member_idcard; ?></td>
-                 <td class="text-left"><?php echo $objResult->member_fullname; ?></td>
-                 <td class="text-left"><?php echo $objResult->member_phone; ?></td>
-                 <td class="text-left"><?php echo $objResult->member_email; ?></td>
-                 <td class="text-left"><?php echo gender($objResult->member_gender); ?></td>
-                 <td class="text-left"><?php echo position($objResult->member_pos); ?></td>
-                 <td class="text-left"><?php echo status($objResult->admin_id); ?></td>
+                  <td ><?php echo $objResult->schedule_id; ?></td>
+                  <td class="text-left"><?php echo $objResult->advisergroup_topic; ?></td>
+                  <td class="text-left"><?php echo $objResult->schedule_status ?></td>
+                  <td class="text-left"><?php echo get_advisor($objResult->group_id); ?></td>
+                  <td class="text-left"><?php echo $objResult->schedule_date ?></td>
+                  <td class="text-left"><?php echo $objResult->schedule_time; ?></td>
+                  <td><?php echo $objResult->schedule_room ?></td>
+                 
 
-                 <td>
-                  <a href="../admin/accept.php?id=<?php echo $objResult->member_id;?>"class="btn btn-primary btn-sm"> Detail <i class="fa fa-eye" title="Detail"></i></a>
+                  <td>
+                  <a href="..admin/check_delete.php?id=<?php echo $objResult->topic_id;?>" title="Confirm"
+                      onclick="return confirm('<?php echo $objResult->topic_topic;?>')" class="btn btn-warning btn-xs" > <i class="fa fa-edit" aria-hidden="true" title="Edit"></i></a>
 
-                  <a href="?page=accept&id=<?php echo $objResult->member_id;?>"class="btn btn-danger btn-sm">Delete
-                  <i class="fa fa-trash" title="Delete"></i></a>
-                </td>
+                  <a href="..admin/check_delete.php?id=<?php echo $objResult->topic_id;?>" title="Confirm"
+                      onclick="return confirm('<?php echo $objResult->topic_topic;?>')" class="btn btn-danger btn-xs" > <i class="fa fa-trash" aria-hidden="true" title="Delete"></i></a>
+
+                  </td>
                  
             </tr>
 
@@ -331,92 +338,113 @@ include('../menu/function.php');
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Add New User</h4>
+              <h4 class="modal-title">Add Proposal Schedule</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
               
-    <form id="add" name="add" method="post" action="../admin/check_accept_member.php"
-                                 onsubmit="return checkForm()">
-      <div class="user-details">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" id="member_idcard" name="member_idcard" placeholder="UserID" autocomplete="off" required aria-describedby="basic-addon1" onkeypress='validate(event)'  maxlength="9">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-id-card"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Username" id="member_username" name="member_username" autocomplete="off" required aria-describedby="basic-addon1">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" id="member_fullname" name="member_fullname" placeholder="Full name"   autocomplete="off" required aria-describedby="basic-addon1">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" name="member_password" id="member_password" onKeyUp="passwordStrength(this.value)"  class="form-control"  autocomplete="off" required aria-describedby="basic-addon1">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fa fa-lock"></span>
-            </div>
-          </div>
-          <center>
-          <div id="passwordDescription"></div>
-          <div id="passwordStrength" class="strength0"></div>
-          </center>
-        </div>
-        <div class="input-group mb-3">
-          <input type="tel" class="form-control" placeholder="Phone: 123-4567-8901" id="member_phone" name="member_phone" autocomplete="off" required aria-describedby="basic-addon1" onkeypress='validate(event)'  maxlength="10">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-phone"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="....@gmail.com" id="member_email" name="member_email" autocomplete="off"  aria-describedby="basic-addon1" pattern="^[a-zA-Z0-9]+@gmail\.com$" required>
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-        <select class="form-control" name="member_pos" id="member_pos">
-             <option value="#">Select Position</option>
-             <option value="Lecturer">Lecturer</option>
-             <option value="Student">Student</option>
-             <option value="Officer">Officer</option>
+    <form id="add" name="add" method="post" action="../admin/check_schedule_proposal.php" onsubmit="return checkForm()">
+      <div class="form-group row">
+          <div class="col-md-3">
+              <label class="control-label col-form-label">Topic</label>
+              </div>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" id="schedule_topic" name="schedule_topic"
+                            placeholder="Topic" autocomplete="off" required aria-describedby="basic-addon1">
+                  </div>
+                </div>
+                <div class="form-group row">
+                        <div class="col-md-3">
+                          <label class="control-label col-form-label">Status </label>
+                        </div>
+                        <div class="col-md-9">
+                          <input type="text" class="form-control" id="schedule_status" name="schedule_status"
+                            placeholder="Status" autocomplete="off" required aria-describedby="basic-addon1">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-3">
+                          <label class="control-label col-form-label">Title Project</label>
+                        </div>
+                        <div class="col-md-9">
+                          <select class="form-control" name="group_id">
+                            <option value="no">- Select Title Project-</option>
+                            <?php
+                include '../menu/connect.php';
+                $strSQL = "SELECT advisergroup_id, advisergroup_topic FROM advisergroup WHERE advisergroup_id";
+                if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+                    echo "<option value='".$objResult->advisergroup_id."'>".$objResult->advisergroup_topic."</option>";
+                  }
+               
+                }else{
+              
+                }
+                ?>
+                          </select>
 
-        </select>
-       </div>
-       <center>
-       <div class="input-group">
+                        </div>
+                      </div>
 
-      Gender: &nbsp;&nbsp; &nbsp;&nbsp;
-      <label class="radio-inline"> 
-        <input type="radio" name="member_gender" value="Male" required aria-describedby="basic-addon1"> &nbsp;&nbsp; Male</label>&nbsp;&nbsp; &nbsp;&nbsp; 
-        <label class="radio-inline"><input type="radio"name="member_gender" value="Female"aria-describedby="basic-addon1"> &nbsp;&nbsp; Female</label>
-      </div>
+                      <div class="form-group row">
+                        <div class="col-md-3">
+                          <label class="control-label col-form-label">Date</label>
+                        </div>
+                        <div class="col-md-9">
+                          <input type="DATE" class="form-control" id="schedule_date" name="schedule_date"
+                            placeholder="Years" autocomplete="off" required aria-describedby="basic-addon1">
+                        </div>
+                      </div>
 
-      </div>
-                
+                       <div class="form-group row">
+                        <div class="col-md-3">
+                          <label class="control-label col-form-label">Time</label>
+                        </div>
+                        <div class="col-md-9">
+                          <input type="time" class="form-control" id="schedule_time" name="schedule_time"
+                            placeholder="Time" autocomplete="off" required aria-describedby="basic-addon1">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-3">
+                          <label class="control-label col-form-label">Room</label>
+                        </div>
+                        <div class="col-md-9">
+                          <input type="text" class="form-control" id="schedule_room" name="schedule_room"
+                            placeholder="Room" autocomplete="off" required aria-describedby="basic-addon1">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-3">
+
+                        </div>
+                        <div class="col-md-9">
+                          <select class="form-control" name="writer" hidden="">
+
+                            <?php
+                include '../menu/connect.php';
+                $strSQL = "SELECT admin_id, admin_fullname FROM admin WHERE admin_id ='".$_SESSION['id']."'";
+                if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+                    echo "<option value='".$objResult->admin_id."'>".$objResult->admin_fullname."</option>";
+                  }
+                }else{
+                }
+                ?>
+                          </select>
+
+                        </div>
+                      </div>
+                      <input type="text" class="form-control" id="schedule_type" name="schedule_type" value="1"
+                        hidden="">
+
+
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">REGISTER</button>
+              <button type="submit" class="btn btn-primary">CREATE</button>
             </div>
 
             </form>
