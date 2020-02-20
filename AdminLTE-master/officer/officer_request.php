@@ -274,7 +274,7 @@ $i = 1;
                 <td><a href="student/download.php?pdf=<?php echo $row->files_filename_proposal ;?>"><i
                       class="fa fa-download"></i></a></td>
 
-                <td><a href="officer/check_approved.php?id=<?php echo $row->files_id; ?>" class="btn btn-success btn-xs"
+                <td><a href="check_approved.php?id=<?php echo $row->files_id; ?>" class="btn btn-success btn-xs"
                     title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
                       class='glyphicon glyphicon-ok'></i> Approve</a></td>
                
@@ -352,7 +352,7 @@ $i = 1;
                         <td><?php echo $row->advisergroup_topic; ?></td>
                         <td><?php echo get_member_list($row->group_id); ?></td>
 
-                        <td><a href="officer/check_pf05.php?id=<?php echo $row->files_id; ?>"
+                        <td><a href="check_pf05.php?id=<?php echo $row->files_id; ?>"
                             title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
                               class="fa fa-check" aria-hidden="true"></i> </a>
 </td>
@@ -427,7 +427,7 @@ $i = 1;
                         <td><?php echo $row->advisergroup_topic; ?></td>
                         <td><?php echo get_member_list($row->group_id); ?></td>
 
-                        <td><a href="officer/check_pf09.php?id=<?php echo $row->files_id; ?>"
+                        <td><a href="check_pf09.php?id=<?php echo $row->files_id; ?>"
                             title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
                               class="fa fa-check" aria-hidden="true"></i> </a>
 
