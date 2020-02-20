@@ -157,13 +157,13 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="create_proposal.php" class="nav-link">
+                <a href="../admin/add_schedule_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create Proposal Schedule</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="tables/data.html" class="nav-link">
+                <a href="../admin/add_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create Project Schedule</p>
                 </a>
@@ -183,19 +183,19 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="create_proposal.php" class="nav-link">
+                <a href="../admin/student_track.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Track</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="tables/data.html" class="nav-link">
+                <a href="../admin/add_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Student project proposal</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="tables/jsgrid.html" class="nav-link">
+                <a href="../admin/view_all_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
                 </a>
@@ -214,7 +214,7 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="display_schedule_proposal.php" class="nav-link">
+                <a href="../admin/add_announcement.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Annoucements</p>
                 </a>
@@ -224,7 +224,7 @@ to get the desired effect
           </li>
 
       <li class="nav-item">
-            <a href="../schedule.php" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
                 course syllabus

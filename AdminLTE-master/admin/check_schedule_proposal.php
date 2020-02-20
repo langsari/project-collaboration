@@ -1,11 +1,8 @@
 <?php
 session_start();
+require '../menu/connect.php';
 
-
-
-   require '../menu/connect.php';
-
- $schedule_topic=$_POST['schedule_topic'];
+$schedule_topic=$_POST['schedule_topic'];
 $schedule_type=$_POST['schedule_type'];
 $schedule_time=$_POST['schedule_time'];
 $schedule_date=$_POST['schedule_date'];
