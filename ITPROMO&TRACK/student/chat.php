@@ -54,13 +54,20 @@
                     <div class="card-block">
 
                       <h6 class="card-title text-bold">Comments</h6></b>
-                      <?php
+  
+
+  <?php
             $g_id = get_group_id();
               $ag_id = get_ag_id($g_id);
               
 
-    $strSQL = "SELECT advisergroup.*,  advisergroup.group_id,chat.chat_massage,chat.chat_date_time,chat.member_id,member.member_fullname FROM advisergroup
-          LEFT JOIN chat ON advisergroup.advisergroup_id = chat.advisergroup_id
+    $strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,comment.com_content,comment.com_date,comment.member_id,member.member_fullname FROM advisergroup
+          LEFT JOIN comment ON advisergroup.advisergroup_id = comment.advisergroup_id
+
+          LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+
+
+
         LEFT JOIN member ON advisergroup.member_id = member.member_id 
         WHERE advisergroup.advisergroup_id = '$ag_id'";                 
      if($result = $db->query($strSQL)){
@@ -81,17 +88,17 @@
 
                             </br><b>
                               <font color="blue" size="3">
-                                <?php echo $objResult->member_id; ?>
+                                <?php echo $objResult->member_fullname; ?>
                               </font> </br>
                             </b>
 
 
 
-                            &nbsp;&nbsp; <?php echo $objResult->chat_massage;?></br>
+                            &nbsp;&nbsp; <?php echo $objResult->com_content;?></br>
 
 
 
-                            &nbsp;&nbsp;&nbsp; <?php echo $objResult->chat_date_time;?></br>
+                            &nbsp;&nbsp;&nbsp; <?php echo $objResult->com_date;?></br>
 
 
 

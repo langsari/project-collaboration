@@ -246,6 +246,26 @@ require 'connect.php';
 }
 
 
+//Get group ID from mb_id as Student
+function get_student(){
+
+require 'connect.php';
+	$member_id = $_SESSION['id'];
+
+	$sql = "SELECT member_fullname FROM member WHERE member_id = '$member_id' AND member_pos = 'Student'";
+
+	if($rs = $db->query($sql)){
+		if($row = $rs->fetch_object()){
+			return $row->member_fullname;
+		}
+		$db->close();
+	}else{
+		echo $db->error;
+		$db->close();
+	}
+}
+
+
 
 
 //Get group ID from mb_id as Student
