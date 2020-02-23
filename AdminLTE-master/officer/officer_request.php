@@ -271,8 +271,17 @@ $i = 1;
                 <td><?php echo $row->advisergroup_topic; ?></td>
 
 
-                <td><a href="student/download.php?pdf=<?php echo $row->files_filename_proposal ;?>"><i
-                      class="fa fa-download"></i></a></td>
+              <td>
+<?php if( $row->files_filename_proposal != ""){ ?>
+                      <a href="download.php?pdf=<?php echo $row->files_filename_proposal ;?>">
+                      <span class='badge badge-primary'><i class="fa fa-download">Download 
+                           </i></a></span>
+                       </a>
+ <?php }else{?>
+                    <a href="#"> <button class="btn btn-danger btn-xs">
+                        <i class="glyphicon glyphicon-remove"> No file </i></button></a>
+                    <?php } ?>
+                              </td>
 
                 <td><a href="check_approved.php?id=<?php echo $row->files_id; ?>" class="btn btn-success btn-xs"
                     title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i

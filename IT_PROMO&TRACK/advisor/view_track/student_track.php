@@ -77,8 +77,9 @@ $my_id = $_SESSION['id'];
             <thead>
               <tr>
               <th>#</th>
+               <th>Student</th>
                 <th>Title project</th>
-                <th>Student</th>
+               
                 <th>Status</th>
                 <th></th>
 

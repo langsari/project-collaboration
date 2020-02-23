@@ -127,7 +127,7 @@ to get the desired effect
                 </a>
               </li>
               <li class="nav-item">
-                <a href="student_Track.php" class="nav-link">
+       <a href="../view track/student_track.php" class="nav-link" >
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Track</p>
                 </a>
@@ -392,8 +392,18 @@ $my_id = $_SESSION['id'];
                     <td>
                       <h6> <span class="badge badge-danger"><?php echo $row->files_status; ?></span>
                     </td>
-                    <td><a href="student/download.php?pdf=<?php echo $row->files_filename_proposal ;?>"><i
-                          class="fa fa-download"></i></a></td>
+                   <td>
+<?php if( $row->files_filename_proposal != ""){ ?>
+                      <a href="download.php?pdf=<?php echo $row->files_filename_proposal ;?>">
+                      <span class='badge badge-primary'><i class="fa fa-download">Download 
+                           </i></a></span>
+                       </a>
+ <?php }else{?>
+                    <a href="#"> <button class="btn btn-danger btn-xs">
+                        <i class="glyphicon glyphicon-remove"> No file </i></button></a>
+                    <?php } ?>
+                              </td>
+
 
                     <td><a href="check_topic.php?id=<?php echo $row->files_id; ?>"
                         class="btn btn-success btn-xs" title="Comfirm"
