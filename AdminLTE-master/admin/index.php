@@ -159,13 +159,13 @@ to get the desired effect
               <li class="nav-item">
                 <a href="../admin/add_schedule_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Proposal Schedule</p>
+                  <p>Proposal Schedule</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../admin/add_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Project Schedule</p>
+                  <p>Project Schedule</p>
                 </a>
               </li>
             </ul>
@@ -258,8 +258,6 @@ to get the desired effect
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
-    <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
@@ -270,7 +268,7 @@ to get the desired effect
               <div class="inner">
 
                 
-                	<?php
+                  <?php
               $con = mysqli_connect('localhost','root','','itpromo_track');
 
                 $query="SELECT member_id FROM member ORDER BY  member_id";
@@ -337,45 +335,22 @@ to get the desired effect
           </div>
           <!-- ./col -->
         </div>
-        <!-- /.row -->
-        <!-- Main row -->
-        <div class="row">
-          <!-- Left col -->
-          <section class="col-lg-12 connectedSortable">
-            <!-- Custom tabs (Charts with tabs)-->
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <i class="fas fa-chart-pie mr-1"></i>
-                  Sales
-                </h3>
-                <div class="card-tools">
-                  <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                    </li>
-                  </ul>
-                </div>
-              </div><!-- /.card-header -->
+          </section>
 
-              <div class="card-body">
-                <div class="tab-content p-0">
-                  <!-- Morris chart - Sales -->
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">
+            <i class="fas fa-edit"></i>
+              Workload</h3>
+          </div> <!-- /.card-body -->
+          <div class="card-body">
 
-                  
-
-               
-          
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head>
-    <title></title>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.js"></script>
-
-    <script type="text/javascript">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.js"></script>
+  <script type="text/javascript">
         $(document).ready(function () {
 
             $.getJSON("get_data.php", function (result) {
@@ -383,7 +358,7 @@ to get the desired effect
           var chart = new CanvasJS.Chart("chartContainer", {
     animationEnabled: true,
     title:{
-        text: "Project Owner"
+        text: "Project Monitoring"
     },
     axisY: {  
         title: "Forms",
@@ -404,53 +379,144 @@ to get the desired effect
             });
         });
     </script>
-</head>
-<body>
 
-    <div id="chartContainer" style="height: 300px; width: 90%;"></div>
+    <div class="body">
+      <div id="chartContainer" style="height: 300px; width: 90%;"></div>
+    </div>
 
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-                                         
-                  </div>  
-                </div>
-              </div><!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-
-            <!-- /.card -->
-          </section>
-          <!-- /.Left col -->
-          <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          <section class="col-lg-5 connectedSortable">
-
-            <!-- /.card -->
-          </section>
-          <!-- right col -->
+            
+          </div><!-- /.card-body -->
         </div>
-        <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+
+      <section class="content">
+      <div class="container-fluid">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">Icons</h3>
+          </div> <!-- /.card-body -->
+          <div class="card-body">
+            <p>You can use any font library you like with AdminLTE 3.</p>
+            <strong>Recommendations</strong>
+            <div>
+              <a href="https://fontawesome.com/">Font Awesome</a><br>
+              <a href="https://useiconic.com/open/">Iconic Icons</a><br>
+              <a href="http://ionicons.com/">Ion Icons</a><br>
+            </div>
+          </div><!-- /.card-body -->
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header border-0">
+                <div class="d-flex justify-content-between">
+                  <h3 class="card-title">Online Store Visitors</h3>
+                  <a href="javascript:void(0);">View Report</a>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="d-flex">
+                  <p class="d-flex flex-column">
+                    <span class="text-bold text-lg">820</span>
+                    <span>Visitors Over Time</span>
+                  </p>
+                  <p class="ml-auto d-flex flex-column text-right">
+                    <span class="text-success">
+                      <i class="fas fa-arrow-up"></i> 12.5%
+                    </span>
+                    <span class="text-muted">Since last week</span>
+                  </p>
+                </div>
+                <!-- /.d-flex -->
+
+                <div class="position-relative mb-4">
+                  <canvas id="visitors-chart" height="200"></canvas>
+                </div>
+
+                <div class="d-flex flex-row justify-content-end">
+                  <span class="mr-2">
+                    <i class="fas fa-square text-primary"></i> This Week
+                  </span>
+
+                  <span>
+                    <i class="fas fa-square text-gray"></i> Last Week
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.col-md-6 -->
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header border-0">
+                <div class="d-flex justify-content-between">
+                  <h3 class="card-title">Sales</h3>
+                  <a href="javascript:void(0);">View Report</a>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="d-flex">
+                  <p class="d-flex flex-column">
+                    <span class="text-bold text-lg">$18,230.00</span>
+                    <span>Sales Over Time</span>
+                  </p>
+                  <p class="ml-auto d-flex flex-column text-right">
+                    <span class="text-success">
+                      <i class="fas fa-arrow-up"></i> 33.1%
+                    </span>
+                    <span class="text-muted">Since last month</span>
+                  </p>
+                </div>
+                <!-- /.d-flex -->
+
+                <div class="position-relative mb-4">
+                  <canvas id="sales-chart" height="200"></canvas>
+                </div>
+
+                <div class="d-flex flex-row justify-content-end">
+                  <span class="mr-2">
+                    <i class="fas fa-square text-primary"></i> This year
+                  </span>
+
+                  <span>
+                    <i class="fas fa-square text-gray"></i> Last year
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.col-md-6 -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+
+
+
   </div>
 
+
+
+
+
+
+
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
+ <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.0.3-pre
     </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
   </footer>
 
   <!-- Control Sidebar -->
@@ -469,7 +535,7 @@ include '../notification/notification.php';
 ?>
  <!--end for include message  -->
 
-
+<!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

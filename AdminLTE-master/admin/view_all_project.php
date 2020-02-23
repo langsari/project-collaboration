@@ -1,38 +1,3 @@
-<script type="text/javascript">
-  function confirm_removecommittee() {
-    var x = confirm("Are you sure?");
-    if (x) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-
-
-  //Add committeee function
-  function add_committee(group_id) {
-    $('#group_id3').val(group_id);
-
-    $.ajax({
-      url: '../admin/get_committee.php',
-      dataType: 'JSON',
-      success: function (data) {
-        $('#select_committee').html(null);
-        var rows = "<option value='no'>- Select Committee -</option>";
-        $.each(data, function (i, o) {
-          rows += "<option value='" + o.member_id + "'>" + o.member_fullname + "</option>";
-        });
-        $('#select_committee').append(rows);
-      },
-      error: function (request, error) {
-        console.log(error);
-        console.log(arguments);
-      }
-    });
-  }
-</script>
-
 <?php
 session_start();
 require '../menu/connect.php';
@@ -47,7 +12,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>ITPROMO</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -89,7 +54,8 @@ include('../menu/function.php');
         </div>
       </div>
     </form>
-<!-- Right navbar links -->
+
+    <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
@@ -103,7 +69,6 @@ include('../menu/function.php');
     </ul>
   </nav>
   <!-- /.navbar -->
-
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -126,14 +91,14 @@ include('../menu/function.php');
         </div>
       </div>
 
-      <!-- Sidebar Menu -->
+<!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-                   <li class="nav-item has-treeview menu-open">
-            <a href="../admin/index.php" class="nav-link ">
+          <li class="nav-item has-treeview">
+            <a href="index.php" class="nav-link">
              
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -142,9 +107,9 @@ include('../menu/function.php');
               </p>
             </a>
           </li>
-
-         <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+         
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fa fa-users"></i>
               <p>
                 Manage User
@@ -153,26 +118,27 @@ include('../menu/function.php');
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../admin/accept_member.php" class="nav-link">
+                <a href="../admin/accept_member.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>User Request</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../admin/choose_committee.php" class="nav-link active">
+                <a href="../admin/choose_committee.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Choose Committee</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../admin/all_member.php" class="nav-link">
+                <a href="../admin/all_member.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View All Users</p>
                 </a>
               </li>
             </ul>
           </li>
-
+        
+        
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
@@ -199,8 +165,8 @@ include('../menu/function.php');
     
 
   
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Projects
@@ -221,7 +187,7 @@ include('../menu/function.php');
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../admin/view_all_project.php" class="nav-link">
+                <a href="../admin/view_all_project.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
                 </a>
@@ -240,7 +206,7 @@ include('../menu/function.php');
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="display_schedule_proposal.php" class="nav-link">
+                <a href="../admin/add_announcement.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Annoucements</p>
                 </a>
@@ -250,7 +216,7 @@ include('../menu/function.php');
           </li>
 
       <li class="nav-item">
-            <a href="../schedule.php" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
                 course syllabus
@@ -276,71 +242,65 @@ include('../menu/function.php');
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../admin/index.php">Home</a></li>
-              <li class="breadcrumb-item active">Choose Committee</li>
+              <li class="breadcrumb-item active">View all Projects</li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
-    <!-- Main content -->
+   <!-- Main content -->
     <section class="content">
       <div class="row">
         <div class="col-12">
           <div class="card card-primary card-outline">
             <div class="card-header">
                <h3 class="card-title">
-                  <i class="fas fa-edit"></i>
-                  Choose Committee to student
+                  
                 </h3>
         
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
-                <thead align="center">
-                  <tr>
-                      <th>No</th>
-                      <th>Project ID</th>
-                      <th>Owner</th>
-                      <th>Project Topic</th>
-                      <th>Advisor</th>
-                      <th>Committee</th>
-                      <th>Action</th>
-                     </tr>
+                <thead>
+                  <tr align="center">
+                  <th>No</th>   
+                  <th>GroupID</th>
+                  <th>Owner</th>
+                  <th>Topic</th>
+                  <th>Abstrack</th>
+                  <th>Keyword</th>
+                  <th>Field </th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
                   </thead>
                   <tbody align="center">
-  <?php
+        <?php
 
-  $sql = "SELECT advisergroup.*,  files.files_status,files.pf,files.files_id,files.files_filename_proposal,files.by_officer,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id FROM advisergroup
+       $strSQL = "SELECT * FROM topic_project";
+        
+        ?>
+        <?php
+     if($result = $db->query($strSQL)){
+             while($objResult = $result->fetch_object()){
+            ?>
+                    <td class="text-left"><?php echo $objResult->topic_id; ?></td>
+                    <td class="text-left"><?php echo $objResult->group_number; ?></td>
+                    <td class="text-left"><?php echo substr($objResult->Owner, 0, 50); ?></td>
+                    <td class="text-left"><?php echo $objResult->topic_topic; ?></td>
+                    <td class="text-left"><?php echo substr($objResult->topic_abstrack, 0, 30); ?></td>
+                    <td class="text-left"><?php echo $objResult->topic_keyword; ?></td>
+                    <td class="text-left"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
+                    <td class="text-left"><?php echo get_status_project($objResult->status); ?></td>
+                  <td>
+                    <button type="button" class="btn btn-primary btn-sm view_data" name="view" value="view" id="<?php echo $objResult->topic_id; ?>">View
+                    <i class="fa fa-eye"></i></button>
 
-           LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
 
-          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
-        WHERE advisergroup.group_id AND files.by_officer = 'Approve' 
-               ";
-
-              if($rs = $db->query($sql)){
-                while($row = $rs->fetch_object()){
-              ?>
-                  <tr>
-                  
-                    <td class="text-left"><?php echo $row->files_id; ?></td>
-                    <td class="text-left"><?php echo $row->group_number; ?></td>
-                    <td class="text-left"><?php echo get_member_list($row->group_id); ?></td>
-                    <td class="text-left"><?php echo get_topic($row->group_id); ?></td>
-                    <td class="text-left"><?php echo get_advisor($row->group_id); ?></td>
-
-                    <td class="text-left"><?php echo get_committee($row->group_id); ?></span> </td>
-
-                    <td class="text-left">
-
-                      <button type="button" class="btn btn-info btn-sm"
-                        onclick="add_committee('<?php echo $row->group_id; ?>')" data-toggle="modal"
-                        data-target="#add_committee"><i class="fa fa-user-plus"></i> Add </button>
-                    </td>
-                  </tr>
-
+                  </td>
+                </tr>
             <?php
               }
                }
@@ -361,71 +321,24 @@ include('../menu/function.php');
   <!-- /.content-wrapper -->
 
 
-<!-- add committee section 
-      <!- Modal --
-      <div class="modal fade" id="add_committee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog modal-sm" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                  aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel"><i class="fa fa-user-plus"></i> Add Committee</h4>
-            </div>
-            <div class="modal-body">
-              <form class="form" method="post" action="admin/check_committee.php">
-                <label>Committee</label>
-                <select class="form-control" id="select_committee" name="committee">
-                  <!- jQuery Ajax will render HTML here --
-                </select>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal"><i
-                  class="glyphicon glyphicon-remove"></i> Close</button>
-              <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Save</button>
-            </div>
-            <input type="hidden" name="group_id" id="group_id3">
-            </form>
+
+  <div id="dataModal" class="modal fade">
+          <div class="modal-dialog modal-lg">
+               <div class="modal-content">
+                    <div class="modal-header bg-info">
+                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                         <h5 class="modal-title"> Details</h5>
+                    </div>
+                    <div class="modal-body" id="employee_detail">
+                    </div>
+                    <div class="modal-footer">
+                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+               </div>
           </div>
-        </div>
-      </div> -->
+     </div>
 
-
-      <div class="modal fade" id="add_committee">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Add Committee</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              
-    <form class="form" method="post" action="../admin/check_committee.php">
-      <div class="user-details">
-        <div class="form-group">
-          <label>Committee</label>
-        <select class="form-control" id="select_committee" name="committee">
-                  <!-- jQuery Ajax will render HTML here -->
-        </select>
-       </div>
-       
-      </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times "></i> Close</button>
-              <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Save</button>
-            </div>
-            <input type="hidden" name="group_id" id="group_id3">
-
-            </form>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-    </div>
-
-
+  
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
@@ -443,6 +356,7 @@ include('../menu/function.php');
 </div>
 <!-- ./wrapper -->
 
+
 <!--include message  -->
 
 <?php
@@ -450,6 +364,7 @@ include('../menu/function.php');
 include '../notification/notification.php';
 ?>
  <!--end for include message  -->
+
 
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
@@ -477,6 +392,25 @@ include '../notification/notification.php';
       "autoWidth": false,
     });
   });
+
+  $(document).on('click', '.view_data', function () {
+               var id = $(this).attr("id");
+               if (id != '') {
+                    $.ajax({
+                         url: "../admin/get_proposal_project.php",
+                         type: "POST",
+                         data: {
+                              id: id
+                         },
+                         success: function (data) {
+                              $('#employee_detail').html(data);
+                              $('#dataModal').modal('show');
+                         }
+                    });
+               }
+          });
 </script>
+
+
 </body>
 </html>

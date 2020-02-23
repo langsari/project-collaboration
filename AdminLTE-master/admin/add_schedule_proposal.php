@@ -138,7 +138,7 @@ include('../menu/function.php');
             </ul>
           </li>
 
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
@@ -150,13 +150,13 @@ include('../menu/function.php');
               <li class="nav-item">
                 <a href="../admin/add_schedule_proposal.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Proposal Schedule</p>
+                  <p>Proposal Schedule</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../admin/add_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Project Schedule</p>
+                  <p>Project Schedule</p>
                 </a>
               </li>
             </ul>

@@ -24,6 +24,9 @@ include('../menu/function.php');
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
    <!-- DataTables -->
   <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+  <!-- plugin text -->
+  <script type="text/javascript" src="../assets/ckeditor/ckeditor.js"></script>
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -97,7 +100,7 @@ include('../menu/function.php');
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-                   <li class="nav-item has-treeview menu-open">
+            <li class="nav-item has-treeview menu-open">
             <a href="../admin/index.php" class="nav-link ">
              
               <i class="nav-icon fas fa-tachometer-alt"></i>
