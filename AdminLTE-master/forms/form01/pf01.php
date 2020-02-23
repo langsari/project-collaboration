@@ -405,7 +405,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
                           <td>
 <?php if( $objResult->files_filename_proposal != ""){ ?>
-                      
+                      <a href="download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>">
                             <input type="button" class="btn btn-success" value="Download">
 
  <?php }else{?>
