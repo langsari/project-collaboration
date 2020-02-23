@@ -1,11 +1,9 @@
 <?php
 session_start();
-
 require '../../menu/connect.php';
 include('../../menu/function.php');
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,9 +44,8 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+ 
     </ul>
-
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -56,7 +53,7 @@ to get the desired effect
       <li class="nav-item dropdown">
               <li class="nav-item d-none d-sm-inline-block">
         <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../auth/logout.php" class="nav-link">Logout</a>
+        <a href="../auth/logout.php" class="nav-link">Logout</a>
       </li>
       </li>
      
@@ -68,7 +65,7 @@ to get the desired effect
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../student/index.php" class="brand-link">
+    <a href="index.php" class="brand-link">
       <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ITPROMO</span>
@@ -92,9 +89,9 @@ to get the desired effect
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-                   <li class="nav-item has-treeview ">
-            <a href="../../student/index.php" class="nav-link ">
 
+
+            <a href="infor_group.php" class="nav-link ">
              
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -105,18 +102,17 @@ to get the desired effect
           </li>
 
          <li class="nav-item">
-            <a href="../../student/infor_group.php" class="nav-link">
+            <a href="infor_group.php" class="nav-link ">
               <i class="nav-icon fa fa-group"></i>
               <p>
        Group Information              </p>
             </a>
           </li>
     
- 
-  
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-book"></i>
+
+   <li class="nav-item has-treeview ">
+            <a href="#" class="nav-link active ">
+              <i class="nav-icon fas fa-table"></i>
               <p>
                 Projects
                 <i class="fas fa-angle-left right"></i>
@@ -124,19 +120,19 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../student/create_proposal.php" class="nav-link">
+                <a href="create_proposal.php" class="nav-link " >
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Proposal</p>
                 </a>
               </li>
               <li class="nav-item">
-      <a href="../form01/pf01.php" class="nav-link active">
-                   <i class="far fa-circle nav-icon"></i>
+                <a href="forms/form01/pf01.php" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
                   <p>Project Track</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../../student/proposal_project.php" class="nav-link">
+             <li class="nav-item">
+                <a href="proposal_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
                 </a>
@@ -155,13 +151,13 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../student/display_schedule_proposal.php" class="nav-link">
+                <a href="display_schedule_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Proposal Schedule</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../student/display_schedule_project.php" class="nav-link">
+                <a href="display_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Schedule</p>
                 </a>
@@ -181,13 +177,13 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../student/annouce.php" class="nav-link">
+                <a href="../Annoucement.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Annoucements</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../student/show_topic.php" class="nav-link">
+                <a href="show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Topic Require</p>
                 </a>
@@ -197,7 +193,7 @@ to get the desired effect
           </li>
 
   <li class="nav-item">
-            <a href="../../student/my_profile.php" class="nav-link">
+            <a href="my_profile.php" class="nav-link ">
               <i class="nav-icon fa fa-user"></i>
               <p>
                 Personal Information
@@ -209,7 +205,7 @@ to get the desired effect
 
 
           <li class="nav-item">
-            <a href="../../student/guide.php" class="nav-link">
+            <a href="guide.php" class="nav-link ">
               <i class="nav-icon fa fa-glide-g"></i>
               <p>
                 Guide
@@ -218,7 +214,7 @@ to get the desired effect
           </li>
 
                     <li class="nav-item">
-            <a href="../../student/course_syllabus.php" class="nav-link">
+            <a href="course_syllabus.php" class="nav-link ">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
                 course syllabus
@@ -227,7 +223,7 @@ to get the desired effect
           </li>
 
                     <li class="nav-item">
-            <a href="../../student/form.php" class="nav-link">
+            <a href="form.php" class="nav-link">
               <i class="nav-icon fa fa-edit"></i>
               <p>
                 Forms
@@ -237,7 +233,7 @@ to get the desired effect
 
 
   <li class="nav-item">
-            <a href="../../student/booked.php" class="nav-link">
+            <a href="booked.php" class="nav-link ">
               <i class="nav-icon fa fa-book"></i>
               <p>
                 Books
@@ -295,9 +291,7 @@ to get the desired effect
 
       
         <div class="form-wizard">
-          <form action="check_pf1.php" method="post"  class="form-horizontal" enctype="multipart/form-data">
-
-             
+          <form action="" method="post" role="form">
             <div class="form-wizard-header">
               <ul class="list-unstyled form-wizard-steps clearfix">
                 <li class="active" ><span>1</span></li>
@@ -324,6 +318,7 @@ $g_id = get_group_id();
 $ag_id = get_ag_id($g_id);
 $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
 LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+
 LEFT JOIN member ON advisergroup.member_id = member.member_id
 WHERE advisergroup.advisergroup_id = '$ag_id'  ";             
 
@@ -380,18 +375,13 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
                           <!--get Topic   -->
 
-                           <td class="hidden"> 3 chapter of Proposal
+                          <td> 3 chapter of Proposal
 
                             <input type="file" name="files_filename_proposal" id="files_filename_proposal"
                               required="required" />
 
+                       <input type="submit" name="button" id="button" value="Upload" />
 
-                      <?php if ($objResult->files_filename_proposal != "") {?>
-                        <button class="btn btn-warning disabled" disabled="disabled">Upload</button> 
-
-                      <?php }else{?>
-                      <button type="submit" class="btn btn-primary" >Upload</button>
-                       <?php }?>
 
                           </td>
                           <td>
@@ -399,20 +389,10 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                             <?php echo status_01_file($objResult->files_status); ?>
                           </td>
 
-  
-                
 
+                          <td><a href="form01/download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>"><i
+                                class="fa fa-download"></i></a></td>
 
-                          <td>
-<?php if( $objResult->files_filename_proposal != ""){ ?>
-                      <a href="download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>">
-                        <span class='badge badge-primary btn-lg'><i class="fa fa-download">Download 
-                          <?php echo $objResult->files_filename_proposal ?> </i></a></span>
- <?php }else{?>
-                    <a href="#"> <button class="btn btn-danger btn-xs">
-                        <i class="glyphicon glyphicon-remove"> No file </i></button></a>
-                    <?php } ?>
-                              </td>
                         </tr>
                       </tbody>
                     </table>
@@ -426,21 +406,28 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
                   </div>
                 </div>
-              </fieldset>
-            </fieldset>
-          </form>
+              
 
-      
+              <h7><font color='red'>*** Note
+              </br>  Student have to upload file of 3 chapter of Proposal
+              </br>  Adviser, Waiting advisor Approve your proposal 
+              </font>
+              
             <?php
                  } }
                    ?>
 
               <div class="form-group clearfix">
-
                 <a href="../form02/pf02.php" class="form-wizard-next-btn float-right">Next</a>
 
               </div>
+            </fieldset> 
           
+           
+              </div>
+            
+            </fieldset> 
+          </form>
         </div>
       </div>
     </div>
@@ -448,113 +435,6 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
     <!-- /.content -->
  
-
-
-   <link rel="stylesheet" href="../../assets/comment/style.css">
-
-   <div class="comments-app"  ng-controller="CommentsController as cmntCtrl">
-
-  
-  <!-- From -->
-  <div class="comment-form">
-    <!-- Comment Avatar -->
-    <div class="comment-avatar">
-         <img src="../../dist/img/user1.png" >  
-    </div>
-
-    <form method="post" action="check_comment.php" class="form" name="form" ng-submit="form.$valid && cmntCtrl.addComment()" >
-
-      <div class="form-row">
-        <textarea
-                  class="input"
-                 name="com_content" id="com_content"
-                  placeholder="Add comment..." class="form-control"
-                  required></textarea>
-
-             
-      </div>
-
- <div class="col-md-9">
-                <select class="form-control" name="member_id" hidden="">
-
-                  <?php
-                include '../menu/connect.php';
-                $strSQL = "SELECT  member_fullname FROM member WHERE member_id ='".$_SESSION['id']."'";
-                if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-                    echo "<option value='".$objResult->member_fullname."'</option>";
-                  }
-                }else{
-                }
-                ?>
-                </select>
-
-              </div>
-
-     
-      <div class="form-row">
-        <input type="submit" value="Add Comment">
-      </div>
-    </form>
-  </div>
-
-
-
-  <?php
-            $g_id = get_group_id();
-              $ag_id = get_ag_id($g_id);
-              
-
-    $strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,comment.com_content,comment.com_date,comment.member_id,member.member_fullname FROM advisergroup
-          LEFT JOIN comment ON advisergroup.advisergroup_id = comment.advisergroup_id
-
-          LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
-
-
-
-        LEFT JOIN member ON advisergroup.member_id = member.member_id 
-        WHERE advisergroup.advisergroup_id = '$ag_id'";                 
-     if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-
-
-   ?>
-
-
-
-   <!-- Comment - Dummy -->
-    <div class="comment">
-      <!-- Comment Avatar -->
-      <div class="comment-avatar">
-         <img src="../../dist/img/user1.png" >  
-      </div>
-
-      <!-- Comment Box -->
-      <div class="comment-box">
-                <div class="comment-text"><b><?php echo $objResult->member_id;?></b></div>
-
-        <div class="comment-text"><?php echo $objResult->com_content;?></div>
-        <div class="comment-footer">
-          <div class="comment-info">
-            <span class="comment-author">
-                 Share by
-            </span>
-            <span class="comment-date"><?php echo $objResult->com_date;?></span>
-          </div>
-
-          <div class="comment-actions">
-            <a href="#">Reply</a>
-          </div>
-     
-        </div>
-      </div>
-    </div>      <?php
-                 }
-               }
-                   ?>
-  </div>
-</div>
-
 <!-- ./wrapper -->
 
 <!-- partial -->

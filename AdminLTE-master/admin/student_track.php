@@ -107,7 +107,7 @@ include('../menu/function.php');
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
+         
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link ">
               <i class="nav-icon fa fa-users"></i>
@@ -130,16 +130,15 @@ include('../menu/function.php');
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../admin/all_member.php" class="nav-link">
+                <a href="../admin/all_member.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View All Users</p>
                 </a>
               </li>
             </ul>
           </li>
-        </li>
-          
-    
+        
+        
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
@@ -150,13 +149,13 @@ include('../menu/function.php');
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="create_proposal.php" class="nav-link">
+                <a href="../admin/add_schedule_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Proposal Schedule</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="tables/data.html" class="nav-link">
+                <a href="../admin/add_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Schedule</p>
                 </a>
@@ -188,7 +187,7 @@ include('../menu/function.php');
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../admin/view_all_project.php" class="nav-link">
+                <a href="../admin/view_all_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
                 </a>
@@ -284,7 +283,7 @@ include('../menu/function.php');
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.member_id   ";
+        WHERE advisergroup.member_id ";
 
         ?>
         <?php
@@ -303,11 +302,9 @@ include('../menu/function.php');
                               57% Complete
                           </small>
                       </td>
-                  <!--<td>
-                  <a href="?page=accept&id=<?php echo $objResult->member_id;?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
-                  </td>-->
-                  <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editPS" onclick="edit_ps(<?php echo $objResult->advisergroup_id; ?>)"><i class="fa fa-edit"></i> View Track</button>
-                </td>
+                  <td>
+                  <a href="../admin/forms/form01/pf01.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
+                  </td>
 
 
                 </tr>
@@ -329,6 +326,13 @@ include('../menu/function.php');
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+
+  <link rel="stylesheet" href="asset/css/style.css">
+
+<!-- Modal -->
+
 
 
   <footer class="main-footer">

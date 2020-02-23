@@ -1,10 +1,9 @@
 <?php
 session_start();
 
-require '../../menu/connect.php';
-include('../../menu/function.php');
+require '../../../menu/connect.php';
+include('../../../menu/function.php');
 ?>
-
 
 
 <!DOCTYPE html>
@@ -17,15 +16,15 @@ include('../../menu/function.php');
   <title>AdminLTE 3 | Dashboard 3</title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="style.css">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
   <!-- IonIcons -->
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
    <!-- DataTables -->
-  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="../../../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -69,7 +68,7 @@ to get the desired effect
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="../../student/index.php" class="brand-link">
-      <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="../../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ITPROMO</span>
     </a>
@@ -79,7 +78,7 @@ to get the desired effect
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../../dist/img/user1.png" class="img-circle elevation-2" alt="User Image">
+          <img src="../../../dist/img/user1.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block"><?php echo $_SESSION['name']; ?></a>
@@ -92,9 +91,8 @@ to get the desired effect
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-                   <li class="nav-item has-treeview ">
-            <a href="../../student/index.php" class="nav-link ">
-
+                   <li class="nav-item has-treeview">
+            <a href="../../../admin/index.php" class="nav-link">
              
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -103,18 +101,65 @@ to get the desired effect
               </p>
             </a>
           </li>
-
-         <li class="nav-item">
-            <a href="../../student/infor_group.php" class="nav-link">
-              <i class="nav-icon fa fa-group"></i>
+         
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fa fa-users"></i>
               <p>
-       Group Information              </p>
+                Manage User
+                <i class="fas fa-angle-left right"></i>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../../../admin/accept_member.php" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>User Request</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../../../admin/choose_committee.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Choose Committee</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../../../admin/all_member.php" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View All Users</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        
+        
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-calendar"></i>
+              <p>
+                Manage Schedule 
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../../../admin/add_schedule_proposal.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Proposal Schedule</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../../../admin/add_schedule_project.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Project Schedule</p>
+                </a>
+              </li>
+            </ul>
           </li>
     
- 
+
   
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>
               <p>
@@ -124,19 +169,19 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../student/create_proposal.php" class="nav-link">
+                <a href="../../../admin/student_track.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add Proposal</p>
-                </a>
-              </li>
-              <li class="nav-item">
-      <a href="../form01/pf01.php" class="nav-link active">
-                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Track</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../student/proposal_project.php" class="nav-link">
+                <a href="../../../admin/add_proposal.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Student project proposal</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../../../admin/view_all_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
                 </a>
@@ -149,98 +194,26 @@ to get the desired effect
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
-                Schedule
+                Manage Annoucements
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../student/display_schedule_proposal.php" class="nav-link">
+                <a href="../../../admin/add_announcement.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Proposal Schedule</p>
+                  <p>Add Annoucements</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../../student/display_schedule_project.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Schedule</p>
-                </a>
-              </li>
-              
+             
             </ul>
           </li>
 
-
-  <li class="nav-item has-treeview">
+      <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-newspaper"></i>
-              <p>
-                News
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../../student/annouce.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Annoucements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../student/show_topic.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Topic Require</p>
-                </a>
-              </li>
-              
-            </ul>
-          </li>
-
-  <li class="nav-item">
-            <a href="../../student/my_profile.php" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
-              <p>
-                Personal Information
-              </p>
-            </a>
-          </li>
-    
-
-
-
-          <li class="nav-item">
-            <a href="../../student/guide.php" class="nav-link">
-              <i class="nav-icon fa fa-glide-g"></i>
-              <p>
-                Guide
-              </p>
-            </a>
-          </li>
-
-                    <li class="nav-item">
-            <a href="../../student/course_syllabus.php" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
                 course syllabus
-              </p>
-            </a>
-          </li>
-
-                    <li class="nav-item">
-            <a href="../../student/form.php" class="nav-link">
-              <i class="nav-icon fa fa-edit"></i>
-              <p>
-                Forms
-              </p>
-            </a>
-          </li>
-
-
-  <li class="nav-item">
-            <a href="../../student/booked.php" class="nav-link">
-              <i class="nav-icon fa fa-book"></i>
-              <p>
-                Books
               </p>
             </a>
           </li>
@@ -254,12 +227,7 @@ to get the desired effect
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-  
-
-  <!-- PAGE CONTENT -->
-
-        <section class="content-header">
+    <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -267,7 +235,7 @@ to get the desired effect
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active"> Track</li>
+              <li class="breadcrumb-item active"> Track Student Project</li>
             </ol>
           </div>
         </div>
@@ -278,17 +246,7 @@ to get the desired effect
       <div class="container-fluid">
         <div class="row">
      <div class="col-md-12 ">
-
-            <!-- Profile Image -->
-        
-            <div class="card card-primary card-outline">
-
-
-   
-
-
-
-
+    <div class="card card-primary card-outline">
 
 
 <!-- partial:index.partial.html -->
@@ -296,7 +254,6 @@ to get the desired effect
       
         <div class="form-wizard">
           <form action="check_pf1.php" method="post"  class="form-horizontal" enctype="multipart/form-data">
-
              
             <div class="form-wizard-header">
               <ul class="list-unstyled form-wizard-steps clearfix">
@@ -320,12 +277,11 @@ to get the desired effect
               <h5>PF01</h5>
             <?php
 
-$g_id = get_group_id();
-$ag_id = get_ag_id($g_id);
+$id=$_GET['id'];
 $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
 LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 LEFT JOIN member ON advisergroup.member_id = member.member_id
-WHERE advisergroup.advisergroup_id = '$ag_id'  ";             
+WHERE advisergroup.advisergroup_id = '$id'  ";             
 
 
               
@@ -385,13 +341,22 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                             <input type="file" name="files_filename_proposal" id="files_filename_proposal"
                               required="required" />
 
+                              <?php
+                              $x=($objResult->files_filename_proposal);
+                              if ($x>0) {
+                                $class="btn btn-warning disabled";
+                                $button="btn disabled";
+                              }else{
+                                $class="btn btn-info";
+                                $button="btn btn-primary";
+                              }
+                              ?>
 
-                      <?php if ($objResult->files_filename_proposal != "") {?>
-                        <button class="btn btn-warning disabled" disabled="disabled">Upload</button> 
+                          <button class="<?php echo $class; ?>"> Upload</button>
 
-                      <?php }else{?>
-                      <button type="submit" class="btn btn-primary" >Upload</button>
-                       <?php }?>
+                
+
+
 
                           </td>
                           <td>
@@ -406,7 +371,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                           <td>
 <?php if( $objResult->files_filename_proposal != ""){ ?>
                       <a href="download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>">
-                        <span class='badge badge-primary btn-lg'><i class="fa fa-download">Download 
+                        <span class='badge badge-primary'><i class="fa fa-download">Download 
                           <?php echo $objResult->files_filename_proposal ?> </i></a></span>
  <?php }else{?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
@@ -450,7 +415,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
  
 
 
-   <link rel="stylesheet" href="../../assets/comment/style.css">
+   <link rel="stylesheet" href="../../../assets/comment/style.css">
 
    <div class="comments-app"  ng-controller="CommentsController as cmntCtrl">
 
@@ -459,7 +424,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
   <div class="comment-form">
     <!-- Comment Avatar -->
     <div class="comment-avatar">
-         <img src="../../dist/img/user1.png" >  
+         <img src="../../../dist/img/user1.png" >  
     </div>
 
     <form method="post" action="check_comment.php" class="form" name="form" ng-submit="form.$valid && cmntCtrl.addComment()" >
@@ -526,7 +491,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
     <div class="comment">
       <!-- Comment Avatar -->
       <div class="comment-avatar">
-         <img src="../../dist/img/user1.png" >  
+         <img src="../../../dist/img/user1.png" >  
       </div>
 
       <!-- Comment Box -->
@@ -565,19 +530,19 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="../../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->
-<script src="../../dist/js/adminlte.js"></script>
+<script src="../../../dist/js/adminlte.js"></script>
 
 <!-- OPTIONAL SCRIPTS -->
-<script src="../../plugins/chart.js/Chart.min.js"></script>
-<script src="../../dist/js/demo.js"></script>
-<script src="../../dist/js/pages/dashboard3.js"></script>
+<script src="../../../plugins/chart.js/Chart.min.js"></script>
+<script src="../../../dist/js/demo.js"></script>
+<script src="../../../dist/js/pages/dashboard3.js"></script>
 <!-- DataTables -->
-<script src="../../plugins/datatables/jquery.dataTables.js"></script>
-<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="../../../plugins/datatables/jquery.dataTables.js"></script>
+<script src="../../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <script>
   $(function () {
     $("#example1").DataTable();
