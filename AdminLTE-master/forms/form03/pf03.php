@@ -314,13 +314,13 @@ to get the desired effect
             <fieldset class="wizard-fieldset show">
               <h5>PF03</h5>
             <?php
-$g_id = get_group_id();
-$ag_id = get_ag_id($g_id);
+               $id = $_GET['id'];
+
 $strSQL = "SELECT advisergroup.*,  files.by_officer,files.Owner,files.advisergroup_id,files.pf,files.status_advisor,files.files_filename_proposal,files.files_id,files.advisergroup_id FROM advisergroup
 LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
 LEFT JOIN member ON advisergroup.member_id = member.member_id
-WHERE advisergroup.advisergroup_id = '$ag_id'  ";             
+WHERE advisergroup.advisergroup_id = '$id'  ";             
       
      if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
@@ -391,17 +391,19 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
   <button type="submit" class="btn btn-success">
     <i class="glyphicon glyphicon-ok"></i> Upload</button>
 
-    <td>
+    
+                          <td>
 <?php if( $objResult->files_filename_proposal != ""){ ?>
                       <a href="../form01/download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>">
-                        <span class='badge badge-primary'><i class="fa fa-download">Download 
-                          <?php echo $objResult->files_filename_proposal ?> </i></a></span>
+                            <input type="button" class="btn btn-success" value="Download">
  <?php }else{?>
-                    <a href="#"> <button class="btn btn-danger btn-xs">
+                    <a href="#"> 
+
+
+                      <button class="btn btn-danger ">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
                     <?php } ?>
                               </td>
-
 </tr>
                       </tbody>
                     </table>
@@ -418,10 +420,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
               
 
            
-            <?php
-                 } }
-                   ?>
-
+   
             <div class="form-group clearfix">
 
                   <a href="../form02/pf02.php" class="form-wizard-previous-btn float-left">Previous</a>
@@ -431,7 +430,10 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
               </div>
             </fieldset> 
           
-           
+                    <?php
+                 } }
+                   ?>
+
               </div>
             
             </fieldset> 
