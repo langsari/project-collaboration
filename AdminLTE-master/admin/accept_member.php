@@ -302,8 +302,13 @@ include('../menu/function.php');
                  <td>
                   <a href="../admin/accept.php?id=<?php echo $objResult->member_id;?>"class="btn btn-primary btn-sm"> Detail <i class="fa fa-eye" title="Detail"></i></a>
 
-                  <a href="?page=accept&id=<?php echo $objResult->member_id;?>"class="btn btn-danger btn-sm">Delete
-                  <i class="fa fa-trash" title="Delete"></i></a>
+         
+
+
+    <a href="delete_approve.php?id=<?php echo $objResult->member_id;?>"class="btn btn-danger btn-sm" onclick="return confirm('Are You sure Delete?')">
+                  <i class="fa fa-trash" title="Delete">Delete</i></a>
+
+
                 </td>
                  
             </tr>

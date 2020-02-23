@@ -30,7 +30,7 @@ WHERE member_id = '$member_id'";
 if($db->query($sql)){
 		$db->close();
 
-			echo "<script>alert('Edit Success');window.location = \"my_profile.php\";</script>";
+			echo "<script>alert('Edit Success');window.location = \"all_member.php\";</script>";
 
 
 	}else{

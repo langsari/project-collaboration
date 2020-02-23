@@ -268,7 +268,6 @@ to get the desired effect
     </section>
 
   <!-- Main content -->
-   <form action="check_editprofile.php?id=<?php echo $_GET["id"];?>"name="submit" method="get"onsubmit="return checkForm()">
 
     <?php
    
@@ -296,7 +295,8 @@ to get the desired effect
                        alt="User profile picture">
                 </div>
 
-                
+                   <form class="form-horizontal" method="post" action="check_edit_profile.php">
+
       
       
               <!-- /.card-body -->
@@ -307,6 +307,7 @@ to get the desired effect
        
               <!-- /.card-header -->
               <div class="card-body">
+
                 <strong><i class="fas fa-book mr-1"></i> ID Card Student</strong>
 
                 <p class="text-muted">
@@ -340,17 +341,18 @@ to get the desired effect
 
  <input type="text" class="form-control" name="member_email" id="member_email"  value="<?php echo $objResult->member_email; ?>" >
 
+      
+
+
                                      <input type="hidden" name="member_id" value="<?php echo $objResult->member_id;?>"/>
 
 
 
 <br>
 
-
-    <button type="submit" class="btn btn-primary">
-                                     Submit
-                                     <i class="fa fa-arrow-right position-right"></i>
-                                 </button>
+     <button type="submit" class="btn btn-success"><i     class="glyphicon glyphicon-ok"></i>
+                                                                        Edit</button>
+    
                              </div>
                          </form>
               <!-- /.card-body -->

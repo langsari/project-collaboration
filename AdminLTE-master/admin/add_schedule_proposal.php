@@ -280,21 +280,22 @@ include('../menu/function.php');
                   <tbody align="center">
         <?php
 
-       $sql = "SELECT schedule.*, partnergroup.group_id,partnergroup.group_number,member.member_fullname,schedule.writer,schedule.group_id,advisergroup.group_id,advisergroup.advisergroup_topic FROM schedule
+       $sql = "SELECT schedule.*, partnergroup.group_id,partnergroup.group_number,member.member_fullname,schedule.writer,schedule.group_id,advisergroup.group_id,advisergroup.advisergroup_topic,schedule.schedule_id FROM schedule
                      LEFT JOIN advisergroup ON schedule.group_id = advisergroup.advisergroup_id
 
                    LEFT JOIN partnergroup ON schedule.group_id = partnergroup.group_id
                         LEFT JOIN member ON schedule.writer = member.member_id
                       WHERE   schedule.schedule_type ='1'
                         ORDER BY schedule.schedule_type";
-        
+          $i = 1;
+   $count = 1;
         ?>
         <?php
      if($result = $db->query($sql)){
              while($objResult = $result->fetch_object()){
             ?>
             <tr>
-                  <td ><?php echo $objResult->schedule_id; ?></td>
+                    <td class="text-left">   <?php echo $count++; ?></td>
                   <td class="text-left"><?php echo $objResult->advisergroup_topic; ?></td>
                   <td class="text-left"><?php echo $objResult->schedule_status ?></td>
                   <td class="text-left"><?php echo get_advisor($objResult->group_id); ?></td>
@@ -304,18 +305,88 @@ include('../menu/function.php');
                  
 
                   <td>
-                  <a href="..admin/check_delete.php?id=<?php echo $objResult->topic_id;?>" title="Confirm"
-                      onclick="return confirm('<?php echo $objResult->topic_topic;?>')" class="btn btn-warning btn-xs" > <i class="fa fa-edit" aria-hidden="true" title="Edit"></i></a>
 
-                  <a href="..admin/check_delete.php?id=<?php echo $objResult->topic_id;?>" title="Confirm"
-                      onclick="return confirm('<?php echo $objResult->topic_topic;?>')" class="btn btn-danger btn-xs" > <i class="fa fa-trash" aria-hidden="true" title="Delete"></i></a>
+
+            <button type="button" class="btn btn-warning btn-xs" data-toggle="modal"
+                       data-target="#editsub<?php echo $i; ?>">
+                                                  <i class="fa fa-edit" title="Edit"></i> </button>
+                    </center>
+                     <a href="delete_schedule_proposal.php?id=<?php echo $objResult->schedule_id;?>"class="btn btn-danger btn-xs">
+                  <i class="fa fa-trash" title="Delete"></i></a>
+                 
+
+
+ <div class="modal fade" id="editsub<?php echo $i; ?>" tabindex="-1" role="dialog"
+                                                aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
+                                                                Edit Schedule Proposal</h4>
+                                                        </div>
+                                              
+                                                <div class="modal-body">
+                       <form class="form-horizontal" method="post" action="check_edit_schedule_proposal.php">
+                        <input type="hidden" name="schedule_id" value="  <?php echo $objResult->schedule_id; ?>">
+                       <?php echo get_member_list($objResult->group_id); ?>                                   
+                                                             
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-2">Schedule Room</label>
+                                                                    <div class="col-md-8">
+                                                                        <input type="text" class="form-control" id="schedule_room"
+                                                                            name="schedule_room" value="  <?php echo $objResult->schedule_room; ?>">
+                                                                       </div>
+                                                                </div>
+                                                     
+
+
+                                                                    <label class="control-label col-md-2">Date</label>
+                                                                    <div class="col-md-7">
+                            
+ <textarea type="text" rows="6"   class="form-control" id="schedule_date"
+             name="schedule_date"> <?php echo $objResult->schedule_date; ?> </textarea>
+
+ 
+
+                                                                    </div>
+                                                               
+                                                     
+                                                                  
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-2">Status</label>
+                                                                    <div class="col-md-4">
+                                                                        <input type="text" class="form-control" name="schedule_status" id="schedule_status" value="<?php echo $objResult->schedule_status; ?>">
+
+
+
+                                                                         </div>
+                                                                </div>
+                                                     
+                                                                 
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default"
+                                                                        data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>
+                                                                        Cancle</button>
+                                                                    <button type="submit" class="btn btn-success"><i
+                                                                            class="glyphicon glyphicon-ok"></i>
+                                                                        Edit</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
 
                   </td>
                  
             </tr>
 
-            <?php
-              }
+
+                <?php
+                                    $i++;  
+    }
                }
                    ?>
                 

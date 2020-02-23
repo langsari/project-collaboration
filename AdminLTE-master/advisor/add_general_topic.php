@@ -266,8 +266,7 @@ to get the desired effect
     </section>
   <!-- Main content -->
     <section class="content">
-   
-        
+
           <div class="card">
             <div class="card-header">
                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addtopic"
@@ -298,7 +297,8 @@ to get the desired effect
          FROM news_topic,member 
          WHERE news_topic.member_id=member.member_id
          ORDER BY news_topic.news_id='".$_SESSION['id']."'";
-
+ $i = 1;
+   $count = 1;
          ?>
 
               <?php
@@ -308,7 +308,7 @@ to get the desired effect
 
                 
                     <tr>
-                    <td class="text-left"><?php echo $objResult->news_id; ?></td>
+                    <td class="text-left">   <?php echo $count++; ?></td>
                   <td class="text-left"><?php echo substr($objResult->news_topic, 0, 30); ?></td>
                   <td class="text-left"><?php echo substr($objResult->news_detail, 0, 30); ?></td>
 
@@ -319,17 +319,79 @@ to get the desired effect
 
                   <td>
 
-                    <button type="button" data-toggle="modal" data-target="#showtopic">
-                      <i class="fa fa-eye" aria-hidden="true"></i>
-                    </button>
+<button type="button" class="btn btn-warning btn-xs" data-toggle="modal"
+                                                    data-target="#editsub<?php echo $i; ?>">
+                                                  <i class="fa fa-edit" title="Edit"></i> </button></center>
 
-                    <button type="button" data-toggle="modal" data-target="#addtopic">
-                      <i class="fa fa-edit" aria-hidden="true"></i>
-                    </button>
+                  <a href="delete_news.php?id=<?php echo $objResult->news_id;?>"class="btn btn-danger btn-xs" onclick="return confirm('Are You sure Delete?')">
+                  <i class="fa fa-trash" title="Delete"></i></a>
 
-                    <button type="button" data-toggle="modal" data-target="#addtopic">
-                      <i class="fa fa-trash" aria-hidden="true"></i>
-                    </button>
+                   
+                           
+
+
+                    <!-- Modal -->
+                                            <div class="modal fade" id="editsub<?php echo $i; ?>" tabindex="-1" role="dialog"
+                                                aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
+                                                                Edit News</h4>
+                                                        </div>
+                                              
+                                                <div class="modal-body">
+                                                            <form class="form-horizontal" method="post" action="check_edit_news.php">
+                                                                <input type="hidden" name="news_id" value="  <?php echo $objResult->news_id; ?>">
+                                                            
+                                                             
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-2">Topic</label>
+                                                                    <div class="col-md-8">
+                                                                        <input type="text" class="form-control" id="news_topic"
+                                                                            name="news_topic" value="  <?php echo $objResult->news_topic; ?>">
+                                                                       </div>
+                                                                </div>
+                                                     
+
+
+                                                                    <label class="control-label col-md-2">Detail</label>
+                                                                    <div class="col-md-7">
+                            
+ <textarea type="text" rows="6"   class="form-control" id="news_detail"
+             name="news_detail"> <?php echo $objResult->news_detail; ?> </textarea>
+
+ 
+
+                                                                    </div>
+                                                               
+                                                     
+                                                                  
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-2">Date</label>
+                                                                    <div class="col-md-4">
+                                                                        <input type="text" class="form-control" name="news_date" id="news_date" value="<?php echo $objResult->news_date; ?>">
+
+
+
+                                                                         </div>
+                                                                </div>
+                                                     
+                                                                 
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default"
+                                                                        data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>
+                                                                        Cancle</button>
+                                                                    <button type="submit" class="btn btn-success"><i
+                                                                            class="glyphicon glyphicon-ok"></i>
+                                                                        Edit</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                   </td>
                
@@ -337,6 +399,7 @@ to get the desired effect
 
 
                                     <?php
+                                    $i++;  
     }
                }
                    ?>
@@ -366,6 +429,8 @@ to get the desired effect
       <!-- /.row -->
     </section>
     <!-- /.content -->
+
+
 
 
 
@@ -459,6 +524,10 @@ to get the desired effect
       </div>
     </div>
   </div>
+
+
+
+
 
 
 

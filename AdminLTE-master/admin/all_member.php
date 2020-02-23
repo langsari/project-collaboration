@@ -278,13 +278,14 @@ include('../menu/function.php');
         <?php
 
        $strSQL = "SELECT * FROM member WHERE admin_id='1' ORDER BY admin_id desc  ";
-        
+         $i = 1;
+   $count = 1;
         ?>
         <?php
      if($result = $db->query($strSQL)){
              while($objResult = $result->fetch_object()){
             ?>
-            <td class="text-left"><?php echo $objResult->member_id; ?></td>
+                    <td class="text-left">   <?php echo $count++; ?></td>
                   <td class="text-left"><?php echo $objResult->member_idcard; ?></td>
                   <td class="text-left"><?php echo $objResult->member_fullname; ?></td>
                   <td class="text-left"><?php echo $objResult->member_phone; ?></td>
@@ -293,17 +294,109 @@ include('../menu/function.php');
                   <!--<td class="text-left"><?php echo position($objResult->member_pos); ?></td>-->
                   <td class="text-left"><?php echo status($objResult->admin_id); ?></td>
                   <td>
-                  <a href="?page=edit_member&id=<?php echo $objResult->member_id;?>" class="btn btn-warning btn-xs ">
-                  <i class="fa fa-edit" title="Edit"></i></a>
 
-                  <a href="?page=accept&id=<?php echo $objResult->member_id;?>"class="btn btn-primary btn-xs"><i class="fa fa-eye" title="Detail"></i></a>
+             <button type="button" class="btn btn-warning btn-xs" data-toggle="modal"
+                       data-target="#editsub<?php echo $i; ?>">
+                                                  <i class="fa fa-edit" title="Edit"></i> </button>
 
-                  <a href="?page=accept&id=<?php echo $objResult->member_id;?>"class="btn btn-danger btn-xs">
+</center>
+               
+
+                 
+
+                  <a href="delete_member.php?id=<?php echo $objResult->member_id;?>"class="btn btn-danger btn-xs">
                   <i class="fa fa-trash" title="Delete"></i></a>
+
+
+        
+
+                    <!-- Modal -->
+                                            <div class="modal fade" id="editsub<?php echo $i; ?>" tabindex="-1" role="dialog"
+                                                aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
+                                                                Edit Member</h4>
+                                                        </div>
+                                              
+   <div class="modal-body">
+                                                            <form class="form-horizontal" method="post" action="check_edit_member.php">
+
+   <input type="hidden" name="member_id" value=" <?php echo $objResult->member_id; ?>">
+                                                            
+
+  <div class="form-group">
+         <label class="control-label col-md-2">ID Student</label>
+                 <div class="col-md-4">
+            <input type="text" class="form-control" id="member_idcard"
+                          name="member_idcard" value="  <?php echo $objResult->member_idcard; ?>">
+                                                                       
+
+                                                                       </div>
+                                                                </div>
+                                                     
+
+
+                                                                    <label class="control-label col-md-2">Name Student</label>
+                                                                    <div class="col-md-7">
+                            
+      <input type="text" class="form-control" id="member_fullname"
+                          name="member_fullname" value="  <?php echo $objResult->member_fullname; ?>">
+ 
+
+                                                                    </div>
+                                                               
+                                                     
+                                                                  
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-2">Phone</label>
+                                                                    <div class="col-md-4">
+                         <input type="text" class="form-control" id="member_phone"
+                          name="member_phone" value="  <?php echo $objResult->member_phone; ?>">
+ 
+
+
+
+                                                                         </div>
+
+
+         
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-2">Email</label>
+                                                                    <div class="col-md-4">
+                         <input type="text" class="form-control" id="member_email"
+                          name="member_email" value="  <?php echo $objResult->member_email; ?>">
+ 
+
+
+
+                                                                         </div>
+
+                                                                </div>
+                                                     
+                                                                 
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default"
+                                                                        data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>
+                                                                        Cancle</button>
+                                                                    <button type="submit" class="btn btn-success"><i
+                                                                            class="glyphicon glyphicon-ok"></i>
+                                                                        Edit</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                   </td>
-                </tr>
-            <?php
-              }
+                                  </tr>
+          
+                                    <?php
+                                    $i++;  
+    }
                }
                    ?>
                 

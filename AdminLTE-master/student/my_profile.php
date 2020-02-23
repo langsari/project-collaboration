@@ -272,7 +272,9 @@ to get the desired effect
     </section>
 
   <!-- Main content -->
-   <form action="check_editprofile.php?id=<?php echo $_GET["id"];?>"name="submit" method="get"onsubmit="return checkForm()">
+   <form class="form-horizontal" method="post" action="check_editprofile.php">
+
+    
 
     <?php
    
