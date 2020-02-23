@@ -97,7 +97,7 @@ include('../menu/function.php');
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-                   <li class="nav-item has-treeview menu-open">
+          <li class="nav-item has-treeview">
             <a href="index.php" class="nav-link">
              
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -107,9 +107,39 @@ include('../menu/function.php');
               </p>
             </a>
           </li>
-
-         li class="nav-item has-treeview">
+      
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
+              <i class="nav-icon fa fa-users"></i>
+              <p>
+                Manage User
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../admin/accept_member.php" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>User Request</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../admin/choose_committee.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Choose Committee</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../admin/all_member.php" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View All Users</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
                 Manage Schedule 
@@ -118,47 +148,21 @@ include('../menu/function.php');
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../admin/add_schedule_proposal.php" class="nav-link active">
+                <a href="../admin/add_schedule_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Proposal Schedule</p>
+                  <p>Proposal Schedule</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../admin/add_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Project Schedule</p>
+                  <p>Project Schedule</p>
                 </a>
               </li>
             </ul>
           </li>
     
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-calendar"></i>
-              <p>
-                Manage Schedule 
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="create_proposal.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Create Proposal Schedule</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="tables/data.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Create Project Schedule</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-    
-
-  
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
