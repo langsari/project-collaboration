@@ -280,13 +280,15 @@ include('../menu/function.php');
         <?php
 
        $strSQL = "SELECT * FROM topic_project";
-        
+       
+          $i = 1;
+   $count = 1;
         ?>
         <?php
      if($result = $db->query($strSQL)){
              while($objResult = $result->fetch_object()){
             ?>
-                    <td class="text-left"><?php echo $objResult->topic_id; ?></td>
+                    <td class="text-left">   <?php echo $count++; ?></td>
                     <td class="text-left"><?php echo $objResult->group_number; ?></td>
                     <td class="text-left"><?php echo substr($objResult->Owner, 0, 50); ?></td>
                     <td class="text-left"><?php echo $objResult->topic_topic; ?></td>
@@ -295,14 +297,117 @@ include('../menu/function.php');
                     <td class="text-left"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
                     <td class="text-left"><?php echo get_status_project($objResult->status); ?></td>
                   <td>
+
+ <button type="button" class="btn btn-warning btn-xs" data-toggle="modal"
+                       data-target="#show<?php echo $i; ?>">
+                                                  <i class="fa fa-edit" title="Edit"></i> </button>
+
+
                     <button type="button" class="btn btn-primary btn-sm view_data" name="view" value="view" id="<?php echo $objResult->topic_id; ?>">View
                     <i class="fa fa-eye"></i></button>
 
 
+              
+
+
+<!-- Modal -->
+                                            <div class="modal fade" id="show<?php echo $i; ?>" tabindex="-1" role="dialog"
+                                                aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                    <div class="modal-header bg-info">
+                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                         <h5 class="modal-title"> Details</h5>
+                       </div>
+                                                          
+   <div class="modal-body">
+
+   <input type="hidden" name="topic_id" value=" <?php echo $objResult->topic_id; ?>">
+                                                            
+
+  <div class="form-group">
+         <label class="control-label col-md-2">ID Student</label>
+                 <div class="col-md-4">
+            <input type="text" class="form-control" id="member_idcard"
+                          name="member_idcard" value="<?php echo $objResult->Owner; ?>">
+                                                                       
+
+                                                                       </div>
+                                                                </div>
+                                                     
+
+
+                                                                    <label class="control-label col-md-2">Name Student</label>
+                                                                    <div class="col-md-7">
+                            
+      <input type="text" class="form-control" id="member_fullname"
+                          name="member_fullname" value="  <?php echo $objResult->topic_topic; ?>">
+ 
+
+                                                                    </div>
+                                                               
+                                                     
+                                                                  
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-2">Phone</label>
+                                                                    <div class="col-md-4">
+                         <input type="text" class="form-control" id="member_phone"
+                          name="member_phone" value="  <?php echo $objResult->topic_abstrack; ?>">
+ 
+
+
+
+                                                                         </div>
+
+
+         
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-2">Email</label>
+                                                                    <div class="col-md-4">
+                         <input type="text" class="form-control" id="member_email"
+                          name="member_email" value="  <?php echo $objResult->topic_keyword; ?>">
+ 
+
+
+
+                                                                         </div>
+
+
+         
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-2">Email</label>
+                                                                    <div class="col-md-4">
+                         <input type="text" class="form-control" id="member_email"
+                          name="member_email" value="<?php echo get_committee($objResult->group_id); ?>">
+ 
+
+
+
+                                                                         </div>
+
+
+                                                                </div>
+                                                     
+                                                                 
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default"
+                                                                        data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>
+                                                                        Cancle</button>
+                                                                    <button type="submit" class="btn btn-success"><i
+                                                                            class="glyphicon glyphicon-ok"></i>
+                                                                        Edit</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
                   </td>
                 </tr>
-            <?php
-              }
+                             <?php
+                                    $i++;  
+    }
                }
                    ?>
                 
