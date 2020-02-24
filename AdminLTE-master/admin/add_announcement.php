@@ -57,17 +57,24 @@ include('../menu/function.php');
         </div>
       </div>
     </form>
-<!-- Right navbar links -->
+    
+
+    <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-              <li class="nav-item d-none d-sm-inline-block">
-        <li class="nav-item d-none d-sm-inline-block">
-        <a href="../auth/logout.php" class="nav-link">Logout</a>
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fa fa-user"></i>
+          <?php echo $_SESSION['name']; ?>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="../auth/logout.php" class="dropdown-item">
+            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
+          </a>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
+          </a>
+        </div>
       </li>
-      </li>
-     
-       
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -87,7 +94,7 @@ include('../menu/function.php');
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../dist/img/user1.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block"><?php echo $_SESSION['name']; ?></a>

@@ -45,44 +45,38 @@ to get the desired effect
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="../admin/index.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
 
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
-
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-              <li class="nav-item d-none d-sm-inline-block">
-        <li class="nav-item d-none d-sm-inline-block">
-        <a href="../auth/logout.php" class="nav-link">Logout</a>
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fa fa-user"></i>
+          <?php echo $_SESSION['name']; ?>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="../auth/logout.php" class="dropdown-item">
+            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
+          </a>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
+          </a>
+        </div>
       </li>
-      </li>
-     
-       
     </ul>
+
   </nav>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="#" class="brand-link">
       <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ITPROMOT</span>
@@ -93,7 +87,7 @@ to get the desired effect
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../dist/img/user1.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block"><?php echo $_SESSION['name']; ?></a>
@@ -106,7 +100,7 @@ to get the desired effect
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-                   <li class="nav-item has-treeview menu-open">
+            <li class="nav-item has-treeview menu-open">
             <a href="index.php" class="nav-link active">
              
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -271,21 +265,21 @@ to get the desired effect
                   <?php
               $con = mysqli_connect('localhost','root','','itpromo_track');
 
-                $query="SELECT member_id FROM member ORDER BY  member_id";
+                $query="SELECT member_id FROM member ORDER BY member_id";
 
                 $query_num=mysqli_query($con,$query);
                 $row=mysqli_num_rows($query_num);
                 echo '<h1>'.$row.'</h1>';
 
                 ?>
-               
-
                 <p>Total User</p>
+
               </div>
               <div class="icon">
                 <i class="fa fa-users"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              
+              <a href="../admin/all_member.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

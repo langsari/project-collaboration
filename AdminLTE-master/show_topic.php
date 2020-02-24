@@ -197,7 +197,7 @@ to get the desired effect
      $strSQL = "SELECT  news_topic.news_id,news_topic.news_topic, news_topic.news_detail, news_topic.news_date,member.member_fullname
          FROM news_topic,member 
          WHERE news_topic.member_id=member.member_id
-         ORDER BY news_topic.news_id";
+         ORDER BY news_topic.news_id DESC";
          ?>
     <?php
                  if($objQuery = $db->query($strSQL)){
