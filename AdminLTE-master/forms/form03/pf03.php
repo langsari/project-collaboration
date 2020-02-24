@@ -314,13 +314,15 @@ to get the desired effect
             <fieldset class="wizard-fieldset show">
               <h5>PF03</h5>
             <?php
-               $id = $_GET['id'];
+            
+           $g_id = get_group_id();
+              $ag_id = get_ag_id($g_id);
 
 $strSQL = "SELECT advisergroup.*,  files.by_officer,files.Owner,files.advisergroup_id,files.pf,files.status_advisor,files.files_filename_proposal,files.files_id,files.advisergroup_id FROM advisergroup
 LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
 LEFT JOIN member ON advisergroup.member_id = member.member_id
-WHERE advisergroup.advisergroup_id = '$id'  ";             
+WHERE advisergroup.advisergroup_id = '$ag_id'  ";             
       
      if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
