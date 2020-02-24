@@ -134,6 +134,7 @@ $count=mysqli_num_rows($result);
         </div>
       </li>
 
+
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="fa fa-user"></i>
@@ -148,7 +149,31 @@ $count=mysqli_num_rows($result);
           </a>
         </div>
       </li>
-    </ul>
+
+     
+     <!-- Notifications Dropdown Menu -->
+         <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+
+
+<?php if($count>0) { echo $count; } ?>
+
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i>  
+             <?php if(isset($message)) { ?> <div class="error"><?php echo $message; ?></div> <?php } ?>
+              <?php if(isset($success)) { ?> <div class="success"><?php echo $success;?></div> <?php } ?>
+
+          </a>
+</div>
+
+
+
+
 
   </nav>
   <!-- /.navbar -->
@@ -298,7 +323,7 @@ $count=mysqli_num_rows($result);
           </li>
 
       <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="test.php" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
                 course syllabus
@@ -471,7 +496,7 @@ $count=mysqli_num_rows($result);
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Add Proposal Schedule</h4>
+              <h4 class="modal-title">Add Alert</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -486,6 +511,7 @@ $count=mysqli_num_rows($result);
           
         </div>
       </div>
+      <p>
       <div class="form-row">
         <div class="form-label">Comment:</div><div class="error" id="comment"></div>
         <div class="form-element">
