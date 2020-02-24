@@ -16,6 +16,7 @@ include('../menu/function.php');
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+
   <!-- IonIcons -->
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
@@ -45,12 +46,21 @@ to get the desired effect
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+
+
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#notify">
+                  <i class="nav-icon fas fa-plus"></i>
+                 Notify
+                </button>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+      
     </ul>
+
+
+
+
+
+
 
     <!-- SEARCH FORM -->
     <form class="form-inline ml-3">
@@ -64,9 +74,63 @@ to get the desired effect
       </div>
     </form>
 
+
+    <?php
+$conn = new mysqli("localhost","root","","itpromo_track");
+$count=0;
+if(!empty($_POST['add'])) {
+  $subject = mysqli_real_escape_string($conn,$_POST["subject"]);
+  $comment = mysqli_real_escape_string($conn,$_POST["comment"]);
+  $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
+  mysqli_query($conn, $sql);
+}
+$sql2="SELECT * FROM notify WHERE status = 0";
+$result=mysqli_query($conn, $sql2);
+$count=mysqli_num_rows($result);
+?>
+
+<script type="text/javascript">
+
+  function myFunction() {
+    $.ajax({
+      url: "view_notification.php",
+      type: "POST",
+      processData:false,
+      success: function(data){
+        $("#notification-count").remove();          
+        $("#notification-latest").show();$("#notification-latest").html(data);
+      },
+      error: function(){}           
+    });
+   }
+   
+   $(document).ready(function() {
+    $('body').click(function(e){
+      if ( e.target.id != 'notification-icon'){
+        $("#notification-latest").hide();
+      }
+    });
+  });
+     
+  </script>
+
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
+  <li class="nav-item dropdown">
+
+           <div style="position:relative">
+         <button id="notification-icon" name="button" onclick="myFunction()" class="dropbtn"><span id="notification-count"><?php if($count>0) { echo $count; } ?></span><img src="notification-icon.png" /></button>
+         <div id="notification-latest"></div>
+         
+  <?php if(isset($message)) { ?> <div class="error"><?php echo $message; ?></div> <?php } ?>
+
+
+  <?php if(isset($success)) { ?> <div class="success"><?php echo $success;?></div> <?php } ?>
+
+
+</li>
+
       <li class="nav-item dropdown">
               <li class="nav-item d-none d-sm-inline-block">
         <li class="nav-item d-none d-sm-inline-block">
@@ -390,6 +454,47 @@ to get the desired effect
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+
+
+
+<div class="modal fade" id="notify">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Add Proposal Schedule</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form name="frmNotification" id="frmNotification" action="" method="post" >
+      <div id="form-header" class="form-row">Add New Message</div>
+      <div class="form-row">
+        <div class="form-label">Subject:</div><div class="error" id="subject"></div>
+        <div class="form-element">
+          <input type="text"  name="subject" id="subject" required>
+          
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-label">Comment:</div><div class="error" id="comment"></div>
+        <div class="form-element">
+          <textarea rows="4" cols="30" name="comment" id="comment"></textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-element">
+          <input type="submit" name="add" id="btn-send" value="Submit">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+
+
+
 
       <section class="content">
       <div class="container-fluid">
