@@ -14,6 +14,8 @@ include('../menu/function.php');
 
   <title>ITPROMO</title>
 
+
+
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
 
@@ -25,7 +27,17 @@ include('../menu/function.php');
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
    <!-- DataTables -->
   <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+
 </head>
+<style>
+  #count{
+    border-radius: 60%;
+    position: relative;
+    top: -10px;
+    left: -10px;
+
+}
+</style>
 <!--
 BODY TAG OPTIONS:
 =================
@@ -94,45 +106,47 @@ $count=mysqli_num_rows($result);
      
   </script>
 
+
+   <!-- Display the alert of notification -->
+
+  <?php
+  $con = mysqli_connect('localhost','root','','itpromo_track');
+  $query="SELECT * FROM notify WHERE status=0";
+  $query_num=mysqli_query($con,$query);
+  $count=mysqli_num_rows($query_num);
+
+  ?>
+
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-  <li class="nav-item dropdown">
 
-  <div style="position:relative">
-         <button id="notification-icon" name="button" onclick="myFunction()" class="dropbtn"><span id="notification-count"><?php if($count>0) { echo $count; } ?>
-         </span><img src="notification-icon.png" /></button>
-         <div id="notification-latest"></div>
-         
-  <?php if(isset($message)) { ?> <div class="error"><?php echo $message; ?></div> <?php } ?>
-
-
-  <?php if(isset($success)) { ?> <div class="success"><?php echo $success;?></div> <?php } ?>
-
-
-</li>
-
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
+     <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
+          <i class="fa fa-globe" style="font-size:20px;"></i><span class="badge badge-danger" id="count"><?php echo $count; ?></span>
+          
         </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="../auth/logout.php" class="dropdown-item">
+            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
           </a>
-
-          <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
+            <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
           </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li>
+   
+      <!-- Notifications Dropdown Menu 
+    <nav class="navbar navbar-default">
+    <div class="container-fluid">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-danger count" style="border-radius:10px;"></span> <span class="fa fa-globe" style="font-size:18px;"></span></a>
+        <ul class="dropdown-menu"></ul>
+      </li>
+    </ul>
+    </div>
+  </nav>-->
+
 
 
       <li class="nav-item dropdown">
@@ -151,25 +165,7 @@ $count=mysqli_num_rows($result);
       </li>
 
      
-     <!-- Notifications Dropdown Menu -->
-         <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-
-
-<?php if($count>0) { echo $count; } ?>
-
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i>  
-             <?php if(isset($message)) { ?> <div class="error"><?php echo $message; ?></div> <?php } ?>
-              <?php if(isset($success)) { ?> <div class="success"><?php echo $success;?></div> <?php } ?>
-
-          </a>
-</div>
+     
 
 
 
@@ -702,6 +698,7 @@ include '../notification/notification.php';
       "autoWidth": false,
     });
   });
+
 </script>
 </body>
 </html>

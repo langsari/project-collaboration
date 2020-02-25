@@ -23,6 +23,8 @@
 		</ul>
     </div>
 	</nav>
+
+
 	<div style="height:10px;"></div>
 	<div class="row">	
 		<div class="col-md-3">
@@ -57,6 +59,8 @@
 		</div>
 	</div>
 </body>
+
+
 <script type = "text/javascript">
 $(document).ready(function(){
 	

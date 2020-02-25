@@ -43,7 +43,14 @@ img { max-width: 50%; }
 ::-moz-selection { background: #f35b3f; color: #fff; text-shadow: none; }
 ::selection { background: #f35b3f; color: #fff; text-shadow: none; }
 
+/***** notification *****/
+#count{
+    border-radius: 50%;
+    position: relative;
+    top: -10px;
+    left: -10px;
 
+}
 
 
 
