@@ -362,15 +362,16 @@ $count=mysqli_num_rows($result);
           LEFT JOIN topic_project ON advisergroup.advisergroup_id = topic_project.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
-         WHERE advisergroup.group_id";
+         WHERE advisergroup.group_id ";
           $i = 1;
    $count = 1;
+   
         ?>
         <?php
      if($result = $db->query($strSQL)){
              while($objResult = $result->fetch_object()){
             ?>
-                    <td class="text-left">   <?php echo $count++; ?></td>
+                    <td class="text-left"> <?php echo $count++; ?></td>
                     <td class="text-left"><?php echo $objResult->group_number; ?></td>
                     <td class="text-left"><?php echo substr($objResult->Owner, 0, 50); ?></td>
                     <td class="text-left"><?php echo $objResult->topic_topic; ?></td>
@@ -384,6 +385,9 @@ $count=mysqli_num_rows($result);
                        data-target="#show<?php echo $i; ?>">
                                                   <i class="fa fa-edit" title="Edit"></i> </button>
 
+
+ <a href="delete_project.php?id=<?php echo $objResult->topic_id;?>"class="btn btn-danger btn-xs">
+                  <i class="fa fa-trash" title="Delete"></i></a>
 
        
 

@@ -390,7 +390,6 @@ $count=mysqli_num_rows($result);
 
 
 
-
                       <!-- Modal -->
                       <div class="modal fade" id="editsub<?php echo $i; ?>" tabindex="-1" role="dialog"
                         aria-labelledby="myModalLabel" aria-hidden="true">
@@ -406,41 +405,67 @@ $count=mysqli_num_rows($result);
 
                             <div class="modal-body">
                               <form class="form-horizontal" method="post" action="check_edit_member.php">
-
                                 <input type="hidden" name="member_id" value=" <?php echo $objResult->member_id; ?>">
 
-
-                                <div class="form-group">
-                                  <label class="control-label col-md-2">ID Student</label>
-                                  <div class="col-md-4">
+                                       <div class="card-body">
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">ID Studen</label>
+                    <div class="col-sm-10">
                                     <input type="text" class="form-control" id="member_idcard" name="member_idcard"
                                       value="  <?php echo $objResult->member_idcard; ?>">
+                    </div>
+                  </div>
 
 
-                                  </div>
-                                </div>
 
-                                <label class="control-label col-md-2">Name Student</label>
-                                <div class="col-md-7">
+ <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Username</label>
+                    <div class="col-sm-10">
+ <input type="text" class="form-control" id="member_username" name="member_username"
+                                    value="<?php echo $objResult->member_username; ?>">                    </div>
+                  </div>
 
-                                  <input type="text" class="form-control" id="member_fullname" name="member_fullname"
-                                    value="  <?php echo $objResult->member_fullname; ?>">
-                                </div>
+ <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Student Name</label>
+                    <div class="col-sm-10">
+ <input type="text" class="form-control" id="member_fullname" name="member_fullname"
+                                    value="<?php echo $objResult->member_fullname; ?>">                    </div>
+                  </div>
 
-                                <div class="form-group">
-                                  <label class="control-label col-md-2">Phone</label>
-                                  <div class="col-md-4">
-                                    <input type="text" class="form-control" id="member_phone" name="member_phone"
-                                      value="  <?php echo $objResult->member_phone; ?>">
-                                  </div>
 
-                                  <div class="form-group">
-                                    <label class="control-label col-md-2">Email</label>
-                                    <div class="col-md-4">
-                                      <input type="text" class="form-control" id="member_email" name="member_email"
-                                        value="  <?php echo $objResult->member_email; ?>">
-                                    </div>
-                                  </div>
+
+ <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+ <input type="text" class="form-control" id="member_email" name="member_email"
+                                        value="<?php echo $objResult->member_email; ?>">                    </div>
+                  </div>
+
+ <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Phone</label>
+                    <div class="col-sm-10">
+  <input type="text" class="form-control" id="member_phone" name="member_phone"
+                                      value="<?php echo $objResult->member_phone; ?>">                    </div>
+                  </div>
+
+
+     <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 ">Gender</label>
+                    <div class="col-sm-10">
+
+                                     <?php echo $objResult->member_gender; ?>                    </div>
+                  </div>
+
+                   <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 ">Position</label>
+                    <div class="col-sm-10">
+
+                                     <?php echo $objResult->member_pos; ?>                    </div>
+                  </div>
+
+
+
+
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal"><i
                                         class="glyphicon glyphicon-remove"></i>

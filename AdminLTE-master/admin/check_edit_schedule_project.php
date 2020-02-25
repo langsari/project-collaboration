@@ -30,7 +30,7 @@ WHERE schedule_id = '$schedule_id'";
 if($db->query($sql)){
 		$db->close();
 
-			echo "<script>alert('Edit Success');window.location = \"add_schedule_proposal.php\";</script>";
+			echo "<script>alert('Edit Success');window.location = \"add_schedule_project.php\";</script>";
 
 
 	}else{

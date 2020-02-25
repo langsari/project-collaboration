@@ -357,7 +357,7 @@ $count=mysqli_num_rows($result);
                       <th>action</th>
                      </tr>
                   </thead>
-                  <tbody align="center">
+                  <tbody >
         <?php
 
        $sql = "SELECT schedule.*, partnergroup.group_id,partnergroup.group_number,member.member_fullname,schedule.writer,schedule.group_id,advisergroup.group_id,advisergroup.advisergroup_topic,schedule.schedule_id FROM schedule
@@ -399,45 +399,100 @@ $count=mysqli_num_rows($result);
  <div class="modal fade" id="editsub<?php echo $i; ?>" tabindex="-1" role="dialog"
                                                 aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal"
+                                                <div class="modal-content">
+                            <div class="modal-header bg-info">
+            <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                             <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
                                                                 Edit Schedule Proposal</h4>
                                                         </div>
                                               
-                                                <div class="modal-body">
-                       <form class="form-horizontal" method="post" action="check_edit_schedule_proposal.php">
-                        <input type="hidden" name="schedule_id" value="  <?php echo $objResult->schedule_id; ?>">
-                       <?php echo get_member_list($objResult->group_id); ?>                                   
-                                                             
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2">Schedule Room</label>
-                                                                    <div class="col-md-8">
-                                                                        <input type="text" class="form-control" id="schedule_room"
-                                                                            name="schedule_room" value="  <?php echo $objResult->schedule_room; ?>">
+                                                                            
+
+
+                        <div class="modal-body">
+ <form class="form-horizontal" method="post" action="check_edit_schedule_proposal.php">              <div class="form-group row margin-top-10">
+                <div class="col-md-2">
+                  <label class="control-label ">Owner</label>
+                </div>
+                <div class="col-md-10">
+        <input type="hidden" name="schedule_id" value="  <?php echo $objResult->schedule_id; ?>">
+  <?php echo get_member_list($objResult->group_id); ?>        
+
+
+                </div>
+              </div>
+
+
+                                      
+  <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Topic</label>
+                </div>
+                <div class="col-md-10">
+  <?php echo get_topic($objResult->group_id); ?>        
+            </div>
+              </div>
+
+
+                                            
+  <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Advisor</label>
+                </div>
+                <div class="col-md-10">
+<?php echo get_advisor($objResult->group_id); ?>               </div>
+              </div>
+
+
+  <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Committee</label>
+                </div>
+                <div class="col-md-10">
+<?php echo get_committee($objResult->group_id); ?>              </div>
+              </div>
+
+   <div class="form-group row">
+           <div class="col-md-2">
+                  <label class="control-label ">Room</label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="schedule_room"
+      name="schedule_room" value="  <?php echo $objResult->schedule_room; ?>">
                                                                        </div>
                                                                 </div>
                                                      
-
-
-                                                                    <label class="control-label col-md-2">Date</label>
-                                                                    <div class="col-md-7">
+ <div class="form-group row">
+           <div class="col-md-2">
+                  <label class="control-label ">Time</label>
+                </div>
+                <div class="col-md-10">
                             
- <textarea type="text" rows="6"   class="form-control" id="schedule_date"
-             name="schedule_date"> <?php echo $objResult->schedule_date; ?> </textarea>
+         <input type="text" class="form-control" id="schedule_time"
+      name="schedule_time" value="  <?php echo $objResult->schedule_time; ?>">
 
- 
 
                                                                     </div>
-                                                               
-                                                     
-                                                                  
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2">Status</label>
-                                                                    <div class="col-md-4">
-                                                                        <input type="text" class="form-control" name="schedule_status" id="schedule_status" value="<?php echo $objResult->schedule_status; ?>">
+                                                               </div>
+
+
+ <div class="form-group row">
+           <div class="col-md-2">
+                  <label class="control-label ">Date</label>
+                </div>
+                <div class="col-md-10">
+                            
+         <input type="text" class="form-control" id="schedule_date"
+      name="schedule_date" value="  <?php echo $objResult->schedule_date; ?>">
+
+
+                                                                    </div>
+                                                               </div>
+                        <div class="form-group row">
+                               <label class="control-label col-md-2">Status</label>
+                                   <div class="col-md-4">
+                          <input type="text" class="form-control" name="schedule_status" id="schedule_status" value="<?php echo $objResult->schedule_status; ?>">
 
 
 

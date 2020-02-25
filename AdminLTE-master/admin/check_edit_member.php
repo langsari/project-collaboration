@@ -14,7 +14,7 @@ require '../menu/connect.php';
 $member_fullname=$_POST['member_fullname'];
 $member_phone=$_POST['member_phone'];
 $member_email=$_POST['member_email'];
-
+$member_username=$_POST['member_username'];
 
 
 
@@ -22,7 +22,8 @@ $member_email=$_POST['member_email'];
 $sql = "UPDATE  member SET member_id = '$member_id', member_idcard = '$member_idcard'
  ,member_fullname  = '$member_fullname',
 member_phone = '$member_phone', 
-member_email = '$member_email' 
+member_email = '$member_email',
+member_username='$member_username'
 
 WHERE member_id = '$member_id'";
 
