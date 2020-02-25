@@ -433,17 +433,31 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
             </fieldset>
           </form>
 
-      
+    
+                  <div class="form-group clearfix">
+
+
+        <?php if ($objResult->files_status= ''  != "") {?>
+              <a href="../form02/pf02.php"  ><button type="submit" class="btn btn-primary  float-right" >Next</button></a>
+
+
+                      <?php }else  {?>
+                        <button class="btn btn-warning disabled  float-right" disabled="disabled ">Next</button> 
+                       <?php }?>
+
+
+              </div>
+
+
+
+              </div>
+
+
+            
             <?php
                  } }
                    ?>
 
-              <div class="form-group clearfix">
-
-                <a href="../form02/pf02.php" class="form-wizard-next-btn float-right">Next</a>
-
-              </div>
-          
         </div>
       </div>
     </div>

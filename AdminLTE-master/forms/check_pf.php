@@ -112,14 +112,14 @@ else if($_SESSION['rank'] == "13")
          header("Location: ../forms/form13/pf13.php");
 				exit();
 					}
-else{
-	header("Location: ../forms/form01/pf01.php");
-				exit();
-}
+
 
 
 			}
 			
+else{
+         header("Location: ../forms/form01/pf01.php");
+				}
 
 		}
 
