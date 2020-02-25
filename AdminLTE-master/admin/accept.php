@@ -36,27 +36,83 @@ include('../menu/function.php');
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+
+        <a href="../admin/index.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+       <a href="#" class="nav-link" data-toggle="modal" data-target="#notify">Notify</a>
       </li>
+      
     </ul>
 
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
-    
+    <?php
+$conn = new mysqli("localhost","root","","itpromo_track");
+$count=0;
+if(!empty($_POST['add'])) {
+  $subject = mysqli_real_escape_string($conn,$_POST["subject"]);
+  $comment = mysqli_real_escape_string($conn,$_POST["comment"]);
+  $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
+  mysqli_query($conn, $sql);
+}
+$sql2="SELECT * FROM notify WHERE status = 0";
+$result=mysqli_query($conn, $sql2);
+$count=mysqli_num_rows($result);
+?>
+
+<script type="text/javascript">
+
+  function myFunction() {
+    $.ajax({
+      url: "view_notification.php",
+      type: "POST",
+      processData:false,
+      success: function(data){
+        $("#notification-count").remove();          
+        $("#notification-latest").show();$("#notification-latest").html(data);
+      },
+      error: function(){}           
+    });
+   }
+   
+   $(document).ready(function() {
+    $('body').click(function(e){
+      if ( e.target.id != 'notification-icon'){
+        $("#notification-latest").hide();
+      }
+    });
+  });
+     
+  </script>
+
+
+   <!-- Display the alert of notification -->
+
+  <?php
+  $con = mysqli_connect('localhost','root','','itpromo_track');
+  $query="SELECT * FROM notify WHERE status=0";
+  $query_num=mysqli_query($con,$query);
+  $count=mysqli_num_rows($query_num);
+
+  ?>
+
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+
+     <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fa fa-globe" style="font-size:20px;"></i><span class="badge badge-danger" id="count"><?php echo $count; ?></span>
+          
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="../auth/logout.php" class="dropdown-item">
+            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
+          </a>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
+          </a>
+        </div>
+      </li>
+
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="fa fa-user"></i>
@@ -71,7 +127,8 @@ include('../menu/function.php');
           </a>
         </div>
       </li>
-    </ul>
+</ul>
+
   </nav>
   <!-- /.navbar -->
 

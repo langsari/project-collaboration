@@ -1,8 +1,16 @@
 <?php
+session_start();
+require '../menu/connect.php';
+include('../menu/function.php');
+
+if (isset($_GET['id']))
+ {
+	$main_id=$_GET['id'];
+
 $conn = new mysqli("localhost","root","","itpromo_track");
 
-$sql="UPDATE notify SET status=1 WHERE status=0";	
-$result=mysqli_query($conn, $sql);
+$sql="UPDATE notify SET status=1 WHERE id='$main_id' ";
+
 
 $sql="select * from notify ORDER BY id DESC limit 5";
 $result=mysqli_query($conn, $sql);
@@ -18,5 +26,6 @@ if(!empty($response)) {
 	print $response;
 }
 
-
+}
 ?>
+

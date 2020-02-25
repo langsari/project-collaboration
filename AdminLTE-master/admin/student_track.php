@@ -36,43 +36,116 @@ include('../menu/function.php');
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+
+        <a href="../admin/index.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+       <a href="#" class="nav-link" data-toggle="modal" data-target="#notify">Notify</a>
       </li>
+      
     </ul>
 
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
+    <?php
+$conn = new mysqli("localhost","root","","itpromo_track");
+$count=0;
+if(!empty($_POST['add'])) {
+  $subject = mysqli_real_escape_string($conn,$_POST["subject"]);
+  $comment = mysqli_real_escape_string($conn,$_POST["comment"]);
+  $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
+  mysqli_query($conn, $sql);
+}
+$sql2="SELECT * FROM notify WHERE status = 0";
+$result=mysqli_query($conn, $sql2);
+$count=mysqli_num_rows($result);
+?>
 
-    
+<script type="text/javascript">
+
+  function myFunction() {
+    $.ajax({
+      url: "view_notification.php",
+      type: "POST",
+      processData:false,
+      success: function(data){
+        $("#notification-count").remove();          
+        $("#notification-latest").show();$("#notification-latest").html(data);
+      },
+      error: function(){}           
+    });
+   }
+   
+   $(document).ready(function() {
+    $('body').click(function(e){
+      if ( e.target.id != 'notification-icon'){
+        $("#notification-latest").hide();
+      }
+    });
+  });
+     
+  </script>
+
+
+   <!-- Display the alert of notification -->
+
+  <?php
+  $con = mysqli_connect('localhost','root','','itpromo_track');
+  $query="SELECT * FROM notify WHERE status=0";
+  $query_num=mysqli_query($con,$query);
+  $count=mysqli_num_rows($query_num);
+
+  ?>
+
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fa fa-user"></i>
-          <?php echo $_SESSION['name']; ?>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a href="../auth/logout.php" class="dropdown-item">
-            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
+    <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="fa fa-globe" style="font-size:20px;"></i><span class="badge badge-danger"
+              id="count"><?php echo $count; ?></span>
+
           </a>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
+            <?php
+              $con = mysqli_connect('localhost','root','','itpromo_track');
+              $sq="SELECT * FROM notify WHERE status=0";
+              $qu_num=mysqli_query($con,$query);
+              if (mysqli_num_rows($qu_num)>0) 
+              {
+                while($result=mysqli_fetch_assoc($qu_num))
+                {
+                  echo '<a class="dropdown-item text-primary font-weight-light" href="../admin/read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
+                  echo '<div class="dropdown-divider"></div>';
+
+                }
+              }
+              else
+              {
+                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+              }
+            ?>
+            <div class="dropdown-divider"></div>
+          <a href="../admin/read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="fa fa-user"></i>
+            <?php echo $_SESSION['name']; ?>
           </a>
-        </div>
-      </li>
-    </ul>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="../auth/logout.php" class="dropdown-item">
+              <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
+            </a>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
+            </a>
+          </div>
+        </li>
+      </ul>
+
   </nav>
   <!-- /.navbar -->
 
@@ -338,6 +411,43 @@ include('../menu/function.php');
   <link rel="stylesheet" href="asset/css/style.css">
 
 <!-- Modal -->
+
+<div class="modal fade" id="notify">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Add Alert</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form name="frmNotification" id="frmNotification" action="" method="post" >
+      <div id="form-header" class="form-row">Add New Message</div>
+      <div class="form-row">
+        <div class="form-label">Subject:</div><div class="error" id="subject"></div>
+        <div class="form-element">
+          <input type="text"  name="subject" id="subject" required>
+          
+        </div>
+      </div>
+      <p>
+      <div class="form-row">
+        <div class="form-label">Comment:</div><div class="error" id="comment"></div>
+        <div class="form-element">
+          <textarea rows="4" cols="30" name="comment" id="comment"></textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-element">
+          <input type="submit" name="add" id="btn-send" value="Submit">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
 
 
 
