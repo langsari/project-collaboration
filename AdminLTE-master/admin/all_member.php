@@ -282,7 +282,7 @@ include('../menu/function.php');
                       <th>Action</th>
                     </tr>
                   </thead>
-                  <tbody align="center">
+                  <tbody>
                     <?php
 
        $strSQL = "SELECT * FROM member WHERE admin_id='1' ORDER BY admin_id desc  ";
@@ -322,8 +322,9 @@ include('../menu/function.php');
                       <div class="modal fade" id="editsub<?php echo $i; ?>" tabindex="-1" role="dialog"
                         aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
+                          
                           <div class="modal-content">
-                            <div class="modal-header">
+                            <div class="modal-header bg-info">
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                   aria-hidden="true">&times;</span></button>
                               <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>

@@ -90,21 +90,28 @@ to get the desired effect
     </ul>
 
 
-    <!-- Right navbar links -->
+      <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-              <li class="nav-item d-none d-sm-inline-block">
-        <li class="nav-item d-none d-sm-inline-block">
-        <a href="../auth/logout.php" class="nav-link">Logout</a>
-      </li>
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fa fa-user"></i>
+          <?php echo $_SESSION['name']; ?>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="../auth/logout.php" class="dropdown-item">
+            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
+          </a>
+          <a href="my_profile.php" class="dropdown-item">
+            <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
+          </a>
+        </div>
       </li>
      
        
     </ul>
   </nav>
   <!-- /.navbar -->
-
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->

@@ -282,11 +282,14 @@ include('../menu/function.php');
                   <th>Action</th>
                 </tr>
                   </thead>
-                  <tbody align="center">
+                  <tbody >
         <?php
 
-       $strSQL = "SELECT * FROM topic_project";
-       
+       $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM advisergroup
+          LEFT JOIN topic_project ON advisergroup.advisergroup_id = topic_project.advisergroup_id
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+        LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+         WHERE advisergroup.group_id";
           $i = 1;
    $count = 1;
         ?>
@@ -309,104 +312,135 @@ include('../menu/function.php');
                                                   <i class="fa fa-edit" title="Edit"></i> </button>
 
 
-                    <button type="button" class="btn btn-primary btn-sm view_data" name="view" value="view" id="<?php echo $objResult->topic_id; ?>">View
-                    <i class="fa fa-eye"></i></button>
+       
 
 
               
 
 
-<!-- Modal -->
-                                            <div class="modal fade" id="show<?php echo $i; ?>" tabindex="-1" role="dialog"
-                                                aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg">
-                                                    <div class="modal-content">
-                    <div class="modal-header bg-info">
-                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                         <h5 class="modal-title"> Details</h5>
-                       </div>
-                                                          
-   <div class="modal-body">
+          <div class="modal fade" id="show<?php echo $i; ?>" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
 
-   <input type="hidden" name="topic_id" value=" <?php echo $objResult->topic_id; ?>">
-                                                            
+                     <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header bg-info">
+                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                         <h5 class="modal-title">View Proposal</h5>
+                    </div>
 
-  <div class="form-group">
-         <label class="control-label col-md-2">ID Student</label>
-                 <div class="col-md-4">
-            <input type="text" class="form-control" id="member_idcard"
-                          name="member_idcard" value="<?php echo $objResult->Owner; ?>">
-                                                                       
-
-                                                                       </div>
-                                                                </div>
-                                                     
+                            <div class="modal-body">
+        <form  method="post" action="check_status.php">
+              <div class="form-group row margin-top-10">
+                <div class="col-md-2">
+                  <label class="control-label ">Owner</label>
+                </div>
+                <div class="col-md-10">
+                  <?php echo $objResult->Owner; ?>
+                  
+                </div>
+              </div>
 
 
-                                                                    <label class="control-label col-md-2">Name Student</label>
-                                                                    <div class="col-md-7">
-                            
-      <input type="text" class="form-control" id="member_fullname"
-                          name="member_fullname" value="  <?php echo $objResult->topic_topic; ?>">
- 
-
-                                                                    </div>
-                                                               
-                                                     
-                                                                  
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2">Phone</label>
-                                                                    <div class="col-md-4">
-                         <input type="text" class="form-control" id="member_phone"
-                          name="member_phone" value="  <?php echo $objResult->topic_abstrack; ?>">
- 
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Topic Project</label>
+                </div>
+                <div class="col-md-10">
+<?php echo $objResult->topic_topic; ?>                </div>
+              </div>
 
 
 
-                                                                         </div>
 
-
-         
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2">Email</label>
-                                                                    <div class="col-md-4">
-                         <input type="text" class="form-control" id="member_email"
-                          name="member_email" value="  <?php echo $objResult->topic_keyword; ?>">
- 
-
-
-
-                                                                         </div>
-
-
-         
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2">Email</label>
-                                                                    <div class="col-md-4">
-                         <input type="text" class="form-control" id="member_email"
-                          name="member_email" value="<?php echo get_committee($objResult->group_id); ?>">
- 
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Keyword</label>
+                </div>
+                <div class="col-md-10">
+                 <?php echo $objResult->topic_keyword; ?>
+                </div>
+              </div>
 
 
 
-                                                                         </div>
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Field of study</label>
+                </div>
+                <div class="col-md-10">
+                  <?php echo $objResult->topic_fieldstudy; ?>
+                </div>
+              </div>
 
 
-                                                                </div>
-                                                     
-                                                                 
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-default"
-                                                                        data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>
-                                                                        Cancle</button>
-                                                                    <button type="submit" class="btn btn-success"><i
-                                                                            class="glyphicon glyphicon-ok"></i>
-                                                                        Edit</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
+
+
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Years</label>
+                </div>
+                <div class="col-md-10">
+                <?php echo $objResult->topic_years; ?>
+                </div>
+              </div>
+
+
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Abstrack</label>
+                </div>
+                <div class="col-md-10">
+                <?php echo $objResult->topic_abstrack; ?>
+                </div>
+              </div>
+
+              <!--get project Proposal status -->
+
+             
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Advisor</label>
+                </div>
+                <div class="col-md-10">
+<?php echo get_advisor($objResult->group_id); ?>                </div>
+              </div>
+
+                   <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Committee</label>
+                </div>
+                <div class="col-md-10">
+            <?php echo get_committee($objResult->group_id); ?>       
+                     </div>
+              </div>
+
+                   <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Status</label>
+                </div>
+                <div class="col-md-10">
+                  <?php echo get_status_project($objResult->status); ?>
+                </div>
+              </div>
+ </div>
+
+      </div>
+
+
+
+
+
+
+  
+
+
+    </div>
+
+    </form>
+                            </div>
+                          </div>
+                        </div>
+
 
 
                   </td>
@@ -504,22 +538,7 @@ include '../notification/notification.php';
     });
   });
 
-  $(document).on('click', '.view_data', function () {
-               var id = $(this).attr("id");
-               if (id != '') {
-                    $.ajax({
-                         url: "../admin/get_proposal_project.php",
-                         type: "POST",
-                         data: {
-                              id: id
-                         },
-                         success: function (data) {
-                              $('#employee_detail').html(data);
-                              $('#dataModal').modal('show');
-                         }
-                    });
-               }
-          });
+ 
 </script>
 
 

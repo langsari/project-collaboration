@@ -19,7 +19,7 @@ session_start();
 
 	if($rs = $db->query($sql)){
 		$db->close();
-		header("Location: ../index.php?page=proposal_status");
+		header("Location: proposal_status.php");
 	}else{
 		echo $db->error;
 		$db->close();

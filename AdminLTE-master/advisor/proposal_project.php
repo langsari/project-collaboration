@@ -47,15 +47,22 @@ to get the desired effect
      
     </ul>
 
-
-    <!-- Right navbar links -->
+   <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-              <li class="nav-item d-none d-sm-inline-block">
-        <li class="nav-item d-none d-sm-inline-block">
-        <a href="../auth/logout.php" class="nav-link">Logout</a>
-      </li>
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fa fa-user"></i>
+          <?php echo $_SESSION['name']; ?>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="../auth/logout.php" class="dropdown-item">
+            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
+          </a>
+          <a href="my_profile.php" class="dropdown-item">
+            <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
+          </a>
+        </div>
       </li>
      
        
@@ -276,22 +283,34 @@ to get the desired effect
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
-                <tr>
+                <tr align="center">
                   <th>No</th>   
-                           <th>Group Code</th>
-                            <th>Owner Project</th>
-                      <th>Topic</th>
-                      <th>Abstrack</th>
-                      <th>Keyword</th>
-                      <th>Field </th>
-                      <th>Status</th>
-                                               <th>View</th>
+                  <th>GroupID</th>
+                  <th>Owner</th>
+                  <th>Topic</th>
+                  <th>Abstrack</th>
+                  <th>Keyword</th>
+                  <th>Field </th>
+                 <!-- <th>Status</th>-->
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                          <?php
                   //   require 'menu/function.php';
- $strSQL = "SELECT * FROM topic_project  ";
+
+  $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM advisergroup
+          LEFT JOIN topic_project ON advisergroup.advisergroup_id = topic_project.advisergroup_id
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+        LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+         WHERE advisergroup.group_id";
+
+
+
+        
+
+       $i = 1;
+   $count = 1;
               ?>
  <?php
      if($result = $db->query($strSQL)){
@@ -300,49 +319,167 @@ to get the desired effect
 
                 
                     <tr>
-                     <td class="text-left"><?php echo $objResult->topic_id; ?></td>
-                     <td class="text-left"><?php echo $objResult->group_number; ?></td>
-
-                     <td class="text-left"><?php echo substr($objResult->Owner, 0, 50); ?></td>
+                   <td class="text-left">   <?php echo $count++; ?></td>
+                    <td class="text-left"><?php echo $objResult->group_number; ?></td>
+                    <td class="text-left"><?php echo substr($objResult->Owner, 0, 50); ?></td>
                     <td class="text-left"><?php echo $objResult->topic_topic; ?></td>
+                    <td class="text-left"><?php echo substr($objResult->topic_abstrack, 0, 30); ?></td>
+                    <td class="text-left"><?php echo $objResult->topic_keyword; ?></td>
+                    <td class="text-left"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
+                   <!-- <td class="text-left"><?php echo get_status_project($objResult->status); ?></td>-->
+                  <td>               
+                     <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
+                        data-target="#show<?php echo $i; ?>">
+                      <i class="fa fa-eye"></i></button>
 
-                     <td class="text-left"><?php echo substr($objResult->topic_abstrack, 0, 30); ?></td>
+                      </center>
+
+     <!-- Modal -->
+                      <div class="modal fade" id="show<?php echo $i; ?>" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header bg-info">
+                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                         <h5 class="modal-title">View Proposal</h5>
+                    </div>
+
+                            <div class="modal-body">
+        <form  method="post" action="check_status.php">
+              <div class="form-group row margin-top-10">
+                <div class="col-md-2">
+                  <label class="control-label ">Owner</label>
+                </div>
+                <div class="col-md-10">
+                  <?php echo $objResult->Owner; ?>
+                  
+                </div>
+              </div>
 
 
-                     <td class="text-left"><?php echo $objResult->topic_keyword; ?></td>
-                <td class="text-left"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
-           <td class="text-left"><?php echo get_status_project($objResult->status); ?></td>
-
-                    
-             <td>            <button type="button" class="btn btn-primary btn-xs  view_data" name="view" value="view" id="<?php echo $objResult->topic_id; ?>"><i class="fa fa-eye"></i></button>
-</td> 
-
-               
-                    </tr>          
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Topic Project</label>
+                </div>
+                <div class="col-md-10">
+<?php echo $objResult->topic_topic; ?>                </div>
+              </div>
 
 
-                                    <?php
+
+
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Keyword</label>
+                </div>
+                <div class="col-md-10">
+                 <?php echo $objResult->topic_keyword; ?>
+                </div>
+              </div>
+
+
+
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Field of study</label>
+                </div>
+                <div class="col-md-10">
+                  <?php echo $objResult->topic_fieldstudy; ?>
+                </div>
+              </div>
+
+
+
+
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Years</label>
+                </div>
+                <div class="col-md-10">
+                <?php echo $objResult->topic_years; ?>
+                </div>
+              </div>
+
+
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Abstrack</label>
+                </div>
+                <div class="col-md-10">
+                <?php echo $objResult->topic_abstrack; ?>
+                </div>
+              </div>
+
+              <!--get project Proposal status -->
+
+             
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Advisor</label>
+                </div>
+                <div class="col-md-10">
+<?php echo get_advisor($objResult->group_id); ?>                </div>
+              </div>
+
+                   <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Committee</label>
+                </div>
+                <div class="col-md-10">
+            <?php echo get_committee($objResult->group_id); ?>       
+                     </div>
+              </div>
+
+                   <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Status</label>
+                </div>
+                <div class="col-md-10">
+                  <?php echo get_status_project($objResult->status); ?>
+                </div>
+              </div>
+
+              </div>
+
+      </div>
+
+
+
+
+
+
+  
+
+
+    </div>
+
+    </form>
+                            </div>
+                          </div>
+                        </div>
+
+                    </td>
+                    </tr>
+
+                    <?php
+                                    $i++;  
     }
                }
                    ?>
 
 
-                </tbody>
-                <tfoot>
-                <tr>
-                 <th>No</th>   
-                           <th>Group Code</th>
-                            <th>Owner Project</th>
-                      <th>Topic</th>
-                      <th>Abstrack</th>
-                      <th>Keyword</th>
-                      <th>Field </th>
-                      <th>Status</th>
-                          <th>View</th>
-       
-                </tr>   
 
-                </tfoot>
+
+
+
+
+
+
+
+
+
+
+
               </table>
             </div>
             <!-- /.card-body -->

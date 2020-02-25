@@ -87,14 +87,22 @@ to get the desired effect
     </ul>
 
 
-    <!-- Right navbar links -->
+       <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-              <li class="nav-item d-none d-sm-inline-block">
-        <li class="nav-item d-none d-sm-inline-block">
-        <a href="../auth/logout.php" class="nav-link">Logout</a>
-      </li>
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fa fa-user"></i>
+          <?php echo $_SESSION['name']; ?>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="../auth/logout.php" class="dropdown-item">
+            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
+          </a>
+          <a href="my_profile.php" class="dropdown-item">
+            <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
+          </a>
+        </div>
       </li>
      
        
@@ -369,20 +377,7 @@ $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,to
                    ?>
 
 
-                </tbody>
-                <tfoot>
-                <tr>
-                <th>No</th>
-                <th>Group Code</th>
-                <th>Owner Project</th>
-                <th>Topic</th>
-
-                <th>Status</th>
-                <th>View</th>
-
-                </tr>   
-
-                </tfoot>
+          
               </table>
             </div>
             <!-- /.card-body -->
@@ -395,28 +390,25 @@ $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,to
     </section>
     <!-- /.content -->
 
-<!-- Modal -->
-<div class="modal fade" id="editPS" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-            aria-hidden="true">&times;</span></button>
-      </div>
+    <!-- Modal -->
+                     <div class="modal fade" id="editPS" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header bg-info">
+                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                         <h5 class="modal-title">Edit Proposal Status</h5>
+                    </div>
 
-      <div class="modal-body">
-        <form class="form-horizontal" method="post" action="advisor/check_status.php">
-
-          <legend class="text-bold">Basic Inputs</legend>
-          <fieldset class="content-group">
-            <form action="#">
+                            <div class="modal-body">
+        <form  method="post" action="check_status.php">
               <div class="form-group row margin-top-10">
                 <div class="col-md-2">
-                  <label class="control-label col-form-label">Owner</label>
+                  <label class="control-label ">Owner</label>
                 </div>
                 <div class="col-md-10">
                   <input type="text" class="form-control" name="Owner" id="Owner" disabled="">
+                  
                 </div>
               </div>
 
@@ -512,7 +504,10 @@ $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,to
       <input type="hidden" name="topic_id" id="topic_id">
 
 
-      <button ype="submit" class="btn btn-primary btn-lg btn-block">Create</button>
+  <div class="modal-footer">
+   <button type="submit" class="btn btn-success">
+    <i class="glyphicon glyphicon-ok"></i>
+                                                                        Submit</button>                    </div>
 
 
 
