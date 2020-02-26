@@ -338,11 +338,18 @@ to get the desired effect
                       <?php
                   //   require 'menu/function.php';
 $my_id = $_SESSION['id'];
-$strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number FROM advisergroup
-          LEFT JOIN topic_project ON advisergroup.advisergroup_id = topic_project.advisergroup_id
+
+
+            $strSQL = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM topic_project
+
+          LEFT JOIN advisergroup ON topic_project.advisergroup_id = advisergroup.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        
-         WHERE advisergroup.member_id = '$my_id'";
+        LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+                 WHERE advisergroup.member_id = '$my_id'";
+
+
+                               $i = 1;
+   $count = 1;
               ?>
  <?php
      if($result = $db->query($strSQL)){
@@ -351,7 +358,7 @@ $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,to
 
                 
                     <tr>
-                   <td class="text-left"><?php echo $objResult->topic_id; ?></td>
+                    <td class="text-left">   <?php echo $count++; ?></td>
                 <td class="text-left"><?php echo $objResult->group_number; ?></td>
 
                 <td class="text-left"><?php echo substr($objResult->Owner, 0, 50); ?></td>
@@ -362,8 +369,137 @@ $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,to
                 <td class="text-left"><?php echo get_status_project($objResult->status); ?></td>
 
 
-                <td> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editPS"
+                <td> <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#editPS"
                     onclick="edit_ps(<?php echo $objResult->advisergroup_id; ?>)"><i class="fa fa-edit"></i></button>
+
+
+
+
+                 <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
+                        data-target="#show<?php echo $i; ?>">
+                      <i class="fa fa-eye"></i></button>
+
+
+  <a href="delete_project.php?id=<?php echo $objResult->topic_id;?>"class="btn btn-danger btn-xs">
+                  <i class="fa fa-trash" title="Delete"></i></a>
+
+
+      <!-- Modal -->
+
+          <div class="modal fade" id="show<?php echo $i; ?>" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+
+                     <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header bg-info">
+                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                         <h5 class="modal-title">View Proposal</h5>
+                    </div>
+
+                            <div class="modal-body">
+        <form  method="post" action="check_status.php">
+              <div class="form-group row margin-top-10">
+                <div class="col-md-2">
+                  <label class="control-label ">Owner</label>
+                </div>
+                <div class="col-md-10">
+                  <?php echo $objResult->Owner; ?>
+                  
+                </div>
+              </div>
+
+
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Topic Project</label>
+                </div>
+                <div class="col-md-10">
+<?php echo $objResult->topic_topic; ?>                </div>
+              </div>
+
+
+
+
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Keyword</label>
+                </div>
+                <div class="col-md-10">
+                 <?php echo $objResult->topic_keyword; ?>
+                </div>
+              </div>
+
+
+
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Field of study</label>
+                </div>
+                <div class="col-md-10">
+                  <?php echo $objResult->topic_fieldstudy; ?>
+                </div>
+              </div>
+
+
+
+
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Years</label>
+                </div>
+                <div class="col-md-10">
+                <?php echo $objResult->topic_years; ?>
+                </div>
+              </div>
+
+
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Abstrack</label>
+                </div>
+                <div class="col-md-10">
+                <?php echo $objResult->topic_abstrack; ?>
+                </div>
+              </div>
+
+              <!--get project Proposal status -->
+
+             
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Advisor</label>
+                </div>
+                <div class="col-md-10">
+<?php echo get_advisor($objResult->group_id); ?>                </div>
+              </div>
+
+                   <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Committee</label>
+                </div>
+                <div class="col-md-10">
+            <?php echo get_committee($objResult->group_id); ?>       
+                     </div>
+              </div>
+
+                   <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Status</label>
+                </div>
+                <div class="col-md-10">
+                  <?php echo get_status_project($objResult->status); ?>
+                </div>
+              </div>
+
+
+
+
+
+
+  
+
+
+                  
                 </td>
 
 
@@ -372,6 +508,7 @@ $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,to
 
 
                                     <?php
+                                      $i++;  
     }
                }
                    ?>

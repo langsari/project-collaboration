@@ -117,7 +117,7 @@ to get the desired effect
     
  
      <li class="nav-item">
-            <a href="view_track.php" class="nav-link">
+                  <a href="../officer/student_track.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
        Student Track              </p>

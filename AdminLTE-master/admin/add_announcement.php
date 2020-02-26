@@ -356,21 +356,25 @@ $count=mysqli_num_rows($result);
                       <th>Action</th>
                      </tr>
                   </thead>
-                  <tbody align="center">
+                  <tbody >
         <?php
 
-       $strSQL = "SELECT  announcement.announcement_topic, announcement.announcement_id, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
-                           FROM announcement,admin 
-                           WHERE announcement.admin_id=admin.admin_id
-                           ORDER BY announcement.announcement_id";
-          ?>
+     $strSQL = "SELECT announcement.*, announcement.announcement_topic,announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname FROM announcement
+     
+                        LEFT JOIN admin ON announcement.admin_id = admin.admin_id
+                                            WHERE announcement.admin_id=admin.admin_id";
+
+                               $i = 1;
+   $count = 1;
+
+      ?>
         
         <?php
      if($result = $db->query($strSQL)){
              while($objResult = $result->fetch_object()){
             ?>
             <tr>
-                  <td class="text-left"><?php echo $objResult->announcement_id; ?></td>
+                    <td class="text-left">   <?php echo $count++; ?></td>
 
                   <td class="text-left"><?php echo substr($objResult->announcement_topic, 0, 60); ?></td>
 
@@ -378,20 +382,227 @@ $count=mysqli_num_rows($result);
 
                   <td class="text-left"><?php echo $objResult->announcement_date; ?></td>
 
+  <td>
+                             <button type="button" class="btn btn-warning btn-xs" data-toggle="modal"
+                       data-target="#editsub<?php echo $i; ?>">
+                                                  <i class="fa fa-edit" title="Edit"></i> </button>
+                    </center>
 
-                  <td>
-                    
-                  <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#view"onclick="view_annouce(<?php echo $objResult->announcement_id; ?>)"><i class="fa fa-edit" title="Edit"></i></button>
 
-                  <a href="..admin/check_delete.php?id=<?php echo $objResult->topic_id;?>" title="Confirm"onclick="return confirm('<?php echo $objResult->topic_topic;?>')" class="btn btn-primary btn-sm" > <i class="fa fa-eye" title="Detail"></i></a>
 
-                  <a href="..admin/check_delete.php?id=<?php echo $objResult->topic_id;?>" title="Confirm" onclick="return confirm('<?php echo $objResult->topic_topic;?>')" class="btn btn-danger btn-sm" > <i class="fa fa-trash" aria-hidden="true" title="Delete"></i></a>
+                 <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
+                        data-target="#show<?php echo $i; ?>">
+                      <i class="fa fa-eye"></i></button>
+
+
+                     <a href="delete_announce.php?id=<?php echo $objResult->announcement_id;?>"class="btn btn-danger btn-xs">
+                  <i class="fa fa-trash" title="Delete"></i></a>
+
+
+
+
+ <div class="modal fade" id="editsub<?php echo $i; ?>" tabindex="-1" role="dialog"
+                                                aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                            <div class="modal-header bg-info">
+            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
+                                                               Edit Announcement</h4>
+                                                        </div>
+                                              
+
+
+                        <div class="modal-body">
+ <form class="form-horizontal" method="post" action="check_edit_annouce.php">
+               <div class="form-group row margin-top-10">
+                <div class="col-md-2">
+                  <label class="control-label ">Topic</label>
+                </div>
+                <div class="col-md-10">
+        <input type="hidden" name="announcement_id" value="  <?php echo $objResult->announcement_id; ?>">
+
+    
+          <input type="text" class="form-control" id="announcement_topic"
+      name="announcement_topic" value="  <?php echo$objResult->announcement_topic; ?>   ">     
+
+
+                </div>
+              </div>
+
+
+                                      
+  <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Detail</label>
+                </div>
+                <div class="col-md-10">
+ 
+
+
+<textarea type="text" rows="8"  class="form-control" id="announcement_detail"
+   name="announcement_detail"> <?php echo $objResult->announcement_detail; ?> </textarea>
+
+            </div>
+              </div>
+
+
+                                            
+  <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Date</label>
+                </div>
+                <div class="col-md-10">
+                        <input type="text" class="form-control" id="announcement_date"
+      name="announcement_date" value=" 
+<?php echo $objResult->announcement_date; ?>   ">
+            </div>
+              </div>
+
+
+  <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">By</label>
+                </div>
+                <div class="col-md-10">
+                        <input type="text" class="form-control" id="admin_fullname"
+      name="admin_fullname" value=" 
+<?php echo $objResult->admin_fullname; ?>   ">
+           </div>
+              </div>
+
+ 
+                                                     
+                                                                 
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default"
+                                                                        data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>
+                                                                        Cancle</button>
+                                                                    <button type="submit" class="btn btn-success"><i
+                                                                            class="glyphicon glyphicon-ok"></i>
+                                                                        Edit</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+</div>
+
+
+
+
+
+
+
+
+ <div class="modal fade" id="show<?php echo $i; ?>" tabindex="-1" role="dialog"
+                                                aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                            <div class="modal-header bg-info">
+            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
+                                                               View Announcement</h4>
+                                                        </div>
+                                              
+                                                                            
+
+
+                         <div class="modal-body">
+ <form class="form-horizontal" method="post" action="#">           
+    <div class="form-group row margin-top-10">
+                <div class="col-md-2">
+                  <label class="control-label ">Topic</label>
+                </div>
+                <div class="col-md-10">
+        <input type="hidden" name="announcement_id" value="  <?php echo $objResult->announcement_id; ?>">
+
+    
+         <?php echo$objResult->announcement_topic; ?>     
+
+
+                </div>
+              </div>
+
+
+                                      
+  <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Detail</label>
+                </div>
+                <div class="col-md-10">
+ 
+
+ <?php echo $objResult->announcement_detail; ?>
+
+            </div>
+              </div>
+
+
+                                            
+  <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Date</label>
+                </div>
+                <div class="col-md-10">
+                      
+<?php echo $objResult->announcement_date; ?> 
+            </div>
+              </div>
+
+
+  <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">By</label>
+                </div>
+                <div class="col-md-10">
+      
+<?php echo $objResult->admin_fullname; ?>  
+           </div>
+              </div>
+
+ 
+                                                                 
+                                                               
+
+
+
+
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                   </td>
                  
             </tr>
 
             <?php
+                                                $i++;  
+
               }
                }
                    ?>
@@ -451,7 +662,7 @@ $count=mysqli_num_rows($result);
 <div class="modal fade" id="addann">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header">
+                            <div class="modal-header bg-success">
               <h4 class="modal-title">Add Proposal Schedule</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -486,11 +697,11 @@ $count=mysqli_num_rows($result);
                           <label class="control-label col-form-label">Detail</label>
                         </div>
                         <div class="col-md-9">
-                          <textarea rows="10" width="40" class="form-control" id="announcement_detail"
-                            name="announcement_detail" placeholder="Project Description"></textarea>
-                            <script>
-                            CKEDITOR.replace('announcement_detail');
-                          </script>
+                    
+
+  <textarea type="text" rows="15" class="form-control" id="announcement_detail" name="announcement_detail"
+                  placeholder="Project Description" required > </textarea>
+
 
                         </div>
                       </div>

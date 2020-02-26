@@ -330,6 +330,11 @@ to get the desired effect
                                                     data-target="#editsub<?php echo $i; ?>">
                                                   <i class="fa fa-edit" title="Edit"></i> </button></center>
 
+
+          <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
+                        data-target="#show<?php echo $i; ?>">
+                      <i class="fa fa-eye"></i></button>
+
                   <a href="delete_news.php?id=<?php echo $objResult->news_id;?>"class="btn btn-danger btn-xs" onclick="return confirm('Are You sure Delete?')">
                   <i class="fa fa-trash" title="Delete"></i></a>
 
@@ -342,7 +347,7 @@ to get the desired effect
                                                 aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
-                                                        <div class="modal-header">
+                            <div class="modal-header bg-info">
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                             <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
@@ -351,42 +356,64 @@ to get the desired effect
                                               
                                                 <div class="modal-body">
                                                             <form class="form-horizontal" method="post" action="check_edit_news.php">
-                                                                <input type="hidden" name="news_id" value="  <?php echo $objResult->news_id; ?>">
                                                             
-                                                             
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2">Topic</label>
-                                                                    <div class="col-md-8">
-                                                                        <input type="text" class="form-control" id="news_topic"
-                                                                            name="news_topic" value="  <?php echo $objResult->news_topic; ?>">
-                                                                       </div>
-                                                                </div>
-                                                     
+                                                             <div class="form-group row margin-top-10">
+                <div class="col-md-2">
+                  <label class="control-label ">Topic</label>
+                </div>
+                <div class="col-md-10">
+                     <input type="hidden" name="news_id" value="  <?php echo $objResult->news_id; ?>">
+
+    
+          <input type="text" class="form-control" id="news_topic"
+      name="news_topic" value="  <?php echo$objResult->news_topic; ?>   ">     
 
 
-                                                                    <label class="control-label col-md-2">Detail</label>
-                                                                    <div class="col-md-7">
-                            
- <textarea type="text" rows="6"   class="form-control" id="news_detail"
-             name="news_detail"> <?php echo $objResult->news_detail; ?> </textarea>
-
+                </div>
+              </div>
+                                                                                               
+  <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Detail</label>
+                </div>
+                <div class="col-md-10">
  
 
-                                                                    </div>
-                                                               
-                                                     
-                                                                  
-                                                                <div class="form-group">
-                                                                    <label class="control-label col-md-2">Date</label>
-                                                                    <div class="col-md-4">
-                                                                        <input type="text" class="form-control" name="news_date" id="news_date" value="<?php echo $objResult->news_date; ?>">
+
+<textarea type="text" rows="8"  class="form-control" id="news_detail"
+   name="news_detail"> <?php echo $objResult->news_detail; ?> </textarea>
+
+            </div>
+              </div>
 
 
+                                         
+                                           <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Date</label>
+                </div>
+                <div class="col-md-10">
+   <input type="text" class="form-control" name="news_date" id="news_date" 
+   value="<?php echo $objResult->news_date; ?>">
 
-                                                                         </div>
-                                                                </div>
-                                                     
-                                                                 
+            </div>
+              </div>
+
+
+                                         
+                                           <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">By</label>
+                </div>
+                <div class="col-md-10">
+   <input type="text" class="form-control" name="member_fullname" id="member_fullname" 
+   value="<?php echo $objResult->member_fullname; ?>">
+
+            </div>
+              </div>
+
+                   
+
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-default"
                                                                         data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>
@@ -399,6 +426,80 @@ to get the desired effect
                                                         </div>
                                                     </div>
                                                 </div>
+</div>
+
+             <div class="modal fade" id="show<?php echo $i; ?>" tabindex="-1" role="dialog"
+                                                aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                            <div class="modal-header bg-info">
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
+                                                              View News</h4>
+                                                        </div>
+                                              
+                                                <div class="modal-body">
+                                                            <form class="form-horizontal" method="post" action="#">
+                                                            
+                                                             <div class="form-group row margin-top-10">
+                <div class="col-md-2">
+                  <label class="control-label ">Topic</label>
+                </div>
+                <div class="col-md-10">
+                     <input type="hidden" name="news_id" value="  <?php echo $objResult->news_id; ?>">
+
+    
+         <?php echo$objResult->news_topic; ?>     
+
+
+                </div>
+              </div>
+                                                                                               
+  <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Detail</label>
+                </div>
+                <div class="col-md-10">
+ 
+
+
+
+ <?php echo $objResult->news_detail; ?>
+
+            </div>
+              </div>
+
+
+                                         
+                                           <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Date</label>
+                </div>
+                <div class="col-md-10">
+<?php echo $objResult->news_date; ?>
+
+            </div>
+              </div>
+
+
+                                         
+                                           <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">By</label>
+                </div>
+                <div class="col-md-10">
+  <?php echo $objResult->member_fullname; ?>
+
+            </div>
+              </div>
+
+                   
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
 
                   </td>
                
@@ -412,19 +513,7 @@ to get the desired effect
                    ?>
 
 
-                </tbody>
-                <tfoot>
-                <tr>
-               <th>No</th>
-                  <th>Topic</th>
-                  <th>Detail</th>
-                  <th>Date</th>
-                  <th>By</th>
-                  <th>Option</th>
-       
-                </tr>   
-
-                </tfoot>
+             
               </table>
             </div>
             <!-- /.card-body -->
@@ -441,42 +530,60 @@ to get the desired effect
 
 
 
-  <!--form alert add topic-->
 
   <div class="modal fade" id="addtopic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content ">
-        <div class="modal-header ">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-              aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i>
-            <h4 class="card-title text-bold">Add Topic</h4>
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+                            <div class="modal-header bg-success">
+              <h4 class="modal-title">Add Proposal Schedule</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
 
-        </div>
-        <div class="modal-body">
+            <div class="modal-body">
+              
           <form id="add" name="add" method="post" action="check_newstopic.php" onsubmit="return checkForm()">
-            <div class="user-details">
+                  
 
-              <div class="form-group">
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" placeholder="Topic" aria-describedby="basic-addon1"
+      <div class="form-group row">
+          <div class="col-md-3">
+              <label class="control-label col-form-label">Topic</label>
+              </div>
+                <div class="col-md-9">
+          <input type="text" class="form-control" placeholder="Topic" aria-describedby="basic-addon1"
                     id="news_topic" name="news_topic" autocomplete="off" required>
+                  </div>
                 </div>
 
+                <div class="form-group row">
+                        <div class="col-md-3">
+                          <label class="control-label col-form-label">Begin Date: </label>
+                        </div>
+                        <div class="col-md-9">
+                    <input type="date" name="news_date" id="news_date" class="form-control" required>
+                        </div>
+                      </div>
 
-                <div class="form-group">
-                  <div class="col-sm-5">
-                    Begin Date: <input type="date" name="news_date" id="news_date" class="form-control" required>
-                  </div>
+                      <div class="form-group row">
+                        <div class="col-md-3">
+                          <label class="control-label col-form-label">Detail</label>
+                        </div>
+                        <div class="col-md-9">
+                    
+
+  <textarea type="text" rows="15" class="form-control" id="news_detail" name="news_detail"
+                  placeholder="Project Description" required > </textarea>
 
 
+                        </div>
+                      </div>
 
-                  <div class="form-group row">
-                    <div class="col-md-3">
-
-                    </div>
-                    <div class="col-md-9">
-                      <select class="form-control" name="member_id" hidden="">
+                      <div class="form-group row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-9">
+                          <select class="form-control" name="member_id" hidden="">
 
                         <?php
                 include '../menu/connect.php';
@@ -489,28 +596,22 @@ to get the desired effect
                 }
                 ?>
                       </select>
+                        </div>
+                      </div>
 
-                    </div>
-                  </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">CREATE</button>
+            </div>
 
-                  <div class="form-group">
-                    <label class="col-md-3 control-label">Project Detail</label>
-                    <div class="col-md-13">
-                      <textarea rows="10" width="40" class="form-control" id="news_detail" name="news_detail"
-                        placeholder="Project Description"></textarea>
-                      <script>
-                        CKEDITOR.replace('news_detail');
-                      </script>
-                    </div>
-                  </div>
-
-
-                  <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
+            </form>
+          </div>
 
 
 
-                </div>
-              </div>
+  <!--form alert add topic-->
+
             </div>
         </div>
       </div>

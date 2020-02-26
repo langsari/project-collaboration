@@ -383,14 +383,97 @@ $count=mysqli_num_rows($result);
                       </center>
 
 
-
+                 <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
+                        data-target="#show<?php echo $i; ?>">
+                      <i class="fa fa-eye"></i></button>
 
                       <a href="delete_member.php?id=<?php echo $objResult->member_id;?>" class="btn btn-danger btn-xs">
                         <i class="fa fa-trash" title="Delete"></i></a>
 
 
 
+
+
+                       
+<div class="modal fade" id="show<?php echo $i; ?>" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header bg-info">
+                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                         <h5 class="modal-title">View Proposal</h5>
+                    </div>
+
+                              <div class="modal-body">
+                              <form class="form-horizontal" method="post" action="check_edit_member.php">
+                                <input type="hidden" name="member_id" value=" <?php echo $objResult->member_id; ?>">
+
+                                       <div class="card-body">
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">ID Studen</label>
+                    <div class="col-sm-10">
+                                <?php echo $objResult->member_idcard; ?>
+                    </div>
+                  </div>
+
+
+
+ <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Username</label>
+                    <div class="col-sm-10">
+<?php echo $objResult->member_username; ?>                    </div>
+                  </div>
+
+ <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Student Name</label>
+                    <div class="col-sm-10">
+<?php echo $objResult->member_fullname; ?>         
+         </div>
+                  </div>
+
+
+
+ <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+<?php echo $objResult->member_email; ?>             
+       </div>
+                  </div>
+
+ <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Phone</label>
+                    <div class="col-sm-10">
+
+                                  <?php echo $objResult->member_phone; ?>                 </div>
+                  </div>
+
+
+     <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 ">Gender</label>
+                    <div class="col-sm-10">
+
+                                     <?php echo $objResult->member_gender; ?>                    </div>
+                  </div>
+
+                   <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 ">Position</label>
+                    <div class="col-sm-10">
+
+                                     <?php echo $objResult->member_pos; ?>                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
                       <!-- Modal -->
+
+
+
+
+
                       <div class="modal fade" id="editsub<?php echo $i; ?>" tabindex="-1" role="dialog"
                         aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
@@ -400,7 +483,7 @@ $count=mysqli_num_rows($result);
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                   aria-hidden="true">&times;</span></button>
                               <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
-                                Edit Member</h4>
+                                View Member</h4>
                             </div>
 
                             <div class="modal-body">
@@ -477,6 +560,9 @@ $count=mysqli_num_rows($result);
                             </div>
                           </div>
                         </div>
+
+
+
 
                     </td>
                     </tr>

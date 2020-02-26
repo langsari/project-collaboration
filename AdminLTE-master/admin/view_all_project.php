@@ -358,11 +358,17 @@ $count=mysqli_num_rows($result);
                   <tbody >
         <?php
 
-       $strSQL = "SELECT advisergroup.*,  topic_project.topic_id,topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM advisergroup
-          LEFT JOIN topic_project ON advisergroup.advisergroup_id = topic_project.advisergroup_id
+
+
+       $strSQL = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM topic_project
+
+          LEFT JOIN advisergroup ON topic_project.advisergroup_id = advisergroup.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
-         WHERE advisergroup.group_id ";
+         WHERE topic_project.advisergroup_id ";
+
+
+
           $i = 1;
    $count = 1;
    
@@ -381,9 +387,9 @@ $count=mysqli_num_rows($result);
                    <!-- <td class="text-left"><?php echo get_status_project($objResult->status); ?></td>-->
                   <td>
 
- <button type="button" class="btn btn-warning btn-xs" data-toggle="modal"
+ <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
                        data-target="#show<?php echo $i; ?>">
-                                                  <i class="fa fa-edit" title="Edit"></i> </button>
+                  <i class="fa fa-eye" title="Edit"></i> </button>
 
 
  <a href="delete_project.php?id=<?php echo $objResult->topic_id;?>"class="btn btn-danger btn-xs">
@@ -394,6 +400,7 @@ $count=mysqli_num_rows($result);
 
               
 
+                      <!-- Modal -->
 
           <div class="modal fade" id="show<?php echo $i; ?>" tabindex="-1" role="dialog"
                         aria-labelledby="myModalLabel" aria-hidden="true">
@@ -499,9 +506,6 @@ $count=mysqli_num_rows($result);
                   <?php echo get_status_project($objResult->status); ?>
                 </div>
               </div>
- </div>
-
-      </div>
 
 
 

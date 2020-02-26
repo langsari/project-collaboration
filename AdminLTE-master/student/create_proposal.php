@@ -305,7 +305,7 @@ to get the desired effect
             <div class="col-15 col-sm-8 col-md-12 d-flex align-items-stretch">
               
 
-                    <form id="add" name="add" method ="post" action ="student/check_proposal.php" onsubmit="return checkForm()">
+                    <form id="add" name="add" method ="post" action ="check_proposal.php" onsubmit="return checkForm()">
                       <legend class="text-bold margin-top-40">Add proposal</legend>
 
                       <form action="#" class="form-horizontal">
