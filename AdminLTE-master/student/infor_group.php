@@ -384,7 +384,7 @@ to get the desired effect
       </div>
       <div class="modal-body">
 
-                    <form class="form" method="post" action="student/check_newgroup.php">
+                    <form class="form" method="post" action="check_newgroup.php">
   <button type="button"  class="btn btn-success btn-sm" data-toggle="modal" data-target="#joinpartner" style="margin-bottom: 13px;">
    <i class="glyphicon glyphicon-plus"></i>Join Partner
   </button>
@@ -412,7 +412,7 @@ to get the desired effect
       </div>
       <div class="modal-body">
          
-       <form id="add" name="add" method ="post" action ="student/check_join.php" onsubmit="return checkForm()" >
+       <form id="add" name="add" method ="post" action ="check_join.php" onsubmit="return checkForm()" >
  
             
 
@@ -437,7 +437,7 @@ to get the desired effect
                   <td class="text-center"><?php echo $row->group_number; ?></td>
                   <td><?php echo get_member_list($row->group_id); ?></td>
                   <td class="text-center">
-                    <a href="student/check_group.php?id=<?php echo $row->group_id; ?>" class="btn btn-primary btn-xs" onclick="return confirm_joingroup()"><i class="glyphicon glyphicon-plus-sign"></i> Join this Group</a>
+                    <a href="check_group.php?id=<?php echo $row->group_id; ?>" class="btn btn-primary btn-xs" onclick="return confirm_joingroup()"><i class="glyphicon glyphicon-plus-sign"></i> Join this Group</a>
                   </td>
                 </tr>
               <?php
@@ -546,7 +546,7 @@ to get the desired effect
       </div>
       <div class="modal-body">
          
-       <form id="add" name="add" method ="post" action ="student/check_selectadvisor.php" onsubmit="return checkForm()" >
+       <form id="add" name="add" method ="post" action ="check_selectadvisor.php" onsubmit="return checkForm()" >
   
                                                
  <div class="form-group row">           

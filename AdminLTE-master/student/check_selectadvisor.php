@@ -15,7 +15,7 @@ $admin_id = $_POST['admin_id'];
     $sql = "INSERT INTO advisergroup (member_id, group_id,advisergroup_topic,admin_id) VALUES ('$member_id', '$group_id','$advisergroup_topic','$admin_id')";
     if($db->query($sql)){
       $db->close();
-      header("Location: ../index.php?page=infor_group");
+      header("Location: infor_group.php");
     }else{
       echo $db->error;
       $db->close();
@@ -26,7 +26,7 @@ $admin_id = $_POST['admin_id'];
  $sql = "UPDATE advisergroup SET member_id = '$member_id', advisergroup_status = 'Waiting' WHERE advisergroup_id = '$advisergroup_id'";
     if($db->query($sql)){
       $db->close();
-      header("Location: ../index.php?page=infor_group");
+      header("Location: infor_group.php");
     }else{
       echo $db->error;
       $db->close();

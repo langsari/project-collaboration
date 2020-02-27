@@ -150,11 +150,26 @@ to get the desired effect
             </a>
           </li>
 
+
+    <?php 
+     $my_id = $_SESSION['id'];
+  $con = mysqli_connect('localhost','root','','itpromo_track');
+  $query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06 FROM advisergroup
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+        LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+        WHERE advisergroup.member_id = '$my_id'  
+        AND files.files_status='Waiting'  or   files.status_advisor='' or advisergroup.advisergroup_status='Waiting' or files.by_advisor06=''
+               ";  
+  $query_num=mysqli_query($con,$query);
+  $count=mysqli_num_rows($query_num);
+  ?>
          <li class="nav-item">
             <a href="advisor_request.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request              </p>
+       Request     
+        <span class="badge badge-info right"><?php echo $count; ?></span>         </p>
             </a>
           </li>
     
