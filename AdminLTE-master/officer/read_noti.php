@@ -25,29 +25,43 @@ include('../menu/function.php');
    <!-- DataTables -->
   <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to to the body tag
-to get the desired effect
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
+
+
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-      </li>
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+
+        </li>
      
-    </ul>
-   <!-- Right navbar links -->
-     <?php
+
+      </ul>
+
+      <?php
+$conn = new mysqli("localhost","root","","itpromo_track");
+$count=0;
+if(!empty($_POST['add'])) {
+  $subject = mysqli_real_escape_string($conn,$_POST["subject"]);
+  $comment = mysqli_real_escape_string($conn,$_POST["comment"]);
+  $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
+  mysqli_query($conn, $sql);
+}
+$sql2="SELECT * FROM notify WHERE status = 0";
+$result=mysqli_query($conn, $sql2);
+$count=mysqli_num_rows($result);
+?>
+
+
+
+      <!-- Display the alert of notification -->
+
+      <?php
   $con = mysqli_connect('localhost','root','','itpromo_track');
   $query="SELECT * FROM notify WHERE status=0";
   $query_num=mysqli_query($con,$query);
@@ -58,8 +72,7 @@ to get the desired effect
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
 
-
-  <li class="nav-item dropdown">
+        <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="fa fa-globe" style="font-size:20px;"></i><span class="badge badge-danger"
               id="count"><?php echo $count; ?></span>
@@ -90,29 +103,25 @@ to get the desired effect
           </div>
         </li>
 
-
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fa fa-user"></i>
-          <?php echo $_SESSION['name']; ?>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a href="../auth/logout.php" class="dropdown-item">
-            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="fa fa-user"></i>
+            <?php echo $_SESSION['name']; ?>
           </a>
-          <a href="my_profile.php" class="dropdown-item">
-            <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
-          </a>
-        </div>
-      </li>
-     
-       
-    </ul>
-  </nav>
-  <!-- /.navbar -->
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="../auth/logout.php" class="dropdown-item">
+              <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
+            </a>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
+            </a>
+          </div>
+        </li>
+      </ul>
 
-  <!-- Main Sidebar Container -->
+    </nav>
+    <!-- /.navbar -->
+ <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
@@ -140,7 +149,7 @@ to get the desired effect
                with font-awesome or any other icon font library -->
 
                    <li class="nav-item has-treeview ">
-            <a href="index.php" class="nav-link ">
+            <a href="index.php" class="nav-link active">
              
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -151,7 +160,7 @@ to get the desired effect
           </li>
 
          <li class="nav-item">
-            <a href="officer_request.php" class="nav-link  ">
+            <a href="officer_request.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
        Request              </p>
@@ -159,7 +168,7 @@ to get the desired effect
           </li>
     
  
-  <li class="nav-item">
+     <li class="nav-item">
                   <a href="../officer/student_track.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
@@ -168,9 +177,10 @@ to get the desired effect
           </li>
     
 
- 
+  
+
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link ">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
                 Schedule
@@ -179,13 +189,13 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="create_schedule_proposal.php" class="nav-link ">
+                <a href="create_schedule_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create Schedule Proposal</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="create_schedule_project.php" class="nav-link ">
+                <a href="create_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create Schedule Project</p>
                 </a>
@@ -195,12 +205,10 @@ to get the desired effect
           </li>
 
 
-
-
     
 
   <li class="nav-item has-treeview">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
                 News
@@ -209,13 +217,13 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="Annoucement.php" class="nav-link ">
+                <a href="Annoucement.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Annoucements</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="show_topic.php" class="nav-link active">
+                <a href="show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Topic Require</p>
                 </a>
@@ -224,12 +232,16 @@ to get the desired effect
             </ul>
           </li>
 
-   <li class="nav-item">
-                <a href="proposal_project.php" class="nav-link  ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>All Project Topics</p>
-                </a>
-              </li>
+
+     <li class="nav-item">
+            <a href="proposal_project.php" class="nav-link">
+             <i class="nav-icon fa fa-paper-plane"></i>
+              <p>
+       All project topics        </p>
+            </a>
+          </li>
+    
+
 
   <li class="nav-item">
             <a href="my_profile.php" class="nav-link">
@@ -240,7 +252,7 @@ to get the desired effect
             </a>
           </li>
 
-      
+       
 
 
         </ul>
@@ -250,149 +262,140 @@ to get the desired effect
     <!-- /.sidebar -->
   </aside>
 
+
+
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-
-
-
-<section class="content-header">
+    <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-  
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Topic Require</li>
+              <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+              <li class="breadcrumb-item active">Notification</li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
-  <!-- Main content -->
+    <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-       
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header p-2">
-                <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
-                
-                </ul>
-              </div><!-- /.card-header -->
 
-              <?php
+      <?php include ('../menu/connect.php'); ?>
 
-     $strSQL = "SELECT  news_topic.news_id,news_topic.news_topic, news_topic.news_detail, news_topic.news_date,member.member_fullname
-         FROM news_topic,member 
-         WHERE news_topic.member_id=member.member_id
-         ORDER BY news_topic.news_id";
+          <?php
+          if (isset($_GET['id']))
+           {
+            $noti_id= $_GET['id'];
+
+            $conn = new mysqli("localhost","root","","itpromo_track");
+            $sql="UPDATE notify SET status=1 WHERE id='$noti_id' ";
+            $result=mysqli_query($conn, $sql);
+          }
+
+          ?>
+
+
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">
+            <i class="fa fa-edit"></i>
+          Recent Notification</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+              <i class="fas fa-minus"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+              <i class="fas fa-times"></i></button>
+          </div>
+        </div>
+
+        <?php
+
+     $strSQL = "SELECT * FROM notify WHERE status=1 ORDER BY id DESC";
+
          ?>
     <?php
-                 if($objQuery = $db->query($strSQL)){
+            
+            if($objQuery = $db->query($strSQL)){
              while($objResult = $objQuery->fetch_object()){
             ?>
 
-              <div class="card-body">
-                <div class="tab-content">
-                  <div class="active tab-pane" id="activity">
-                    <!-- Post -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-md-12">
+              <div class="row">
+                <div class="col-12">
+                  
                     <div class="post">
                       <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image">
+                        <img class="img-circle img-bordered-sm" src="../dist/img/user1.png" alt="user image">
                         <span class="username">
-                          <a href="#"><?php echo $objResult->member_fullname; ?> </a>
+                          Administrator
                         </span>
-                        <span class="description">Shared publicly - <?php echo $objResult->news_date; ?></span>
+                        <span class="description">Shared publicly - 7:45 PM today</span>
                       </div>
                       <!-- /.user-block -->
-                      <p><b><?php echo $objResult->news_topic; ?></b></p>
-                      <p>
-                       <?php echo $objResult->news_detail; ?>
-                      </p>
-
-                      <p>
-                        <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
-                        <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
-                        <span class="float-right">
-                          <a href="#" class="link-black text-sm">
-                            <i class="far fa-comments mr-1"></i> Comments (5)
-                          </a>
-                        </span>
-                      </p>
-
-                      <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
+                      
+                      <p><b><?php echo $objResult->subject; ?></b></p>
+                      <p> <?php echo $objResult->comment; ?></p>
+                  
                     </div>
-                    <!-- /.post -->
-    <?php
+ <?php
                  }
                }
                    ?>
-                 
-                  <!-- /.tab-pane -->
-                  
-                      </div>
-                     </div>
-              
 
-                    </div>
-                  </div>
-                  <!-- /.tab-pane -->
-     
-                 
-                  <!-- /.tab-pane -->
                 </div>
-                <!-- /.tab-content -->
-              </div><!-- /.card-body -->
+              </div>
             </div>
-            <!-- /.nav-tabs-custom -->
+
           </div>
-          <!-- /.col -->
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+
+    
+
+
     </section>
     <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
 
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.3-pre
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
 
-
-
-
-
-
-<!-- REQUIRED SCRIPTS -->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
 
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap -->
+<!-- Bootstrap 4 -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE -->
-<script src="../dist/js/adminlte.js"></script>
-
-<!-- OPTIONAL SCRIPTS -->
-<script src="../plugins/chart.js/Chart.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<script src="../dist/js/pages/dashboard3.js"></script>
-<!-- DataTables -->
-<script src="../plugins/datatables/jquery.dataTables.js"></script>
-<script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-    });
-  });
-</script>
 </body>
 </html>

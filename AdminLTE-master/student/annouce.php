@@ -43,10 +43,53 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-      
+     
     </ul>
    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+     <?php
+  $con = mysqli_connect('localhost','root','','itpromo_track');
+  $query="SELECT * FROM notify WHERE status=0";
+  $query_num=mysqli_query($con,$query);
+  $count=mysqli_num_rows($query_num);
+
+  ?>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+
+
+  <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="fa fa-globe" style="font-size:20px;"></i><span class="badge badge-danger"
+              id="count"><?php echo $count; ?></span>
+
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
+            <?php
+              $con = mysqli_connect('localhost','root','','itpromo_track');
+              $sq="SELECT * FROM notify WHERE status=0";
+              $qu_num=mysqli_query($con,$query);
+              if (mysqli_num_rows($qu_num)>0) 
+              {
+                while($result=mysqli_fetch_assoc($qu_num))
+                {
+                  echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
+                  echo '<div class="dropdown-divider"></div>';
+
+                }
+              }
+              else
+              {
+                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+              }
+            ?>
+            <div class="dropdown-divider"></div>
+          <a href="read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
+          </div>
+        </li>
+
+
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
@@ -70,6 +113,7 @@ to get the desired effect
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
+    <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
@@ -90,12 +134,16 @@ to get the desired effect
         </div>
       </div>
 
+      <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+
+
+                   <li class="nav-item has-treeview ">
+            <a href="index.php" class="nav-link active">
+             
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -105,18 +153,18 @@ to get the desired effect
           </li>
 
          <li class="nav-item">
-            <a href="infor_group.php" class="nav-link ">
-              <i class="nav-icon fa fa-group"></i>
+            <a href="infor_group.php" class="nav-link">
+<i class="nav-icon fa fa-users" aria-hidden="true"></i>
               <p>
        Group Information              </p>
             </a>
           </li>
     
-
- <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link ">
-
-              <i class="nav-icon fas fa-table"></i>
+ 
+  
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
               <p>
                 Projects
                 <i class="fas fa-angle-left right"></i>
@@ -124,29 +172,30 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="create_proposal.php" class="nav-link " >
+                <a href="create_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Proposal</p>
                 </a>
               </li>
+              
               <li class="nav-item">
- <a href="../forms/form01/pf01.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+       <a href="../forms/check_pf.php" class="nav-link" >
+                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Track</p>
                 </a>
               </li>
-             <li class="nav-item">
-                <a href="proposal_project.php" class="nav-link ">
+              <li class="nav-item">
+                <a href="proposal_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
                 </a>
               </li>
             </ul>
           </li>
-          
- <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link ">
 
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
                 Schedule
@@ -155,13 +204,13 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="display_schedule_proposal.php" class="nav-link ">
+                <a href="display_schedule_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Proposal Schedule</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="display_schedule_project.php" class="nav-link ">
+                <a href="display_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Schedule</p>
                 </a>
@@ -172,7 +221,7 @@ to get the desired effect
 
 
   <li class="nav-item has-treeview">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
                 News
@@ -181,7 +230,7 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="annouce.php" class="nav-link active">
+                <a href="annouce.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Annoucements</p>
                 </a>
@@ -210,7 +259,7 @@ to get the desired effect
 
           <li class="nav-item">
             <a href="guide.php" class="nav-link">
-              <i class="nav-icon fa fa-glide-g"></i>
+        <i class="nav-icon fab fa-glide-g"></i>
               <p>
                 Guide
               </p>
@@ -251,7 +300,6 @@ to get the desired effect
     </div>
     <!-- /.sidebar -->
   </aside>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->

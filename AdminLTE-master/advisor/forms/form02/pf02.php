@@ -47,10 +47,51 @@ to get the desired effect
       </li>
      
     </ul>
-
-
    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+     <?php
+  $con = mysqli_connect('localhost','root','','itpromo_track');
+  $query="SELECT * FROM notify WHERE status=0";
+  $query_num=mysqli_query($con,$query);
+  $count=mysqli_num_rows($query_num);
+
+  ?>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+
+
+  <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="fa fa-globe" style="font-size:20px;"></i><span class="badge badge-danger"
+              id="count"><?php echo $count; ?></span>
+
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
+            <?php
+              $con = mysqli_connect('localhost','root','','itpromo_track');
+              $sq="SELECT * FROM notify WHERE status=0";
+              $qu_num=mysqli_query($con,$query);
+              if (mysqli_num_rows($qu_num)>0) 
+              {
+                while($result=mysqli_fetch_assoc($qu_num))
+                {
+                  echo '<a class="dropdown-item text-primary font-weight-light" href="../../read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
+                  echo '<div class="dropdown-divider"></div>';
+
+                }
+              }
+              else
+              {
+                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+              }
+            ?>
+            <div class="dropdown-divider"></div>
+          <a href="../../read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
+          </div>
+        </li>
+
+
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
@@ -58,7 +99,7 @@ to get the desired effect
           <?php echo $_SESSION['name']; ?>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-          <a href="../auth/logout.php" class="dropdown-item">
+          <a href="../../../auth/logout.php" class="dropdown-item">
             <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
           </a>
           <a href="my_profile.php" class="dropdown-item">
@@ -71,10 +112,12 @@ to get the desired effect
     </ul>
   </nav>
   <!-- /.navbar -->
+  <!-- /.navbar -->
+
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index.php" class="brand-link">
+    <a href="../../index.php" class="brand-link">
       <img src="../../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ITPROMO</span>
@@ -99,8 +142,8 @@ to get the desired effect
                with font-awesome or any other icon font library -->
 
                    <li class="nav-item has-treeview ">
-            <a href="../../advisor/index.php" class="nav-link ">
-             
+           <a href="../../index.php" class="nav-link">
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -110,7 +153,7 @@ to get the desired effect
           </li>
 
          <li class="nav-item">
-            <a href="../../advisor/advisor_request.php" class="nav-link ">
+            <a href="../../advisor_request.php" class="nav-link ">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
        Request              </p>
@@ -129,26 +172,26 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../advisor/proposal_status.php" class="nav-link ">
+                <a href="../../proposal_status.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Proposal Status</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../view track/student_Track.php" class="nav-link active">
+                <a href="../../student_Track.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Track</p>
                 </a>
               </li>
          
               <li class="nav-item">
-                <a href="../../advisor/proposal_project.php" class="nav-link ">
+                <a href="../../proposal_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
                 </a>
               </li>
                        <li class="nav-item">
-                <a href="../../advisor/manage_mark.php" class="nav-link">
+                <a href="../../manage_mark.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Mark</p>
                 </a>
@@ -174,13 +217,13 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../advisor/display_schedule_proposal.php" class="nav-link">
+                <a href="../../display_schedule_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Proposal Schedule</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../advisor/display_schedule_project.php" class="nav-link">
+                <a href="../../display_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Schedule</p>
                 </a>
@@ -202,13 +245,13 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../advisor/Annoucement.php" class="nav-link">
+                <a href="../../Annoucement.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Annoucements</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../advisor/add_general_topic.php" class="nav-link ">
+                <a href="../../add_general_topic.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Topic Require</p>
                 </a>
@@ -218,7 +261,7 @@ to get the desired effect
           </li>
 
   <li class="nav-item">
-            <a href="../../committee/committee_request.php" class="nav-link">
+            <a href="../../../committee/committee_request.php" class="nav-link">
          <i class="nav-icon fa fa-tasks"></i> 
               <p>
                 For Committee
@@ -227,7 +270,7 @@ to get the desired effect
           </li>
 
   <li class="nav-item">
-            <a href="../../advisor/my_profile.php" class="nav-link ">
+            <a href="../../my_profile.php" class="nav-link ">
               <i class="nav-icon fa fa-user"></i>
               <p>
                 Personal Information
@@ -236,7 +279,7 @@ to get the desired effect
           </li>
 
            <li class="nav-item">
-            <a href="../../advisor/line_message.php" class="nav-link">
+            <a href="../../line_message.php" class="nav-link">
               <i class="nav-icon fa fa-user"></i>
               <p>
                Line notify
@@ -251,7 +294,6 @@ to get the desired effect
     </div>
     <!-- /.sidebar -->
   </aside>
-
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

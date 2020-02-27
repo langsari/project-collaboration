@@ -106,6 +106,7 @@ function validate(evt) {
 
 
      <div class="input-group mb-3">
+      
   <input type="text" class="form-control" id="member_fullname"
                                                 name="member_fullname" placeholder="Example: Naemah Nik-Abdullah "   autocomplete="off" required aria-describedby="basic-addon1">
        <div class="input-group-append">
@@ -156,14 +157,6 @@ pattern="^[a-zA-Z0-9]+@gmail\.com$" required
 
 
 
-     <div class="input-group mb-3">
-<input type="text" class="form-control" id="member_phone"
-                                                name="member_phone" placeholder="Example: 0831851521"  autocomplete="off" required aria-describedby="basic-addon1" onkeypress='validate(event)'  maxlength="10" >    <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-phone"></span>
-            </div>
-          </div>
-        </div>
 
 
 
