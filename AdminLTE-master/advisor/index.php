@@ -417,6 +417,85 @@ to get the desired effect
       <!-- /.content -->
 
 
+   <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+               <h3 class="card-title">
+                  <i class="fas fa-edit"></i>
+                  View Track of Students
+                </h3>
+        
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr align="center">
+                  <th>Project Title</th>
+                  <th>Owner Project</th>
+                  <th>Project Progress</th>
+                  <th>Action</th>
+                </tr>
+                  </thead>
+                  <tbody align="center">
+        <?php
+$my_id = $_SESSION['id'];
+
+       $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic FROM advisergroup
+
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+
+       
+        WHERE advisergroup.member_id = '$my_id'   ";
+
+        ?>
+        <?php
+     if($result = $db->query($strSQL)){
+             while($objResult = $result->fetch_object()){
+            ?>
+          
+                  <td class="text-left"><?php echo $objResult->advisergroup_topic; ?></td>
+                  <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
+                  <td class="project_progress">
+                          <div class="progress progress-sm">
+                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
+                              </div>
+                          </div>
+                          <small>
+                              57% Complete
+                          </small>
+                      </td>
+                  <td>
+                  <a href="../admin/forms/form01/pf01.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
+                  </td>
+
+
+                </tr>
+            <?php
+              }
+               }
+                   ?>
+                
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+
+     </div>
+
+
 
 
            
