@@ -159,7 +159,7 @@ to get the desired effect
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  
-        AND files.files_status='Waiting'  or   files.status_advisor='' or advisergroup.advisergroup_status='Waiting' or files.by_advisor06=''
+        AND files.files_status='Waiting'  or   files.status_advisor='' or advisergroup.advisergroup_status='Waiting' or files.by_advisor06='' 
                ";  
   $query_num=mysqli_query($con,$query);
   $count=mysqli_num_rows($query_num);
@@ -169,7 +169,8 @@ to get the desired effect
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
        Request     
-        <span class="badge badge-info right"><?php echo $count; ?></span>         </p>
+        <span class="badge badge-info right"><?php echo $count; ?></span>       
+          </p>
             </a>
           </li>
     
