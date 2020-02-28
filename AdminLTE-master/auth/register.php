@@ -54,7 +54,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
   <title>IT PROJECT | Registration Page</title>
+
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -103,14 +105,14 @@
             </div>
           </div>
 
+     <div class="input-group mb-3">
+      
+  <input type="text" class="form-control" id="member_fullname"
+                                                name="member_fullname" placeholder="Example: Naemah Nik-Abdullah "   autocomplete="off" required aria-describedby="basic-addon1">
+       <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-star"></span>
 
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" id="member_fullname" name="member_fullname"
-              placeholder="Example: Naemah Nik-Abdullah " autocomplete="off" required aria-describedby="basic-addon1">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-star"></span>
-              </div>
             </div>
           </div>
 
@@ -157,10 +159,6 @@
               </div>
             </div>
 
-
-
-
-            <div class="input-group mb-3">
 
               Gender: &nbsp;&nbsp; &nbsp;&nbsp;<label class="radio-inline"> <input type="radio" name="member_gender"
                   value="Male" required aria-describedby="basic-addon1"> &nbsp;&nbsp; Male</label>

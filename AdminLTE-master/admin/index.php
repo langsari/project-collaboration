@@ -61,7 +61,7 @@ to get the desired effect
         </li>
         <li class="nav-item d-none d-sm-inline-block">
 
-          <a href="../admin/index.php" class="nav-link">Home</a>
+          <a href="index.php" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link" data-toggle="modal" data-target="#notify">Notify</a>
@@ -459,6 +459,9 @@ $count=mysqli_num_rows($result);
 
 
 
+
+
+
       <div class="modal fade" id="notify">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -472,7 +475,7 @@ $count=mysqli_num_rows($result);
               <form name="frmNotification" id="frmNotification" action="" method="post">
                 <div id="form-header" class="form-row">Add New Message</div>
                 <div class="form-row">
-                  <div class="form-label">Subject:</div>
+                  <div class="form-label"> Subject:</div>
                   <div class="error" id="subject"></div>
                   <div class="form-element">
                     <input type="text" name="subject" id="subject" required>
@@ -481,7 +484,7 @@ $count=mysqli_num_rows($result);
                 </div>
                 <p>
                   <div class="form-row">
-                    <div class="form-label">Comment:</div>
+                    <div class="form-label"> Comment:</div>
                     <div class="error" id="comment"></div>
                     <div class="form-element">
                       <textarea rows="4" cols="30" name="comment" id="comment"></textarea>
@@ -501,120 +504,81 @@ $count=mysqli_num_rows($result);
 
 
 
-      <section class="content">
-        <div class="container-fluid">
+   <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
           <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Icons</h3>
-            </div> <!-- /.card-body -->
+               <h3 class="card-title">
+                  <i class="fas fa-edit"></i>
+                  View Track of Students
+                </h3>
+        
+            </div>
+            <!-- /.card-header -->
             <div class="card-body">
-              <p>You can use any font library you like with AdminLTE 3.</p>
-              <strong>Recommendations</strong>
-              <div>
-                <a href="https://fontawesome.com/">Font Awesome</a><br>
-                <a href="https://useiconic.com/open/">Iconic Icons</a><br>
-                <a href="http://ionicons.com/">Ion Icons</a><br>
-              </div>
-            </div><!-- /.card-body -->
-          </div>
-        </div><!-- /.container-fluid -->
-      </section>
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr align="center">
+                  <th>Project Title</th>
+                  <th>Owner Project</th>
+                  <th>Project Progress</th>
+                  <th>Action</th>
+                </tr>
+                  </thead>
+                  <tbody align="center">
+        <?php
+
+       $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic FROM advisergroup
+
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+
+        WHERE advisergroup.member_id ";
+
+        ?>
+        <?php
+     if($result = $db->query($strSQL)){
+             while($objResult = $result->fetch_object()){
+            ?>
+          
+                  <td class="text-left"><?php echo $objResult->advisergroup_topic; ?></td>
+                  <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
+                  <td class="project_progress">
+                          <div class="progress progress-sm">
+                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
+                              </div>
+                          </div>
+                          <small>
+                              57% Complete
+                          </small>
+                      </td>
+                  <td>
+                  <a href="../admin/forms/form01/pf01.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
+                  </td>
 
 
-      <div class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="card">
-                <div class="card-header border-0">
-                  <div class="d-flex justify-content-between">
-                    <h3 class="card-title">Online Store Visitors</h3>
-                    <a href="javascript:void(0);">View Report</a>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="d-flex">
-                    <p class="d-flex flex-column">
-                      <span class="text-bold text-lg">820</span>
-                      <span>Visitors Over Time</span>
-                    </p>
-                    <p class="ml-auto d-flex flex-column text-right">
-                      <span class="text-success">
-                        <i class="fas fa-arrow-up"></i> 12.5%
-                      </span>
-                      <span class="text-muted">Since last week</span>
-                    </p>
-                  </div>
-                  <!-- /.d-flex -->
-
-                  <div class="position-relative mb-4">
-                    <canvas id="visitors-chart" height="200"></canvas>
-                  </div>
-
-                  <div class="d-flex flex-row justify-content-end">
-                    <span class="mr-2">
-                      <i class="fas fa-square text-primary"></i> This Week
-                    </span>
-
-                    <span>
-                      <i class="fas fa-square text-gray"></i> Last Week
-                    </span>
-                  </div>
-                </div>
-              </div>
+                </tr>
+            <?php
+              }
+               }
+                   ?>
+                
+              </table>
             </div>
-            <!-- /.col-md-6 -->
-            <div class="col-lg-6">
-              <div class="card">
-                <div class="card-header border-0">
-                  <div class="d-flex justify-content-between">
-                    <h3 class="card-title">Sales</h3>
-                    <a href="javascript:void(0);">View Report</a>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="d-flex">
-                    <p class="d-flex flex-column">
-                      <span class="text-bold text-lg">$18,230.00</span>
-                      <span>Sales Over Time</span>
-                    </p>
-                    <p class="ml-auto d-flex flex-column text-right">
-                      <span class="text-success">
-                        <i class="fas fa-arrow-up"></i> 33.1%
-                      </span>
-                      <span class="text-muted">Since last month</span>
-                    </p>
-                  </div>
-                  <!-- /.d-flex -->
-
-                  <div class="position-relative mb-4">
-                    <canvas id="sales-chart" height="200"></canvas>
-                  </div>
-
-                  <div class="d-flex flex-row justify-content-end">
-                    <span class="mr-2">
-                      <i class="fas fa-square text-primary"></i> This year
-                    </span>
-
-                    <span>
-                      <i class="fas fa-square text-gray"></i> Last year
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /.col-md-6 -->
+            <!-- /.card-body -->
           </div>
-          <!-- /.row -->
+          <!-- /.card -->
         </div>
-        <!-- /.container-fluid -->
+        <!-- /.col -->
       </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
 
-
-
-    </div>
-
-
+     </div>
 
 
 
