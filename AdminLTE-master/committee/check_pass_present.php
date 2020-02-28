@@ -8,7 +8,7 @@ if(isset($_GET['id'])){
 	$sql = "UPDATE committeegroup SET status_presentation = 'Pass'   WHERE group_id = '$id' and  member_id= '$member_id'";
 	if($db->query($sql)){
 		$db->close();
-		header("Location: ../index.php?page=committee_request&success=1");
+		header("Location: committee_request.php");
 	}else{
 		echo $db->error;
 		$db->close();

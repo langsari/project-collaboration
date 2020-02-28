@@ -68,7 +68,7 @@ $id = $_GET['id'];
           <div class="card-block">
 
 
-            <form action="committee/check_10.php?id=<?php echo $_GET["id"];?>" name="fromEdit" method="post"
+            <form action="check_10.php?id=<?php echo $_GET["id"];?>" name="fromEdit" method="post"
               onsubmit="return checkForm()">
 
 

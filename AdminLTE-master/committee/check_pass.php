@@ -16,7 +16,7 @@ $sql = "UPDATE files SET status_presentation = 'Pass' , pf ='3', committeegroup_
 
 if($db->query($sql)){
 	$db->close();
-		header("Location: ../index.php?page=committee_request");
+		header("Location: committee_request.php");
 
 }else{
 	echo $db->error;

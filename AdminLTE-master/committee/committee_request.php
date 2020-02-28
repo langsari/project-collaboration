@@ -327,7 +327,7 @@ $my_id = $_SESSION['id'];
             
 
 
-                <td><a href="?page=status_presentation&id=<?php echo $objResult->group_id;?>"><i class="fa fa-edit"
+                <td><a href="status_presentation.php&id=<?php echo $objResult->group_id;?>"><i class="fa fa-edit"
                       title="View"></i></a>
 
                 </td>
@@ -418,7 +418,7 @@ $my_id = $_SESSION['id'];
 
               
 
-                <td><a href="?page=status_project&id=<?php echo $objResult->group_id;?>"><i class="fa fa-edit"
+                <td><a href="status_project.php&id=<?php echo $objResult->group_id;?>"><i class="fa fa-edit"
                       title="View"></i></a>
 
                 </td>
