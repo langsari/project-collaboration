@@ -150,7 +150,6 @@ to get the desired effect
             </a>
           </li>
 
-
     <?php 
      $my_id = $_SESSION['id'];
   $con = mysqli_connect('localhost','root','','itpromo_track');
@@ -159,7 +158,7 @@ to get the desired effect
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  
-        AND files.files_status='Waiting'  or   files.status_advisor='' or advisergroup.advisergroup_status='Waiting' or files.by_advisor06='' 
+        or  advisergroup.advisergroup_status='Waiting'   or  files.files_status='Waiting'  
                ";  
   $query_num=mysqli_query($con,$query);
   $count=mysqli_num_rows($query_num);

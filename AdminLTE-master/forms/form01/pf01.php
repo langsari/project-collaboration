@@ -471,14 +471,22 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
 
 
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
-                        aria-valuemax="100"></div>
-                    </div>
 
                   </div>
                 </div>
               </fieldset>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                    </div>
+                  </br>
+                  <div class="progress progress-sm">
+                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="66" aria-volumemin="0" aria-volumemax="100" style="width: 100%">
+                              </div>
+                          </div>
+                          <small>
+                              57% Complete
+                          </small>
             </fieldset>
           </form>
 

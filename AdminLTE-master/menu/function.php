@@ -18,7 +18,7 @@ function status_01($status){
 
 
 	if($status == '0'){
-		return "<span class='text-danger'></span>";
+		return "<span class='badge badge-danger'>Not Approve</span>";
 	}else if($status == 'Waiting'){
 		return "<span class='badge badge-danger'>Waiting</span>";
 	}else if($status == 'Approve'){
