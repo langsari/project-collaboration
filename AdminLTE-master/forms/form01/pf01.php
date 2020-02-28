@@ -482,19 +482,15 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
             </fieldset>
           </form>
 
-    
-                  <div class="form-group clearfix">
+      
+        <div class="form-group clearfix">
 
-
-        <?php if ($objResult->files_status= ''  != "") {?>
-              <a href="../form02/pf02.php"  ><button type="submit" class="btn btn-primary  float-right" >Next</button></a>
-
-
-                      <?php }else  {?>
-                        <button class="btn btn-warning disabled  float-right" disabled="disabled ">Next</button> 
+          <?php if ($objResult->files_status != "Approve") {?>
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button> 
+          <?php }else{?>
+            <a href="../form02/pf02.php"  >
+            <button type="button" class="btn btn-primary float-right" >Next</button></a>
                        <?php }?>
-
-
               </div>
 
 
