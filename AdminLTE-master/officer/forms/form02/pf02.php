@@ -373,37 +373,53 @@ WHERE advisergroup.advisergroup_id = '$id'";
                       </tbody>
                     </table>
 
-
-
+               
+              </fieldset>
                     <div class="progress">
                       <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
                         aria-valuemax="100"></div>
                     </div>
+                  </br>
+                  <div class="progress progress-sm">
+                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="66" aria-volumemin="0" aria-volumemax="100" style="width: 100%">
+                              </div>
+                          </div>
+                          <small>
+                              57% Complete
+                          </small>
+            </fieldset>
+          </form>
 
-                  </div>
-                </div>
-              
+      
+         <div class="form-group clearfix">
 
-             
-       
+                  <a href="../form01/pf01.php?id=<?php echo $objResult->advisergroup_id;?>"  class="btn btn-danger float-left">Previous</a>
+          <?php if ($objResult->by_officer != "Approve") {?>
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button> 
+          <?php }else{?>
+            <a href="../form03/pf03.php?id=<?php echo $objResult->advisergroup_id;?>"   >
+            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+                       <?php }?>
 
-              <div class="form-group clearfix">
 
-                      <a href="../form01/pf01.php?id=<?php echo $objResult->advisergroup_id;?>" class="form-wizard-next-btn float-left">Previous</a>
 
-                <a href="../form03/pf03.php?id=<?php echo $objResult->advisergroup_id;?>" class="form-wizard-next-btn float-right">Next</a>
+
+
 
               </div>
-            </fieldset> 
-          
-                  
+
+              </div>
+
+
+
+              </div>
+
+
+            
             <?php
                  } }
                    ?>
-              </div>
-            
-            </fieldset> 
-          </form>
+
         </div>
       </div>
     </div>

@@ -407,30 +407,52 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
 
 
 
+              </fieldset>
                     <div class="progress">
                       <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
                         aria-valuemax="100"></div>
                     </div>
-
-                  </div>
-                </div>
-              </fieldset>
+                  </br>
+                  <div class="progress progress-sm">
+                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="66" aria-volumemin="0" aria-volumemax="100" style="width: 100%">
+                              </div>
+                          </div>
+                          <small>
+                              57% Complete
+                          </small>
             </fieldset>
           </form>
 
       
+         <div class="form-group clearfix">
 
-              <div class="form-group clearfix">
+                  <a href="../form07/pf07.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-danger float-left">Previous</a>
+          <?php if ($objResult->by_advisor08 != "Pass") {?>
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button> 
+          <?php }else{?>
+            <a href="../form09/pf09.php?id=<?php echo $objResult->advisergroup_id;?>"   >
+            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+                       <?php }?>
 
-                <a href="../form07/pf07.php?id=<?php echo $objResult->advisergroup_id;?>" class="form-wizard-next-btn float-left">Previous</a>
 
-                <a href="../form09/pf09.php?id=<?php echo $objResult->advisergroup_id;?>" class="form-wizard-next-btn float-right">Next</a>
+
+
+
 
               </div>
-          
+
+              </div>
+
+
+
+              </div>
+
+
+            
             <?php
                  } }
                    ?>
+
         </div>
       </div>
     </div>

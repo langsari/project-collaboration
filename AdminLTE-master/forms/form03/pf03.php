@@ -461,41 +461,53 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                       </tbody>
                     </table>
 
-
-
+              </fieldset>
                     <div class="progress">
                       <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
                         aria-valuemax="100"></div>
                     </div>
+                  </br>
+                  <div class="progress progress-sm">
+                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="66" aria-volumemin="0" aria-volumemax="100" style="width: 100%">
+                              </div>
+                          </div>
+                          <small>
+                              57% Complete
+                          </small>
+            </fieldset>
+          </form>
 
-                  </div>
-                </div>
-              
+      
+        <div class="form-group clearfix">
 
-           
-   
-            <div class="form-group clearfix">
+                  <a href="../form02/pf02.php" class="btn btn-danger float-left">Previous</a>
+          <?php if ($objResult->status_advisor != "Pass") {?>
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button> 
+          <?php }else{?>
+            <a href="../form04/pf04.php"  >
+            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+                       <?php }?>
 
-                  <a href="../form02/pf02.php" class="form-wizard-previous-btn float-left">Previous</a>
-                <a href="../form04/pf04.php" class="form-wizard-next-btn float-right">Next</a>
 
 
               </div>
-            </fieldset> 
-          
-                    <?php
+
+              </div>
+
+
+
+              </div>
+
+
+            
+            <?php
                  } }
                    ?>
 
-              </div>
-            
-            </fieldset> 
-          </form>
         </div>
       </div>
     </div>
   </section>
-
 
       <div class="content">
         <div class="row">

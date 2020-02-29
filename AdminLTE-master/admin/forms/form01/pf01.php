@@ -510,28 +510,51 @@ if($result = $db->query($sql)){
 
 
 
+              </fieldset>
                     <div class="progress">
                       <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
                         aria-valuemax="100"></div>
                     </div>
-
-                  </div>
-                </div>
-              </fieldset>
+                  </br>
+                  <div class="progress progress-sm">
+                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="66" aria-volumemin="0" aria-volumemax="100" style="width: 100%">
+                              </div>
+                          </div>
+                          <small>
+                              57% Complete
+                          </small>
             </fieldset>
           </form>
 
       
- 
+        <div class="form-group clearfix">
 
-           <div class="form-group clearfix">
+                 
+<?php if ($objResult->files_status != "Approve") {?>
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button> 
+          <?php }else{?>
+            <a href="../form02/pf02.php?id=<?php echo $objResult->advisergroup_id;?>" >
+            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+                       <?php }?>
 
-                <a href="../form02/pf02.php?id=<?php echo $objResult->advisergroup_id;?>" class="form-wizard-next-btn float-right">Next</a>
+
+
+
 
               </div>
-                     <?php
+
+              </div>
+
+
+
+              </div>
+
+
+            
+            <?php
                  } }
                    ?>
+
         </div>
       </div>
     </div>
@@ -541,7 +564,7 @@ if($result = $db->query($sql)){
  
 
 
-   <link rel="stylesheet" href="../../../assets/comment/style.css">
+   <link rel="stylesheet" href="../../../../assets/comment/style.css">
 
    <div class="comments-app"  ng-controller="CommentsController as cmntCtrl">
 

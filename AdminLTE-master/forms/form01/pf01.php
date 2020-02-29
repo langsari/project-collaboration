@@ -497,7 +497,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
             <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button> 
           <?php }else{?>
             <a href="../form02/pf02.php"  >
-            <button type="button" class="btn btn-primary float-right" >Next</button></a>
+            <button type="button" class="btn btn-danger float-right" >Next</button></a>
                        <?php }?>
               </div>
 

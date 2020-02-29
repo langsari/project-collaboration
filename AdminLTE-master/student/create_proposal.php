@@ -425,8 +425,10 @@ to get the desired effect
                               </div>
                               <div class="col-md-9">
 
-             <input type="text" class="form-control" id="topic_abstrack" name="topic_abstrack"  value="<?php echo $objResult->topic_abstrack; ?>"  style="width: 600px; height: 100px" >
 
+
+  <textarea type="text" style="width: 600px; height: 100px"  class="form-control" id="topic_abstrack"
+   name="topic_abstrack"> <?php echo $objResult->topic_abstrack; ?> </textarea>
 
                               </div>
                               

@@ -443,14 +443,14 @@ to get the desired effect
         <?php
 $my_id = $_SESSION['id'];
 
-       $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic FROM advisergroup
+       $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic,files.files_status FROM advisergroup
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
 
        
-        WHERE advisergroup.member_id = '$my_id'   ";
+        WHERE advisergroup.member_id = '$my_id'  ";
 
         ?>
         <?php
@@ -470,7 +470,7 @@ $my_id = $_SESSION['id'];
                           </small>
                       </td>
                   <td>
-                  <a href="../admin/forms/form01/pf01.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
+                  <a href="../advisor/forms/form01/pf01.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
                   </td>
 
 

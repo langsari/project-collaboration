@@ -536,7 +536,7 @@ $count=mysqli_num_rows($result);
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.member_id ";
+           ";
 
         ?>
         <?php
