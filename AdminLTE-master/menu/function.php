@@ -22,7 +22,8 @@ function status_01($status){
 	}else if($status == 'Waiting'){
 		return "<span class='badge badge-danger'>Waiting</span>";
 	}else if($status == 'Approve'){
-		return "<span class='badge badge-success'>Approved</span>";
+		return "<input type='button' class='btn btn-success btn-xs' value='Approved'>";
+		//return "<span class='badge badge-success'>Approved</span>";
 	}
 }
 

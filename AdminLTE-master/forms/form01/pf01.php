@@ -480,12 +480,23 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                         aria-valuemax="100"></div>
                     </div>
                   </br>
-                  <div class="progress progress-sm">
-                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="66" aria-volumemin="0" aria-volumemax="100" style="width: 100%">
+
+
+
+                  <div class="progress progress">
+                    
+  <?php
+  $con = mysqli_connect('localhost','root','','itpromo_track');
+  $query="SELECT * FROM notify WHERE status=0";
+  $query_num=mysqli_query($con,$query);
+  $count=mysqli_num_rows($query_num);
+
+  ?>
+                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="100" aria-volumemin="0" aria-volumemax="100" style="width: <?php echo $count;?>%">
                               </div>
                           </div>
                           <small>
-                              57% Complete
+                              <?php echo $count; ?> % Complete
                           </small>
             </fieldset>
           </form>
