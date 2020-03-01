@@ -1,9 +1,10 @@
 <?php
 session_start();
+
 require '../menu/connect.php';
 include('../menu/function.php');
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,8 +13,8 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO</title>
-
+  <title>AdminLTE 3 | Dashboard 3</title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="../forms/form01/style.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- IonIcons -->
@@ -46,21 +47,71 @@ to get the desired effect
       </li>
      
     </ul>
+   <!-- Right navbar links -->
+     <?php
+  $con = mysqli_connect('localhost','root','','itpromo_track');
+  $query="SELECT * FROM notify WHERE status=0";
+  $query_num=mysqli_query($con,$query);
+  $count=mysqli_num_rows($query_num);
+
+  ?>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
 
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+  <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="fa fa-globe" style="font-size:20px;"></i><span class="badge badge-danger"
+              id="count"><?php echo $count; ?></span>
+
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
+            <?php
+              $con = mysqli_connect('localhost','root','','itpromo_track');
+              $sq="SELECT * FROM notify WHERE status=0";
+              $qu_num=mysqli_query($con,$query);
+              if (mysqli_num_rows($qu_num)>0) 
+              {
+                while($result=mysqli_fetch_assoc($qu_num))
+                {
+                  echo '<a class="dropdown-item text-primary font-weight-light" href="../../read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
+                  echo '<div class="dropdown-divider"></div>';
+
+                }
+              }
+              else
+              {
+                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+              }
+            ?>
+            <div class="dropdown-divider"></div>
+          <a href="../../read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
+          </div>
+        </li>
+
+
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-              <li class="nav-item d-none d-sm-inline-block">
-        <li class="nav-item d-none d-sm-inline-block">
-        <a href="../auth/logout.php" class="nav-link">Logout</a>
-      </li>
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fa fa-user"></i>
+          <?php echo $_SESSION['name']; ?>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="../auth/logout.php" class="dropdown-item">
+            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
+          </a>
+          <a href="my_profile.php" class="dropdown-item">
+            <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
+          </a>
+        </div>
       </li>
      
        
     </ul>
   </nav>
+  <!-- /.navbar -->
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
@@ -248,125 +299,310 @@ to get the desired effect
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
   
-<section class="content-header">
+
+  <!-- PAGE CONTENT -->
+
+        <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-     
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">For Committee
-</li>
+              <li class="breadcrumb-item active"> Track</li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
-  <!-- Main content -->
+
+
+      <div class="container-fluid">
+        <div class="row">
+     <div class="col-md-12 ">
+
+            <!-- Profile Image -->
+        
+            <div class="card card-primary card-outline">
+
+
+   
 
 
 
-  <?php
+
+
+
+<!-- partial:index.partial.html -->
+
+      
+        <div class="form-wizard">
+          <form action="check_pf3.php" method="post"  class="form-horizontal" enctype="multipart/form-data">
+            <div class="form-wizard-header">
+              <ul class="list-unstyled form-wizard-steps clearfix">
+                <li class="active" ><span>1</span></li>
+           <li class="active" ><span>2</span></li>
+                  <li class="active" ><span>3</span></li>
+                <li><span>4</span></li>
+                    <li><span>5</span></li>
+                <li><span>6</span></li>
+                <li><span>7</span></li>
+                <li><span>8</span></li>
+                <li><span>9</span></li>
+                    <li><span>10</span></li>
+                <li><span>11</span></li>
+                <li><span>12</span></li>
+                <li><span>13</span></li>
+              </ul>
+            </div>
+
+            <fieldset class="wizard-fieldset show">
+              <h5>PF03</h5>
+            <?php
 $id = $_GET['id'];
 
+$strSQL = "SELECT advisergroup.*,  files.by_officer,files.Owner,files.advisergroup_id,files.pf,files.status_advisor,files.files_filename_proposal,files.files_id,files.advisergroup_id FROM advisergroup
+LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
-        $sql = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,committeegroup.status_presentation,committeegroup.group_id,files.Owner,advisergroup.group_id,files.status_advisor FROM advisergroup
-              LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
-          LEFT JOIN committeegroup ON advisergroup.group_id = committeegroup.group_id
-          LEFT JOIN files ON advisergroup.group_id = files.advisergroup_id
-        LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.group_id  ='".$_GET['id']."'";  
-
-
-
-        ?>
-  <?php
-     if($result = $db->query($sql)){
+LEFT JOIN member ON advisergroup.member_id = member.member_id
+WHERE advisergroup.advisergroup_id = '$id'  ";             
+      
+     if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
             ?>
-  <div class="content">
-    <div class="row">
-      <div class="col-md-10 ">
-        <div class="card">
-          <div class="card-block">
 
+
+            <fieldset>
+            </br>
+              <h5>Proposal Project Approval Letter </h5>
+           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+
+              </h6>
+                <div class="card">
+                  <div class="card-block">
+                    <table class="table">
+                      <thead class="thead-default">
+                        <tr>
+                        <th>To do list</th>
+
+                     
+                          <th><font color='red'> *Sign by advisor</font></th>
+                          <th><font color='red'> *Sign by Committee</font></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                       
+                        <tr>
+                          <td>1).Project Presentation
+                            </br>2).Project Revision</td>
+
+                            <td>
+                          </br>
+                         
+                            <?php echo status_03($objResult->status_advisor); ?> 
+                 
+                          <span>
+                              <?php echo get_advisor($objResult->group_id); ?></span>
+                          </td>
+
+                          <td>
+                            </br>
+                            <span><?php echo get_status_committee($objResult->group_id); ?></span>
+                            <p>
+
+                          </td>
+
+                        </tr>
+
+                          <input type="hidden" name="files_id"  value="<?php echo $objResult->files_id; ?>">
+                              <input type="hidden" name="advisergroup_id"  value="<?php echo $objResult->advisergroup_id; ?>">
+
+
+                        <td class="hidden"> 3 chapter of Proposal Revision<p>
+                               
+
+                                                     <br>
+            
+                                  
+
+
+
+ 
+  <td>
+<?php if( $objResult->files_filename_proposal != ""){ ?>
+                      <a href="../forms/form01/download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>">
+                    <input type="button" class="btn btn-success" value="Download File" >
+                       </a>
+ <?php }else{?>
+                    <a href="#"> <button class="btn btn-danger btn-xs">
+                        <i class="glyphicon glyphicon-remove"> No file </i></button></a>
+                    <?php } ?>
+                              </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    </table>
+
+
+
+              </fieldset>
+                 
+          </form>
+
+  
+              </div>
+
+
+
+              </div>
+
+
+            
+            <?php
+                 } }
+                   ?>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      <div class="content">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-block">
+<div class="card-header">
+               <h3 class="card-title">
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addcomment">
+                  <i class="nav-icon fas fa-plus"></i>
+                  Add Comment
+                </button>
+                </h3>
+        
+            </div>
+
+
+
+
+
+
+
+
+ <div class="modal fade" id="addcomment" tabindex="-1" role="dialog"
+                                                aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                            <div class="modal-header bg-info">
+            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h5 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
+                                                               Add Comment</h4>
+                                                        </div>
+                                              
+                                                                            
+
+
+                        <div class="modal-body">
 
             <form action="check.php?id=<?php echo $_GET["id"];?>" name="fromEdit" method="post"
               onsubmit="return checkForm()">
-
-
-
-
-
-              <div class="form-group row margin-top-30">
-
-                <div class="col-md-3">
-                  <label class="control-label col-form-label">ID card</label>
+          <div class="form-group row margin-top-10">
+                <div class="col-md-2">
+                  <label class="control-label ">Comment</label>
                 </div>
+                <div class="col-md-10">
+     <textarea rows="5" width="30" class="form-control" id="comment" name="comment"
+                    placeholder="Comment"></textarea>
 
-                <div class="col-md-9">
-                  <?php echo $objResult->group_number; ?>
                 </div>
               </div>
 
-
-              <div class="form-group row">
-                <div class="col-md-3">
-                  <label class="control-label col-form-label">Advisor id</label>
-
+ <div class="form-group row ">
+                <div class="col-md-2">
+                  <label class="control-label ">Upload files</label>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-10">
+     <input type="file" name="comment_file" id="comment_file" >
 
-                  <td class="form-control">
-                  <td class="text-left"><?php echo get_advisor($objResult->group_id); ?></td>
-                  </td>
                 </div>
               </div>
+                       
 
-              <div class="form-group row">
-                <div class="col-md-3">
-                  <label class="control-label col-form-label">Project Owner</label>
-
-                </div>
-                <div class="col-md-9">
-
-                  <td class="form-control">
-                  <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
-                  </td>
-                </div>
-              </div>
-
-
-              <div class="
-                                        form-group row">
-                <div class="col-md-3">
-                  <label class="control-label col-form-label">Topic</label>
-                </div>
-                <div class="col-md-9">
-                  <td class="text-left"><?php echo get_topic($objResult->group_id); ?></td>
-                </div>
-              </div>
+              <input type="hidden" name="committeegroup_id" id="committeegroup_id"  />
 
 
 
 
-              <div class="form-group row">
-                <div class="col-md-3">
-                  <label class="control-label col-form-label">status of presentation</label>
-                </div>
-                <div class="col-md-9">
-                  <select name="status_presentation" id="status_presentation">
-                    <option value="#">Select</option>
-                    <option value="Pass">Pass</option>
-                    <option value="No">No Pas</option>
+                                                     </br>
 
-                  </select>
-                </div>
-              </div>
+    
+   
+                                                     
+                                                                 
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default"
+                                                                        data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>
+                                                                        Cancle</button>
+                                                                    <button type="submit" class="btn btn-success"><i
+                                                                            class="glyphicon glyphicon-ok"></i>
+                                                                        Submit</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+</div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <?php
+$id = $_GET['id'];
+
+
+$strSQL = "SELECT  member.member_fullname,committeegroup.comment FROM committeegroup
+          LEFT JOIN member ON committeegroup.member_id = member.member_id
+          WHERE committeegroup.group_id = '$id'";
+
+     if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+
+   ?>
+
+
+
+
+
+
+
+                <table class="display datatable table table-stripped" cellspacing="0" width="100%">
+
+                  <tbody>
+
+                    <td>
+
+                      </br><b>
+
+
+
+                        <h5> &nbsp;&nbsp;<span class="badge badge-primary"> <?php echo $objResult->member_fullname;?>
+                        </h5></span> </br>
 
               <div class="form-group row">
                 <div class="col-md-3">
@@ -378,48 +614,50 @@ $id = $_GET['id'];
                 </div>
               </div>
 
+                        <h6> &nbsp;&nbsp; <font color='green'> <?php echo $objResult->comment;?> </h6></br></font>
 
 
 
 
+                        <div class="col-md-12" align="right">
 
+                        </div>
 
+                    </td>
 
-
-              <input type="hidden" name="files_id" value="<?php echo $objResult->files_id;?>" />
-
-
-
-              <div class="pull-right">
-                <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Save</button>
-
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <?php
+                    <?php
                  }
                }
                    ?>
+                  </tbody>
+                </table>
 
 
-
-
+    <!-- /.content -->
+ 
 <!-- ./wrapper -->
+
+<!-- partial -->
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="../forms/form01/script.js"></script>
+
+
+
+<!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
+<!-- Bootstrap -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE -->
+<script src="../dist/js/adminlte.js"></script>
+
+<!-- OPTIONAL SCRIPTS -->
+<script src="../plugins/chart.js/Chart.min.js"></script>
+<script src="../dist/js/demo.js"></script>
+<script src="../dist/js/pages/dashboard3.js"></script>
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<!-- AdminLTE App -->
-<script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
-<!-- page script -->
 <script>
   $(function () {
     $("#example1").DataTable();

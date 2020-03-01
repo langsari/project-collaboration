@@ -6,11 +6,10 @@ if(isset($_GET['id'])){
                 require '../menu/connect.php';
   $id = $_GET['id'];
   
-  $status_presentation=$_POST['status_presentation'];
 
   $comment=$_POST['comment'];
 
-  $sql = "UPDATE committeegroup SET status_presentation = '$status_presentation',comment='$comment'   WHERE group_id = '$id' and  member_id= '$member_id'";
+  $sql = "UPDATE committeegroup SET comment='$comment'   WHERE group_id = '$id' and  member_id= '$member_id'";
   if($db->query($sql)){
     $db->close();
     header("Location:committee_request.php");
