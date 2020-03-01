@@ -7,6 +7,7 @@ include('../menu/function.php');
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,17 +15,30 @@ include('../menu/function.php');
 
   <title>ITPROMO</title>
 
+
+
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+
   <!-- IonIcons -->
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-   <!-- DataTables -->
+  <!-- DataTables -->
   <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+
 </head>
+<style>
+  #count {
+    border-radius: 60%;
+    position: relative;
+    top: -10px;
+    left: -10px;
+
+  }
+</style>
 <!--
 BODY TAG OPTIONS:
 =================
@@ -46,8 +60,27 @@ to get the desired effect
       </li>
      
     </ul>
-   <!-- Right navbar links -->
-     <?php
+
+      <?php
+$conn = new mysqli("localhost","root","","itpromo_track");
+$count=0;
+if(!empty($_POST['add'])) {
+  $subject = mysqli_real_escape_string($conn,$_POST["subject"]);
+  $comment = mysqli_real_escape_string($conn,$_POST["comment"]);
+  $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
+  mysqli_query($conn, $sql);
+}
+$sql2="SELECT * FROM notify WHERE status = 0";
+$result=mysqli_query($conn, $sql2);
+$count=mysqli_num_rows($result);
+?>
+
+   
+
+
+      <!-- Display the alert of notification -->
+
+      <?php
   $con = mysqli_connect('localhost','root','','itpromo_track');
   $query="SELECT * FROM notify WHERE status=0";
   $query_num=mysqli_query($con,$query);
@@ -58,8 +91,7 @@ to get the desired effect
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
 
-
-  <li class="nav-item dropdown">
+        <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="fa fa-globe" style="font-size:20px;"></i><span class="badge badge-danger"
               id="count"><?php echo $count; ?></span>
@@ -90,29 +122,26 @@ to get the desired effect
           </div>
         </li>
 
-
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fa fa-user"></i>
-          <?php echo $_SESSION['name']; ?>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a href="../auth/logout.php" class="dropdown-item">
-            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="fa fa-user"></i>
+            <?php echo $_SESSION['name']; ?>
           </a>
-          <a href="my_profile.php" class="dropdown-item">
-            <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
-          </a>
-        </div>
-      </li>
-     
-       
-    </ul>
-  </nav>
-  <!-- /.navbar -->
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="../auth/logout.php" class="dropdown-item">
+              <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
+            </a>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
+            </a>
+          </div>
+        </li>
+      </ul>
 
-  <!-- Main Sidebar Container -->
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
@@ -300,106 +329,175 @@ to get the desired effect
     <!-- /.sidebar -->
   </aside>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-  
-<section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashbord</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
 
-    <!-- Main content -->
-    <section class="content">
-
-      <!-- Default box -->
-      <div class="card card-solid">
-        <div class="card-body pb-0">
-          <div class="row d-flex align-items-stretch">
-            <div class="col-15 col-sm-8 col-md-12 d-flex align-items-stretch">
-                             <main role="main" class="container">
-
-               
-            
-
-                        <h1 class="mt-3">Welcome to Information Technology Project</h1>
-                        <p class="lead">ITPromot or Information Technology Project Monitoring and Tracking System.</p>
-
-                        <hr>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="../student/index.php">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+      <section class="content">
+        <div class="container-fluid">
+          <!-- Small boxes (Stat box) -->
+          <div class="row">
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-info">
+                <div class="inner">
 
 
-                        <h2>Guide and Help</h2>
-                        <p>You will guide and help to achieve you purpose of doing Information Technology Project
-                            through this application </p>
-                        <p><a href="?page=guide" class="btn-primary btn-sm">Guide</a> is present to procedure how to do
-                            the project</p>
-                        <p><a href="?page=schedule" class="btn-primary btn-sm">Schedule</a> is present the schedule time
-                            table of the project</p>
-                        <p><a href="?page=form" class="btn-primary btn-sm">Forms</a> is collection of involve forms</p>
+                  <?php
+              $con = mysqli_connect('localhost','root','','itpromo_track');
 
-                        <hr>
+                $query="SELECT member_id FROM member ORDER BY member_id";
 
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
 
+                ?>
+                  <p>Total User</p>
 
-                        <h2>The Guide for both:</h2>
-                        <p class="text-dark"><kbd>IT234-232</kbd> - Information Technology Project
-                            (โครงงานเทคโนโลยีสารสนเทศ)</p>
-                        <p class="text-dark"><kbd>IT2301-321</kbd> - Information Technology Project 1
-                            (โครงงานเทคโนโลยีสารสนเทศ I )</p>
-                        <p class="text-dark"><kbd>IT2301-322</kbd> - Information Technology Project 2
-                            (โครงงานเทคโนโลยีสารสนเทศ II )</p>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-users"></i>
+                </div>
 
-                    </main>
-              
+                <a href="../admin/all_member.php" class="small-box-footer">More info <i
+                    class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-success">
+                <div class="inner">
+                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                  <p>Bounce Rate</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-warning">
+                <div class="inner">
+                  <h3>44</h3>
+
+                  <p>User Registrations</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-danger">
+                <div class="inner">
+                  <h3>65</h3>
+
+                  <p>Unique Visitors</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
           </div>
-        </div>
       </section>
-      
 
-    <!-- /.content -->
- 
-<!-- ./wrapper -->
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-edit"></i>
+                Workload</h3>
+            </div> <!-- /.card-body -->
+            <div class="card-body">
 
-<!-- REQUIRED SCRIPTS -->
+              <h1 class="mt-3">Welcome to Information Technology Project</h1>
+                        <p class="lead">ITPromot or Information Technology Project Monitoring and Tracking System.</p>
 
-<!-- jQuery -->
-<script src="../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE -->
-<script src="../dist/js/adminlte.js"></script>
 
-<!-- OPTIONAL SCRIPTS -->
-<script src="../plugins/chart.js/Chart.min.js"></script>
-<script src="../dist/js/demo.js"></script>
-<script src="../dist/js/pages/dashboard3.js"></script>
-<!-- DataTables -->
-<script src="../plugins/datatables/jquery.dataTables.js"></script>
-<script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
+
+            </div><!-- /.card-body -->
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+
+
+     </div>
+
+
+
+
+
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 3.0.3-pre
+      </div>
+      <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+      reserved.
+    </footer>
+
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+
+
+  <!-- jQuery -->
+  <script src="../plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE -->
+  <script src="../dist/js/adminlte.js"></script>
+
+  <!-- OPTIONAL SCRIPTS -->
+  <script src="../plugins/chart.js/Chart.min.js"></script>
+  <script src="../dist/js/demo.js"></script>
+  <script src="../dist/js/pages/dashboard3.js"></script>
+  <!-- DataTables -->
+  <script src="../plugins/datatables/jquery.dataTables.js"></script>
+  <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+  <script>
+    $(function () {
+      $("#example1").DataTable();
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+      });
     });
-  });
-</script>
+  </script>
 </body>
+
 </html>
