@@ -283,9 +283,9 @@ to get the desired effect
                 <th>Owner Project</th>
                 <th>Title</th>
                 <th>Advisor</th>
-                <th>Committee</th>
                 <th>Status</th>
-                <th>Options</th>
+                <th>View</th>
+             <th>Options</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -318,7 +318,6 @@ $my_id = $_SESSION['id'];
                 <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
                 <td class="text-left"><?php echo get_topic($objResult->group_id); ?></td>
                 <td class="text-left"><?php echo get_advisor($objResult->group_id); ?></td>
-                <td class="text-left"><?php echo get_committee($objResult->group_id); ?></td>
 
                 <td class="text-left"><?php echo $objResult->schedule_status; ?></td>
 
@@ -335,6 +334,10 @@ $my_id = $_SESSION['id'];
 
                 </td>
 
+
+<td>  <a href="check_pass.php?id=<?php echo $objResult->group_id;?>">  <i class="fa fa-check" title="Approve"></i></a>
+
+</td>
                
                     </tr>          
 

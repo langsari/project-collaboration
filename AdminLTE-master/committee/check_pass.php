@@ -1,26 +1,23 @@
 <?php
 session_start();
-$committeegroup_id = $_SESSION['id'];
-require '../db/ConnectDB.php';
+$member_id = $_SESSION['id'];
 
-$id = $_GET['id'];
+if(isset($_GET['id'])){
+                require '../menu/connect.php';
+  $id = $_GET['id'];
+  
 
+  $status_presentation=$_POST['status_presentation'];
 
-
-
-$sql = "UPDATE files SET status_presentation = 'Pass' , pf ='3', committeegroup_id='$committeegroup_id' WHERE advisergroup_id = '$id'";
-
-
-
-
-
-if($db->query($sql)){
-	$db->close();
-		header("Location: committee_request.php");
-
-}else{
-	echo $db->error;
-	$db->close();
-
+  $sql = "UPDATE committeegroup SET status_presentation = 'Pass'   WHERE group_id = '$id' and  member_id= '$member_id'";
+  if($db->query($sql)){
+    $db->close();
+    header("Location:committee_request.php");
+  }else{
+    echo $db->error;
+    $db->close();
+  }
 }
+
 ?>
+

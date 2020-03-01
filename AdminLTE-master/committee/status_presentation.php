@@ -484,6 +484,89 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
                 </h3>
         
             </div>
+</div>
+
+
+         
+
+   
+                <?php
+$id = $_GET['id'];
+
+
+$strSQL = "SELECT  member.member_fullname,committeegroup.comment FROM committeegroup
+          LEFT JOIN member ON committeegroup.member_id = member.member_id
+          WHERE committeegroup.group_id = '$id'";
+
+     if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+
+   ?>
+   
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="active tab-pane" id="activity">
+                    <!-- Post -->
+                    <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image">
+                        <span class="username">
+                          <a href="#"><?php echo $objResult->member_fullname;?> </a>
+                        </span>
+                    
+                      </div>
+                      <!-- /.user-block -->
+                    
+                      <p>
+                   <?php echo $objResult->comment;?> 
+                      </p>
+
+                      <p>
+                        <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
+                        <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
+                        <span class="float-right">
+                          <a href="#" class="link-black text-sm">
+                            <i class="far fa-comments mr-1"></i> Comments (5)
+                          </a>
+                        </span>
+                      </p>
+
+_________________________________________________________________________________________________________________________________
+                    </div>
+                    </div>
+</div>      
+</div>              
+                    <!-- /.post -->
+    <?php
+                 }
+               }
+                   ?>
+                 
+                  <!-- /.tab-pane -->
+                  
+                      </div>
+                     </div>
+              
+
+                    </div>
+                  </div>
+                  <!-- /.tab-pane -->
+     
+                 
+                  <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+
 
 
 
@@ -569,68 +652,6 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
 
 
 
-
-
-
-                <?php
-$id = $_GET['id'];
-
-
-$strSQL = "SELECT  member.member_fullname,committeegroup.comment FROM committeegroup
-          LEFT JOIN member ON committeegroup.member_id = member.member_id
-          WHERE committeegroup.group_id = '$id'";
-
-     if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-
-   ?>
-
-
-
-
-
-
-
-                <table class="display datatable table table-stripped" cellspacing="0" width="100%">
-
-                  <tbody>
-
-                    <td>
-
-                      </br><b>
-
-
-
-                        <h5> &nbsp;&nbsp;<span class="badge badge-primary"> <?php echo $objResult->member_fullname;?>
-                        </h5></span> </br>
-
-              <div class="form-group row">
-                <div class="col-md-3">
-                  <label class="control-label col-form-label">Comment</label>
-                </div>
-                <div class="col-md-9">
-                  <textarea rows="5" width="30" class="form-control" id="comment" name="comment"
-                    placeholder="Comment"></textarea>
-                </div>
-              </div>
-
-                        <h6> &nbsp;&nbsp; <font color='green'> <?php echo $objResult->comment;?> </h6></br></font>
-
-
-
-
-                        <div class="col-md-12" align="right">
-
-                        </div>
-
-                    </td>
-
-                    <?php
-                 }
-               }
-                   ?>
-                  </tbody>
-                </table>
 
 
     <!-- /.content -->

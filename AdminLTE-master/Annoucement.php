@@ -239,9 +239,13 @@ to get the desired effect
                           </a>
                         </span>
                       </p>
+                     </p>
 
-                      <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
+______________________________________________________________________________________________________________
                     </div>
+                    </div>
+</div>      
+</div>  
                     <!-- /.post -->
     <?php
                  }
