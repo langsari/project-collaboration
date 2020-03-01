@@ -287,6 +287,7 @@ PROPOSAL PROJECT AND PF01 REQUEST (PF01)
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th></th>
                 <th>Title project</th>
                 <th>Student</th>
                 <th>Files</th>
@@ -300,7 +301,7 @@ PROPOSAL PROJECT AND PF01 REQUEST (PF01)
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
 
-    $strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic ,files.by_officer FROM advisergroup
+    $strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic ,files.by_officer,advisergroup.advisergroup_id FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
@@ -308,13 +309,16 @@ $my_id = $_SESSION['id'];
         WHERE advisergroup.member_id  AND files.by_officer = '' 
         Order By files_id
                ";
-$i = 1;
+   $i = 1;
+   $count = 1;
+
               if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
               ?>
 
                 
                     <tr>
+ <td class="text-left">   <?php echo $count++; ?></td>
 
                 <td><?php echo get_member_list($row->group_id); ?></td>
                 <td><?php echo $row->advisergroup_topic; ?></td>
@@ -334,12 +338,21 @@ $i = 1;
 
                 <td><a href="check_approved.php?id=<?php echo $row->files_id; ?>" class="btn btn-success btn-xs"
                     title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                      class='glyphicon glyphicon-ok'></i> Approve</a></td>
+                      class='glyphicon glyphicon-ok'></i> Approve</a>
+
+  <a href="reject_02.php?id=<?php echo $row->advisergroup_id; ?>"
+                    class="btn btn-danger btn-xs" title="Comfirm"
+                    onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
+                      class='glyphicon glyphicon-ok'></i> Reject</a>
+                    </td>
                
+
                     </tr>          
 
 
                                     <?php
+                                                                        $i++;  
+
     }
                }
                    ?>

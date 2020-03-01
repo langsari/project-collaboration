@@ -445,7 +445,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
         <div class="form-group clearfix">
 
                   <a href="../form03/pf03.php" class="btn btn-danger float-left">Previous</a>
-          <?php if ($objResult->status_presentation != "Pass") {?>
+          <?php if ($objResult->status_advisor != "Pass") {?>
             <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button> 
           <?php }else{?>
             <a href="../form05/pf05.php"  >

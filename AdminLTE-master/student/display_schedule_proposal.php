@@ -384,20 +384,7 @@ to get the desired effect
                   
 
 
-                </tbody>
-                <tfoot>
-                <tr>
-                  <th>No</th>
-                      <th>Name</th>
-                      <th>Title Project</th>
-                      <th>Status</th>
-                      <th>Advisor</th>
-                       <th>Committee</th>
-                       <th>Date</th>
-                       <th>Time</th>
-                       <th>Room</th>
-                </tr>
-                </tfoot>
+             
               </table>
             </div>
             <!-- /.card-body -->

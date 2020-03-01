@@ -429,12 +429,13 @@ $my_id = $_SESSION['id'];
         
                ";
                  $i = 1;
+   $count = 1;
 
               if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
               ?>
                 <tr>
-                <td><div align="center"><?php echo $i;?></div></td>
+ <td class="text-left">   <?php echo $count++; ?></td>
 
                     <td><?php echo $row->advisergroup_topic; ?></td>
                     <td><?php echo get_member_list($row->group_id); ?></td>

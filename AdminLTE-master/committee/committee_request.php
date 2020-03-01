@@ -294,7 +294,7 @@ to get the desired effect
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
 
-      $strSQL = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,committeegroup.member_id,committeegroup.group_id,schedule.schedule_status,schedule.schedule_id,schedule.schedule_type,files.advisergroup_id,committeegroup.status_presentation,committeegroup.group_id
+      $strSQL = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,committeegroup.member_id,committeegroup.group_id,schedule.schedule_status,schedule.schedule_id,schedule.schedule_type,files.advisergroup_id,committeegroup.status_presentation
       FROM committeegroup
         LEFT JOIN advisergroup ON committeegroup.member_id = advisergroup.member_id
         LEFT JOIN member ON committeegroup.member_id = member.member_id
@@ -327,8 +327,11 @@ $my_id = $_SESSION['id'];
             
 
 
-                <td><a href="status_presentation.php&id=<?php echo $objResult->group_id;?>"><i class="fa fa-edit"
-                      title="View"></i></a>
+                <td>
+
+  <a href="status_presentation.php?id=<?php echo $objResult->group_id;?>"class="btn btn-primary btn-sm"> View <i class="fa fa-eye" title="Detail"></i></a>
+
+         
 
                 </td>
 
