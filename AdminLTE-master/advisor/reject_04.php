@@ -1,9 +1,14 @@
+
+
+
+
+
 <?php
 
 if(isset($_GET['id'])){
                 require '../menu/connect.php';
 	$id = $_GET['id'];
-	$sql = "UPDATE files SET  by_advisor04 = 'Pass', pf ='4' WHERE files_id = '$id'";
+	$sql = "UPDATE files SET by_advisor04 = 'No' WHERE advisergroup_id = '$id'";
 	if($db->query($sql)){
 		$db->close();
 		header("Location:advisor_request.php");

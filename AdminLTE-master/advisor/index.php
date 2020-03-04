@@ -458,7 +458,7 @@ $my_id = $_SESSION['id'];
                           </small>
                       </td>
                   <td>
-                  <a href="../advisor/forms/form01/pf01.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
+             <a href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
                   </td>
 
 

@@ -40,7 +40,7 @@ function status_01_file($status){
 
 function status_02($status){
 	if($status == ''){
-		return "<span class='text-danger'></span>";
+		return "<span class='badge badge-danger'>Waiting</span>";
 	}else if($status == 'Waiting'){
 		return "<span class='badge badge-danger'>Waiting</span>";
 	}else if($status == 'Approve'){
@@ -60,11 +60,22 @@ function status_03($status){
 }
 
 
+function status_04($status){
+	if($status == ''){
+		return "<span class='text-danger'></span>";
+	}else if($status == 'No'){
+		return "<span class='badge badge-danger'>No Pass</span>";
+	}else if($status == 'Pass'){
+		return "<span class='badge badge-success'>Pass</span>";
+	}
+}
+
+
 
 
 function status_05($status){
 	if($status == ''){
-		return "<span class='text-danger'></span>";
+		return "<span class='badge badge-danger'>Waitting</span>";
 	}else if($status == 'No'){
 		return "<span class='badge badge-danger'>No Pass</span>";
 	}else if($status == 'Pass'){
@@ -114,6 +125,9 @@ function status_09($status){
 		return "<span class='badge badge-danger'>Waiting</span>";
 	}else if($status == 'Approve'){
 		return "<span class='badge badge-success'>Approved</span>";
+	}
+	else if($status == 'No'){
+		return "<span class='badge badge-danger'>No pass</span>";
 	}
 }
 
@@ -501,7 +515,7 @@ function get_status_committee1($group_id){
 						WHERE committeegroup.group_id = '$group_id'";
 		if($rs = $db->query($sql)){
 			while($row = $rs->fetch_object()){
-		$rows .= "<p> <font color='succes'> ".$row->status_project." </font>&nbsp;&nbsp;&nbsp;&nbsp; ".$row->member_fullname."  </p>";
+		$rows .= "<p> <span class='badge badge-success'> ".$row->status_project." </span>&nbsp;&nbsp;&nbsp;&nbsp; ".$row->member_fullname."  </p>";
 			}
 			return $rows;
 			$db->close();

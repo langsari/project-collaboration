@@ -625,8 +625,8 @@ to get the desired effect
  <thead>                  
 
             <tr>
+
               <th>GroupNo</th>
-              <th>GroupCode</th>
               <th>Title project</th>
               <th>Advisor</th>
               <th>Status</th>
@@ -652,7 +652,6 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
               ?>
                 <tr>                 
                   <td><?php echo get_group_id($row->group_id); ?></td>
-                  <td><?php echo get_groupcode($row->group_id); ?></td>
                   <td><?php echo $row->advisergroup_topic; ?></td>
 
                   <td><?php echo $row->member_fullname; ?></td>

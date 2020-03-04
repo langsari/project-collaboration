@@ -271,7 +271,8 @@ to get the desired effect
           <div class="card">
             <div class="card-header">
            
-
+     <h6><b>PROPOSAL REVISION REQUEST (PF03)
+</b> </h6>
                  
             </div>
             <!-- /.card-header -->
@@ -328,14 +329,19 @@ $my_id = $_SESSION['id'];
 
                 <td>
 
-  <a href="status_presentation.php?id=<?php echo $objResult->group_id;?>"class="btn btn-primary btn-sm"> View <i class="fa fa-eye" title="Detail"></i></a>
+  <a href="form03.php?id=<?php echo $objResult->group_id;?>"class="btn btn-primary btn-sm"> View <i class="fa fa-eye" title="Detail"></i></a>
 
          
 
                 </td>
 
 
-<td>  <a href="check_pass.php?id=<?php echo $objResult->group_id;?>">  <i class="fa fa-check" title="Approve"></i></a>
+<td>  <a href="check_pass03.php?id=<?php echo $objResult->group_id;?>">  <i class="fa fa-check" title="Approve"></i></a>
+
+
+<a href="reject03.php?id=<?php echo $objResult->group_id; ?>"
+                    class="btn btn-danger btn-xs" title="Comfirm"><i
+                      class='glyphicon glyphicon-ok'></i> Reject</a>
 
 </td>
                
@@ -365,7 +371,8 @@ $my_id = $_SESSION['id'];
         
           <div class="card">
             <div class="card-header">
-           
+                <h6><b>PROJECT REVISION (PF10)
+</b> </h6>
 
                  
             </div>
@@ -378,9 +385,9 @@ $my_id = $_SESSION['id'];
                 <th>Owner Project</th>
                 <th>Title</th>
                 <th>Advisor</th>
-                <th>Committee</th>
                 <th>Status</th>
-                <th>Options</th>
+                <th>View</th>
+             <th>Options</th>
 
                 </tr>
                 </thead>
@@ -409,26 +416,39 @@ $my_id = $_SESSION['id'];
             ?>
 
 
-
-                
-                    <tr>
-                    <td class="text-left"><?php echo $objResult->group_number; ?></td>
+<td class="text-left"><?php echo $objResult->group_number; ?></td>
                 <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
                 <td class="text-left"><?php echo get_topic($objResult->group_id); ?></td>
                 <td class="text-left"><?php echo get_advisor($objResult->group_id); ?></td>
-                <td class="text-left"><?php echo get_committee($objResult->group_id); ?></td>
 
                 <td class="text-left"><?php echo $objResult->schedule_status; ?></td>
 
 
 
-              
+            
 
-                <td><a href="status_project.php&id=<?php echo $objResult->group_id;?>"><i class="fa fa-edit"
-                      title="View"></i></a>
+
+                <td>
+
+  <a href="form10.php?id=<?php echo $objResult->group_id;?>"class="btn btn-primary btn-sm"> View <i class="fa fa-eye" title="Detail"></i></a>
+
+         
 
                 </td>
-                
+
+
+<td> 
+
+<a href="check_pass10.php?id=<?php echo $objResult->group_id; ?>"
+                    class="btn btn-primary btn-xs" title="Comfirm"><i
+                      class='glyphicon glyphicon-ok'></i> Approved</a>
+
+
+<a href="reject10.php?id=<?php echo $objResult->group_id; ?>"
+                    class="btn btn-danger btn-xs" title="Comfirm"><i
+                      class='glyphicon glyphicon-ok'></i> Reject</a>
+
+</td>
                
                     </tr>          
 

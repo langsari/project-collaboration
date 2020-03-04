@@ -385,47 +385,54 @@ $count=mysqli_num_rows($result);
                         <span class="username">
                           Administrator
                         </span>
-                        <span class="description">Shared publicly - 7:45 PM today</span>
+                        <span class="description">Shared publicly -<?php echo $objResult->date; ?></span>
                       </div>
                       <!-- /.user-block -->
                       
                       <p><b><?php echo $objResult->subject; ?></b></p>
                       <p> <?php echo $objResult->comment; ?></p>
-                  
+
+____________________________________________________________________________________________________________
                     </div>
- <?php
+                    </div>
+                  </div>
+                </div>
+</div>      
+</div>  
+                    <!-- /.post -->
+    <?php
                  }
                }
                    ?>
-
+                 
+                  <!-- /.tab-pane -->
+                  
+                    
+              
+</div>
+                    </div>
+                  </div>
+                  <!-- /.tab-pane -->
+     
+                 
+                  <!-- /.tab-pane -->
                 </div>
-              </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
             </div>
-
+            <!-- /.nav-tabs-custom -->
           </div>
+          <!-- /.col -->
         </div>
-
-        <!-- /.card-body -->
-      </div>
-      <!-- /.card -->
-
-
-    
-
-
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-  </div>
+</div>
+</div>
   <!-- /.content-wrapper -->
 
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.3-pre
-    </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
-  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

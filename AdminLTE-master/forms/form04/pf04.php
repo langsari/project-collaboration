@@ -368,9 +368,9 @@ to get the desired effect
             <?php
 $g_id = get_group_id();
 $ag_id = get_ag_id($g_id);
-$strSQL = "SELECT advisergroup.*,  files.by_officer05,files.Owner,files.advisergroup_id,files.pf,files.status_advisor,files.files_filename_proposal,files.files_id,files.advisergroup_id,committeegroup.status_presentation FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  files.pf,files.by_advisor04,files.Owner,files.advisergroup_id,files.pf,files.status_advisor,files.files_filename_proposal,files.files_id,files.advisergroup_id FROM advisergroup
 LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
-LEFT JOIN committeegroup ON advisergroup.group_id = committeegroup.group_id
+
 LEFT JOIN member ON advisergroup.member_id = member.member_id
 WHERE advisergroup.advisergroup_id = '$ag_id'  ";             
       
@@ -405,7 +405,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                             <td>
                           </br>
                          
-                            <?php echo status_03($objResult->status_advisor); ?> 
+                            <?php echo status_04($objResult->by_advisor04); ?> 
                  
                           <span>
                               <?php echo get_advisor($objResult->group_id); ?></span>
@@ -445,7 +445,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
         <div class="form-group clearfix">
 
                   <a href="../form03/pf03.php" class="btn btn-danger float-left">Previous</a>
-          <?php if ($objResult->status_advisor != "Pass") {?>
+          <?php if ($objResult->by_advisor04 != "Pass") {?>
             <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button> 
           <?php }else{?>
             <a href="../form05/pf05.php"  >

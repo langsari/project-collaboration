@@ -411,7 +411,6 @@ $my_id = $_SESSION['id'];
                                         <th>No</th>
                     <th>Title project</th>
                     <th>Student</th>
-                    <th>Status</th>
                     <th></th>
                     <th></th>
                   </tr>
@@ -439,9 +438,7 @@ $my_id = $_SESSION['id'];
 
                     <td><?php echo $row->advisergroup_topic; ?></td>
                     <td><?php echo get_member_list($row->group_id); ?></td>
-                    <td>
-                      <h6> <span class="badge badge-danger"><?php echo $row->files_status; ?></span>
-                    </td>
+                  
                    <td>
 <?php if( $row->files_filename_proposal != ""){ ?>
                       <a href="download.php?pdf=<?php echo $row->files_filename_proposal ;?>">
@@ -544,9 +541,24 @@ $i = 1;
 
 
 
-                        <td><a href="check_proposal_revision.php?id=<?php echo $row->files_id; ?>"
-                            title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                              class="fa fa-check" aria-hidden="true"></i> </a>
+                        <td>
+
+
+<a href="check_proposal_revision.php?id=<?php echo $row->files_id; ?>"
+                        class="btn btn-success btn-xs" title="Comfirm"
+                        onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
+                          class='glyphicon glyphicon-ok'></i> Approve</a>
+
+
+                                 <a href="reject_03.php?id=<?php echo $row->advisergroup_id; ?>"
+                    class="btn btn-danger btn-xs" title="Comfirm"
+                    onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
+                      class='glyphicon glyphicon-ok'></i> Reject</a>
+
+
+
+
+                            </td>
 
 
 
@@ -598,7 +610,7 @@ $my_id = $_SESSION['id'];
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  AND pf='3' And status_advisor='Pass'  ";
+        WHERE advisergroup.member_id = '$my_id'  AND pf='3' And by_advisor04=''  ";
 
 $i = 1;
               if($rs = $db->query($strSQL)){
@@ -610,9 +622,22 @@ $i = 1;
                         <td><?php echo $row->advisergroup_topic; ?></td>
                         <td><?php echo get_member_list($row->group_id); ?></td>
 
-                        <td><a href="check_proposal_approve.php?id=<?php echo $row->files_id; ?>"
-                            title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                              class="fa fa-check" aria-hidden="true"></i> </a>
+                        <td>
+
+<a href="check_proposal_approve.php?id=<?php echo $row->files_id; ?>"
+                        class="btn btn-success btn-xs" title="Comfirm"
+                        onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
+                          class='glyphicon glyphicon-ok'></i> Approve</a>
+
+
+                                 <a href="reject_04.php?id=<?php echo $row->advisergroup_id; ?>"
+                    class="btn btn-danger btn-xs" title="Comfirm"
+                    onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
+                      class='glyphicon glyphicon-ok'></i> Reject</a>
+
+
+
+                            </td>
 
 
 
@@ -664,7 +689,7 @@ $my_id = $_SESSION['id'];
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  AND pf='5' And by_officer05 ='Pass'   ";
+        WHERE advisergroup.member_id = '$my_id'  AND pf='5' And by_advisor06 =''   ";
 
 $i = 1;
               if($rs = $db->query($strSQL)){
@@ -676,9 +701,18 @@ $i = 1;
                         <td><?php echo $row->advisergroup_topic; ?></td>
                         <td><?php echo get_member_list($row->group_id); ?></td>
 
-                        <td><a href="check_06.php?id=<?php echo $row->files_id; ?>"
-                            title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                              class="fa fa-check" aria-hidden="true"></i> </a>
+                        <td>
+
+<a href="check_06.php?id=<?php echo $row->files_id; ?>"
+                        class="btn btn-success btn-xs" title="Comfirm"
+                        onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
+                          class='glyphicon glyphicon-ok'></i> Approve</a>
+
+
+                                 <a href="reject_06.php?id=<?php echo $row->advisergroup_id; ?>"
+                    class="btn btn-danger btn-xs" title="Comfirm"
+                    onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
+                      class='glyphicon glyphicon-ok'></i> Reject</a>
 
 
 
@@ -728,7 +762,7 @@ $my_id = $_SESSION['id'];
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  AND pf='6' And by_advisor06 ='Pass'               ";
+        WHERE advisergroup.member_id = '$my_id'  AND pf='6' And by_advisor07 =''               ";
 
 $i = 1;
               if($rs = $db->query($strSQL)){
@@ -740,9 +774,23 @@ $i = 1;
                         <td><?php echo $row->advisergroup_topic; ?></td>
                         <td><?php echo get_member_list($row->group_id); ?></td>
 
-                        <td><a href="check_07.php?id=<?php echo $row->files_id; ?>"
-                            title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                              class="fa fa-check" aria-hidden="true"></i> </a>
+                        <td>
+
+
+<a href="check_07.php?id=<?php echo $row->files_id; ?>"
+                        class="btn btn-success btn-xs" title="Comfirm"
+                        onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
+                          class='glyphicon glyphicon-ok'></i> Approve</a>
+
+
+                                 <a href="reject_07.php?id=<?php echo $row->advisergroup_id; ?>"
+                    class="btn btn-danger btn-xs" title="Comfirm"
+                    onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
+                      class='glyphicon glyphicon-ok'></i> Reject</a>
+
+
+</td>
+
 
 
 
@@ -806,10 +854,22 @@ $i = 1;
                         <td><?php echo $row->advisergroup_topic; ?></td>
                         <td><?php echo get_member_list($row->group_id); ?></td>
 
-                        <td><a href="check_08.php?id=<?php echo $row->files_id; ?>"
-                            title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                              class="fa fa-check" aria-hidden="true"></i> </a>
+                        <td>
 
+<a href="check_08.php?id=<?php echo $row->files_id; ?>"
+                        class="btn btn-success btn-xs" title="Comfirm"
+                        onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
+                          class='glyphicon glyphicon-ok'></i> Approve</a>
+
+
+                                 <a href="reject_08.php?id=<?php echo $row->advisergroup_id; ?>"
+                    class="btn btn-danger btn-xs" title="Comfirm"
+                    onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
+                      class='glyphicon glyphicon-ok'></i> Reject</a>
+
+
+
+</td>
 
 
                       </tr>
@@ -871,9 +931,19 @@ $i = 1;
                         <td><?php echo $row->advisergroup_topic; ?></td>
                         <td><?php echo get_member_list($row->group_id); ?></td>
 
-                        <td><a href="check_10.php?id=<?php echo $row->files_id; ?>"
-                            title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                              class="fa fa-check" aria-hidden="true"></i> </a>
+                        <td>
+
+<a href="check_10.php?id=<?php echo $row->files_id; ?>"
+                        class="btn btn-success btn-xs" title="Comfirm"
+                        onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
+                          class='glyphicon glyphicon-ok'></i> Approve</a>
+
+
+                                 <a href="reject_10.php?id=<?php echo $row->advisergroup_id; ?>"
+                    class="btn btn-danger btn-xs" title="Comfirm"
+                    onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
+                      class='glyphicon glyphicon-ok'></i> Reject</a>
+
 
 
 

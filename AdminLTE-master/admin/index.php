@@ -75,7 +75,7 @@ $count=0;
 if(!empty($_POST['add'])) {
   $subject = mysqli_real_escape_string($conn,$_POST["subject"]);
   $comment = mysqli_real_escape_string($conn,$_POST["comment"]);
-  $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
+  $sql = "INSERT INTO notify (subject,comment,date) VALUES('" . $subject . "','" . $comment . "')";
   mysqli_query($conn, $sql);
 }
 $sql2="SELECT * FROM notify WHERE status = 0";
@@ -556,7 +556,8 @@ $count=mysqli_num_rows($result);
                           </small>
                       </td>
                   <td>
-                  <a href="../admin/forms/form01/pf01.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
+                         <a href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
+
                   </td>
 
 

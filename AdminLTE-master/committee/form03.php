@@ -591,7 +591,8 @@ ________________________________________________________________________________
 
                         <div class="modal-body">
 
-            <form action="check.php?id=<?php echo $_GET["id"];?>" name="fromEdit" method="post"
+
+            <form action="check_comment03.php?id=<?php echo $_GET["id"];?>" name="fromEdit" method="post"
               onsubmit="return checkForm()">
           <div class="form-group row margin-top-10">
                 <div class="col-md-2">
@@ -615,7 +616,22 @@ ________________________________________________________________________________
               </div>
                        
 
-              <input type="hidden" name="committeegroup_id" id="committeegroup_id"  />
+                                   <?php
+$id = $_GET['id'];
+
+$strSQL = "SELECT advisergroup.*,  files.by_officer,files.Owner,files.advisergroup_id,files.pf,files.status_advisor,files.files_filename_proposal,files.files_id,files.advisergroup_id FROM advisergroup
+LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+
+LEFT JOIN member ON advisergroup.member_id = member.member_id
+WHERE advisergroup.advisergroup_id = '$id'  ";             
+      
+     if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+            ?>
+
+     <input type="text" name="advisergroup_id" id="advisergroup_id" value="<?php echo $objResult->advisergroup_id;?>">
+
+
 
 
 
@@ -643,7 +659,9 @@ ________________________________________________________________________________
 
 
 
-
+    <?php
+                 } }
+                   ?>
 
 
 

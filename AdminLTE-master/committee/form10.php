@@ -1,9 +1,10 @@
 <?php
 session_start();
-require '../../menu/connect.php';
-include('../../menu/function.php');
 
+require '../menu/connect.php';
+include('../menu/function.php');
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,17 +14,17 @@ include('../../menu/function.php');
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
   <title>AdminLTE 3 | Dashboard 3</title>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="../form01/style.css">
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="../forms/form01/style.css">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- IonIcons -->
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
    <!-- DataTables -->
-  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -75,7 +76,7 @@ to get the desired effect
               {
                 while($result=mysqli_fetch_assoc($qu_num))
                 {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="../../student/read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
+                  echo '<a class="dropdown-item text-primary font-weight-light" href="../../read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
                   echo '<div class="dropdown-divider"></div>';
 
                 }
@@ -86,7 +87,7 @@ to get the desired effect
               }
             ?>
             <div class="dropdown-divider"></div>
-          <a href="../../student/read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
+          <a href="../../read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
         </li>
 
@@ -98,7 +99,7 @@ to get the desired effect
           <?php echo $_SESSION['name']; ?>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-          <a href="../../auth/logout.php" class="dropdown-item">
+          <a href="../auth/logout.php" class="dropdown-item">
             <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
           </a>
           <a href="my_profile.php" class="dropdown-item">
@@ -111,13 +112,13 @@ to get the desired effect
     </ul>
   </nav>
   <!-- /.navbar -->
+  <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../student/index.php" class="brand-link">
-      <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+    <a href="../advisor/index.php" class="brand-link">
+      <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ITPROMO</span>
     </a>
@@ -127,7 +128,7 @@ to get the desired effect
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../../dist/img/user1.png" class="img-circle elevation-2" alt="User Image">
+          <img src="../dist/img/user1.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block"><?php echo $_SESSION['name']; ?></a>
@@ -141,8 +142,7 @@ to get the desired effect
                with font-awesome or any other icon font library -->
 
                    <li class="nav-item has-treeview ">
-            <a href="../../student/index.php" class="nav-link ">
-
+            <a href="../advisor/index.php" class="nav-link ">
              
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -153,17 +153,17 @@ to get the desired effect
           </li>
 
          <li class="nav-item">
-            <a href="../../student/infor_group.php" class="nav-link">
-<i class="nav-icon fa fa-users" aria-hidden="true"></i>
+            <a href="../advisor/advisor_request.php" class="nav-link ">
+             <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Group Information              </p>
+       Request              </p>
             </a>
           </li>
     
  
   
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Projects
@@ -172,21 +172,35 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../student/create_proposal.php" class="nav-link">
+                <a href="../advisor/proposal_status.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add Proposal</p>
+                  <p>Proposal Status</p>
                 </a>
               </li>
               <li class="nav-item">
-       <a href="../../forms/check_pf.php" class="nav-link active" >
-                   <i class="far fa-circle nav-icon"></i>
+       <a href="../view track/student_track.php" class="nav-link" >
+                  <i class="far fa-circle nav-icon"></i>
                   <p>Project Track</p>
                 </a>
               </li>
+         
               <li class="nav-item">
-                <a href="../../student/proposal_project.php" class="nav-link">
+                <a href="../advisor/proposal_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
+                </a>
+              </li>
+                       <li class="nav-item">
+                <a href="../advisor/manage_mark.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Project Mark</p>
+                </a>
+              </li>
+
+                       <li class="nav-item">
+                <a href="../advisor/give_mark.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Give Mark as a Committee</p>
                 </a>
               </li>
             </ul>
@@ -203,13 +217,13 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../student/display_schedule_proposal.php" class="nav-link">
+                <a href="../advisor/display_schedule_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Proposal Schedule</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../student/display_schedule_project.php" class="nav-link">
+                <a href="../advisor/display_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Schedule</p>
                 </a>
@@ -219,8 +233,10 @@ to get the desired effect
           </li>
 
 
+    
+
   <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
                 News
@@ -229,13 +245,13 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../student/annouce.php" class="nav-link">
+                <a href="../advisor/Annoucement.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Annoucements</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../student/show_topic.php" class="nav-link">
+                <a href="../advisor/add_general_topic.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Topic Require</p>
                 </a>
@@ -245,53 +261,32 @@ to get the desired effect
           </li>
 
   <li class="nav-item">
-            <a href="../../student/my_profile.php" class="nav-link">
+            <a href="../committee/committee_request.php" class="nav-link active">
+         <i class="nav-icon fa fa-tasks"></i> 
+              <p>
+                For Committee
+              </p>
+            </a>
+          </li>
+
+  <li class="nav-item">
+            <a href="../advisor/my_profile.php" class="nav-link">
               <i class="nav-icon fa fa-user"></i>
               <p>
                 Personal Information
               </p>
             </a>
           </li>
-    
 
-
-
-          <li class="nav-item">
-            <a href="../../student/guide.php" class="nav-link">
-        <i class="nav-icon fab fa-glide-g"></i>
+           <li class="nav-item">
+            <a href="line_message.php" class="nav-link">
+              <i class="nav-icon fa fa-user"></i>
               <p>
-                Guide
+               Line notify
               </p>
             </a>
           </li>
 
-                    <li class="nav-item">
-            <a href="../../student/course_syllabus.php" class="nav-link">
-              <i class="nav-icon fa fa-calendar"></i>
-              <p>
-                course syllabus
-              </p>
-            </a>
-          </li>
-
-                    <li class="nav-item">
-            <a href="../../student/form.php" class="nav-link">
-              <i class="nav-icon fa fa-edit"></i>
-              <p>
-                Forms
-              </p>
-            </a>
-          </li>
-
-
-  <li class="nav-item">
-            <a href="../../student/booked.php" class="nav-link">
-              <i class="nav-icon fa fa-book"></i>
-              <p>
-                Books
-              </p>
-            </a>
-          </li>
 
         </ul>
       </nav>
@@ -299,7 +294,6 @@ to get the desired effect
     </div>
     <!-- /.sidebar -->
   </aside>
-
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -344,10 +338,10 @@ to get the desired effect
 
       
         <div class="form-wizard">
-          <form action="check_pf10.php" method="post"  class="form-horizontal" enctype="multipart/form-data">
+          <form action="check_pf3.php" method="post"  class="form-horizontal" enctype="multipart/form-data">
             <div class="form-wizard-header">
               <ul class="list-unstyled form-wizard-steps clearfix">
-               <li class="active" ><span>1</span></li>
+                      <li class="active" ><span>1</span></li>
            <li class="active" ><span>2</span></li>
                   <li class="active" ><span>3</span></li>
                 <li class="active" ><span>4</span></li>
@@ -366,25 +360,19 @@ to get the desired effect
             <fieldset class="wizard-fieldset show">
               <h5>PF10</h5>
             <?php
-  
-
-                              $g_id = get_group_id();
-              $ag_id = get_ag_id($g_id);
+    $id = $_GET['id'];
     $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.by_advisor10,files.Owner,files.advisergroup_id,files.pf,files.files_filename_project,files.files_id FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.advisergroup_id = '$ag_id'  ";             
-
-
-
+        WHERE advisergroup.advisergroup_id = '$id'  ";             
 
      if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
             ?>
 
 
-            <fieldset>
+          <fieldset>
             </br>
               <h5>Project Revision </h5>
            <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
@@ -428,11 +416,8 @@ to get the desired effect
 
 
                         <td class="hidden"> 5 chapter of Project Revision<p>
-                               <?php echo $objResult->files_filename_project; ?>
 
-                            <input type="file" name="files_filename_project" id="files_filename_project"
-                          value=" <?php echo $objResult->files_filename_project; ?>"/>
-
+                          
 
                                                      <br>
                 <input type="hidden"
@@ -442,14 +427,13 @@ to get the desired effect
 
 
 
-  <button type="submit" class="btn btn-success">
-    <i class="glyphicon glyphicon-ok"></i> Upload</button>
+
 
     <td>
 <?php if( $objResult->files_filename_project != ""){ ?>
-                      <a href="../form01/download.php?pdf=<?php echo $objResult->files_filename_project ;?>">
+                      <a href="../forms/form01/download.php?pdf=<?php echo $objResult->files_filename_project ;?>">
                         <span class='badge badge-primary'><i class="fa fa-download">Download 
-                          <?php echo $objResult->files_filename_project ?> </i></a></span>
+                          </i></a></span>
  <?php }else{?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
@@ -478,21 +462,8 @@ to get the desired effect
             </fieldset>
           </form>
 
-      
-        <div class="form-group clearfix">
 
-                  <a href="../form09/pf09.php" class="btn btn-danger float-left">Previous</a>
-          <?php if ($objResult->by_advisor10 != "Pass") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button> 
-          <?php }else{?>
-            <a href="../form11/pf11.php"   >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
-                       <?php }?>
-
-
-
-              </div>
-
+  
               </div>
 
 
@@ -510,64 +481,186 @@ to get the desired effect
     </div>
   </section>
 
+
       <div class="content">
         <div class="row">
           <div class="col-lg-12">
             <div class="card">
               <div class="card-block">
+<div class="card-header">
+               <h3 class="card-title">
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addcomment">
+                  <i class="nav-icon fas fa-plus"></i>
+                  Add Comment
+                </button>
+                </h3>
+        
+            </div>
+</div>
 
-                <h6 class="card-title text-bold">Comments For Committee</h6></b>
-                <?php
-            $g_id = get_group_id();
-              $ag_id = get_ag_id($g_id);
-              
+
+         
+ <?php
+         $id = $_GET['id'];
 
 
 $strSQL = "SELECT  member.member_fullname,committeegroup.comment_project FROM committeegroup
           LEFT JOIN member ON committeegroup.member_id = member.member_id
-          WHERE committeegroup.group_id = '$ag_id'";
+          WHERE committeegroup.group_id = '$id'";
 
      if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
 
    ?>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="active tab-pane" id="activity">
+                    <!-- Post -->
+                    <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image">
+                        <span class="username">
+                          <a href="#"><?php echo $objResult->member_fullname;?> </a>
+                        </span>
+                    
+                      </div>
+                      <!-- /.user-block -->
+                    
+                      <p>
+                   <?php echo $objResult->comment_project;?> 
+                      </p>
 
+                      <p>
+                        <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
+                        <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
+                        <span class="float-right">
+                          <a href="#" class="link-black text-sm">
+                            <i class="far fa-comments mr-1"></i> Comments (5)
+                          </a>
+                        </span>
+                      </p>
 
-
-
-
-
-                <table class="display datatable table table-stripped" cellspacing="0" width="100%">
-
-                  <tbody>
-
-                    <td>
-
-                      </br><b>
-
-
-
-                        <h5> &nbsp;&nbsp;<span class="badge badge-primary"> <?php echo $objResult->member_fullname;?>
-                        </h5></span> </br>
-
-
-                        <h6> &nbsp;&nbsp; <font color='green'> <?php echo $objResult->comment_project;?> </h6></br></font>
-
-
-
-
-                        <div class="col-md-12" align="right">
-
-                        </div>
-
-                    </td>
-
-                    <?php
+_________________________________________________________________________________________________________________________________
+                    </div>
+                    </div>
+</div>      
+</div>              
+                    <!-- /.post -->
+    <?php
                  }
                }
                    ?>
-                  </tbody>
-                </table>
+                 
+                  <!-- /.tab-pane -->
+                  
+                      </div>
+                     </div>
+              
+
+                    </div>
+                  </div>
+                  <!-- /.tab-pane -->
+     
+                 
+                  <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+
+
+
+
+
+
+
+
+
+ <div class="modal fade" id="addcomment" tabindex="-1" role="dialog"
+                                                aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                            <div class="modal-header bg-info">
+            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h5 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
+                                                               Add Comment</h4>
+                                                        </div>
+                                              
+                                                                            
+
+
+                        <div class="modal-body">
+
+            <form action="check_comment10.php?id=<?php echo $_GET["id"];?>" name="fromEdit" method="post"
+              onsubmit="return checkForm()">
+          <div class="form-group row margin-top-10">
+                <div class="col-md-2">
+                  <label class="control-label ">Comment</label>
+                </div>
+                <div class="col-md-10">
+     <textarea rows="5" width="30" class="form-control" id="comment_project" name="comment_project"
+                    placeholder="Comment"></textarea>
+
+                </div>
+              </div>
+
+ <div class="form-group row ">
+                <div class="col-md-2">
+                  <label class="control-label ">Upload files</label>
+                </div>
+                <div class="col-md-10">
+     <input type="file" name="comment_file" id="comment_file" >
+
+                </div>
+              </div>
+                       
+
+              <input type="hidden" name="committeegroup_id" id="committeegroup_id"  />
+
+
+
+
+                                                     </br>
+
+    
+   
+                                                     
+                                                                 
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default"
+                                                                        data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>
+                                                                        Cancle</button>
+                                                                    <button type="submit" class="btn btn-success"><i
+                                                                            class="glyphicon glyphicon-ok"></i>
+                                                                        Submit</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <!-- /.content -->
@@ -575,26 +668,26 @@ $strSQL = "SELECT  member.member_fullname,committeegroup.comment_project FROM co
 <!-- ./wrapper -->
 
 <!-- partial -->
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="../form01/script.js"></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="../forms/form01/script.js"></script>
 
 
 
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->
-<script src="../../dist/js/adminlte.js"></script>
+<script src="../dist/js/adminlte.js"></script>
 
 <!-- OPTIONAL SCRIPTS -->
-<script src="../../plugins/chart.js/Chart.min.js"></script>
-<script src="../../dist/js/demo.js"></script>
-<script src="../../dist/js/pages/dashboard3.js"></script>
+<script src="../plugins/chart.js/Chart.min.js"></script>
+<script src="../dist/js/demo.js"></script>
+<script src="../dist/js/pages/dashboard3.js"></script>
 <!-- DataTables -->
-<script src="../../plugins/datatables/jquery.dataTables.js"></script>
-<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="../plugins/datatables/jquery.dataTables.js"></script>
+<script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <script>
   $(function () {
     $("#example1").DataTable();

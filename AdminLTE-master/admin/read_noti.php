@@ -383,7 +383,7 @@ $count=mysqli_num_rows($result);
                         <span class="username">
                           Administrator
                         </span>
-                        <span class="description">Shared publicly - 7:45 PM today</span>
+                        <span class="description">Shared publicly -<?php echo $objResult->date; ?></span>
                       </div>
                       <!-- /.user-block -->
                       

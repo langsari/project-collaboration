@@ -12,8 +12,8 @@ if(isset($_GET['id'])){
   $comment=$_POST['comment'];
 
   $comment_file=$_POST['comment_file'];
-
-  $sql = "UPDATE committeegroup SET comment='$comment'   WHERE group_id = '$id' and  member_id= '$member_id'";
+ $advisergroup_id=$_POST['advisergroup_id'];
+  $sql = "UPDATE committeegroup SET comment='$comment' ,advisergroup_id='$advisergroup_id'  WHERE group_id = '$id' and  member_id= '$member_id'";
 
 
 
