@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 01, 2020 at 08:47 AM
--- Server version: 10.1.32-MariaDB
--- PHP Version: 7.2.5
+-- Generation Time: Mar 07, 2020 at 12:57 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 5.6.39
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -176,36 +176,24 @@ INSERT INTO `comment` (`comment_id`, `parent_comment_id`, `comment`, `comment_se
 CREATE TABLE `committeegroup` (
   `committeegroup_id` int(11) NOT NULL,
   `member_id` int(11) NOT NULL,
+  `advisergroup_id` int(20) NOT NULL,
   `group_id` int(11) NOT NULL,
+  `comment` varchar(5000) NOT NULL,
   `status_presentation` enum('','Pass','No') NOT NULL,
-  `comment` varchar(5000) NOT NULL
+  `comment_project` varchar(5000) NOT NULL,
+  `status_project` enum('','Pass','No') NOT NULL,
+  `comment_file` varchar(5000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `committeegroup`
 --
 
-INSERT INTO `committeegroup` (`committeegroup_id`, `member_id`, `group_id`, `status_presentation`, `comment`) VALUES
-(0, 33, 2, '', ''),
-(1, 14, 1, 'Pass', 'Congratulation '),
-(2, 33, 1, '', ''),
-(3, 45, 1, 'Pass', 'Great You are the best'),
-(4, 11, 3, '', ''),
-(5, 29, 3, '', ''),
-(6, 18, 3, '', ''),
-(7, 41, 2, '', ''),
-(8, 46, 2, '', ''),
-(9, 11, 4, '', ''),
-(10, 18, 4, '', ''),
-(11, 19, 4, '', ''),
-(12, 29, 4, '', ''),
-(13, 18, 1, '', ''),
-(14, 8, 6, 'Pass', ''),
-(15, 45, 6, 'Pass', 'Greate ... Graduate'),
-(16, 41, 6, '', ''),
-(17, 19, 5, '', ''),
-(18, 11, 5, '', ''),
-(19, 18, 5, '', '');
+INSERT INTO `committeegroup` (`committeegroup_id`, `member_id`, `advisergroup_id`, `group_id`, `comment`, `status_presentation`, `comment_project`, `status_project`, `comment_file`) VALUES
+(1, 14, 1, 1, 'Congra..', 'Pass', 'ttt', 'Pass', ''),
+(10, 33, 1, 1, 'pass', 'Pass', 'pass', 'Pass', ''),
+(11, 8, 6, 6, 'Done', 'Pass', '', '', ''),
+(12, 18, 6, 6, 'finish', 'Pass', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -219,27 +207,29 @@ CREATE TABLE `files` (
   `files_filename_proposal` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `files_filename_project` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `advisergroup_id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `files_status` enum('','Waiting','Approve') COLLATE utf8_unicode_ci NOT NULL,
-  `by_officer` enum('','Waiting','Approve') COLLATE utf8_unicode_ci NOT NULL,
-  `status_advisor` enum('','Pass','No') COLLATE utf8_unicode_ci NOT NULL,
-  `pf` enum('1','2','3','4','5','6','7') COLLATE utf8_unicode_ci NOT NULL,
+  `files_status` enum('','Waiting','Approve') COLLATE utf8_unicode_ci NOT NULL COMMENT 'by_advisor01',
+  `by_officer` enum('','Waiting','Approve','No') COLLATE utf8_unicode_ci NOT NULL COMMENT 'by_officer02',
+  `status_advisor` enum('','Pass','No') COLLATE utf8_unicode_ci NOT NULL COMMENT 'by_advisor03',
+  `by_advisor04` enum('','Pass','No') COLLATE utf8_unicode_ci NOT NULL,
+  `pf` enum('1','2','3','4','5','6','7','8','9','10','11','12','13') COLLATE utf8_unicode_ci NOT NULL,
   `by_officer05` enum('','Pass','No') COLLATE utf8_unicode_ci NOT NULL,
   `by_advisor06` enum('','Pass','No') COLLATE utf8_unicode_ci NOT NULL,
   `by_advisor07` enum('','Pass','No') COLLATE utf8_unicode_ci NOT NULL,
-  `by_advisor08` enum('','Waiting','Pass','No') COLLATE utf8_unicode_ci NOT NULL
+  `by_advisor08` enum('','Waiting','Pass','No') COLLATE utf8_unicode_ci NOT NULL,
+  `by_officer09` enum('','Waiting','Approve','No') COLLATE utf8_unicode_ci NOT NULL,
+  `by_advisor10` enum('','Pass','No') COLLATE utf8_unicode_ci NOT NULL,
+  `by_advisor11` enum('','Pass','No') COLLATE utf8_unicode_ci NOT NULL,
+  `by_advisor12` enum('','Pass','No') COLLATE utf8_unicode_ci NOT NULL,
+  `by_officer13` enum('','Pass','No') COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `files`
 --
 
-INSERT INTO `files` (`files_id`, `Owner`, `files_filename_proposal`, `files_filename_project`, `advisergroup_id`, `files_status`, `by_officer`, `status_advisor`, `pf`, `by_officer05`, `by_advisor06`, `by_advisor07`, `by_advisor08`) VALUES
-(1, '571386628 Anur Smile571431031 Asri Yaee', '1580400891-personalassesment.pdf', '', '6', 'Approve', 'Approve', 'Pass', '5', 'Pass', '', '', ''),
-(3, '572431016 Sunee Kasem572431923 ilham', '1580402092-HousewaresRepairingWebapp.pdf', '', '3', 'Approve', 'Approve', '', '2', '', '', '', ''),
-(4, '572431009 Norihan Ha572431014 Wilada Yalaphanee', '1580402186-บท1-3.pdf', '', '5', 'Approve', 'Approve', 'Pass', '3', '', '', '', ''),
-(5, '572431011 Miskah Kasengteuba572431021 Afifah mamat', '1580403023-last2.pdf', '', '4', 'Approve', 'Approve', '', '2', '', '', '', ''),
-(6, '572431005 Nur-ida Che-loh66 Hunafah', '1580451024-SensoryEvaluationapplication.pdf', '', '2', 'Approve', 'Approve', 'Pass', '4', '', '', '', ''),
-(10, '572431003 Nik-Husnee Nik-Uma572431029 Mout  Tylas', 'letter-of-appointment.pdf', '', '1', 'Approve', 'Approve', '', '2', '', '', '', '');
+INSERT INTO `files` (`files_id`, `Owner`, `files_filename_proposal`, `files_filename_project`, `advisergroup_id`, `files_status`, `by_officer`, `status_advisor`, `by_advisor04`, `pf`, `by_officer05`, `by_advisor06`, `by_advisor07`, `by_advisor08`, `by_officer09`, `by_advisor10`, `by_advisor11`, `by_advisor12`, `by_officer13`) VALUES
+(1, '572431003 Nik-Husnee Nik-Uma572431029 Mout  Tylas', '1580195519-1579015325-Proposal (1).pdf', 'PF08 - IT Project - Adviser Project Approval Letter.pdf', '1', 'Approve', 'Approve', 'Pass', 'Pass', '10', 'Pass', 'Pass', 'Pass', 'Pass', 'Approve', 'Pass', '', '', ''),
+(2, '571386628 Anur Smile571431031 Asri Yaee', 'PF02 - IT Project - Officer recieve copy of Project Proposal.pdf', 'ฟิกฮอัลอิบาดัค-1.pdf', '6', 'Approve', 'Approve', 'Pass', 'Pass', '9', 'Pass', 'Pass', 'Pass', 'Pass', 'Approve', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -334,18 +324,21 @@ CREATE TABLE `notify` (
   `id` int(11) NOT NULL,
   `comment` varchar(300) NOT NULL,
   `status` int(1) NOT NULL DEFAULT '0',
-  `subject` varchar(300) NOT NULL
+  `subject` varchar(300) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `notify`
 --
 
-INSERT INTO `notify` (`id`, `comment`, `status`, `subject`) VALUES
-(14, 'UPDATED\r\n\r\nProject presentation on 26/02/63\r\n\r\nPrepare well for Proposal Slide with full of information and upload your slide here.\r\n\r\nðŸ‘‰ðŸ‘‰Upload your Slide at here https://drive.google.com/openâ€¦\r\n\r\nðŸ‘‰ðŸ‘‰Upload Your Proposal at Here https://drive.google.com/openâ€¦', 1, 'Project presentation'),
-(15, 'Proposal and 50% Progress Presentation on Wednesday 5, 2020', 1, 'Proposal and 50% Progress Presentation '),
-(17, 'tttttttttttttttttttttt', 1, 'tttttt'),
-(18, 'eafeeeeeeeeee', 0, 'dsfsfr');
+INSERT INTO `notify` (`id`, `comment`, `status`, `subject`, `date`) VALUES
+(17, 'tttttttttttttttttttttt', 1, 'tttttt', '2020-03-04 18:56:12'),
+(18, 'eafeeeeeeeeee', 1, 'dsfsfr', '2020-03-04 18:56:12'),
+(19, 'koko', 1, 'Hi', '2020-03-04 18:56:12'),
+(20, 'how ae you', 1, 'hi', '2020-03-04 18:59:13'),
+(21, 'xxxxxxxxxxxx', 1, 'xxxxxxxx', '2020-03-04 19:00:03'),
+(22, 'travrl', 1, 'go', '2020-03-04 19:01:27');
 
 -- --------------------------------------------------------
 
@@ -393,14 +386,10 @@ CREATE TABLE `schedule` (
 --
 
 INSERT INTO `schedule` (`schedule_id`, `schedule_topic`, `schedule_type`, `schedule_room`, `schedule_time`, `schedule_date`, `schedule_status`, `writer`, `group_id`) VALUES
-(1, 'Fisrt Presentation', '1', 'IT-123', '10:00:00', '2020-02-05', 'Proposal', 12, 1),
-(2, 'Fisrt Presentation', '1', 'IT-121', '09:00:00', '2020-02-05', 'Proposal', 12, 2),
-(3, 'Fisrt Presentation', '1', 'IT-324', '23:01:00', '2020-02-05', 'Proposal', 12, 3),
-(4, 'Fisrt Presentation', '1', 'IT-432', '00:10:00', '2020-02-05', 'Proposal', 12, 4),
-(5, 'Fisrt Presentation', '1', 'IT-235', '05:01:00', '2020-02-05', 'Proposal', 12, 6),
-(6, 'test', '1', '5-303', '09:30:00', '2020-02-26', '80%', 1, 1),
-(7, 'tttt', '2', '5-302', '14:00:00', '2020-02-26', 'dddd', 1, 1),
-(8, 'ttttt', '2', '5-301', '09:30:00', '2020-02-21', 'ttttttt', 1, 3);
+(1, 'present', '1', 'it-221', '00:00:00', '2020-03-19', '100%', 12, 1),
+(2, 'pre', '2', 'it-33', '02:01:00', '2020-11-02', '100%', 12, 1),
+(3, 'pre', '1', 'it-22', '03:01:00', '2020-03-25', '50%', 1, 6),
+(4, 'present', '2', 'it-333', '14:01:00', '2020-03-19', '100%', 12, 6);
 
 -- --------------------------------------------------------
 
@@ -428,35 +417,8 @@ CREATE TABLE `topic_project` (
 --
 
 INSERT INTO `topic_project` (`topic_id`, `group_number`, `Owner`, `topic_topic`, `topic_abstrack`, `topic_keyword`, `topic_fieldstudy`, `topic_years`, `advisergroup_id`, `adviser`, `position`, `status`) VALUES
-(1, 'PS10001', '<p>572431003 &nbsp&nbsp&nbsp&nbsp Nik-Husnee Nik-Uma</p><p>572431029 &nbsp&nbsp&nbsp&nbsp Mout  Tylas</p>', 'It project monitoring and tracking', 'IT Project Monitoring and Tracking System is developed for IT department of faculty Science and Technology to provide for student and lecturer to track', 'Tracking ,Monitor', 'Software Engineering', '2020-01-29', 1, 'Kholed Langsaree', 'Student', '2'),
-(2, 'PS10003', '<p>572431016 &nbsp&nbsp&nbsp&nbsp Sunee Kasem</p><p>572431923 &nbsp&nbsp&nbsp&nbsp ilham</p>', 'Houseware repair', 'Rancang Bangun Sistem Pengamatan Lingkungan Menggunakan Wireless Sensor Network berbasis nRF24L01 Terdistribusi dengan Layanan Dashboard untuk Visualisasi Data Pengamatan Secara Real Time', 'Application,Smart', 'Computer Networking', '2020-01-24', 3, 'Norhuda', 'Student', '1'),
-(3, 'PS10002', '<p>572431005 &nbsp&nbsp&nbsp&nbsp Nur-ida Che-loh</p><p>66 &nbsp&nbsp&nbsp&nbsp Hunafah</p>', 'Smart Rang Hood', 'Wireless Sensor Network berbasis nRF24L01 Terdistribusi dengan Layanan Dashboard untuk Visualisasi Data Pengamatan Secara Real Time', 'Network', 'Software Engineering', '2020-01-15', 2, 'Kholed Langsaree', 'Student', '1'),
-(4, 'PS10004', '<p>572431011 &nbsp&nbsp&nbsp&nbsp Miskah Kasengteuba</p><p>572431021 &nbsp&nbsp&nbsp&nbsp Afifah mamat</p>', 'Math Game', 'Engage Elementary Kids with Fun, Team Based STEM Activities Free Download, Upload Score to See Local State National World Rankings Engage your Students Online Competition Low Cost Supplies Free Activity', 'Math,Calculator', 'Computer Multimedia', '2020-01-18', 4, 'suaida', 'Student', '2'),
-(5, 'PS20010', '562431003 Awatif Mareh\r\n562431008 Sawana Mamu\r\n', 'Activity Application', 'Top and latest apps available! Millions have downloaded, have you? Reliable reviews Everything you need Recommended for you Android devices only Wide variety Types: Music Apps, Messaging Apps, Game Apps, Utility Apps, Lifestyle Apps', 'Application,Card', 'Software Engineering', '2018-01-28', 0, '19', 'Admin', '6'),
-(6, 'PS10005', '<p>572431009 &nbsp&nbsp&nbsp&nbsp Norihan Ha</p><p>572431014 &nbsp&nbsp&nbsp&nbsp Wilada Yalaphanee</p>', 'Provide in Islam', 'Provide of islam Applications', 'App', 'Computer Multimedia', '2020-01-24', 5, 'Nurulhusna', 'Student', '1'),
-(7, 'PS10006', '<p>571386628 &nbsp&nbsp&nbsp&nbsp Anur Smile</p><p>571431031 &nbsp&nbsp&nbsp&nbsp Asri Yaee</p>', 'FTU Cooperative Education,Industrial Training', 'Industrial Training refers to a program which aims to provide supervised practical training within a specified timeframe. This training can be carried out either', 'Industrial Training', 'Computer Multimedia', '2020-01-18', 6, 'Fausan Mapa', 'Student', '2');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `userid` int(11) NOT NULL,
-  `firstname` varchar(10) NOT NULL,
-  `lastname` varchar(10) NOT NULL,
-  `seen_status` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`userid`, `firstname`, `lastname`, `seen_status`) VALUES
-(1, 'Ana', 'Tylas', 1),
-(2, 'ty', 'ty', 1),
-(3, 'fff', 'fffff', 0);
+(1, 'PS10001', '<p>572431003 &nbsp&nbsp&nbsp&nbsp Nik-Husnee Nik-Uma</p><p>572431029 &nbsp&nbsp&nbsp&nbsp Mout  Tylas</p>', 'It project monitoring and tracking', '  In most of the curriculum in information technology (IT) undergraduate program, it is common that students are expected to complete the Information Technology Project Course (IT Project) in their final year studies. That is also why it is usually known as a final year project (FYP). The Information Technology project course (IT Project), is a kind of activity course that gives opportunities to students. This course-based study aims to provide integrated training on their team working skills, technical knowledge learned from different courses, and project management skills. The students studied, researched and practiced by themselves according to their abilities, aptitudes, and interests.   ', 'Tracking ,Monitor', 'Software Engineering', '2020-03-06', 1, 'Kholed Langsaree', 'Student', '1'),
+(2, 'PS10006', '<p>571386628 &nbsp&nbsp&nbsp&nbsp Anur Smile</p><p>571431031 &nbsp&nbsp&nbsp&nbsp Asri Yaee</p>', 'FTU Cooperative Education,Industrial Training', 'The self-study lessons in this section are written and organised according to the levels of the Common European Framework of Reference for languages (CEFR). The videos and interactive exercises help you to practise your speaking skills.', 'section', 'Computer Networking', '2020-03-17', 6, 'Fausan Mapa', 'Student', '1');
 
 --
 -- Indexes for dumped tables
@@ -551,12 +513,6 @@ ALTER TABLE `topic_project`
   ADD PRIMARY KEY (`topic_id`);
 
 --
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`userid`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -567,10 +523,16 @@ ALTER TABLE `announcement`
   MODIFY `announcement_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `committeegroup`
+--
+ALTER TABLE `committeegroup`
+  MODIFY `committeegroup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `files_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `files_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `member`
@@ -582,19 +544,19 @@ ALTER TABLE `member`
 -- AUTO_INCREMENT for table `notify`
 --
 ALTER TABLE `notify`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT for table `topic_project`
 --
-ALTER TABLE `user`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `topic_project`
+  MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
