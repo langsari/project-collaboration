@@ -326,11 +326,7 @@ to get the desired effect
     </section>
 
   <!-- Main content -->
-   <form class="form-horizontal" method="post" action="check_editprofile.php">
-
-    
-
-    <?php
+     <?php
    
   $strSQL = "SELECT * FROM member  WHERE member_id='".$_SESSION['id']."'";      
 
@@ -342,90 +338,190 @@ to get the desired effect
             ?>
 
 
-      <div class="container-fluid">
-        <div class="row">
-   <span style="padding-left:110px"> </span>      <div class="col-md-10">
 
-            <!-- Profile Image -->
-        
-            <div class="card card-primary card-outline">
-              <div class="card-body box-profile">
-                <div class="text-center">
-                  <img class="profile-user-img img-fluid img-circle"
-                       src="../dist/img/user4-128x128.jpg"
-                       alt="User profile picture">
+  <div class="site-section bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-5">
+            <form  class="p-5 bg-white" enctype="multipart/form-data" method="post"
+             action="check_editprofile.php" >
+
+
+              <center>
+              
+                <h2> About me
+                 
+              </h2>
+              </center></br>
+              <hr>
+              <p>
+                <h5>1. Profile</h5>
+              </p>
+
+              <!-- <a href="booking.php" style="color:red">ค้นหาที่ฝึกงาน</a> -->
+
+
+ <div class="row form-group">
+                <div class="col-md-4 mb-4 mb-md-0">
+        <label class="text-black" for="fname">Name prefix</label>
+    <input type="text" id="member_name_prefix" name="member_name_prefix" class="form-control" value="<?php echo $objResult->member_name_prefix; ?>">
+
+                </div>
+                <div class="col-md-4">
+                  <label class="text-black" for="name">Firstname</label>
+      <input type="text" class="form-control" name="member_firstname" id="member_firstname"  value="<?php echo $objResult->member_firstname; ?>" >                </div>
+
+                <div class="col-md-4">
+                  <label class="text-black" for="lastname">Lastname</label>
+      <input type="text" class="form-control" name="member_lastname" id="member_lastname"  value="<?php echo $objResult->member_lastname; ?>" >                </div>
+              </div>
+
+
+
+              <div class="row form-group">
+                <div class="col-md-4 mb-4 mb-md-0">
+                  <label class="text-black" for="fname">ID Card Student</label>
+                     <input type="text" class="form-control" name="member_idcard" id="member_idcard"  value="<?php echo $objResult->member_idcard; ?>" >
                 </div>
 
-                
-      
-      
-              <!-- /.card-body -->
+        
+
+                <!-- <div class="col-md-6">
+                  <label class="text-black" for="lname">ประเภทงาน</label>
+                  <input type="text" id="lname" class="form-control" required autofocus>
+                </div> -->
+                <div class="col-md-4">
+                  <label class="text-black" >Faculty</label>
+                       <input type="text" class="form-control" name="member_faculty" id="member_faculty"  value="<?php echo $objResult->member_faculty; ?>" >                                            
+
+                </div>
+
+       <div class="col-md-4">
+                  <label class="text-black" >Department</label>
+              <input type="text" class="form-control" name="member_major" id="member_major"  value="<?php echo $objResult->member_major; ?>" >                                               
+
+                </div>
+
+
+              </div>
+
+             <div class="row form-group">
+                <div class="col-md-4 mb-4 mb-md-0">
+                  <label class="text-black" for="fname">Yearst</label>
+                     <input type="text" class="form-control" name="member_years" id="member_years"  value="<?php echo $objResult->member_years; ?>" >
+                </div>
+
+        
+
+                <!-- <div class="col-md-6">
+                  <label class="text-black" for="lname">ประเภทงาน</label>
+                  <input type="text" id="lname" class="form-control" required autofocus>
+                </div> -->
+                <div class="col-md-4">
+                  <label class="text-black" >Birthday</label>
+                       <input type="text" class="form-control" name="member_birthday" id="member_birthday"  value="<?php echo $objResult->member_birthday; ?>" >                                            
+
+                </div>
+
+       <div class="col-md-4">
+                  <label class="text-black" >Gender</label>
+                 
+
+                <select class="form-control" name="member_gender" id="member_gender" onChange="getTeam(this.value);"  >
+<option  value="<?php echo $objResult->member_gender; ?>"><?php echo $objResult->member_gender;?> </option>
+                                     <option value="Male">Male</option>     
+             <option value="Female">Female</option>
  
-            <!-- /.card -->
 
-            <!-- About Me Box -->
-       
-              <!-- /.card-header -->
-              <div class="card-body">
-                <strong><i class="fas fa-book mr-1"></i> ID Card Student</strong>
+                                        </select>                                         
 
-                <p class="text-muted">
-                     <input type="text" class="form-control" name="member_idcard" id="member_idcard"  value="<?php echo $objResult->member_idcard; ?>" >
-                </p>
+                </div>
 
-                <hr>
+    </div>
 
-                <strong><i class="fas fa-map-marker-alt mr-1"></i> Name-Lastname</strong>
+             <div class="row form-group">
+                <div class="col-md-4 mb-4 mb-md-0">
+                  <label class="text-black" >Position</label>
+                  
 
-             <input type="text" class="form-control" name="member_fullname" id="member_fullname"  value="<?php echo $objResult->member_fullname; ?>" >                                            
+                           <select class="form-control" name="member_pos" id="member_pos" onChange="getTeam(this.value);"  >
+<option  value="<?php echo $objResult->member_pos; ?>"><?php echo $objResult->member_pos;?> </option>
+                              
+             <option value="Lecturer">Lecturer</option>
+             <option value="Student">Student</option>
+             <option value="Officer">Officer</option>
+
+                                        </select>
+
+                </div>
+
+        
+  <div class="col-md-8">
+                  <label class="text-black" >Password</label>
+              <input type="text" class="form-control" name="member_password" id="member_password"  value="<?php echo $objResult->member_password; ?>" >                                               
+
+                </div>
+
+                                         
 
 
-                <hr>
+              </div>
 
-                <strong><i class="fas fa-pencil-alt mr-1"></i> Tel:</strong>
-
-                                                   <input type="text" class="form-control" name="member_phone" id="member_phone"  value="<?php echo $objResult->member_phone; ?>" >                                     
+            
 
 
-                <hr>
-
-                <strong><i class="far fa-file-alt mr-1"></i> Gender</strong>
-
-                 <input type="text" class="form-control" name="member_gender" id="member_gender"  value="<?php echo gender($objResult->member_gender); ?>" >
 
 
-                <hr>
+              <br>
+              <p>
+                <h5>2. Contact</h5>
+              </p>
+              <hr>
 
-                <strong><i class="far fa-file-alt mr-1"></i> Email</strong>
+         
+              <div class="row form-group">
+                <div class="col-md-6 mb-4 mb-md-0">
+                  <label class="text-black" >Tel</label>
 
- <input type="text" class="form-control" name="member_email" id="member_email"  value="<?php echo $objResult->member_email; ?>" >
+                  <input type="text" class="form-control" name="member_phone" id="member_phone"  value="<?php echo $objResult->member_phone; ?>" >      
+                </div>
+
+                <div class="col-md-6">
+                  <label class="text-black" >Email</label>
+                 <input type="text" class="form-control" name="member_email" id="member_email"  value="<?php echo $objResult->member_email; ?>" >
+
+                </div>
+            
+              </div>
+
+              <div class="col-md-12">
+                  <label class="text-black" >Address</label>
+              <input type="text" class="form-control" name="member_address" id="member_address"  value="<?php echo $objResult->member_address; ?>" >                                               
+
+                </div>
+
+
+
+
 
                                      <input type="hidden" name="member_id" value="<?php echo $objResult->member_id;?>"/>
+                                     <br>
 
+<center>
+     <button type="submit" class="btn btn-success"><i     class="glyphicon glyphicon-ok"></i>
+                                                                        Edit</button>
+    
 
-
-<br>
-
-
-    <button type="submit" class="btn btn-primary">
-                                     Submit
-                                     <i class="fa fa-arrow-right position-right"></i>
-                                 </button>
-                             </div>
-                         </form>
-              <!-- /.card-body -->
-                          <?php
+            </form>
+          </div>
+                    <?php
                  }
                }
                    ?>
-            </div>
-            <!-- /.card -->
-          </div>
-         
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-
+      </div>
+    </div>
+  </div>
     <!-- /.content -->
  
 <!-- ./wrapper -->

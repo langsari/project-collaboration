@@ -1,3 +1,13 @@
+
+<?php
+
+$success = 0;
+if(isset($_GET['success'])){
+  $success = $_GET['success'];
+}
+
+?>
+
 <script language="javascript">
   function passwordStrength(password) {
     var desc = new Array();
@@ -80,10 +90,17 @@
 
     <div class="card ">
       <div class="card-body register-card-body">
-        <p class="login-box-msg">Register a new membership</p>
+        <p class="login-box-msg ">Register a new membership</p>
+      <?php if($success == 1): ?>
+        <div class="alert alert-success" role="alert">
+          <i class="glyphicon glyphicon-ok"></i> Register Successful! Please wait confirmation by Administrator <a href="../index.php">Back to Homepage</a>
+        </div>
+        <?php endif; ?>
+        <form id="add" name="add" method="post" action="checkregis.php" enctype="multipart/form-data" onsubmit="return checkForm()"  >
+                
 
-        <form id="add" name="add" method="post" action="checkregis.php" onsubmit="return checkForm()">
-          <div class="input-group mb-3">
+          <div class="input-group mb-3 ">
+               ID  Student: &nbsp;
             <input type="text" class="form-control" aria-describedby="basic-addon1" id="member_idcard"
               name="member_idcard" placeholder="Example: 572431003" autocomplete="off" required
               aria-describedby="basic-addon1" onkeypress='validate(event)' maxlength="9">
@@ -95,7 +112,19 @@
           </div>
 
 
+       <div class="input-group mb-3">
+                           Fullname: &nbsp;
+            <input type="text" class="form-control" placeholder="Example: Nik-Naemah Uma" id="member_fullname"
+              name="member_fullname" autocomplete="off" required aria-describedby="basic-addon1">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+
           <div class="input-group mb-3">
+                           Username: &nbsp;
             <input type="text" class="form-control" placeholder="Example: Naemah " id="member_username"
               name="member_username" autocomplete="off" required aria-describedby="basic-addon1">
             <div class="input-group-append">
@@ -105,18 +134,35 @@
             </div>
           </div>
 
-     <div class="input-group mb-3">
-      
-  <input type="text" class="form-control" id="member_fullname"
-                                                name="member_fullname" placeholder="Example: Naemah Nik-Abdullah "   autocomplete="off" required aria-describedby="basic-addon1">
-       <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-star"></span>
 
+           <div class="input-group mb-3">
+                                       Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+              <input type="text" class="form-control" id="member_email" name="member_email"
+                placeholder="Example: Naemah123@gmail.com" autocomplete="off" aria-describedby="basic-addon1"
+                pattern="^[a-zA-Z0-9]+@gmail\.com$" required>
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-envelope"></span>
+                </div>
+              </div>
             </div>
-          </div>
+
+       <div class="input-group mb-3">
+              Gender: &nbsp;&nbsp; &nbsp;&nbsp;<label class="radio-inline"> <input type="radio" name="member_gender"
+                  value="Male" required aria-describedby="basic-addon1"> &nbsp;&nbsp; Male</label>
+              &nbsp;&nbsp; &nbsp;&nbsp; <label class="radio-inline"><input type="radio" name="member_gender"
+                  value="Female" aria-describedby="basic-addon1">
+                &nbsp;&nbsp; Female</label>
+              <div class="input-group-append">
+
+</div>
+</div>
+
 
           <div class="input-group mb-3">
+                                                   Password: &nbsp;
+
             <input type="password" name="member_password" id="member_password" placeholder="Example: ********"
               onKeyUp="passwordStrength(this.value)" class="form-control" autocomplete="off" required
               aria-describedby="basic-addon1" />
@@ -134,41 +180,10 @@
             <div id="passwordDescription"></div>
             <div id="passwordStrength" class="strength0"></div>
             <br>
+</center>
 
+ 
 
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" id="member_email" name="member_email"
-                placeholder="Example: Naemah123@gmail.com" autocomplete="off" aria-describedby="basic-addon1"
-                pattern="^[a-zA-Z0-9]+@gmail\.com$" required>
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-envelope"></span>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" id="member_phone" name="member_phone"
-                placeholder="Example: 0831851521" autocomplete="off" required aria-describedby="basic-addon1"
-                onkeypress='validate(event)' maxlength="10">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-phone"></span>
-                </div>
-              </div>
-            </div>
-
-
-              Gender: &nbsp;&nbsp; &nbsp;&nbsp;<label class="radio-inline"> <input type="radio" name="member_gender"
-                  value="Male" required aria-describedby="basic-addon1"> &nbsp;&nbsp; Male</label>
-              &nbsp;&nbsp; &nbsp;&nbsp; <label class="radio-inline"><input type="radio" name="member_gender"
-                  value="Female" aria-describedby="basic-addon1">
-                &nbsp;&nbsp; Female</label>
-              <div class="input-group-append">
-
-              </div>
-            </div>
 
 
             <input type="text" class="form-control" id="member_pos" name="member_pos" value="Student" hidden="">

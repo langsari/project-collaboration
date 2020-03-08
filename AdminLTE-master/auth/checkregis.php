@@ -12,41 +12,30 @@ if(!$db){
 
 
 $member_idcard=$_POST['member_idcard'];
-$member_username=$_POST['member_username'];
 $member_fullname=$_POST['member_fullname'];
+
+$member_username=$_POST['member_username'];
 $member_password=$_POST['member_password'];
-$member_phone=$_POST['member_phone'];
 $member_email=$_POST['member_email'];
 $member_pos=$_POST['member_pos'];
 $member_gender=$_POST['member_gender'];
 
 
-$sql="INSERT INTO member(member_idcard,member_username,member_fullname,member_password,member_phone,member_email,member_pos,member_gender)values('$member_idcard','$member_username','$member_fullname','$member_password','$member_phone','$member_email','$member_pos','$member_gender')";
+$sql="INSERT INTO member(member_idcard,member_username,member_password,member_email,member_pos,member_gender,member_fullname)values('$member_idcard','$member_username','$member_password','$member_email','$member_pos','$member_gender','$member_fullname')";
 
 
-	if($rs = $db->query($sql)){
+
+
+if($rs = $db->query($sql)){
 		$db->close();
-
-
-
-		 echo "<script>alert('You are member Now But!  you are not activated by Administrator!' )</script>";
-
-		 		  	  echo "<script>window.open('register.php','_self')</script>";
-
-		
-
+		header("Location: register.php?success=1");
 	}else{
 		echo $db->error;
 		$db->close();
-		
+
 		 echo "<script>alert('MAY YOUR Email Or ID are USED! Please! Try Again')</script>";
 	  echo "<script>window.open('register.php','_self')</script>";
 	}
-
-
-
-
-
 
 ?>
 
