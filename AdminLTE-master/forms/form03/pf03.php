@@ -441,8 +441,18 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
 
 
-  <button type="submit" class="btn btn-success">
-    <i class="glyphicon glyphicon-ok"></i> Upload</button>
+
+                    <?php if ($objResult->files_filename_proposal != "") {?>
+                        <button class="btn btn-warning disabled" disabled="disabled">Upload</button> 
+
+                      <?php }else{?>
+                      <button type="submit" class="btn btn-primary" >Upload</button>
+                       <?php }?>
+
+                          </td>
+                       
+
+  
 
     
                           <td>

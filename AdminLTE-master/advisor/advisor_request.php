@@ -343,13 +343,15 @@ $my_id = $_SESSION['id'];
          WHERE advisergroup.member_id = '$my_id' AND advisergroup_status = 'Waiting'
           ORDER BY advisergroup.advisergroup_id DESC";
 
-          $i = 1;
+     $i = 1;
+   $count = 1;
+
               if($rs = $db->query($sql)){
                 while($row = $rs->fetch_object()){
               ?>
 
 <tr>
-<td><div align="center"><?php echo $i;?></div></td>
+                         <td width="20px">   <?php echo $count++; ?></td>
 
                 <td><?php echo $row->advisergroup_topic; ?></td>
                 <td><?php echo get_member_list($row->group_id); ?></td>
@@ -361,12 +363,12 @@ $my_id = $_SESSION['id'];
                 <td><a href="check_approve.php?id=<?php echo $row->advisergroup_id; ?>"
                     class="btn btn-success btn-xs" title="Comfirm"
                     onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
-                      class='glyphicon glyphicon-ok'></i> Approve</a>
+                       class='fa fa-check'></i> Approve</a>
 
                   <a href="reject_01.php?id=<?php echo $row->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs" title="Comfirm"
                     onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
-                      class='glyphicon glyphicon-ok'></i> Reject</a>
+                     class='fa fa-times'></i> Reject</a>
 
                 </td>
 
@@ -377,6 +379,7 @@ $my_id = $_SESSION['id'];
 
 
               <?php
+                     $i++;
                 }
               }else{
               }
@@ -434,7 +437,7 @@ $my_id = $_SESSION['id'];
                 while($row = $rs->fetch_object()){
               ?>
                 <tr>
- <td class="text-left">   <?php echo $count++; ?></td>
+                         <td width="20px">   <?php echo $count++; ?></td>
 
                     <td><?php echo $row->advisergroup_topic; ?></td>
                     <td><?php echo get_member_list($row->group_id); ?></td>
@@ -455,15 +458,17 @@ $my_id = $_SESSION['id'];
                     <td><a href="check_topic.php?id=<?php echo $row->files_id; ?>"
                         class="btn btn-success btn-xs" title="Comfirm"
                         onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                          class='glyphicon glyphicon-ok'></i> Approve</a>
+                           class='fa fa-check'></i> Approve</a>
 
                  <a href="check_approve.php?id=<?php echo $row->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs" title="Comfirm"
                     onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
-                      class='glyphicon glyphicon-ok'></i> Reject</a>
+                    class='fa fa-times'></i> Reject</a>
 
                   </tr>
                   <?php
+                                       $i++;
+
                 }
               }else{
               }
@@ -513,14 +518,16 @@ $my_id = $_SESSION['id'];
                ";
 
 
-$i = 1;
+  $i = 1;
+   $count = 1;
+
 
               if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
               ?>
                 
                 <tr>                     
-                <td><div align="center"><?php echo $i;?></div></td>
+                         <td width="20px">   <?php echo $count++; ?></td>
 
 
 
@@ -547,13 +554,13 @@ $i = 1;
 <a href="check_proposal_revision.php?id=<?php echo $row->files_id; ?>"
                         class="btn btn-success btn-xs" title="Comfirm"
                         onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                          class='glyphicon glyphicon-ok'></i> Approve</a>
+                           class='fa fa-check'></i> Approve</a>
 
 
                                  <a href="reject_03.php?id=<?php echo $row->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs" title="Comfirm"
                     onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
-                      class='glyphicon glyphicon-ok'></i> Reject</a>
+                    class='fa fa-times'></i> Reject</a>
 
 
 
@@ -564,6 +571,7 @@ $i = 1;
 
                       </tr>
                       <?php
+                         $i++;
                 }
               }else{
               }
@@ -612,12 +620,14 @@ $my_id = $_SESSION['id'];
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  AND pf='3' And by_advisor04=''  ";
 
-$i = 1;
-              if($rs = $db->query($strSQL)){
+  $i = 1;
+   $count = 1;
+
+      if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
               ?>
                   <tr>
-                  <td><div align="center"><?php echo $i;?></div></td>
+                         <td width="20px">   <?php echo $count++; ?></td>
 
                         <td><?php echo $row->advisergroup_topic; ?></td>
                         <td><?php echo get_member_list($row->group_id); ?></td>
@@ -627,13 +637,13 @@ $i = 1;
 <a href="check_proposal_approve.php?id=<?php echo $row->files_id; ?>"
                         class="btn btn-success btn-xs" title="Comfirm"
                         onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                          class='glyphicon glyphicon-ok'></i> Approve</a>
+                           class='fa fa-check'></i> Approve</a>
 
 
                                  <a href="reject_04.php?id=<?php echo $row->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs" title="Comfirm"
                     onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
-                      class='glyphicon glyphicon-ok'></i> Reject</a>
+                     class='fa fa-times'></i> Reject</a>
 
 
 
@@ -643,6 +653,7 @@ $i = 1;
 
                       </tr>
                       <?php
+                         $i++;
                 }
               }else{
               }
@@ -691,12 +702,14 @@ $my_id = $_SESSION['id'];
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  AND pf='5' And by_advisor06 =''   ";
 
-$i = 1;
+  $i = 1;
+   $count = 1;
+
               if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
               ?>
                   <tr>
-                  <td><div align="center"><?php echo $i;?></div></td>
+                         <td width="20px">   <?php echo $count++; ?></td>
 
                         <td><?php echo $row->advisergroup_topic; ?></td>
                         <td><?php echo get_member_list($row->group_id); ?></td>
@@ -706,18 +719,19 @@ $i = 1;
 <a href="check_06.php?id=<?php echo $row->files_id; ?>"
                         class="btn btn-success btn-xs" title="Comfirm"
                         onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                          class='glyphicon glyphicon-ok'></i> Approve</a>
+                           class='fa fa-check'></i> Approve</a>
 
 
                                  <a href="reject_06.php?id=<?php echo $row->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs" title="Comfirm"
                     onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
-                      class='glyphicon glyphicon-ok'></i> Reject</a>
+                     class='fa fa-times'></i> Reject</a>
 
 
 
                       </tr>
                       <?php
+                         $i++;
                 }
               }else{
               }
@@ -764,12 +778,14 @@ $my_id = $_SESSION['id'];
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  AND pf='6' And by_advisor07 =''               ";
 
-$i = 1;
+  $i = 1;
+   $count = 1;
+
               if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
               ?>
                     <tr>
-                    <td><div align="center"><?php echo $i;?></div></td>
+                         <td width="20px">   <?php echo $count++; ?></td>
 
                         <td><?php echo $row->advisergroup_topic; ?></td>
                         <td><?php echo get_member_list($row->group_id); ?></td>
@@ -780,13 +796,13 @@ $i = 1;
 <a href="check_07.php?id=<?php echo $row->files_id; ?>"
                         class="btn btn-success btn-xs" title="Comfirm"
                         onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                          class='glyphicon glyphicon-ok'></i> Approve</a>
+                            class='fa fa-check'></i> Approve</a>
 
 
                                  <a href="reject_07.php?id=<?php echo $row->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs" title="Comfirm"
                     onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
-                      class='glyphicon glyphicon-ok'></i> Reject</a>
+                      class='fa fa-times'></i> Reject</a>
 
 
 </td>
@@ -796,6 +812,7 @@ $i = 1;
 
                       </tr>
                       <?php
+                         $i++;
                 }
               }else{
               }
@@ -844,12 +861,14 @@ $my_id = $_SESSION['id'];
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  AND pf='8' And by_advisor08 ='Waiting'   ";
 
-$i = 1;
+  $i = 1;
+   $count = 1;
+
               if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
               ?>
                   <tr>
-                  <td><div align="center"><?php echo $i;?></div></td>
+                         <td width="20px">   <?php echo $count++; ?></td>
 
                         <td><?php echo $row->advisergroup_topic; ?></td>
                         <td><?php echo get_member_list($row->group_id); ?></td>
@@ -859,13 +878,13 @@ $i = 1;
 <a href="check_08.php?id=<?php echo $row->files_id; ?>"
                         class="btn btn-success btn-xs" title="Comfirm"
                         onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                          class='glyphicon glyphicon-ok'></i> Approve</a>
+                            class='fa fa-check'></i> Approve</a>
 
 
                                  <a href="reject_08.php?id=<?php echo $row->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs" title="Comfirm"
                     onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
-                      class='glyphicon glyphicon-ok'></i> Reject</a>
+                     class='fa fa-times'></i> Reject</a>
 
 
 
@@ -874,6 +893,7 @@ $i = 1;
 
                       </tr>
                       <?php
+                         $i++;
                 }
               }else{
               }
@@ -901,6 +921,7 @@ $i = 1;
 
                         <th>Title project</th>
                         <th>Student</th>
+                        <th>Files</th>
                         <th>Status</th>
 
 
@@ -914,41 +935,55 @@ $i = 1;
 
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
-$strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_advisor07 FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_advisor07,files.files_filename_project FROM advisergroup
 
 LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 LEFT JOIN member ON advisergroup.member_id = member.member_id
 WHERE advisergroup.member_id = '$my_id'  AND pf='9' And by_advisor10 =''   ";
  
+  $i = 1;
+   $count = 1;
 
-$i = 1;
               if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
               ?>
                     <tr>
-                    <td><div align="center"><?php echo $i;?></div></td>
+                         <td width="20px">   <?php echo $count++; ?></td>
 
                         <td><?php echo $row->advisergroup_topic; ?></td>
                         <td><?php echo get_member_list($row->group_id); ?></td>
 
+
+                   <td>
+<?php if( $row->files_filename_project != ""){ ?>
+                      <a href="download.php?pdf=<?php echo $row->files_filename_project ;?>">
+                      <span class='badge badge-primary'><i class="fa fa-download">Download 
+                           </i></a></span>
+                       </a>
+ <?php }else{?>
+                    <a href="#"> <button class="btn btn-danger btn-xs">
+                        <i class="glyphicon glyphicon-remove"> No file </i></button></a>
+                    <?php } ?>
+                              </td>
                         <td>
 
 <a href="check_10.php?id=<?php echo $row->files_id; ?>"
                         class="btn btn-success btn-xs" title="Comfirm"
                         onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                          class='glyphicon glyphicon-ok'></i> Approve</a>
+                            class='fa fa-check'></i> Approve</a>
 
 
                                  <a href="reject_10.php?id=<?php echo $row->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs" title="Comfirm"
                     onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
-                      class='glyphicon glyphicon-ok'></i> Reject</a>
+                      class='fa fa-times'></i> Reject</a>
 
 
 
 
                       </tr>
                       <?php
+                         $i++;
                 }
               }else{
               }

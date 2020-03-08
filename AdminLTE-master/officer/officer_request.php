@@ -318,7 +318,7 @@ $my_id = $_SESSION['id'];
 
                 
                     <tr>
- <td class="text-left">   <?php echo $count++; ?></td>
+                         <td width="20px">   <?php echo $count++; ?></td>
 
                 <td><?php echo get_member_list($row->group_id); ?></td>
                 <td><?php echo $row->advisergroup_topic; ?></td>
@@ -338,12 +338,12 @@ $my_id = $_SESSION['id'];
 
                 <td><a href="check_approved.php?id=<?php echo $row->files_id; ?>" class="btn btn-success btn-xs"
                     title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                      class='glyphicon glyphicon-ok'></i> Approve</a>
+                        class='fa fa-check'></i> Approve</a>
 
   <a href="reject_02.php?id=<?php echo $row->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs" title="Comfirm"
                     onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
-                      class='glyphicon glyphicon-ok'></i> Reject</a>
+                      class='fa fa-times'></i> Reject</a>
                     </td>
                
 
@@ -384,8 +384,11 @@ COMPLETE PROJECT PROPOSAL (PF05)</b>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th></th>
                         <th>Title project</th>
                         <th>Student</th>
+                     <th>Files</th>
+
                         <th>Status</th>
 
 
@@ -409,8 +412,8 @@ $my_id = $_SESSION['id'];
         WHERE advisergroup.member_id  AND files.by_advisor04 = 'Pass' AND by_officer05=''
         Order By files_id
                ";
-
-$i = 1;
+  $i = 1;
+   $count = 1;
        
               if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
@@ -419,20 +422,34 @@ $i = 1;
 
                 
                     <tr>
+                         <td width="20px">   <?php echo $count++; ?></td>
 
                         <td><?php echo $row->advisergroup_topic; ?></td>
                         <td><?php echo get_member_list($row->group_id); ?></td>
+
+              <td>
+<?php if( $row->files_filename_proposal != ""){ ?>
+                      <a href="download.php?pdf=<?php echo $row->files_filename_proposal ;?>">
+                      <span class='badge badge-primary'><i class="fa fa-download">Download 
+                           </i></a></span>
+                       </a>
+ <?php }else{?>
+                    <a href="#"> <button class="btn btn-danger btn-xs">
+                        <i class="glyphicon glyphicon-remove"> No file </i></button></a>
+                    <?php } ?>
+                              </td>
+
 
                         <td>
 
                               <a href="check_pf05.php?id=<?php echo $row->files_id; ?>"
                         class="btn btn-success btn-xs" title="Comfirm"
-                        onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                          class='glyphicon glyphicon-ok'></i> Approve</a>
+                     ><i
+                           class='fa fa-check'></i> Approve</a>
 
                  <a href="reject05.php?id=<?php echo $row->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs" title="Comfirm"><i
-                      class='glyphicon glyphicon-ok'></i> Reject</a>
+                      class='fa fa-times'></i> Reject</a>
 </td>
 
                
@@ -440,6 +457,7 @@ $i = 1;
 
 
                                     <?php
+       $i++;
     }
                }
                    ?>
@@ -467,8 +485,10 @@ OFFICER RECEIVE COPY OF 5 CHAPTERS PROJECT (PF09)
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th></th>
                         <th>Title project</th>
                         <th>Student</th>
+<th>Files</th>
                         <th>Status</th>
 
                 </tr>
@@ -484,7 +504,7 @@ OFFICER RECEIVE COPY OF 5 CHAPTERS PROJECT (PF09)
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
 
-    $strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic ,files.by_advisor08,files.by_officer05 FROM advisergroup
+    $strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic ,files.by_advisor08,files.by_officer05,files.files_filename_project FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
@@ -492,30 +512,41 @@ $my_id = $_SESSION['id'];
         WHERE advisergroup.member_id  AND pf='8' And by_officer09 ='' 
         Order By files_id
                ";
-
-
-$i = 1;
+  $i = 1;
+   $count = 1;
               if($rs = $db->query($strSQL)){
                 while($row = $rs->fetch_object()){
               ?>
 
                 
                     <tr>
+                         <td width="20px">   <?php echo $count++; ?></td>
 
                         <td><?php echo $row->advisergroup_topic; ?></td>
                         <td><?php echo get_member_list($row->group_id); ?></td>
 
-                        <td>
-                          
+        <td>
+<?php if( $row->files_filename_project != ""){ ?>
+                      <a href="download.php?pdf=<?php echo $row->files_filename_project ;?>">
+                      <span class='badge badge-primary'><i class="fa fa-download">Download 
+                           </i></a></span>
+                       </a>
+ <?php }else{?>
+                    <a href="#"> <button class="btn btn-danger btn-xs">
+                        <i class="glyphicon glyphicon-remove"> No file </i></button></a>
+                    <?php } ?>
+                              </td>
 
-                                    <a href="check_pf09.php?id=<?php echo $row->files_id; ?>"
+                        <td>
+
+        <a href="check_pf09.php?id=<?php echo $row->files_id; ?>"
                         class="btn btn-success btn-xs" title="Comfirm"
                         onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                          class='glyphicon glyphicon-ok'></i> Approve</a>
+                           class='fa fa-check'></i> Approve</a>
 
                  <a href="reject_09.php?id=<?php echo $row->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs" title="Comfirm"><i
-                      class='glyphicon glyphicon-ok'></i> Reject</a>
+                     class='fa fa-times'></i> Reject</a>
 
 
 </td>
@@ -523,7 +554,8 @@ $i = 1;
                     </tr>          
 
 
-                                    <?php
+                                    <?php 
+                                       $i++;
     }
                }
                    ?>
