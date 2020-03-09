@@ -345,15 +345,15 @@ $count=mysqli_num_rows($result);
         
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead align="center">
+           <div class="card-body">
+                   <table id="example1" class="table table-sm "  >
+                <thead class="thead-light">
                   <tr>
-                      <th>No</th>
-                      <th>Topic</th>
-                      <th>Detail</th>
-                      <th>Date</th>
-                      <th>Action</th>
+                       <th style="font-size: 15px;" width="2%" class="text-left">No</th>
+                      <th style="font-size: 15px;" width="25%" class="text-left">Topic</th>
+                       <th style="font-size: 15px;" width="30%" class="text-left">Detail</th>
+                     <th style="font-size: 15px;" width="10%" class="text-left">Date</th>
+                      <th style="font-size: 15px;" width="8%" class="text-left">Action</th>
                      </tr>
                   </thead>
                   <tbody >
@@ -374,13 +374,13 @@ $count=mysqli_num_rows($result);
              while($objResult = $result->fetch_object()){
             ?>
             <tr>
-                    <td class="text-left">   <?php echo $count++; ?></td>
+                 <td class="text-left" style="font-size: 15px;"> <?php echo $count++; ?></td>
 
-                  <td class="text-left"><?php echo substr($objResult->announcement_topic, 0, 60); ?></td>
+                 <td class="text-left" style="font-size: 15px;"><?php echo substr($objResult->announcement_topic, 0, 60); ?></td>
 
-                  <td class="text-left"><?php echo substr($objResult->announcement_detail, 0, 60); ?></td>
+                 <td class="text-left" style="font-size: 15px;"><?php echo substr($objResult->announcement_detail, 0, 60); ?></td>
 
-                  <td class="text-left"><?php echo $objResult->announcement_date; ?></td>
+                 <td class="text-left" style="font-size: 15px;"><?php echo $objResult->announcement_date; ?></td>
 
   <td>
                              <button type="button" class="btn btn-warning btn-xs" data-toggle="modal"

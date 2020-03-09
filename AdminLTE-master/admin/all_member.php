@@ -341,18 +341,18 @@ $count=mysqli_num_rows($result);
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                    <tr align="center">
-                      <th>#</th>
-                      <th>ID</th>
-                      <th>Name</th>
-                      <th>Phone</th>
-                      <th>Email</th>
-                      <th>Gender</th>
-                      <th>Position</th>
+                   <table id="example1" class="table table-sm "  >
+                <thead class="thead-light">
+                  <tr>
+                       <th style="font-size: 15px;" width="4%" class="text-left">#</th>
+                        <th style="font-size: 15px;" width="5%" class="text-left">ID</th>
+                       <th style="font-size: 15px;" width="15%" class="text-left">Name</th>
+                        <th style="font-size: 15px;" width="6%" class="text-left">Phone</th>
+                        <th style="font-size: 15px;" width="10%" class="text-left">Email</th>
+                        <th style="font-size: 15px;" width="6%" class="text-left">Gender</th>
+                       <th style="font-size: 15px;" width="6%" class="text-left">Position</th>
                       <!-- <th>Status</th> -->
-                      <th>Action</th>
+                       <th style="font-size: 15px;" width="5%" class="text-left">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -366,13 +366,13 @@ $count=mysqli_num_rows($result);
      if($result = $db->query($strSQL)){
              while($objResult = $result->fetch_object()){
             ?>
-                    <td class="text-left"> <?php echo $count++; ?></td>
-                    <td class="text-left"><?php echo $objResult->member_idcard; ?></td>
-                    <td class="text-left"><?php echo $objResult->member_fullname; ?></td>
-                    <td class="text-left"><?php echo $objResult->member_phone; ?></td>
-                    <td class="text-left"><?php echo $objResult->member_email; ?></td>
-                    <td><?php echo gender($objResult->member_gender); ?></td>
-                    <td><?php echo position($objResult->member_pos); ?></td>
+                  <td class="text-left" style="font-size: 15px;"> <?php echo $count++; ?></td>
+                    <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_idcard; ?></td>
+                    <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_fullname; ?></td>
+                    <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_phone; ?></td>
+                    <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_email; ?></td>
+                  <td class="text-left" style="font-size: 15px;"><?php echo gender($objResult->member_gender); ?></td>
+                   <td class="text-left" style="font-size: 15px;"><?php echo position($objResult->member_pos); ?></td>
                     <!-- <td class="text-left"><?php echo status($objResult->admin_id); ?></td>-->
                     <td>
 

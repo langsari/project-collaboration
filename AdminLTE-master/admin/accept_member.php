@@ -344,18 +344,18 @@ $count=mysqli_num_rows($result);
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead align="center">
+                   <table id="example1" class="table table-sm "  >
+                <thead class="thead-light">
                   <tr>
-                      <th>No</th>
-                      <th>User ID</th>
-                      <th>Name</th>
-                      <th>Phone</th>
-                      <th>Email</th>
-                      <th>Gender</th>
-                      <th>Position</th>
-                      <th>Status</th>
-                      <th>Action</th>
+                      <th style="font-size: 15px;" width="4%" class="text-left">No</th>
+                      <th style="font-size: 15px;" width="5%" class="text-left">User ID</th>
+                      <th style="font-size: 15px;" width="10%" class="text-left">Name</th>
+                      <th style="font-size: 15px;" width="10%" class="text-left">Phone</th>
+                      <th style="font-size: 15px;" width="10%" class="text-left">Email</th>
+                      <th style="font-size: 15px;" width="5%" class="text-left">Gender</th>
+                      <th style="font-size: 15px;" width="5%" class="text-left">Position</th>
+                       <th style="font-size: 15px;" width="9%" class="text-left">Status</th>
+                       <th style="font-size: 15px;" width="8%" class="text-left">Action</th>
                      </tr>
                   </thead>
                   <tbody align="center">
@@ -369,23 +369,30 @@ $count=mysqli_num_rows($result);
              while($objResult = $result->fetch_object()){
             ?>
             <tr>
-                 <td class="text-left"><?php echo $objResult->member_id; ?></td>
-                 <td class="text-left"><?php echo $objResult->member_idcard; ?></td>
-                 <td class="text-left"><?php echo $objResult->member_fullname; ?></td>
-                 <td class="text-left"><?php echo $objResult->member_phone; ?></td>
-                 <td class="text-left"><?php echo $objResult->member_email; ?></td>
-                 <td class="text-left"><?php echo gender($objResult->member_gender); ?></td>
-                 <td class="text-left"><?php echo position($objResult->member_pos); ?></td>
-                 <td class="text-left"><?php echo status($objResult->admin_id); ?></td>
+                 <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_id; ?></td>
+                 <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_idcard; ?></td>
+                <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_fullname; ?></td>
+                 <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_phone; ?></td>
+               <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_email; ?></td>
+                 <td class="text-left" style="font-size: 15px;"><?php echo gender($objResult->member_gender); ?></td>
+                 <td class="text-left" style="font-size: 15px;"><?php echo position($objResult->member_pos); ?></td>
+                  <td class="text-left" style="font-size: 15px;"><?php echo status($objResult->admin_id); ?></td>
 
                  <td>
-                  <a href="../admin/accept.php?id=<?php echo $objResult->member_id;?>"class="btn btn-primary btn-sm"> Detail <i class="fa fa-eye" title="Detail"></i></a>
 
-         
+           
+
+           <a href="../admin/accept.php?id=<?php echo $objResult->member_id;?>"class="btn btn-primary btn-xs">
+                  <i class="fa fa-edit" title="Detail"></i></a>
 
 
-    <a href="delete_approve.php?id=<?php echo $objResult->member_id;?>"class="btn btn-danger btn-sm" onclick="return confirm('Are You sure Delete?')">
-                  <i class="fa fa-trash" title="Delete">Delete</i></a>
+    <a href="delete_approve.php?id=<?php echo $objResult->member_id;?>"class="btn btn-danger btn-xs" onclick="return confirm('Are You sure Delete?')">
+                  <i class="fa fa-trash" title="Delete"></i></a>
+
+
+
+
+                   
 
 
                 </td>

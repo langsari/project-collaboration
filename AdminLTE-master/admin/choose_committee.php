@@ -379,13 +379,13 @@ $count=mysqli_num_rows($result);
               <table id="example1" class="table table-bordered table-striped">
                 <thead align="center">
                   <tr>
-                      <th>No</th>
-                      <th>Project ID</th>
-                      <th>Owner</th>
-                      <th>Project Topic</th>
-                      <th>Advisor</th>
-                      <th>Committee</th>
-                      <th>Action</th>
+                      <th style="font-size: 15px;" width="2%" class="text-left">No</th>
+                       <th style="font-size: 15px;" width="5%" class="text-left">Group</th>
+                      <th style="font-size: 15px;" width="30%" class="text-left">Owner</th>
+                       <th style="font-size: 15px;" width="30%" class="text-left">Project Topic</th>
+                       <th style="font-size: 15px;" width="17%" class="text-left">Advisor</th>
+                       <th style="font-size: 15px;" width="10%" class="text-left">Committee</th>
+                       <th style="font-size: 15px;" width="5%" class="text-left">Action</th>
                      </tr>
                   </thead>
                   <tbody align="center">
@@ -404,15 +404,15 @@ $count=mysqli_num_rows($result);
               ?>
                   <tr>
                   
-                    <td class="text-left"><?php echo $row->files_id; ?></td>
-                    <td class="text-left"><?php echo $row->group_number; ?></td>
-                    <td class="text-left"><?php echo get_member_list($row->group_id); ?></td>
-                    <td class="text-left"><?php echo get_topic($row->group_id); ?></td>
-                    <td class="text-left"><?php echo get_advisor($row->group_id); ?></td>
+                       <td class="text-left" style="font-size: 15px;"><?php echo $row->files_id; ?></td>
+                     <td class="text-left" style="font-size: 15px;"><?php echo $row->group_number; ?></td>
+                       <td class="text-left" style="font-size: 15px;"><?php echo get_member_list($row->group_id); ?></td>
+                     <td class="text-left" style="font-size: 15px;"><?php echo get_topic($row->group_id); ?></td>
+                     <td class="text-left" style="font-size: 15px;"><?php echo get_advisor($row->group_id); ?></td>
 
-                    <td class="text-left"><?php echo get_committee($row->group_id); ?></span> </td>
+                   <td class="text-left" style="font-size: 15px;"><?php echo get_committee($row->group_id); ?></span> </td>
 
-                    <td class="text-left">
+                    <td class="text-left" style="font-size: 15px;">
 
                       <button type="button" class="btn btn-info btn-sm"
                         onclick="add_committee('<?php echo $row->group_id; ?>')" data-toggle="modal"
