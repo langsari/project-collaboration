@@ -322,35 +322,33 @@ to get the desired effect
               <h3 class="card-title">Round 1 Proposal Presentation of semester 2/2018</h3>
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                      <th>No</th>
-                      <th>Name</th>
-                      <th>Title Project</th>
-                      <th>Status</th>
-                      <th>Advisor</th>
-                       <th>Committee</th>
-                       <th>Date</th>
-                       <th>Time</th>
-                       <th>Room</th>
+                 <div class="card-body">
+              <table id="example1" class="table table-sm "  >
+                <thead class="thead-light">
+                <tr>
+                       <th style="font-size: 15px;" width="4%" class="text-left">No</th>
+                       <th style="font-size: 15px;" width="30%" class="text-left">Title Project</th>
+                     <th style="font-size: 15px;" width="22%" class="text-left">Status</th>
+                          <th style="font-size: 15px;" width="12%" class="text-left">Date</th>
+                          <th style="font-size: 15px;" width="12%" class="text-left">Time</th>
+                         <th style="font-size: 15px;" width="12%" class="text-left">Room</th>
+                          <th style="font-size: 15px;" width="15%" class="text-left">View</th>
                      </tr>
                                    </thead>
                                     <tbody>
 
-
-
      <?php
 
 
-               $strSQL = "SELECT schedule.*, partnergroup.group_id,partnergroup.group_number,member.member_fullname,schedule.writer,schedule.group_id,advisergroup.group_id,advisergroup.advisergroup_topic FROM schedule
+               $strSQL = "SELECT schedule.*, partnergroup.group_id,partnergroup.group_number,member.member_fullname,schedule.writer,schedule.group_id,advisergroup.group_id,advisergroup.advisergroup_topic, topic_project.Owner,topic_project.topic_topic FROM schedule
                      LEFT JOIN advisergroup ON schedule.group_id = advisergroup.advisergroup_id
-
+     LEFT JOIN topic_project ON schedule.group_id = topic_project.advisergroup_id
                    LEFT JOIN partnergroup ON schedule.group_id = partnergroup.group_id
                         LEFT JOIN member ON schedule.writer = member.member_id
                       WHERE   schedule.schedule_type ='1'
                         ORDER BY schedule.schedule_type";
+                        $i = 1;
+   $count = 1;
         ?>
              <?php
      if($result = $db->query($strSQL)){
@@ -358,22 +356,133 @@ to get the desired effect
             ?>
          
             <tr>
-                        <td class="text-left"><?php echo $objResult->schedule_id; ?></td>
-                  <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
-                  <td class="text-left"><?php echo get_topic($objResult->group_id); ?></td>
-                    <td class="text-left"><?php echo $objResult->schedule_status ?></td>
-                    <td class="text-left"><?php echo get_advisor($objResult->group_id); ?></td>
-                     <td class="text-left"><?php echo get_committee($objResult->group_id); ?></td>
-                     <td class="text-left"><?php echo $objResult->schedule_date ?></td>
-                       <td class="text-left"><?php echo $objResult->schedule_time; ?></td>
-                     <td class="text-left"><?php echo $objResult->schedule_room ?></td>
-                    
+    
+         <td class="text-left" style="font-size: 15px;">   <?php echo $count++; ?></td>
+
+
+                <td class="text-left" style="font-size: 15px;"><?php echo $objResult->topic_topic; ?></td>
+                    <td class="text-left" style="font-size: 15px;"><?php echo $objResult->schedule_status ?></td>
+                     <td class="text-left" style="font-size: 15px;"><?php echo $objResult->schedule_date ?></td>
+                      <td class="text-left" style="font-size: 15px;"><?php echo $objResult->schedule_time; ?></td>
+                    <td class="text-left" style="font-size: 15px;"><?php echo $objResult->schedule_room ?></td>
+                       
+                  <td>               
+                     <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
+                        data-target="#read_more<?php echo $i; ?>">
+                    Read more</button>
+                 
+
+ <div class="modal fade" id="read_more<?php echo $i; ?>" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header bg-info">
+                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                         <h5 class="modal-title">View Schedule</h5>
+                    </div>
+
+                            <div class="modal-body">
+        <form  method="post" action="check_status.php">
+              <div class="form-group row margin-top-10">
+                <div class="col-md-2">
+                  <label class="control-label ">Owner</label>
+                </div>
+                <div class="col-md-10">
+                  <?php echo $objResult->Owner; ?>
+                  
+                </div>
+              </div>
+
+
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Topic Project</label>
+                </div>
+                <div class="col-md-10">
+<?php echo $objResult->topic_topic; ?>                </div>
+              </div>
+
+
+
+
+
+
+
+              <!--get project Proposal status -->
+
+             
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Advisor</label>
+                </div>
+                <div class="col-md-10">
+<?php echo get_advisor($objResult->group_id); ?>                </div>
+              </div>
+
+                   <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Committee</label>
+                </div>
+                <div class="col-md-10">
+            <?php echo get_committee($objResult->group_id); ?>       
+                     </div>
+              </div>
+
+
+              
+           
+
+   <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Date</label>
+                </div>
+                <div class="col-md-10">
+            <?php echo $objResult->schedule_date; ?>       
+                     </div>
+              </div>
+
+
+   <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Time</label>
+                </div>
+                <div class="col-md-10">
+            <?php echo $objResult->schedule_time; ?>       
+                     </div>
+              </div>
+
+  <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Room</label>
+                </div>
+                <div class="col-md-10">
+            <?php echo $objResult->schedule_room; ?>       
+                     </div>
+              </div>
+
+
+
+
+
+  
+
+
+    </div>
+
+    </form>
+                            </div>
+                          </div>
+                        </div>
+
+                    </td>
                     </tr>
 
-            <?php
+                    <?php
+                                    $i++;  
     }
                }
                    ?>
+
                   
 
 

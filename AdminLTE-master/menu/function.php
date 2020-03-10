@@ -682,7 +682,7 @@ function status_for_advisor($status){
 
 function get_status_project($statuspro){
 	if($statuspro == "1"){
-		return "<font color='blue'><i>Wait for the proposal Trail</i></font>";
+		return "<font color='blue'><i>Waiting </i></font>";
 	}else if($statuspro == "2"){	
 			return "<font color='green'><i>Revision Proposal</i></font>";
 	}

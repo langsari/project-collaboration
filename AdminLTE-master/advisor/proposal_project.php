@@ -323,19 +323,19 @@ to get the desired effect
               <h3 class="card-title">All Final Project Topics</h3>
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
+        <div class="card-body">
+              <table id="example1" class="table table-sm "  >
+                <thead class="thead-light">
                 <tr align="center">
-                  <th>No</th>   
-                  <th>GroupID</th>
-                  <th>Owner</th>
-                  <th>Topic</th>
-                  <th>Abstrack</th>
-                  <th>Keyword</th>
-                  <th>Field </th>
-                 <!-- <th>Status</th>-->
-                  <th>Action</th>
+                     <th style="font-size: 15px;" width="4%" class="text-left">No</th>
+                <th style="font-size: 15px;"  width="10%" class="text-left">Group</th>
+               <th style="font-size: 15px;" width="10%" class="text-left">Status</th>
+
+                <th style="font-size: 15px;" width="25%" class="text-left">Owner Project</th>
+                <th style="font-size: 15px;" width="30%" class="text-left">Topic</th>
+                <th style="font-size: 15px;" width="16%" class="text-left">Field of Study</th>
+
+                <th style="font-size: 15px;" width="3%" class="text-left">View</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -362,14 +362,15 @@ to get the desired effect
 
                 
                     <tr>
-                   <td class="text-left">   <?php echo $count++; ?></td>
-                    <td class="text-left"><?php echo $objResult->group_number; ?></td>
-                    <td class="text-left"><?php echo substr($objResult->Owner, 0, 50); ?></td>
-                    <td class="text-left"><?php echo $objResult->topic_topic; ?></td>
-                    <td class="text-left"><?php echo substr($objResult->topic_abstrack, 0, 30); ?></td>
-                    <td class="text-left"><?php echo $objResult->topic_keyword; ?></td>
-                    <td class="text-left"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
-                   <!-- <td class="text-left"><?php echo get_status_project($objResult->status); ?></td>-->
+                 
+     <td class="text-left" style="font-size: 15px;">   <?php echo $count++; ?></td>
+                <td class="text-left"style="font-size: 15px;"><?php echo $objResult->group_number; ?></td>
+   <td class="text-left" style="font-size: 15px;"><?php echo get_status_project($objResult->status); ?></td>
+   <td class="text-left" style="font-size: 15px;"><?php echo substr($objResult->Owner, 0, 50); ?></td>
+                <td class="text-left" style="font-size: 15px;"><?php echo $objResult->topic_topic; ?></td>
+                    <td class="text-left" style="font-size: 15px;"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
+
+               
                   <td>               
                      <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
                         data-target="#show<?php echo $i; ?>">
@@ -444,14 +445,7 @@ to get the desired effect
               </div>
 
 
-              <div class="form-group row">
-                <div class="col-md-2">
-                  <label class="control-label ">Abstrack</label>
-                </div>
-                <div class="col-md-10">
-                <?php echo $objResult->topic_abstrack; ?>
-                </div>
-              </div>
+      
 
               <!--get project Proposal status -->
 
@@ -479,6 +473,16 @@ to get the desired effect
                 </div>
                 <div class="col-md-10">
                   <?php echo get_status_project($objResult->status); ?>
+                </div>
+              </div>
+
+
+        <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Abstrack</label>
+                </div>
+                <div class="col-md-10">
+                <?php echo $objResult->topic_abstrack; ?>
                 </div>
               </div>
 

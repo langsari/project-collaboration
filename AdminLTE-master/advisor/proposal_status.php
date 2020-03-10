@@ -363,19 +363,24 @@ to get the desired effect
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>No</th>
-                <th>Group Code</th>
-                <th>Owner Project</th>
-                <th>Topic</th>
 
-                <th>Status</th>
-                <th>View</th>
 
+                         <table id="example1" class="table table-sm "  >
+                <thead class="thead-light">
+                <tr align="center">
+                     <th style="font-size: 15px;" width="4%" class="text-left">No</th>
+                <th style="font-size: 15px;"  width="10%" class="text-left">Group</th>
+                <th style="font-size: 15px;" width="25%" class="text-left">Owner Project</th>
+                <th style="font-size: 15px;" width="30%" class="text-left">Topic</th>
+               <th style="font-size: 15px;" width="15%" class="text-left">Status</th>
+
+                <th style="font-size: 15px;" width="10%" class="text-left">View</th>
                 </tr>
                 </thead>
+
+
+
+           
                 <tbody>
                       <?php
                   //   require 'menu/function.php';
@@ -400,15 +405,17 @@ $my_id = $_SESSION['id'];
 
                 
                     <tr>
-                    <td class="text-left">   <?php echo $count++; ?></td>
-                <td class="text-left"><?php echo $objResult->group_number; ?></td>
-
-                <td class="text-left"><?php echo substr($objResult->Owner, 0, 50); ?></td>
-                <td class="text-left"><?php echo $objResult->topic_topic; ?></td>
 
 
+     <td class="text-left" style="font-size: 15px;">   <?php echo $count++; ?></td>
+                <td class="text-left"style="font-size: 15px;"><?php echo $objResult->group_number; ?></td>
+   <td class="text-left" style="font-size: 15px;"><?php echo substr($objResult->Owner, 0, 50); ?></td>
+                <td class="text-left" style="font-size: 15px;"><?php echo $objResult->topic_topic; ?></td>
+                     <td class="text-left" style="font-size: 15px;"><?php echo get_status_project($objResult->status); ?></td>
 
-                <td class="text-left"><?php echo get_status_project($objResult->status); ?></td>
+
+
+        
 
 
                 <td> <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#editPS"
@@ -495,14 +502,6 @@ $my_id = $_SESSION['id'];
               </div>
 
 
-              <div class="form-group row">
-                <div class="col-md-2">
-                  <label class="control-label ">Abstrack</label>
-                </div>
-                <div class="col-md-10">
-                <?php echo $objResult->topic_abstrack; ?>
-                </div>
-              </div>
 
               <!--get project Proposal status -->
 
@@ -536,6 +535,14 @@ $my_id = $_SESSION['id'];
 
 
 
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Abstrack</label>
+                </div>
+                <div class="col-md-10">
+                <?php echo $objResult->topic_abstrack; ?>
+                </div>
+              </div>
 
 
   
@@ -686,7 +693,7 @@ $my_id = $_SESSION['id'];
   <div class="modal-footer">
    <button type="submit" class="btn btn-success">
     <i class="glyphicon glyphicon-ok"></i>
-                                                                        Submit</button>                    </div>
+      Submit</button>                    </div>
 
 
 

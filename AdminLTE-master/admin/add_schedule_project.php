@@ -342,25 +342,25 @@ $count=mysqli_num_rows($result);
         
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead align="center">
-                  <tr>
-                      <th>No</th>
-                      <th>Project Title</th>
-                      <th>Presentation Status</th>
-                      <th>Advisor</th>
-                      <th>Date</th>
-                      <th>Time</th>
-                      <th>Room</th>
-                      <th>action</th>
+     <div class="card-body">
+              <table id="example1" class="table table-sm "  >
+                <thead class="thead-light">
+                <tr>
+                       <th style="font-size: 15px;" width="4%" class="text-left">No</th>
+                       <th style="font-size: 15px;" width="30%" class="text-left">Title Project</th>
+                     <th style="font-size: 15px;" width="15%" class="text-left">Status</th>
+                          <th style="font-size: 15px;" width="10%" class="text-left">Date</th>
+                          <th style="font-size: 15px;" width="10%" class="text-left">Time</th>
+                         <th style="font-size: 15px;" width="10%" class="text-left">Room</th>
+                          <th style="font-size: 15px;" width="9%" class="text-left">View</th>
                      </tr>
-                  </thead>
-                  <tbody >
+                                   </thead>
+                                    <tbody>
         <?php
 
-       $sql = "SELECT schedule.*, partnergroup.group_id,partnergroup.group_number,member.member_fullname,schedule.writer,schedule.group_id,advisergroup.group_id,advisergroup.advisergroup_topic FROM schedule
+       $sql = "SELECT schedule.*, partnergroup.group_id,partnergroup.group_number,member.member_fullname,schedule.writer,schedule.group_id,advisergroup.group_id,advisergroup.advisergroup_topic,topic_project.Owner,topic_project.topic_topic FROM schedule
                      LEFT JOIN advisergroup ON schedule.group_id = advisergroup.advisergroup_id
+     LEFT JOIN topic_project ON schedule.group_id = topic_project.advisergroup_id
 
                    LEFT JOIN partnergroup ON schedule.group_id = partnergroup.group_id
                         LEFT JOIN member ON schedule.writer = member.member_id
@@ -375,15 +375,14 @@ $count=mysqli_num_rows($result);
              while($objResult = $result->fetch_object()){
             ?>
             <tr>
-                    <td class="text-left">   <?php echo $count++; ?></td>
-                  <td class="text-left"><?php echo $objResult->advisergroup_topic; ?></td>
-                  <td class="text-left"><?php echo $objResult->schedule_status ?></td>
-                  <td class="text-left"><?php echo get_advisor($objResult->group_id); ?></td>
-                  <td class="text-left"><?php echo $objResult->schedule_date ?></td>
-                  <td class="text-left"><?php echo $objResult->schedule_time; ?></td>
-                  <td><?php echo $objResult->schedule_room ?></td>
-                 
+                    <td class="text-left" style="font-size: 15px;">   <?php echo $count++; ?></td>
 
+                <td class="text-left" style="font-size: 15px;"><?php echo $objResult->topic_topic; ?></td>
+                    <td class="text-left" style="font-size: 15px;"><?php echo $objResult->schedule_status ?></td>
+                     <td class="text-left" style="font-size: 15px;"><?php echo $objResult->schedule_date ?></td>
+                      <td class="text-left" style="font-size: 15px;"><?php echo $objResult->schedule_time; ?></td>
+                    <td class="text-left" style="font-size: 15px;"><?php echo $objResult->schedule_room ?></td>
+                 
                   <td>
                              <button type="button" class="btn btn-warning btn-xs" data-toggle="modal"
                        data-target="#editsub<?php echo $i; ?>">
