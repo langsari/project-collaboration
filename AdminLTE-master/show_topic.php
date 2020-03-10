@@ -3,6 +3,7 @@ require 'menu/connect.php';
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +11,7 @@ require 'menu/connect.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO&TRACK |Topic Require
-</title>
+  <title>ITPROMO&TRACK | Propose Topic page</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -22,16 +22,8 @@ require 'menu/connect.php';
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to to the body tag
-to get the desired effect
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
+
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
@@ -68,7 +60,7 @@ to get the desired effect
     <a href="index.php" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">ITPROMO</span>
+      <span class="brand-text font-weight-light">ITPROMOT</span>
     </a>
 
     <!-- Sidebar -->
@@ -105,7 +97,7 @@ to get the desired effect
 
     
           <li class="nav-item">
-            <a href="proposal_project.php" class="nav-link ">
+            <a href="proposal_project.php" class="nav-link">
               <i class="nav-icon fa fa-book"></i>
               <p>
                 Proposal Project
@@ -115,7 +107,7 @@ to get the desired effect
 
 
           <li class="nav-item">
-            <a href="guide.php" class="nav-link ">
+            <a href="guide.php" class="nav-link">
               <i class="nav-icon fa fa-glide-g"></i>
               <p>
                 Guide
@@ -157,129 +149,118 @@ to get the desired effect
     </div>
     <!-- /.sidebar -->
   </aside>
-<!-- Content Wrapper. Contains page content -->
-   <!-- Content Wrapper. Contains page content -->
+
+
+
+
+  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-
 
 <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-  
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Topic Require</li>
+              <li class="breadcrumb-item active">Propose Topic</li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
-<!-- Main content -->
+    <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-       
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header p-2">
+      <div class="card card-primary card-outline">
+      <!-- Default box -->
+        <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab"> <i class="fas fa-edit"></i>
+               Recent Propose Topic</a></li>
                 
                 </ul>
-              </div><!-- /.card-header -->
+              </div>
 
-              <?php
+<?php
 
      $strSQL = "SELECT  news_topic.news_id,news_topic.news_topic, news_topic.news_detail, news_topic.news_date,member.member_fullname
          FROM news_topic,member 
          WHERE news_topic.member_id=member.member_id
          ORDER BY news_topic.news_id DESC";
+
          ?>
-    <?php
+
+
+   <?php
+            
                  if($objQuery = $db->query($strSQL)){
              while($objResult = $objQuery->fetch_object()){
             ?>
 
-              <div class="card-body">
-                <div class="tab-content">
-                  <div class="active tab-pane" id="activity">
-                    <!-- Post -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-md-12">
+              <div class="row">
+                <div class="col-12">
+                  
                     <div class="post">
                       <div class="user-block">
                         <img class="img-circle img-bordered-sm" src="dist/img/user.png" alt="user image">
                         <span class="username">
                           <a href="#"><?php echo $objResult->member_fullname; ?> </a>
                         </span>
-                        <span class="description">Shared publicly - <?php echo $objResult->news_date; ?></span>
+                        <span class="description">Shared publicly -<?php echo $objResult->news_date; ?></span>
                       </div>
                       <!-- /.user-block -->
+                      
                       <p><b><?php echo $objResult->news_topic; ?></b></p>
-                      <p>
-                       <?php echo $objResult->news_detail; ?>
-                      </p>
 
+                      <p> <?php echo $objResult->news_detail; ?></p>
                       <p>
-                        <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
-                        <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
                         <span class="float-right">
                           <a href="#" class="link-black text-sm">
-                            <i class="far fa-comments mr-1"></i> Comments (5)
+                            <i class="far fa-eye"></i> Read more 
                           </a>
                         </span>
                       </p>
+                    </br>
 
-                      <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
+                  
                     </div>
-                    <!-- /.post -->
-    <?php
+ <?php
                  }
                }
                    ?>
-                 
-                  <!-- /.tab-pane -->
-                  
-                      </div>
-                     </div>
-              
 
-                    </div>
-                  </div>
-                  <!-- /.tab-pane -->
-     
-                 
-                  <!-- /.tab-pane -->
                 </div>
-                <!-- /.tab-content -->
-              </div><!-- /.card-body -->
+              </div>
             </div>
-            <!-- /.nav-tabs-custom -->
+
           </div>
-          <!-- /.col -->
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
     </section>
     <!-- /.content -->
+  </br>
+  </div>
+  <!-- /.content-wrapper -->
 
-
-
-
-
-
-
-    <!-- /.content -->
- 
-<!-- ./wrapper -->
-
-<!-- REQUIRED SCRIPTS -->
-
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.3-pre
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
+ <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->
@@ -289,21 +270,5 @@ to get the desired effect
 <script src="plugins/chart.js/Chart.min.js"></script>
 <script src="dist/js/demo.js"></script>
 <script src="dist/js/pages/dashboard3.js"></script>
-<!-- DataTables -->
-<script src="plugins/datatables/jquery.dataTables.js"></script>
-<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-    });
-  });
-</script>
 </body>
 </html>

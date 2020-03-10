@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -174,46 +173,79 @@ to get the desired effect
       </div><!-- /.container-fluid -->
     </section>
 
-
+    <!-- Main content -->
+    <section class="content">
       <div class="container-fluid">
         <div class="row">
-     <div class="col-md-12">
-
-            <!-- Profile Image -->
-        
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- jquery validation -->
             <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h3 class="card-title">Direction and Procedure </h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" id="quickForm">
+                <div class="card-body">
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th scope="col">Document Name</th>
+                      <th scope="col">Download</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                      <td>Procedure</td>
+                      <td>
+                        <a href="assets/guide/1-Information%20Technology%20Project%20-%20Procedure.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
+                      </td>
+                       </tr>
+                       <tr>
+                      <td>Process</td>
+                      <td>
+                        <a href="assets/guide/Khoeld%20Langsari_โครงงานเทคโนโลยี%20-%20Information%20Technology%20Project%20%20-%20Flow%20Process%202018-2.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
+                      </td>
+                       </tr>
+                    </tbody>
+                                  
+                  </table>
+                 
+                </div>
+                
+              </form>
+            </div>
+            <!-- /.card -->
+            </div>
+          <!--/.col (left) -->
+          <!-- right column -->
+          <div class="col-md-6">
 
-  <h5 class="mt-3">Direction and Procedure</h5>
-  
-     <div class="card-body p-0"> <table class="table">
-         <thead>
-      <tr>
-        <!--<th scope="col">Forms ID</th>-->
-        <th scope="col">Document Name</th>
-        <th scope="col">Download</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <!--<th scope="row">PF11</th>-->
-        <td>Procedure</td>
-        <td>
-          <a href="assets/guide/1-Information%20Technology%20Project%20-%20Procedure.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
-        </td>
-      </tr>
-      <tr>
-        <!--<th scope="row">PF11</th>-->
-        <td>Process</td>
-        <td>
-          <a href="assets/guide/Khoeld%20Langsari_โครงงานเทคโนโลยี%20-%20Information%20Technology%20Project%20%20-%20Flow%20Process%202018-2.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
-        </td>
-      </tr>
-      </tbody>
-          </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+          </div>
+          <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.3-pre
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>

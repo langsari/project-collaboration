@@ -341,9 +341,8 @@ $count=mysqli_num_rows($result);
                 $query_num=mysqli_query($con,$query);
                 $row=mysqli_num_rows($query_num);
                 echo '<h1>'.$row.'</h1>';
-
+                echo 'Total User';
                 ?>
-                  <p>Total User</p>
 
                 </div>
                 <div class="icon">
@@ -359,9 +358,18 @@ $count=mysqli_num_rows($result);
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <?php
+              $con = mysqli_connect('localhost','root','','itpromo_track');
 
-                  <p>Bounce Rate</p>
+                $query="SELECT member_id FROM member 
+                        WHERE member_pos='Lecturer'
+                        ORDER BY member_id";
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
+                echo 'All Lecturers';
+                ?>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
@@ -374,9 +382,16 @@ $count=mysqli_num_rows($result);
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>44</h3>
+                  <?php
+              $con = mysqli_connect('localhost','root','','itpromo_track');
 
-                  <p>User Registrations</p>
+                $query="SELECT member_id FROM member ORDER BY member_id";
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
+                echo 'Bounce Rate';
+                ?>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
@@ -389,9 +404,16 @@ $count=mysqli_num_rows($result);
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>65</h3>
+                  <?php
+              $con = mysqli_connect('localhost','root','','itpromo_track');
 
-                  <p>Unique Visitors</p>
+                $query="SELECT member_id FROM member ORDER BY member_id";
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
+                echo 'Bounce Rate';
+                ?>
                 </div>
                 <div class="icon">
                   <i class="ion ion-pie-graph"></i>
@@ -556,7 +578,7 @@ $count=mysqli_num_rows($result);
                           </small>
                       </td>
                   <td>
-                         <a href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
+                         <a href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">view track <i class="fa fa-eye" title="View student track"></i></a>
 
                   </td>
 

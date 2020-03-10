@@ -85,10 +85,11 @@ if(isset($_GET['success'])){
 <body class="hold-transition register-page ">
   <div class="register-box ">
     <div class="register-logo">
-      <a href="../../index2.html"><b>ITPROMOT</b></a>
+      <a href="../../index2.html"><b>IT PROJECT</b></a>
     </div>
 
-    <div class="card ">
+  
+      <div class="card card-primary card-outline">
       <div class="card-body register-card-body">
         <p class="login-box-msg ">Register a new membership</p>
       <?php if($success == 1): ?>
@@ -102,7 +103,7 @@ if(isset($_GET['success'])){
           <div class="input-group mb-3 ">
                ID  Student: &nbsp;
             <input type="text" class="form-control" aria-describedby="basic-addon1" id="member_idcard"
-              name="member_idcard" placeholder="Example: 572431003" autocomplete="off" required
+              name="member_idcard" placeholder="572431003" autocomplete="off" required
               aria-describedby="basic-addon1" onkeypress='validate(event)' maxlength="9">
             <div class="input-group-append">
               <div class="input-group-text">
@@ -111,21 +112,9 @@ if(isset($_GET['success'])){
             </div>
           </div>
 
-
-       <div class="input-group mb-3">
-                           Fullname: &nbsp;
-            <input type="text" class="form-control" placeholder="Example: Nik-Naemah Uma" id="member_fullname"
-              name="member_fullname" autocomplete="off" required aria-describedby="basic-addon1">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-user"></span>
-              </div>
-            </div>
-          </div>
-
           <div class="input-group mb-3">
                            Username: &nbsp;
-            <input type="text" class="form-control" placeholder="Example: Naemah " id="member_username"
+            <input type="text" class="form-control" placeholder="Naemah " id="member_username"
               name="member_username" autocomplete="off" required aria-describedby="basic-addon1">
             <div class="input-group-append">
               <div class="input-group-text">
@@ -135,11 +124,23 @@ if(isset($_GET['success'])){
           </div>
 
 
+       <div class="input-group mb-3">
+                           Fullname: &nbsp;&nbsp;&nbsp;
+            <input type="text" class="form-control" placeholder="Nik-Naemah Uma" id="member_fullname"
+              name="member_fullname" autocomplete="off" required aria-describedby="basic-addon1">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          
+
            <div class="input-group mb-3">
                                        Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
               <input type="text" class="form-control" id="member_email" name="member_email"
-                placeholder="Example: Naemah123@gmail.com" autocomplete="off" aria-describedby="basic-addon1"
+                placeholder="Naemah123@gmail.com" autocomplete="off" aria-describedby="basic-addon1"
                 pattern="^[a-zA-Z0-9]+@gmail\.com$" required>
               <div class="input-group-append">
                 <div class="input-group-text">
@@ -163,7 +164,7 @@ if(isset($_GET['success'])){
           <div class="input-group mb-3">
                                                    Password: &nbsp;
 
-            <input type="password" name="member_password" id="member_password" placeholder="Example: ********"
+            <input type="password" name="member_password" id="member_password" placeholder="********"
               onKeyUp="passwordStrength(this.value)" class="form-control" autocomplete="off" required
               aria-describedby="basic-addon1" />
             <div class="input-group-append">
@@ -191,19 +192,23 @@ if(isset($_GET['success'])){
 
 
             <!-- /.col -->
-            <div class="col-4">
+            <center>
+
+            <div class="col-6">
               <button type="submit" class="btn btn-primary btn-block">Register</button>
             </div>
+            
             <!-- /.col -->
 
         </form>
 
 
-        <a href="login.php" class="text-center">I already have a membership</a>
+        <a href="login.php" class="text-center">I already have an account</a>
         <p class="mb-1">
           <a href="../index.php">Homepage</a>
         </p>
       </div>
+      </center>
 
       <!-- /.form-box -->
     </div><!-- /.card -->

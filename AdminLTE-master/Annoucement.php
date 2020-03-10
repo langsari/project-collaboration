@@ -11,7 +11,7 @@ require 'menu/connect.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO&TRACK | Annoucement</title>
+  <title>ITPROMO&TRACK | Announcementpage</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -22,16 +22,8 @@ require 'menu/connect.php';
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to to the body tag
-to get the desired effect
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
+
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
@@ -41,7 +33,7 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+  
     </ul>
 
    
@@ -68,7 +60,7 @@ to get the desired effect
     <a href="index.php" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">ITPROMO</span>
+      <span class="brand-text font-weight-light">ITPROMOT</span>
     </a>
 
     <!-- Sidebar -->
@@ -81,8 +73,8 @@ to get the desired effect
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="" class="nav-link active">
+          <li class="nav-item has-treeview ">
+            <a href="Annoucement.php" class="nav-link active">
              
               <i class="nav-icon fa fa-bullhorn"></i>
               <p>
@@ -124,7 +116,7 @@ to get the desired effect
           </li>
 
                     <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="course_syllabus.php" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
                 Schedule
@@ -133,7 +125,7 @@ to get the desired effect
           </li>
 
                     <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="form.php" class="nav-link">
               <i class="nav-icon fa fa-edit"></i>
               <p>
                 Forms
@@ -143,7 +135,7 @@ to get the desired effect
 
 
   <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="booked.php" class="nav-link">
               <i class="nav-icon fa fa-book"></i>
               <p>
                 Books
@@ -158,10 +150,12 @@ to get the desired effect
     <!-- /.sidebar -->
   </aside>
 
+
+
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    
 
 <section class="content-header">
       <div class="container-fluid">
@@ -177,26 +171,19 @@ to get the desired effect
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
-    
-
-<!-- Main content -->
+    <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-       
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header p-2">
+      <div class="card card-primary card-outline">
+      <!-- Default box -->
+        <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Announcements</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab"> <i class="fas fa-edit"></i>
+               Recent Announcement</a></li>
                 
                 </ul>
-              </div><!-- /.card-header -->
+              </div>
 
-      
-
-     <?php
+<?php
 
      $strSQL = "SELECT  announcement.announcement_id,announcement.announcement_topic, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
                            FROM announcement,admin 
@@ -205,87 +192,75 @@ to get the desired effect
 
          ?>
 
-    <?php
+
+   <?php
             
                  if($objQuery = $db->query($strSQL)){
              while($objResult = $objQuery->fetch_object()){
             ?>
 
-   
-              <div class="card-body">
-                <div class="tab-content">
-                  <div class="active tab-pane" id="activity">
-                    <!-- Post -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-md-12">
+              <div class="row">
+                <div class="col-12">
+                  
                     <div class="post">
                       <div class="user-block">
                         <img class="img-circle img-bordered-sm" src="dist/img/user.png" alt="user image">
                         <span class="username">
                           <a href="#"><?php echo $objResult->admin_fullname; ?> </a>
                         </span>
-                        <span class="description">Shared publicly - <?php echo $objResult->announcement_date; ?></span>
+                        <span class="description">Shared publicly -<?php echo $objResult->announcement_date; ?></span>
                       </div>
                       <!-- /.user-block -->
+                      
                       <p><b><?php echo $objResult->announcement_topic; ?></b></p>
-                      <p>
-                    <?php echo $objResult->announcement_detail; ?>
-                      </p>
 
+                      <p> <?php echo $objResult->announcement_detail; ?></p>
                       <p>
-                        <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
-                        <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
                         <span class="float-right">
                           <a href="#" class="link-black text-sm">
-                            <i class="far fa-comments mr-1"></i> Comments (5)
+                            <i class="far fa-eye"></i> Read more 
                           </a>
                         </span>
                       </p>
-                     </p>
+                    </br>
 
-______________________________________________________________________________________________________________
+                  
                     </div>
-                    </div>
-</div>      
-</div>  
-                    <!-- /.post -->
-    <?php
+ <?php
                  }
                }
                    ?>
-                 
-                  <!-- /.tab-pane -->
-                  
-                      </div>
-                     </div>
-              
 
-                    </div>
-                  </div>
-                  <!-- /.tab-pane -->
-     
-                 
-                  <!-- /.tab-pane -->
                 </div>
-                <!-- /.tab-content -->
-              </div><!-- /.card-body -->
+              </div>
             </div>
-            <!-- /.nav-tabs-custom -->
+
           </div>
-          <!-- /.col -->
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
     </section>
     <!-- /.content -->
+  </br>
+  </div>
+  <!-- /.content-wrapper -->
 
-
-
-
-
-
-<!-- REQUIRED SCRIPTS -->
-
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.3-pre
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
+ <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->

@@ -63,7 +63,7 @@ include('menu/function.php');
     <a href="index.php" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">ITPROMO</span>
+      <span class="brand-text font-weight-light">ITPROMOT</span>
     </a>
 
     <!-- Sidebar -->
@@ -156,36 +156,37 @@ include('menu/function.php');
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    
-<section class="content-header">
+    <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-     
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">All Project Topics
-</li>
+              <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+              <li class="breadcrumb-item active">All Project Topic</li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
-  <!-- Main content -->
+
+   <!-- Main content -->
     <section class="content">
-   
-        
-          <div class="card">
+      <div class="row">
+        <div class="col-12">
+          <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">All Final Project Topics</h3>
+               <h3 class="card-title">
+                  
+                </h3>
+        
             </div>
             <!-- /.card-header -->
-              <div class="card-body">
+            <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
-                <tr align="center">
+                  <tr align="center">
                   <th>No</th>   
                   <th>GroupID</th>
                   <th>Owner</th>
@@ -196,10 +197,10 @@ include('menu/function.php');
                  <!-- <th>Status</th>-->
                   <th>Action</th>
                 </tr>
-                </thead>
-                <tbody>
-                        <?php
-                  //   require 'menu/function.php';
+                  </thead>
+                  <tbody >
+        <?php
+
 
 
        $strSQL = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM topic_project
@@ -208,40 +209,36 @@ include('menu/function.php');
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
          WHERE topic_project.advisergroup_id ";
-        
 
-       $i = 1;
+
+
+          $i = 1;
    $count = 1;
-              ?>
- <?php
+   
+        ?>
+        <?php
      if($result = $db->query($strSQL)){
              while($objResult = $result->fetch_object()){
             ?>
-
-                
-                    <tr>
-                   <td class="text-left">   <?php echo $count++; ?></td>
+                    <td class="text-left"> <?php echo $count++; ?></td>
                     <td class="text-left"><?php echo $objResult->group_number; ?></td>
-                    <td class="text-left"><?php echo substr($objResult->Owner, 0, 50); ?></td>
-                    <td class="text-left"><?php echo $objResult->topic_topic; ?></td>
+                    <td class="text-left"><?php echo substr($objResult->Owner, 0, 12); ?></td>
+                    <td class="text-left"><?php echo substr($objResult->topic_topic,0,20); ?></td>
                     <td class="text-left"><?php echo substr($objResult->topic_abstrack, 0, 30); ?></td>
                     <td class="text-left"><?php echo $objResult->topic_keyword; ?></td>
                     <td class="text-left"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
                    <!-- <td class="text-left"><?php echo get_status_project($objResult->status); ?></td>-->
-                  <td>               
-                     <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
-                        data-target="#show<?php echo $i; ?>">
-                      <i class="fa fa-eye"></i></button>
+                  <td>
 
+ <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                       data-target="#show<?php echo $i; ?>">
+                  <i class="fa fa-eye" title="Edit">View</i> </button>
+                      <!-- Modal -->
 
-
-                      </center>
-
-
-          
-<div class="modal fade" id="show<?php echo $i; ?>" tabindex="-1" role="dialog"
+          <div class="modal fade" id="show<?php echo $i; ?>" tabindex="-1" role="dialog"
                         aria-labelledby="myModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog modal-lg">
+
+                     <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header bg-info">
                          <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -304,16 +301,6 @@ include('menu/function.php');
                 </div>
               </div>
 
-
-              <div class="form-group row">
-                <div class="col-md-2">
-                  <label class="control-label ">Abstrack</label>
-                </div>
-                <div class="col-md-10">
-                <?php echo $objResult->topic_abstrack; ?>
-                </div>
-              </div>
-
               <!--get project Proposal status -->
 
              
@@ -322,7 +309,8 @@ include('menu/function.php');
                   <label class="control-label ">Advisor</label>
                 </div>
                 <div class="col-md-10">
-<?php echo get_advisor($objResult->group_id); ?>                </div>
+                <?php echo get_advisor($objResult->group_id); ?>                
+                </div>
               </div>
 
                    <div class="form-group row">
@@ -343,9 +331,15 @@ include('menu/function.php');
                 </div>
               </div>
 
+              
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label ">Abstrack</label>
+                </div>
+                <div class="col-md-10">
+                <?php echo $objResult->topic_abstrack; ?>
+                </div>
               </div>
-
-      </div>
 
 
 
@@ -362,16 +356,16 @@ include('menu/function.php');
                           </div>
                         </div>
 
-                    </td>
-                    </tr>
 
-                    <?php
+
+                  </td>
+                </tr>
+                             <?php
                                     $i++;  
     }
                }
                    ?>
-
-
+                
               </table>
             </div>
             <!-- /.card-body -->
@@ -383,20 +377,41 @@ include('menu/function.php');
       <!-- /.row -->
     </section>
     <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
 
+
+
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.3-pre
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
+<!-- Bootstrap -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE -->
+<script src="dist/js/adminlte.js"></script>
+
+<!-- OPTIONAL SCRIPTS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="dist/js/demo.js"></script>
+<script src="dist/js/pages/dashboard3.js"></script>
 <!-- DataTables -->
 <script src="plugins/datatables/jquery.dataTables.js"></script>
 <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
-<!-- page script -->
 <script>
   $(function () {
     $("#example1").DataTable();
@@ -409,6 +424,10 @@ include('menu/function.php');
       "autoWidth": false,
     });
   });
+
+ 
 </script>
+
+
 </body>
 </html>
