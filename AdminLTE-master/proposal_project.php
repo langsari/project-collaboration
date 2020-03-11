@@ -221,12 +221,12 @@ include('menu/function.php');
              while($objResult = $result->fetch_object()){
             ?>
                     <tr>
-                <td class="text-left" style="font-size: 15px;">   <?php echo $count++; ?></td>
-                <td class="text-left"style="font-size: 15px;"><?php echo $objResult->group_number; ?></td>
-   <td class="text-left" style="font-size: 15px;"><?php echo get_status_project($objResult->status); ?></td>
-   <td class="text-left" style="font-size: 15px;"><?php echo substr($objResult->Owner, 0, 50); ?></td>
-                <td class="text-left" style="font-size: 15px;"><?php echo $objResult->topic_topic; ?></td>
-                    <td class="text-left" style="font-size: 15px;"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
+                <td class="text-left" style="font-size: 16px;">   <?php echo $count++; ?></td>
+                <td class="text-left"style="font-size: 16px;"><?php echo $objResult->group_number; ?></td>
+   <td class="text-left" style="font-size: 16px;"><?php echo get_status_project($objResult->status); ?></td>
+   <td class="text-left" style="font-size: 16px;"><?php echo get_member_list($objResult->group_id, 0, 45); ?></td>
+                <td class="text-left" style="font-size: 16px;"><?php echo $objResult->topic_topic; ?></td>
+                    <td class="text-left" style="font-size: 16px;"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
               
                   <td>               
                      

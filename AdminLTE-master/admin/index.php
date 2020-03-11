@@ -16,7 +16,6 @@ include('../menu/function.php');
   <title>ITPROMO</title>
 
 
-
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
 
@@ -30,25 +29,7 @@ include('../menu/function.php');
   <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 
 </head>
-<style>
-  #count {
-    border-radius: 60%;
-    position: relative;
-    top: -10px;
-    left: -10px;
 
-  }
-</style>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to to the body tag
-to get the desired effect
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
 
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
@@ -61,7 +42,7 @@ to get the desired effect
         </li>
         <li class="nav-item d-none d-sm-inline-block">
 
-          <a href="index.php" class="nav-link">Home</a>
+          <a href="../admin/index.php" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link" data-toggle="modal" data-target="#notify">Notify</a>
@@ -75,7 +56,7 @@ $count=0;
 if(!empty($_POST['add'])) {
   $subject = mysqli_real_escape_string($conn,$_POST["subject"]);
   $comment = mysqli_real_escape_string($conn,$_POST["comment"]);
-  $sql = "INSERT INTO notify (subject,comment,date) VALUES('" . $subject . "','" . $comment . "')";
+  $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
   mysqli_query($conn, $sql);
 }
 $sql2="SELECT * FROM notify WHERE status = 0";
@@ -83,8 +64,7 @@ $result=mysqli_query($conn, $sql2);
 $count=mysqli_num_rows($result);
 ?>
 
-   
-
+    
 
       <!-- Display the alert of notification -->
 
@@ -177,7 +157,7 @@ $count=mysqli_num_rows($result);
                with font-awesome or any other icon font library -->
 
             <li class="nav-item has-treeview menu-open">
-              <a href="index.php" class="nav-link active">
+              <a href="index.php" class="nav-link active ">
 
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
@@ -303,6 +283,7 @@ $count=mysqli_num_rows($result);
       </div>
       <!-- /.sidebar -->
     </aside>
+
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
