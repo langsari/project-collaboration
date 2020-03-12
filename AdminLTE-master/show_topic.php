@@ -171,7 +171,6 @@ require 'menu/connect.php';
         </div>
       </div><!-- /.container-fluid -->
     </section>
-<<<<<<< HEAD
 
 <!-- Main content -->
 
@@ -231,88 +230,8 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id' ";
                   
                   
             <!-- /.nav-tabs-custom -->
-=======
-    <!-- Main content -->
-    <section class="content">
-      <div class="card card-primary card-outline">
-      <!-- Default box -->
-        <div class="card-header p-2">
-                <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab"> <i class="fas fa-edit"></i>
-               Recent Propose Topic</a></li>
-                
-                </ul>
-              </div>
 
-<?php
-
-     $strSQL = "SELECT  news_topic.news_id,news_topic.news_topic, news_topic.news_detail, news_topic.news_date,member.member_fullname
-         FROM news_topic,member 
-         WHERE news_topic.member_id=member.member_id
-         ORDER BY news_topic.news_id DESC";
-
-         ?>
-
-
-   <?php
-            
-                 if($objQuery = $db->query($strSQL)){
-             while($objResult = $objQuery->fetch_object()){
-            ?>
-
-        <div class="card-body">
-          <div class="row">
-            <div class="col-12 col-md-12">
-              <div class="row">
-                <div class="col-12">
-                  
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="dist/img/user.png" alt="user image">
-                        <span class="username">
-                          <a href="#"><?php echo $objResult->member_fullname; ?> </a>
-                        </span>
-                        <span class="description">Shared publicly -<?php echo $objResult->news_date; ?></span>
-                      </div>
-                      <!-- /.user-block -->
-                      
-                      <p><b><?php echo $objResult->news_topic; ?></b></p>
-
-                      <p> <?php echo $objResult->news_detail; ?></p>
-                      <p>
-                        <span class="float-right">
-                          <a href="#" class="link-black text-sm">
-                            <i class="far fa-eye"></i> Read more 
-                          </a>
-                        </span>
-                      </p>
-                    </br>
-
-                  
-                    </div>
- <?php
-                 }
-               }
-                   ?>
-
-                </div>
-              </div>
-            </div>
-
->>>>>>> 2c3b1d9c40b58a11de2a8f83ffcb64b242e99623
-          </div>
-        </div>
-
-        <!-- /.card-body -->
-      </div>
-      <!-- /.card -->
-
-<<<<<<< HEAD
-
-
-=======
-    </section>
->>>>>>> 2c3b1d9c40b58a11de2a8f83ffcb64b242e99623
+   
     <!-- /.content -->
   </br>
   </div>
