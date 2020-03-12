@@ -22,16 +22,8 @@ require 'menu/connect.php';
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to to the body tag
-to get the desired effect
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
+
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
@@ -176,23 +168,18 @@ to get the desired effect
       </div><!-- /.container-fluid -->
     </section>
 
-    <!-- Main content -->
-    <section class="content">
 
-      <!-- Default box -->
-      <div class="card card-solid">
-        <div class="card-body pb-0">
-          <div class="row d-flex align-items-stretch">
-            <div class="col-15 col-sm-8 col-md-12 d-flex align-items-stretch">
-                             <main role="main" class="container">
 
-               
-            
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="card card-primary card-outline">
+      
+            <div class="card-body">
+              <h1 class="mt-3">Welcome to Information Technology Project</h1>
+              <p class="lead">ITPromot or Information Technology Project Monitoring and Tracking System.</p>
 
-                        <h1 class="mt-3">Welcome to Information Technology Project</h1>
-                        <p class="lead">ITPromot or Information Technology Project Monitoring and Tracking System.</p>
-
-                        <hr>
+              <hr>
 
 
                         <h2>Guide and Help</h2>
@@ -206,9 +193,7 @@ to get the desired effect
 
                         <hr>
 
-
-
-                        <h2>The Guide for both:</h2>
+                         <h2>The Guide for both:</h2>
                         <p class="text-dark"><kbd>IT234-232</kbd> - Information Technology Project
                             (โครงงานเทคโนโลยีสารสนเทศ)</p>
                         <p class="text-dark"><kbd>IT2301-321</kbd> - Information Technology Project 1
@@ -216,19 +201,41 @@ to get the desired effect
                         <p class="text-dark"><kbd>IT2301-322</kbd> - Information Technology Project 2
                             (โครงงานเทคโนโลยีสารสนเทศ II )</p>
 
-                    </main>
-              
-              </div>
-            </div>
+
+
+            </div><!-- /.card-body -->
           </div>
-        </div>
+        </div><!-- /.container-fluid -->
       </section>
-      
+      <!-- /.content -->
+    </br>
 
-<!-- REQUIRED SCRIPTS -->
+     </div>
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+
+
+
+
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 3.0.3-pre
+      </div>
+      <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+      reserved.
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+
+
+  <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->

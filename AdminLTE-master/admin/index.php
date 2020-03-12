@@ -16,7 +16,6 @@ include('../menu/function.php');
   <title>ITPROMO</title>
 
 
-
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
 
@@ -30,25 +29,7 @@ include('../menu/function.php');
   <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 
 </head>
-<style>
-  #count {
-    border-radius: 60%;
-    position: relative;
-    top: -10px;
-    left: -10px;
 
-  }
-</style>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to to the body tag
-to get the desired effect
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
 
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
@@ -61,7 +42,7 @@ to get the desired effect
         </li>
         <li class="nav-item d-none d-sm-inline-block">
 
-          <a href="index.php" class="nav-link">Home</a>
+          <a href="../admin/index.php" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link" data-toggle="modal" data-target="#notify">Notify</a>
@@ -75,7 +56,7 @@ $count=0;
 if(!empty($_POST['add'])) {
   $subject = mysqli_real_escape_string($conn,$_POST["subject"]);
   $comment = mysqli_real_escape_string($conn,$_POST["comment"]);
-  $sql = "INSERT INTO notify (subject,comment,date) VALUES('" . $subject . "','" . $comment . "')";
+  $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
   mysqli_query($conn, $sql);
 }
 $sql2="SELECT * FROM notify WHERE status = 0";
@@ -83,8 +64,7 @@ $result=mysqli_query($conn, $sql2);
 $count=mysqli_num_rows($result);
 ?>
 
-   
-
+    
 
       <!-- Display the alert of notification -->
 
@@ -177,7 +157,7 @@ $count=mysqli_num_rows($result);
                with font-awesome or any other icon font library -->
 
             <li class="nav-item has-treeview menu-open">
-              <a href="index.php" class="nav-link active">
+              <a href="index.php" class="nav-link active ">
 
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
@@ -304,6 +284,7 @@ $count=mysqli_num_rows($result);
       <!-- /.sidebar -->
     </aside>
 
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -341,9 +322,8 @@ $count=mysqli_num_rows($result);
                 $query_num=mysqli_query($con,$query);
                 $row=mysqli_num_rows($query_num);
                 echo '<h1>'.$row.'</h1>';
-
+                echo 'Total User';
                 ?>
-                  <p>Total User</p>
 
                 </div>
                 <div class="icon">
@@ -359,9 +339,18 @@ $count=mysqli_num_rows($result);
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <?php
+              $con = mysqli_connect('localhost','root','','itpromo_track');
 
-                  <p>Bounce Rate</p>
+                $query="SELECT member_id FROM member 
+                        WHERE member_pos='Lecturer'
+                        ORDER BY member_id";
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
+                echo 'All Lecturers';
+                ?>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
@@ -374,9 +363,16 @@ $count=mysqli_num_rows($result);
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>44</h3>
+                  <?php
+              $con = mysqli_connect('localhost','root','','itpromo_track');
 
-                  <p>User Registrations</p>
+                $query="SELECT member_id FROM member ORDER BY member_id";
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
+                echo 'Bounce Rate';
+                ?>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
@@ -389,9 +385,16 @@ $count=mysqli_num_rows($result);
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>65</h3>
+                  <?php
+              $con = mysqli_connect('localhost','root','','itpromo_track');
 
-                  <p>Unique Visitors</p>
+                $query="SELECT member_id FROM member ORDER BY member_id";
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
+                echo 'Bounce Rate';
+                ?>
                 </div>
                 <div class="icon">
                   <i class="ion ion-pie-graph"></i>
@@ -556,7 +559,7 @@ $count=mysqli_num_rows($result);
                           </small>
                       </td>
                   <td>
-                         <a href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
+                         <a href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">view track <i class="fa fa-eye" title="View student track"></i></a>
 
                   </td>
 

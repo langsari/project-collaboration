@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,7 +62,7 @@ to get the desired effect
     <a href="index.php" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">ITPROMO</span>
+      <span class="brand-text font-weight-light">ITPROMOT</span>
     </a>
 
     <!-- Sidebar -->
@@ -110,7 +109,7 @@ to get the desired effect
 
 
           <li class="nav-item">
-            <a href="guide.php" class="nav-link ">
+            <a href="guide.php" class="nav-link">
               <i class="nav-icon fa fa-glide-g"></i>
               <p>
                 Guide
@@ -153,8 +152,6 @@ to get the desired effect
     <!-- /.sidebar -->
   </aside>
 <!-- Content Wrapper. Contains page content -->
- <!-- Content Wrapper. Contains page content -->
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
   
@@ -169,61 +166,92 @@ to get the desired effect
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active"> Course Syllabus</li>
+              <li class="breadcrumb-item active">Course Syllabus</li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
-
+    <!-- Main content -->
+    <section class="content">
       <div class="container-fluid">
         <div class="row">
-     <div class="col-md-12">
-
-            <!-- Profile Image -->
-        
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- jquery validation -->
             <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h3 class="card-title">Course Syllabus </h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" id="quickForm">
+                <div class="card-body">
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th scope="col">Document Name</th>
+                      <th scope="col">Download</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                      <td>IT2301-322 Schedule</td>
+                      <td>
+                        <a href="assets/schedule/Khoeld%20Langsari%20-%20IT2301-322%20%20Information%20Technology%20Project%20II%20-%20หมวดที่%205%20%20แผนการรดำเนินโครงงาน.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
+                      </td>
+                       </tr>
+                       <tr>
+                      <td>IT2301-321 Schedule</td>
+                      <td>
+                        <a href="assets/schedule/Khoeld%20Langsari%20-%20IT2301-321%20%20Information%20Technology%20Project%20I%20-%20หมวดที่%205%20%20แผนการรดำเนินโครงงาน.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
+                      </td>
+                       </tr>
+                       <tr>
+                      <td>IT234-232 Schedule</td>
+                      <td>
+                        <a href="assets/schedule/Khoeld%20Langsari%20-%20IT234-232%20-%20Information%20Technology%20Project%20-%20หมวดที่%205%20%20แผนการรดำเนินโครงงาน.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
+                      </td>
+                       </tr>
+                    </tbody>
+                                  
+                  </table>
+                 
+                </div>
+                
+              </form>
+            </div>
+            <!-- /.card -->
+            </div>
+          <!--/.col (left) -->
+          <!-- right column -->
+          <div class="col-md-6">
 
+          </div>
+          <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.3-pre
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
 
-     <div class="card-body p-0"> <table class="table">
-      <thead>
-      <tr>
-        <!--<th scope="col">Forms ID</th>-->
-        <th scope="col">Document Name</th>
-        <th scope="col">Download</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <!--<th scope="row">PF11</th>-->
-        <td>IT2301-322 Schedule</td>
-        <td>
-          <a href="assets/schedule/Khoeld%20Langsari%20-%20IT2301-322%20%20Information%20Technology%20Project%20II%20-%20หมวดที่%205%20%20แผนการรดำเนินโครงงาน.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
-        </td>
-      </tr>
-      <tr>
-        <!--<th scope="row">PF11</th>-->
-        <td>IT2301-321 Schedule</td>
-        <td>
-          <a href="assets/schedule/Khoeld%20Langsari%20-%20IT2301-321%20%20Information%20Technology%20Project%20I%20-%20หมวดที่%205%20%20แผนการรดำเนินโครงงาน.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
-        </td>
-      </tr>
-      <tr>
-        <!--<th scope="row">PF11</th>-->
-        <td>IT234-232 Schedule
-          <!--<mark>Semester 2/2018</mark>-->
-        </td>
-        <td>
-          <a href="assets/schedule/Khoeld%20Langsari%20-%20IT234-232%20-%20Information%20Technology%20Project%20-%20หมวดที่%205%20%20แผนการรดำเนินโครงงาน.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
-        </td>
-      </tr>
-      </tbody>
-          </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>

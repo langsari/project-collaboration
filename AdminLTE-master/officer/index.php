@@ -12,7 +12,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO</title>
+  <title>ITPROMOT</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -118,7 +118,7 @@ to get the desired effect
     <a href="index.php" class="brand-link">
       <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">ITPROMO</span>
+      <span class="brand-text font-weight-light">ITPROMOT</span>
     </a>
 
     <!-- Sidebar -->
@@ -286,62 +286,121 @@ to get the desired effect
       </div><!-- /.container-fluid -->
     </section>
 
-<!-- Main content -->
-    <section class="content">
-
-      <!-- Default box -->
-      <div class="card card-solid">
-        <div class="card-body pb-0">
-          <div class="row d-flex align-items-stretch">
-            <div class="col-15 col-sm-8 col-md-12 d-flex align-items-stretch">
-                             <main role="main" class="container">
-
-               
-            
-
-                        <h1 class="mt-3">Welcome to Information Technology Project</h1>
-                        <p class="lead">ITPromot or Information Technology Project Monitoring and Tracking System.</p>
-
-                        <hr>
+ <!-- /.content-header -->
+      <section class="content">
+        <div class="container-fluid">
+          <!-- Small boxes (Stat box) -->
+          <div class="row">
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-info">
+                <div class="inner">
 
 
-                        <h2>Guide and Help</h2>
-                        <p>You will guide and help to achieve you purpose of doing Information Technology Project
-                            through this application </p>
-                        <p><a href="?page=guide" class="btn-primary btn-sm">Guide</a> is present to procedure how to do
-                            the project</p>
-                        <p><a href="?page=schedule" class="btn-primary btn-sm">Schedule</a> is present the schedule time
-                            table of the project</p>
-                        <p><a href="?page=form" class="btn-primary btn-sm">Forms</a> is collection of involve forms</p>
+                  <?php
+              $con = mysqli_connect('localhost','root','','itpromo_track');
 
-                        <hr>
+                $query="SELECT member_id FROM member ORDER BY member_id";
 
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
 
+                ?>
+                  <p>Total User</p>
 
-                        <h2>The Guide for both:</h2>
-                        <p class="text-dark"><kbd>IT234-232</kbd> - Information Technology Project
-                            (โครงงานเทคโนโลยีสารสนเทศ)</p>
-                        <p class="text-dark"><kbd>IT2301-321</kbd> - Information Technology Project 1
-                            (โครงงานเทคโนโลยีสารสนเทศ I )</p>
-                        <p class="text-dark"><kbd>IT2301-322</kbd> - Information Technology Project 2
-                            (โครงงานเทคโนโลยีสารสนเทศ II )</p>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-users"></i>
+                </div>
 
-                    </main>
-              
+                <a href="#" class="small-box-footer">More info <i
+                    class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-success">
+                <div class="inner">
+                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                  <p>Bounce Rate</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-warning">
+                <div class="inner">
+                  <h3>44</h3>
+
+                  <p>User Registrations</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-danger">
+                <div class="inner">
+                  <h3>65</h3>
+
+                  <p>Unique Visitors</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
           </div>
-        </div>
       </section>
-      
 
-     
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-edit"></i>
+                Workload</h3>
+            </div> <!-- /.card-body -->
+            <div class="card-body">
 
-    <!-- /.content -->
- 
-<!-- ./wrapper -->
+              <h1 class="mt-3">Welcome to Information Technology Project</h1>
+                        <p class="lead">ITPromot or Information Technology Project Monitoring and Tracking System.</p>
 
-<!-- REQUIRED SCRIPTS -->
+
+
+            </div><!-- /.card-body -->
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+     </div>
+
+
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 3.0.3-pre
+      </div>
+      <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+      reserved.
+    </footer>
+
+    <!-- /.control-sidebar -->
+  
 
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
