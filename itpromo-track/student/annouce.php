@@ -384,6 +384,12 @@ to get the desired effect
 
                       <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
                     </div>
+                        </div>
+                     </div>
+              
+
+                    </div>
+                  </div>
                     <!-- /.post -->
     <?php
                  }

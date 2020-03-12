@@ -321,106 +321,223 @@ to get the desired effect
       </div><!-- /.container-fluid -->
     </section>
 
+
+
+  <div class="content">
   
-<!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
         <div class="row">
-       
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header p-2">
-                <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
-                
-                </ul>
-              </div><!-- /.card-header -->
-
-      
-
-     <?php
+           <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-block">
+                       
 
 
-     $strSQL = "SELECT  announcement.announcement_id,announcement.announcement_topic, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
-                           FROM announcement,admin 
-                           WHERE announcement.admin_id=admin.admin_id
-                           ORDER BY announcement.announcement_id";
+                     <?php
 
-         ?>
+$id = $_GET['id'];
 
-    <?php
-            
-                 if($objQuery = $db->query($strSQL)){
-             while($objResult = $objQuery->fetch_object()){
-            ?>
+
+$strSQL = "SELECT  news_topic.news_id,news_topic.news_topic, news_topic.news_detail, news_topic.news_date,member.member_fullname FROM news_topic
+          LEFT JOIN member ON news_topic.member_id = member.member_id
+WHERE news_topic.news_id = '$id'";      
+     if($objQuery = $db->query($strSQL)){
+                  while($objResult = $objQuery->fetch_object()){
+
+   ?>
+   
+
+
+  
 
    
-              <div class="card-body">
-                <div class="tab-content">
-                  <div class="active tab-pane" id="activity">
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image">
-                        <span class="username">
-                          <a href="#"><?php echo $objResult->admin_fullname; ?> </a>
-                        </span>
-                        <span class="description">Shared publicly - <?php echo $objResult->announcement_date; ?></span>
-                      </div>
-                      <!-- /.user-block -->
-                      <p><b><?php echo $objResult->announcement_topic; ?></b></p>
-                      <p>
-                    <?php echo $objResult->announcement_detail; ?>
-                      </p>
+
+         
+            <table class="display datatable table table-stripped" cellspacing="0" width="100%">
+
+                  <tbody>
+                  
+                      <td> 
+
+                   
+<img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image"  width="30" height="30">
+                        <span class="username" style="font-size: 15px;">
+               &nbsp;&nbsp;<?php echo $objResult->member_fullname; ?> 
+                         <span class="float-right">
+                        <span class="description" style="font-size: 13px;">Shared publicly - <?php echo $objResult->news_date; ?></span>
+                      </span>
+                        <!-- /.user-block -->
+              <p>   <class style="font-size: 16px;">     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <b><?php echo $objResult->news_topic; ?></b></p>
+                      
+                      <class style="font-size: 15px;">   <?php echo $objResult->news_detail; ?>
+                     
   <p>
-                       
-                        <a href="#" class="link-black text-sm"></i></a>
-                        <span class="float-right">
-                           <a href="reply_annouce.php?id=<?php echo $objResult->announcement_id;?>" class="btn btn-primary btn-xs">
-                  <i class="fa fa-edit" title="Detail">  Reply </i></a>
-                        </span>
-                      </p>
-                     </p>
-______________________________________________________________________________________________________________
-                    </div>
-                    </div>
-</div>      
-</div>  
-                    <!-- /.post -->
+
+                 
+                             <span class="float-right">
+
+                               <button ype="submit" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addtopic">Reply</button>
+                          
+                        </div>
+                        
+                        </td> 
+            <?php
+                 }
+               }
+                   ?>
+           
+            
+      </tbody>
+      </table>
+    </h6>
+  </span>
+</div>
+
+</div>
+
+
+
+  <div class="modal fade" id="addtopic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+                            <div class="modal-header bg-success">
+              <h4 class="modal-title">Reply</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              
+          <form id="add" name="add" method="post" action="check_newstopic.php" onsubmit="return checkForm()">
+                  
+
+      <div class="form-group row">
+          <div class="col-md-3">
+              <label class="control-label col-form-label">Topic</label>
+              </div>
+                <div class="col-md-9">
+          <input type="text" class="form-control" placeholder="Topic" aria-describedby="basic-addon1"
+                    id="news_topic" name="news_topic" autocomplete="off" required>
+                  </div>
+                </div>
+
+           
+
+                      <div class="form-group row">
+                        <div class="col-md-3">
+                          <label class="control-label col-form-label">Detail</label>
+                        </div>
+                        <div class="col-md-9">
+                    
+
+  <textarea type="text" rows="5" class="form-control" id="news_detail" name="news_detail"
+                  placeholder="Project Description" required > </textarea>
+
+
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-9">
+                          <select class="form-control" name="member_id" hidden="">
+
+                        <?php
+                include '../menu/connect.php';
+                $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_id ='".$_SESSION['id']."'";
+                if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+                    echo "<option value='".$objResult->member_id."'>".$objResult->member_fullname."</option>";
+                  }
+                }else{
+                }
+                ?>
+                      </select>
+                        </div>
+                      </div>
+
+
+                     <?php
+
+$id = $_GET['id'];
+
+
+$strSQL = "SELECT  news_topic.news_id,news_topic.news_topic, news_topic.news_detail, news_topic.news_date,member.member_fullname FROM news_topic
+          LEFT JOIN member ON news_topic.member_id = member.member_id
+WHERE news_topic.news_id = '$id'
+    ORDER BY news_topic.news_id DESC";     
+     if($objQuery = $db->query($strSQL)){
+                  while($objResult = $objQuery->fetch_object()){
+
+   ?>
+
+                  <input class="form-control form-control-sm" type="text" name="parent_comment_id" id="parent_comment_id" value="<?php echo $objResult->news_id; ?>"  hidden>
     <?php
                  }
                }
                    ?>
-                 
-                  <!-- /.tab-pane -->
-                  
-                      </div>
-                     </div>
-              
 
-                    </div>
-                  </div>
-                  <!-- /.tab-pane -->
-     
-                 
-                  <!-- /.tab-pane -->
-                </div>
-                <!-- /.tab-content -->
-              </div><!-- /.card-body -->
             </div>
-            <!-- /.nav-tabs-custom -->
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">CREATE</button>
+            </div>
+
+            </form>
           </div>
-          <!-- /.col -->
+
+
+
+  <!--form alert add topic-->
+
+            </div>
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+      </div>
+    </div>
+
+   <?php
+
+$id = $_GET['id'];
 
 
+$strSQL = "SELECT  news_topic.news_id,news_topic.news_topic, news_topic.news_detail, news_topic.news_date,member.member_fullname,news_topic.parent_comment_id FROM news_topic
+          LEFT JOIN member ON news_topic.member_id = member.member_id
+WHERE news_topic.parent_comment_id = '$id'";      
+     if($objQuery = $db->query($strSQL)){
+                  while($objResult = $objQuery->fetch_object()){
+
+   ?>
+   
 
 
-    <!-- /.content -->
+               <div class="callout callout-info">
+                <img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image"  width="30" height="30">
+<class style="font-size: 15px;">   &nbsp;&nbsp;<?php echo $objResult->member_fullname;?>  
+                   <span class="float-right">
+                        <span class="description" style="font-size: 13px;">Shared publicly - <?php echo $objResult->news_date; ?></span>
+                      </span> 
+             <p>
+
+             <class style="font-size: 16px;">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>  <?php echo $objResult->news_topic;?></b></br>
+            <class style="font-size: 15px;">    <?php echo $objResult->news_detail;?>
+            </div>
+      
+
+   
+
+   
+
+
+            <?php
+                 }
+               }
+                   ?>
+           
+
+
+</div>
+  
  
 <!-- ./wrapper -->
 

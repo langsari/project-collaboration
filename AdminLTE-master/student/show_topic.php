@@ -331,17 +331,23 @@ to get the desired effect
                 </ul>
               </div><!-- /.card-header -->
 
-              <?php
+                     <?php
 
-     $strSQL = "SELECT  news_topic.news_id,news_topic.news_topic, news_topic.news_detail, news_topic.news_date,member.member_fullname
-         FROM news_topic,member 
-         WHERE news_topic.member_id=member.member_id
-         ORDER BY news_topic.news_id";
-         ?>
-    <?php
-                 if($objQuery = $db->query($strSQL)){
-             while($objResult = $objQuery->fetch_object()){
-            ?>
+
+
+
+$strSQL = "SELECT  news_topic.news_id,news_topic.news_topic, news_topic.news_detail, news_topic.news_date,member.member_fullname,news_topic.parent_comment_id FROM news_topic
+          LEFT JOIN member ON news_topic.member_id = member.member_id
+WHERE news_topic.news_id and parent_comment_id='parent_comment_id' ";      
+     if($objQuery = $db->query($strSQL)){
+                  while($objResult = $objQuery->fetch_object()){
+
+   ?>
+   
+
+
+
+
 
               <div class="card-body">
                 <div class="tab-content">
@@ -351,34 +357,36 @@ to get the desired effect
                       <div class="user-block">
                         <img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image">
                         <span class="username">
-                          <a href="#"><?php echo $objResult->member_fullname; ?> </a>
+                          <a href="#"> <class style="font-size: 16px;"> <?php echo $objResult->member_fullname; ?> </a>
                         </span>
-                        <span class="description">Shared publicly - <?php echo $objResult->news_date; ?></span>
+                        <span class="description"> <class style="font-size: 12px;"> Shared publicly - <?php echo $objResult->news_date; ?></span>
                       </div>
                       <!-- /.user-block -->
-                      <p><b><?php echo $objResult->news_topic; ?></b></p>
-                      <p>
-                       <?php echo $objResult->news_detail; ?>
-                      </p>
-
-                      <p>
-                        <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
-                        <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
+                     <class style="font-size: 15px;"> <b><?php echo $objResult->news_topic; ?></b></p>
+                      <p>  <class style="font-size: 15px;"> <?php echo $objResult->news_detail; ?>
+                       </p>
+  <p>
+                       
+                        <a href="#" class="link-black text-sm"></i></a>
                         <span class="float-right">
-                          <a href="#" class="link-black text-sm">
-                            <i class="far fa-comments mr-1"></i> Comments (5)
-                          </a>
+                           <a href="reply_newtopic.php?id=<?php echo $objResult->news_id;?>" class="btn btn-primary btn-xs">
+                  <i class="fa fa-edit" title="Detail">  Reply </i></a>
                         </span>
                       </p>
-
-                      <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
+                     </p>
+______________________________________________________________________________________________________________
                     </div>
+                    </div>
+</div>      
+</div>  
                     <!-- /.post -->
     <?php
                  }
                }
                    ?>
                  
+                  <!-- /.tab-pane -->
+                  
                   <!-- /.tab-pane -->
                   
                       </div>

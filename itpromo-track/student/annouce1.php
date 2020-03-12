@@ -23,6 +23,9 @@ include('../menu/function.php');
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
    <!-- DataTables -->
   <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -142,7 +145,7 @@ to get the desired effect
 
 
                    <li class="nav-item has-treeview ">
-            <a href="index.php" class="nav-link ">
+            <a href="index.php" class="nav-link active">
              
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -220,8 +223,8 @@ to get the desired effect
           </li>
 
 
-  <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+  <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
                 News
@@ -230,7 +233,7 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="annouce.php" class="nav-link active">
+                <a href="annouce.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Annoucements</p>
                 </a>
@@ -324,98 +327,10 @@ to get the desired effect
   
 <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-       
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header p-2">
-                <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
-                
-                </ul>
-              </div><!-- /.card-header -->
-
-      
-
-     <?php
-
-
-     $strSQL = "SELECT  announcement.announcement_id,announcement.announcement_topic, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
-                           FROM announcement,admin 
-                           WHERE announcement.admin_id=admin.admin_id
-                           ORDER BY announcement.announcement_id";
-
-         ?>
-
-    <?php
-            
-                 if($objQuery = $db->query($strSQL)){
-             while($objResult = $objQuery->fetch_object()){
-            ?>
-
    
-              <div class="card-body">
-                <div class="tab-content">
-                  <div class="active tab-pane" id="activity">
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image">
-                        <span class="username">
-                          <a href="#"><?php echo $objResult->admin_fullname; ?> </a>
-                        </span>
-                        <span class="description">Shared publicly - <?php echo $objResult->announcement_date; ?></span>
-                      </div>
-                      <!-- /.user-block -->
-                      <p><b><?php echo $objResult->announcement_topic; ?></b></p>
-                      <p>
-                    <?php echo $objResult->announcement_detail; ?>
-                      </p>
-  <p>
-                       
-                        <a href="#" class="link-black text-sm"></i></a>
-                        <span class="float-right">
-                           <a href="reply_annouce.php?id=<?php echo $objResult->announcement_id;?>" class="btn btn-primary btn-xs">
-                  <i class="fa fa-edit" title="Detail">  Reply </i></a>
-                        </span>
-                      </p>
-                     </p>
-______________________________________________________________________________________________________________
-                    </div>
-                    </div>
-</div>      
-</div>  
-                    <!-- /.post -->
-    <?php
-                 }
-               }
-                   ?>
-                 
-                  <!-- /.tab-pane -->
-                  
-                      </div>
-                     </div>
-              
-
-                    </div>
-                  </div>
-                  <!-- /.tab-pane -->
-     
-                 
-                  <!-- /.tab-pane -->
-                </div>
-                <!-- /.tab-content -->
-              </div><!-- /.card-body -->
-            </div>
-            <!-- /.nav-tabs-custom -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+
 
 
 
