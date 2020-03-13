@@ -1,21 +1,22 @@
 <?php
 session_start();
- require '../menu/connect.php';
+
+include("../menu/function.php");
+require '../menu/connect.php';
 
 
 
 
-$parent_comment_id=$_POST['parent_comment_id'];
 $announcement_detail=$_POST['announcement_detail'];
 $announcement_topic=$_POST['announcement_topic'];
-$announcement_date=$_POST['announcement_date'];
-$writer=$_POST['writer'];
+$admin_id=$_POST['admin_id'];
+$parent_comment_id=$_POST['parent_comment_id'];
 
-$sql = "INSERT INTO announcement(parent_comment_id,announcement_topic,announcement_detail,announcement_date,writer) VALUES ('$announcement_topic','$announcement_detail','$announcement_date','$writer','$parent_comment_id')";
+$sql = "INSERT INTO announcement(announcement_id,parent_comment_id,announcement_topic,announcement_detail,admin_id) VALUES ('$announcement_id','$announcement_topic','$announcement_detail','$admin_id','$parent_comment_id')";
 
 	if($rs = $db->query($sql)){
 		$db->close();
-		header("Location: /reply_annouce.php");
+		header("Location:annouce.php");
 	}else{
 		echo $db->error;
 		$db->close();

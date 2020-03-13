@@ -671,7 +671,7 @@ $count=mysqli_num_rows($result);
 
             <div class="modal-body">
               
-    <form id="add" name="add" method="post" action="../admin/check_add_announcement.php"
+    <form id="add" name="add" method="post" action="check_add_announcement.php"
                       onsubmit="return checkForm()">
 
       <div class="form-group row">
@@ -682,15 +682,6 @@ $count=mysqli_num_rows($result);
                   <input type="text" class="form-control" id="announcement_topic" name="announcement_topic" placeholder="Topic" autocomplete="off" required>
                   </div>
                 </div>
-
-                <div class="form-group row">
-                        <div class="col-md-3">
-                          <label class="control-label col-form-label">Begin Date: </label>
-                        </div>
-                        <div class="col-md-9">
-                          <input type="date" name="announcement_date" id="announcement_date" class="form-control" required>
-                        </div>
-                      </div>
 
                       <div class="form-group row">
                         <div class="col-md-3">

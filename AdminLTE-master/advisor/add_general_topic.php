@@ -234,7 +234,7 @@ to get the desired effect
 
     
 
-  <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
@@ -314,39 +314,123 @@ to get the desired effect
         </div>
       </div><!-- /.container-fluid -->
     </section>
-  <!-- Main content -->
+  
+    <!-- Main content -->
     <section class="content">
-
-          <div class="card">
+      <div class="row">
+        <div class="col-12">
+          <div class="card card-primary card-outline">
             <div class="card-header">
-               <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addtopic"
-              style="margin-bottom: 20px; border-radius: 12px; font-size: 14px;">
-              <i class="fa fa-plus-square"></i>&nbsp; Create New Topic
-            </button>
-
-                 
+               <h3 class="card-title">
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addtopic">
+                  <i class="nav-icon fas fa-plus"></i>
+                  Add Announcement
+                </button>
+                </h3>
+        
             </div>
+
+  <div class="modal fade" id="addtopic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+                            <div class="modal-header bg-success">
+              <h4 class="modal-title">Add Proposal Schedule</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              
+          <form id="add" name="add" method="post" action="check_newstopic.php" onsubmit="return checkForm()">
+                  
+
+      <div class="form-group row">
+          <div class="col-md-3">
+              <label class="control-label col-form-label">Topic</label>
+              </div>
+                <div class="col-md-9">
+          <input type="text" class="form-control" placeholder="Topic" aria-describedby="basic-addon1"
+                    id="news_topic" name="news_topic" autocomplete="off" required>
+                  </div>
+                </div>
+
+            
+                      <div class="form-group row">
+                        <div class="col-md-3">
+                          <label class="control-label col-form-label">Detail</label>
+                        </div>
+                        <div class="col-md-9">
+                    
+
+  <textarea type="text" rows="5" class="form-control" id="news_detail" name="news_detail"
+                  placeholder="Project Description" required > </textarea>
+
+
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-9">
+                          <select class="form-control" name="member_id" hidden="">
+
+                        <?php
+                include '../menu/connect.php';
+                $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_id ='".$_SESSION['id']."'";
+                if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+                    echo "<option value='".$objResult->member_id."'>".$objResult->member_fullname."</option>";
+                  }
+                }else{
+                }
+                ?>
+                      </select>
+                        </div>
+                      </div>
+
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">CREATE</button>
+            </div>
+
+            </form>
+          </div>
+
+
+
+  <!--form alert add topic-->
+
+            </div>
+        </div>
+   
+
+
             <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
+                  <div class="card-body">
+              <table id="example1" class="table table-sm "  >
+                <thead class="thead-light">
                 <tr>
-                <th>No</th>
-                  <th>Topic</th>
-                  <th>Detail</th>
-                  <th>Date</th>
-                  <th>By</th>
-                  <th>Option</th>
+                 <th style="font-size: 15px;" width="4%" class="text-left">No</th>
+                 <th style="font-size: 15px;" width="18%" class="text-left">Topic</th>
+                   <th style="font-size: 15px;" width="18%" class="text-left">Detail</th>
+                  <th style="font-size: 15px;" width="12%" class="text-left">Date</th>
+                   <th style="font-size: 15px;" width="12%" class="text-left">By</th>
+                   <th style="font-size: 15px;" width="8%" class="text-left">Display</th>
+                   <th style="font-size: 15px;" width="8%" class="text-left">Option</th>
                 </tr>
                 </thead>
                 <tbody>
                        
             <?php
 
-     $strSQL = "SELECT  news_topic.news_id,news_topic.news_topic, news_topic.news_detail, news_topic.news_date,member.member_fullname
-         FROM news_topic,member 
-         WHERE news_topic.member_id=member.member_id
-         ORDER BY news_topic.news_id='".$_SESSION['id']."'";
+$strSQL = "SELECT  news_topic.news_id,news_topic.news_topic, news_topic.news_detail, news_topic.news_date,member.member_fullname,news_topic.parent_comment_id FROM news_topic
+          LEFT JOIN member ON news_topic.member_id = member.member_id
+WHERE news_topic.news_id and parent_comment_id='parent_comment_id'
+   ORDER BY news_topic.news_id='".$_SESSION['id']."'";
+  
  $i = 1;
    $count = 1;
          ?>
@@ -358,17 +442,18 @@ to get the desired effect
 
                 
                     <tr>
-                    <td class="text-left">   <?php echo $count++; ?></td>
-                  <td class="text-left"><?php echo substr($objResult->news_topic, 0, 30); ?></td>
-                  <td class="text-left"><?php echo substr($objResult->news_detail, 0, 30); ?></td>
+                    <td class="text-left" style="font-size: 15px;">  <?php echo $count++; ?></td>
+                 <td class="text-left" style="font-size: 15px;"><?php echo substr($objResult->news_topic, 0, 30); ?></td>
+                  <td class="text-left" style="font-size: 15px;"><?php echo substr($objResult->news_detail, 0, 30); ?></td>
 
-                  <td class="text-left"><?php echo $objResult->news_date; ?></td>
-                  <td class="text-left"><?php echo $objResult->member_fullname; ?></td>
+                 <td class="text-left" style="font-size: 15px;"><?php echo $objResult->news_date; ?></td>
+                 <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_fullname; ?></td>
 
 
 
-                  <td>
-
+                  <td>   <a href="display_news.php?id=<?php echo $objResult->news_id;?>"class="btn btn-success btn-sm" >Display
+               </a></td>
+<td>
 <button type="button" class="btn btn-warning btn-xs" data-toggle="modal"
                                                     data-target="#editsub<?php echo $i; ?>">
                                                   <i class="fa fa-edit" title="Edit"></i> </button></center>
@@ -534,147 +619,28 @@ to get the desired effect
                 <div class="col-md-10">
   <?php echo $objResult->member_fullname; ?>
 
-            </div>
-              </div>
-
-                   
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
+ 
+               
 
                   </td>
-               
-                    </tr>          
+                 
+            </tr>
 
+            <?php
+                                                $i++;  
 
-                                    <?php
-                                    $i++;  
-    }
+              }
                }
                    ?>
-
-
-             
+                
               </table>
             </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
 
 
 
-
-
-
-  <div class="modal fade" id="addtopic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-                            <div class="modal-header bg-success">
-              <h4 class="modal-title">Add Proposal Schedule</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
-            <div class="modal-body">
-              
-          <form id="add" name="add" method="post" action="check_newstopic.php" onsubmit="return checkForm()">
-                  
-
-      <div class="form-group row">
-          <div class="col-md-3">
-              <label class="control-label col-form-label">Topic</label>
-              </div>
-                <div class="col-md-9">
-          <input type="text" class="form-control" placeholder="Topic" aria-describedby="basic-addon1"
-                    id="news_topic" name="news_topic" autocomplete="off" required>
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                        <div class="col-md-3">
-                          <label class="control-label col-form-label">Begin Date: </label>
-                        </div>
-                        <div class="col-md-9">
-                    <input type="date" name="news_date" id="news_date" class="form-control" required>
-                        </div>
-                      </div>
-
-                      <div class="form-group row">
-                        <div class="col-md-3">
-                          <label class="control-label col-form-label">Detail</label>
-                        </div>
-                        <div class="col-md-9">
-                    
-
-  <textarea type="text" rows="15" class="form-control" id="news_detail" name="news_detail"
-                  placeholder="Project Description" required > </textarea>
-
-
-                        </div>
-                      </div>
-
-                      <div class="form-group row">
-                        <div class="col-md-3">
-                        </div>
-                        <div class="col-md-9">
-                          <select class="form-control" name="member_id" hidden="">
-
-                        <?php
-                include '../menu/connect.php';
-                $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_id ='".$_SESSION['id']."'";
-                if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-                    echo "<option value='".$objResult->member_id."'>".$objResult->member_fullname."</option>";
-                  }
-                }else{
-                }
-                ?>
-                      </select>
-                        </div>
-                      </div>
-
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">CREATE</button>
-            </div>
-
-            </form>
-          </div>
-
-
-
-  <!--form alert add topic-->
-
-            </div>
-        </div>
-      </div>
-    </div>
-
-
-  <div class="modal fade" id="showtopic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content ">
-        <div class="modal-header ">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-              aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i>
-            <h4 class="card-title text-bold">Add Topic</h4>
-
-        </div>
-
-      </div>
-    </div>
-  </div>
 
 
 

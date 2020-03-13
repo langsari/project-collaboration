@@ -233,7 +233,7 @@ to get the desired effect
 
     
 
-  <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>

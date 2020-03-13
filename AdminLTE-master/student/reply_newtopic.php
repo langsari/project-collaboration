@@ -230,13 +230,13 @@ to get the desired effect
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="annouce.php" class="nav-link active">
+                <a href="annouce.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Annoucements</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="show_topic.php" class="nav-link">
+                <a href="show_topic.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Topic Require</p>
                 </a>
@@ -535,10 +535,26 @@ WHERE news_topic.parent_comment_id = '$id'";
                    ?>
            
 
-
+    <!-- /.content -->
+  </br>
+  </div>
+</class>
+</class>
+</p>
+</span>
 </div>
-  
- 
+
+  <!-- /.content-wrapper -->
+
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.3-pre
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
+
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->

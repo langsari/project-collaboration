@@ -263,10 +263,12 @@ $count=mysqli_num_rows($result);
                   <p>Annoucements</p>
                 </a>
               </li>
+
+
               <li class="nav-item">
                 <a href="show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Topic Require</p>
+                  <p>Topic Require </p>
                 </a>
               </li>
               

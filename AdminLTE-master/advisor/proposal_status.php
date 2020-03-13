@@ -200,7 +200,7 @@ to get the desired effect
     
  
   
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>
               <p>
@@ -375,6 +375,7 @@ to get the desired effect
                <th style="font-size: 15px;" width="15%" class="text-left">Status</th>
 
                 <th style="font-size: 15px;" width="10%" class="text-left">View</th>
+
                 </tr>
                 </thead>
 
@@ -418,8 +419,7 @@ $my_id = $_SESSION['id'];
         
 
 
-                <td> <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#editPS"
-                    onclick="edit_ps(<?php echo $objResult->advisergroup_id; ?>)"><i class="fa fa-edit"></i></button>
+                <td> 
 
 
 
@@ -551,6 +551,9 @@ $my_id = $_SESSION['id'];
                   
                 </td>
 
+<td><button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#editPS"
+                    onclick="edit_ps(<?php echo $objResult->advisergroup_id; ?>)"><i class="fa fa-edit"></i></button>
+</td>
 
                
                     </tr>          

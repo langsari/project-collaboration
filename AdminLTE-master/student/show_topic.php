@@ -317,21 +317,14 @@ to get the desired effect
       </div><!-- /.container-fluid -->
     </section>
 
-  <!-- Main content -->
-    <section class="content">
+ 
+
+   <section class="content">
       <div class="container-fluid">
         <div class="row">
-       
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header p-2">
-                <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
-                
-                </ul>
-              </div><!-- /.card-header -->
+          <div class="col-12">
 
-                     <?php
+                               <?php
 
 
 
@@ -348,37 +341,31 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id' ";
 
 
 
+   
 
-              <div class="card-body">
-                <div class="tab-content">
-                  <div class="active tab-pane" id="activity">
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image">
-                        <span class="username">
-                          <a href="#"> <class style="font-size: 16px;"> <?php echo $objResult->member_fullname; ?> </a>
-                        </span>
-                        <span class="description"> <class style="font-size: 12px;"> Shared publicly - <?php echo $objResult->news_date; ?></span>
-                      </div>
-                      <!-- /.user-block -->
-                     <class style="font-size: 15px;"> <b><?php echo $objResult->news_topic; ?></b></p>
-                      <p>  <class style="font-size: 15px;"> <?php echo $objResult->news_detail; ?>
-                       </p>
+            <div class="callout callout-info">
+
+
+   <img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image"  width="30" height="30">
+                        <span class="username" style="font-size: 15px;">
+               &nbsp;&nbsp;<?php echo $objResult->member_fullname; ?> 
+                         <span class="float-right">
+                        <span class="description" style="font-size: 13px;">Shared publicly - <?php echo $objResult->news_date; ?></span>
+                      </span>
+                        <!-- /.user-block -->
+              <p>   <class style="font-size: 16px;">     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b> <?php echo $objResult->news_topic; ?></b></p>
+                      
+                      <class style="font-size: 15px;">   <?php echo $objResult->news_detail; ?>
+                     
   <p>
-                       
-                        <a href="#" class="link-black text-sm"></i></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <span class="float-right">
-                           <a href="reply_newtopic.php?id=<?php echo $objResult->news_id;?>" class="btn btn-primary btn-xs">
-                  <i class="fa fa-edit" title="Detail">  Reply </i></a>
+                           <a href="reply_newtopic.php?id=<?php echo $objResult->news_id;?>">
+                  Reply </a>
                         </span>
                       </p>
                      </p>
-______________________________________________________________________________________________________________
-                    </div>
-                    </div>
-</div>      
-</div>  
+</div>
                     <!-- /.post -->
     <?php
                  }
@@ -389,28 +376,30 @@ ________________________________________________________________________________
                   
                   <!-- /.tab-pane -->
                   
-                      </div>
-                     </div>
-              
-
-                    </div>
-                  </div>
-                  <!-- /.tab-pane -->
-     
-                 
-                  <!-- /.tab-pane -->
-                </div>
-                <!-- /.tab-content -->
-              </div><!-- /.card-body -->
-            </div>
+                  
             <!-- /.nav-tabs-custom -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
+
+   
     <!-- /.content -->
+  </br>
+  </div>
+</class>
+</class>
+</p>
+</span>
+</div>
+</div>
+</div>
+  <!-- /.content-wrapper -->
+
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.3-pre
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
 
 
 

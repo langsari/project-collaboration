@@ -209,11 +209,10 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id' ";
                       <class style="font-size: 15px;">   <?php echo $objResult->news_detail; ?>
                      
   <p>
-
-                       
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <span class="float-right">
-                           <a href="view_newstopic.php?id=<?php echo $objResult->news_id;?>" class="btn btn-primary btn-xs">
-                  <i class="fa fa-edit" title="Detail">  Reply </i></a>
+                           <a href="view_newstopic.php?id=<?php echo $objResult->news_id;?>">
+                  Reply </a>
                         </span>
                       </p>
                      </p>
@@ -235,6 +234,13 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id' ";
     <!-- /.content -->
   </br>
   </div>
+</class>
+</class>
+</p>
+</span>
+</div>
+</div>
+</div>
   <!-- /.content-wrapper -->
 
   <!-- /.content-wrapper -->

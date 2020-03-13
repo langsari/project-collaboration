@@ -323,6 +323,7 @@ to get the desired effect
 
 
 
+
   <div class="content">
   
         <div class="row">
@@ -332,6 +333,7 @@ to get the desired effect
                        
 
 
+                
                      <?php
 
 $id = $_GET['id'];
@@ -344,33 +346,39 @@ WHERE announcement.announcement_id = '$id'";
                   while($objResult = $objQuery->fetch_object()){
 
    ?>
+  
+
    
 
+         
             <table class="display datatable table table-stripped" cellspacing="0" width="100%">
 
                   <tbody>
                   
                       <td> 
 
-                      </br><b> <font color="blue" size="5"> <?php echo $objResult->announcement_topic;?></font> </br></b>
- <i class='far fa-user-circle' style='font-size:20px'></i>​ 
-                       &nbsp;&nbsp;
-                       <?php echo $objResult->admin_fullname;?></br>
-
-                  <i class='far fa-calendar-alt' style='font-size:20px'> </i>&nbsp;&nbsp;&nbsp; <?php echo $objResult->announcement_date;?>
-
-                         &nbsp;&nbsp;&nbsp; <?php echo $objResult->announcement_detail;?>
-
+                   
+<img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image"  width="30" height="30">
+                        <span class="username" style="font-size: 15px;">
+               &nbsp;&nbsp;<?php echo $objResult->admin_fullname; ?> 
+                         <span class="float-right">
+                        <span class="description" style="font-size: 13px;">Shared publicly - <?php echo $objResult->announcement_date; ?></span>
+                      </span>
+                        <!-- /.user-block -->
+              <p>   <class style="font-size: 16px;">     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <b><?php echo $objResult->announcement_topic; ?></b></p>
+                      
+                      <class style="font-size: 15px;">   <?php echo $objResult->announcement_detail; ?>
+                     
+  <p>
 
                  
                              <span class="float-right">
 
-                               <button ype="submit" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addcomment">Reply</button>
+                               <button ype="submit" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addtopic">Reply</button>
                           
                         </div>
                         
                         </td> 
-
             <?php
                  }
                }
@@ -384,15 +392,36 @@ WHERE announcement.announcement_id = '$id'";
 </div>
 
 </div>
-ss
 
+
+
+  <div class="modal fade" id="addtopic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+                            <div class="modal-header bg-success">
+              <h4 class="modal-title">Reply</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
 
             <div class="modal-body">
               
-    <form id="add" name="add" method="post" action="check_reply.php"
-                      onsubmit="return checkForm()">
+          <form id="add" name="add" method="post" action="check_reply.php" onsubmit="return checkForm()">
+                  
 
-             
+      <div class="form-group row">
+          <div class="col-md-3">
+              <label class="control-label col-form-label">Topic</label>
+              </div>
+                <div class="col-md-9">
+          <input type="text" class="form-control" placeholder="Topic" aria-describedby="basic-addon1"
+                    id="announcement_topic" name="announcement_topic" autocomplete="off" required>
+                  </div>
+                </div>
+
+           
+
                       <div class="form-group row">
                         <div class="col-md-3">
                           <label class="control-label col-form-label">Detail</label>
@@ -411,9 +440,9 @@ ss
                         <div class="col-md-3">
                         </div>
                         <div class="col-md-9">
-                                      <select class="form-control" name="writer" hidden="">
+                          <select class="form-control" name="admin_id" hidden="">
 
-                            <?php
+                        <?php
                 include '../menu/connect.php';
                 $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_id ='".$_SESSION['id']."'";
                 if($result = $db->query($strSQL)){
@@ -423,47 +452,73 @@ ss
                 }else{
                 }
                 ?>
-                          </select>
+                      </select>
                         </div>
                       </div>
 
-                                   <?php
+
+
+
+  <?php
 
 $id = $_GET['id'];
 
 
-$strSQL = "SELECT  announcement.announcement_topic,announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname,announcement.announcement_id  FROM announcement
+$strSQL = "SELECT  announcement.announcement_topic,announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname,member.member_fullname  FROM announcement
           LEFT JOIN admin ON announcement.admin_id = admin.admin_id
+         LEFT JOIN member ON announcement.admin_id = member.member_id
+
 WHERE announcement.announcement_id = '$id'";      
      if($objQuery = $db->query($strSQL)){
                   while($objResult = $objQuery->fetch_object()){
 
    ?>
-   
 
-                  <input class="form-control form-control-sm" type="text" name="parent_commnet_id" id="parent_commnet_id" value="<?php echo $objResult->announcement_id; ?>" 
-                       >
-
-
-                      <input type="text" name="announcement_id" value="<?php echo $objResult->announcement_id; ?>" />
-      <?php
+                  <input class="form-control form-control-sm" type="text" name="parent_comment_id" id="parent_comment_id" value="<?php echo $objResult->announcement_id; ?>"  hidden>
+    <?php
                  }
                }
                    ?>
-           
+
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Post</button>
+              <button type="submit" class="btn btn-primary">CREATE</button>
             </div>
 
             </form>
           </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
 
+
+
+  <!--form alert add topic-->
+
+            </div>
+        </div>
+      </div>
+    </div>
+
+ 
+
+    <!-- /.content -->
+
+  </div>
+</class>
+</class>
+</p>
+</span>
+</div>
+
+  <!-- /.content-wrapper -->
+
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.3-pre
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
 
     <!-- /.contentg -->
  
