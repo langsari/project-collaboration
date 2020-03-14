@@ -508,7 +508,9 @@ if($result = $db->query($sql)){
 
     <!-- /.content -->
      <!-- /.content -->
-
+      <div class="container-fluid">
+        <div class="row">
+     <div class="col-md-12 ">
    <link rel="stylesheet" href="../../../assets/comment/style.css">
 
    <div class="comments-app"  ng-controller="CommentsController as cmntCtrl">
@@ -550,8 +552,7 @@ if($result = $db->query($sql)){
           <?php
 $id = $_GET['id'];
 
-$strSQL = "SELECT advisergroup.*,  files.by_officer,files.Owner,files.advisergroup_id,files.pf,files.status_advisor,files.files_filename_proposal,files.files_id,files.advisergroup_id FROM advisergroup
-LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id FROM advisergroup
 
 LEFT JOIN member ON advisergroup.member_id = member.member_id
 WHERE advisergroup.advisergroup_id = '$id'  ";             
@@ -560,7 +561,7 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
                   while($objResult = $result->fetch_object()){
             ?>
 
-     <input type="text" name="advisergroup_id" id="advisergroup_id" value="<?php echo $objResult->advisergroup_id;?>">
+     <input type="hidden" name="advisergroup_id" id="advisergroup_id" value="<?php echo $objResult->advisergroup_id;?>">
   <?php
                  } }
                    ?>
@@ -577,11 +578,13 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
   </div>
 
 
+
+
   <?php
           $id = $_GET['id'];
 
 
-    $strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,advisergroup.advisergroup_id,comment.comment_content,comment.date,comment.member_id,member.member_fullname FROM advisergroup
+    $strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,advisergroup.advisergroup_id,comment.comment_content,comment.date,comment.member_id,member.member_fullname,comment.form_pf FROM advisergroup
           LEFT JOIN comment ON advisergroup.advisergroup_id = comment.advisergroup_id
 
           LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
@@ -590,7 +593,7 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id 
 
-        WHERE advisergroup.advisergroup_id = '$id'";                 
+        WHERE advisergroup.advisergroup_id = '$id'and comment.form_pf='1'  ";                 
      if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
 
@@ -626,10 +629,27 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
 
     <!-- /.content -->
   </br>
- 
-</div>
- 
-</div> 
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+   </div>
+     </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
+      <b>Version</b> 3.0.3-pre
+    </div>
+       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+
+  <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 

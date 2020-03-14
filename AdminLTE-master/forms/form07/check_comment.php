@@ -19,7 +19,7 @@ $form_pf = $_POST['form_pf'];
 	if($db->query($sql)){
 		$db->close();
 
-			echo "<script>alert('Send Comment');window.location = \"pf01.php\";</script>";
+			echo "<script>alert('Send Comment');window.location = \"pf07.php\";</script>";
 
 
 	}else{

@@ -477,8 +477,7 @@ WHERE advisergroup.advisergroup_id = '$id'";
           <?php
 $id = $_GET['id'];
 
-$strSQL = "SELECT advisergroup.*,  files.by_officer,files.Owner,files.advisergroup_id,files.pf,files.status_advisor,files.files_filename_proposal,files.files_id,files.advisergroup_id FROM advisergroup
-LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id FROM advisergroup
 
 LEFT JOIN member ON advisergroup.member_id = member.member_id
 WHERE advisergroup.advisergroup_id = '$id'  ";             
@@ -487,7 +486,7 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
                   while($objResult = $result->fetch_object()){
             ?>
 
-     <input type="text" name="advisergroup_id" id="advisergroup_id" value="<?php echo $objResult->advisergroup_id;?>" hidden>
+     <input type="hidden" name="advisergroup_id" id="advisergroup_id" value="<?php echo $objResult->advisergroup_id;?>">
   <?php
                  } }
                    ?>

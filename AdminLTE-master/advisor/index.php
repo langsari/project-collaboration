@@ -49,7 +49,7 @@ to get the desired effect
    <!-- Right navbar links -->
      <?php
   $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM comment WHERE parent_comment_id=0";
+  $query="SELECT * FROM comment WHERE comment_id=0";
   $query_num=mysqli_query($con,$query);
   $count=mysqli_num_rows($query_num);
 
