@@ -330,19 +330,12 @@ to get the desired effect
 
    
 
-
-
-
-
-
-<!-- partial:index.partial.html -->
-
       
         <div class="form-wizard">
-          <form action="check_pf10.php" method="post"  class="form-horizontal" enctype="multipart/form-data">
+          <form action="check_pf3.php" method="post"  class="form-horizontal" enctype="multipart/form-data">
             <div class="form-wizard-header">
               <ul class="list-unstyled form-wizard-steps clearfix">
-               <li class="active" ><span>1</span></li>
+                        <li class="active" ><span>1</span></li>
            <li class="active" ><span>2</span></li>
                   <li class="active" ><span>3</span></li>
                 <li class="active" ><span>4</span></li>
@@ -359,8 +352,8 @@ to get the desired effect
             </div>
 
             <fieldset class="wizard-fieldset show">
-              <h5>PF10</h5>
-            <?php
+              <h5>PF03</h5>
+                 <?php
   
 
     $id = $_GET['id'];
@@ -376,9 +369,7 @@ to get the desired effect
      if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
             ?>
-
-
-            <fieldset>
+  <fieldset>
             </br>
               <h5>Project Revision </h5>
            <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
@@ -472,7 +463,7 @@ to get the desired effect
       
          <div class="form-group clearfix">
 
-                  <a href="../form09/pf09.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-danger float-left">Previous</a>
+                     <a href="../form09/pf09.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-danger float-left">Previous</a>
           <?php if ($objResult->by_advisor10 != "Pass") {?>
             <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button> 
           <?php }else{?>
@@ -499,10 +490,8 @@ to get the desired effect
                  } }
                    ?>
 
-        </div>
-      </div>
-    </div>
-  </section>
+
+    
 
       <div class="content">
         <div class="row">
@@ -511,11 +500,11 @@ to get the desired effect
               <div class="card-block">
 
                 <h6 class="card-title text-bold">Comments For Committee</h6></b>
-                <?php
-         $id = $_GET['id'];
+                  <?php
+$id = $_GET['id'];
 
 
-$strSQL = "SELECT  member.member_fullname,committeegroup.comment_project FROM committeegroup
+$strSQL = "SELECT  member.member_fullname,committeegroup.comment FROM committeegroup
           LEFT JOIN member ON committeegroup.member_id = member.member_id
           WHERE committeegroup.group_id = '$id'";
 
@@ -523,6 +512,7 @@ $strSQL = "SELECT  member.member_fullname,committeegroup.comment_project FROM co
                   while($objResult = $result->fetch_object()){
 
    ?>
+
 
 
 
@@ -543,7 +533,7 @@ $strSQL = "SELECT  member.member_fullname,committeegroup.comment_project FROM co
                         </h5></span> </br>
 
 
-                        <h6> &nbsp;&nbsp; <font color='green'> <?php echo $objResult->comment_project;?> </h6></br></font>
+                        <h6> &nbsp;&nbsp; <font color='green'> <?php echo $objResult->comment;?> </h6></br></font>
 
 
 
@@ -553,15 +543,184 @@ $strSQL = "SELECT  member.member_fullname,committeegroup.comment_project FROM co
                         </div>
 
                     </td>
-
+</tbody>
+                </table>
                     <?php
                  }
                }
                    ?>
-                  </tbody>
-                </table>
+                  
+
+    </div>
+      </div>
+    </div>
+     </div>
+      </div>
+  </section>
 
 
+ <div class="container-fluid">
+        <div class="row">
+     <div class="col-md-12 ">
+
+
+
+   <link rel="stylesheet" href="../../../assets/comment/style.css">
+
+   <div class="comments-app"  ng-controller="CommentsController as cmntCtrl">
+
+  
+  <!-- From -->
+  <div class="comment-form">
+    <!-- Comment Avatar -->
+    <div class="comment-avatar">
+         <img src="../../../dist/img/user1.png" >  
+    </div>
+
+    <form method="post" action="check_comment.php" class="form" name="form" ng-submit="form.$valid && cmntCtrl.addComment()" >
+
+      <div class="form-row">
+        <textarea  class="input" name="comment_content" id="comment_content" 
+         placeholder="Add comment..." class="form-control"   required></textarea>
+
+             
+      </div>
+
+
+
+  <?php
+                        $strSQL="SELECT * FROM member  WHERE member_id='".$_SESSION['id']."'";
+                        ?>
+
+                        <?php
+                        if ($result = $db->query($strSQL)) {
+                          while ($row = $result->fetch_object()) {
+                        ?>
+
+                                <input type="text" class="form-control" name="member_id" value="<?php echo $_SESSION['name']; ?>" hidden>
+            
+<?php
+  }
+  }
+?>
+
+
+
+    
+          <?php
+$id = $_GET['id'];
+
+$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id FROM advisergroup
+
+LEFT JOIN member ON advisergroup.member_id = member.member_id
+WHERE advisergroup.advisergroup_id = '$id'  ";             
+      
+     if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+            ?>
+
+     <input type="hidden" name="advisergroup_id" id="advisergroup_id" value="<?php echo $objResult->advisergroup_id;?>">
+  <?php
+                 } }
+                   ?>
+
+
+                   <input type="hidden" name="group_id" id="group_id"  />
+
+          <input type="hidden" name="form_pf" id="form_pf"  value="10" />
+
+
+     
+      <div class="form-row">
+        <input type="submit" value="Add Comment">
+      </div>
+    </form>
+  </div>
+
+
+  <?php
+          $id = $_GET['id'];
+
+    $strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,advisergroup.advisergroup_id,comment.comment_content,comment.date,comment.member_id,member.member_fullname FROM advisergroup
+          LEFT JOIN comment ON advisergroup.advisergroup_id = comment.advisergroup_id
+
+          LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+
+
+
+        LEFT JOIN member ON advisergroup.member_id = member.member_id 
+
+        WHERE advisergroup.advisergroup_id = '$id' and form_pf='10' ";                 
+     if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+
+
+   ?>
+ 
+
+
+   <div class="callout callout-info">
+                <img class="img-circle img-bordered-sm" src="../../../dist/img/user.png" alt="user image"  width="30" height="30">
+<class style="font-size: 15px;">   &nbsp;&nbsp;<?php echo $objResult->member_id;?>  
+
+
+
+
+                   <span class="float-right">
+                        <span class="description" style="font-size: 13px;">Shared publicly - <?php echo $objResult->date; ?></span>
+                      </span> 
+             <p>
+
+           
+            <class style="font-size: 15px;">    <?php echo $objResult->comment_content;?>
+            </div>
+      
+
+
+
+          <?php
+                 }
+               }
+                   ?>   
+           
+
+    <!-- /.content -->
+   <!-- /.content -->
+ </div>
+  </br>
+
+ </div>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+   </div>
+     </div>
+
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
+      <b>Version</b> 3.0.3-pre
+    </div>
+       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+
+  <!-- /.control-sidebar -->
+</div>
+ 
+
+
+
+
+<!-- partial:index.partial.html -->
+
+      
     <!-- /.content -->
  
 <!-- ./wrapper -->
