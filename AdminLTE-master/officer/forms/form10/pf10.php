@@ -465,63 +465,7 @@ to get the desired effect
     </div>
   </section>
 
-      <div class="content">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="card">
-              <div class="card-block">
-
-                <h6 class="card-title text-bold">Comments For Committee</h6></b>
-                <?php
-         $id = $_GET['id'];
-
-
-$strSQL = "SELECT  member.member_fullname,committeegroup.comment_project FROM committeegroup
-          LEFT JOIN member ON committeegroup.member_id = member.member_id
-          WHERE committeegroup.group_id = '$id'";
-
-     if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-
-   ?>
-
-
-
-
-
-
-                <table class="display datatable table table-stripped" cellspacing="0" width="100%">
-
-                  <tbody>
-
-                    <td>
-
-                      </br><b>
-
-
-
-                        <h5> &nbsp;&nbsp;<span class="badge badge-primary"> <?php echo $objResult->member_fullname;?>
-                        </h5></span> </br>
-
-
-                        <h6> &nbsp;&nbsp; <font color='green'> <?php echo $objResult->comment_project;?> </h6></br></font>
-
-
-
-
-                        <div class="col-md-12" align="right">
-
-                        </div>
-
-                    </td>
-
-                    <?php
-                 }
-               }
-                   ?>
-                  </tbody>
-                </table>
-
+    
 
     <!-- /.content -->
  

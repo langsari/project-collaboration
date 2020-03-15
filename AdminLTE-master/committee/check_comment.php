@@ -18,7 +18,7 @@ $form_pf = $_POST['form_pf'];
 
   if($db->query($sql)){
     $db->close();
-      echo "<script>alert('Send Comment');window.location = \"form10.php\";</script>";
+      echo "<script>alert('Send Comment');window.location = \"form03.php\";</script>";
 
 
   }else{

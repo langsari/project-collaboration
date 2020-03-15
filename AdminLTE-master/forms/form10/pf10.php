@@ -410,7 +410,7 @@ to get the desired effect
 
                          <td>
                           </br>Status</br>
-                            <?php echo status_08($objResult->by_advisor10); ?>
+                            <?php echo status_10($objResult->by_advisor10); ?>
                               </span> <?php echo get_advisor($objResult->group_id); ?>
                           </td>
 

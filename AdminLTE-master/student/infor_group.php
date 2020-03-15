@@ -333,12 +333,12 @@ to get the desired effect
               </div>
               <!-- /.card-header -->
           <div class="card-body">
-                <table class="table table-bordered">
+                <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>Student ID</th>
-                      <th>Full Name</th>
-                      <th style="width: 40px">Phone</th>
+                   <th style="font-size: 15px;" width="30%" class="text-left">Student ID</th>
+                     <th style="font-size: 15px;" width="30%" class="text-left">Full Name</th>
+                     <th style="font-size: 15px;" width="30%" class="text-left">Phone</th>
                     </tr>
                   </thead>
 
@@ -351,9 +351,9 @@ to get the desired effect
 
                   <tbody>
                     <tr>
-                  <td><?php echo $objResult->member_idcard; ?></td>
-                  <td><?php echo $objResult->member_fullname; ?></td>
-                  <td><?php echo $objResult->member_phone; ?></td>
+                    <td class="text-left" style="font-size: 15px;" width="20%">  <?php echo $objResult->member_idcard; ?></td>
+                    <td class="text-left" style="font-size: 15px;" width="20%">  <?php echo $objResult->member_fullname; ?></td>
+                    <td class="text-left" style="font-size: 15px;" width="20%">  <?php echo $objResult->member_phone; ?></td>
                     </tr>
                    
                         <?php
@@ -416,12 +416,14 @@ to get the desired effect
  
             
 
-       <table class="table table-bordered table-striped">
+       <table class="table table-hover text-nowrap">
               <thead>
                 <tr>
-                  <th class="text-center" style="width: 50px;">#</th>
-                  <th>Group Member</th>
-                  <th class="text-center" style="width: 100px;"></th>
+             <th style="font-size: 15px;" width="3%" class="text-left">No</th>
+
+                <th style="font-size: 15px;" width="10%" class="text-left">Group</th>
+                   <th style="font-size: 15px;" width="40%" class="text-left">Group Member</th>
+                  <th style="font-size: 15px;" width="20%" class="text-left"></th>
                 </tr>
               </thead>
               <tbody>
@@ -429,13 +431,16 @@ to get the desired effect
               <?php
                     // require 'menu/function.php';
               $sql = "SELECT * FROM partnergroup";
+                  $i = 1;
+   $count = 1;
               if($rs = $db->query($sql)){
                 while($row = $rs->fetch_object()){
               ?>
 
            <tr>
-                  <td class="text-center"><?php echo $row->group_number; ?></td>
-                  <td><?php echo get_member_list($row->group_id); ?></td>
+                    <td class="text-left" style="font-size: 13px;" width="4%">   <?php echo $count++; ?></td>
+                   <td class="text-left" style="font-size: 13px;" width="10%"> <?php echo $row->group_number; ?></td>
+                   <td class="text-left" style="font-size: 13px;" width="50%"> <?php echo get_member_list($row->group_id); ?></td>
                   <td class="text-center">
                     <a href="check_group.php?id=<?php echo $row->group_id; ?>" class="btn btn-primary btn-xs" onclick="return confirm_joingroup()"><i class="glyphicon glyphicon-plus-sign"></i> Join this Group</a>
                   </td>
@@ -477,13 +482,13 @@ to get the desired effect
   </button>
 
 
-   <table class="table table-bordered">                  <thead>                  
+   <table class="table table-hover text-nowrap">                  <thead>                  
 
                                          My Group partner
                                            <tr>
-                  <th>Student ID</th>
-                  <th>Full Name</th>
-                  <th>Phone</th>
+                   <th style="font-size: 15px;" width="15%" class="text-left">Student ID</th>
+                   <th style="font-size: 15px;" width="30%" class="text-left">Full Name</th>
+                    <th style="font-size: 15px;" width="10%" class="text-left">Phone</th>
                 </tr>
                                         </thead>
                                         <tbody>
@@ -500,9 +505,9 @@ to get the desired effect
                 while($row = $rs->fetch_object()){
               ?>
                 <tr>
-                  <td><?php echo $row->member_idcard; ?></td>
-                  <td><?php echo $row->member_fullname; ?></td>
-                  <td><?php echo $row->member_phone; ?></td>
+                <td class="text-left" style="font-size: 15px;" width="15%"> <?php echo $row->member_idcard; ?></td>
+                <td class="text-left" style="font-size: 15px;" width="30%"> <?php echo $row->member_fullname; ?></td>
+                  <td class="text-left" style="font-size: 15px;" width="10%"> <?php echo $row->member_phone; ?></td>
                 </tr>
               <?php
                 }
@@ -621,15 +626,14 @@ to get the desired effect
               
           
 
-<table class="table table-bordered">                   
+<table class="table table-hover text-nowrap">                   
  <thead>                  
 
             <tr>
 
-              <th>GroupNo</th>
-              <th>Title project</th>
-              <th>Advisor</th>
-              <th>Status</th>
+               <th style="font-size: 15px;" width="50%" class="text-left">Title project</th>
+                <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>
+                <th style="font-size: 15px;" width="5%" class="text-left">Status</th>
            </tr>
           </thead>
     <tbody>
@@ -651,28 +655,28 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
                 while($row = $rs->fetch_object()){
               ?>
                 <tr>                 
-                  <td><?php echo get_group_id($row->group_id); ?></td>
-                  <td><?php echo $row->advisergroup_topic; ?></td>
+               
+                  <td class="text-left" style="font-size: 15px;" width="30%"><?php echo $row->advisergroup_topic; ?></td>
 
-                  <td><?php echo $row->member_fullname; ?></td>
+                   <td class="text-left" style="font-size: 15px;" width="10%"><?php echo $row->member_fullname; ?></td>
                           
 
- <td class="text-center"><?php echo status_01($row->advisergroup_status);?><font color='red'> *For Advisor</font> </td>
-                </tr>
-
-
-               
+<td class="text-left" style="font-size: 15px;" width="5%"><?php echo status_01($row->advisergroup_status);?><font color='red'> </br>*For Advisor</font> </td>
+                             </tr>
               <?php
                 }
               }else{
               }
               ?>
-                                         </tbody>
-                                    </table>
+                                          </tbody>
+                                        </table>
+                                      </form>
+                                      
                                 </div>
                             </div>
                         </div>
-                    
+                      
+          
 
   <!-- END FORM Partner -->
 
@@ -686,14 +690,14 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
               </div>
               <!-- /.card-header -->
            <div class="card-body">
-                <table class="table table-bordered">
+                <table class="table table-sm">
                   <thead>
                           
                                          
                                            <tr>
-                  <th>Lecturer ID</th>
-                  <th>Full Name</th>
-                  <th>Phone</th>
+                   <th style="font-size: 15px;" width="20%" class="text-left">Lecturer ID</th>
+                  <th style="font-size: 15px;" width="30%" class="text-left">Full Name</th>
+                 <th style="font-size: 15px;" width="20%" class="text-left">Phone</th>
                 </tr>
                                         </thead>
                                         <tbody>
@@ -710,9 +714,9 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
                 while($row = $rs->fetch_object()){
               ?>
                 <tr>
-                  <td><?php echo $row->member_idcard; ?></td>
-                  <td><?php echo $row->member_fullname; ?></td>
-                  <td><?php echo $row->member_phone; ?></td>
+                   <td class="text-left" style="font-size: 15px;" width="20%"><?php echo $row->member_idcard; ?></td>
+                   <td class="text-left" style="font-size: 15px;" width="20%"><?php echo $row->member_fullname; ?></td>
+                  <td class="text-left" style="font-size: 15px;" width="10%"><?php echo $row->member_phone; ?></td>
                 </tr>
               <?php
                 }
@@ -727,11 +731,21 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
             </div>
             <!-- /.card -->
           </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
+     </div>
+     
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
+      <b>Version</b> 3.0.3-pre
+    </div>
+       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+    reserved.
+  </footer>
 
+  <!-- Control Sidebar -->
 
+  <!-- /.control-sidebar -->
+</div>
 
     <!-- /.content -->
  

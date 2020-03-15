@@ -67,7 +67,7 @@ else if($_SESSION['rank'] == "6")
 else if($_SESSION['rank'] == "7")
 			{
 				
-         header("Location: ../forms/form07pf07.php?id=$id");
+         header("Location: ../forms/form07/pf07.php?id=$id");
 				exit();
 					}
 

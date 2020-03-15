@@ -2,7 +2,7 @@
 if(isset($_GET['pdf']))
 {
     $var_1 = $_GET['pdf'];
-$dir = "../forms/fileupload/"; // trailing slash is important
+$dir = "../../forms/fileupload/"; // trailing slash is important
 $file = $dir . $var_1;
  
 if (file_exists($file))

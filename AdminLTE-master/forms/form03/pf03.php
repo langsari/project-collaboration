@@ -371,7 +371,6 @@ to get the desired effect
 
 $strSQL = "SELECT advisergroup.*,  files.by_officer,files.Owner,files.advisergroup_id,files.pf,files.status_advisor,files.files_filename_proposal,files.files_id,files.advisergroup_id FROM advisergroup
 LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
-
 LEFT JOIN member ON advisergroup.member_id = member.member_id
 WHERE advisergroup.advisergroup_id = '$ag_id'  ";             
       
@@ -442,7 +441,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
 
 
-                    <?php if ($objResult->files_filename_proposal != "") {?>
+                    <?php if ($objResult->status_advisor != "") {?>
                         <button class="btn btn-warning disabled" disabled="disabled">Upload</button> 
 
                       <?php }else{?>
@@ -514,74 +513,8 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                  } }
                    ?>
 
-    
 
-      <div class="content">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="card">
-              <div class="card-block">
-
-                <h6 class="card-title text-bold">Comments For Committee</h6></b>
-                <?php
-            $g_id = get_group_id();
-              $ag_id = get_ag_id($g_id);
-              
-
-
-$strSQL = "SELECT  member.member_fullname,committeegroup.comment FROM committeegroup
-          LEFT JOIN member ON committeegroup.member_id = member.member_id
-          WHERE committeegroup.group_id = '$ag_id'";
-
-     if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-
-   ?>
-
-
-
-
-
-
-
-                <table class="display datatable table table-stripped" cellspacing="0" width="100%">
-
-                  <tbody>
-
-                    <td>
-
-                      </br><b>
-
-
-
-                        <h5> &nbsp;&nbsp;<span class="badge badge-primary"> <?php echo $objResult->member_fullname;?>
-                        </h5></span> </br>
-
-
-                        <h6> &nbsp;&nbsp; <font color='green'> <?php echo $objResult->comment;?> </h6></br></font>
-
-
-
-
-                        <div class="col-md-12" align="right">
-
-                        </div>
-
-                    </td>
-</tbody>
-                </table>
-                    <?php
-                 }
-               }
-                   ?>
-                  
-
-    </div>
-      </div>
-    </div>
-     </div>
-      </div>
-  </section>
+   
 
 
  <div class="container-fluid">

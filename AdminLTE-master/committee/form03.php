@@ -427,8 +427,6 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
                                   
 
 
-
- 
   <td>
 <?php if( $objResult->files_filename_proposal != ""){ ?>
                       <a href="../forms/form01/download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>">
@@ -443,8 +441,7 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
                       </tbody>
                     </table>
 
-                    </table>
-
+      
 
 
               </fieldset>
@@ -464,163 +461,60 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
                  } }
                    ?>
 
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-      <div class="content">
+    
+ 
+ <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-12">
-            <div class="card">
-              <div class="card-block">
-<div class="card-header">
-               <h3 class="card-title">
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addcomment">
-                  <i class="nav-icon fas fa-plus"></i>
-                  Add Comment
-                </button>
-                </h3>
-        
-            </div>
-</div>
+     <div class="col-md-12 ">
 
 
-         
 
-   
-                <?php
+   <link rel="stylesheet" href="../assets/comment/style.css">
+
+   <div class="comments-app"  ng-controller="CommentsController as cmntCtrl">
+
+  
+  <!-- From -->
+  <div class="comment-form">
+    <!-- Comment Avatar -->
+    <div class="comment-avatar">
+         <img src="../dist/img/user1.png" >  
+    </div>
+
+    <form method="post" action="check_comment.php" class="form" name="form" ng-submit="form.$valid && cmntCtrl.addComment()" >
+
+      <div class="form-row">
+        <textarea  class="input" name="comment_content" id="comment_content" 
+         placeholder="Add comment..." class="form-control"   required></textarea>
+
+             
+      </div>
+
+
+
+  <?php
+                        $strSQL="SELECT * FROM member  WHERE member_id='".$_SESSION['id']."'";
+                        ?>
+
+                        <?php
+                        if ($result = $db->query($strSQL)) {
+                          while ($row = $result->fetch_object()) {
+                        ?>
+
+                                <input type="text" class="form-control" name="member_id" value="<?php echo $_SESSION['name']; ?>" hidden>
+            
+<?php
+  }
+  }
+?>
+
+                   <input type="hidden" name="group_id" id="group_id"  />
+
+
+          <?php
 $id = $_GET['id'];
 
-
-$strSQL = "SELECT  member.member_fullname,committeegroup.comment FROM committeegroup
-          LEFT JOIN member ON committeegroup.member_id = member.member_id
-          WHERE committeegroup.group_id = '$id'";
-
-     if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-
-   ?>
-   
-              <div class="card-body">
-                <div class="tab-content">
-                  <div class="active tab-pane" id="activity">
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image">
-                        <span class="username">
-                          <a href="#"><?php echo $objResult->member_fullname;?> </a>
-                        </span>
-                    
-                      </div>
-                      <!-- /.user-block -->
-                    
-                      <p>
-                   <?php echo $objResult->comment;?> 
-                      </p>
-
-                      <p>
-                        <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
-                        <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
-                        <span class="float-right">
-                          <a href="#" class="link-black text-sm">
-                            <i class="far fa-comments mr-1"></i> Comments (5)
-                          </a>
-                        </span>
-                      </p>
-
-_________________________________________________________________________________________________________________________________
-                    </div>
-                    </div>
-</div>      
-</div>              
-                    <!-- /.post -->
-    <?php
-                 }
-               }
-                   ?>
-                 
-                  <!-- /.tab-pane -->
-                  
-                      </div>
-                     </div>
-              
-
-                    </div>
-                  </div>
-                  <!-- /.tab-pane -->
-     
-                 
-                  <!-- /.tab-pane -->
-                </div>
-                <!-- /.tab-content -->
-              </div><!-- /.card-body -->
-            </div>
-            <!-- /.nav-tabs-custom -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-
-
-
-
-
-
-
-
-
- <div class="modal fade" id="addcomment" tabindex="-1" role="dialog"
-                                                aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                            <div class="modal-header bg-info">
-            <button type="button" class="close" data-dismiss="modal"
-                                                                aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                            <h5 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
-                                                               Add Comment</h4>
-                                                        </div>
-                                              
-                                                                            
-
-
-                        <div class="modal-body">
-
-
-            <form action="check_comment03.php?id=<?php echo $_GET["id"];?>" name="fromEdit" method="post"
-              onsubmit="return checkForm()">
-          <div class="form-group row margin-top-10">
-                <div class="col-md-2">
-                  <label class="control-label ">Comment</label>
-                </div>
-                <div class="col-md-10">
-     <textarea rows="5" width="30" class="form-control" id="comment" name="comment"
-                    placeholder="Comment"></textarea>
-
-                </div>
-              </div>
-
- <div class="form-group row ">
-                <div class="col-md-2">
-                  <label class="control-label ">Upload files</label>
-                </div>
-                <div class="col-md-10">
-     <input type="file" name="comment_file" id="comment_file" >
-
-                </div>
-              </div>
-                       
-
-                                   <?php
-$id = $_GET['id'];
-
-$strSQL = "SELECT advisergroup.*,  files.by_officer,files.Owner,files.advisergroup_id,files.pf,files.status_advisor,files.files_filename_proposal,files.files_id,files.advisergroup_id FROM advisergroup
-LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id FROM advisergroup
 
 LEFT JOIN member ON advisergroup.member_id = member.member_id
 WHERE advisergroup.advisergroup_id = '$id'  ";             
@@ -629,55 +523,106 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
                   while($objResult = $result->fetch_object()){
             ?>
 
-     <input type="text" name="advisergroup_id" id="advisergroup_id" value="<?php echo $objResult->advisergroup_id;?>">
-
-
-
-
-
-
-                                                     </br>
-
-    
-   
-                                                     
-                                                                 
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-default"
-                                                                        data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>
-                                                                        Cancle</button>
-                                                                    <button type="submit" class="btn btn-success"><i
-                                                                            class="glyphicon glyphicon-ok"></i>
-                                                                        Submit</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-</div>
-
-
-
-    <?php
+     <input type="hidden" name="advisergroup_id" id="advisergroup_id" value="<?php echo $objResult->advisergroup_id;?>">
+  <?php
                  } }
                    ?>
+          <input type="hidden" name="form_pf" id="form_pf"  value="3" />
+
+
+     
+      <div class="form-row">
+        <input type="submit" value="Add Comment">
+      </div>
+    </form>
+  </div>
+
+
+  <?php
+          $id = $_GET['id'];
+              
+
+    $strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,advisergroup.advisergroup_id,comment.comment_content,comment.date,comment.member_id,member.member_fullname FROM advisergroup
+          LEFT JOIN comment ON advisergroup.advisergroup_id = comment.advisergroup_id
+
+          LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+
+
+
+        LEFT JOIN member ON advisergroup.member_id = member.member_id 
+
+        WHERE advisergroup.advisergroup_id = '$id' and form_pf='3' ";                 
+     if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+
+
+   ?>
+ 
+
+
+   <div class="callout callout-info">
+                <img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image"  width="30" height="30">
+<class style="font-size: 15px;">   &nbsp;&nbsp;<?php echo $objResult->member_id;?>  
 
 
 
 
+                   <span class="float-right">
+                        <span class="description" style="font-size: 13px;">Shared publicly - <?php echo $objResult->date; ?></span>
+                      </span> 
+             <p>
+
+           
+            <class style="font-size: 15px;">    <?php echo $objResult->comment_content;?>
+            </div>
+      
 
 
 
+          <?php
+                 }
+               }
+                   ?>   
+           
 
+    <!-- /.content -->
+   <!-- /.content -->
+ </div>
+  </br>
 
+ </div>
+  </div>
 
+        </div>
+      </div>
+    </div>
+  </section>
+
+   </div>
+     </div>
+
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
+      <b>Version</b> 3.0.3-pre
+    </div>
+       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+
+  <!-- /.control-sidebar -->
+</div>
+ 
+
+ 
     <!-- /.content -->
  
 <!-- ./wrapper -->
 
 <!-- partial -->
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="../forms/form01/script.js"></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="../form01/script.js"></script>
 
 
 

@@ -276,19 +276,20 @@ to get the desired effect
                  
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
+           
+               <div class="card-body">
+              <table  id="example1" class="table table-sm">
+                <thead class="thead-light">
                 <tr>
-                 <th>Group Code</th>
-                <th>Owner Project</th>
-                <th>Title</th>
-                <th>Advisor</th>
-                <th> Files </th>
-                <th>Status</th>
-                <th>View</th>
-             <th>Options</th>
 
+                   <th style="font-size: 15px;" width="5%" class="text-left">No</th>
+                <th style="font-size: 15px;" width="20%" class="text-left"> Title project</th>
+                  <th style="font-size: 15px;" width="20%" class="text-left">Student</th>
+                 <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>
+                 <th style="font-size: 15px;" width="10%" class="text-left">Files</th>          
+                    <th style="font-size: 15px;" width="10%" class="text-left">Status</th>
+                    <th style="font-size: 15px;" width="10%" class="text-left">View</th>
+                <th style="font-size: 15px;" width="10%" class="text-left">Options</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -305,7 +306,7 @@ $my_id = $_SESSION['id'];
           LEFT JOIN files ON committeegroup.committeegroup_id = files.files_id
       LEFT JOIN schedule ON committeegroup.group_id = schedule.group_id
 
-    WHERE committeegroup.member_id  ='$my_id'   and schedule.schedule_type='1' and status_presentation= '' ";
+    WHERE committeegroup.member_id  ='$my_id'   and schedule.schedule_type='1' ";
 
                $i = 1;
    $count = 1;
@@ -317,12 +318,16 @@ $my_id = $_SESSION['id'];
 
                 
                     <tr>
-                         <td width="20px">   <?php echo $count++; ?></td>
-                <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
-                <td class="text-left"><?php echo get_topic($objResult->group_id); ?></td>
-                <td class="text-left"><?php echo get_advisor($objResult->group_id); ?></td>
 
-                 <td>
+            <td class="text-left" style="font-size: 14px;" width="5%" >  <?php echo $count++; ?></td>
+       <td class="text-left" style="font-size: 14px;" width="25%" ><?php echo get_topic($objResult->group_id); ?></td>
+     <td class="text-left" style="font-size: 14px;" width="25%" ><?php echo get_member_list($objResult->group_id); ?></td>
+
+
+        
+              <td class="text-left" style="font-size: 14px;" width="20%" ><?php echo get_advisor($objResult->group_id); ?></td>
+
+             <td class="text-left" style="font-size: 14px;" width="5%" >
 <?php if( $objResult->files_filename_proposal != ""){ ?>
                       <a href="../advisor/download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>">
                       <span class='badge badge-primary'><i class="fa fa-download">Download 
@@ -341,9 +346,9 @@ $my_id = $_SESSION['id'];
             
 
 
-                <td>
+          <td class="text-left" style="font-size: 14px;" width="5%" >
 
-  <a href="form03.php?id=<?php echo $objResult->group_id;?>"class="btn btn-primary btn-sm"> View <i class="fa fa-eye" title="Detail"></i></a>
+  <a href="form03.php?id=<?php echo $objResult->group_id;?>"class="btn btn-primary btn-sm">  <i class="fa fa-eye" title="Detail"></i></a>
 
          
 
@@ -351,15 +356,26 @@ $my_id = $_SESSION['id'];
 
 
 <td>  
-  <a href="check_pass03.php?id=<?php echo $objResult->group_id; ?>"
-                        class="btn btn-success btn-xs" title="Comfirm"
-                        ><i
-                          class='fa fa-check'></i> Approve</a>
 
+
+
+
+ <?php if ($objResult->status_presentation != "Pass") {?>        
+    <a href="check_pass03.php?id=<?php echo $objResult->group_id; ?>"  >
+
+            <button type="button" class="btn btn-success btn-xs  float-left" >
+              <i class='fa fa-check'></i></button>
+          <?php }else{?>
+
+            <button class="btn btn-warning btn-xs disabled float-left" disabled="disabled">      <i class='fa fa-check'></i></button> 
+
+          </a>
+                       <?php }?>
+              
 
 <a href="reject03.php?id=<?php echo $objResult->group_id; ?>"
-                    class="btn btn-danger btn-xs" title="Comfirm"><i
-                      class='fa fa-times'></i> Reject</a>
+                    class="btn btn-danger btn-xs float-right" title="Comfirm"><i
+                      class='fa fa-times'></i> </a>
 
 </td>
                
@@ -397,20 +413,21 @@ $my_id = $_SESSION['id'];
                  
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
+
+                      <div class="card-body">
+              <table  id="example2" class="table table-sm">
+                <thead class="thead-light">
                 <tr>
-              <th>Group Code</th>
-                <th>Owner Project</th>
-                <th>Title</th>
-                <th>Advisor</th>
-                                <th> Files </th>
+                   <th style="font-size: 15px;" width="5%" class="text-left">No</th>
+                <th style="font-size: 15px;" width="20%" class="text-left"> Title project</th>
+                  <th style="font-size: 15px;" width="20%" class="text-left">Student</th>
+                 <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>
+                 <th style="font-size: 15px;" width="10%" class="text-left">Files</th>          
+                    <th style="font-size: 15px;" width="10%" class="text-left">Status</th>
+                    <th style="font-size: 15px;" width="10%" class="text-left">View</th>
+                <th style="font-size: 15px;" width="10%" class="text-left">Options</th>
 
-                <th>Status</th>
-                <th>View</th>
-             <th>Options</th>
-
+          
                 </tr>
                 </thead>
                 <tbody>
@@ -427,7 +444,11 @@ $my_id = $_SESSION['id'];
           LEFT JOIN files ON committeegroup.committeegroup_id = files.files_id
       LEFT JOIN schedule ON committeegroup.group_id = schedule.group_id
 
-    WHERE committeegroup.member_id  ='$my_id'   and schedule.schedule_type='2' and status_project= ''  ";
+    WHERE committeegroup.member_id  ='$my_id'   and schedule.schedule_type='2'  ";
+
+
+
+
   $i = 1;
    $count = 1;
 
@@ -436,14 +457,16 @@ $my_id = $_SESSION['id'];
             ?>
 
 
-                         <td width="20px">   <?php echo $count++; ?></td>
-                <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
-                <td class="text-left"><?php echo get_topic($objResult->group_id); ?></td>
-                <td class="text-left"><?php echo get_advisor($objResult->group_id); ?></td>
+                         <td class="text-left" style="font-size: 14px;" width="5%" >  <?php echo $count++; ?></td>
+       <td class="text-left" style="font-size: 14px;" width="25%" ><?php echo get_topic($objResult->group_id); ?></td>
+     <td class="text-left" style="font-size: 14px;" width="25%" ><?php echo get_member_list($objResult->group_id); ?></td>
 
-                 <td>
+
+        
+              <td class="text-left" style="font-size: 14px;" width="20%" ><?php echo get_advisor($objResult->group_id); ?></td>
+     <td class="text-left" style="font-size: 14px;" width="5%" >
 <?php if( $objResult->files_filename_project != ""){ ?>
-                      <a href="../advisor/download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>">
+                      <a href="../form01/download.php?pdf=<?php echo $objResult->files_filename_project ;?>">
                       <span class='badge badge-primary'><i class="fa fa-download">Download 
                            </i></a></span>
                        </a>
@@ -451,29 +474,50 @@ $my_id = $_SESSION['id'];
                     <a href="#"> <button class="btn btn-danger btn-xs">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
                     <?php } ?>
+                              </td>
+
                 <td class="text-left"><?php echo $objResult->schedule_status; ?></td>
+
+
 
                 <td>
 
-  <a href="form10.php?id=<?php echo $objResult->group_id;?>"class="btn btn-primary btn-sm"> View <i class="fa fa-eye" title="Detail"></i></a>
+  <a href="form10.php?id=<?php echo $objResult->group_id;?>"class="btn btn-primary btn-sm">  <i class="fa fa-eye" title="Detail"></i></a>
 
          
 
                 </td>
 
 
-<td> 
 
 
 
-  <a href="check_pass10.php?id=<?php echo $objResult->group_id; ?>"
-                        class="btn btn-success btn-xs" title="Comfirm"
-                        ><i
-                          class='fa fa-check'></i> Approve</a>
+<td>  
+
+
+
+ <?php if ($objResult->status_project != "Pass") {?>        
+    <a href="check_pass10.php?id=<?php echo $objResult->group_id; ?>"  >
+
+            <button type="button" class="btn btn-success btn-xs  float-left" >
+              <i class='fa fa-check'></i></button>
+          <?php }else{?>
+
+            <button class="btn btn-warning btn-xs disabled float-left" disabled="disabled">      <i class='fa fa-check'></i></button> 
+
+          </a>
+                       <?php }?>
+              
+&nbsp;&nbsp;
+
+
+
+  
+
 
 <a href="reject10.php?id=<?php echo $objResult->group_id; ?>"
-                    class="btn btn-danger btn-xs" title="Comfirm"><i
-                         class='fa fa-times'></i> Reject</a>
+                    class="btn btn-danger btn-xs float-right" title="Comfirm"><i
+                      class='fa fa-times'></i> </a>
 
 </td>
                
@@ -486,6 +530,8 @@ $my_id = $_SESSION['id'];
     }
                }
                    ?>
+
+
 
 
                 </tbody>
@@ -525,14 +571,8 @@ $my_id = $_SESSION['id'];
 <script>
   $(function () {
     $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-    });
+    $("#example2").DataTable();
+   
   });
 </script>
 </body>

@@ -1,7 +1,7 @@
 <?php
 session_start();
-include("../../../menu/function.php");
-require '../../../menu/connect.php';
+include("../menu/function.php");
+require '../menu/connect.php';
 
 
 
@@ -19,7 +19,7 @@ $form_pf = $_POST['form_pf'];
 	if($db->query($sql)){
 		$db->close();
 
-			echo "<script>alert('Send Comment');window.location = \"form05.php\";</script>";
+			echo "<script>alert('Send Comment');window.location = \"form09.php\";</script>";
 
 
 

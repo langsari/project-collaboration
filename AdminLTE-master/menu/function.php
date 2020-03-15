@@ -52,6 +52,8 @@ function status_02($status){
 function status_03($status){
 	if($status == ''){
 		return "<span class='text-danger'></span>";
+	}else if($status == 'Waiting'){
+		return "<span class='badge badge-danger'>Waiting</span>";
 	}else if($status == 'No'){
 		return "<span class='badge badge-danger'>No Pass</span>";
 	}else if($status == 'Pass'){
@@ -571,7 +573,7 @@ require 'connect.php';
 	if($rs = $db->query($sql)){
 		if($rs->num_rows > 0){
 			while($row = $rs->fetch_object()){
-        $rows .= "<h6>".$row->member_idcard." &nbsp&nbsp&nbsp&nbsp ".$row->member_fullname."</h6>";
+        $rows .= "<h7> <div>".$row->member_idcard." &nbsp&nbsp&nbsp&nbsp ".$row->member_fullname."</h7></div>";
 			}
 		}else{
 			$rows = "<i class='text-danger'>- No member in this group -</i>";

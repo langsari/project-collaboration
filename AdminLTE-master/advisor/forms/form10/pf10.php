@@ -401,7 +401,7 @@ to get the desired effect
 
                           <td>
                             </br>
-                            <span><?php echo get_status_committee($objResult->group_id); ?></span>
+                            <span><?php echo get_status_committee1($objResult->group_id); ?></span>
                             <p>
 
                           </td>
@@ -413,7 +413,6 @@ to get the desired effect
 
 
                         <td class="hidden"> 5 chapter of Project Revision<p>
-                               <?php echo $objResult->files_filename_project; ?>
 
                           
 
@@ -429,9 +428,9 @@ to get the desired effect
 
     <td>
 <?php if( $objResult->files_filename_project != ""){ ?>
-                      <a href="../form01/download.php?pdf=<?php echo $objResult->files_filename_project ;?>">
+                      <a href="../forms/form01/download.php?pdf=<?php echo $objResult->files_filename_project ;?>">
                         <span class='badge badge-primary'><i class="fa fa-download">Download 
-                          <?php echo $objResult->files_filename_project ?> </i></a></span>
+                          </i></a></span>
  <?php }else{?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
@@ -441,7 +440,6 @@ to get the desired effect
 </tr>
                       </tbody>
                     </table>
-
 
 
               </fieldset>
@@ -492,71 +490,6 @@ to get the desired effect
 
 
     
-
-      <div class="content">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="card">
-              <div class="card-block">
-
-                <h6 class="card-title text-bold">Comments For Committee</h6></b>
-                  <?php
-$id = $_GET['id'];
-
-
-$strSQL = "SELECT  member.member_fullname,committeegroup.comment FROM committeegroup
-          LEFT JOIN member ON committeegroup.member_id = member.member_id
-          WHERE committeegroup.group_id = '$id'";
-
-     if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-
-   ?>
-
-
-
-
-
-
-
-                <table class="display datatable table table-stripped" cellspacing="0" width="100%">
-
-                  <tbody>
-
-                    <td>
-
-                      </br><b>
-
-
-
-                        <h5> &nbsp;&nbsp;<span class="badge badge-primary"> <?php echo $objResult->member_fullname;?>
-                        </h5></span> </br>
-
-
-                        <h6> &nbsp;&nbsp; <font color='green'> <?php echo $objResult->comment;?> </h6></br></font>
-
-
-
-
-                        <div class="col-md-12" align="right">
-
-                        </div>
-
-                    </td>
-</tbody>
-                </table>
-                    <?php
-                 }
-               }
-                   ?>
-                  
-
-    </div>
-      </div>
-    </div>
-     </div>
-      </div>
-  </section>
 
 
  <div class="container-fluid">

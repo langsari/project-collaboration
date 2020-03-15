@@ -9,9 +9,13 @@ include('../../menu/function.php');
 
 	$files_id = $_POST['files_id'];
     $advisergroup_id = $_POST['advisergroup_id'];
+      $status_advisor = $_POST['status_advisor'];
+
 
 	$sql = "UPDATE  files SET files_id = '$files_id', 
-										 advisergroup_id = '$advisergroup_id'
+										 advisergroup_id = '$advisergroup_id',
+                      status_advisor ='waiting'
+                  
 									
 
 			WHERE files_id = '$files_id'";

@@ -1,7 +1,7 @@
 <?php
 session_start();
-include("../../../menu/function.php");
-require '../../../menu/connect.php';
+include("../menu/function.php");
+require '../menu/connect.php';
 
 
 

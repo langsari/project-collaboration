@@ -283,15 +283,17 @@ PROPOSAL PROJECT AND PF01 REQUEST (PF01)
                  
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
+       <div class="card-body">
+              <table  id="example1" class="table table-sm">
+                <thead class="thead-light">
                 <tr>
-                  <th></th>
-                <th>Title project</th>
-                <th>Student</th>
-                <th>Files</th>
-                <th>Options</th>
+                     <th style="font-size: 15px;" width="5%" class="text-left">No</th>
+                <th style="font-size: 15px;" width="20%" class="text-left"> Title project</th>
+                  <th style="font-size: 15px;" width="20%" class="text-left">Student</th>
+                 <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>
+                 <th style="font-size: 15px;" width="10%" class="text-left">Files</th>          
+                    <th style="font-size: 15px;" width="10%" class="text-left">View</th>
+                <th style="font-size: 15px;" width="10%" class="text-left">Options</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -306,27 +308,28 @@ $my_id = $_SESSION['id'];
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.member_id  AND files.by_officer = '' 
-        Order By files_id
-               ";
+        WHERE advisergroup.member_id   and files.files_status ='Approve'  ";
    $i = 1;
    $count = 1;
 
               if($rs = $db->query($strSQL)){
-                while($row = $rs->fetch_object()){
+                while($objResult = $rs->fetch_object()){
               ?>
 
                 
                     <tr>
-                         <td width="20px">   <?php echo $count++; ?></td>
+                        
+            <td class="text-left" style="font-size: 14px;" width="5%" >  <?php echo $count++; ?></td>
+       <td class="text-left" style="font-size: 14px;" width="25%" ><?php echo get_topic($objResult->group_id); ?></td>
+     <td class="text-left" style="font-size: 14px;" width="25%" ><?php echo get_member_list($objResult->group_id); ?></td>
 
-                <td><?php echo get_member_list($row->group_id); ?></td>
-                <td><?php echo $row->advisergroup_topic; ?></td>
 
+        
+              <td class="text-left" style="font-size: 14px;" width="15%" ><?php echo get_advisor($objResult->group_id); ?></td>
 
-              <td>
-<?php if( $row->files_filename_proposal != ""){ ?>
-                      <a href="download.php?pdf=<?php echo $row->files_filename_proposal ;?>">
+             <td class="text-left" style="font-size: 14px;" width="8%" >
+<?php if( $objResult->files_filename_proposal != ""){ ?>
+                      <a href="../advisor/download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>">
                       <span class='badge badge-primary'><i class="fa fa-download">Download 
                            </i></a></span>
                        </a>
@@ -336,22 +339,42 @@ $my_id = $_SESSION['id'];
                     <?php } ?>
                               </td>
 
-                <td><a href="check_approved.php?id=<?php echo $row->files_id; ?>" class="btn btn-success btn-xs"
-                    title="Comfirm" onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                        class='fa fa-check'></i> Approve</a>
+          <td class="text-left" style="font-size: 14px;" width="8%" >
 
-  <a href="reject_02.php?id=<?php echo $row->advisergroup_id; ?>"
-                    class="btn btn-danger btn-xs" title="Comfirm"
-                    onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
-                      class='fa fa-times'></i> Reject</a>
-                    </td>
+  <a href="form02.php?id=<?php echo $objResult->group_id;?>"class="btn btn-primary btn-sm">  <i class="fa fa-eye" title="Detail"></i></a>
+
+         
+
+                </td>
+
+  <td class="text-left" style="font-size: 14px;" width="2%" >
+
+
+
+ <?php if ($objResult->by_officer != "Approve") {?>        
+    <a href="check_approved.php?id=<?php echo $objResult->files_id; ?>"  >
+
+            <button type="button" class="btn btn-success btn-xs  float-left" >
+              <i class='fa fa-check'></i></button>
+          <?php }else{?>
+
+            <button class="btn btn-warning btn-xs disabled float-left" disabled="disabled">      <i class='fa fa-check'></i></button> 
+
+          </a>
+                       <?php }?>
+              
+
+<a href="reject_02.php?id=<?php echo $objResult->advisergroup_id; ?>"
+                    class="btn btn-danger btn-xs float-right" title="Comfirm"><i
+                      class='fa fa-times'></i> </a>
+
+</td>
                
-
                     </tr>          
 
 
                                     <?php
-                                                                        $i++;  
+                                                             $i++;
 
     }
                }
@@ -380,21 +403,23 @@ COMPLETE PROJECT PROPOSAL (PF05)</b>
                  
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
+        
+
+       <div class="card-body">
+              <table  id="example2" class="table table-sm">
+                <thead class="thead-light">
                 <tr>
-                  <th></th>
-                        <th>Title project</th>
-                        <th>Student</th>
-                     <th>Files</th>
-
-                        <th>Status</th>
-
-
+                     <th style="font-size: 15px;" width="5%" class="text-left">No</th>
+                <th style="font-size: 15px;" width="20%" class="text-left"> Title project</th>
+                  <th style="font-size: 15px;" width="20%" class="text-left">Student</th>
+                 <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>
+                 <th style="font-size: 15px;" width="10%" class="text-left">Files</th>          
+                    <th style="font-size: 15px;" width="10%" class="text-left">View</th>
+                <th style="font-size: 15px;" width="10%" class="text-left">Options</th>
                 </tr>
                 </thead>
                 <tbody>
+
                        
        <?php
 
@@ -409,27 +434,31 @@ $my_id = $_SESSION['id'];
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.member_id  AND files.by_advisor04 = 'Pass' AND by_officer05=''
+        WHERE advisergroup.member_id  AND files.by_advisor04 = 'Pass' 
         Order By files_id
                ";
   $i = 1;
    $count = 1;
        
               if($rs = $db->query($strSQL)){
-                while($row = $rs->fetch_object()){
+                while($objResult = $rs->fetch_object()){
               ?>
 
 
                 
-                    <tr>
-                         <td width="20px">   <?php echo $count++; ?></td>
+                     <tr>
+                        
+            <td class="text-left" style="font-size: 14px;" width="5%" >  <?php echo $count++; ?></td>
+       <td class="text-left" style="font-size: 14px;" width="25%" ><?php echo get_topic($objResult->group_id); ?></td>
+     <td class="text-left" style="font-size: 14px;" width="25%" ><?php echo get_member_list($objResult->group_id); ?></td>
 
-                        <td><?php echo $row->advisergroup_topic; ?></td>
-                        <td><?php echo get_member_list($row->group_id); ?></td>
 
-              <td>
-<?php if( $row->files_filename_proposal != ""){ ?>
-                      <a href="download.php?pdf=<?php echo $row->files_filename_proposal ;?>">
+        
+              <td class="text-left" style="font-size: 14px;" width="15%" ><?php echo get_advisor($objResult->group_id); ?></td>
+
+             <td class="text-left" style="font-size: 14px;" width="8%" >
+<?php if( $objResult->files_filename_proposal != ""){ ?>
+                      <a href="../advisor/download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>">
                       <span class='badge badge-primary'><i class="fa fa-download">Download 
                            </i></a></span>
                        </a>
@@ -439,28 +468,47 @@ $my_id = $_SESSION['id'];
                     <?php } ?>
                               </td>
 
+          <td class="text-left" style="font-size: 14px;" width="8%" >
 
-                        <td>
+  <a href="form05.php?id=<?php echo $objResult->group_id;?>"class="btn btn-primary btn-sm">  <i class="fa fa-eye" title="Detail"></i></a>
 
-                              <a href="check_pf05.php?id=<?php echo $row->files_id; ?>"
-                        class="btn btn-success btn-xs" title="Comfirm"
-                     ><i
-                           class='fa fa-check'></i> Approve</a>
+         
 
-                 <a href="reject05.php?id=<?php echo $row->advisergroup_id; ?>"
-                    class="btn btn-danger btn-xs" title="Comfirm"><i
-                      class='fa fa-times'></i> Reject</a>
+                </td>
+
+  <td class="text-left" style="font-size: 14px;" width="2%" >
+
+
+
+ <?php if ($objResult->by_officer05 != "Pass") {?>        
+    <a href="check_pf05.php?id=<?php echo $objResult->files_id; ?>"  >
+
+            <button type="button" class="btn btn-success btn-xs  float-left" >
+              <i class='fa fa-check'></i></button>
+          <?php }else{?>
+
+            <button class="btn btn-warning btn-xs disabled float-left" disabled="disabled">      <i class='fa fa-check'></i></button> 
+
+          </a>
+                       <?php }?>
+              
+
+<a href="reject05.php?id=<?php echo $objResult->advisergroup_id; ?>"
+                    class="btn btn-danger btn-xs float-right" title="Comfirm"><i
+                      class='fa fa-times'></i> </a>
+
 </td>
-
                
                     </tr>          
 
 
                                     <?php
-       $i++;
+                                                             $i++;
+
     }
                }
                    ?>
+
 
 
                 </tbody>
@@ -481,20 +529,23 @@ OFFICER RECEIVE COPY OF 5 CHAPTERS PROJECT (PF09)
                  
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
+          
+            
+       <div class="card-body">
+              <table  id="example3" class="table table-sm">
+                <thead class="thead-light">
                 <tr>
-                  <th></th>
-                        <th>Title project</th>
-                        <th>Student</th>
-<th>Files</th>
-                        <th>Status</th>
-
+                     <th style="font-size: 15px;" width="5%" class="text-left">No</th>
+                <th style="font-size: 15px;" width="20%" class="text-left"> Title project</th>
+                  <th style="font-size: 15px;" width="20%" class="text-left">Student</th>
+                 <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>
+                 <th style="font-size: 15px;" width="10%" class="text-left">Files</th>          
+                    <th style="font-size: 15px;" width="10%" class="text-left">View</th>
+                <th style="font-size: 15px;" width="10%" class="text-left">Options</th>
                 </tr>
                 </thead>
                 <tbody>
-                       
+
 
                       <?php
 
@@ -504,30 +555,34 @@ OFFICER RECEIVE COPY OF 5 CHAPTERS PROJECT (PF09)
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
 
-    $strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic ,files.by_advisor08,files.by_officer05,files.files_filename_project FROM advisergroup
+    $strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic ,files.by_advisor08,files.by_officer09,files.files_filename_project FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.member_id  AND pf='8' And by_officer09 ='' 
+        WHERE advisergroup.member_id  AND  by_advisor08='Pass'
         Order By files_id
                ";
   $i = 1;
    $count = 1;
               if($rs = $db->query($strSQL)){
-                while($row = $rs->fetch_object()){
+                while($objResult = $rs->fetch_object()){
               ?>
 
                 
                     <tr>
-                         <td width="20px">   <?php echo $count++; ?></td>
 
-                        <td><?php echo $row->advisergroup_topic; ?></td>
-                        <td><?php echo get_member_list($row->group_id); ?></td>
+                           <td class="text-left" style="font-size: 14px;" width="5%" >  <?php echo $count++; ?></td>
+       <td class="text-left" style="font-size: 14px;" width="25%" ><?php echo get_topic($objResult->group_id); ?></td>
+     <td class="text-left" style="font-size: 14px;" width="25%" ><?php echo get_member_list($objResult->group_id); ?></td>
 
-        <td>
-<?php if( $row->files_filename_project != ""){ ?>
-                      <a href="download.php?pdf=<?php echo $row->files_filename_project ;?>">
+
+        
+              <td class="text-left" style="font-size: 14px;" width="15%" ><?php echo get_advisor($objResult->group_id); ?></td>
+
+             <td class="text-left" style="font-size: 14px;" width="8%" >
+<?php if( $objResult->files_filename_project != ""){ ?>
+                      <a href="../advisor/download.php?pdf=<?php echo $objResult->files_filename_project ;?>">
                       <span class='badge badge-primary'><i class="fa fa-download">Download 
                            </i></a></span>
                        </a>
@@ -537,20 +592,37 @@ $my_id = $_SESSION['id'];
                     <?php } ?>
                               </td>
 
-                        <td>
+          <td class="text-left" style="font-size: 14px;" width="8%" >
 
-        <a href="check_pf09.php?id=<?php echo $row->files_id; ?>"
-                        class="btn btn-success btn-xs" title="Comfirm"
-                        onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
-                           class='fa fa-check'></i> Approve</a>
+  <a href="form09.php?id=<?php echo $objResult->group_id;?>"class="btn btn-primary btn-sm">  <i class="fa fa-eye" title="Detail"></i></a>
 
-                 <a href="reject_09.php?id=<?php echo $row->advisergroup_id; ?>"
-                    class="btn btn-danger btn-xs" title="Comfirm"><i
-                     class='fa fa-times'></i> Reject</a>
+         
 
+                </td>
+
+  <td class="text-left" style="font-size: 14px;" width="2%" >
+
+
+
+ <?php if ($objResult->by_officer09 != "Approve") {?>        
+    <a href="check_pf09.php?id=<?php echo $objResult->files_id; ?>"  >
+
+            <button type="button" class="btn btn-success btn-xs  float-left" >
+              <i class='fa fa-check'></i></button>
+          <?php }else{?>
+
+            <button class="btn btn-warning btn-xs disabled float-left" disabled="disabled">      <i class='fa fa-check'></i></button> 
+
+          </a>
+                       <?php }?>
+              
+
+<a href="reject_09.php?id=<?php echo $objResult->advisergroup_id; ?>"
+                    class="btn btn-danger btn-xs float-right" title="Comfirm"><i
+                      class='fa fa-times'></i> </a>
 
 </td>
-
+               
                     </tr>          
 
 
@@ -601,14 +673,9 @@ $my_id = $_SESSION['id'];
 <script>
   $(function () {
     $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-    });
+    $("#example2").DataTable();
+    $("#example3").DataTable();
+
   });
 </script>
 </body>
