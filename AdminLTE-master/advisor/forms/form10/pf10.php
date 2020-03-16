@@ -500,7 +500,6 @@ to get the desired effect
 
    <link rel="stylesheet" href="../../../assets/comment/style.css">
 
-   <div class="comments-app"  ng-controller="CommentsController as cmntCtrl">
 
   
   <!-- From -->
@@ -631,7 +630,7 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
   </section>
 
    </div>
-     </div>
+  
 
   <!-- /.content-wrapper -->
   <footer class="main-footer">

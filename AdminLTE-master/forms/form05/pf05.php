@@ -478,7 +478,6 @@ to get the desired effect
 
    <link rel="stylesheet" href="../../assets/comment/style.css">
 
-   <div class="comments-app"  ng-controller="CommentsController as cmntCtrl">
 
   
   <!-- From -->
@@ -586,7 +585,7 @@ $g_id = get_group_id();
     </div>
   </section>
 
-   </div>
+   
      </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">

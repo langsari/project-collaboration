@@ -387,22 +387,24 @@ WHERE advisergroup.advisergroup_id = '$id'";
               </div>
 
 
-            
+                       
             <?php
                  } }
                    ?>
 
-        </div>
+      </div>
       </div>
     </div>
   </section>
 
+      <div class="container-fluid">
+        <div class="row">
+     <div class="col-md-12 ">
 
 
 
    <link rel="stylesheet" href="../../../assets/comment/style.css">
 
-   <div class="comments-app"  ng-controller="CommentsController as cmntCtrl">
 
   
   <!-- From -->
@@ -459,6 +461,28 @@ WHERE advisergroup.advisergroup_id = '$id'";
 
     <!-- /.content -->
   </br>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+     </div>
+       </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
+      <b>Version</b> 3.0.3-pre
+    </div>
+       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+
+  <!-- /.control-sidebar -->
+</div>
 
     <!-- /.content -->
  

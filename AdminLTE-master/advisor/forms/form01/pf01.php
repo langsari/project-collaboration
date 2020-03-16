@@ -513,7 +513,6 @@ if($result = $db->query($sql)){
      <div class="col-md-12 ">
    <link rel="stylesheet" href="../../../assets/comment/style.css">
 
-   <div class="comments-app"  ng-controller="CommentsController as cmntCtrl">
 
   
   <!-- From -->
@@ -631,7 +630,7 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
   </br>
 
 
-        </div>
+        
       </div>
     </div>
   </section>

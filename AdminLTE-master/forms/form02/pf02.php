@@ -476,7 +476,6 @@ to get the desired effect
 
    <link rel="stylesheet" href="../../assets/comment/style.css">
 
-   <div class="comments-app"  ng-controller="CommentsController as cmntCtrl">
 
   
   <!-- From -->
@@ -579,7 +578,7 @@ to get the desired effect
   </br>
 
 
-        </div>
+     
       </div>
     </div>
   </section>

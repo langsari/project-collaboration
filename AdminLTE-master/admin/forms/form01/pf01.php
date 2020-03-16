@@ -549,30 +549,30 @@ if($result = $db->query($sql)){
 
               </div>
 
-
-            
             <?php
                  } }
                    ?>
 
+
+
+    <!-- /.content -->
+ 
         </div>
       </div>
     </div>
   </section>
 
     <!-- /.content -->
- 
-
-
+     <!-- /.content -->
+      <div class="container-fluid">
+        <div class="row">
+     <div class="col-md-12 ">
    <link rel="stylesheet" href="../../../assets/comment/style.css">
 
-   <div class="comments-app"  ng-controller="CommentsController as cmntCtrl">
 
   
   <!-- From -->
   <div class="comment-form">
-    <!-- Comment Avatar -->
-
 
   <?php
           $id = $_GET['id'];
@@ -587,7 +587,7 @@ if($result = $db->query($sql)){
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id 
 
-        WHERE advisergroup.advisergroup_id = '$id' and comment.form_pf='1'";                 
+        WHERE advisergroup.advisergroup_id = '$id'and comment.form_pf='1'  ";                 
      if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
 
@@ -623,12 +623,28 @@ if($result = $db->query($sql)){
 
     <!-- /.content -->
   </br>
- 
 </div>
- 
-</div> 
+
+        
+      </div>
+    </div>
+  </section>
+
+   </div>
+     </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
+      <b>Version</b> 3.0.3-pre
+    </div>
+       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+
+  <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
 
 <!-- ./wrapper -->
 

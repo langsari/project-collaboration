@@ -438,70 +438,11 @@ to get the desired effect
 
    <link rel="stylesheet" href="../../../assets/comment/style.css">
 
-   <div class="comments-app"  ng-controller="CommentsController as cmntCtrl">
 
   
   <!-- From -->
   <div class="comment-form">
     <!-- Comment Avatar -->
-    <div class="comment-avatar">
-         <img src="../../../dist/img/user1.png" >  
-    </div>
-
-    <form method="post" action="check_comment.php" class="form" name="form" ng-submit="form.$valid && cmntCtrl.addComment()" >
-
-      <div class="form-row">
-        <textarea  class="input" name="comment_content" id="comment_content" 
-         placeholder="Add comment..." class="form-control"   required></textarea>
-
-             
-      </div>
-
-          <?php
-$id = $_GET['id'];
-
-$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id FROM advisergroup
-
-LEFT JOIN member ON advisergroup.member_id = member.member_id
-WHERE advisergroup.advisergroup_id = '$id'  ";             
-      
-     if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-            ?>
-
-     <input type="hidden" name="advisergroup_id" id="advisergroup_id" value="<?php echo $objResult->advisergroup_id;?>">
-  <?php
-                 } }
-                   ?>
-
-  <?php
-                        $strSQL="SELECT * FROM member  WHERE member_id='".$_SESSION['id']."'";
-                        ?>
-
-                        <?php
-                        if ($result = $db->query($strSQL)) {
-                          while ($row = $result->fetch_object()) {
-                        ?>
-
-                                <input type="text" class="form-control" name="member_id" value="<?php echo $_SESSION['name']; ?>" hidden>
-            
-<?php
-  }
-  }
-?>
-
-                   <input type="hidden" name="group_id" id="group_id"  />
-
-          <input type="hidden" name="form_pf" id="form_pf"  value="5" />
-
-
-     
-      <div class="form-row">
-        <input type="submit" value="Add Comment">
-      </div>
-    </form>
-  </div>
-
 
   <?php
          $id = $_GET['id'];
@@ -544,11 +485,10 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
 
 
 
-          <?php
-                 }
-               }
-                   ?>   
-           
+            
+            <?php
+                 } }
+                   ?>
 
     <!-- /.content -->
   </br>
@@ -558,9 +498,9 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
       </div>
     </div>
   </section>
-
-   </div>
+</div>
      </div>
+     
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
