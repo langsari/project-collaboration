@@ -439,11 +439,18 @@ to get the desired effect
                             class="form-control"
                                                 name="hdnOldFilen"                                     value="<?php echo $objResult->files_filename_project; ?>">
                                   
+    <?php if ($objResult->by_advisor10 != "") {?>
+                        <button class="btn btn-warning disabled" disabled="disabled">Upload</button> 
+
+                      <?php }else{?>
+                      <button type="submit" class="btn btn-primary" >Upload</button>
+                       <?php }?>
 
 
 
-  <button type="submit" class="btn btn-success">
-    <i class="glyphicon glyphicon-ok"></i> Upload</button>
+
+
+
 
     <td>
 <?php if( $objResult->files_filename_project != ""){ ?>

@@ -344,7 +344,7 @@ to get the desired effect
 
       
         <div class="form-wizard">
-          <form action="check_pf10.php" method="post"  class="form-horizontal" enctype="multipart/form-data">
+          <form action="check_pf11.php" method="post"  class="form-horizontal" enctype="multipart/form-data">
             <div class="form-wizard-header">
               <ul class="list-unstyled form-wizard-steps clearfix">
                <li class="active" ><span>1</span></li>
@@ -370,11 +370,11 @@ to get the desired effect
 
                               $g_id = get_group_id();
               $ag_id = get_ag_id($g_id);
-    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.by_advisor10,files.by_advisor11,files.Owner,files.advisergroup_id,files.pf,files.files_filename_project,files.files_id FROM advisergroup
+    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.by_advisor10,files.by_advisor11,files.complete_project,files.Owner,files.advisergroup_id,files.pf,files.files_id FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.advisergroup_id = '$ag_id'  ";             
+        WHERE advisergroup.advisergroup_id = '$ag_id'   ";             
 
 
 
@@ -399,10 +399,10 @@ to get the desired effect
                         <th>To do list</th>
 
                      
-                          <th><font color='red'> *Sign by Advisor</font></th>
-                          <th><font color='red'> *Sign by Committee</font></th>
-                            <th><font color='red'> *Sign by Head of department</font></th>
-                            <th><font color='red'> *Sign by Dean</font></th>
+                          <th><font color='red'> *By Advisor</font></th>
+                          <th><font color='red'> *By Committee</font></th>
+                            <th><font color='red'> *By Head of department</font></th>
+                            <th><font color='red'> *By Dean</font></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -412,25 +412,98 @@ to get the desired effect
                            </td>
 
                          <td>
-                          </br>Status</br>
-                            <?php echo status_08($objResult->by_advisor11); ?>
-                              </span> <?php echo get_advisor($objResult->group_id); ?>
+
+                                </br>Status</br>
+
+                            <span><?php echo get_status_committee1($objResult->group_id); ?></span>
+
+                       
                           </td>
 
                           <td>
-                            </br>
-                            <span><?php echo get_status_committee1($objResult->group_id); ?></span>
-                            <p>
+                                                    </br>Status</br>
+                            <?php echo status_08($objResult->by_advisor11); ?>
+                          </br>
+                              </span> <?php echo get_advisor($objResult->group_id); ?>
+
+</p>
+ <td>
+                          </br>Status</br>
+                            <?php echo status_08($objResult->by_advisor11); ?>
+                          </td>
+
+
+
+<td>
+                          </br>Status</br>
+                            <?php echo status_08($objResult->by_advisor11); ?>
+                          </td>
+
+
 
                           </td>
 
-                        </tr>
 
+
+                        <tr>
+
+   <td>Student, Submit copies of Project, PF11 and related documentit 
+                          </br><u>Condition:</u>
+                          </br>(1) 1 copy of complete project
+                          </br>(2) submit proposal one week before presentation day
+                          </td>
+
+                           <td>Project approve sign by
+                            </br> 1). Advisor
+                            </br> 1). Committee
+                            </br> 1). Head, Department of Information Technology
+                            </br> 1). Dean, Faculty of Science and Technology
+                          </td>
+
+                        </tr>
                           <input type="hidden" name="files_id"  value="<?php echo $objResult->files_id; ?>">
                               <input type="hidden" name="advisergroup_id"  value="<?php echo $objResult->advisergroup_id; ?>">
 
 
+                        <td class="hidden"> Upload Complete Project<p>
+
+                            <input type="file" name="complete_project" id="complete_project"
+                          value=" <?php echo $objResult->complete_project; ?>"/>
+
+
+                <input type="hidden"
+                            class="form-control"
+                                                name="hdnOldFilen"                                     value="<?php echo $objResult->complete_project; ?>">
+                                  
+    <?php if ($objResult->by_advisor11 != "") {?>
+                        <button class="btn btn-warning disabled" disabled="disabled">Upload</button> 
+
+                      <?php }else{?>
+                      <button type="submit" class="btn btn-primary" >Upload</button>
+                       <?php }?>
+
+
+
+
+
+
+
+    <td>
+<?php if( $objResult->complete_project != ""){ ?>
+                      <a href="../form01/download.php?pdf=<?php echo $objResult->complete_project ;?>">
+                        <span class='badge badge-primary'><i class="fa fa-download">Download 
+                          <?php echo $objResult->complete_project ?> </i></a></span>
+ <?php }else{?>
+                    <a href="#"> <button class="btn btn-danger btn-xs">
+                        <i class="glyphicon glyphicon-remove"> No file </i></button></a>
+                    <?php } ?>
+                              </td>
+
+
+
+
 </tr>
+
                       </tbody>
                     </table>
 
@@ -479,11 +552,145 @@ to get the desired effect
                  } }
                    ?>
 
+
+
+
+ <div class="container-fluid">
+        <div class="row">
+     <div class="col-md-12 ">
+
+
+
+   <link rel="stylesheet" href="../../assets/comment/style.css">
+
+
+  
+  <!-- From -->
+  <div class="comment-form">
+    <!-- Comment Avatar -->
+    <div class="comment-avatar">
+         <img src="../../dist/img/user1.png" >  
+    </div>
+
+    <form method="post" action="check_comment.php" class="form" name="form" ng-submit="form.$valid && cmntCtrl.addComment()" >
+
+      <div class="form-row">
+        <textarea  class="input" name="comment_content" id="comment_content" 
+         placeholder="Add comment..." class="form-control"   required></textarea>
+
+             
+      </div>
+
+
+
+  <?php
+                        $strSQL="SELECT * FROM member  WHERE member_id='".$_SESSION['id']."'";
+                        ?>
+
+                        <?php
+                        if ($result = $db->query($strSQL)) {
+                          while ($row = $result->fetch_object()) {
+                        ?>
+
+                                <input type="text" class="form-control" name="member_id" value="<?php echo $_SESSION['name']; ?>" hidden>
+            
+<?php
+  }
+  }
+?>
+
+                   <input type="hidden" name="group_id" id="group_id"  />
+
+     <input type="hidden" name="advisergroup_id" id="advisergroup_id"  />
+          <input type="hidden" name="form_pf" id="form_pf"  value="11" />
+
+
+     
+      <div class="form-row">
+        <input type="submit" value="Add Comment">
+      </div>
+    </form>
+  </div>
+
+
+  <?php
+            $g_id = get_group_id();
+              $ag_id = get_ag_id($g_id);
+              
+
+    $strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,advisergroup.advisergroup_id,comment.comment_content,comment.date,comment.member_id,member.member_fullname FROM advisergroup
+          LEFT JOIN comment ON advisergroup.advisergroup_id = comment.advisergroup_id
+
+          LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+
+
+
+        LEFT JOIN member ON advisergroup.member_id = member.member_id 
+
+        WHERE advisergroup.advisergroup_id = '$ag_id' and form_pf='11' ";                 
+     if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+
+
+   ?>
+ 
+
+
+   <div class="callout callout-info">
+                <img class="img-circle img-bordered-sm" src="../../dist/img/user.png" alt="user image"  width="30" height="30">
+<class style="font-size: 15px;">   &nbsp;&nbsp;<?php echo $objResult->member_id;?>  
+
+
+
+
+                   <span class="float-right">
+                        <span class="description" style="font-size: 13px;">Shared publicly - <?php echo $objResult->date; ?></span>
+                      </span> 
+             <p>
+
+           
+            <class style="font-size: 15px;">    <?php echo $objResult->comment_content;?>
+            </div>
+      
+
+
+
+          <?php
+                 }
+               }
+                   ?>   
+           
+
+    <!-- /.content -->
+   <!-- /.content -->
+ </div>
+  </br>
+
+ </div>
+  </div>
+
         </div>
       </div>
     </div>
   </section>
 
+   </div>
+
+
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
+      <b>Version</b> 3.0.3-pre
+    </div>
+       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+
+  <!-- /.control-sidebar -->
+</div>
+ 
     
     <!-- /.content -->
  

@@ -109,11 +109,11 @@ function status_07($status){
 
 function status_08($status){
 	if($status == ''){
-		return "<span class='text-danger'></span>";
+		return "<span class='badge badge-danger'>Waiting</span>";
 	}else if($status == 'No'){
 		return "<span class='badge badge-danger'>No Pass</span>";
 	}else if($status == 'Waiting'){
-		return "<span class='badge badge-danger'>Waiting</span>";
+		return "<span class='badge badge-danger'>waiting</span>";
 	}else if($status == 'Pass'){
 		return "<span class='badge badge-success'>Pass</span>";
 	}
@@ -138,6 +138,8 @@ function status_10($status){
 		return "<span class='text-danger'></span>";
 	}else if($status == 'No'){
 		return "<span class='badge badge-danger'>No Pass</span>";
+	}else if($status == 'Waiting'){
+		return "<span class='badge badge-danger'>Waiting</span>";
 	}else if($status == 'Pass'){
 		return "<span class='badge badge-success'>Pass</span>";
 	}

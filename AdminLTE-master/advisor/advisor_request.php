@@ -983,7 +983,7 @@ $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,file
 
 LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 LEFT JOIN member ON advisergroup.member_id = member.member_id
-WHERE advisergroup.member_id = '$my_id'  AND pf='9' And by_advisor10 =''   ";
+WHERE advisergroup.member_id = '$my_id'  AND pf='9' And by_advisor10 ='Waiting'  ";
  
   $i = 1;
    $count = 1;
@@ -1046,20 +1046,197 @@ WHERE advisergroup.member_id = '$my_id'  AND pf='9' And by_advisor10 =''   ";
               }else{
               }
               ?>
-                                          
+                                       
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
 
-                    </main>
-              
+
+          <!-- Select advisor -->
+          <div class="col-md-6">
+                 <div class="card">
+              <div class="card-header">
+                <h6><b> Project Approval Letter (PF11)
+</b> </h6>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
+              <!-- /.card-header -->
+           <div class="card-body">
+              <table  class="table table-sm "  >
+                <thead class="thead-light">
+                <tr>
+                      <th style="font-size: 15px;" width="2%" class="text-left">No</th>
+                      <th style="font-size: 15px;" width="40%" class="text-left">Title project</th>
+                    <th style="font-size: 15px;" width="40%" class="text-left">Student</th>
+               <th style="font-size: 15px;" width="3%" class="text-left"></th>
+                 <th style="font-size: 15px;" width="3%" class="text-left"></th>
+           </tr>
+          </thead>
+    <tbody>
+
+    <?php
+
+
+require '../menu/connect.php';
+$my_id = $_SESSION['id'];
+    $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_advisor11,files.complete_project FROM advisergroup
+
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+        WHERE advisergroup.member_id = '$my_id'  AND pf='10' And by_advisor11 ='Waiting'   ";
+
+  $i = 1;
+   $count = 1;
+
+              if($rs = $db->query($strSQL)){
+                while($row = $rs->fetch_object()){
+              ?>
+                  <tr>
+                        <td class="text-left" style="font-size: 12px;" width="4%">   <?php echo $count++; ?></td>
+
+
+
+                 <td class="text-left" style="font-size: 12px;" width="20%" ><?php echo $row->advisergroup_topic; ?></td>
+                   <td class="text-left" style="font-size: 12px;" width="60%" ><?php echo get_member_list($row->group_id); ?></td>
+                 
+                    <td class="text-left" style="font-size: 12px;" width="3%" >
+<?php if( $row->complete_project != ""){ ?>
+                      <a href="download_pdf.php?pdf=<?php echo $row->complete_project ;?>">
+                      <span class='badge badge-primary'><i class="fa fa-download">Download 
+                           </i></a></span>
+                       </a>
+ <?php }else{?>
+                    <a href="#"> <button class="btn btn-danger btn-xs">
+                        <i class="glyphicon glyphicon-remove"> No file </i></button></a>
+                    <?php } ?>
+                              </td>
+
+
+
+                        <td>
+
+
+<a href="check_11.php?id=<?php echo $row->files_id; ?>"
+                        class="btn btn-success btn-xs" title="Comfirm"
+                        onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
+                           class='fa fa-check'></i> </a>
+
+
+                                 <a href="reject_11.php?id=<?php echo $row->advisergroup_id; ?>"
+                    class="btn btn-danger btn-xs" title="Comfirm"
+                    onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
+                    class='fa fa-times'></i> </a>
+
+
+
+
+                            </td>
+
+
+
+                      </tr>
+                      <?php
+                         $i++;
+                }
+              }else{
+              }
+              ?>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+          
+
+
+          <!-- Select advisor -->
+          <div class="col-md-6">
+                 <div class="card">
+              <div class="card-header">
+                <h6><b>Free From Adviser LetterR (PF12)
+</b> </h6>
+              </div>
+              <!-- /.card-header -->
+           <div class="card-body">
+              <table  class="table table-sm "  >
+                <thead class="thead-light">
+                <tr>
+                      <th style="font-size: 15px;" width="2%" class="text-left">No</th>
+                      <th style="font-size: 15px;" width="40%" class="text-left">Title project</th>
+                    <th style="font-size: 15px;" width="40%" class="text-left">Student</th>
+                 <th style="font-size: 15px;" width="3%" class="text-left"></th>
+           </tr>
+          </thead>
+    <tbody>
+
+    <?php
+
+
+require '../menu/connect.php';
+$my_id = $_SESSION['id'];
+    $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_advisor07,files.files_filename_project FROM advisergroup
+
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+        WHERE advisergroup.member_id = '$my_id'  AND pf='11' And by_advisor12 =''   ";
+
+  $i = 1;
+   $count = 1;
+
+              if($rs = $db->query($strSQL)){
+                while($row = $rs->fetch_object()){
+              ?>
+                  <tr>
+                        <td class="text-left" style="font-size: 12px;" width="4%">   <?php echo $count++; ?></td>
+
+
+
+                 <td class="text-left" style="font-size: 12px;" width="20%" ><?php echo $row->advisergroup_topic; ?></td>
+                   <td class="text-left" style="font-size: 12px;" width="60%" ><?php echo get_member_list($row->group_id); ?></td>
+                 
+                 
+
+
+
+                        <td>
+
+
+<a href="check_12.php?id=<?php echo $row->files_id; ?>"
+                        class="btn btn-success btn-xs" title="Comfirm"
+                        onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
+                           class='fa fa-check'></i> </a>
+
+
+                                 <a href="reject_12.php?id=<?php echo $row->advisergroup_id; ?>"
+                    class="btn btn-danger btn-xs" title="Comfirm"
+                    onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
+                    class='fa fa-times'></i> </a>
+
+
+
+
+                            </td>
+
+
+
+                      </tr>
+                      <?php
+                         $i++;
+                }
+              }else{
+              }
+              ?>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+          
+
+
 
            
         <?php

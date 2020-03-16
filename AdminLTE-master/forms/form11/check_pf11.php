@@ -9,11 +9,11 @@ include('../../menu/function.php');
 
 	$files_id = $_POST['files_id'];
     $advisergroup_id = $_POST['advisergroup_id'];
-    $by_advisor10 = $_POST['by_advisor10'];
+    $by_advisor11 = $_POST['by_advisor11'];
 
 	$sql = "UPDATE  files SET files_id = '$files_id', 
 										 advisergroup_id = '$advisergroup_id',
-								     by_advisor10 ='Waiting'
+								     by_advisor11 ='Waiting'
 
 
 			WHERE files_id = '$files_id'";
@@ -40,18 +40,18 @@ include('../../menu/function.php');
 }
 
 
-if ($_FILES["files_filename_project"]["name"] != "") {
+if ($_FILES["complete_project"]["name"] != "") {
 
 	if (move_uploaded_file(
-		$_FILES["files_filename_project"]["tmp_name"],
-		"../fileupload/" . $_FILES["files_filename_project"]["name"]
+		$_FILES["complete_project"]["tmp_name"],
+		"../complete_project_pdf/" . $_FILES["complete_project"]["name"]
 	)) {
 
 		//*** Delete Old File ***//
 
-		@unlink("../fileupload/" . $_POST["hdnOldFilen"]);
+		@unlink("../complete_project_pdf/" . $_POST["hdnOldFilen"]);
 		$sql = "UPDATE files ";
-		$sql .= " SET files_filename_project = '" . $_FILES["files_filename_project"]["name"] . "' WHERE files_id = '$files_id'";
+		$sql .= " SET complete_project = '" . $_FILES["complete_project"]["name"] . "' WHERE files_id = '$files_id'";
 
 
   $result = mysqli_query($db, $sql) or die ("Error in query: $sql " . mysqli_error());
@@ -64,12 +64,12 @@ if ($_FILES["files_filename_project"]["name"] != "") {
   if($result){
   echo "<script type='text/javascript'>";
   echo "alert('Upload File Succesfuly');";
-  header("Location:pf10.php");
+  header("Location:pf11.php");
   echo "</script>";
   }
   else{
   echo "<script type='text/javascript'>";
-  echo "alert('pf10.php');";
+  echo "alert('pf11.php');";
   echo "</script>";
 }
 	}

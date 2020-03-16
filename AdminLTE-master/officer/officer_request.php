@@ -643,16 +643,147 @@ $my_id = $_SESSION['id'];
           <!-- /.card -->
      
 
+
+
+
+ <div class="card">
+            <div class="card-header">
+   <b>        
+Officer Receive Project Booked  
+ (PF13)
+</b>
+                 
+            </div>
+            <!-- /.card-header -->
+          
+            
+       <div class="card-body">
+              <table  id="example4" class="table table-sm">
+                <thead class="thead-light">
+                <tr>
+                     <th style="font-size: 15px;" width="5%" class="text-left">No</th>
+                <th style="font-size: 15px;" width="20%" class="text-left"> Title project</th>
+                  <th style="font-size: 15px;" width="20%" class="text-left">Student</th>
+                 <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>
+                 <th style="font-size: 15px;" width="10%" class="text-left">Files</th>          
+                <th style="font-size: 15px;" width="10%" class="text-left">Options</th>
+                </tr>
+                </thead>
+                <tbody>
+
+
+                      <?php
+
+
+
+
+require '../menu/connect.php';
+$my_id = $_SESSION['id'];
+
+    $strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic ,files.by_officer13,files.by_advisor12,files.complete_project FROM advisergroup
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+
+        WHERE advisergroup.member_id  AND  by_advisor08='Pass'
+        Order By files_id
+               ";
+  $i = 1;
+   $count = 1;
+              if($rs = $db->query($strSQL)){
+                while($objResult = $rs->fetch_object()){
+              ?>
+
+                
+                    <tr>
+
+                           <td class="text-left" style="font-size: 14px;" width="5%" >  <?php echo $count++; ?></td>
+       <td class="text-left" style="font-size: 14px;" width="25%" ><?php echo get_topic($objResult->group_id); ?></td>
+     <td class="text-left" style="font-size: 14px;" width="25%" ><?php echo get_member_list($objResult->group_id); ?></td>
+
+
+        
+              <td class="text-left" style="font-size: 14px;" width="15%" ><?php echo get_advisor($objResult->group_id); ?></td>
+
+             <td class="text-left" style="font-size: 14px;" width="8%" >
+<?php if( $objResult->complete_project != ""){ ?>
+                      <a href="../advisor/download_pdf.php?pdf=<?php echo $objResult->complete_project ;?>">
+                      <span class='badge badge-primary'><i class="fa fa-download">Download 
+                           </i></a></span>
+                       </a>
+ <?php }else{?>
+                    <a href="#"> <button class="btn btn-danger btn-xs">
+                        <i class="glyphicon glyphicon-remove"> No file </i></button></a>
+                    <?php } ?>
+                              </td>
+
+
+  <td class="text-left" style="font-size: 14px;" width="10%" >
+
+
+
+ <?php if ($objResult->by_officer13 != "Pass") {?>        
+    <a href="check_pf13.php?id=<?php echo $objResult->files_id; ?>"  >
+
+            <button type="button" class="btn btn-success btn-xs  float-left" >
+              <i class='fa fa-check'></i></button>
+          <?php }else{?>
+
+            <button class="btn btn-warning btn-xs disabled float-left" disabled="disabled">      <i class='fa fa-check'></i></button> 
+
+          </a>
+                       <?php }?>
+              
+
+<a href="reject_13.php?id=<?php echo $objResult->advisergroup_id; ?>"
+                    class="btn btn-danger btn-xs float-right" title="Comfirm"><i
+                      class='fa fa-times'></i> </a>
+
+</td>
+               
+                    </tr>          
+
+
+                                    <?php 
+                                       $i++;
+    }
+               }
+                   ?>
+
+
+                </tbody>
+               
+
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
           <!-- /.card -->
-        </div>
-        <!-- /.col -->
-      </div>
+     </br>
+ 
       <!-- /.row -->
     </section>
     <!-- /.content -->
 
 
 
+  </div>
+
+
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
+      <b>Version</b> 3.0.3-pre
+    </div>
+       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+
+  <!-- /.control-sidebar -->
+</div>
+ 
 
 
 
@@ -675,6 +806,7 @@ $my_id = $_SESSION['id'];
     $("#example1").DataTable();
     $("#example2").DataTable();
     $("#example3").DataTable();
+    $("#example4").DataTable();
 
   });
 </script>
