@@ -483,7 +483,6 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
    <link rel="stylesheet" href="../../assets/comment/style.css">
 
-   <div class="comments-app"  ng-controller="CommentsController as cmntCtrl">
 
   
   <!-- From -->
@@ -593,7 +592,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
   
   </section>
 
-   </div>
+
      </div>
    </div></div>
 

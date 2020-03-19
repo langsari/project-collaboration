@@ -175,33 +175,49 @@ require 'menu/connect.php';
 
     <!-- Main content -->
    
-   <section class="content">
-      <div class="container-fluid">
+  <div class="content">
+  
         <div class="row">
-          <div class="col-12">
+           <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-block">
+                       
+
 
                      <?php
 
+$id = $_GET['id'];
 
-     $strSQL = "SELECT  announcement.announcement_id,announcement.announcement_topic, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
+
+
+
+   $strSQL = "SELECT  announcement.announcement_id,announcement.announcement_topic, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
                            FROM announcement,admin 
                            WHERE announcement.admin_id=admin.admin_id
-                           ORDER BY announcement.announcement_id DESC";
+                      WHERE announcement.announcement_id = '$id'";     
 
-         ?>
-
-
-   <?php
-            
-                 if($objQuery = $db->query($strSQL)){
-             while($objResult = $objQuery->fetch_object()){
-            ?>
-
-      
-            <div class="callout callout-info">
+                      
+     if($objQuery = $db->query($strSQL)){
+                  while($objResult = $objQuery->fetch_object()){
 
 
-   <img class="img-circle img-bordered-sm" src="dist/img/user.png" alt="user image"  width="30" height="30">
+
+   ?>
+   
+
+
+  
+
+   
+
+            <table class="display datatable table table-stripped" cellspacing="0" width="100%">
+
+                  <tbody>
+                  
+                      <td> 
+
+                   
+<img class="img-circle img-bordered-sm" src="dist/img/user.png" alt="user image"  width="30" height="30">
                         <span class="username" style="font-size: 15px;">
                &nbsp;&nbsp;<?php echo $objResult->admin_fullname; ?> 
                          <span class="float-right">
@@ -210,55 +226,87 @@ require 'menu/connect.php';
                         <!-- /.user-block -->
               <p>   <class style="font-size: 16px;">     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b> <?php echo $objResult->announcement_topic; ?></b></p>
                       
-                      <class style="font-size: 15px;">   <?php echo $objResult->announcement_detail; ?>
+                      <class style="font-size: 15px;">   <?php echo $objResult->announcement_detailn; ?>
                      
   <p>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <span class="float-right">
-            
-                        </span>
-                      </p>
-                     </p>
-</div>
-                    <!-- /.post -->
-    <?php
+
+                 
+                        </td> 
+
+            <?php
                  }
                }
                    ?>
-                 
-              
-                  
-                  <!-- /.tab-pane -->
-                  
-                  
-            <!-- /.nav-tabs-custom -->
+           
+            
+      </tbody>
+      </table>
+    </h6>
+  </span>
+</div>
 
-   
-    <!-- /.content -->
-  </br>
-  </div>
-</class>
-</class>
-</p>
-</span>
 </div>
-</div>
-</div>
-  <!-- /.content-wrapper -->
 
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.3-pre
-    </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
-  </footer>
 
 
   
- <!-- jQuery -->
-  <script src="plugins/jquery/jquery.min.js"></script>
+   <?php
+
+$id = $_GET['id'];
+
+
+
+   $strSQL = "SELECT  announcement.announcement_id,announcement.announcement_topic, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
+                           FROM announcement,admin 
+                           WHERE announcement.admin_id=admin.admin_id
+                      WHERE announcement.announcement_id = '$id'";     
+
+     if($objQuery = $db->query($strSQL)){
+                  while($objResult = $objQuery->fetch_object()){
+
+   ?>
+   
+
+
+            <div class="callout callout-info">
+                <img class="img-circle img-bordered-sm" src="dist/img/user.png" alt="user image"  width="30" height="30">
+<class style="font-size: 15px;">   &nbsp;&nbsp;<?php echo $objResult->admin_fullname;?>  
+                   <span class="float-right">
+                        <span class="description" style="font-size: 13px;">Shared publicly - <?php echo $objResult->announcement_date; ?></span>
+                      </span> 
+             <p>
+
+             <class style="font-size: 16px;">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b> <?php echo $objResult->announcement_topic;?></b></br>
+            <class style="font-size: 15px;">    <?php echo $objResult->announcement_detail;?>
+            </div>
+      
+
+   
+
+
+            <?php
+                 }
+               }
+                   ?>
+           
+
+
+</div>
+
+
+
+
+
+
+
+    <!-- /.content -->
+ 
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->
@@ -268,5 +316,21 @@ require 'menu/connect.php';
 <script src="plugins/chart.js/Chart.min.js"></script>
 <script src="dist/js/demo.js"></script>
 <script src="dist/js/pages/dashboard3.js"></script>
+<!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+    });
+  });
+</script>
 </body>
 </html>

@@ -13,7 +13,7 @@ if(!$db){
 
 $member_idcard=$_POST['member_idcard'];
 $member_fullname=$_POST['member_fullname'];
-
+$member_phone=$_POST['member_phone'];
 $member_username=$_POST['member_username'];
 $member_password=$_POST['member_password'];
 $member_email=$_POST['member_email'];
@@ -21,7 +21,7 @@ $member_pos=$_POST['member_pos'];
 $member_gender=$_POST['member_gender'];
 
 
-$sql="INSERT INTO member(member_idcard,member_username,member_password,member_email,member_pos,member_gender,member_fullname)values('$member_idcard','$member_username','$member_password','$member_email','$member_pos','$member_gender','$member_fullname')";
+$sql="INSERT INTO member(member_idcard,member_username,member_password,member_email,member_pos,member_gender,member_fullname,member_phone)values('$member_idcard','$member_username','$member_password','$member_email','$member_pos','$member_gender','$member_fullname','$member_phone')";
 
 
 

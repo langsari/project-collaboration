@@ -265,8 +265,7 @@ to get the desired effect
 
 <!-- partial:index.partial.html -->
 
-      
-        <div class="form-wizard">
+ <div class="form-wizard">
           <form action="check_pf10.php" method="post"  class="form-horizontal" enctype="multipart/form-data">
             <div class="form-wizard-header">
               <ul class="list-unstyled form-wizard-steps clearfix">
@@ -280,12 +279,11 @@ to get the desired effect
                 <li class="active"><span>8</span></li>
                <li class="active"><span>9</span></li>
                 <li class="active"><span>10</span></li>
-                <li class="active"><span>11</span></li>
-               <li class="active"><span>12</span></li>
-               <li class="active"><span>13</span></li>
+                       <li class="active"><span>11</span></li>
+                 <li class="active"><span>12</span></li>
+                 <li class="active"><span>13</span></li>
               </ul>
             </div>
-
 
             <fieldset class="wizard-fieldset show">
               <h5>PF13</h5>
@@ -394,7 +392,7 @@ to get the desired effect
 
 
             
-            <?php
+    <?php
                  } }
                    ?>
 
@@ -403,8 +401,92 @@ to get the desired effect
     </div>
   </section>
 
-    
+      <div class="container-fluid">
+        <div class="row">
+     <div class="col-md-12 ">
 
+
+
+   <link rel="stylesheet" href="../../../assets/comment/style.css">
+
+
+  
+  <!-- From -->
+  <div class="comment-form">
+
+
+
+  <?php
+           
+              $id = $_GET['id'];
+
+    $strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,advisergroup.advisergroup_id,comment.comment_content,comment.date,comment.member_id,member.member_fullname FROM advisergroup
+          LEFT JOIN comment ON advisergroup.advisergroup_id = comment.advisergroup_id
+
+          LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+
+
+
+        LEFT JOIN member ON advisergroup.member_id = member.member_id 
+
+        WHERE advisergroup.advisergroup_id = '$id'  and form_pf='13' ";                 
+     if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+
+
+   ?>
+ 
+
+
+   <div class="callout callout-info">
+                <img class="img-circle img-bordered-sm" src="../../../dist/img/user.png" alt="user image"  width="30" height="30">
+<class style="font-size: 15px;">   &nbsp;&nbsp;<?php echo $objResult->member_id;?>  
+
+
+
+
+                   <span class="float-right">
+                        <span class="description" style="font-size: 13px;">Shared publicly - <?php echo $objResult->date; ?></span>
+                      </span> 
+             <p>
+
+           
+            <class style="font-size: 15px;">    <?php echo $objResult->comment_content;?>
+            </div>
+      
+
+
+
+          <?php
+                 }
+               }
+                   ?>   
+           
+
+    <!-- /.content -->
+  </br>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+     </div>
+       </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
+      <b>Version</b> 3.0.3-pre
+    </div>
+       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+
+  <!-- /.control-sidebar -->
+</div>
     <!-- /.content -->
  
 <!-- ./wrapper -->

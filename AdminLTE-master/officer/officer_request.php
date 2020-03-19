@@ -666,6 +666,7 @@ Officer Receive Project Booked
                   <th style="font-size: 15px;" width="20%" class="text-left">Student</th>
                  <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>
                  <th style="font-size: 15px;" width="10%" class="text-left">Files</th>          
+                    <th style="font-size: 15px;" width="10%" class="text-left">View</th>
                 <th style="font-size: 15px;" width="10%" class="text-left">Options</th>
                 </tr>
                 </thead>
@@ -716,6 +717,15 @@ $my_id = $_SESSION['id'];
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
                     <?php } ?>
                               </td>
+
+
+          <td class="text-left" style="font-size: 14px;" width="8%" >
+
+  <a href="form13.php?id=<?php echo $objResult->group_id;?>"class="btn btn-primary btn-sm">  <i class="fa fa-eye" title="Detail"></i></a>
+
+         
+
+                </td>
 
 
   <td class="text-left" style="font-size: 14px;" width="10%" >

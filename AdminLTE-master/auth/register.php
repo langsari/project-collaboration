@@ -137,6 +137,19 @@ if(isset($_GET['success'])){
           
 
            <div class="input-group mb-3">
+                                       Phone: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+              <input type="text" class="form-control" id="member_phone" name="member_phone" 
+                placeholder="Example: 083-185-1521" autocomplete="off" required aria-describedby="basic-addon1"
+                onkeypress='validate(event)' maxlength="10">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-phone"></span>
+                </div>
+              </div>
+            </div>
+
+           <div class="input-group mb-3">
                                        Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
               <input type="text" class="form-control" id="member_email" name="member_email"
