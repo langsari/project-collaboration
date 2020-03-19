@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2020 at 04:38 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 5.6.39
+-- Generation Time: Mar 19, 2020 at 05:58 PM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -246,6 +246,27 @@ INSERT INTO `files` (`files_id`, `Owner`, `files_filename_proposal`, `files_file
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `form`
+--
+
+CREATE TABLE `form` (
+  `form_id` int(11) NOT NULL,
+  `pf` enum('1','2','3','4','5','6','7','8','9','10','11','12','13') NOT NULL,
+  `form_mark` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `form`
+--
+
+INSERT INTO `form` (`form_id`, `pf`, `form_mark`) VALUES
+(2, '3', 10),
+(3, '5', 45),
+(4, '8', 45);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `member`
 --
 
@@ -276,8 +297,8 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`member_id`, `member_idcard`, `member_username`, `member_fullname`, `member_password`, `member_pos`, `member_phone`, `member_email`, `member_gender`, `member_firstname`, `member_lastname`, `member_birthday`, `member_years`, `member_address`, `member_major`, `member_faculty`, `member_name_prefix`, `admin_id`, `group_id`) VALUES
-(3, 572431009, 'Han', 'Norihan Ha', '1234', 'Student', '0747346826', 'han@gmail.com', 'Female', '', '', 0, 0, '', '', '', '', 1, 7),
-(4, 572431011, 'Misk', 'Miskah Kasengteuba', '1234', 'Student', '075683633', 'misk@gmail.com', 'Female', '', '', 0, 0, '', '', '', '', 1, 3),
+(3, 572431009, 'Han', 'Norihan Ha', '1234', 'Student', '0747346826', 'han@gmail.com', 'Female', '', '', 0, 0, '', '', '', '', 0, 7),
+(4, 572431011, 'Misk', 'Miskah Kasengteuba', '1234', 'Student', '075683633', 'misk@gmail.com', 'Female', '', '', 0, 0, '', '', '', '', 0, 3),
 (5, 572431014, 'Win', 'Wilada Yalaphanee', '1234', 'Student', '0856658897', 'win@gmail.com', 'Female', '', '', 0, 0, '', '', '', '', 1, 7),
 (6, 572431016, 'Sunee', 'Sunee Kasem', '1234', 'Student', '245764', 'sunee@gmailcom', 'Female', '', '', 0, 0, '', '', '', '', 1, 4),
 (7, 572431018, 'husni', 'Husni Munoh', '1234', 'Student', '33442233', 'ni@gmail.com', 'Female', '', '', 0, 0, '', '', '', '', 1, 5),
@@ -287,7 +308,6 @@ INSERT INTO `member` (`member_id`, `member_idcard`, `member_username`, `member_f
 (13, 57378, 'Anas', 'Busree Hasa', '1234', 'Student', '0986382', 'anas@gmail.com', 'Male', '', '', 0, 0, '', '', '', '', 1, NULL),
 (14, 462444, 'fatah', 'Abdulfatah Masamae', '123', 'Lecturer', '35664', 'male@gmail.com', 'Male', '', '', 0, 0, '', '', '', '', 1, NULL),
 (15, 66, 'Hunafah', 'Hunafah', '1234', 'Student', '22', 's@gmail.com', 'Female', '', '', 0, 0, '', '', '', '', 1, 2),
-(16, 572431021, 'Afifah', 'Afifah mamat', '1234', 'Student', '083171632', 'yah@gmail.com', 'Female', '', '', 0, 0, '', '', '', '', 1, 3),
 (17, 572431923, 'ilham', 'ilham', '1234', 'Student', '0842148244', 'murni@gmail.com', 'Female', '', '', 0, 0, '', '', '', '', 1, 4),
 (18, 572294, 'da', 'suaida', '1234', 'Lecturer', '058679875', 'gg@gmail.com', 'Female', '', '', 0, 0, '', '', '', '', 1, NULL),
 (19, 57231002, 'Mafaisu', '', '1234', 'Lecturer', '083186321', 'Hafizah@gnail.com', 'Female', 'Mafaisu', 'chema', 30, 6, '11 m.1', 'it', 'scient', 'Mr.', 1, NULL),
@@ -503,6 +523,12 @@ ALTER TABLE `files`
   ADD PRIMARY KEY (`files_id`);
 
 --
+-- Indexes for table `form`
+--
+ALTER TABLE `form`
+  ADD PRIMARY KEY (`form_id`);
+
+--
 -- Indexes for table `member`
 --
 ALTER TABLE `member`
@@ -581,10 +607,16 @@ ALTER TABLE `files`
   MODIFY `files_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `form`
+--
+ALTER TABLE `form`
+  MODIFY `form_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `news_topic`

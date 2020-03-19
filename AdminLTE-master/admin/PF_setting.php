@@ -12,7 +12,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMOT |Approval page</title>
+  <title>AdminLTE 3 | Dashboard 3</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -29,7 +29,7 @@ include('../menu/function.php');
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+ <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -96,47 +96,63 @@ $count=mysqli_num_rows($result);
   ?>
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+    <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
 
-     <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fa fa-globe" style="font-size:20px;"></i><span class="badge badge-danger" id="count"><?php echo $count; ?></span>
-          
-        </a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a href="../auth/logout.php" class="dropdown-item">
-            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
-          </a>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
-          </a>
-        </div>
-      </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="fa fa-globe" style="font-size:20px;"></i><span class="badge badge-danger"
+              id="count"><?php echo $count; ?></span>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fa fa-user"></i>
-          <?php echo $_SESSION['name']; ?>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a href="../auth/logout.php" class="dropdown-item">
-            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
           </a>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
+            <?php
+              $con = mysqli_connect('localhost','root','','itpromo_track');
+              $sq="SELECT * FROM notify WHERE status=0";
+              $qu_num=mysqli_query($con,$query);
+              if (mysqli_num_rows($qu_num)>0) 
+              {
+                while($result=mysqli_fetch_assoc($qu_num))
+                {
+                  echo '<a class="dropdown-item text-primary font-weight-light" href="../admin/read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
+                  echo '<div class="dropdown-divider"></div>';
+
+                }
+              }
+              else
+              {
+                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+              }
+            ?>
+            <div class="dropdown-divider"></div>
+          <a href="../admin/read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="fa fa-user"></i>
+            <?php echo $_SESSION['name']; ?>
           </a>
-        </div>
-      </li>
-</ul>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="../auth/logout.php" class="dropdown-item">
+              <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
+            </a>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
+            </a>
+          </div>
+        </li>
+      </ul>
 
   </nav>
   <!-- /.navbar -->
 
-
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="#" class="brand-link">
       <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">ITPROMOT</span>
@@ -160,7 +176,7 @@ $count=mysqli_num_rows($result);
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-                   <li class="nav-item has-treeview menu-open">
+            <li class="nav-item has-treeview ">
             <a href="../admin/index.php" class="nav-link ">
              
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -172,7 +188,7 @@ $count=mysqli_num_rows($result);
           </li>
 
          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fa fa-users"></i>
               <p>
                 Manage User
@@ -181,18 +197,9 @@ $count=mysqli_num_rows($result);
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../admin/accept_member.php" class="nav-link active">
+                <a href="../admin/accept_member.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Accept Member</p>
-                  <?php
-                    $con = mysqli_connect('localhost','root','','itpromo_track');
-                    $query="SELECT member_id FROM member WHERE admin_id=0";
-                    $query_num=mysqli_query($con,$query);
-                    $count=mysqli_num_rows($query_num);
-
-                    ?>
-                    <span class="right badge badge-danger"><?php echo $count; ?></span>
-
+                  <p>User Request</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -204,11 +211,12 @@ $count=mysqli_num_rows($result);
               <li class="nav-item">
                 <a href="../admin/all_member.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>View All Member</p>
+                  <p>View All Users</p>
                 </a>
               </li>
             </ul>
           </li>
+    
 
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
@@ -246,19 +254,19 @@ $count=mysqli_num_rows($result);
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="create_proposal.php" class="nav-link">
+                <a href="../admin/student_track.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Track</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="tables/data.html" class="nav-link">
+                <a href="../admin/add_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>project proposal</p>
+                  <p>Student project proposal</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="tables/jsgrid.html" class="nav-link">
+                <a href="../admin/view_all_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
                 </a>
@@ -267,7 +275,7 @@ $count=mysqli_num_rows($result);
           </li>
 
 
-          <li class="nav-item has-treeview menu-open">
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
@@ -277,7 +285,7 @@ $count=mysqli_num_rows($result);
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="display_schedule_proposal.php" class="nav-link">
+                <a href="../admin/add_announcement.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Annoucements</p>
                 </a>
@@ -286,15 +294,14 @@ $count=mysqli_num_rows($result);
             </ul>
           </li>
 
-     <li class="nav-item">
-              <a href="PF_setting.php" class="nav-link">
-                <i class="nav-icon fa fa-check-square"></i>
-                <p>
-                  Project Form Setting
-                </p>
-              </a>
-            </li>
-
+      <li class="nav-item">
+            <a href="PF_setting.php" class="nav-link active">
+              <i class="nav-icon fa fa-calendar"></i>
+              <p>
+                PF Setting
+              </p>
+            </a>
+          </li>
 
         </ul>
       </nav>
@@ -314,7 +321,7 @@ $count=mysqli_num_rows($result);
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../admin/index.php">Home</a></li>
-              <li class="breadcrumb-item active">User request</li>
+              <li class="breadcrumb-item active">PF Setting</li>
             </ol>
           </div>
         </div>
@@ -328,101 +335,28 @@ $count=mysqli_num_rows($result);
           <div class="card card-primary card-outline">
             <div class="card-header">
                <h3 class="card-title">
-                 User Detail
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addmember">
+                  <i class="nav-icon fas fa-plus"></i>
+                  PF Setting
+                </button>
                 </h3>
+        
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-            <form action="../admin/check_confirm.php?id=<?php echo $_GET["id"];?>" name="fromEdit"
-                             method="post" onsubmit="return checkForm()">
-
-                             <?php
-   
-  $strSQL = "SELECT * FROM member  WHERE member_id='".$_GET['id']."'";      
-        ?>
-     <?php
-     if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-            ?>
-                <div class="form-group row ">
-                                 <div class="col-md-2">
-                                     <label class="control-label col-form-label">ID card</label>
-                                 </div>
-
-                                 <div class="col-md-9">
-                                     <input type="text" class="form-control" name="member_idcard" id="member_idcard"
-                                         value="<?php echo $objResult->member_idcard; ?>">
-                                 </div>
-                             </div>
-
-                             <div class="form-group row">
-                                 <div class="col-md-2">
-                                     <label class="control-label col-form-label">Fullname</label>
-                                 </div>
-                                 <div class="col-md-9">
-                                     <input type="text" class="form-control" name="member_fullname" id="member_fullname"
-                                         value="<?php echo $objResult->member_fullname; ?>"> </div>
-                             </div>
-
-                             <div class="form-group row">
-                                 <div class="col-md-2">
-                                     <label class="control-label col-form-label">Usename</label>
-                                 </div>
-                                 <div class="col-md-9">
-                                     <input type="text" class="form-control" name="member_username" id="member_username"
-                                         value="<?php echo $objResult->member_username; ?>"> </div>
-                             </div>
-
-                             <div class="form-group row">
-                                 <div class="col-md-2">
-                                     <label class="control-label col-form-label">Phone</label>
-                                 </div>
-                                 <div class="col-md-9">
-                                     <input type="text" class="form-control" name="member_phone" id="member_phone"
-                                         value="<?php echo $objResult->member_phone; ?>"> </div>
-                             </div>
-                             <div class="form-group row">
-                                 <div class="col-md-2">
-                                     <label class="control-label col-form-label">Gender</label>
-                                 </div>
-                                 <div class="col-md-9">
-                                     <input type="text" class="form-control" name="member_gender" id="member_gender"
-                                         value="<?php echo gender($objResult->member_gender); ?>"> </div>
-                             </div>
-                             <div class="form-group row">
-                                 <div class="col-md-2">
-                                     <label class="control-label col-form-label">Email Address</label>
-                                 </div>
-                                 <div class="col-md-9">
-                                     <div class="input-group">
-                                         
-                                         <input type="text" class="form-control" name="member_email" id="member_email"
-                                             value="<?php echo $objResult->member_email; ?>">
-                                     </div>
-                                 </div>
-                             </div>
-
-                             <div class="pull-right" align="center">
-
-                              <input type="hidden" name="member_id" value="<?php echo $objResult->member_id;?>" />
-
-                <a href="delete_approve.php?id=<?php echo $objResult->member_id;?>"class="btn btn-danger" onclick="return confirm('Are You sure Delete?')">
-                  <i class="fa fa-refresh position-right"></i>Reject</a>
-
-                                 <button type="submit" class="btn btn-primary">
-                                     Approve
-                                     <i class="fa fa-arrow-right position-right"></i>
-                                 </button>
-                             </div>
-
-
-            </form>
-            <?php
-                 }
-               }
-                   ?>
-              
-                  
+                   <table id="example1" class="table table-sm "  >
+                <thead class="thead-light">
+                  <tr>
+                      <th style="font-size: 15px;" width="4%" class="text-left">No</th>
+                      <th style="font-size: 15px;" width="5%" class="text-left">PF Type</th>
+                      <th style="font-size: 15px;" width="10%" class="text-left">Mark Obtain</th>
+                       <th style="font-size: 15px;" width="8%" class="text-left">Action</th>
+                     </tr>
+                  </thead>
+                  <tbody align="center">
+       
+                
+              </table>
             </div>
             <!-- /.card-body -->
           </div>
@@ -435,9 +369,99 @@ $count=mysqli_num_rows($result);
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+<div class="modal fade" id="notify">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Add Alert</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form name="frmNotification" id="frmNotification" action="" method="post" >
+      <div id="form-header" class="form-row">Add New Message</div>
+      <div class="form-row">
+        <div class="form-label">Subject:</div><div class="error" id="subject"></div>
+        <div class="form-element">
+          <input type="text"  name="subject" id="subject" required>
+          
+        </div>
+      </div>
+      <p>
+      <div class="form-row">
+        <div class="form-label">Comment:</div><div class="error" id="comment"></div>
+        <div class="form-element">
+          <textarea rows="4" cols="30" name="comment" id="comment"></textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-element">
+          <input type="submit" name="add" id="btn-send" value="Submit">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+  
 
 
+<div class="modal fade" id="addmember">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">PF Setting</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              
+    <form id="add" name="add" method="post" action="../admin/check_pf_setting.php"
+                                 onsubmit="return checkForm()">
+      <div class="user-details">
 
+        
+        <div class="form-group">
+        <select class="form-control" name="pf" id="pf">
+              <option value="#">Select PF Type</option>
+              <option value="1">FP01</option>
+              <option value="2">PF02</option>
+              <option value="3">PF03</option> 
+              <option value="4">PF04</option>
+              <option value="5">PF05</option>
+              <option value="6">PF06</option>
+              <option value="7">PF07</option>
+              <option value="8">PF08</option>
+              <option value="9">PF09</option>
+              <option value="10">PF10</option>
+              <option value="11">PF11</option>
+              <option value="12">PF12</option>
+              <option value="13">PF13</option>
+        </select>
+       </div>
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" placeholder="mark obtain" id="form_mark" name="form_mark" autocomplete="off" required aria-describedby="basic-addon1">
+          <div class="input-group-append">
+          </div>
+        </div>
+       
+
+      </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary btn-sm">Save</button>
+            </div>
+
+            </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">

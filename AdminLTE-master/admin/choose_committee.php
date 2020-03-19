@@ -47,7 +47,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>ITPROMOT | Choose Committee</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -235,6 +235,14 @@ $count=mysqli_num_rows($result);
                 <a href="../admin/accept_member.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>User Request</p>
+                  <?php
+                    $con = mysqli_connect('localhost','root','','itpromo_track');
+                    $query="SELECT member_id FROM member WHERE admin_id=0";
+                    $query_num=mysqli_query($con,$query);
+                    $count=mysqli_num_rows($query_num);
+
+                    ?>
+                    <span class="right badge badge-danger"><?php echo $count; ?></span>
                 </a>
               </li>
               <li class="nav-item">
@@ -252,7 +260,7 @@ $count=mysqli_num_rows($result);
             </ul>
           </li>
 
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
@@ -278,7 +286,7 @@ $count=mysqli_num_rows($result);
     
 
   
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
@@ -309,7 +317,7 @@ $count=mysqli_num_rows($result);
           </li>
 
 
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
@@ -329,13 +337,13 @@ $count=mysqli_num_rows($result);
           </li>
 
       <li class="nav-item">
-            <a href="../schedule.php" class="nav-link">
-              <i class="nav-icon fa fa-calendar"></i>
-              <p>
-                course syllabus
-              </p>
-            </a>
-          </li>
+              <a href="PF_setting.php" class="nav-link">
+                <i class="nav-icon fa fa-check-square"></i>
+                <p>
+                  Project Form Setting
+                </p>
+              </a>
+            </li>
 
         </ul>
       </nav>
@@ -379,13 +387,13 @@ $count=mysqli_num_rows($result);
               <table id="example1" class="table table-bordered table-striped">
                 <thead align="center">
                   <tr>
-                      <th style="font-size: 15px;" width="2%" class="text-left">No</th>
-                       <th style="font-size: 15px;" width="5%" class="text-left">Group</th>
-                      <th style="font-size: 15px;" width="30%" class="text-left">Owner</th>
+                      <th style="font-size: 15px;" width="1%" class="text-left">No</th>
+                       <!--<th style="font-size: 15px;" width="5%" class="text-left">Group</th>-->
+                      <th style="font-size: 15px;" width="25%" class="text-left">Owner</th>
                        <th style="font-size: 15px;" width="30%" class="text-left">Project Topic</th>
                        <th style="font-size: 15px;" width="17%" class="text-left">Advisor</th>
                        <th style="font-size: 15px;" width="10%" class="text-left">Committee</th>
-                       <th style="font-size: 15px;" width="5%" class="text-left">Action</th>
+                       <th style="font-size: 15px;" width="20%" class="text-center">Action</th>
                      </tr>
                   </thead>
                   <tbody align="center">
@@ -404,8 +412,8 @@ $count=mysqli_num_rows($result);
               ?>
                   <tr>
                   
-                       <td class="text-left" style="font-size: 15px;"><?php echo $row->files_id; ?></td>
-                     <td class="text-left" style="font-size: 15px;"><?php echo $row->group_number; ?></td>
+                       <td class="text-center" style="font-size: 15px;"><?php echo $row->files_id; ?></td>
+                   <!--  <td class="text-left" style="font-size: 15px;"><?php echo $row->group_number; ?></td>-->
                        <td class="text-left" style="font-size: 15px;"><?php echo get_member_list($row->group_id); ?></td>
                      <td class="text-left" style="font-size: 15px;"><?php echo get_topic($row->group_id); ?></td>
                      <td class="text-left" style="font-size: 15px;"><?php echo get_advisor($row->group_id); ?></td>
@@ -414,9 +422,16 @@ $count=mysqli_num_rows($result);
 
                     <td class="text-left" style="font-size: 15px;">
 
-                      <button type="button" class="btn btn-info btn-sm"
+                      <button type="button" class="btn btn-success btn-sm"
                         onclick="add_committee('<?php echo $row->group_id; ?>')" data-toggle="modal"
-                        data-target="#add_committee"><i class="fa fa-user-plus"></i> Add </button>
+                        data-target="#add_committee">Add </button>
+
+                      <button type="button" class="btn btn-warning btn-sm"
+                        onclick="add_committee('<?php echo $row->group_id; ?>')" data-toggle="modal"
+                        data-target="#add_committee">Edit</button>
+
+                        <a href="delete_committee.php?id=<?php echo $objResult->member_id;?>"class="btn btn-danger btn-sm" onclick="return confirm('Are You sure Delete?')">delete </a>
+
                     </td>
                   </tr>
 

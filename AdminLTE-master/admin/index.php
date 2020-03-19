@@ -13,7 +13,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO</title>
+  <title>ITPROMOT</title>
 
 
   <!-- Font Awesome Icons -->
@@ -166,7 +166,7 @@ $count=mysqli_num_rows($result);
                 </p>
               </a>
             </li>
-            <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-users"></i>
                 <p>
@@ -179,6 +179,15 @@ $count=mysqli_num_rows($result);
                   <a href="../admin/accept_member.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>User Request</p>
+
+                    <?php
+                    $con = mysqli_connect('localhost','root','','itpromo_track');
+                    $query="SELECT member_id FROM member WHERE admin_id=0";
+                    $query_num=mysqli_query($con,$query);
+                    $count=mysqli_num_rows($query_num);
+
+                    ?>
+                    <span class="right badge badge-danger"><?php echo $count; ?></span>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -195,7 +204,7 @@ $count=mysqli_num_rows($result);
                 </li>
               </ul>
             </li>
-            <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-calendar"></i>
                 <p>
@@ -218,7 +227,7 @@ $count=mysqli_num_rows($result);
                 </li>
               </ul>
             </li>
-            <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
@@ -249,7 +258,7 @@ $count=mysqli_num_rows($result);
             </li>
 
 
-            <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-calendar"></i>
                 <p>
@@ -269,10 +278,10 @@ $count=mysqli_num_rows($result);
             </li>
 
             <li class="nav-item">
-              <a href="test.php" class="nav-link">
-                <i class="nav-icon fa fa-calendar"></i>
+              <a href="PF_setting.php" class="nav-link">
+                <i class="nav-icon fa fa-check-square"></i>
                 <p>
-                  course syllabus
+                  Project Form Setting
                 </p>
               </a>
             </li>
@@ -353,7 +362,7 @@ $count=mysqli_num_rows($result);
                 ?>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
+                  <i class="fa fa-users"></i>
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
@@ -363,21 +372,25 @@ $count=mysqli_num_rows($result);
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <?php
+
+              <?php
               $con = mysqli_connect('localhost','root','','itpromo_track');
 
-                $query="SELECT member_id FROM member ORDER BY member_id";
+              $query = "SELECT member_id 
+                        FROM member  
+                        WHERE admin_id ='0'
+                        ORDER BY member_id";
 
                 $query_num=mysqli_query($con,$query);
                 $row=mysqli_num_rows($query_num);
                 echo '<h1>'.$row.'</h1>';
-                echo 'Bounce Rate';
+                echo 'Registration requst';
                 ?>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="accept_member.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -385,19 +398,109 @@ $count=mysqli_num_rows($result);
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
 
-                $query="SELECT member_id FROM member ORDER BY member_id";
+                <?php
+                $con = mysqli_connect('localhost','root','','itpromo_track');
+
+                $query="SELECT topic_id FROM topic_project ORDER BY topic_id";
 
                 $query_num=mysqli_query($con,$query);
                 $row=mysqli_num_rows($query_num);
                 echo '<h1>'.$row.'</h1>';
-                echo 'Bounce Rate';
+                echo 'All Projects';
                 ?>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
+                <i class="nav-icon fas fa-book"></i>
+                </div>
+                <a href="view_all_project.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+
+             <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-info">
+                <div class="inner">
+
+                <?php
+                $con = mysqli_connect('localhost','root','','itpromo_track');
+
+                $query="SELECT advisergroup_id FROM advisergroup ORDER BY advisergroup_id";
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
+                echo 'Group & Tracking';
+                ?>
+                </div>
+                <div class="icon">
+                <i class="nav-icon fas fa-book"></i>
+                </div>
+                <a href="student_track.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+             <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-success">
+                <div class="inner">
+
+                <?php
+                $con = mysqli_connect('localhost','root','','itpromo_track');
+
+                $query="SELECT topic_id FROM topic_project ORDER BY topic_id";
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
+                echo 'All Projects';
+                ?>
+                </div>
+                <div class="icon">
+                <i class="nav-icon fas fa-book"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+             <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-warning">
+                <div class="inner">
+
+                <?php
+                $con = mysqli_connect('localhost','root','','itpromo_track');
+
+                $query="SELECT topic_id FROM topic_project ORDER BY topic_id";
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
+                echo 'All Projects';
+                ?>
+                </div>
+                <div class="icon">
+                <i class="nav-icon fas fa-book"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+             <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-danger">
+                <div class="inner">
+
+                <?php
+                $con = mysqli_connect('localhost','root','','itpromo_track');
+
+                $query="SELECT topic_id FROM topic_project ORDER BY topic_id";
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
+                echo 'All Projects';
+                ?>
+                </div>
+                <div class="icon">
+                <i class="nav-icon fas fa-book"></i>
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
