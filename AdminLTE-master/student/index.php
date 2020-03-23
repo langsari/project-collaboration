@@ -187,14 +187,6 @@ $count=mysqli_num_rows($result);
        Group Information              </p>
 
 
-                    <?php
-                    $con = mysqli_connect('localhost','root','','itpromo_track');
-                    $query="SELECT schedule_id FROM schedule WHERE status=0";
-                    $query_num=mysqli_query($con,$query);
-                    $count=mysqli_num_rows($query_num);
-
-                    ?>
-                                                   <span class="right badge badge-danger"><?php echo $count; ?></span>
 
             </a>
           </li>
@@ -498,13 +490,13 @@ $count=mysqli_num_rows($result);
 
 
     <!-- /.content-wrapper -->
-    <footer class="main-footer">
-      <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.3-pre
-      </div>
-      <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-      reserved.
-    </footer>
+   <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
+      <b>Version</b> 3.0.3-pre
+    </div>
+       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+    reserved.
+  </footer>
 
     <!-- /.control-sidebar -->
   </div>

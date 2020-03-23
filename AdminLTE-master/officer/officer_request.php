@@ -169,7 +169,7 @@ to get the desired effect
     
 
  
-          <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
@@ -199,7 +199,7 @@ to get the desired effect
 
     
 
-  <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
@@ -781,7 +781,7 @@ $my_id = $_SESSION['id'];
 
 
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
+ <footer class="main-footer">
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
       <b>Version</b> 3.0.3-pre
     </div>

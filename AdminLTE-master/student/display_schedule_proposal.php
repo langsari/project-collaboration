@@ -375,8 +375,8 @@ to get the desired effect
                         LEFT JOIN member ON schedule.writer = member.member_id
                       WHERE   schedule.schedule_type ='1'
                         ORDER BY schedule.schedule_type";
-                               $i = 1;
-   $count = 1;
+                             $i = 1; 
+                              $count = 1;
         ?>
              <?php
      if($result = $db->query($strSQL)){

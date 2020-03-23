@@ -169,7 +169,7 @@ to get the desired effect
     
 
  
-          <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
@@ -469,6 +469,7 @@ WHERE news_topic.parent_comment_id = '$id'";
       
 
    
+  
 
 
             <?php
@@ -477,14 +478,14 @@ WHERE news_topic.parent_comment_id = '$id'";
                    ?>
            
 
-
-</div>
-
-
-
+    <!-- /.content -->
+  </br>
+  </div>
 </class>
+</class>
+</p>
+</span>
 </div>
-
 
   <!-- /.content-wrapper -->
 
@@ -496,16 +497,6 @@ WHERE news_topic.parent_comment_id = '$id'";
     <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
     reserved.
   </footer>
-</class>
-</class>
-</p>
-</span>
-</div>
-
-
-
-
-
 
 
 

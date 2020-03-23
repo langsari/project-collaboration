@@ -182,9 +182,7 @@ to get the desired effect
           </li>
     
 
-  
-
-          <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
@@ -211,8 +209,7 @@ to get the desired effect
 
 
     
-
-  <li class="nav-item has-treeview">
+     <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>

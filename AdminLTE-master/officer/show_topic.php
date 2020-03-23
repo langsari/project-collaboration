@@ -169,7 +169,7 @@ to get the desired effect
     
 
  
-          <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
@@ -354,11 +354,6 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id' ";
     <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
     reserved.
   </footer>
-</class>
-</class>
-</p>
-</span>
-</div>
 
 
 
