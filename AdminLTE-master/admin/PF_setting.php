@@ -12,7 +12,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>ITPROMOT| PF Setting </title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -200,6 +200,14 @@ $count=mysqli_num_rows($result);
                 <a href="../admin/accept_member.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>User Request</p>
+                  <?php
+                    $con = mysqli_connect('localhost','root','','itpromo_track');
+                    $query="SELECT member_id FROM member WHERE admin_id=0";
+                    $query_num=mysqli_query($con,$query);
+                    $count=mysqli_num_rows($query_num);
+
+                    ?>
+                    <span class="right badge badge-danger"><?php echo $count; ?></span>
                 </a>
               </li>
               <li class="nav-item">
@@ -347,13 +355,49 @@ $count=mysqli_num_rows($result);
                    <table id="example1" class="table table-sm "  >
                 <thead class="thead-light">
                   <tr>
-                      <th style="font-size: 15px;" width="4%" class="text-left">No</th>
-                      <th style="font-size: 15px;" width="5%" class="text-left">PF Type</th>
-                      <th style="font-size: 15px;" width="10%" class="text-left">Mark Obtain</th>
-                       <th style="font-size: 15px;" width="8%" class="text-left">Action</th>
+                      <th style="font-size: 15px;" width="4%" class="text-center">No</th>
+                      <th style="font-size: 15px;" width="5%" class="text-center">PF Type</th>
+                      <th style="font-size: 15px;" width="10%" class="text-center">Mark Obtain</th>
+                       <th style="font-size: 15px;" width="8%" class="text-center">Action</th>
                      </tr>
                   </thead>
                   <tbody align="center">
+      <?php
+      $strSQL = "SELECT * FROM  form";
+        
+        ?>
+        <?php
+     if($result = $db->query($strSQL)){
+             while($objResult = $result->fetch_object()){
+            ?>
+            <tr>
+                 <td class="text-center" style="font-size: 15px;"><?php echo $objResult->form_id; ?></td>
+                 <td class="text-center" style="font-size: 15px;">PF <?php echo $objResult->pf; ?></td>
+                <td class="text-center" style="font-size: 15px;"><?php echo $objResult->form_mark; ?></td>
+                <td>
+    
+
+           <a href="../admin/accept.php?id=<?php echo $objResult->member_id;?>"class="btn btn-primary btn-sm">
+                  <i class="fa fa-edit" title="Detail"></i></a>
+
+
+    <a href="delete_approve.php?id=<?php echo $objResult->member_id;?>"class="btn btn-danger btn-sm" onclick="return confirm('Are You sure Delete?')">
+                  <i class="fa fa-trash" title="Delete"></i></a>
+
+
+
+
+                   
+
+
+                </td>
+                 
+            </tr>
+
+            <?php
+              }
+               }
+                   ?>
        
                 
               </table>
@@ -369,37 +413,36 @@ $count=mysqli_num_rows($result);
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  
 <div class="modal fade" id="notify">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Add Alert</h4>
+              <h4 class="modal-title">Add Notification</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              <form name="frmNotification" id="frmNotification" action="" method="post" >
-      <div id="form-header" class="form-row">Add New Message</div>
-      <div class="form-row">
-        <div class="form-label">Subject:</div><div class="error" id="subject"></div>
-        <div class="form-element">
-          <input type="text"  name="subject" id="subject" required>
+
+      <div class="modal-body">
+      <form name="frmNotification" id="frmNotification" action="" method="post" >
+
+        <div class="user-details">
+        <div class="form-group">
+        <input type="text" class="form-control" placeholder="Subject" id="Subject" name="subject" autocomplete="off" required aria-describedby="basic-addon1">
+       </div>
+
+        <div class="input-group mb-3">
+          <textarea class="form-control" placeholder="comment" id="comment" name="comment" autocomplete="off" required aria-describedby="basic-addon1">
+
+          </textarea>
           
         </div>
       </div>
-      <p>
-      <div class="form-row">
-        <div class="form-label">Comment:</div><div class="error" id="comment"></div>
-        <div class="form-element">
-          <textarea rows="4" cols="30" name="comment" id="comment"></textarea>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-element">
-          <input type="submit" name="add" id="btn-send" value="Submit">
-        </div>
-      </div>
+      <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary btn-sm" name="add" id="btn-send" value="Submit">Save</button>
+            </div>
     </form>
   </div>
 </div>

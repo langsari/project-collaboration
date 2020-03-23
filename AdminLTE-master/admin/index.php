@@ -13,7 +13,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMOT</title>
+  <title>ITPROMOT|Dashboad Management</title>
 
 
   <!-- Font Awesome Icons -->
@@ -346,7 +346,7 @@ $count=mysqli_num_rows($result);
             <!-- ./col -->
             <div class="col-lg-3 col-6">
               <!-- small box -->
-              <div class="small-box bg-success">
+              <div class="small-box bg-primary">
                 <div class="inner">
                   <?php
               $con = mysqli_connect('localhost','root','','itpromo_track');
@@ -364,13 +364,13 @@ $count=mysqli_num_rows($result);
                 <div class="icon">
                   <i class="fa fa-users"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="all_member.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
             <div class="col-lg-3 col-6">
               <!-- small box -->
-              <div class="small-box bg-warning">
+              <div class="small-box bg-success">
                 <div class="inner">
 
               <?php
@@ -384,7 +384,7 @@ $count=mysqli_num_rows($result);
                 $query_num=mysqli_query($con,$query);
                 $row=mysqli_num_rows($query_num);
                 echo '<h1>'.$row.'</h1>';
-                echo 'Registration requst';
+                echo 'Registration request';
                 ?>
                 </div>
                 <div class="icon">
@@ -393,10 +393,32 @@ $count=mysqli_num_rows($result);
                 <a href="accept_member.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
-            <!-- ./col -->
             <div class="col-lg-3 col-6">
               <!-- small box -->
               <div class="small-box bg-danger">
+                <div class="inner">
+
+                <?php
+                $con = mysqli_connect('localhost','root','','itpromo_track');
+
+                $query="SELECT advisergroup_id FROM advisergroup ORDER BY advisergroup_id";
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
+                echo 'Group & Tracking';
+                ?>
+                </div>
+                <div class="icon">
+                <i class="nav-icon fas fa-folder-open"></i>
+                </div>
+                <a href="student_track.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-warning">
                 <div class="inner">
 
                 <?php
@@ -419,90 +441,50 @@ $count=mysqli_num_rows($result);
 
              <div class="col-lg-3 col-6">
               <!-- small box -->
-              <div class="small-box bg-info">
+              <div class="small-box bg-light">
                 <div class="inner">
 
                 <?php
                 $con = mysqli_connect('localhost','root','','itpromo_track');
 
-                $query="SELECT advisergroup_id FROM advisergroup ORDER BY advisergroup_id";
+                $query="SELECT topic_id FROM topic_project WHERE status='6' ORDER BY topic_id";
 
                 $query_num=mysqli_query($con,$query);
                 $row=mysqli_num_rows($query_num);
                 echo '<h1>'.$row.'</h1>';
-                echo 'Group & Tracking';
+                echo 'Graduated Projects';
                 ?>
                 </div>
                 <div class="icon">
-                <i class="nav-icon fas fa-book"></i>
+                <i class="nav-icon fas fa-graduation-cap"></i>
                 </div>
-                <a href="student_track.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="view_all_project.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
              <div class="col-lg-3 col-6">
               <!-- small box -->
-              <div class="small-box bg-success">
+              <div class="small-box bg-secondary">
                 <div class="inner">
-
-                <?php
-                $con = mysqli_connect('localhost','root','','itpromo_track');
-
-                $query="SELECT topic_id FROM topic_project ORDER BY topic_id";
-
-                $query_num=mysqli_query($con,$query);
-                $row=mysqli_num_rows($query_num);
-                echo '<h1>'.$row.'</h1>';
-                echo 'All Projects';
-                ?>
+                  <h4>MANAGE</h4>
+                  <p>Schedule</p>
                 </div>
                 <div class="icon">
-                <i class="nav-icon fas fa-book"></i>
+                <i class="nav-icon fas fa-calendar"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="add_schedule_proposal.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
              <div class="col-lg-3 col-6">
               <!-- small box -->
-              <div class="small-box bg-warning">
+              <div class="small-box bg-white">
                 <div class="inner">
-
-                <?php
-                $con = mysqli_connect('localhost','root','','itpromo_track');
-
-                $query="SELECT topic_id FROM topic_project ORDER BY topic_id";
-
-                $query_num=mysqli_query($con,$query);
-                $row=mysqli_num_rows($query_num);
-                echo '<h1>'.$row.'</h1>';
-                echo 'All Projects';
-                ?>
+                  <h4>PF</h4>
+                  <p>Setting</p>
                 </div>
                 <div class="icon">
-                <i class="nav-icon fas fa-book"></i>
+                <i class="nav-icon fas fa-cogs"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-             <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-danger">
-                <div class="inner">
-
-                <?php
-                $con = mysqli_connect('localhost','root','','itpromo_track');
-
-                $query="SELECT topic_id FROM topic_project ORDER BY topic_id";
-
-                $query_num=mysqli_query($con,$query);
-                $row=mysqli_num_rows($query_num);
-                echo '<h1>'.$row.'</h1>';
-                echo 'All Projects';
-                ?>
-                </div>
-                <div class="icon">
-                <i class="nav-icon fas fa-book"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="PF_setting.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -568,135 +550,52 @@ $count=mysqli_num_rows($result);
 
 
 
-      <div class="modal fade" id="notify">
+     <div class="modal fade" id="notify">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Add Alert</h4>
+              <h4 class="modal-title">Add Notification</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              <form name="frmNotification" id="frmNotification" action="" method="post">
-                <div id="form-header" class="form-row">Add New Message</div>
-                <div class="form-row">
-                  <div class="form-label"> Subject:</div>
-                  <div class="error" id="subject"></div>
-                  <div class="form-element">
-                    <input type="text" name="subject" id="subject" required>
 
-                  </div>
-                </div>
-                <p>
-                  <div class="form-row">
-                    <div class="form-label"> Comment:</div>
-                    <div class="error" id="comment"></div>
-                    <div class="form-element">
-                      <textarea rows="4" cols="30" name="comment" id="comment"></textarea>
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-element">
-                      <input type="submit" name="add" id="btn-send" value="Submit">
-                    </div>
-                  </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="modal-body">
+      <form name="frmNotification" id="frmNotification" action="" method="post" >
 
+        <div class="user-details">
+        <div class="form-group">
+        <input type="text" class="form-control" placeholder="Subject" id="Subject" name="subject" autocomplete="off" required aria-describedby="basic-addon1">
+       </div>
 
+        <div class="input-group mb-3">
+          <textarea class="form-control" placeholder="comment" id="comment" name="comment" autocomplete="off" required aria-describedby="basic-addon1">
 
-
-   <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-12">
-          <div class="card card-primary card-outline">
-            <div class="card-header">
-               <h3 class="card-title">
-                  <i class="fas fa-edit"></i>
-                  View Track of Students
-                </h3>
-        
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                  <tr align="center">
-                  <th>Project Title</th>
-                  <th>Owner Project</th>
-                  <th>Project Progress</th>
-                  <th>Action</th>
-                </tr>
-                  </thead>
-                  <tbody align="center">
-        <?php
-
-       $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic FROM advisergroup
-
-          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
-
-        LEFT JOIN member ON advisergroup.member_id = member.member_id
-
-           ";
-
-        ?>
-        <?php
-     if($result = $db->query($strSQL)){
-             while($objResult = $result->fetch_object()){
-            ?>
+          </textarea>
           
-                  <td class="text-left"><?php echo $objResult->advisergroup_topic; ?></td>
-                  <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
-                  <td class="project_progress">
-                          <div class="progress progress-sm">
-                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
-                              </div>
-                          </div>
-                          <small>
-                              57% Complete
-                          </small>
-                      </td>
-                  <td>
-                         <a href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">view track <i class="fa fa-eye" title="View student track"></i></a>
-
-                  </td>
-
-
-                </tr>
-            <?php
-              }
-               }
-                   ?>
-                
-              </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
         </div>
-        <!-- /.col -->
       </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-
+      <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary btn-sm" name="add" id="btn-send" value="Submit">Save</button>
+            </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
      </div>
 
 
 
 
-
+</br></br></br>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 3.0.3-pre
       </div>
-      <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+      <strong>Copyright &copy; 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights
       reserved.
     </footer>
 

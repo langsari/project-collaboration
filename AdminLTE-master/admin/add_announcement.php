@@ -12,7 +12,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+ <title>ITPROMOT|Announcement</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -190,7 +190,7 @@ $count=mysqli_num_rows($result);
             </a>
           </li>
 
-         <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fa fa-users"></i>
               <p>
@@ -203,6 +203,14 @@ $count=mysqli_num_rows($result);
                 <a href="../admin/accept_member.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>User Request</p>
+                  <?php
+                    $con = mysqli_connect('localhost','root','','itpromo_track');
+                    $query="SELECT member_id FROM member WHERE admin_id=0";
+                    $query_num=mysqli_query($con,$query);
+                    $count=mysqli_num_rows($query_num);
+
+                    ?>
+                    <span class="right badge badge-danger"><?php echo $count; ?></span>
                 </a>
               </li>
               <li class="nav-item">
@@ -220,7 +228,7 @@ $count=mysqli_num_rows($result);
             </ul>
           </li>
 
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
@@ -232,13 +240,13 @@ $count=mysqli_num_rows($result);
               <li class="nav-item">
                 <a href="../admin/add_schedule_proposal.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Proposal Schedule</p>
+                  <p>Proposal Schedule</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../admin/add_schedule_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Project Schedule</p>
+                  <p>Project Schedule</p>
                 </a>
               </li>
             </ul>
@@ -246,7 +254,7 @@ $count=mysqli_num_rows($result);
     
 
   
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
@@ -277,7 +285,7 @@ $count=mysqli_num_rows($result);
           </li>
 
 
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
@@ -297,13 +305,13 @@ $count=mysqli_num_rows($result);
           </li>
 
       <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-calendar"></i>
-              <p>
-                course syllabus
-              </p>
-            </a>
-          </li>
+              <a href="PF_setting.php" class="nav-link">
+                <i class="nav-icon fa fa-check-square"></i>
+                <p>
+                  Project Form Setting
+                </p>
+              </a>
+            </li>
 
         </ul>
       </nav>

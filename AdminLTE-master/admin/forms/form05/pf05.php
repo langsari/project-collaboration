@@ -13,7 +13,7 @@ include('../../../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+   <title>ITPROMOT | TRACKING PAGE</title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="../form01/style.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
@@ -70,7 +70,7 @@ to get the desired effect
     <a href="../../student/index.php" class="brand-link">
       <img src="../../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">ITPROMO</span>
+      <span class="brand-text font-weight-light">ITPROMOT</span>
     </a>
 
     <!-- Sidebar -->
@@ -102,7 +102,7 @@ to get the desired effect
             </a>
           </li>
          
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fa fa-users"></i>
               <p>
@@ -115,6 +115,14 @@ to get the desired effect
                 <a href="../../../admin/accept_member.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>User Request</p>
+                  <?php
+                    $con = mysqli_connect('localhost','root','','itpromo_track');
+                    $query="SELECT member_id FROM member WHERE admin_id=0";
+                    $query_num=mysqli_query($con,$query);
+                    $count=mysqli_num_rows($query_num);
+
+                    ?>
+                    <span class="right badge badge-danger"><?php echo $count; ?></span>
                 </a>
               </li>
               <li class="nav-item">
@@ -133,7 +141,7 @@ to get the desired effect
           </li>
         
         
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
@@ -190,7 +198,7 @@ to get the desired effect
           </li>
 
 
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
@@ -210,13 +218,14 @@ to get the desired effect
           </li>
 
       <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-calendar"></i>
-              <p>
-                course syllabus
-              </p>
-            </a>
-          </li>
+              <a href="PF_setting.php" class="nav-link">
+                <i class="nav-icon fa fa-check-square"></i>
+                <p>
+                  Project Form Setting
+                </p>
+              </a>
+            </li>
+
 
         </ul>
       </nav>
