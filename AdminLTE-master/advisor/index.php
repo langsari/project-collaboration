@@ -340,38 +340,145 @@ to get the desired effect
     </section>
 
 
-  <span style="padding-left:50px"> </span>
+<section class="content">
+        <div class="container-fluid">
+          <!-- Small boxes (Stat box) -->
+          <div class="row">
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-info">
+                <div class="inner">
 
-  <button type="button" style="height:110px; width:210px" class="btn btn-success">
-    <h5><i class="fa fa-users position-left"></i>Total Group</h5>
-      
-         <?php
+
+
+
+                  <?php
               $con = mysqli_connect('localhost','root','','itpromo_track');
               $my_id = $_SESSION['id'];
 
-                $query="SELECT advisergroup_id FROM advisergroup 
+                 $query="SELECT advisergroup_id FROM advisergroup 
                   WHERE member_id='$my_id'
                    ORDER BY advisergroup_id";
 
                 $query_num=mysqli_query($con,$query);
                 $row=mysqli_num_rows($query_num);
-
-                  echo '<h1>'.$row.'</h1>';
-                
+                echo '<h1>'.$row.'</h1>';
+                echo 'Total Group User';
                 ?>
 
-  </button>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-users"></i>
+                </div>
 
-  <span style="padding-left:50px"> </span>
+                <a href="users.php" class="small-box-footer">More info <i
+                    class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
+          
+ 
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-danger">
+                <div class="inner">
 
-  <button type="button" class="btn btn-warning" style="height:110px; width:210px" ><i
-      class="fa fa-users position-left"></i>
-      <h5>Users
-    
-</button>
+                <?php
+                $con = mysqli_connect('localhost','root','','itpromo_track');
+              $my_id = $_SESSION['id'];
 
-<p>
+     
 
+
+                 $query="SELECT advisergroup_id FROM advisergroup 
+                  WHERE member_id='$my_id'
+                   ORDER BY advisergroup_id";
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
+                echo 'Group & Tracking';
+                ?>
+                </div>
+                <div class="icon">
+                <i class="nav-icon fas fa-folder-open"></i>
+                </div>
+                <a href="student_track.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-warning">
+                <div class="inner">
+
+                <?php
+                $con = mysqli_connect('localhost','root','','itpromo_track');
+
+
+         //   require 'menu/function.php';
+$my_id = $_SESSION['id'];
+
+
+            $query = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM topic_project
+
+          LEFT JOIN advisergroup ON topic_project.advisergroup_id = advisergroup.advisergroup_id
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+        LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+                 WHERE advisergroup.member_id = '$my_id'";
+
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
+                echo 'All Projects';
+                ?>
+                </div>
+                <div class="icon">
+                <i class="nav-icon fas fa-book"></i>
+                </div>
+                <a href="proposal_status.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+
+             <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-light">
+                <div class="inner">
+
+                <?php
+                $con = mysqli_connect('localhost','root','','itpromo_track');
+
+
+$my_id = $_SESSION['id'];
+
+
+            $query = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM topic_project
+
+          LEFT JOIN advisergroup ON topic_project.advisergroup_id = advisergroup.advisergroup_id
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+        LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+                 WHERE advisergroup.member_id = '$my_id' and topic_project.status='6' ";
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
+                echo 'Graduated Projects';
+                ?>
+                </div>
+                <div class="icon">
+                <i class="nav-icon fas fa-graduation-cap"></i>
+                </div>
+                <a href="proposal_status.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+
+            
+
+
+            <!-- ./col -->
+          </div>
+      </section>
 
   <!-- Main content -->
       <section class="content">
