@@ -185,12 +185,23 @@ $count=mysqli_num_rows($result);
 <i class="nav-icon fa fa-users" aria-hidden="true"></i>
               <p>
        Group Information              </p>
+
+
+                    <?php
+                    $con = mysqli_connect('localhost','root','','itpromo_track');
+                    $query="SELECT schedule_id FROM schedule WHERE status=0";
+                    $query_num=mysqli_query($con,$query);
+                    $count=mysqli_num_rows($query_num);
+
+                    ?>
+                                                   <span class="right badge badge-danger"><?php echo $count; ?></span>
+
             </a>
           </li>
     
  
   
-          <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
@@ -222,25 +233,52 @@ $count=mysqli_num_rows($result);
           </li>
 
 
-          <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
                 Schedule
                 <i class="fas fa-angle-left right"></i>
               </p>
+
+
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="display_schedule_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Proposal Schedule</p>
+                  <p>Proposal Schedul  </p>
+
+
+                    <?php
+                    $con = mysqli_connect('localhost','root','','itpromo_track');
+                    $query="SELECT schedule_id FROM schedule WHERE schedule_type ='1' and  status=0";
+                    $query_num=mysqli_query($con,$query);
+                    $count=mysqli_num_rows($query_num);
+
+                    ?>
+
+                               <span class="right badge badge-danger"><?php echo $count; ?></span>
+
+
+
+
+
                 </a>
               </li>
               <li class="nav-item">
                 <a href="display_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Schedule</p>
+                   <?php
+                    $con = mysqli_connect('localhost','root','','itpromo_track');
+                    $query="SELECT schedule_id FROM schedule WHERE schedule_type ='2' and  status=0";
+                    $query_num=mysqli_query($con,$query);
+                    $count=mysqli_num_rows($query_num);
+
+                    ?>
+
+                               <span class="right badge badge-danger"><?php echo $count; ?></span>
                 </a>
               </li>
               
@@ -248,7 +286,7 @@ $count=mysqli_num_rows($result);
           </li>
 
 
-  <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>

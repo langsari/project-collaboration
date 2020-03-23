@@ -323,6 +323,22 @@ to get the desired effect
     <section class="content">
 
 
+      <?php include ('../menu/connect.php'); ?>
+
+          <?php
+          if (isset($_GET['id']))
+           {
+            $schedule_id= $_GET['id'];
+
+            $conn = new mysqli("localhost","root","","itpromo_track");
+            $sql="UPDATE schedule SET status=1 WHERE id='$schedule_id' ";
+            $result=mysqli_query($conn, $sql);
+          }
+
+          ?>
+
+
+
       <!-- Default box -->
         <div class="card">
             <div class="card-header">
@@ -355,7 +371,6 @@ to get the desired effect
                $strSQL = "SELECT schedule.*, partnergroup.group_id,partnergroup.group_number,member.member_fullname,schedule.writer,schedule.group_id,advisergroup.group_id,advisergroup.advisergroup_topic, topic_project.Owner,topic_project.topic_topic  FROM schedule
                      LEFT JOIN advisergroup ON schedule.group_id = advisergroup.advisergroup_id
                    LEFT JOIN topic_project ON schedule.group_id = topic_project.advisergroup_id
-
                    LEFT JOIN partnergroup ON schedule.group_id = partnergroup.group_id
                         LEFT JOIN member ON schedule.writer = member.member_id
                       WHERE   schedule.schedule_type ='1'

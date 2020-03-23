@@ -195,7 +195,7 @@ to get the desired effect
           </li>
 
 
-          <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
@@ -221,7 +221,7 @@ to get the desired effect
           </li>
 
 
-  <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
@@ -343,7 +343,7 @@ to get the desired effect
 
       <!-- Default box -->
       <div class="card card-solid">
-        <div class="card-body pb-0">
+        <div class="card-body ">
           <div class="row d-flex align-items-stretch">
             <div class="col-15 col-sm-8 col-md-12 d-flex align-items-stretch">
               
@@ -351,7 +351,6 @@ to get the desired effect
                     <form id="add" name="add" method ="post" action ="check_proposal.php" onsubmit="return checkForm()">
                       <legend class="text-bold margin-top-40">Add proposal</legend>
 
-                      <form action="#" class="form-horizontal">
 
                         <?php
                         $strSQL="SELECT * FROM member  WHERE member_id='".$_SESSION['id']."'";
@@ -377,24 +376,26 @@ to get the desired effect
 
                         <div class="row">
 
-                          <div class="col-md-6">
+                          <div class="col-md-10">
 
 <!--get ID Project  -->
                             <div class="form-group row">
                               <div class="col-md-3">
-                                <label class="control-label col-form-label">ID Project</label>
+                                <label class="control-label ">ID Project</label>
                                 
                               </div>
                               <div class="col-md-9">
-                                <input type="text" class="form-control" name="group_number"  value="<?php echo $objResult->group_number; ?>">
+                                <td class="form-control" name="group_number" > <?php echo $objResult->group_number; ?>
                                 
                               </div>
                             </div>
 
+
+
 <!--get Project Owner  -->
                             <div class="form-group row">
                               <div class="col-md-3">
-                                <label class="control-label col-form-label">Project Owner</label>
+                                <label class="control-label ">Project Owner</label>
                                 
                               </div>
                               <div class="col-md-9">
@@ -418,21 +419,7 @@ to get the desired effect
                             </div>
 <!--get project Abstarck   -->
 
-                            <div class="form-group row">
-                              <div class="col-md-3">
-                                <label class="control-label col-form-label">Abstarck</label>
-                                
-                              </div>
-                              <div class="col-md-9">
-
-
-
-  <textarea type="text" style="width: 600px; height: 100px"  class="form-control" id="topic_abstrack"
-   name="topic_abstrack"> <?php echo $objResult->topic_abstrack; ?> </textarea>
-
-                              </div>
-                              
-                            </div>
+                     
 
 <!--get project Keyword  -->      
 
@@ -495,7 +482,7 @@ to get the desired effect
                       
                              <div class="form-group row">
                               <div class="col-md-3">
-                                <label class="control-label col-form-label">Proposal status</label>
+                                <label class="control-label ">Proposal status</label>
                                 
                               </div>
                               <div class="col-md-9">
@@ -504,6 +491,22 @@ to get the desired effect
                               </div>
                                
                              </div>
+
+                                    <div class="form-group row">
+                              <div class="col-md-3">
+                                <label class="control-label col-form-label">Abstarck</label>
+                                
+                              </div>
+                              <div class="col-md-9">
+
+
+
+  <textarea type="text" style="width: 600px; height: 200px"  class="form-control" id="topic_abstrack"
+   name="topic_abstrack"> <?php echo $objResult->topic_abstrack; ?> </textarea>
+
+                              </div>
+                              
+                            </div>
                             
                           </div>
 
@@ -511,19 +514,21 @@ to get the desired effect
 
 
 
-<td><div align="center"> <input type="hidden" name="topic_id" value="<?php echo $objResult->topic_id; ?>" /></div></td></tr>
+<td><div align="center"> <input type="hidden" name="topic_id" value="<?php echo $objResult->topic_id; ?>" /></div>
+</td>
+</td>
+</div>
+</div>
+</div>
 
-                          <button ype="submit" class="btn btn-primary btn-lg btn-block">Create</button>
-
+<center>
+                          <button ype="submit" class="btn btn-primary ">Create</button>
+</center>
                       
                           
                  </main>
-              
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+              </td></tr>
+           
       
             
 <?php
@@ -536,8 +541,33 @@ to get the desired effect
     }
 ?>
 
-</body>
-</html>
+
+
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+
+
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.3-pre
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+
 
     <!-- /.content -->
  

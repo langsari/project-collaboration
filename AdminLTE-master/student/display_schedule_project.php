@@ -165,7 +165,7 @@ to get the desired effect
     
  
   
-          <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
@@ -223,7 +223,7 @@ to get the desired effect
           </li>
 
 
-  <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
@@ -468,14 +468,21 @@ to get the desired effect
                 </div>
                 <div class="col-md-10">
             <?php echo $objResult->schedule_room; ?>       
-                     </div>
+              
+ </div>
               </div>
+
+              </div>
+
+      </div>
+
 
 
 
 
 
   
+
 
 
     </div>
@@ -485,15 +492,16 @@ to get the desired effect
                           </div>
                         </div>
 
-                    </td>
-                    </tr>
 
-                    <?php
+
+                  </td>
+                </tr>
+                             <?php
                                     $i++;  
     }
                }
                    ?>
-                                        
+                
               </table>
             </div>
             <!-- /.card-body -->
@@ -505,6 +513,24 @@ to get the desired effect
       <!-- /.row -->
     </section>
     <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.3-pre
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
 
     <!-- /.content -->
  

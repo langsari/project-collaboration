@@ -162,7 +162,7 @@ to get the desired effect
     
  
   
-          <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
@@ -194,7 +194,7 @@ to get the desired effect
           </li>
 
 
-          <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
@@ -220,7 +220,7 @@ to get the desired effect
           </li>
 
 
-  <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
@@ -526,19 +526,71 @@ to get the desired effect
           <!-- END Partner-->
 
 
-<div class="col-md-6">
+
+       <div class="row">
+          <div class="col-md-6">
                  <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Select advisor</h3>
+                <h3 class="card-title">Select advisor
+ </h3>
               </div>
-                             <div class="card-body">
-
-
-
-
-  <button type="button"  class="btn btn-success btn-sm" data-toggle="modal" data-target="#selectadvisor" style="margin-bottom: 13px;">
+              <!-- /.card-header -->
+          <div class="card-body">
+              <button type="button"  class="btn btn-success btn-sm" data-toggle="modal" data-target="#selectadvisor" style="margin-bottom: 13px;">
    <i class="glyphicon glyphicon-plus"></i>Select Advisor
   </button>
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                   
+
+                          <th style="font-size: 15px;" width="50%" class="text-left">Title project</th>
+                <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>
+                <th style="font-size: 15px;" width="5%" class="text-left">Status</th>
+
+                    </tr>
+                  </thead>
+
+                       <?php
+
+$my_id = $_SESSION['id'];
+$my_group_id = get_group_id($my_id);
+
+//Initialise Value to variable
+
+
+$sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id,member.member_id,member.member_fullname FROM advisergroup
+         JOIN member ON advisergroup.member_id = member.member_id
+        
+         WHERE advisergroup.group_id = '$my_group_id'";
+
+              if($rs = $db->query($sql)){
+                while($row = $rs->fetch_object()){
+              ?>
+                  <tbody>
+                    <tr>
+                     <td class="text-left" style="font-size: 15px;" width="30%"><?php echo $row->advisergroup_topic; ?></td>
+
+                   <td class="text-left" style="font-size: 15px;" width="10%"><?php echo $row->member_fullname; ?></td>
+                          
+
+<td class="text-left" style="font-size: 15px;" width="5%"><?php echo status_01($row->advisergroup_status);?><font color='red'> </br>*For Advisor</font> </td>
+                    </tr>
+                   
+                        <?php
+                }
+              }
+              ?>
+                  
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+  
+
 
 
 <!-- Modal -->
@@ -620,63 +672,69 @@ to get the desired effect
 </div>
 
 
-    <!-- END Select Advisor  -->
-
-
-              
           
-
-<table class="table table-hover text-nowrap">                   
- <thead>                  
-
-            <tr>
-
-               <th style="font-size: 15px;" width="50%" class="text-left">Title project</th>
-                <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>
-                <th style="font-size: 15px;" width="5%" class="text-left">Status</th>
-           </tr>
-          </thead>
-    <tbody>
-
-    <?php
-
-$my_id = $_SESSION['id'];
-$my_group_id = get_group_id($my_id);
-
-//Initialise Value to variable
-
-
-$sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id,member.member_id,member.member_fullname FROM advisergroup
-         JOIN member ON advisergroup.member_id = member.member_id
+                        
         
-         WHERE advisergroup.group_id = '$my_group_id'";
 
+  <!-- Star Partner -->
+<div class="modal fade" id="joinpartner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i>Join your partner</h4>
+      </div>
+      <div class="modal-body">
+         
+       <form id="add" name="add" method ="post" action ="check_join.php" onsubmit="return checkForm()" >
+ 
+            
+
+       <table class="table table-hover text-nowrap">
+              <thead>
+                <tr>
+             <th style="font-size: 15px;" width="3%" class="text-left">No</th>
+
+                <th style="font-size: 15px;" width="10%" class="text-left">Group</th>
+                   <th style="font-size: 15px;" width="40%" class="text-left">Group Member</th>
+                  <th style="font-size: 15px;" width="20%" class="text-left"></th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+              <?php
+                    // require 'menu/function.php';
+              $sql = "SELECT * FROM partnergroup";
+                  $i = 1;
+   $count = 1;
               if($rs = $db->query($sql)){
                 while($row = $rs->fetch_object()){
               ?>
-                <tr>                 
-               
-                  <td class="text-left" style="font-size: 15px;" width="30%"><?php echo $row->advisergroup_topic; ?></td>
 
-                   <td class="text-left" style="font-size: 15px;" width="10%"><?php echo $row->member_fullname; ?></td>
-                          
-
-<td class="text-left" style="font-size: 15px;" width="5%"><?php echo status_01($row->advisergroup_status);?><font color='red'> </br>*For Advisor</font> </td>
-                             </tr>
+           <tr>
+                    <td class="text-left" style="font-size: 13px;" width="4%">   <?php echo $count++; ?></td>
+                   <td class="text-left" style="font-size: 13px;" width="10%"> <?php echo $row->group_number; ?></td>
+                   <td class="text-left" style="font-size: 13px;" width="50%"> <?php echo get_member_list($row->group_id); ?></td>
+                  <td class="text-center">
+                    <a href="check_group.php?id=<?php echo $row->group_id; ?>" class="btn btn-primary btn-xs" onclick="return confirm_joingroup()"><i class="glyphicon glyphicon-plus-sign"></i> Join this Group</a>
+                  </td>
+                </tr>
               <?php
                 }
               }else{
               }
               ?>
-                                          </tbody>
-                                        </table>
-                                      </form>
-                                      
-                                </div>
-                            </div>
-                        </div>
-                      
-          
+</a>
+</td>
+</tr>
+</tbody>
+                                    </table>
+                                    </form>
+
+</div>
+</div>
+</div>
+</div>
 
   <!-- END FORM Partner -->
 
@@ -686,16 +744,20 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
  <div class="col-md-6">
                  <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Committee </h3>
+                <h3 class="card-title">Committee</h3>
               </div>
               <!-- /.card-header -->
-           <div class="card-body">
-                <table class="table table-sm">
-                  <thead>
-                          
-                                         
+          <div class="card-body">
+             
+
+  <!-- Display Partner -->
+
+
+
+   <table class="table table-hover text-nowrap">                  <thead>                  
+
                                            <tr>
-                   <th style="font-size: 15px;" width="20%" class="text-left">Lecturer ID</th>
+                    <th style="font-size: 15px;" width="20%" class="text-left">Lecturer ID</th>
                   <th style="font-size: 15px;" width="30%" class="text-left">Full Name</th>
                  <th style="font-size: 15px;" width="20%" class="text-left">Phone</th>
                 </tr>
@@ -703,7 +765,7 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
                                         <tbody>
 
 
-                                          <?php
+                                         <?php
 
              
           $sql = "SELECT committeegroup.committeegroup_id, member.member_fullname,member.member_idcard ,member.member_phone FROM committeegroup
@@ -713,8 +775,9 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
               if($rs = $db->query($sql)){
                 while($row = $rs->fetch_object()){
               ?>
+
                 <tr>
-                   <td class="text-left" style="font-size: 15px;" width="20%"><?php echo $row->member_idcard; ?></td>
+                <td class="text-left" style="font-size: 15px;" width="20%"><?php echo $row->member_idcard; ?></td>
                    <td class="text-left" style="font-size: 15px;" width="20%"><?php echo $row->member_fullname; ?></td>
                   <td class="text-left" style="font-size: 15px;" width="10%"><?php echo $row->member_phone; ?></td>
                 </tr>
@@ -724,32 +787,35 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
               }
               ?>
                                           
-                                     </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-     </div>
-     
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
-      <b>Version</b> 3.0.3-pre
-    </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
-    reserved.
-  </footer>
-
-  <!-- Control Sidebar -->
-
-  <!-- /.control-sidebar -->
-</div>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
 
     <!-- /.content -->
  
 <!-- ./wrapper -->
+
+
+
+
+
+
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 3.0.3-pre
+      </div>
+      <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+      reserved.
+    </footer>
+
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
 
