@@ -4,14 +4,6 @@ require '../menu/connect.php';
 include('../menu/function.php');
 
 ?>
-<style>
-  .tex{
-  padding: 6px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
-  }
-</style>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -344,6 +336,7 @@ $count=mysqli_num_rows($result);
       </div><!-- /.container-fluid -->
     </section>
 
+    <!-- Main content -->
     <section class="content">
       <div class="row">
         <div class="col-12">
@@ -359,29 +352,18 @@ $count=mysqli_num_rows($result);
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-
-                   <table id="example" class="table table-sm "  >
-                  <thead class="thead-light">
+                   <table id="example1" class="table table-sm "  >
+                <thead class="thead-light">
                   <tr>
-                      <th style="font-size: 15px;" width="5%" class="text-center">PF01</th>
-                      <th style="font-size: 15px;" width="5%" class="text-center">PF02</th>
-                      <th style="font-size: 15px;" width="5%" class="text-center">PF03</th>
-                      <th style="font-size: 15px;" width="5%" class="text-center">PF04</th>
-                      <th style="font-size: 15px;" width="5%" class="text-center">PF05</th>
-                      <th style="font-size: 15px;" width="5%" class="text-center">PF06</th>
-                      <th style="font-size: 15px;" width="5%" class="text-center">PF07</th>
-                      <th style="font-size: 15px;" width="5%" class="text-center">PF08</th>
-                      <th style="font-size: 15px;" width="5%" class="text-center">PF09</th>
-                      <th style="font-size: 15px;" width="5%" class="text-center">PF10</th>
-                      <th style="font-size: 15px;" width="5%" class="text-center">PF11</th>
-                      <th style="font-size: 15px;" width="5%" class="text-center">PF12</th>
-                      <th style="font-size: 15px;" width="5%" class="text-center">PF13</th>
-                      <th style="font-size: 15px;" width="5%" class="text-center">Action</th>
+                      <th style="font-size: 15px;" width="4%" class="text-center">No</th>
+                      <th style="font-size: 15px;" width="5%" class="text-center">PF Type</th>
+                      <th style="font-size: 15px;" width="10%" class="text-center">Mark Obtain</th>
+                       <th style="font-size: 15px;" width="8%" class="text-center">Action</th>
                      </tr>
                   </thead>
                   <tbody align="center">
-                    <?php
-      $strSQL = "SELECT * FROM  pf_mark";
+      <?php
+      $strSQL = "SELECT * FROM  form";
         
         ?>
         <?php
@@ -389,26 +371,23 @@ $count=mysqli_num_rows($result);
              while($objResult = $result->fetch_object()){
             ?>
             <tr>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf1;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf2;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf3;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf4;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf5;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf6;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf7;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf8;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf9;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf10;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf11;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf12;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf13;?></td>
-            <td>
-           <a href="../admin/accept.php?id=<?php echo $objResult->id;?>"class="btn btn-primary btn-sm">
+                 <td class="text-center" style="font-size: 15px;"><?php echo $objResult->form_id; ?></td>
+                 <td class="text-center" style="font-size: 15px;">PF <?php echo $objResult->pf; ?></td>
+                <td class="text-center" style="font-size: 15px;"><?php echo $objResult->form_mark; ?></td>
+                <td>
+    
+
+           <a href="../admin/accept.php?id=<?php echo $objResult->member_id;?>"class="btn btn-primary btn-sm">
                   <i class="fa fa-edit" title="Detail"></i></a>
 
 
-    <a href="delete_approve.php?id=<?php echo $objResult->id;?>"class="btn btn-danger btn-sm" onclick="return confirm('Are You sure Delete?')">
+    <a href="delete_approve.php?id=<?php echo $objResult->member_id;?>"class="btn btn-danger btn-sm" onclick="return confirm('Are You sure Delete?')">
                   <i class="fa fa-trash" title="Delete"></i></a>
+
+
+
+
+                   
 
 
                 </td>
@@ -419,7 +398,7 @@ $count=mysqli_num_rows($result);
               }
                }
                    ?>
-      
+       
                 
               </table>
             </div>
@@ -469,11 +448,11 @@ $count=mysqli_num_rows($result);
 </div>
 </div>
 </div>
-
+  
 
 
 <div class="modal fade" id="addmember">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">PF Setting</h4>
@@ -483,198 +462,40 @@ $count=mysqli_num_rows($result);
             </div>
             <div class="modal-body">
               
-    <form id="add" name="add" method="post" action="../admin/check_pf_mark.php"
+    <form id="add" name="add" method="post" action="../admin/check_pf_setting.php"
                                  onsubmit="return checkForm()">
       <div class="user-details">
-                  <div class="row">
-                    <div class="col-sm-2">
-                      <label>PF Type</label>
-                    </div>
-                    <div class="col-sm-3">
-                      <label>Mark Obtain</label>
-                    </div>
-                    <div class="col-md-2 "></div>
 
-                    <div class="col-md-2 ">
-                      <label>PF Type</label>
-                    </div>
-                    <div class="col-sm-3">
-                      <label>Mark Obtain</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-2">
-                      <div class="form-group">
-                        <input type="text" class="form-control" placeholder="PF01" disabled>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <input type="number" name="pf1" id="pf1" class="tex" placeholder="Mark.. ">
-                      </div>
-                    </div>
-                    <div class="col-md-2 "></div>
+        
+        <div class="form-group">
+        <select class="form-control" name="pf" id="pf">
+              <option value="#">Select PF Type</option>
+              <option value="1">FP01</option>
+              <option value="2">PF02</option>
+              <option value="3">PF03</option> 
+              <option value="4">PF04</option>
+              <option value="5">PF05</option>
+              <option value="6">PF06</option>
+              <option value="7">PF07</option>
+              <option value="8">PF08</option>
+              <option value="9">PF09</option>
+              <option value="10">PF10</option>
+              <option value="11">PF11</option>
+              <option value="12">PF12</option>
+              <option value="13">PF13</option>
+        </select>
+       </div>
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" placeholder="mark obtain" id="form_mark" name="form_mark" autocomplete="off" required aria-describedby="basic-addon1">
+          <div class="input-group-append">
+          </div>
+        </div>
+       
 
-                    <div class="col-md-2 ">
-                      <div class="form-group">
-                        <input type="text" class="form-control" placeholder="PF02" disabled>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <input type="number" name="pf2" id="pf2" class="tex" placeholder="Mark.. ">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-2">
-                      <div class="form-group">
-                        <input type="text" class="form-control" placeholder="PF03" disabled>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <input type="number" name="pf3" id="pf3" class="tex" placeholder="Mark.. ">
-                      </div>
-                    </div>
-                    <div class="col-md-2 "></div>
-
-                    <div class="col-md-2 ">
-                      <div class="form-group">
-                        <input type="text" class="form-control" placeholder="PF04" disabled>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <input type="number" name="pf4" id="pf4" class="tex" placeholder="Mark.. ">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-2">
-                      <div class="form-group">
-                        <input type="text" class="form-control" placeholder="PF05" disabled>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <input type="number" name="pf5" id="pf5" class="tex" placeholder="Mark.. ">
-                      </div>
-                    </div>
-                    <div class="col-md-2 "></div>
-
-                    <div class="col-md-2 ">
-                      <div class="form-group">
-                        <input type="text" class="form-control" placeholder="PF06" disabled>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <input type="number" name="pf6" id="pf6" class="tex" placeholder="Mark.. ">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-2">
-                      <div class="form-group">
-                        <input type="text" class="form-control" placeholder="PF07" disabled>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <input type="number" name="pf7" id="pf7" class="tex" placeholder="Mark.. ">
-                      </div>
-                    </div>
-                    <div class="col-md-2 "></div>
-
-                    <div class="col-md-2 ">
-                      <div class="form-group">
-                        <input type="text" class="form-control" placeholder="PF08" disabled>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <input type="number" name="pf8" id="pf8" class="tex" placeholder="Mark.. ">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-2">
-                      <div class="form-group">
-                        <input type="text" class="form-control" placeholder="PF09" disabled>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <input type="number" name="pf9" id="pf9" class="tex" placeholder="Mark.. ">
-                      </div>
-                    </div>
-                    <div class="col-md-2 "></div>
-
-                    <div class="col-md-2 ">
-                      <div class="form-group">
-                        <input type="text" class="form-control" placeholder="PF10" disabled>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <input type="number" name="pf10" id="pf10" class="tex" placeholder="Mark.. ">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-2">
-                      <div class="form-group">
-                        <input type="text" class="form-control" placeholder="PF11" disabled>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <input type="number" name="pf11" id="pf11" class="tex" placeholder="Mark.. ">
-                      </div>
-                    </div>
-                    <div class="col-md-2 "></div>
-
-                    <div class="col-md-2 ">
-                      <div class="form-group">
-                        <input type="text" class="form-control" placeholder="PF12" disabled>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <input type="number" name="pf12" id="pf12" class="tex" placeholder="Mark.. ">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-2 ">
-                      <div class="form-group">
-                        <input type="text" class="form-control" placeholder="PF13" disabled>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <input type="number" name="pf13" id="pf13" class="tex" placeholder="Mark.. ">
-                      </div>
-                    </div>
-                    <div class="col-md-2 "></div>
-
-                    <div class="col-md-1 ">
-                      <label>Total </label>
-                    </div>
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <input type="text" id="total" class="form-control" disabled>
-                      </div>
-                    </div>
-                    
-                  </div>
-
-                
       </div>
             </div>
             <div class="modal-footer justify-content-between">
-              <input type="reset" value="Reset" class="btn btn-default btn-sm">
+              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-primary btn-sm">Save</button>
             </div>
 
@@ -723,7 +544,6 @@ include '../notification/notification.php';
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<script type="text/javascript" src="jquery.min.js"></script>
 <script>
   $(function () {
     $("#example1").DataTable();
@@ -736,17 +556,6 @@ include '../notification/notification.php';
       "autoWidth": false,
     });
   });
-
-
-$('.tex').keyup(function() {
-     var sum = 0;
-    $('.tex').each(function() {
-        sum += Number($(this).val());
-    });
-    $('#total').val(sum);
-     
-});
-
 </script>
 </body>
 </html>
