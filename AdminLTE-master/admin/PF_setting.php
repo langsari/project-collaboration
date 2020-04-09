@@ -361,6 +361,7 @@ $count=mysqli_num_rows($result);
                        <th style="font-size: 15px;" width="8%" class="text-center">Action</th>
                      </tr>
                   </thead>
+                  
                   <tbody align="center">
       <?php
       $strSQL = "SELECT * FROM  form";
@@ -378,11 +379,11 @@ $count=mysqli_num_rows($result);
     
 
            <a href="../admin/accept.php?id=<?php echo $objResult->member_id;?>"class="btn btn-primary btn-sm">
-                  <i class="fa fa-edit" title="Detail"></i></a>
+                  <i class="fa fa-edit" title="Detail"> Update</i></a>
 
 
     <a href="delete_approve.php?id=<?php echo $objResult->member_id;?>"class="btn btn-danger btn-sm" onclick="return confirm('Are You sure Delete?')">
-                  <i class="fa fa-trash" title="Delete"></i></a>
+                  <i class="fa fa-trash" title="Delete"> Delete</i></a>
 
 
 
@@ -394,13 +395,30 @@ $count=mysqli_num_rows($result);
                  
             </tr>
 
+
             <?php
               }
                }
                    ?>
-       
-                
+
+                   <tr>
+                    <?php
+                    $con = mysqli_connect('localhost','root','','itpromo_track');
+                    $query="SELECT SUM(form_mark) AS total FROM form";
+                    $query_result=mysqli_query($con,$query);
+                     while ($row=mysqli_fetch_assoc($query_result)) {
+                      $sum= $row['total'];
+                     }
+                    ?>
+                      <td colspan="2" class="text-center btn-default" style="font-size: 15px;"> Total Marks</td>
+                      <td class="text-center " style="font-size: 15px;" ><?php echo $sum; ?></td>
+                       
+                     </tr>
+                  
+                </tbody>
               </table>
+              
+
             </div>
             <!-- /.card-body -->
           </div>
