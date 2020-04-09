@@ -365,6 +365,7 @@ $count=mysqli_num_rows($result);
                   <tbody align="center">
       <?php
       $strSQL = "SELECT * FROM  form";
+      $count = 1;
         
         ?>
         <?php
@@ -372,18 +373,18 @@ $count=mysqli_num_rows($result);
              while($objResult = $result->fetch_object()){
             ?>
             <tr>
-                 <td class="text-center" style="font-size: 15px;"><?php echo $objResult->form_id; ?></td>
+                 <td class="text-center" style="font-size: 15px;"><?php echo $count++; ?></td>
                  <td class="text-center" style="font-size: 15px;">PF <?php echo $objResult->pf; ?></td>
                 <td class="text-center" style="font-size: 15px;"><?php echo $objResult->form_mark; ?></td>
                 <td>
     
 
-           <a href="../admin/accept.php?id=<?php echo $objResult->member_id;?>"class="btn btn-primary btn-sm">
-                  <i class="fa fa-edit" title="Detail"> Update</i></a>
+           <a href="update_pf_setting.php?id=<?php echo $objResult->form_id;?>"class="btn btn-primary btn-sm">
+                  <i class="fa fa-edit" title="update"> Update</i></a>
 
 
-    <a href="delete_approve.php?id=<?php echo $objResult->member_id;?>"class="btn btn-danger btn-sm" onclick="return confirm('Are You sure Delete?')">
-                  <i class="fa fa-trash" title="Delete"> Delete</i></a>
+         <a href="delete_pf_setting.php?id=<?php echo $objResult->form_id;?>"class="btn btn-danger btn-sm" onclick="return confirm('Are You sure Delete?')">
+            <i class="fa fa-trash" title="Delete"> Delete</i></a>
 
 
 
