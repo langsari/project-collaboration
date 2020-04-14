@@ -484,19 +484,11 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
 
                   <div class="progress progress">
-                    
-  <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
-
-  ?>
-                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="100" aria-volumemin="0" aria-volumemax="100" style="width: <?php echo $count;?>%">
+                     <div class="progress-bar bg-green" role="progressbar" aria-volumenow="100" aria-volumemin="0" aria-volumemax="100" style="width: %">
                               </div>
                           </div>
                           <small>
-                              <?php echo $count; ?> % Complete
+                               % Complete
                           </small>
             </fieldset>
           </form>
@@ -593,13 +585,8 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
     $strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,advisergroup.advisergroup_id,comment.comment_content,comment.date,comment.member_id,member.member_fullname FROM advisergroup
           LEFT JOIN comment ON advisergroup.advisergroup_id = comment.advisergroup_id
-
           LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
-
-
-
         LEFT JOIN member ON advisergroup.member_id = member.member_id 
-
         WHERE advisergroup.advisergroup_id = '$ag_id' and form_pf='1'";                 
      if($result = $db->query($strSQL)){
                   while($objResult = $result->fetch_object()){
