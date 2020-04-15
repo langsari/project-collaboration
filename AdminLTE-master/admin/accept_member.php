@@ -152,11 +152,10 @@ $count=mysqli_num_rows($result);
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-      <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">ITPROMOT</span>
-    </a>
+    <a href="index.php" class="brand-link">
+        <img src="../dist/img/n2.png" width="100%" >
+        <span class="brand-text font-weight-light"></span>
+      </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -265,12 +264,6 @@ $count=mysqli_num_rows($result);
                 <a href="../admin/student_track.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Track</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../admin/add_proposal.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Student project proposal</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -564,22 +557,21 @@ $count=mysqli_num_rows($result);
       </div>
 
   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.3-pre
-    </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
-  </footer>
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 3.0.3-pre
+      </div>
+      <strong>Copyright &copy; 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights
+      reserved.
+    </footer>
+<!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
-
-<!--include message  -->
+  <!--include message  -->
 
 <?php
         

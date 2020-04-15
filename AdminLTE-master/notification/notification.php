@@ -23,7 +23,7 @@
       position: fixed;
       bottom: 23px;
       right: 28px;
-      width: 250px;
+      width: 160px;
     }
 
     /* The popup chat - hidden by default */

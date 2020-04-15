@@ -34,7 +34,8 @@ if(isset($_GET['error'])){
     <a href="../../index2.html"><b>Log</b>in</a>
   </div>
   <!-- /.login-logo -->
-  <div class="card">
+  
+    <div class="card card-primary card-outline">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
@@ -50,7 +51,7 @@ if(isset($_GET['error'])){
       <input type="text" class="form-control" id="username" name="username"placeholder="Enter Username" autocomplete="off" required aria-describedby="basic-addon1">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-user"></span>
             </div>
           </div>
         </div>
@@ -73,13 +74,14 @@ if(isset($_GET['error'])){
 
 
      
-      <p class="mb-0">
+      <p class="mb-1" align="center">
         <a href="register.php" class="text-center">Register a new membership</a>
       </p>
-       <p class="mb-1">
+       <p class="mb-1" align="center">
         <a href="../index.php">Homepage</a>
       </p>
-    </div>
+
+   
     <!-- /.login-card-body -->
   </div>
 </div>

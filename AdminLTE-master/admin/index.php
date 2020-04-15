@@ -132,10 +132,9 @@ $count=mysqli_num_rows($result);
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="#" class="brand-link">
-        <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-          style="opacity: .8">
-        <span class="brand-text font-weight-light">ITPROMOT</span>
+      <a href="index.php" class="brand-link">
+        <img src="../dist/img/n2.png" width="100%" >
+        <span class="brand-text font-weight-light"></span>
       </a>
 
       <!-- Sidebar -->
@@ -242,12 +241,7 @@ $count=mysqli_num_rows($result);
                     <p>Project Track</p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="../admin/add_proposal.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Student project proposal</p>
-                  </a>
-                </li>
+                
                 <li class="nav-item">
                   <a href="../admin/view_all_project.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
