@@ -60,18 +60,11 @@ include('menu/function.php');
 
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-<<<<<<< HEAD
    <a href="index.php" class="brand-link">
         <img src="dist/img/n2.png" width="100%" >
         <span class="brand-text font-weight-light"></span>
       </a>
 
-=======
-    <a href="index.php" class="brand-link">
-        <img src="dist/img/n2.png" width="100%" >
-        <span class="brand-text font-weight-light"></span>
-      </a>
->>>>>>> a1bc4d61b63fdfced8677992d3206b4af5d9a547
 
     <!-- Sidebar -->
     <div class="sidebar">

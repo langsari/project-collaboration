@@ -61,10 +61,6 @@ require 'menu/connect.php';
         <img src="dist/img/n2.png" width="100%" >
         <span class="brand-text font-weight-light"></span>
       </a>
-<<<<<<< HEAD
-
-=======
->>>>>>> a1bc4d61b63fdfced8677992d3206b4af5d9a547
 
     <!-- Sidebar -->
     <div class="sidebar">
