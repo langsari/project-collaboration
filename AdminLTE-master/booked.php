@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO&TRACK | Booked</title>
+  <title>ITPROMOT | Booked</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -60,11 +60,18 @@ to get the desired effect
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
+<<<<<<< HEAD
    <a href="index.php" class="brand-link">
         <img src="dist/img/n2.png" width="100%" >
         <span class="brand-text font-weight-light"></span>
       </a>
 
+=======
+    <a href="index.php" class="brand-link">
+        <img src="dist/img/n2.png" width="100%" >
+        <span class="brand-text font-weight-light"></span>
+      </a>
+>>>>>>> a1bc4d61b63fdfced8677992d3206b4af5d9a547
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -111,7 +118,7 @@ to get the desired effect
 
           <li class="nav-item">
             <a href="guide.php" class="nav-link ">
-              <i class="nav-icon fa fa-glide-g"></i>
+              <i class="nav-icon fa fa-bars"></i>
               <p>
                 Guide
               </p>

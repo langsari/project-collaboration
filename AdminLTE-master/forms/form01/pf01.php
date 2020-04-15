@@ -486,11 +486,24 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
 
                   <div class="progress progress">
-                     <div class="progress-bar bg-green" role="progressbar" aria-volumenow="100" aria-volumemin="0" aria-volumemax="100" style="width: %">
+
+                    
+
+
+                 <?php
+
+                    $con = mysqli_connect('localhost','root','','itpromo_track');
+                    $query="SELECT SUM(form_mark) AS total FROM form";
+                    $query_result=mysqli_query($con,$query);
+                     while ($row=mysqli_fetch_assoc($query_result)) {
+                      $sum= $row['total'];
+                     }
+                    ?>
+                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="100" aria-volumemin="0" aria-volumemax="100" style="width: <?php echo $sum;?>%">
                               </div>
                           </div>
                           <small>
-                               % Complete
+                              <?php echo $sum; ?> % Complete
                           </small>
             </fieldset>
           </form>

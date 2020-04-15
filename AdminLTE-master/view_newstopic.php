@@ -65,11 +65,18 @@ to get the desired effect
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
+<<<<<<< HEAD
    <a href="index.php" class="brand-link">
         <img src="dist/img/n2.png" width="100%" >
         <span class="brand-text font-weight-light"></span>
       </a>
 
+=======
+    <a href="index.php" class="brand-link">
+        <img src="dist/img/n2.png" width="100%" >
+        <span class="brand-text font-weight-light"></span>
+      </a>
+>>>>>>> a1bc4d61b63fdfced8677992d3206b4af5d9a547
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -116,7 +123,7 @@ to get the desired effect
 
           <li class="nav-item">
             <a href="guide.php" class="nav-link ">
-              <i class="nav-icon fa fa-glide-g"></i>
+              <i class="nav-icon fa fa-bars"></i>
               <p>
                 Guide
               </p>
@@ -172,7 +179,7 @@ to get the desired effect
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Topic Require</li>
+              <li class="breadcrumb-item active">Propose Topic</li>
             </ol>
           </div>
         </div>

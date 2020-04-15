@@ -59,7 +59,11 @@ to get the desired effect
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
+<<<<<<< HEAD
   <a href="index.php" class="brand-link">
+=======
+    <a href="index.php" class="brand-link">
+>>>>>>> a1bc4d61b63fdfced8677992d3206b4af5d9a547
         <img src="dist/img/n2.png" width="100%" >
         <span class="brand-text font-weight-light"></span>
       </a>
@@ -109,7 +113,7 @@ to get the desired effect
 
           <li class="nav-item">
             <a href="guide.php" class="nav-link active">
-              <i class="nav-icon fa fa-glide-g"></i>
+              <i class="nav-icon fa fa-bars"></i>
               <p>
                 Guide
               </p>
@@ -234,7 +238,7 @@ to get the desired effect
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.0.3-pre
     </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    <strong>Copyright &copy; 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights
     reserved.
   </footer>
 

@@ -61,7 +61,10 @@ require 'menu/connect.php';
         <img src="dist/img/n2.png" width="100%" >
         <span class="brand-text font-weight-light"></span>
       </a>
+<<<<<<< HEAD
 
+=======
+>>>>>>> a1bc4d61b63fdfced8677992d3206b4af5d9a547
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -108,7 +111,7 @@ require 'menu/connect.php';
 
           <li class="nav-item">
             <a href="guide.php" class="nav-link">
-              <i class="nav-icon fa fa-glide-g"></i>
+              <i class="nav-icon fa fa-bars"></i>
               <p>
                 Guide
               </p>

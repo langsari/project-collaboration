@@ -11,7 +11,7 @@ include('menu/function.php');
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ITPROMO&TRACK | All Project Topics
+  <title>ITPROMOT | All Project Topics
 </title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,11 +60,18 @@ include('menu/function.php');
 
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
+<<<<<<< HEAD
    <a href="index.php" class="brand-link">
         <img src="dist/img/n2.png" width="100%" >
         <span class="brand-text font-weight-light"></span>
       </a>
 
+=======
+    <a href="index.php" class="brand-link">
+        <img src="dist/img/n2.png" width="100%" >
+        <span class="brand-text font-weight-light"></span>
+      </a>
+>>>>>>> a1bc4d61b63fdfced8677992d3206b4af5d9a547
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -111,7 +118,7 @@ include('menu/function.php');
 
           <li class="nav-item">
             <a href="guide.php" class="nav-link">
-              <i class="nav-icon fa fa-glide-g"></i>
+              <i class="nav-icon fa fa-bars"></i>
               <p>
                 Guide
               </p>
@@ -210,10 +217,8 @@ include('menu/function.php');
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
          WHERE topic_project.advisergroup_id ";
 
-
-
           $i = 1;
-   $count = 1;
+          $count = 1;
    
         ?>
         <?php
@@ -223,15 +228,13 @@ include('menu/function.php');
                     <tr>
                 <td class="text-left" style="font-size: 16px;">   <?php echo $count++; ?></td>
                 <td class="text-left"style="font-size: 16px;"><?php echo $objResult->group_number; ?></td>
-   <td class="text-left" style="font-size: 16px;"><?php echo get_status_project($objResult->status); ?></td>
-   <td class="text-left" style="font-size: 16px;"><?php echo get_member_list($objResult->group_id, 0, 45); ?></td>
+                <td class="text-left" style="font-size: 16px;"><?php echo get_status_project($objResult->status); ?></td>
+                <td class="text-left" style="font-size: 16px;"><?php echo get_member_list($objResult->group_id, 0, 45); ?></td>
                 <td class="text-left" style="font-size: 16px;"><?php echo $objResult->topic_topic; ?></td>
-                    <td class="text-left" style="font-size: 16px;"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
+                <td class="text-left" style="font-size: 16px;"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
               
-                  <td>               
+                <td>               
                      
-
-
  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                        data-target="#show<?php echo $i; ?>">
                   <i class="fa fa-eye" title="Edit">View</i> </button>
@@ -243,10 +246,10 @@ include('menu/function.php');
                      <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header bg-info">
-                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                         <h5 class="modal-title">View Proposal</h5>
-                    </div>
+                              <h5 class="modal-title">Project Detail</h5>
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                         
+                        </div>
 
                             <div class="modal-body">
         <form  method="post" action="check_status.php">
@@ -335,7 +338,13 @@ include('menu/function.php');
 
               
               <div class="form-group row">
-
+                <div class="col-md-2">
+                  <label class="control-label ">ِAbstract</label>
+                </div>
+                <div class="col-md-10">
+                  <?php echo $objResult->topic_abstrack; ?>
+                  
+                </div>
               </div>
 
 
@@ -383,7 +392,7 @@ include('menu/function.php');
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.0.3-pre
     </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    <strong>Copyright &copy;2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights
     reserved.
   </footer>
 

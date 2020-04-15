@@ -179,9 +179,9 @@ require 'menu/connect.php';
         </div><!-- /.container-fluid -->
       </section>
       <!-- /.content -->
-      </br>
-
+      </br></br></br></br></br></br>
     </div>
+
     <!-- /.content-wrapper -->
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
