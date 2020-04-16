@@ -1244,6 +1244,27 @@ $my_id = $_SESSION['id'];
 include 'phpmailer/line_message.php';
 ?>
 
+
+     </div>
+</div>
+</div>
+
+
+
+
+    <!-- /.content-wrapper -->
+   <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
+      <b>Version</b> 3.0.3-pre
+    </div>
+       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+    reserved.
+  </footer>
+
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+
     <!-- /.content -->
  
 <!-- ./wrapper -->

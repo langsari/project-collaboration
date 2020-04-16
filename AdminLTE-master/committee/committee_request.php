@@ -113,7 +113,7 @@ to get the desired effect
     
  
   
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview  menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-book"></i>
               <p>
@@ -158,7 +158,7 @@ to get the desired effect
           </li>
 
 
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview  menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
@@ -186,7 +186,7 @@ to get the desired effect
 
     
 
-  <li class="nav-item has-treeview">
+  <li class="nav-item has-treeview  menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
@@ -540,18 +540,34 @@ $my_id = $_SESSION['id'];
                
 
               </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
+         
+
+
+</div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
     <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
 
 
+
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.3-pre
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
 
 
 

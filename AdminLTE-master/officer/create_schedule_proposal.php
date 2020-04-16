@@ -427,7 +427,7 @@ to get the desired effect
                      <th style="font-size: 15px;" width="22%" class="text-left">Status</th>
                           <th style="font-size: 15px;" width="12%" class="text-left">Date</th>
                           <th style="font-size: 15px;" width="12%" class="text-left">Time</th>
-                         <th style="font-size: 15px;" width="12%" class="text-left">Room</th>
+                         <th style="font-size: 15px;" width="8%" class="text-left">Room</th>
                           <th style="font-size: 15px;" width="15%" class="text-left">View</th>
                      </tr>
                                    </thead>

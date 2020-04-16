@@ -314,69 +314,50 @@ to get the desired effect
       </div><!-- /.container-fluid -->
     </section>
 
-  
-<!-- Main content -->
-    <section class="content">
+   <section class="content">
       <div class="container-fluid">
         <div class="row">
-       
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header p-2">
-                <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
-                
-                </ul>
-              </div><!-- /.card-header -->
+          <div class="col-12">
 
-      
+                    <?php
 
-     <?php
 
-     $strSQL = "SELECT  announcement.announcement_id,announcement.announcement_topic, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
-                           FROM announcement,admin 
-                           WHERE announcement.admin_id=admin.admin_id
-                           ORDER BY announcement.announcement_id DESC";
 
-         ?>
 
-    <?php
-            
-                 if($objQuery = $db->query($strSQL)){
-             while($objResult = $objQuery->fetch_object()){
-            ?>
+$strSQL = "SELECT   announcement.announcement_id,announcement.announcement_topic, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname FROM announcement
+          LEFT JOIN admin ON announcement.admin_id=admin.admin_id
+WHERE announcement.announcement_id  ";      
+     if($objQuery = $db->query($strSQL)){
+                  while($objResult = $objQuery->fetch_object()){
+
+   ?>
+   
+   
 
    
-              <div class="card-body">
-                <div class="tab-content">
-                  <div class="active tab-pane" id="activity">
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image">
-                        <span class="username">
-                          <a href="#"><?php echo $objResult->admin_fullname; ?> </a>
-                        </span>
-                        <span class="description">Shared publicly - <?php echo $objResult->announcement_date; ?></span>
-                      </div>
-                      <!-- /.user-block -->
-                      <p><b><?php echo $objResult->announcement_topic; ?></b></p>
-                      <p>
-                    <?php echo $objResult->announcement_detail; ?>
-                      </p>
 
-                      <p>
-                        <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
-                        <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
+            <div class="callout callout-info">
+
+
+   <img class="img-circle img-bordered-sm" src="../dist/img/user.png" alt="user image"  width="30" height="30">
+                        <span class="username" style="font-size: 15px;">
+               &nbsp;&nbsp;<?php echo $objResult->admin_fullname; ?> 
+                         <span class="float-right">
+                        <span class="description" style="font-size: 13px;">Shared publicly - <?php echo $objResult->announcement_date; ?></span>
+                      </span>
+                        <!-- /.user-block -->
+              <p>   <class style="font-size: 16px;">     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b> <?php echo $objResult->announcement_topic; ?></b></p>
+                      
+                      <class style="font-size: 15px;">   <?php echo $objResult->announcement_detail; ?>
+                     
+  <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <span class="float-right">
-                          <a href="#" class="link-black text-sm">
-                            <i class="far fa-comments mr-1"></i> Comments (5)
-                          </a>
+                         
                         </span>
                       </p>
-
-                      <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
-                    </div>
+                     </p>
+</div>
                     <!-- /.post -->
     <?php
                  }
@@ -385,39 +366,32 @@ to get the desired effect
                  
                   <!-- /.tab-pane -->
                   
-                      </div>
-                     </div>
-              
-
-                    </div>
-                  </div>
                   <!-- /.tab-pane -->
-     
-                 
-                  <!-- /.tab-pane -->
-                </div>
-                <!-- /.tab-content -->
-              </div><!-- /.card-body -->
-            </div>
+                  
+                  
             <!-- /.nav-tabs-custom -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
+
+   
     <!-- /.content -->
+  </br>
+  </div>
+</class>
+</class>
+</p>
+</span>
+</div>
+</div>
+</div>
+  <!-- /.content-wrapper -->
 
-
-
-
-
-    <!-- /.content -->
- 
-<!-- ./wrapper -->
-
-<!-- REQUIRED SCRIPTS -->
-
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.3-pre
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->

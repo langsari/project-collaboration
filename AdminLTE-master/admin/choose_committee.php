@@ -417,7 +417,10 @@ $count=mysqli_num_rows($result);
                      <td class="text-left" style="font-size: 15px;"><?php echo get_topic($row->group_id); ?></td>
                      <td class="text-left" style="font-size: 15px;"><?php echo get_advisor($row->group_id); ?></td>
 
-                   <td class="text-left" style="font-size: 15px;"><?php echo get_committee($row->group_id); ?></span> </td>
+
+                                     <td class="text-left"><?php echo get_committee($row->group_id); ?></td>
+
+
 
                     <td class="text-left" style="font-size: 15px;">
 
