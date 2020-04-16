@@ -267,12 +267,6 @@ $count=mysqli_num_rows($result);
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../admin/add_proposal.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Student project proposal</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="../admin/view_all_project.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
@@ -342,7 +336,10 @@ $count=mysqli_num_rows($result);
           <div class="card card-primary card-outline">
             <div class="card-header">
                <h3 class="card-title">
-                  
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addmember">
+                  <i class="nav-icon fas fa-plus"></i>
+                  Add New Project
+                </button>
                 </h3>
         
             </div>
@@ -353,13 +350,13 @@ $count=mysqli_num_rows($result);
                 <tr align="center">
                      <th style="font-size: 15px;" width="4%" class="text-left">No</th>
                 <th style="font-size: 15px;"  width="7%" class="text-left">Group</th>
-               <th style="font-size: 15px;" width="7%" class="text-left">Status</th>
+               <th style="font-size: 15px;" width="6%" class="text-left">Status</th>
 
                 <th style="font-size: 15px;" width="25%" class="text-left">Owner Project</th>
                 <th style="font-size: 15px;" width="30%" class="text-left">Topic</th>
                 <th style="font-size: 15px;" width="16%" class="text-left">Field of Study</th>
 
-                <th style="font-size: 15px;" width="10%" class="text-left">View</th>
+                <th style="font-size: 15px;" width="12%" class="text-left">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -395,19 +392,13 @@ $count=mysqli_num_rows($result);
 
  <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
                        data-target="#show<?php echo $i; ?>">
-                  <i class="fa fa-eye" title="Edit"></i> </button>
+                  <i class="fa fa-eye" title="View"></i> View</button>
 
 
  <a href="delete_project.php?id=<?php echo $objResult->topic_id;?>"class="btn btn-danger btn-xs">
-                  <i class="fa fa-trash" title="Delete"></i></a>
+                  <i class="fa fa-trash" title="Delete"></i>Delete</a>
 
-       
-
- <a href="delete_project.php?id=<?php echo $objResult->topic_id;?>"class="btn btn-danger btn-xs">
-                  <i class="fa fa-trash" title="Delete"></i></a>
-
-
-              
+    
 
                       <!-- Modal -->
 
@@ -487,7 +478,8 @@ $count=mysqli_num_rows($result);
                   <label class="control-label ">Advisor</label>
                 </div>
                 <div class="col-md-10">
-<?php echo get_advisor($objResult->group_id); ?>                </div>
+             <?php echo get_advisor($objResult->group_id); ?>                
+                </div>
               </div>
 
                    <div class="form-group row">
@@ -495,7 +487,7 @@ $count=mysqli_num_rows($result);
                   <label class="control-label ">Committee</label>
                 </div>
                 <div class="col-md-10">
-            <?php echo get_committee($objResult->group_id); ?>       
+            <?php echo get_committee1($objResult->group_id); ?>       
                      </div>
               </div>
 
@@ -616,7 +608,7 @@ $count=mysqli_num_rows($result);
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.0.3-pre
     </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    <strong>Copyright &copy; 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights
     reserved.
   </footer>
 

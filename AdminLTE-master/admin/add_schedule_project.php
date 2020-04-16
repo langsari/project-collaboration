@@ -266,12 +266,6 @@ $count=mysqli_num_rows($result);
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../admin/add_proposal.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Student project proposal</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="../admin/view_all_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
@@ -417,7 +411,7 @@ $count=mysqli_num_rows($result);
             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                             <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
-                                                                Edit Schedule Proposal</h4>
+                                                                Edit Schedule Project</h4>
                                                         </div>
                                               
                                                                             
@@ -715,7 +709,7 @@ $count=mysqli_num_rows($result);
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Add Proposal Schedule</h4>
+              <h4 class="modal-title">Add Project Schedule</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -836,7 +830,7 @@ $count=mysqli_num_rows($result);
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.0.3-pre
     </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    <strong>Copyright &copy; 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights
     reserved.
   </footer>
 

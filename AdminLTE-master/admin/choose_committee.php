@@ -388,8 +388,8 @@ $count=mysqli_num_rows($result);
                       <th style="font-size: 15px;" width="25%" class="text-left">Owner</th>
                        <th style="font-size: 15px;" width="30%" class="text-left">Project Topic</th>
                        <th style="font-size: 15px;" width="17%" class="text-left">Advisor</th>
-                       <th style="font-size: 15px;" width="10%" class="text-left">Committee</th>
-                       <th style="font-size: 15px;" width="20%" class="text-center">Action</th>
+                       <th style="font-size: 15px;" width="17%" class="text-left">Committee</th>
+                       <th style="font-size: 15px;" width="15%" class="text-center">Action</th>
                      </tr>
                   </thead>
                   <tbody align="center">
@@ -415,21 +415,15 @@ $count=mysqli_num_rows($result);
                      <td class="text-left" style="font-size: 15px;"><?php echo get_advisor($row->group_id); ?></td>
 
 
-                                     <td class="text-left"><?php echo get_committee($row->group_id); ?></td>
+                    <td class="text-left" style="font-size: 15px;"><?php echo get_committee($row->group_id); ?></td>
 
 
 
-                    <td class="text-left" style="font-size: 15px;">
+                    <td class="text-center">
 
                       <button type="button" class="btn btn-success btn-sm"
                         onclick="add_committee('<?php echo $row->group_id; ?>')" data-toggle="modal"
-                        data-target="#add_committee">Add </button>
-
-                      <button type="button" class="btn btn-warning btn-sm"
-                        onclick="add_committee('<?php echo $row->group_id; ?>')" data-toggle="modal"
-                        data-target="#add_committee">Edit</button>
-
-                        <a href="delete_committee.php?id=<?php echo $objResult->member_id;?>"class="btn btn-danger btn-sm" onclick="return confirm('Are You sure Delete?')">delete </a>
+                        data-target="#add_committee"><i class="fa fa-plus" title="Add"></i> Add </button>
 
                     </td>
                   </tr>

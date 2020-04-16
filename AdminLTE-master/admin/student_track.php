@@ -267,12 +267,6 @@ $count=mysqli_num_rows($result);
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../admin/add_proposal.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Student project proposal</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="../admin/view_all_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
@@ -363,7 +357,7 @@ $count=mysqli_num_rows($result);
                   <tbody align="center">
         <?php
 
-       $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic FROM advisergroup
+       $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic, files.pf FROM advisergroup
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
@@ -380,12 +374,8 @@ $count=mysqli_num_rows($result);
                   <td class="text-left"><?php echo $objResult->advisergroup_topic; ?></td>
                   <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
                   <td class="project_progress">
-                          <div class="progress progress-sm">
-                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
-                              </div>
-                          </div>
                           <small>
-                              57% Complete
+                             <?php echo $objResult->pf;?> /13 Complete
                           </small>
                       </td>
                   <td>
@@ -462,7 +452,7 @@ $count=mysqli_num_rows($result);
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.0.3-pre
     </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    <strong>Copyright &copy; 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights
     reserved.
   </footer>
 

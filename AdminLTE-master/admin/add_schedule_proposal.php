@@ -267,12 +267,6 @@ $count=mysqli_num_rows($result);
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../admin/add_proposal.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Student project proposal</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="../admin/view_all_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
@@ -827,7 +821,7 @@ $count=mysqli_num_rows($result);
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.0.3-pre
     </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    <strong>Copyright &copy; 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights
     reserved.
   </footer>
 
