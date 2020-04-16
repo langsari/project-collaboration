@@ -187,7 +187,9 @@ $count=mysqli_num_rows($result);
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index.php" class="brand-link">
+
+       <a href="index.php" class="brand-link">
+
         <img src="../dist/img/n2.png" width="100%" >
         <span class="brand-text font-weight-light"></span>
       </a>
@@ -412,7 +414,10 @@ $count=mysqli_num_rows($result);
                      <td class="text-left" style="font-size: 15px;"><?php echo get_topic($row->group_id); ?></td>
                      <td class="text-left" style="font-size: 15px;"><?php echo get_advisor($row->group_id); ?></td>
 
-                   <td class="text-left" style="font-size: 15px;"><?php echo get_committee($row->group_id); ?></span> </td>
+
+                                     <td class="text-left"><?php echo get_committee($row->group_id); ?></td>
+
+
 
                     <td class="text-left" style="font-size: 15px;">
 

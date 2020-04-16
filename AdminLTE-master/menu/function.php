@@ -477,7 +477,8 @@ require 'connect.php';
 					WHERE committeegroup.group_id = '$group_id'";
 	if($rs = $db->query($sql)){
 		while($row = $rs->fetch_object()){
-			$rows .= "<p>".$row->member_fullname." <a href='admin/sql_removecommittee.php?id=".$row->committeegroup_id."' title='Remove this committee' onclick='return confirm_removecommittee()' class='btn btn-link btn-xs'><i class='glyphicon glyphicon-remove'></i></a></p>";
+			$rows .= "<p>".$row->member_fullname." <a href='sql_removecommittee.php?id=".$row->committeegroup_id."' title='Remove this committee' onclick='return confirm_removecommittee()' class='btn btn-link btn-xs'><i class='fa fa-times'></i></a></p>";
+
 		}
 
 
@@ -488,6 +489,7 @@ require 'connect.php';
 		$db->close();
 	}
 }
+
 
 
 //Function to get Committee lsit

@@ -115,11 +115,11 @@ to get the desired effect
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index.php" class="brand-link">
-      <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">ITPROMOT</span>
-    </a>
+      <a href="index.php" class="brand-link">
+        <img src="../dist/img/n2.png" width="100%" >
+        <span class="brand-text font-weight-light"></span>
+      </a>
+
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -377,7 +377,7 @@ to get the desired effect
           </div>
       </section>
 
-      <!-- Main content -->
+     <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
           <div class="card card-primary card-outline">
@@ -388,15 +388,50 @@ to get the desired effect
             </div> <!-- /.card-body -->
             <div class="card-body">
 
-              <h1 class="mt-3">Welcome to Information Technology Project</h1>
-                        <p class="lead">ITPromot or Information Technology Project Monitoring and Tracking System.</p>
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.js"></script>
+              <script type="text/javascript">
+                $(document).ready(function () {
 
+                  $.getJSON("get_data.php", function (result) {
+
+                    var chart = new CanvasJS.Chart("chartContainer", {
+                      animationEnabled: true,
+                      title: {
+                        text: "Project Monitoring"
+                      },
+                      axisY: {
+                        title: "Forms",
+                        prefix: "PF",
+                        suffix: ""
+                      },
+                      data: [{
+                        type: "bar",
+                        yValueFormatString: "PF#",
+                        indexLabel: "{y}",
+                        indexLabelPlacement: "inside",
+                        indexLabelFontWeight: "bolder",
+                        indexLabelFontColor: "white",
+                        dataPoints: result
+                      }]
+                    });
+                    chart.render();
+                  });
+                });
+              </script>
+
+              <div class="body">
+                <div id="chartContainer" style="height: 400px; width: 90%;"></div>
+              </div>
 
 
             </div><!-- /.card-body -->
           </div>
         </div><!-- /.container-fluid -->
       </section>
+      <!-- /.content -->
+
+
      </div>
 
 

@@ -139,11 +139,11 @@ to get the desired effect
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index.php" class="brand-link">
-      <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">ITPROMO</span>
-    </a>
+  <a href="index.php" class="brand-link">
+         <img src="../dist/img/n2.png" width="100%" >
+        <span class="brand-text font-weight-light"></span>
+      </a>
+
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -623,6 +623,26 @@ include 'phpmailer/line_message.php';
 ?>
 
     <!-- /.content -->
+
+
+
+    
+
+
+
+
+    <!-- /.content-wrapper -->
+   <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
+      <b>Version</b> 3.0.3-pre
+    </div>
+       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+    reserved.
+  </footer>
+
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
  
 <!-- ./wrapper -->
 
