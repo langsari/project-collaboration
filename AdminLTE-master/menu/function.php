@@ -7,9 +7,9 @@
 function status_to_text1($status){
 	
 	if($status == ''){
-		return "<span class='text-info'>Waiting</span>";
+		return "<input type='button' class='btn btn-info btn-xs' value='Waiting'>";
 	}else if($status == '4'){
-		return "<span class='text-success'>Approved</span>";
+		return "<input type='button' class='btn btn-success btn-xs' value='Approved'>";
 	}
 }
 
@@ -18,9 +18,9 @@ function status_01($status){
 
 
 	if($status == '0'){
-		return "<span class='badge badge-danger'>Not Approve</span>";
+		return "<input type='button' class='btn btn-danger btn-xs' value='Not Approve'>";
 	}else if($status == 'Waiting'){
-		return "<span class='badge badge-danger'>Waiting</span>";
+		return "<input type='button' class='btn btn-info btn-xs' value='Waiting'>";
 	}else if($status == 'Approve'){
 		return "<input type='button' class='btn btn-success btn-xs' value='Approved'>";
 		//return "<span class='badge badge-success'>Approved</span>";
@@ -30,21 +30,21 @@ function status_01($status){
 
 function status_01_file($status){
 	if($status == ''){
-		return "<span class='text-danger'></span>";
+		return "<input type='button' class='btn btn-danger btn-xs' ";
 	}else if($status == 'Waiting'){
-		return "<span class='badge badge-danger'>Waiting</span>";
+		return "<input type='button' class='btn btn-info btn-xs' value='Waiting'>";
 	}else if($status == 'Approve'){
-		return "<span class='badge badge-success'>Approved</span>";
+		return "<input type='button' class='btn btn-success btn-xs' value='Approved'>";
 	}
 }
 
 function status_02($status){
 	if($status == ''){
-		return "<span class='badge badge-danger'>Waiting</span>";
+		return "<input type='button' class='btn btn-info btn-xs' value='Waiting'>";
 	}else if($status == 'Waiting'){
-		return "<span class='badge badge-danger'>Waiting</span>";
+		return "<input type='button' class='btn btn-info btn-xs' value='Waiting'>";
 	}else if($status == 'Approve'){
-		return "<span class='badge badge-success'>Approved</span>";
+		return "<input type='button' class='btn btn-success btn-xs' value='Approved'>";
 	}
 }
 
@@ -57,7 +57,7 @@ function status_03($status){
 	}else if($status == 'No'){
 		return "<span class='badge badge-danger'>No Pass</span>";
 	}else if($status == 'Pass'){
-		return "<span class='badge badge-success'>Pass</span>";
+		return "<input type='button' class='btn btn-success btn-xs' value='Pass'>";
 	}
 }
 
@@ -68,7 +68,7 @@ function status_04($status){
 	}else if($status == 'No'){
 		return "<span class='badge badge-danger'>No Pass</span>";
 	}else if($status == 'Pass'){
-		return "<span class='badge badge-success'>Pass</span>";
+		return "<input type='button' class='btn btn-success btn-xs' value='Pass'>";
 	}
 }
 
@@ -81,7 +81,7 @@ function status_05($status){
 	}else if($status == 'No'){
 		return "<span class='badge badge-danger'>No Pass</span>";
 	}else if($status == 'Pass'){
-		return "<span class='badge badge-success'>Pass</span>";
+		return "<input type='button' class='btn btn-success btn-xs' value='Pass'>";
 	}
 }
 
@@ -91,7 +91,7 @@ function status_06($status){
 	}else if($status == 'No'){
 		return "<span class='badge badge-danger'>No Pass</span>";
 	}else if($status == 'Pass'){
-		return "<span class='badge badge-success'>Pass</span>";
+		return "<input type='button' class='btn btn-success btn-xs' value='Pass'>";
 	}
 }
 
@@ -102,7 +102,7 @@ function status_07($status){
 	}else if($status == 'No'){
 		return "<span class='badge badge-danger'>No Pass</span>";
 	}else if($status == 'Pass'){
-		return "<span class='badge badge-success'>Pass</span>";
+		return "<input type='button' class='btn btn-success btn-xs' value='Pass'>";
 	}
 }
 
@@ -115,7 +115,7 @@ function status_08($status){
 	}else if($status == 'Waiting'){
 		return "<span class='badge badge-danger'>waiting</span>";
 	}else if($status == 'Pass'){
-		return "<span class='badge badge-success'>Pass</span>";
+		return "<input type='button' class='btn btn-success btn-xs' value='Pass'>";
 	}
 }
 
@@ -129,7 +129,7 @@ function status_09($status){
 		return "<span class='badge badge-success'>Approved</span>";
 	}
 	else if($status == 'No'){
-		return "<span class='badge badge-danger'>No pass</span>";
+		return "<input type='button' class='btn btn-success btn-xs' value='Pass'>";
 	}
 }
 
@@ -141,7 +141,7 @@ function status_10($status){
 	}else if($status == 'Waiting'){
 		return "<span class='badge badge-danger'>Waiting</span>";
 	}else if($status == 'Pass'){
-		return "<span class='badge badge-success'>Pass</span>";
+		return "<input type='button' class='btn btn-success btn-xs' value='Pass'>";
 	}
 }
 

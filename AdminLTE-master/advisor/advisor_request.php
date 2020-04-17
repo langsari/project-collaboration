@@ -445,9 +445,10 @@ $my_id = $_SESSION['id'];
                   
                     <td class="text-left" style="font-size: 12px;" width="5%" >
 <?php if( $row->files_filename_proposal != ""){ ?>
+
                       <a href="download.php?pdf=<?php echo $row->files_filename_proposal ;?>">
-                      <span class='badge badge-primary'><i class="fa fa-download">Download 
-                           </i></a></span>
+                      <span class='badge badge-success btn-xs'>Download 
+                           </a></span>
                        </a>
  <?php }else{?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
@@ -545,8 +546,8 @@ $my_id = $_SESSION['id'];
                     <td class="text-left" style="font-size: 12px;" width="3%" >
 <?php if( $row->files_filename_proposal != ""){ ?>
                       <a href="download.php?pdf=<?php echo $row->files_filename_proposal ;?>">
-                      <span class='badge badge-primary'><i class="fa fa-download">Download 
-                           </i></a></span>
+                      <span class='badge badge-success btn-xs'>Download 
+                           </a></span>
                        </a>
  <?php }else{?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
@@ -906,8 +907,8 @@ $my_id = $_SESSION['id'];
                     <td class="text-left" style="font-size: 12px;" width="3%" >
 <?php if( $row->files_filename_project != ""){ ?>
                       <a href="download.php?pdf=<?php echo $row->files_filename_project ;?>">
-                      <span class='badge badge-primary'><i class="fa fa-download">Download 
-                           </i></a></span>
+                      <span class='badge badge-success btn-xs'>Download 
+                           </a></span>
                        </a>
  <?php }else{?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
@@ -1007,8 +1008,8 @@ WHERE advisergroup.member_id = '$my_id'  AND pf='9' And by_advisor10 ='Waiting' 
                     <td class="text-left" style="font-size: 12px;" width="3%" >
 <?php if( $row->files_filename_project != ""){ ?>
                       <a href="download.php?pdf=<?php echo $row->files_filename_project ;?>">
-                      <span class='badge badge-primary'><i class="fa fa-download">Download 
-                           </i></a></span>
+                      <span class='badge badge-success btn-xs'>Download 
+                           </a></span>
                        </a>
  <?php }else{?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
@@ -1103,8 +1104,8 @@ $my_id = $_SESSION['id'];
                     <td class="text-left" style="font-size: 12px;" width="3%" >
 <?php if( $row->complete_project != ""){ ?>
                       <a href="download_pdf.php?pdf=<?php echo $row->complete_project ;?>">
-                      <span class='badge badge-primary'><i class="fa fa-download">Download 
-                           </i></a></span>
+                      <span class='badge badge-success btn-xs'>Download 
+                           </a></span>
                        </a>
  <?php }else{?>
                     <a href="#"> <button class="btn btn-danger btn-xs">

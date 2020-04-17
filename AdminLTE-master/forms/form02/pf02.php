@@ -12,7 +12,7 @@ include('../../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>ITPROMIT| TRACKING </title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="style.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
@@ -397,20 +397,21 @@ to get the desired effect
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th>Status</th>
+                          <th><font color='red' >Sign by Officer</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Student, Submit copies of Proposal, PF01 and related documentit 
+                          <td>Student, Submit Proposal, PF01 and related documentation 
+                          </br> 
                           </br><u>Condition:</u>
-                          </br>(1) 4 copies of proposal, 1 copy for advisor and 3 for committees
-                          </br>(2) submit proposal one week before presentation day
+                          </br>(1) Student has been uploaded the 3 chapters in the PF01
+                          </br>(2) The document has been approved by advisor
                           </td>
                           <td>
+                            Status
                            <?php echo status_02($objResult->by_officer); ?> 
-                            <p>
-                              <font color='red'> *For Officer</font>
+                            
                           </td>
                         </tr>
 
@@ -421,39 +422,19 @@ to get the desired effect
                   </div>
                 </div>
               </fieldset>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
-                        aria-valuemax="100"></div>
-                    </div>
-                  </br>
-
-
-
-              
-                  <div class="progress progress">
                     
-
-
-
-
-                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="100" aria-volumemin="0" aria-volumemax="100" style="width:%">
-                              </div>
-                          </div>
-                          <small>
-                             % Complete
-                          </small>
             </fieldset>
           </form>
 
       
         <div class="form-group clearfix">
 
-                  <a href="../form01/pf01.php" class="btn btn-danger float-left">Previous</a>
+                  <a href="../form01/pf01.php" class="btn btn-danger float-left">&laquo; Previous</a>
           <?php if ($objResult->by_officer != "Approve") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button> 
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button> 
           <?php }else{?>
             <a href="../form03/pf03.php"  >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+            <button type="button" class="btn btn-primary float-right" >Next &raquo;</button></a>
                        <?php }?>
 
 
@@ -601,8 +582,7 @@ to get the desired effect
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
-    reserved.
+      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

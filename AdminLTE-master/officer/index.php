@@ -12,7 +12,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMOT</title>
+  <title>ITPROMOT| Dashboad Management</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -156,7 +156,7 @@ to get the desired effect
   $con = mysqli_connect('localhost','root','','itpromo_track');
 
 
-               $query="SELECT * FROM files WHERE by_officer = '' and  by_officer05='' or by_advisor08 ='Pass' " ;
+   $query="SELECT * FROM files WHERE by_officer = '' OR  by_officer05='' OR by_advisor08 ='Pass' " ;
 
   $query_num=mysqli_query($con,$query);
   $count=mysqli_num_rows($query_num);
@@ -434,14 +434,13 @@ to get the desired effect
 
      </div>
 
-
+</br></br></br>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 3.0.3-pre
       </div>
-      <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-      reserved.
+      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
     </footer>
 
     <!-- /.control-sidebar -->
