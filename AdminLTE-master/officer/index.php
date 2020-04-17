@@ -422,17 +422,14 @@ to get the desired effect
 
               <div class="body">
                 <div id="chartContainer" style="height: 400px; width: 90%;"></div>
-              </div>
-
-
+          
             </div><!-- /.card-body -->
           </div>
         </div><!-- /.container-fluid -->
       </section>
       <!-- /.content -->
-
-
-     </div>
+</br>
+</div>
 
 
     <!-- /.content-wrapper -->
@@ -443,7 +440,7 @@ to get the desired effect
       <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
       reserved.
     </footer>
-
+</div>
     <!-- /.control-sidebar -->
   
 

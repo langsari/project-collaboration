@@ -192,19 +192,7 @@ to get the desired effect
                   <p>All Project Topics</p>
                 </a>
               </li>
-                       <li class="nav-item">
-                <a href="manage_mark.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Mark</p>
-                </a>
-              </li>
-
-                       <li class="nav-item">
-                <a href="give_mark.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Give Mark as a Committee</p>
-                </a>
-              </li>
+             
             </ul>
           </li>
 
@@ -636,15 +624,38 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id'
                }
                    ?>
                 
+ </tbody>
+               
+
               </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
+         
+
+
+</div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
 
 
 
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.3-pre
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
 
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
 
 
 

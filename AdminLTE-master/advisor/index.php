@@ -215,19 +215,7 @@ to get the desired effect
                   <p>All Project Topics</p>
                 </a>
               </li>
-                       <li class="nav-item">
-                <a href="manage_mark.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Mark</p>
-                </a>
-              </li>
-
-                       <li class="nav-item">
-                <a href="give_mark.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Give Mark as a Committee</p>
-                </a>
-              </li>
+             
             </ul>
           </li>
 
@@ -525,123 +513,33 @@ $my_id = $_SESSION['id'];
 
               <div class="body">
                 <div id="chartContainer" style="height: 400px; width: 90%;"></div>
-              </div>
-
-
+          
             </div><!-- /.card-body -->
           </div>
         </div><!-- /.container-fluid -->
       </section>
       <!-- /.content -->
+</br>
+</div>
 
-
-   <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-12">
-          <div class="card card-primary card-outline">
-            <div class="card-header">
-               <h3 class="card-title">
-                  <i class="fas fa-edit"></i>
-                  View Track of Students
-                </h3>
-        
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                  <tr align="center">
-                  <th>Project Title</th>
-                  <th>Owner Project</th>
-                  <th>Project Progress</th>
-                  <th>Action</th>
-                </tr>
-                  </thead>
-                  <tbody align="center">
-        <?php
-$my_id = $_SESSION['id'];
-
-       $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic,files.files_status FROM advisergroup
-
-          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
-
-        LEFT JOIN member ON advisergroup.member_id = member.member_id
-
-       
-        WHERE advisergroup.member_id = '$my_id'  ";
-
-        ?>
-        <?php
-     if($result = $db->query($strSQL)){
-             while($objResult = $result->fetch_object()){
-            ?>
-          
-                  <td class="text-left"><?php echo $objResult->advisergroup_topic; ?></td>
-                  <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
-                  <td class="project_progress">
-                          <div class="progress progress-sm">
-                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
-                              </div>
-                          </div>
-                          <small>
-                              57% Complete
-                          </small>
-                      </td>
-                  <td>
-             <a href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
-                  </td>
-
-
-                </tr>
-            <?php
-              }
-               }
-                   ?>
-                
-              </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-
-     </div>
-
-
-
-
-           
         <?php
 
 include 'phpmailer/line_message.php';
 ?>
 
-    <!-- /.content -->
-
-
-
-    
-
-
-
-
     <!-- /.content-wrapper -->
-   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
-      <b>Version</b> 3.0.3-pre
-    </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
-    reserved.
-  </footer>
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-block">   
+        <class style="font-size: 12px;">   <b>Version</b> 3.0.3-pre
+      </div>
+       <class style="font-size: 12px;">   <strong>Copyright &copy; 2019 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
+      reserved.
+    </footer>
+</div>
+           
 
-    <!-- /.control-sidebar -->
-  </div>
+
+
   <!-- ./wrapper -->
  
 <!-- ./wrapper -->
