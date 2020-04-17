@@ -438,15 +438,15 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
 
                       <?php if ($objResult->files_filename_proposal != "") {?>
-                        <button class="btn btn-warning disabled" disabled="disabled">Upload</button> 
+                        <button class="btn btn-warning disabled btn-sm" disabled="disabled">Upload</button> 
 
                       <?php }else{?>
-                      <button type="submit" class="btn btn-primary" >Upload</button>
+                      <button type="submit" class="btn btn-primary btn-sm" >Upload</button>
                        <?php }?>
 
                           </td>
                           <td>
-                            Staus
+                            Status
                             <?php echo status_01_file($objResult->files_status); ?>
                           </td>
 
@@ -457,7 +457,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                           <td>
 <?php if( $objResult->files_filename_proposal != ""){ ?>
                       <a href="download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>">
-                          <input type="button" class="btn btn-success" value="Download">
+                          <input type="button" class="btn btn-success btn-sm" value="Download">
 
  <?php }else{?>
                     <a href="#"> 
@@ -477,34 +477,8 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
                   </div>
                 </div>
               </fieldset>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
-                        aria-valuemax="100"></div>
-                    </div>
                   </br>
 
-
-
-                  <div class="progress progress">
-
-                    
-
-
-                 <?php
-
-                    $con = mysqli_connect('localhost','root','','itpromo_track');
-                    $query="SELECT SUM(form_mark) AS total FROM form";
-                    $query_result=mysqli_query($con,$query);
-                     while ($row=mysqli_fetch_assoc($query_result)) {
-                      $sum= $row['total'];
-                     }
-                    ?>
-                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="100" aria-volumemin="0" aria-volumemax="100" style="width: <?php echo $sum;?>%">
-                              </div>
-                          </div>
-                          <small>
-                              <?php echo $sum; ?> % Complete
-                          </small>
             </fieldset>
           </form>
 
@@ -515,7 +489,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
             <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button> 
           <?php }else{?>
             <a href="../form02/pf02.php"  >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+            <button type="button" class="btn btn-primary float-right" >Next &raquo;</button></a>
                        <?php }?>
               </div>
 
@@ -653,8 +627,7 @@ WHERE advisergroup.advisergroup_id = '$ag_id'  ";
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
-    reserved.
+       <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

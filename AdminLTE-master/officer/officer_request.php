@@ -330,8 +330,7 @@ $my_id = $_SESSION['id'];
              <td class="text-left" style="font-size: 14px;" width="8%" >
 <?php if( $objResult->files_filename_proposal != ""){ ?>
                       <a href="../advisor/download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>">
-                      <span class='badge badge-primary'><i class="fa fa-download">Download 
-                           </i></a></span>
+                      <span class='badge badge-success btn-xs'>Download </a></span>
                        </a>
  <?php }else{?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
@@ -341,7 +340,7 @@ $my_id = $_SESSION['id'];
 
           <td class="text-left" style="font-size: 14px;" width="8%" >
 
-  <a href="form02.php?id=<?php echo $objResult->group_id;?>"class="btn btn-primary btn-sm">  <i class="fa fa-eye" title="Detail"></i></a>
+  <a href="form02.php?id=<?php echo $objResult->group_id;?>"class="btn btn-primary btn-xs">  <i class="fa fa-eye" title="Detail"> View </i></a>
 
          
 
@@ -354,18 +353,18 @@ $my_id = $_SESSION['id'];
  <?php if ($objResult->by_officer != "Approve") {?>        
     <a href="check_approved.php?id=<?php echo $objResult->files_id; ?>"  >
 
-            <button type="button" class="btn btn-success btn-xs  float-left" >
+            <button type="button" class="btn btn-success btn-xs  float-left" title="Approve" >
               <i class='fa fa-check'></i></button>
           <?php }else{?>
 
-            <button class="btn btn-warning btn-xs disabled float-left" disabled="disabled">      <i class='fa fa-check'></i></button> 
+            <button class="btn btn-warning btn-xs disabled float-left" disabled="disabled" title="has been Approved">      <i class='fa fa-check'></i></button> 
 
           </a>
                        <?php }?>
               
 
 <a href="reject_02.php?id=<?php echo $objResult->advisergroup_id; ?>"
-                    class="btn btn-danger btn-xs float-right" title="Comfirm"><i
+                    class="btn btn-danger btn-xs float-right" title="Not Approve"><i
                       class='fa fa-times'></i> </a>
 
 </td>
@@ -594,7 +593,7 @@ $my_id = $_SESSION['id'];
 
           <td class="text-left" style="font-size: 14px;" width="8%" >
 
-  <a href="form09.php?id=<?php echo $objResult->group_id;?>"class="btn btn-primary btn-sm">  <i class="fa fa-eye" title="Detail"></i></a>
+  <a href="form09.php?id=<?php echo $objResult->group_id;?>"class="btn btn-primary btn-sm">  <i class="fa fa-eye" title="Detail"> View</i></a>
 
          
 
