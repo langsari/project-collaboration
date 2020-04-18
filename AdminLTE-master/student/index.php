@@ -379,87 +379,81 @@ $count=mysqli_num_rows($result);
         </div><!-- /.container-fluid -->
       </div>
       <!-- /.content-header -->
-      <section class="content">
+   <section class="content">
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
           <div class="row">
-            <div class="col-lg-3 col-6">
+             <div class="col-lg-3 col-6">
               <!-- small box -->
-              <div class="small-box bg-info">
+              <div class="small-box bg-warning">
                 <div class="inner">
-
-
-                  <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-
-                $query="SELECT member_id FROM member ORDER BY member_id";
-
-                $query_num=mysqli_query($con,$query);
-                $row=mysqli_num_rows($query_num);
-                echo '<h1>'.$row.'</h1>';
-
-                ?>
-                  <p>Total User</p>
-
+                  <h4>Group </h4>
+                  <p>Information</p>
                 </div>
                 <div class="icon">
-                  <i class="fa fa-users"></i>
+                <i class="nav-icon fas fa-book"></i>
                 </div>
-
-                <a href="../admin/all_member.php" class="small-box-footer">More info <i
-                    class="fas fa-arrow-circle-right"></i></a>
+                <a href="infor_group.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
+
             <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-success">
-                <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-                  <p>Bounce Rate</p>
+                      <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-danger">
+                <div class="inner">
+                  <h4>Track </h4>
+                  <p>Project Track</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
+                <i class="nav-icon fas fa-book"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+
+                <a href="../forms/check_pf.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
+ 
+          
             <!-- ./col -->
             <div class="col-lg-3 col-6">
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>44</h3>
-
-                  <p>User Registrations</p>
+                  <h4>Schedule</h4>
+                  <p>Presentation Schedule </p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-person-add"></i>
+                <i class="nav-icon fas fa-book"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="display_schedule_proposal.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
+
+                   <div class="col-lg-3 col-6">
               <!-- small box -->
-              <div class="small-box bg-danger">
+              <div class="small-box bg-light">
                 <div class="inner">
-                  <h3>65</h3>
-
-                  <p>Unique Visitors</p>
+                  <h4>All Project</h4>
+                  <p>Graduated Projects </p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
+                <i class="nav-icon fas fa-book"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="proposal_project.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
+
+           
+
+            
+
+
             <!-- ./col -->
           </div>
       </section>
 
-      <!-- Main content -->
+  <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
           <div class="card card-primary card-outline">
@@ -470,16 +464,49 @@ $count=mysqli_num_rows($result);
             </div> <!-- /.card-body -->
             <div class="card-body">
 
-              <h1 class="mt-3">Welcome to Information Technology Project</h1>
-                        <p class="lead">ITPromot or Information Technology Project Monitoring and Tracking System.</p>
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.js"></script>
+              <script type="text/javascript">
+                $(document).ready(function () {
 
+                  $.getJSON("get_data.php", function (result) {
 
-</div>
+                    var chart = new CanvasJS.Chart("chartContainer", {
+                      animationEnabled: true,
+                      title: {
+                        text: "Project Monitoring"
+                      },
+                      axisY: {
+                        title: "Forms",
+                        prefix: "PF",
+                        suffix: ""
+                      },
+                      data: [{
+                        type: "bar",
+                        yValueFormatString: "PF#",
+                        indexLabel: "{y}",
+                        indexLabelPlacement: "inside",
+                        indexLabelFontWeight: "bolder",
+                        indexLabelFontColor: "white",
+                        dataPoints: result
+                      }]
+                    });
+                    chart.render();
+                  });
+                });
+              </script>
+
+              <div class="body">
+
+                <div id="chartContainer" style="height: 300px; width: 80%;"></div>
+              </div>
             </div><!-- /.card-body -->
           </div>
         </div><!-- /.container-fluid -->
       </section>
-      <!-- /.content -->
+
+</br>
+</div>
 
 
      </div>
@@ -488,17 +515,17 @@ $count=mysqli_num_rows($result);
 
 
 
+
+  
     <!-- /.content-wrapper -->
    <footer class="main-footer">
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+       <class style="font-size: 14px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
     reserved.
   </footer>
-
-    <!-- /.control-sidebar -->
-  </div>
+          
   <!-- ./wrapper -->
 
 

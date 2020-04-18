@@ -574,8 +574,16 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
                    <td class="text-left" style="font-size: 15px;" width="10%"><?php echo $row->member_fullname; ?></td>
                           
 
-<td class="text-left" style="font-size: 15px;" width="5%"><?php echo status_01($row->advisergroup_status);?><font color='red'> </br>*For Advisor</font> </td>
+<td class="text-left" style="font-size: 15px;" width="5%"><?php echo status_01($row->advisergroup_status);?>  <font color='red'> </br>*For Advisor</font> </td>
+<td>
+
+  
+                     <a href="delete_advisor.php?id=<?php echo $row->advisergroup_id;?>"class="btn btn-danger btn-xs">
+                  <i class='fa fa-times'></i> </a>
+</td>
+
                     </tr>
+
                    
                         <?php
                 }
@@ -805,16 +813,14 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
 
 
     <!-- /.content-wrapper -->
-    <footer class="main-footer">
+<footer class="main-footer">
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 3.0.3-pre
       </div>
-      <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-      reserved.
+      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
     </footer>
 
-    <!-- /.control-sidebar -->
-  </div>
+</div>
   <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
