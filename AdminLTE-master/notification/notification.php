@@ -24,6 +24,7 @@
       bottom: 23px;
       right: 28px;
       width: 160px;
+      border-radius: 10px;
     }
 
     /* The popup chat - hidden by default */
