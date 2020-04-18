@@ -5,14 +5,14 @@ include('../menu/function.php');
 
 ?>
 
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO</title>
+  <title>ITPROMOT|Committee Management</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -47,15 +47,64 @@ to get the desired effect
      
     </ul>
 
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+
+  <?php
+  $con = mysqli_connect('localhost','root','','itpromo_track');
+  $query="SELECT * FROM notify WHERE status=0";
+  $query_num=mysqli_query($con,$query);
+  $count=mysqli_num_rows($query_num);
+
+  ?>
+     
+  <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="fa fa-globe" style="font-size:20px;"></i><span class="badge badge-danger"
+              id="count"><?php echo $count; ?></span>
+
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
+            <?php
+              $con = mysqli_connect('localhost','root','','itpromo_track');
+              $sq="SELECT * FROM notify WHERE status=0";
+              $qu_num=mysqli_query($con,$query);
+              if (mysqli_num_rows($qu_num)>0) 
+              {
+                while($result=mysqli_fetch_assoc($qu_num))
+                {
+                  echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
+                  echo '<div class="dropdown-divider"></div>';
+
+                }
+              }
+              else
+              {
+                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+              }
+            ?>
+            <div class="dropdown-divider"></div>
+          <a href="read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
+          </div>
+        </li>
+
+
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-              <li class="nav-item d-none d-sm-inline-block">
-        <li class="nav-item d-none d-sm-inline-block">
-        <a href="../auth/logout.php" class="nav-link">Logout</a>
-      </li>
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fa fa-user"></i>
+          <?php echo $_SESSION['name']; ?>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="../auth/logout.php" class="dropdown-item">
+            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
+          </a>
+          <a href="my_profile.php" class="dropdown-item">
+            <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
+          </a>
+        </div>
       </li>
      
        
@@ -66,9 +115,7 @@ to get the desired effect
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-
-
-    <a href="../advisor/index.php" class="brand-link">
+  <a href="index.php" class="brand-link">
          <img src="../dist/img/n2.png" width="100%" >
         <span class="brand-text font-weight-light"></span>
       </a>
@@ -85,6 +132,7 @@ to get the desired effect
           <a href="#" class="d-block"><?php echo $_SESSION['name']; ?></a>
         </div>
       </div>
+
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -104,7 +152,7 @@ to get the desired effect
           </li>
 
     <?php 
-     $my_id = $_SESSION['id'];
+  $my_id = $_SESSION['id'];
   $con = mysqli_connect('localhost','root','','itpromo_track');
   $query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06 FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
@@ -275,7 +323,7 @@ to get the desired effect
     <section class="content">
    
         
-          <div class="card">
+          <div class="card card-primary card-outline">
             <div class="card-header">
            
      <h6><b>PROPOSAL REVISION REQUEST (PF03)
@@ -291,11 +339,11 @@ to get the desired effect
 
                    <th style="font-size: 15px;" width="5%" class="text-left">No</th>
                 <th style="font-size: 15px;" width="20%" class="text-left"> Title project</th>
-                  <th style="font-size: 15px;" width="20%" class="text-left">Student</th>
-                 <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>
-                 <th style="font-size: 15px;" width="10%" class="text-left">Files</th>          
-                    <th style="font-size: 15px;" width="10%" class="text-left">Status</th>
-                    <th style="font-size: 15px;" width="10%" class="text-left">View</th>
+                <th style="font-size: 15px;" width="20%" class="text-left">Student</th>
+                <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>
+                <th style="font-size: 15px;" width="10%" class="text-left">Files</th>          
+                <th style="font-size: 15px;" width="10%" class="text-left">Status</th>
+                <th style="font-size: 15px;" width="10%" class="text-left">View</th>
                 <th style="font-size: 15px;" width="10%" class="text-left">Options</th>
                 </tr>
                 </thead>
@@ -313,9 +361,9 @@ $my_id = $_SESSION['id'];
           LEFT JOIN files ON committeegroup.committeegroup_id = files.files_id
       LEFT JOIN schedule ON committeegroup.group_id = schedule.group_id
 
-    WHERE committeegroup.member_id  ='$my_id'   and schedule.schedule_type='1' ";
+    WHERE committeegroup.member_id  ='$my_id' AND schedule_type='1' ";
 
-               $i = 1;
+    $i = 1;
    $count = 1;
 
      if($result = $db->query($strSQL)){
@@ -412,7 +460,7 @@ $my_id = $_SESSION['id'];
 <!-- Main content -->
    
         
-          <div class="card">
+          <div class="card card-warning card-outline">
             <div class="card-header">
                 <h6><b>PROJECT REVISION (PF10)
 </b> </h6>
@@ -494,11 +542,6 @@ $my_id = $_SESSION['id'];
          
 
                 </td>
-
-
-
-
-
 <td>  
 
 
@@ -556,27 +599,20 @@ $my_id = $_SESSION['id'];
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+<?php
 
+include 'phpmailer/line_message.php';
+?>
 
 
   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.3-pre
-    </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
-  </footer>
+      <div class="float-right d-none d-sm-block">
+        <class style="font-size: 14px;">  <b>Version</b> 3.0.3-pre
+      </div>
+      <class style="font-size: 14px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
+    </footer>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-
-
-
-
+ 
 <!-- ./wrapper -->
 
 <!-- jQuery -->

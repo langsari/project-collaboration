@@ -442,7 +442,7 @@ to get the desired effect
                                              </div>
                                          <div class="col-md-9">
                                 <select class="form-control" name="topic_fieldstudy" id="topic_fieldstudy" onChange="getTeam(this.value);"  >
-<option  value="<?php echo $objResult->topic_id;?>"><?php echo $objResult->topic_fieldstudy;?> </option>
+        <option  value="<?php echo $objResult->topic_id;?>"><?php echo $objResult->topic_fieldstudy;?> </option>
                                   <option value="Software Engineering">Software Engineering</option>
                                   <option value="Computer Multimedia">Computer Multimedia</option>
                                   <option value="Computer Networking">Computer Networking</option>

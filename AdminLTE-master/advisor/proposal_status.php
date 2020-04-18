@@ -377,9 +377,8 @@ to get the desired effect
                 <th style="font-size: 15px;"  width="10%" class="text-left">Group</th>
                 <th style="font-size: 15px;" width="25%" class="text-left">Owner Project</th>
                 <th style="font-size: 15px;" width="30%" class="text-left">Topic</th>
-               <th style="font-size: 15px;" width="15%" class="text-left">Status</th>
-
-                <th style="font-size: 15px;" width="10%" class="text-left">Action</th>
+               <th style="font-size: 15px;" width="13%" class="text-left">Status</th>
+                <th style="font-size: 15px;" width="12%" class="center">Action</th>
 
                 </tr>
                 </thead>
@@ -420,22 +419,16 @@ $my_id = $_SESSION['id'];
                      <td class="text-left" style="font-size: 15px;"><?php echo get_status_project($objResult->status); ?></td>
 
 
-
-        
-
-
                 <td> 
 
 
-
-
                  <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
-                        data-target="#show<?php echo $i; ?>">
+                        data-target="#show<?php echo $i; ?>"> View
                       <i class="fa fa-eye"></i></button>
 
 
-  <a href="delete_project.php?id=<?php echo $objResult->topic_id;?>"class="btn btn-danger btn-xs">
-                  <i class="fa fa-trash" title="Delete"></i></a>
+       <a href="delete_project.php?id=<?php echo $objResult->topic_id;?>"class="btn btn-danger btn-xs">
+                  <i class="fa fa-trash" title="Delete"></i>delete</a>
 
 
       <!-- Modal -->
@@ -446,8 +439,9 @@ $my_id = $_SESSION['id'];
                      <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header bg-info">
+                              <h5 class="modal-title">Proposal Detail</h5>
                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                         <h5 class="modal-title">View Proposal</h5>
+                         
                     </div>
 
                             <div class="modal-body">
@@ -557,7 +551,7 @@ $my_id = $_SESSION['id'];
                 </td>
 
 <td><button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#editPS"
-                    onclick="edit_ps(<?php echo $objResult->advisergroup_id; ?>)"><i class="fa fa-edit"></i></button>
+                    onclick="edit_ps(<?php echo $objResult->advisergroup_id; ?>)"><i class="fa fa-edit"></i> Edit</button>
 </td>
 
                
@@ -590,8 +584,9 @@ $my_id = $_SESSION['id'];
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header bg-info">
+                              <h5 class="modal-title">Edit Proposal Status</h5>
                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                         <h5 class="modal-title">Edit Proposal Status</h5>
+                         
                     </div>
 
                             <div class="modal-body">
@@ -657,7 +652,7 @@ $my_id = $_SESSION['id'];
 
               <div class="form-group row">
                 <div class="col-md-2">
-                  <label class="control-label col-form-label">Placeholder</label>
+                  <label class="control-label col-form-label">Abstract</label>
                 </div>
                 <div class="col-md-10">
                   <textarea class="form-control" rows="10" name="topic_abstrack" id="topic_abstrack"
@@ -709,34 +704,28 @@ $my_id = $_SESSION['id'];
 
     </form>
     </fieldset>
-
-
-
-
-</div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
+        
     </section>
     <!-- /.content -->
+  
   </div>
 
-  <!-- /.content-wrapper -->
+</div>
+
 <?php
 
 include 'phpmailer/line_message.php';
 ?>
 
 
-     <footer class="main-footer">
-      <div class="float-right d-none d-sm-block">   
-        <class style="font-size: 14px;">   <b>Version</b> 3.0.3-pre
+    <!-- /.content-wrapper -->
+    <!-- /.content-wrapper -->
+<footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <class style="font-size: 14px;">  <b>Version</b> 3.0.3-pre
       </div>
-       <class style="font-size: 14px;">   <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
-      reserved.
+      <class style="font-size: 14px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
     </footer>
-
-  <!-- /.control-sidebar -->
 
 <!-- ./wrapper -->
 

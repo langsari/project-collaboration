@@ -166,7 +166,7 @@ to get the desired effect
 
   ?>
          <li class="nav-item">
-            <a href="advisor_request.php" class="nav-link">
+            <a href="advisor_request.php" class="nav-link active">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
        Request 
@@ -495,7 +495,7 @@ $my_id = $_SESSION['id'];
 
 
       <div class="col-md-6">
-                 <div class="card">
+                 <div class="card card-warning card-outline">
               <div class="card-header">
                 <h6><b>PROPOSAL REVISION REQUEST (PF03)
 </b> </h6>
@@ -604,7 +604,7 @@ $my_id = $_SESSION['id'];
             <!-- PF04-->
                     
                        <div class="col-md-6">
-                 <div class="card">
+                 <div class="card card-warning card-outline">
               <div class="card-header">
                 <h6><b>PROJECT PROPOSAL APPROVAL LETTER (PF04)
 </b> </h6>
@@ -695,7 +695,7 @@ $my_id = $_SESSION['id'];
   <!-- PF06-->
           <!-- Select advisor -->
          <div class="col-md-6">
-                 <div class="card">
+                 <div class="card card-info card-outline">
               <div class="card-header">
                 <h6><b>CONSULTATION LOG BOOK (PF06)
 </b> </h6>
@@ -784,7 +784,7 @@ $my_id = $_SESSION['id'];
           
                       <!-- PF07-->
                        <div class="col-md-6">
-                 <div class="card">
+                 <div class="card card-info card-outline">
               <div class="card-header">
                 <h6><b>PROJECT SEMINAR (PF07)
 </b> </h6>
@@ -868,7 +868,7 @@ $my_id = $_SESSION['id'];
 
           <!-- Select advisor -->
           <div class="col-md-6">
-                 <div class="card">
+                 <div class="card card-danger card-outline">
               <div class="card-header">
                 <h6><b>ADVISER PROJECT APPROVAL LETTER (PF08)
 </b> </h6>
@@ -963,7 +963,7 @@ $my_id = $_SESSION['id'];
           
                     
                       <div class="col-md-6">
-                 <div class="card">
+                 <div class="card card-danger card-outline">
               <div class="card-header">
                 <h6><b>PROJECT REVISION (PF10)
 </b> </h6>
@@ -1065,7 +1065,7 @@ WHERE advisergroup.member_id = '$my_id'  AND pf='9' And by_advisor10 ='Waiting' 
 
           <!-- Select advisor -->
           <div class="col-md-6">
-                 <div class="card">
+                 <div class="card card-success card-outline">
               <div class="card-header">
                 <h6><b> Project Approval Letter (PF11)
 </b> </h6>
@@ -1162,7 +1162,7 @@ $my_id = $_SESSION['id'];
 
           <!-- Select advisor -->
           <div class="col-md-6">
-                 <div class="card">
+                 <div class="card card-success card-outline">
               <div class="card-header">
                 <h6><b>Free From Adviser LetterR (PF12)
 </b> </h6>
@@ -1258,9 +1258,6 @@ include 'phpmailer/line_message.php';
 </div>
 </div>
 
-
-
-
     <!-- /.content-wrapper -->
     <!-- /.content-wrapper -->
 
@@ -1268,8 +1265,7 @@ include 'phpmailer/line_message.php';
       <div class="float-right d-none d-sm-block">   
         <class style="font-size: 14px;">   <b>Version</b> 3.0.3-pre
       </div>
-       <class style="font-size: 14px;">   <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
-      reserved.
+       <class style="font-size: 14px;">   <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
 
 
 </div>

@@ -13,7 +13,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO</title>
+  <title>ITPROMOT| Tracking Page</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -335,9 +335,9 @@ to get the desired effect
                 <thead class="thead-light">
                   <tr align="center">
                   <th  style="font-size: 15px;" width="10%">No</th>
-                  <th  style="font-size: 15px;" width="30%">Project Title</th>
-                  <th   style="font-size: 15px;" width="30%">Owner Project</th>
-                  <th  style="font-size: 15px;" width="10%">Project Progress</th>
+                  <th  style="font-size: 15px;" width="30%" class="text-left">Project Title</th>
+                  <th   style="font-size: 15px;" width="30%" class="text-left">Owner Project</th>
+                  <th  style="font-size: 15px;" width="10%" class="text-left">Project Progress</th>
                   <th   style="font-size: 15px;" width="10%">Action</th>
                 </tr>
                   </thead>
@@ -372,8 +372,9 @@ $my_id = $_SESSION['id'];
                              <?php echo $objResult->pf;?> /13 Complete
                           </small>
                       </td>
-                  <td  class="text-left"  style="font-size: 14px;" width="10%" > 
-             <a href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary" style="font-size: 14px;"> <i class="fa fa-eye" ></i> Track </a>
+                  <td> 
+
+             <a type="button" href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary btn-sm"> <i class="fa fa-eye" ></i> Track </a>
 
 
 
@@ -403,23 +404,19 @@ $my_id = $_SESSION['id'];
   <!-- /.content-wrapper -->
     <!-- /.content -->
 
-</br>
 </div>
 
+<?php
 
+include 'phpmailer/line_message.php';
+?>
 
-
-    <!-- /.content-wrapper -->
-    <!-- /.content-wrapper -->
 <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.3-pre
+        <class style="font-size: 14px;">  <b>Version</b> 3.0.3-pre
       </div>
-      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
+      <class style="font-size: 14px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
     </footer>
-
-</div>
-<!-- ./wrapper -->
 
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>

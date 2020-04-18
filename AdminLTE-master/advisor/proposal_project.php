@@ -12,7 +12,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO</title>
+  <title>ITPROMOT|All Projects</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -322,7 +322,7 @@ to get the desired effect
     <section class="content">
    
         
-          <div class="card">
+          <div class="card card-primary card-outline">
             <div class="card-header">
               <h3 class="card-title">All Final Project Topics</h3>
             </div>
@@ -339,7 +339,7 @@ to get the desired effect
                 <th style="font-size: 15px;" width="30%" class="text-left">Topic</th>
                 <th style="font-size: 15px;" width="16%" class="text-left">Field of Study</th>
 
-                <th style="font-size: 15px;" width="3%" class="text-left">View</th>
+                <th style="font-size: 15px;" width="3%" class="text-left">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -378,7 +378,7 @@ to get the desired effect
                   <td>               
                      <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
                         data-target="#show<?php echo $i; ?>">
-                      <i class="fa fa-eye"></i></button>
+                      <i class="fa fa-eye"></i> View</button>
 
                       </center>
 
@@ -388,8 +388,9 @@ to get the desired effect
                                   <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header bg-info">
+                              <h5 class="modal-title">View Proposal</h5>
                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                         <h5 class="modal-title">View Proposal</h5>
+                         
                     </div>
 
                             <div class="modal-body">
@@ -467,7 +468,7 @@ to get the desired effect
                   <label class="control-label ">Committee</label>
                 </div>
                 <div class="col-md-10">
-            <?php echo get_committee($objResult->group_id); ?>       
+            <?php echo get_committee1($objResult->group_id); ?>       
                      </div>
               </div>
 
@@ -492,56 +493,36 @@ to get the desired effect
 
               </div>
 
-      </div>
-
-
-
-
-
-
-  
-
-
-    </div>
-
     </form>
-                            </div>
-                          </div>
-                        </div>
+                  
 
-                    </td>
-                    </tr>
-
-                    <?php
-                                    $i++;  
+   <?php
+       $i++;  
     }
-               }
-                   ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
+   ?>
               </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-      </div>
       <!-- /.row -->
     </section>
     <!-- /.content -->
+  </div>
+
+<?php
+
+include 'phpmailer/line_message.php';
+?>
+
+
+    <!-- /.content-wrapper -->
+    <!-- /.content-wrapper -->
+<footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <class style="font-size: 14px;">  <b>Version</b> 3.0.3-pre
+      </div>
+      <class style="font-size: 14px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
+    </footer>
+
+
 
 
 <!-- ./wrapper -->

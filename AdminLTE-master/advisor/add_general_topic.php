@@ -12,7 +12,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO</title>
+  <title>ITPROMOT</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -333,7 +333,7 @@ to get the desired effect
                <h3 class="card-title">
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addtopic">
                   <i class="nav-icon fas fa-plus"></i>
-                  Add Announcement
+                  New Topic Propose
                 </button>
                 </h3>
         
@@ -342,8 +342,8 @@ to get the desired effect
   <div class="modal fade" id="addtopic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-                            <div class="modal-header bg-success">
-              <h4 class="modal-title">Add Proposal Schedule</h4>
+                            <div class="modal-header bg-info">
+              <h5 class="modal-title">Add New Topic Propose to student</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -485,10 +485,12 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id'
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                             <div class="modal-header bg-info">
+                              <h5 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
+                                                                Edit Information</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                            <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
-                                                                Edit News</h4>
+
+                                                            
                                                         </div>
                                               
                                                 <div class="modal-body">
@@ -543,7 +545,7 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id'
                   <label class="control-label ">By</label>
                 </div>
                 <div class="col-md-10">
-   <input type="text" class="form-control" name="member_fullname" id="member_fullname" 
+   <input type="text" class="form-control" name="member_fullname" id="member_fullname" disabled="disabled"
    value="<?php echo $objResult->member_fullname; ?>">
 
             </div>
@@ -570,10 +572,11 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id'
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                             <div class="modal-header bg-info">
+                              <h5 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
+                                                              View Information</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                            <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
-                                                              View News</h4>
+                                                            
                                                         </div>
                                               
                                                 <div class="modal-body">
@@ -644,38 +647,25 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id'
                 
   </tbody>
                                     </table>
-                                </div>
-                            </div>
-                        </div>
+                              
           </form>
+  </section>
+</div>
 
 
-
-           
-        <?php
+<?php
 
 include 'phpmailer/line_message.php';
 ?>
-
-
-     </div>
-</div>
-</br>
-</div>
-
-
-
 
     <!-- /.content-wrapper -->
     <!-- /.content-wrapper -->
 <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.3-pre
+        <class style="font-size: 14px;">  <b>Version</b> 3.0.3-pre
       </div>
-      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
+      <class style="font-size: 14px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
     </footer>
-
-</div>
            
 
 <!-- ./wrapper -->
