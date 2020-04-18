@@ -20,7 +20,7 @@ function status_01($status){
 	if($status == '0'){
 		return "<input type='button' class='btn btn-danger btn-xs' value='Not Approve'>";
 	}else if($status == 'Waiting'){
-		return "<input type='button' class='btn btn-info btn-xs' value='Waiting'>";
+		return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
 	}else if($status == 'Approve'){
 		return "<input type='button' class='btn btn-success btn-xs' value='Approved'>";
 		//return "<span class='badge badge-success'>Approved</span>";
@@ -32,7 +32,7 @@ function status_01_file($status){
 	if($status == ''){
 		return "<input type='button' class='btn btn-danger btn-xs' ";
 	}else if($status == 'Waiting'){
-		return "<input type='button' class='btn btn-info btn-xs' value='Waiting'>";
+		return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
 	}else if($status == 'Approve'){
 		return "<input type='button' class='btn btn-success btn-xs' value='Approved'>";
 	}
@@ -42,7 +42,7 @@ function status_02($status){
 	if($status == ''){
 		return "<input type='button' class='btn btn-info btn-xs' value='Waiting'>";
 	}else if($status == 'Waiting'){
-		return "<input type='button' class='btn btn-info btn-xs' value='Waiting'>";
+		return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
 	}else if($status == 'Approve'){
 		return "<input type='button' class='btn btn-success btn-xs' value='Approved'>";
 	}
@@ -114,7 +114,7 @@ function status_08($status){
 if($status == ''){
 		return "<span class='text-danger'></span>";
 	}else if($status == 'Waiting'){
-		return "<span class='badge badge-danger'>Waiting</span>";
+		return "<span class='badge badge-warning'>Waiting</span>";
 	}else if($status == 'No'){
 		return "<span class='badge badge-danger'>No Pass</span>";
 	}else if($status == 'Pass'){
@@ -127,7 +127,7 @@ function status_09($status){
 	if($status == ''){
 		return "<span class='text-danger'></span>";
 	}else if($status == 'Waiting'){
-		return "<span class='badge badge-danger'>Waiting</span>";
+		return "<span class='badge badge-warning'>Waiting</span>";
 	}else if($status == 'Approve'){
 		return "<span class='badge badge-success'>Approved</span>";
 	}
