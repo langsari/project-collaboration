@@ -12,11 +12,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-<<<<<<< HEAD
   <title>ITPROMOT|Dashboard Management</title>
-=======
-  <title>ITPROMOT| Management Dashboard</title>
->>>>>>> 7e028a81c73e6a48616c31946c372efbb10f89bd
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -29,16 +25,7 @@ include('../menu/function.php');
    <!-- DataTables -->
   <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to to the body tag
-to get the desired effect
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
@@ -511,28 +498,18 @@ $my_id = $_SESSION['id'];
 
 include 'phpmailer/line_message.php';
 ?>
-=======
-  
->>>>>>> 7e028a81c73e6a48616c31946c372efbb10f89bd
 
   
     <!-- /.content-wrapper -->
    <footer class="main-footer">
-<<<<<<< HEAD
+
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 14px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+       <class style="font-size: 14px;">   <strong>Copyright© 2019-2020  <a href="#">IT Promo and Track</a>.</strong> All rights
     reserved.
   </footer>
-=======
-      <div class="float-right d-none d-sm-block">   
-        <class style="font-size: 14px;">   <b>Version</b> 3.0.3-pre
-      </div>
-       <class style="font-size: 14px;">   <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
-      reserved.
-    </footer>
->>>>>>> 7e028a81c73e6a48616c31946c372efbb10f89bd
+
   <!-- ./wrapper -->
  
 <!-- ./wrapper -->

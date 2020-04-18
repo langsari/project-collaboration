@@ -361,7 +361,8 @@ to get the desired effect
     <section class="content">
    
         
-          <div class="card">
+          
+            <div class="card card-primary card-outline">
             <div class="card-header">
               <h3 class="card-title">All Final Project Topics</h3>
             </div>
@@ -378,7 +379,7 @@ to get the desired effect
                 <th style="font-size: 15px;" width="30%" class="text-left">Topic</th>
                <th style="font-size: 15px;" width="15%" class="text-left">Status</th>
 
-                <th style="font-size: 15px;" width="10%" class="text-left">View</th>
+                <th style="font-size: 15px;" width="10%" class="text-left">Action</th>
 
                 </tr>
                 </thead>
@@ -392,7 +393,7 @@ to get the desired effect
 $my_id = $_SESSION['id'];
 
 
-            $strSQL = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM topic_project
+            $strSQL = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy,partnergroup.group_number FROM topic_project
 
           LEFT JOIN advisergroup ON topic_project.advisergroup_id = advisergroup.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
@@ -719,8 +720,12 @@ $my_id = $_SESSION['id'];
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
 
+  <!-- /.content-wrapper -->
+<?php
+
+include 'phpmailer/line_message.php';
+?>
 
 
      <footer class="main-footer">
@@ -730,7 +735,7 @@ $my_id = $_SESSION['id'];
        <class style="font-size: 14px;">   <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
       reserved.
     </footer>
-</div>
+
   <!-- /.control-sidebar -->
 
 <!-- ./wrapper -->

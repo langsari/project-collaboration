@@ -321,7 +321,7 @@ to get the desired effect
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-6">
-                 <div class="card">
+            <div class="card card-primary card-outline">
               <div class="card-header">
                 <h6><b>ADVISOR AND TOPIC REQUEST (PF01)
  </h6></b>
@@ -401,7 +401,7 @@ $my_id = $_SESSION['id'];
                         </div>
                         
 <div class="col-md-6">
-                 <div class="card">
+                 <div class="card card-primary card-outline">
               <div class="card-header">
                 <h6><b>3 CHAPTER OF PROPOSAL REQUEST (PF01)
 </b> </h6>

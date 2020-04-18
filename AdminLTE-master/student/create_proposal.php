@@ -513,8 +513,10 @@ to get the desired effect
 
 
 
-<td><div align="center"> <input type="hidden" name="topic_id" value="<?php echo $objResult->topic_id; ?>" /></div>
+<td>
+  <div align="center"> <input type="hidden" name="topic_id" value="<?php echo $objResult->topic_id; ?>" /></div>
 </td>
+<input type="hidden" name="group_number" value="<?php echo $objResult->group_number; ?>" />
 </td>
 </div>
 </div>

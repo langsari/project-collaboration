@@ -318,7 +318,7 @@ $count=mysqli_num_rows($result);
                 <div class="inner">
 
 
-                  <?php
+              <?php
               $con = mysqli_connect('localhost','root','','itpromo_track');
 
                 $query="SELECT member_id FROM member ORDER BY member_id";
@@ -530,7 +530,7 @@ $count=mysqli_num_rows($result);
               </script>
 
               <div class="body">
-                <div id="chartContainer" style="height: 300px; width: 90%;"></div>
+                <div id="chartContainer" style="height: 400px; width: 90%;"></div>
               </div>
 
 
@@ -587,10 +587,10 @@ $count=mysqli_num_rows($result);
 </br></br></br>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-      <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.3-pre
+      <div class="float-right d-none d-sm-block">   
+        <class style="font-size: 14px;">   <b>Version</b> 3.0.3-pre
       </div>
-      <class style="font-size: 12px;"><strong>Copyright &copy; 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights
+       <class style="font-size: 14px;">   <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
       reserved.
     </footer>
 
