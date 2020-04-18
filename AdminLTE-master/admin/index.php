@@ -530,7 +530,7 @@ $count=mysqli_num_rows($result);
               </script>
 
               <div class="body">
-                <div id="chartContainer" style="height: 400px; width: 90%;"></div>
+                <div id="chartContainer" style="height: 300px; width: 90%;"></div>
               </div>
 
 

@@ -143,7 +143,7 @@ to get the desired effect
                with font-awesome or any other icon font library -->
 
                    <li class="nav-item has-treeview ">
-            <a href="index.php" class="nav-link active">
+            <a href="index.php" class="nav-link ">
              
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -153,17 +153,31 @@ to get the desired effect
             </a>
           </li>
 
+
+  <?php 
+     $my_id = $_SESSION['id'];
+  $con = mysqli_connect('localhost','root','','itpromo_track');
+
+
+   $query="SELECT * FROM files WHERE by_officer = 'Waiting' or  by_officer05='Waiting' 
+   or by_officer09='Waiting' or  by_officer13='Waiting' " ;
+
+  $query_num=mysqli_query($con,$query);
+  $count=mysqli_num_rows($query_num);
+  ?>
+
          <li class="nav-item">
             <a href="../../officer_request.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request              </p>
+       Request 
+               <span class="badge badge-danger right"><?php echo $count; ?></span>       
+             </p>
             </a>
           </li>
     
- 
      <li class="nav-item">
-                  <a href="../officer/student_track.php" class="nav-link">
+                  <a href="../../student_track.php" class="nav-link active">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
        Student Track              </p>
@@ -173,7 +187,7 @@ to get the desired effect
 
   
 
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
@@ -201,7 +215,7 @@ to get the desired effect
 
     
 
-  <li class="nav-item has-treeview">
+  <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
@@ -440,12 +454,30 @@ to get the desired effect
                  } }
                    ?>
 
+  </div>
+  </br>
+
+
         </div>
-      </div>
-    </div>
+
   </section>
 
+     </div>
+       </div>
+  <!-- /.content-wrapper -->
+<footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 3.0.3-pre
+      </div>
+      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
+    </footer>
 
+  <!-- Control Sidebar -->
+
+  <!-- /.control-sidebar -->
+</div>
+
+    
     <!-- /.content -->
  
 <!-- ./wrapper -->

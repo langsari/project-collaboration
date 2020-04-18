@@ -188,19 +188,7 @@ to get the desired effect
                   <p>All Project Topics</p>
                 </a>
               </li>
-                       <li class="nav-item">
-                <a href="../advisor/manage_mark.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Mark</p>
-                </a>
-              </li>
-
-                       <li class="nav-item">
-                <a href="../advisor/give_mark.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Give Mark as a Committee</p>
-                </a>
-              </li>
+                     
             </ul>
           </li>
 

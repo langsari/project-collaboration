@@ -352,7 +352,7 @@ $count=mysqli_num_rows($result);
                 <thead class="thead-light">
                   <tr>
                       <th style="font-size: 15px;" width="4%" class="text-left">No</th>
-                      <th style="font-size: 15px;" width="5%" class="text-left">User ID</th>
+                      <th style="font-size: 15px;" width="10%" class="text-left">User ID</th>
                       <th style="font-size: 15px;" width="10%" class="text-left">Name</th>
                       <th style="font-size: 15px;" width="10%" class="text-left">Phone</th>
                       <th style="font-size: 15px;" width="10%" class="text-left">Email</th>

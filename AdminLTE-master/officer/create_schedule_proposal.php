@@ -150,13 +150,29 @@ to get the desired effect
             </a>
           </li>
 
+  
+  <?php 
+     $my_id = $_SESSION['id'];
+  $con = mysqli_connect('localhost','root','','itpromo_track');
+
+
+   $query="SELECT * FROM files WHERE by_officer = 'Waiting' or  by_officer05='Waiting' 
+   or by_officer09='Waiting' or  by_officer13='Waiting' " ;
+
+  $query_num=mysqli_query($con,$query);
+  $count=mysqli_num_rows($query_num);
+  ?>
+
          <li class="nav-item">
-            <a href="officer_request.php" class="nav-link ">
+            <a href="officer_request.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request              </p>
+       Request 
+               <span class="badge badge-danger right"><?php echo $count; ?></span>       
+             </p>
             </a>
           </li>
+    
     
  
   <li class="nav-item">
@@ -726,17 +742,35 @@ to get the desired effect
                }
                    ?>
                 
+                  </tbody>
+               
+
               </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
+ </div>
       </div>
-      <!-- /.row -->
-    </section>
+  </div>
+
+  </section>
     <!-- /.content -->
+
+
+
+  </div>
+
+
+  <!-- /.content-wrapper -->
+<footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 3.0.3-pre
+      </div>
+      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
+    </footer>
+
+  <!-- Control Sidebar -->
+
+  <!-- /.control-sidebar -->
+</div>
+ 
 
 
 

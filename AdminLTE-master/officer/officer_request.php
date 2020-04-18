@@ -150,13 +150,29 @@ to get the desired effect
             </a>
           </li>
 
+     
+  <?php 
+     $my_id = $_SESSION['id'];
+  $con = mysqli_connect('localhost','root','','itpromo_track');
+
+
+   $query="SELECT * FROM files WHERE by_officer = 'Waiting' or  by_officer05='Waiting' 
+   or by_officer09='Waiting' or  by_officer13='Waiting' " ;
+
+  $query_num=mysqli_query($con,$query);
+  $count=mysqli_num_rows($query_num);
+  ?>
+
          <li class="nav-item">
-            <a href="officer_request.php" class="nav-link active ">
+            <a href="officer_request.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request              </p>
+       Request 
+               <span class="badge badge-danger right"><?php echo $count; ?></span>       
+             </p>
             </a>
           </li>
+    
     
  
   <li class="nav-item">
@@ -685,7 +701,7 @@ $my_id = $_SESSION['id'];
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.member_id  AND  by_advisor08='Pass'
+        WHERE advisergroup.member_id  AND by_officer13='Waiting'
         Order By files_id
                ";
   $i = 1;
@@ -780,13 +796,12 @@ $my_id = $_SESSION['id'];
 
 
   <!-- /.content-wrapper -->
- <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
-      <b>Version</b> 3.0.3-pre
-    </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
-    reserved.
-  </footer>
+<footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 3.0.3-pre
+      </div>
+      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
+    </footer>
 
   <!-- Control Sidebar -->
 

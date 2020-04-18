@@ -383,13 +383,13 @@ $count=mysqli_num_rows($result);
               <table id="example1" class="table table-bordered table-striped">
                 <thead align="center">
                   <tr>
-                      <th style="font-size: 15px;" width="1%" class="text-left">No</th>
+                      <th style="font-size: 15px;" width="3%" class="text-left">No</th>
                        <!--<th style="font-size: 15px;" width="5%" class="text-left">Group</th>-->
-                      <th style="font-size: 15px;" width="25%" class="text-left">Owner</th>
+                      <th style="font-size: 15px;" width="30%" class="text-left">Owner</th>
                        <th style="font-size: 15px;" width="30%" class="text-left">Project Topic</th>
                        <th style="font-size: 15px;" width="17%" class="text-left">Advisor</th>
                        <th style="font-size: 15px;" width="17%" class="text-left">Committee</th>
-                       <th style="font-size: 15px;" width="15%" class="text-center">Action</th>
+                       <th style="font-size: 15px;" width="10%" class="text-center">Action</th>
                      </tr>
                   </thead>
                   <tbody align="center">
@@ -511,14 +511,21 @@ $count=mysqli_num_rows($result);
               <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times "></i> Close</button>
               <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Save</button>
             </div>
-            <input type="hidden" name="group_id" id="group_id3">
+
+                        <input type="hidden" name="group_id" id="group_id3">
+
+
+            <input type="hidden" name="status_project" id="status_project">
+                        <input type="hidden" name="status_presentation" id="status_presentation">
+
 
             </form>
           </div>
           <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
-      </div>
+      </div>    </section>
+
     </div>
 
 
