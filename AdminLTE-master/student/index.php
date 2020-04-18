@@ -474,7 +474,7 @@ $count=mysqli_num_rows($result);
                         <p class="lead">ITPromot or Information Technology Project Monitoring and Tracking System.</p>
 
 
-
+</div>
             </div><!-- /.card-body -->
           </div>
         </div><!-- /.container-fluid -->

@@ -215,19 +215,7 @@ to get the desired effect
                   <p>All Project Topics</p>
                 </a>
               </li>
-                       <li class="nav-item">
-                <a href="manage_mark.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Mark</p>
-                </a>
-              </li>
-
-                       <li class="nav-item">
-                <a href="give_mark.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Give Mark as a Committee</p>
-                </a>
-              </li>
+             
             </ul>
           </li>
 
@@ -497,15 +485,16 @@ $my_id = $_SESSION['id'];
               </script>
 
               <div class="body">
+
                 <div id="chartContainer" style="height: 300px; width: 80%;"></div>
               </div>
-
-
             </div><!-- /.card-body -->
           </div>
         </div><!-- /.container-fluid -->
       </section>
       <!-- /.content -->
+</br>
+</div>
 
 
      </div>
@@ -513,21 +502,13 @@ $my_id = $_SESSION['id'];
 
 
 
-           
+
         <?php
 
 include 'phpmailer/line_message.php';
 ?>
 
-    <!-- /.content -->
-
-
-
-    
-
-
-
-
+  
     <!-- /.content-wrapper -->
    <footer class="main-footer">
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
@@ -536,9 +517,6 @@ include 'phpmailer/line_message.php';
        <class style="font-size: 14px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
     reserved.
   </footer>
-
-    <!-- /.control-sidebar -->
-  </div>
   <!-- ./wrapper -->
  
 <!-- ./wrapper -->

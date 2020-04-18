@@ -188,19 +188,7 @@ to get the desired effect
                   <p>All Project Topics</p>
                 </a>
               </li>
-                       <li class="nav-item">
-                <a href="manage_mark.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Mark</p>
-                </a>
-              </li>
-
-                       <li class="nav-item">
-                <a href="give_mark.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Give Mark as a Committee</p>
-                </a>
-              </li>
+                     
             </ul>
           </li>
 
@@ -1254,13 +1242,16 @@ include 'phpmailer/line_message.php';
 
 
     <!-- /.content-wrapper -->
-   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
-      <b>Version</b> 3.0.3-pre
-    </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
-    reserved.
-  </footer>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-block">   
+        <class style="font-size: 12px;">   <b>Version</b> 3.0.3-pre
+      </div>
+       <class style="font-size: 12px;">   <strong>Copyright &copy; 2019 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
+      reserved.
+    </footer>
+</div>
+           
 
     <!-- /.control-sidebar -->
   </div>
