@@ -156,7 +156,8 @@ to get the desired effect
   $con = mysqli_connect('localhost','root','','itpromo_track');
 
 
-   $query="SELECT * FROM files WHERE by_officer = '' OR  by_officer05='' OR by_advisor08 ='Pass' " ;
+   $query="SELECT * FROM files WHERE by_officer = 'Waiting' or  by_officer05='Waiting' 
+   or by_officer09='Waiting' or  by_officer13='Waiting' " ;
 
   $query_num=mysqli_query($con,$query);
   $count=mysqli_num_rows($query_num);
@@ -167,7 +168,7 @@ to get the desired effect
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
        Request 
-               <span class="badge badge-info right"><?php echo $count; ?></span>       
+               <span class="badge badge-danger right"><?php echo $count; ?></span>       
              </p>
             </a>
           </li>
@@ -421,25 +422,36 @@ to get the desired effect
               </script>
 
               <div class="body">
-                <div id="chartContainer" style="height: 400px; width: 90%;"></div>
+                <div id="chartContainer" style="height: 300px; width: 90%;"></div>
           
             </div><!-- /.card-body -->
           </div>
         </div><!-- /.container-fluid -->
-      </section>
-      <!-- /.content -->
-</br>
-</div>
+  </br>
+ 
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
 
-</br></br></br>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
+
+
+  </div>
+
+
+  <!-- /.content-wrapper -->
+<footer class="main-footer">
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 3.0.3-pre
       </div>
       <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
     </footer>
+
+  <!-- Control Sidebar -->
+
+  <!-- /.control-sidebar -->
 </div>
+ 
+
     <!-- /.control-sidebar -->
   
 

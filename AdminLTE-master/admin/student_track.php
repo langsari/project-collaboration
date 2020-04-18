@@ -345,13 +345,15 @@ $count=mysqli_num_rows($result);
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
+                           <table  id="example1" class="table table-sm">
+                <thead class="thead-light">
+
                   <tr align="center">
-                  <th>Project Title</th>
-                  <th>Owner Project</th>
-                  <th>Project Progress</th>
-                  <th>Action</th>
+                                       <th  style="font-size: 15px;" width="10%">No</th>
+                  <th style="font-size: 15px;" width="30%">Project Title</th>
+                  <th  style="font-size: 15px;" width="30%">Owner Project</th>
+                  <th  style="font-size: 15px;" width="10%" >Project Progress</th>
+                  <th  style="font-size: 15px;" width="10%">Action</th>
                 </tr>
                   </thead>
                   <tbody align="center">
@@ -370,16 +372,22 @@ $count=mysqli_num_rows($result);
      if($result = $db->query($strSQL)){
              while($objResult = $result->fetch_object()){
             ?>
-          
-                  <td class="text-left"><?php echo $objResult->advisergroup_topic; ?></td>
-                  <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
-                  <td class="project_progress">
+                  <td class="text-left" style="font-size: 14px;" width="5%" >  <?php echo $count++; ?></td>
+                                     <td class="text-left" style="font-size: 14px;" width="30%" >  <?php echo $objResult->advisergroup_topic; ?></td>
+
+                             <td class="text-left" style="font-size: 14px;" width="30%" ><?php echo get_member_list($objResult->group_id); ?></td>
+                    <td class="project_progress"><div class="text-left" width="30%"  >
                           <small>
                              <?php echo $objResult->pf;?> /13 Complete
                           </small>
                       </td>
-                  <td>
-                  <a href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
+                  
+
+
+    <td  class="text-left"  style="font-size: 14px;" width="10%" > 
+             <a href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary" style="font-size: 14px;"> <i class="fa fa-eye" ></i> Track </a>
+
+                  
                   </td>
 
 

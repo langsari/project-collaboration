@@ -395,13 +395,14 @@ WHERE announcement.announcement_id  ";
   <!-- /.content-wrapper -->
 
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.3-pre
-    </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
-  </footer>
+    <!-- /.content-wrapper -->
+     <footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 3.0.3-pre
+      </div>
+      <class style="font-size: 12px;"><strong>Copyright &copy; 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights
+      reserved.
+    </footer>
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->

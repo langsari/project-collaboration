@@ -141,11 +141,26 @@ include('../menu/function.php');
             </a>
           </li>
 
+  
+  <?php 
+     $my_id = $_SESSION['id'];
+  $con = mysqli_connect('localhost','root','','itpromo_track');
+
+
+   $query="SELECT * FROM files WHERE by_officer = 'Waiting' or  by_officer05='Waiting' 
+   or by_officer09='Waiting' or  by_officer13='Waiting' " ;
+
+  $query_num=mysqli_query($con,$query);
+  $count=mysqli_num_rows($query_num);
+  ?>
+
          <li class="nav-item">
             <a href="officer_request.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request              </p>
+       Request 
+               <span class="badge badge-danger right"><?php echo $count; ?></span>       
+             </p>
             </a>
           </li>
     
@@ -278,21 +293,21 @@ include('../menu/function.php');
         
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
+           <div class="card-body">
+              <table  id="example1" class="table table-sm">
+                <thead class="thead-light">
                   <tr align="center">
-                   <th>No</th>
-                  <th>Project Title</th>
-                  <th>Owner Project</th>
-                  <th>Project Progress</th>
-                  <th>Action</th>
+                   <th  style="font-size: 15px;" width="10%">No</th>
+                  <th  style="font-size: 15px;" width="30%">Project Title</th>
+                  <th   style="font-size: 15px;" width="30%">Owner Project</th>
+                  <th  style="font-size: 15px;" width="10%">Project Progress</th>
+                  <th   style="font-size: 15px;" width="10%">Action</th>
                 </tr>
                   </thead>
                   <tbody align="center">
         <?php
 
-       $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic FROM advisergroup
+       $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic,files.pf FROM advisergroup
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
@@ -306,21 +321,16 @@ include('../menu/function.php');
      if($result = $db->query($strSQL)){
              while($objResult = $result->fetch_object()){
             ?>
-                             <td width="20px">   <?php echo $count++; ?></td>
-
-                  <td class="text-left"><?php echo $objResult->advisergroup_topic; ?></td>
-                  <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
-                  <td class="project_progress">
-                          <div class="progress progress-sm">
-                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
-                              </div>
-                          </div>
+                  <td class="text-left" style="font-size: 14px;" width="5%" >  <?php echo $count++; ?></td>
+                   <td class="text-left" style="font-size: 14px;" width="30%" >  <?php echo $objResult->advisergroup_topic; ?></td>
+                   <td class="text-left" style="font-size: 14px;" width="30%" > <?php echo get_member_list($objResult->group_id); ?></td>
+                    <td class="project_progress"><div class="text-left" width="40%"  >
                           <small>
-                              57% Complete
+                             <?php echo $objResult->pf;?> /13 Complete
                           </small>
                       </td>
-                  <td>
-             <a href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
+                  <td  class="text-left"  style="font-size: 14px;" width="10%" > 
+             <a href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary" style="font-size: 14px;"> <i class="fa fa-eye" ></i> Track </a>
 
                   
                   </td>
@@ -392,13 +402,12 @@ include('../menu/function.php');
 
 
 
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.3-pre
-    </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
-  </footer>
+<footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 3.0.3-pre
+      </div>
+      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
+    </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

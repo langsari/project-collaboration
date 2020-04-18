@@ -12,7 +12,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMOT|Dashboard Management</title>
+  <title>ITPROMOT| Management Dashboard</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -175,15 +175,32 @@ to get the desired effect
           </li>
 
 
+      
+  <?php 
+     $my_id = $_SESSION['id'];
+  $con = mysqli_connect('localhost','root','','itpromo_track');
+  $query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06 FROM advisergroup
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+        LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+        WHERE advisergroup.member_id = '$my_id'  
+        AND   advisergroup.advisergroup_status='Waiting' or files.files_status = 'Waiting'  or files.status_advisor = 'Waiting' or  files.by_advisor04='Waiting' or files.by_advisor06 ='Waiting' or by_advisor07 ='Waiting'  or files.by_advisor08 ='Waiting' or files.by_advisor10 ='Waiting' 
+          or files.by_advisor11 ='Waiting' or files. by_advisor12 ='Waiting'
+               ";  
+  $query_num=mysqli_query($con,$query);
+  $count=mysqli_num_rows($query_num);
+
+  ?>
          <li class="nav-item">
             <a href="advisor_request.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request     
-        <span class="badge badge-info right"></span>       
-          </p>
+       Request 
+                    <span class="right badge badge-danger"><?php echo $count; ?></span>
+             </p>
             </a>
           </li>
+    
     
  
   
@@ -273,14 +290,20 @@ to get the desired effect
             </ul>
           </li>
 
-  <li class="nav-item">
+
+
+ 
+         <li class="nav-item">
             <a href="../committee/committee_request.php" class="nav-link">
-         <i class="nav-icon fa fa-tasks"></i> 
+             <i class="nav-icon fa fa-paper-plane"></i>
               <p>
                 For Committee
-              </p>
+               <span class="badge badge-danger right"></span>       
+             </p>
             </a>
           </li>
+    
+
 
   <li class="nav-item">
             <a href="my_profile.php" class="nav-link">
@@ -340,15 +363,18 @@ to get the desired effect
 
 
 
-              <?php
+                  <?php
               $con = mysqli_connect('localhost','root','','itpromo_track');
+              $my_id = $_SESSION['id'];
 
-                $query="SELECT member_id FROM member ORDER BY member_id";
+                 $query="SELECT advisergroup_id FROM advisergroup 
+                  WHERE member_id='$my_id'
+                   ORDER BY advisergroup_id";
 
                 $query_num=mysqli_query($con,$query);
                 $row=mysqli_num_rows($query_num);
                 echo '<h1>'.$row.'</h1>';
-                echo 'Total User';
+                echo 'Total Group User';
                 ?>
 
                 </div>
@@ -356,7 +382,7 @@ to get the desired effect
                   <i class="fa fa-users"></i>
                 </div>
 
-                <a href="#" class="small-box-footer">More info <i
+                <a href="users.php" class="small-box-footer">More info <i
                     class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
@@ -370,10 +396,14 @@ to get the desired effect
 
                 <?php
                 $con = mysqli_connect('localhost','root','','itpromo_track');
-                $my_id = $_SESSION['id'];
+              $my_id = $_SESSION['id'];
+
+     
+
+
                  $query="SELECT advisergroup_id FROM advisergroup 
                   WHERE member_id='$my_id'
-                  ORDER BY advisergroup_id";
+                   ORDER BY advisergroup_id";
 
                 $query_num=mysqli_query($con,$query);
                 $row=mysqli_num_rows($query_num);
@@ -392,8 +422,28 @@ to get the desired effect
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h4>Manage</h4>
-                  <p>Project status</p>
+
+                <?php
+                $con = mysqli_connect('localhost','root','','itpromo_track');
+
+
+         //   require 'menu/function.php';
+$my_id = $_SESSION['id'];
+
+
+            $query = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM topic_project
+
+          LEFT JOIN advisergroup ON topic_project.advisergroup_id = advisergroup.advisergroup_id
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+        LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+                 WHERE advisergroup.member_id = '$my_id'";
+
+
+                $query_num=mysqli_query($con,$query);
+                $row=mysqli_num_rows($query_num);
+                echo '<h1>'.$row.'</h1>';
+                echo 'All Projects';
+                ?>
                 </div>
                 <div class="icon">
                 <i class="nav-icon fas fa-book"></i>
@@ -485,9 +535,8 @@ $my_id = $_SESSION['id'];
               </script>
 
               <div class="body">
-
-                <div id="chartContainer" style="height: 300px; width: 80%;"></div>
-              </div>
+                <div id="chartContainer" style="height: 300px; width: 90%;"></div>
+          
             </div><!-- /.card-body -->
           </div>
         </div><!-- /.container-fluid -->
@@ -496,17 +545,12 @@ $my_id = $_SESSION['id'];
 </br>
 </div>
 
-
-     </div>
-
-
-
-
-
         <?php
 
 include 'phpmailer/line_message.php';
 ?>
+
+  
 
   
     <!-- /.content-wrapper -->

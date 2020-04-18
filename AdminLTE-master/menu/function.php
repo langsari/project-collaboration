@@ -99,21 +99,24 @@ function status_06($status){
 function status_07($status){
 	if($status == ''){
 		return "<span class='text-danger'></span>";
+	}else if($status == 'Waiting'){
+		return "<span class='badge badge-danger'>Waiting</span>";
 	}else if($status == 'No'){
 		return "<span class='badge badge-danger'>No Pass</span>";
 	}else if($status == 'Pass'){
 		return "<input type='button' class='btn btn-success btn-xs' value='Pass'>";
 	}
+
 }
 
 
 function status_08($status){
-	if($status == ''){
-		return "<span class='badge badge-danger'>Waiting</span>";
+if($status == ''){
+		return "<span class='text-danger'></span>";
+	}else if($status == 'Waiting'){
+		return "<span class='badge badge-warning'>Waiting</span>";
 	}else if($status == 'No'){
 		return "<span class='badge badge-danger'>No Pass</span>";
-	}else if($status == 'Waiting'){
-		return "<span class='badge badge-warning'>waiting</span>";
 	}else if($status == 'Pass'){
 		return "<input type='button' class='btn btn-success btn-xs' value='Pass'>";
 	}

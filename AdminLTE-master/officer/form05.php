@@ -142,11 +142,26 @@ include('../menu/function.php');
             </a>
           </li>
 
+
+  <?php 
+     $my_id = $_SESSION['id'];
+  $con = mysqli_connect('localhost','root','','itpromo_track');
+
+
+   $query="SELECT * FROM files WHERE by_officer = 'Waiting' or  by_officer05='Waiting' 
+   or by_officer09='Waiting' or  by_officer13='Waiting' " ;
+
+  $query_num=mysqli_query($con,$query);
+  $count=mysqli_num_rows($query_num);
+  ?>
+
          <li class="nav-item">
-            <a href="officer_request.php" class="nav-link active ">
+            <a href="officer_request.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request              </p>
+       Request 
+               <span class="badge badge-danger right"><?php echo $count; ?></span>       
+             </p>
             </a>
           </li>
     

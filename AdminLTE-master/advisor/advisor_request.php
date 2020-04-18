@@ -150,13 +150,31 @@ to get the desired effect
             </a>
           </li>
 
+  <?php 
+     $my_id = $_SESSION['id'];
+  $con = mysqli_connect('localhost','root','','itpromo_track');
+  $query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06 FROM advisergroup
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+        LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+        WHERE advisergroup.member_id = '$my_id'  
+        AND   advisergroup.advisergroup_status='Waiting' or files.files_status = 'Waiting'  or files.status_advisor = 'Waiting' or  files.by_advisor04='Waiting' or files.by_advisor06 ='Waiting' or by_advisor07 ='Waiting'  or files.by_advisor08 ='Waiting' or files.by_advisor10 ='Waiting' 
+          or files.by_advisor11 ='Waiting' or files. by_advisor12 ='Waiting'
+               ";  
+  $query_num=mysqli_query($con,$query);
+  $count=mysqli_num_rows($query_num);
+
+  ?>
          <li class="nav-item">
-            <a href="advisor_request.php" class="nav-link active">
+            <a href="advisor_request.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request              </p>
+       Request 
+                    <span class="right badge badge-danger"><?php echo $count; ?></span>
+             </p>
             </a>
           </li>
+    
     
  
   
@@ -348,7 +366,9 @@ $my_id = $_SESSION['id'];
                 </td>
 
 
-                <td width="5%"><a href="check_approve.php?id=<?php echo $row->advisergroup_id; ?>"
+                <td width="5%">
+
+                  <a href="check_approve.php?id=<?php echo $row->advisergroup_id; ?>"
                     class="badge badge-success" title="Comfirm"
                     onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
                        class='fa fa-check'></i> </a>
@@ -618,7 +638,7 @@ $my_id = $_SESSION['id'];
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  AND pf='3' And by_advisor04=''  ";
+        WHERE advisergroup.member_id = '$my_id'  AND pf='3' And by_advisor04='Waiting'  ";
 
   $i = 1;
    $count = 1;
@@ -636,8 +656,7 @@ $my_id = $_SESSION['id'];
 
 
 
-                        <td>
-
+                <td class="text-left"  width="20%" >
 <a href="check_proposal_approve.php?id=<?php echo $row->files_id; ?>"
                         class="btn btn-success btn-xs" title="Comfirm"
                         onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
@@ -707,7 +726,7 @@ $my_id = $_SESSION['id'];
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  AND pf='5' And by_advisor06 =''   ";
+        WHERE advisergroup.member_id = '$my_id'  AND pf='5' And by_advisor06 ='Waiting'   ";
 
   $i = 1;
    $count = 1;
@@ -724,7 +743,7 @@ $my_id = $_SESSION['id'];
 
 
 
-                        <td>
+                                        <td class="text-left"  width="20%" >
 
 <a href="check_06.php?id=<?php echo $row->files_id; ?>"
                         class="btn btn-success btn-xs" title="Comfirm"
@@ -794,7 +813,7 @@ $my_id = $_SESSION['id'];
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  AND pf='6' And by_advisor07 =''               ";
+        WHERE advisergroup.member_id = '$my_id'  AND pf='6' And by_advisor07 ='Waiting'               ";
 
   $i = 1;
    $count = 1;
@@ -808,7 +827,8 @@ $my_id = $_SESSION['id'];
                  <td class="text-left" style="font-size: 12px;" width="40%" ><?php echo $row->advisergroup_topic; ?></td>
                    <td class="text-left" style="font-size: 12px;" width="40%" ><?php echo get_member_list($row->group_id); ?></td>
 
-                        <td>
+                                      <td class="text-left"  width="20%" >
+
 <a href="check_07.php?id=<?php echo $row->files_id; ?>"
                         class="btn btn-success btn-xs" title="Comfirm"
                         onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
@@ -906,7 +926,7 @@ $my_id = $_SESSION['id'];
 
 
 
-                        <td>
+                               <td class="text-left"  width="10%" >
 
 
 <a href="check_08.php?id=<?php echo $row->files_id; ?>"
@@ -1006,8 +1026,8 @@ WHERE advisergroup.member_id = '$my_id'  AND pf='9' And by_advisor10 ='Waiting' 
                               </td>
 
 
+                <td class="text-left"  width="10%" >
 
-                        <td>
 
 
 <a href="check_10.php?id=<?php echo $row->files_id; ?>"
@@ -1103,7 +1123,7 @@ $my_id = $_SESSION['id'];
 
 
 
-                        <td>
+                                      <td class="text-left"  width="10%" >
 
 
 <a href="check_11.php?id=<?php echo $row->files_id; ?>"
@@ -1169,7 +1189,7 @@ $my_id = $_SESSION['id'];
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  AND pf='11' And by_advisor12 =''   ";
+        WHERE advisergroup.member_id = '$my_id'  AND pf='11' And  by_advisor12 ='Waiting'  ";
 
   $i = 1;
    $count = 1;
@@ -1188,8 +1208,8 @@ $my_id = $_SESSION['id'];
                  
 
 
+                <td class="text-left"  width="20%" >
 
-                        <td>
 
 
 <a href="check_12.php?id=<?php echo $row->files_id; ?>"
@@ -1243,18 +1263,20 @@ include 'phpmailer/line_message.php';
 
     <!-- /.content-wrapper -->
     <!-- /.content-wrapper -->
+
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">   
         <class style="font-size: 14px;">   <b>Version</b> 3.0.3-pre
       </div>
        <class style="font-size: 14px;">   <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
       reserved.
-    </footer>
+
+
 </div>
            
 
     <!-- /.control-sidebar -->
-  </div>
+
   <!-- ./wrapper -->
 
     <!-- /.content -->

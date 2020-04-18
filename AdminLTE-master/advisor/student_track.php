@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 require '../menu/connect.php';
@@ -149,12 +150,28 @@ to get the desired effect
               </p>
             </a>
           </li>
+  <?php 
+     $my_id = $_SESSION['id'];
+  $con = mysqli_connect('localhost','root','','itpromo_track');
+  $query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06 FROM advisergroup
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+        LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+        WHERE advisergroup.member_id = '$my_id'  
+        AND   advisergroup.advisergroup_status='Waiting' or files.files_status = 'Waiting'  or files.status_advisor = 'Waiting' or  files.by_advisor04='Waiting' or files.by_advisor06 ='Waiting' or by_advisor07 ='Waiting'  or files.by_advisor08 ='Waiting' or files.by_advisor10 ='Waiting' 
+          or files.by_advisor11 ='Waiting' or files. by_advisor12 ='Waiting'
+               ";  
+  $query_num=mysqli_query($con,$query);
+  $count=mysqli_num_rows($query_num);
 
+  ?>
          <li class="nav-item">
-            <a href="../advisor/advisor_request.php" class="nav-link ">
+            <a href="advisor_request.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request              </p>
+       Request 
+                    <span class="right badge badge-danger"><?php echo $count; ?></span>
+             </p>
             </a>
           </li>
     
@@ -188,19 +205,7 @@ to get the desired effect
                   <p>All Project Topics</p>
                 </a>
               </li>
-                       <li class="nav-item">
-                <a href="../advisor/manage_mark.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Mark</p>
-                </a>
-              </li>
-
-                       <li class="nav-item">
-                <a href="../advisor/give_mark.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Give Mark as a Committee</p>
-                </a>
-              </li>
+                      
             </ul>
           </li>
 
@@ -325,26 +330,24 @@ to get the desired effect
         
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
+              <div class="card-body">
+              <table  id="example1" class="table table-sm">
+                <thead class="thead-light">
                   <tr align="center">
-                   <th>No</th>
-                  <th>Project Title</th>
-                  <th>Owner Project</th>
-                  <th>Project Progress</th>
-                  <th>Action</th>
+                  <th  style="font-size: 15px;" width="10%">No</th>
+                  <th  style="font-size: 15px;" width="30%">Project Title</th>
+                  <th   style="font-size: 15px;" width="30%">Owner Project</th>
+                  <th  style="font-size: 15px;" width="10%">Project Progress</th>
+                  <th   style="font-size: 15px;" width="10%">Action</th>
                 </tr>
-                                   </thead>
-<tbody align="center">
-
-
-     <?php
+                  </thead>
+                  <tbody align="center">
+    <?php
 $my_id = $_SESSION['id'];
 
 
 
-      $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic FROM advisergroup
+      $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic,files.pf FROM advisergroup
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
@@ -356,31 +359,27 @@ $my_id = $_SESSION['id'];
    $count = 1;
 
         ?>
-             <?php
+        <?php
      if($result = $db->query($strSQL)){
              while($objResult = $result->fetch_object()){
             ?>
-         
-            <tr>
-                         <td width="20px">   <?php echo $count++; ?></td>
+                  <td class="text-left" style="font-size: 14px;" width="5%" >    <?php echo $count++; ?></td>
 
-                  <td class="text-left"><?php echo $objResult->advisergroup_topic; ?></td>
-                  <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
-                  <td class="project_progress">
-                          <div class="progress progress-sm">
-                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
-                              </div>
-                          </div>
+                   <td class="text-left" style="font-size: 14px;" width="30%" > <?php echo $objResult->advisergroup_topic; ?></td>
+                   <td class="text-left" style="font-size: 14px;" width="30%" > <?php echo get_member_list($objResult->group_id); ?></td>
+                 <td class="project_progress"><div class="text-left" width="40%"  >
                           <small>
-                              57% Complete
+                             <?php echo $objResult->pf;?> /13 Complete
                           </small>
                       </td>
-                  <td>
+                  <td  class="text-left"  style="font-size: 14px;" width="10%" > 
+             <a href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary" style="font-size: 14px;"> <i class="fa fa-eye" ></i> Track </a>
 
-             <a href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
+
 
                   
                   </td>
+
           </tr>
 
             <?php
@@ -388,9 +387,7 @@ $my_id = $_SESSION['id'];
     }
                }
                    ?>
-                  
-
-
+                
               </table>
             </div>
             <!-- /.card-body -->
@@ -402,7 +399,26 @@ $my_id = $_SESSION['id'];
       <!-- /.row -->
     </section>
     <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+    <!-- /.content -->
 
+</br>
+</div>
+
+
+
+
+    <!-- /.content-wrapper -->
+    <!-- /.content-wrapper -->
+<footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 3.0.3-pre
+      </div>
+      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
+    </footer>
+
+</div>
 <!-- ./wrapper -->
 
 <!-- jQuery -->

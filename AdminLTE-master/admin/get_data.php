@@ -1,4 +1,8 @@
 <?php
+
+
+
+
 header('Content-Type: application/json');
 
 $con = mysqli_connect("localhost","root","","itpromo_track");
@@ -11,13 +15,14 @@ if (mysqli_connect_errno($con))
 {
     $data_points = array();
 
-
     $result = mysqli_query($con, "SELECT * FROM files ");
 
+   
+             while($row = $result->fetch_object()){
 
-    while($row = mysqli_fetch_array($result))
-    {
-        $point = array("label" => $row['Owner'] , "y" => $row['pf']);
+
+   
+        $point = array("label" => $row->Owner , "y" => $row->pf);
 
         array_push($data_points, $point);
     }

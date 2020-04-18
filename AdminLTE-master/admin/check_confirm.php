@@ -13,7 +13,8 @@ $sql = "UPDATE member SET admin_id = '$admin_id' WHERE member_id = '$id'";
 
 if($db->query($sql)){
 	$db->close();
-		header("Location: ../index.php?page=accept_member");
+				header("Location: ../admin/accept_member.php");
+
 
 }else{
 	echo $db->error;
