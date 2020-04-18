@@ -17,7 +17,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
   position: fixed;
   bottom: 23px;
   right: 28px;
-  width: 250px;
+  width: 160px;
+  border-radius: 10px;
 }
 
 /* The popup chat - hidden by default */
@@ -95,23 +96,27 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
     <h1>Message</h1>
 
-         <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="basic-addon1">
-                                                <i class="fa fa-user-md"></i>
-                                            </span>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" autocomplete="off" required aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
+          <div class="input-group mb-6">
+                        
+            <input type="text" class="form-control" id="name" name="name" placeholder="Name" autocomplete="off" required aria-describedby="basic-addon1">
 
-<div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="basic-addon1">
-                                               <i class="fa fa-envelope-square"></i>
-                                            </span>
-                                        <input type="text" class="form-control" id="email" name="email" placeholder="Email" autocomplete="off" required aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fa fa-user-md"></span>
+              </div>
+            </div>
+          </div></br>
+
+          <div class="input-group mb-6">
+                        
+            <input type="text" class="form-control" id="email" name="email" placeholder="Email" autocomplete="off" required aria-describedby="basic-addon1">
+
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fa fa-envelope-square"></span>
+              </div>
+            </div>
+          </div>
 
     <label for="msg_text"><b><h4>Message</b></label>
     <textarea placeholder="Type message.." name="con" id="con"   required  style="font-size:18px;"></textarea>

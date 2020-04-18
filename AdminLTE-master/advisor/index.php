@@ -12,7 +12,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO</title>
+  <title>ITPROMOT|Dashboard Management</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -352,18 +352,15 @@ to get the desired effect
 
 
 
-                  <?php
+              <?php
               $con = mysqli_connect('localhost','root','','itpromo_track');
-              $my_id = $_SESSION['id'];
 
-                 $query="SELECT advisergroup_id FROM advisergroup 
-                  WHERE member_id='$my_id'
-                   ORDER BY advisergroup_id";
+                $query="SELECT member_id FROM member ORDER BY member_id";
 
                 $query_num=mysqli_query($con,$query);
                 $row=mysqli_num_rows($query_num);
                 echo '<h1>'.$row.'</h1>';
-                echo 'Total Group User';
+                echo 'Total User';
                 ?>
 
                 </div>
@@ -371,7 +368,7 @@ to get the desired effect
                   <i class="fa fa-users"></i>
                 </div>
 
-                <a href="users.php" class="small-box-footer">More info <i
+                <a href="#" class="small-box-footer">More info <i
                     class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
@@ -385,14 +382,10 @@ to get the desired effect
 
                 <?php
                 $con = mysqli_connect('localhost','root','','itpromo_track');
-              $my_id = $_SESSION['id'];
-
-     
-
-
+                $my_id = $_SESSION['id'];
                  $query="SELECT advisergroup_id FROM advisergroup 
                   WHERE member_id='$my_id'
-                   ORDER BY advisergroup_id";
+                  ORDER BY advisergroup_id";
 
                 $query_num=mysqli_query($con,$query);
                 $row=mysqli_num_rows($query_num);
@@ -411,28 +404,8 @@ to get the desired effect
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-
-                <?php
-                $con = mysqli_connect('localhost','root','','itpromo_track');
-
-
-         //   require 'menu/function.php';
-$my_id = $_SESSION['id'];
-
-
-            $query = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM topic_project
-
-          LEFT JOIN advisergroup ON topic_project.advisergroup_id = advisergroup.advisergroup_id
-        LEFT JOIN member ON advisergroup.member_id = member.member_id
-        LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
-                 WHERE advisergroup.member_id = '$my_id'";
-
-
-                $query_num=mysqli_query($con,$query);
-                $row=mysqli_num_rows($query_num);
-                echo '<h1>'.$row.'</h1>';
-                echo 'All Projects';
-                ?>
+                  <h4>Manage</h4>
+                  <p>Project status</p>
                 </div>
                 <div class="icon">
                 <i class="nav-icon fas fa-book"></i>
@@ -524,7 +497,7 @@ $my_id = $_SESSION['id'];
               </script>
 
               <div class="body">
-                <div id="chartContainer" style="height: 400px; width: 90%;"></div>
+                <div id="chartContainer" style="height: 300px; width: 80%;"></div>
               </div>
 
 
@@ -534,82 +507,6 @@ $my_id = $_SESSION['id'];
       </section>
       <!-- /.content -->
 
-
-   <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-12">
-          <div class="card card-primary card-outline">
-            <div class="card-header">
-               <h3 class="card-title">
-                  <i class="fas fa-edit"></i>
-                  View Track of Students
-                </h3>
-        
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                  <tr align="center">
-                  <th>Project Title</th>
-                  <th>Owner Project</th>
-                  <th>Project Progress</th>
-                  <th>Action</th>
-                </tr>
-                  </thead>
-                  <tbody align="center">
-        <?php
-$my_id = $_SESSION['id'];
-
-       $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic,files.files_status FROM advisergroup
-
-          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
-
-        LEFT JOIN member ON advisergroup.member_id = member.member_id
-
-       
-        WHERE advisergroup.member_id = '$my_id'  ";
-
-        ?>
-        <?php
-     if($result = $db->query($strSQL)){
-             while($objResult = $result->fetch_object()){
-            ?>
-          
-                  <td class="text-left"><?php echo $objResult->advisergroup_topic; ?></td>
-                  <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
-                  <td class="project_progress">
-                          <div class="progress progress-sm">
-                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
-                              </div>
-                          </div>
-                          <small>
-                              57% Complete
-                          </small>
-                      </td>
-                  <td>
-             <a href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
-                  </td>
-
-
-                </tr>
-            <?php
-              }
-               }
-                   ?>
-                
-              </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
 
      </div>
 
@@ -636,7 +533,7 @@ include 'phpmailer/line_message.php';
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+       <class style="font-size: 14px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
     reserved.
   </footer>
 
