@@ -51,7 +51,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO</title>
+  <title>ITPROMOT|Proposal Status</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -506,7 +506,7 @@ $my_id = $_SESSION['id'];
                   <label class="control-label ">Committee</label>
                 </div>
                 <div class="col-md-10">
-            <?php echo get_committee($objResult->group_id); ?>       
+            <?php echo get_committee1($objResult->group_id); ?>       
                      </div>
               </div>
 
@@ -708,9 +708,9 @@ $my_id = $_SESSION['id'];
 
      <footer class="main-footer">
       <div class="float-right d-none d-sm-block">   
-        <class style="font-size: 12px;">   <b>Version</b> 3.0.3-pre
+        <class style="font-size: 14px;">   <b>Version</b> 3.0.3-pre
       </div>
-       <class style="font-size: 12px;">   <strong>Copyright &copy; 2019 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
+       <class style="font-size: 14px;">   <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
       reserved.
     </footer>
 </div>

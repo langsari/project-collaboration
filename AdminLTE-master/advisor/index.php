@@ -46,19 +46,19 @@ to get the desired effect
       </li>
      
     </ul>
-   <!-- Right navbar links -->
+   <!-- Right navbar links 
      <?php
   $con = mysqli_connect('localhost','root','','itpromo_track');
   $query="SELECT * FROM comment WHERE comment_id=0";
   $query_num=mysqli_query($con,$query);
   $count=mysqli_num_rows($query_num);
 
-  ?>
+  ?>-->
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
 
-
+<!--
        <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="far fa-comments"></i><span class="badge badge-danger"
@@ -71,7 +71,7 @@ to get the desired effect
             <div class="dropdown-divider"></div>
           <a href="read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
-        </li>
+        </li>-->
 
 
 
@@ -511,12 +511,12 @@ include 'phpmailer/line_message.php';
   
     <!-- /.content-wrapper -->
    <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
-      <b>Version</b> 3.0.3-pre
-    </div>
-       <class style="font-size: 14px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
-    reserved.
-  </footer>
+      <div class="float-right d-none d-sm-block">   
+        <class style="font-size: 14px;">   <b>Version</b> 3.0.3-pre
+      </div>
+       <class style="font-size: 14px;">   <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
+      reserved.
+    </footer>
   <!-- ./wrapper -->
  
 <!-- ./wrapper -->

@@ -12,7 +12,7 @@ include('../menu/function.php');
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO</title>
+  <title>ITPROMOT| Form Request</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -344,7 +344,7 @@ $my_id = $_SESSION['id'];
                 <td class="text-left" style="font-size: 12px;" width="20%" ><?php echo $row->advisergroup_topic; ?></td>
                  <td class="text-left" style="font-size: 12px;" width="50%" ><?php echo get_member_list($row->group_id); ?></td>
                 <td class="text-left" style="font-size: 12px;">
-                  <h6> <span class="badge badge-danger" width="5%"><?php echo status_01 ($row->advisergroup_status); ?></span>
+                  <h6> <?php echo status_01 ($row->advisergroup_status); ?></span>
                 </td>
 
 
@@ -1245,9 +1245,9 @@ include 'phpmailer/line_message.php';
     <!-- /.content-wrapper -->
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">   
-        <class style="font-size: 12px;">   <b>Version</b> 3.0.3-pre
+        <class style="font-size: 14px;">   <b>Version</b> 3.0.3-pre
       </div>
-       <class style="font-size: 12px;">   <strong>Copyright &copy; 2019 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
+       <class style="font-size: 14px;">   <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
       reserved.
     </footer>
 </div>
