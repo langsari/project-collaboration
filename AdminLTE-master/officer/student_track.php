@@ -12,7 +12,7 @@ include '../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO</title>
+  <title>ITPROMOT|Tacking</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -183,13 +183,13 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="create_schedule_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Proposal</p>
+                  <p>Schedule Proposal</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="create_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Project</p>
+                  <p> Schedule Project</p>
                 </a>
               </li>
 
@@ -211,13 +211,13 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="Annoucement.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Annoucements</p>
+                  <p>Announcements</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Topic Require</p>
+                  <p>Propose Topic </p>
                 </a>
               </li>
 
@@ -325,7 +325,7 @@ if ($result = $db->query($strSQL)) {
                           </small>
                       </td>
                   <td  class="text-left"  style="font-size: 14px;" width="10%" >
-             <a href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id; ?>"class="btn btn-primary" style="font-size: 14px;"> <i class="fa fa-eye" ></i> Track </a>
+             <a href="forms/check_pf.php?id=<?php echo $objResult->advisergroup_id; ?>"class="btn btn-primary btn-sm" style="font-size: 14px;"> <i class="fa fa-eye" ></i> Track </a>
 
 
                   </td>
@@ -399,9 +399,10 @@ $i++;
 
 <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.3-pre
+        <class style="font-size: 14px;">   <b>Version</b> 3.0.3-pre
       </div>
-      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
+       <class style="font-size: 14px;">   <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
+      reserved.
     </footer>
 
   <!-- Control Sidebar -->
@@ -414,11 +415,6 @@ $i++;
 
 
 <!--include message  -->
-
-<?php
-
-include '../notification/notification.php';
-?>
  <!--end for include message  -->
 
 

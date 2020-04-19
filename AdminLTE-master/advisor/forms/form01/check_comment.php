@@ -14,7 +14,6 @@ if (isset($_POST['comment_content'])) {
 
     if ($db->query($sql)) {
         $db->close();
-
         echo '<script> window.location="../form01/pf01.php?id=' . $advisergroup_id . '"</script> ';
 
     } else {

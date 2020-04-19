@@ -190,13 +190,13 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="create_schedule_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Proposal</p>
+                  <p>Schedule Proposal</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="create_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Project</p>
+                  <p>Schedule Project</p>
                 </a>
               </li>
 
@@ -217,13 +217,13 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="Annoucement.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Annoucements</p>
+                  <p>Announcements</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Topic Require</p>
+                  <p>Propose Topic</p>
                 </a>
               </li>
 
@@ -285,6 +285,57 @@ $count = mysqli_num_rows($query_num);
           <!-- Small boxes (Stat box) -->
           <div class="row">
 
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-info">
+                <div class="inner">
+
+
+              <?php
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+
+$query = "SELECT member_id FROM member ORDER BY member_id";
+
+$query_num = mysqli_query($con, $query);
+$row = mysqli_num_rows($query_num);
+echo '<h1>' . $row . '</h1>';
+echo 'Total User';
+?>
+
+                </div>
+                <div class="icon">
+                  <i class="fa fa-users"></i>
+                </div>
+
+                <a href="../admin/all_member.php" class="small-box-footer">More info <i
+                    class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+
+             <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-primary">
+                <div class="inner">
+                  <?php
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+
+$query = "SELECT member_id FROM member
+                        WHERE member_pos='Lecturer'
+                        ORDER BY member_id";
+
+$query_num = mysqli_query($con, $query);
+$row = mysqli_num_rows($query_num);
+echo '<h1>' . $row . '</h1>';
+echo 'All Lecturers';
+?>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-users"></i>
+                </div>
+                <a href="all_member.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+
 
             <div class="col-lg-3 col-6">
               <!-- small box -->
@@ -333,32 +384,6 @@ echo 'All Projects';
                 <a href="proposal_project.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
-
-             <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-light">
-                <div class="inner">
-
-                <?php
-$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
-
-$query = "SELECT topic_id FROM topic_project WHERE status='6' ORDER BY topic_id";
-
-$query_num = mysqli_query($con, $query);
-$row = mysqli_num_rows($query_num);
-echo '<h1>' . $row . '</h1>';
-echo 'Graduated Projects';
-?>
-                </div>
-                <div class="icon">
-                <i class="nav-icon fas fa-graduation-cap"></i>
-                </div>
-                <a href="proposal_project.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-
-
-
 
             <!-- ./col -->
           </div>
@@ -427,9 +452,10 @@ echo 'Graduated Projects';
   <!-- /.content-wrapper -->
 <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.3-pre
+        <class style="font-size: 14px;">   <b>Version</b> 3.0.3-pre
       </div>
-      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
+       <class style="font-size: 14px;">   <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
+      reserved.
     </footer>
 
   <!-- Control Sidebar -->

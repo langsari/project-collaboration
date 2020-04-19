@@ -12,7 +12,7 @@ include '../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO</title>
+  <title>ITPROMOT</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -192,26 +192,21 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="create_schedule_proposal.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Proposal</p>
+                  <p> Schedule Proposal</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="create_schedule_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Project</p>
+                  <p> Schedule Project</p>
                 </a>
               </li>
 
             </ul>
           </li>
 
-
-
-
-
-
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link active active">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
                 News
@@ -222,13 +217,13 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="Annoucement.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Annoucements</p>
+                  <p>Announcements</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="show_topic.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Topic Require</p>
+                  <p>Propose Topic </p>
                 </a>
               </li>
 
@@ -357,14 +352,11 @@ if ($objQuery = $db->query($strSQL)) {
   <!-- /.content-wrapper -->
 <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.3-pre
+        <class style="font-size: 14px;">   <b>Version</b> 3.0.3-pre
       </div>
-      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
+       <class style="font-size: 14px;">   <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
+      reserved.
     </footer>
-
-
-
-
 
 
 

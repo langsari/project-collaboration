@@ -12,7 +12,7 @@ include '../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>ITPROMIT| TRACKING </title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="../forms/form01/style.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -353,9 +353,9 @@ if ($result = $db->query($sql)) {
                         <tr>
                           <td>Student, Submit copies of Proposal, PF01 and related documentit
                           </br><u>Condition:</u>
-                          </br>(1) 4 copies of proposal, 1 copy for advisor and 3 for committees
-                          </br>(2) submit proposal one week before presentation day
-                          </td>
+                          </br>(1) Student has been uploaded the 3 chapters in the PF01
+                          </br>(2) The document has been approved by advisor
+                        </td>
                           <td>
                            <?php echo status_02($objResult->by_officer); ?>
                             <p>

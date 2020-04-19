@@ -12,7 +12,7 @@ include '../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO</title>
+  <title>ITPROMOT|Request Page</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -159,7 +159,7 @@ $count = mysqli_num_rows($query_num);
 ?>
 
          <li class="nav-item">
-            <a href="officer_request.php" class="nav-link">
+            <a href="officer_request.php" class="nav-link active">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
        Request
@@ -192,13 +192,13 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="create_schedule_proposal.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Proposal</p>
+                  <p>Schedule Proposal</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="create_schedule_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Project</p>
+                  <p>Schedule Project</p>
                 </a>
               </li>
 
@@ -222,13 +222,13 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="Annoucement.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Annoucements</p>
+                  <p>Announcements</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Topic Require</p>
+                  <p>Propose Topic</p>
                 </a>
               </li>
 
@@ -286,7 +286,7 @@ $count = mysqli_num_rows($query_num);
     <section class="content">
 
 
-          <div class="card">
+          <div class="card card-primary card-outline">
             <div class="card-header">
    <b>
 PROPOSAL PROJECT AND PF01 REQUEST (PF01)
@@ -406,7 +406,7 @@ $i++;
 <!-- Main content -->
 
 
-          <div class="card">
+         <div class="card card-warning card-outline">
             <div class="card-header">
            <b>
 COMPLETE PROJECT PROPOSAL (PF05)</b>
@@ -528,7 +528,7 @@ $i++;
 
 
 
- <div class="card">
+ <div class="card card-info card-outline">
             <div class="card-header">
    <b>
 OFFICER RECEIVE COPY OF 5 CHAPTERS PROJECT (PF09)
@@ -650,7 +650,7 @@ $i++;
 
 
 
- <div class="card">
+ <div class="card card-danger card-outline">
             <div class="card-header">
    <b>
 Officer Receive Project Booked
@@ -784,9 +784,10 @@ $i++;
   <!-- /.content-wrapper -->
 <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.3-pre
+        <class style="font-size: 14px;">   <b>Version</b> 3.0.3-pre
       </div>
-      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
+       <class style="font-size: 14px;">   <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
+      reserved.
     </footer>
 
   <!-- Control Sidebar -->

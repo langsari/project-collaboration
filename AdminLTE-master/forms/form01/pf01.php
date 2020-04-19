@@ -380,7 +380,7 @@ if ($result = $db->query($strSQL)) {
 
             <fieldset>
             </br>
-              <h5>Proposal Project Approval Letter </h5>
+              <h5>Topic Selection & Proposal Project Approval Letter </h5>
            <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
 
               </h6>
