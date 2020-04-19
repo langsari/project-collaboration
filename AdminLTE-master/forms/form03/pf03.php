@@ -12,7 +12,7 @@ include '../../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>ITPROMOT| TRACKING </title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="../form01/style.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
@@ -378,8 +378,8 @@ if ($result = $db->query($strSQL)) {
 
             <fieldset>
             </br>
-              <h5>Proposal Project Approval Letter </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+              <h5>Proposal Presentation & Proposal Revision </h5>
+           <h6><small class="text-muted">Approval Letter Agreed to Approve By Advisor & Committee</small>
 
               </h6>
                 <div class="card">
@@ -390,16 +390,20 @@ if ($result = $db->query($strSQL)) {
                         <th>To do list</th>
 
 
-                          <th><font color='red'> *Sign by advisor</font></th>
-                          <th><font color='red'> *Sign by Committee</font></th>
+                          <th><font color='red'> Advisor</font></th>
+                          <th><font color='red'> Committee</font></th>
                         </tr>
                       </thead>
                       <tbody>
 
                         <tr>
                           <td>1).Project Presentation
-                            </br>2).Project Revision</td>
-
+                            </br>2).Project Revision
+                          </br>
+                          </br><u>Condition:</u>
+                          </br>Student has to upload the last proposal revison
+                          </br>The document must approved by advisor first
+                        </br>The document has to approve by committee
                             <td>
                           </br>
 
@@ -422,39 +426,34 @@ if ($result = $db->query($strSQL)) {
                               <input type="hidden" name="advisergroup_id"  value="<?php echo $objResult->advisergroup_id; ?>">
 
 
-                        <td class="hidden"> 3 chapter of Proposal Revision<p>
+                        <td class="hidden"><small>3 chapter of Proposal Revision</small> </br>
                                <?php echo $objResult->files_filename_proposal; ?>
 
                             <input type="file" name="files_filename_proposal" id="files_filename_proposal"
                           value=" <?php echo $objResult->files_filename_proposal; ?>"/>
 
 
-                                                     <br>
                 <input type="hidden"
                             class="form-control"
                                                 name="hdnOldFilen"                                     value="<?php echo $objResult->files_filename_proposal; ?>">
 
 
-
-
-
                     <?php if ($objResult->status_advisor != "") {?>
-                        <button class="btn btn-warning disabled" disabled="disabled">Upload</button>
+                        <button class="btn btn-warning disabled btn-sm" disabled="disabled">Upload</button>
 
                       <?php } else {?>
-                      <button type="submit" class="btn btn-primary" >Upload</button>
+                      <button type="submit" class="btn btn-primary btn-sm" >Upload</button>
                        <?php }?>
 
                           </td>
 
-
-
+<td></td>
 
 
                           <td>
 <?php if ($objResult->files_filename_proposal != "") {?>
                       <a href="../form01/download.php?pdf=<?php echo $objResult->files_filename_proposal; ?>">
-                            <input type="button" class="btn btn-success" value="Download">
+                            <input type="button" class="btn btn-success btn-sm" value="Download">
  <?php } else {?>
                     <a href="#">
 
@@ -468,30 +467,19 @@ if ($result = $db->query($strSQL)) {
                     </table>
 
               </fieldset>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
-                        aria-valuemax="100"></div>
-                    </div>
-                  </br>
-                  <div class="progress progress-sm">
-                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="66" aria-volumemin="0" aria-volumemax="100" style="width: 100%">
-                              </div>
-                          </div>
-                          <small>
-                              57% Complete
-                          </small>
+                    
             </fieldset>
           </form>
 
 
         <div class="form-group clearfix">
 
-                  <a href="../form02/pf02.php" class="btn btn-danger float-left">Previous</a>
+                  <a href="../form02/pf02.php" class="btn btn-danger float-left">&laquo; Previous</a>
           <?php if ($objResult->status_advisor != "Pass") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
             <a href="../form04/pf04.php"  >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+            <button type="button" class="btn btn-primary float-right" >Next &raquo;</button></a>
                        <?php }?>
 
 

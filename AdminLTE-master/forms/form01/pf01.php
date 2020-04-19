@@ -480,7 +480,7 @@ if ($result = $db->query($strSQL)) {
         <div class="form-group clearfix">
 
           <?php if ($objResult->files_status != "Approve") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
             <a href="../form02/pf02.php"  >
             <button type="button" class="btn btn-primary float-right" >Next &raquo;</button></a>

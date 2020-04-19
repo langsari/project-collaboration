@@ -13,7 +13,7 @@ include '../../../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>ITPROMIT| TRACKING </title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="style.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
@@ -382,7 +382,7 @@ if ($result = $db->query($sql)) {
             <fieldset>
             </br>
               <h5>Proposal Project Approval Letter </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+           <h6><small class="text-muted">Approval Letter Agreed to Sign By Officer</small>
 
               </h6>
                 <div class="card">
@@ -392,20 +392,20 @@ if ($result = $db->query($sql)) {
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th>Status</th>
+                          <th><font color='red' >Sign by Officer</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <td>Student, Submit copies of Proposal, PF01 and related documentit
                           </br><u>Condition:</u>
-                          </br>(1) 4 copies of proposal, 1 copy for advisor and 3 for committees
-                          </br>(2) submit proposal one week before presentation day
+                          </br>(1) Student has been uploaded the 3 chapters in the PF01
+                          </br>(2) The document has been approved by advisor
                           </td>
                           <td>
+                            Status
                            <?php echo status_02($objResult->by_officer); ?>
-                            <p>
-                              <font color='red'> *For Officer</font>
+
                           </td>
                         </tr>
 
@@ -415,30 +415,19 @@ if ($result = $db->query($sql)) {
 
 
               </fieldset>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
-                        aria-valuemax="100"></div>
-                    </div>
-                  </br>
-                  <div class="progress progress-sm">
-                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="66" aria-volumemin="0" aria-volumemax="100" style="width: 100%">
-                              </div>
-                          </div>
-                          <small>
-                              57% Complete
-                          </small>
+                    
             </fieldset>
           </form>
 
 
          <div class="form-group clearfix">
 
-                  <a href="../form01/pf01.php?id=<?php echo $objResult->advisergroup_id; ?>"  class="btn btn-danger float-left">Previous</a>
+                  <a href="../form01/pf01.php?id=<?php echo $objResult->advisergroup_id; ?>"  class="btn btn-danger float-left">&laquo;Previous</a>
           <?php if ($objResult->by_officer != "Approve") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
             <a href="../form03/pf03.php?id=<?php echo $objResult->advisergroup_id; ?>"   >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+            <button type="button" class="btn btn-primary float-right" >Next &raquo;</button></a>
                        <?php }?>
 
 
@@ -539,10 +528,10 @@ if ($result = $db->query($strSQL)) {
        </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 14px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
     reserved.
   </footer>
 
