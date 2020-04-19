@@ -525,7 +525,7 @@ require 'connect.php';
 					WHERE committeegroup.group_id = '$group_id'";
 	if($rs = $db->query($sql)){
 		while($row = $rs->fetch_object()){
-	$rows .= "<p> <span class='badge badge-success'> ".$row->status_presentation." </span>&nbsp;&nbsp; ".$row->member_fullname."  </p>";
+	$rows .= "<p> <span class='badge badge-danger'> ".$row->status_presentation." </span>&nbsp;&nbsp; ".$row->member_fullname."  </p>";
 		}
 		return $rows;
 		$db->close();

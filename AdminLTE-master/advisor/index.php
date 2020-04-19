@@ -166,13 +166,28 @@ include('../menu/function.php');
           </li>
 
 
+      <?php 
+     $my_id = $_SESSION['id'];
+  $con = mysqli_connect('localhost','root','','itpromo_track');
+  $query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06,files.by_advisor04,files.by_advisor07,files.by_advisor08,files.by_advisor11,files.by_advisor12 FROM advisergroup
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+        LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+        WHERE advisergroup.member_id = '$my_id'  
+        AND   advisergroup.advisergroup_status='Waiting' or files.files_status = 'Waiting'  or files.status_advisor = 'Waiting' or  files.by_advisor04='Waiting' or files.by_advisor06 ='Waiting' or files.by_advisor07 ='Waiting'  or files.by_advisor08 ='Waiting' or files.by_advisor10 ='Waiting' 
+          or files.by_advisor11 ='Waiting' or files.by_advisor12 ='Waiting'
+               ";  
+  $query_num=mysqli_query($con,$query);
+  $count=mysqli_num_rows($query_num);
+
+  ?>
          <li class="nav-item">
-            <a href="advisor_request.php" class="nav-link">
+            <a href="advisor_request.php" class="nav-link ">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request     
-        <span class="badge badge-info right"></span>       
-          </p>
+       Request 
+                    <span class="right badge badge-danger"><?php echo $count; ?></span>
+             </p>
             </a>
           </li>
     
@@ -264,12 +279,33 @@ include('../menu/function.php');
             </ul>
           </li>
 
-  <li class="nav-item">
+
+                <?php
+                require '../menu/connect.php';
+                   $my_id = $_SESSION['id']; 
+                    $con = mysqli_connect('localhost','root','','itpromo_track');
+                   
+  $query = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,committeegroup.member_id,committeegroup.group_id,schedule.schedule_status,schedule.schedule_id,schedule.schedule_type,files.advisergroup_id,committeegroup.status_project,committeegroup.status_presentation,committeegroup.member_id,files.pf,files.status_advisor
+      FROM committeegroup
+        LEFT JOIN advisergroup ON committeegroup.member_id = advisergroup.member_id
+        LEFT JOIN member ON committeegroup.member_id = member.member_id
+       LEFT JOIN partnergroup ON committeegroup.group_id = partnergroup.group_id
+          LEFT JOIN files ON committeegroup.committeegroup_id = files.files_id
+      LEFT JOIN schedule ON committeegroup.group_id = schedule.group_id
+        WHERE committeegroup.member_id='$my_id'  and files.pf='3' or files.pf='10'
+        AND   committeegroup.status_presentation='Waiting' and committeegroup.status_project='Waiting' ";  
+
+                    $query_num=mysqli_query($con,$query);
+                    $count=mysqli_num_rows($query_num);
+                    ?>
+         <li class="nav-item">
             <a href="../committee/committee_request.php" class="nav-link">
-         <i class="nav-icon fa fa-tasks"></i> 
+             <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-                For Committee
-              </p>
+                       For Committee
+ 
+                    <span class="right badge badge-danger"><?php echo $count; ?></span>
+             </p>
             </a>
           </li>
 
