@@ -12,7 +12,7 @@ include '../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>IT PROMOT</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -552,9 +552,9 @@ $sql = "SELECT * FROM member WHERE group_id = '$my_group_id'";
 
 <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.3-pre
+        <class style="font-size: 14px;"> <b>Version</b> 3.0.3-pre
       </div>
-      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
+      <class style="font-size: 14px;">  <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
     </footer>
 
 

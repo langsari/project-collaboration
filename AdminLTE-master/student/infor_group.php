@@ -12,7 +12,7 @@ include '../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>IT PROMOT</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Font Awesome -->
@@ -323,7 +323,7 @@ if (mysqli_num_rows($qu_num) > 0) {
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-6">
-                 <div class="card">
+                 <div class="card card-primary card-outline">
               <div class="card-header">
                 <h3 class="card-title">Profile </h3>
               </div>
@@ -464,7 +464,7 @@ if ($rs = $db->query($sql)) {
 
 
  <div class="col-md-6">
-                 <div class="card">
+                 <div class="card card-primary card-outline">
               <div class="card-header">
                 <h3 class="card-title">Select Partner and topic </h3>
               </div>
@@ -524,7 +524,7 @@ if ($rs = $db->query($sql)) {
 
        <div class="row">
           <div class="col-md-6">
-                 <div class="card">
+                <div class="card card-warning card-outline">
               <div class="card-header">
                 <h3 class="card-title">Select advisor
  </h3>
@@ -744,7 +744,7 @@ if ($rs = $db->query($sql)) {
 
 
  <div class="col-md-6">
-                 <div class="card">
+                <div class="card card-warning card-outline">
               <div class="card-header">
                 <h3 class="card-title">Committee</h3>
               </div>
@@ -808,9 +808,9 @@ if ($rs = $db->query($sql)) {
     <!-- /.content-wrapper -->
 <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.3-pre
+        <class style="font-size: 14px;"> <b>Version</b> 3.0.3-pre
       </div>
-      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
+      <class style="font-size: 14px;">  <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
     </footer>
 
 </div>

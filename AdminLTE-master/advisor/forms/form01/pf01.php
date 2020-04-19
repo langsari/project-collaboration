@@ -458,18 +458,7 @@ if ($result = $db->query($sql)) {
 
 
               </fieldset>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
-                        aria-valuemax="100"></div>
-                    </div>
-                  </br>
-                  <div class="progress progress-sm">
-                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="66" aria-volumemin="0" aria-volumemax="100" style="width: 100%">
-                              </div>
-                          </div>
-                          <small>
-                              57% Complete
-                          </small>
+                    
             </fieldset>
           </form>
 
@@ -638,12 +627,11 @@ if ($result = $db->query($strSQL)) {
      </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
-      <b>Version</b> 3.0.3-pre
-    </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
-    reserved.
-  </footer>
+      <div class="float-right d-none d-sm-block">
+        <class style="font-size: 14px;"> <b>Version</b> 3.0.3-pre
+      </div>
+      <class style="font-size: 14px;">  <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
+    </footer>
 
   <!-- Control Sidebar -->
 
