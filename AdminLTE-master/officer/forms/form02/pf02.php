@@ -2,7 +2,7 @@
 session_start();
 
 require '../../../menu/connect.php';
-include('../../../menu/function.php');
+include '../../../menu/function.php';
 ?>
 
 
@@ -45,16 +45,16 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+
     </ul>
    <!-- Right navbar links -->
      <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -69,23 +69,19 @@ to get the desired effect
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="../../read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="../../read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
           <a href="../../read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -107,17 +103,17 @@ to get the desired effect
           </a>
         </div>
       </li>
-     
-       
+
+
     </ul>
   </nav>
   <!-- /.navbar -->
 
-  
+
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    
+
     <a href="index.php" class="brand-link">
         <img src="../../../dist/img/n2.png" width="100%" >
         <span class="brand-text font-weight-light"></span>
@@ -144,7 +140,7 @@ to get the desired effect
 
                    <li class="nav-item has-treeview ">
             <a href="index.php" class="nav-link ">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -154,29 +150,28 @@ to get the desired effect
           </li>
 
 
-  <?php 
-     $my_id = $_SESSION['id'];
-  $con = mysqli_connect('localhost','root','','itpromo_track');
+  <?php
+$my_id = $_SESSION['id'];
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
 
+$query = "SELECT * FROM files WHERE by_officer = 'Waiting' or  by_officer05='Waiting'
+   or by_officer09='Waiting' or  by_officer13='Waiting' ";
 
-   $query="SELECT * FROM files WHERE by_officer = 'Waiting' or  by_officer05='Waiting' 
-   or by_officer09='Waiting' or  by_officer13='Waiting' " ;
-
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
-  ?>
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
+?>
 
          <li class="nav-item">
             <a href="../../officer_request.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request 
-               <span class="badge badge-danger right"><?php echo $count; ?></span>       
+       Request
+               <span class="badge badge-danger right"><?php echo $count; ?></span>
              </p>
             </a>
           </li>
-    
- 
+
+
      <li class="nav-item">
                   <a href="../../student_track.php" class="nav-link active">
              <i class="nav-icon fa fa-paper-plane"></i>
@@ -184,9 +179,9 @@ to get the desired effect
        Student Track              </p>
             </a>
           </li>
-    
 
-  
+
+
 
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
@@ -209,12 +204,12 @@ to get the desired effect
                   <p>Create Schedule Project</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
 
-    
+
 
   <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
@@ -237,7 +232,7 @@ to get the desired effect
                   <p>Topic Require</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
@@ -249,7 +244,7 @@ to get the desired effect
        All project topics        </p>
             </a>
           </li>
-    
+
 
 
   <li class="nav-item">
@@ -261,7 +256,7 @@ to get the desired effect
             </a>
           </li>
 
-       
+
 
 
         </ul>
@@ -275,7 +270,7 @@ to get the desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  
+
 
   <!-- PAGE CONTENT -->
 
@@ -300,11 +295,11 @@ to get the desired effect
      <div class="col-md-12 ">
 
             <!-- Profile Image -->
-        
+
             <div class="card card-primary card-outline">
 
 
-   
+
 
 
 
@@ -336,25 +331,22 @@ to get the desired effect
               <h5>PF02</h5>
 
 
-    
 
 
-   
+
+
             <?php
-
-             
 
 $id = $_GET['id'];
 
 $sql = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer FROM advisergroup
 LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 LEFT JOIN member ON advisergroup.member_id = member.member_id
-WHERE advisergroup.advisergroup_id = '$id'";  
+WHERE advisergroup.advisergroup_id = '$id'";
 
-       
-     if($result = $db->query($sql)){
-                  while($objResult = $result->fetch_object()){
-            ?>
+if ($result = $db->query($sql)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
 
             <fieldset>
             </br>
@@ -374,13 +366,13 @@ WHERE advisergroup.advisergroup_id = '$id'";
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Student, Submit copies of Proposal, PF01 and related documentit 
+                          <td>Student, Submit copies of Proposal, PF01 and related documentit
                           </br><u>Condition:</u>
                           </br>(1) 4 copies of proposal, 1 copy for advisor and 3 for committees
                           </br>(2) submit proposal one week before presentation day
                           </td>
                           <td>
-                           <?php echo status_02($objResult->by_officer); ?> 
+                           <?php echo status_02($objResult->by_officer); ?>
                             <p>
                               <font color='red'> *For Officer</font>
                           </td>
@@ -389,7 +381,7 @@ WHERE advisergroup.advisergroup_id = '$id'";
                       </tbody>
                     </table>
 
-               
+
               </fieldset>
                     <div class="progress">
                       <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
@@ -406,14 +398,14 @@ WHERE advisergroup.advisergroup_id = '$id'";
             </fieldset>
           </form>
 
-      
+
          <div class="form-group clearfix">
 
-                  <a href="../form01/pf01.php?id=<?php echo $objResult->advisergroup_id;?>"  class="btn btn-danger float-left">Previous</a>
+                  <a href="../form01/pf01.php?id=<?php echo $objResult->advisergroup_id; ?>"  class="btn btn-danger float-left">Previous</a>
           <?php if ($objResult->by_officer != "Approve") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button> 
-          <?php }else{?>
-            <a href="../form03/pf03.php?id=<?php echo $objResult->advisergroup_id;?>"   >
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
+          <?php } else {?>
+            <a href="../form03/pf03.php?id=<?php echo $objResult->advisergroup_id; ?>"   >
             <button type="button" class="btn btn-danger float-right" >Next</button></a>
                        <?php }?>
 
@@ -431,10 +423,10 @@ WHERE advisergroup.advisergroup_id = '$id'";
               </div>
 
 
-            
+
             <?php
-                 } }
-                   ?>
+}}
+?>
 
       </div>
       </div>
@@ -450,58 +442,57 @@ WHERE advisergroup.advisergroup_id = '$id'";
    <link rel="stylesheet" href="../../../assets/comment/style.css">
 
 
-  
+
   <!-- From -->
   <div class="comment-form">
 
 
 
   <?php
-           
-              $id = $_GET['id'];
 
-    $strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,advisergroup.advisergroup_id,comment.comment_content,comment.date,comment.member_id,member.member_fullname FROM advisergroup
+$id = $_GET['id'];
+
+$strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,advisergroup.advisergroup_id,comment.comment_content,comment.date,comment.member_id,member.member_fullname FROM advisergroup
           LEFT JOIN comment ON advisergroup.advisergroup_id = comment.advisergroup_id
 
           LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
 
 
 
-        LEFT JOIN member ON advisergroup.member_id = member.member_id 
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.advisergroup_id = '$id'  and form_pf='2' ";                 
-     if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
+        WHERE advisergroup.advisergroup_id = '$id'  and form_pf='2' ";
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
 
+        ?>
 
-   ?>
- 
 
 
    <div class="callout callout-info">
                 <img class="img-circle img-bordered-sm" src="../../../dist/img/user.png" alt="user image"  width="30" height="30">
-<class style="font-size: 15px;">   &nbsp;&nbsp;<?php echo $objResult->member_id;?>  
+<class style="font-size: 15px;">   &nbsp;&nbsp;<?php echo $objResult->member_id; ?>
 
 
 
 
                    <span class="float-right">
                         <span class="description" style="font-size: 13px;">Shared publicly - <?php echo $objResult->date; ?></span>
-                      </span> 
+                      </span>
              <p>
 
-           
-            <class style="font-size: 15px;">    <?php echo $objResult->comment_content;?>
+
+            <class style="font-size: 15px;">    <?php echo $objResult->comment_content; ?>
             </div>
-      
+
 
 
 
           <?php
-                 }
-               }
-                   ?>   
-           
+}
+}
+?>
+
 
     <!-- /.content -->
   </br>
@@ -527,7 +518,7 @@ WHERE advisergroup.advisergroup_id = '$id'";
   <!-- /.control-sidebar -->
 </div>
     <!-- /.content -->
- 
+
 <!-- ./wrapper -->
 <!-- partial -->
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="script.js"></script>

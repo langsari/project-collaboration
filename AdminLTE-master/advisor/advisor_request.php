@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 
 ?>
 
@@ -44,16 +44,16 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+
     </ul>
    <!-- Right navbar links -->
      <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -68,23 +68,19 @@ to get the desired effect
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
           <a href="read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -106,8 +102,8 @@ to get the desired effect
           </a>
         </div>
       </li>
-     
-       
+
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -141,7 +137,7 @@ to get the desired effect
 
                    <li class="nav-item has-treeview ">
             <a href="index.php" class="nav-link ">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -150,34 +146,34 @@ to get the desired effect
             </a>
           </li>
 
-  <?php 
-     $my_id = $_SESSION['id'];
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06 FROM advisergroup
+  <?php
+$my_id = $_SESSION['id'];
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06 FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  
-        AND   advisergroup.advisergroup_status='Waiting' or files.files_status = 'Waiting'  or files.status_advisor = 'Waiting' or  files.by_advisor04='Waiting' or files.by_advisor06 ='Waiting' or by_advisor07 ='Waiting'  or files.by_advisor08 ='Waiting' or files.by_advisor10 ='Waiting' 
+        WHERE advisergroup.member_id = '$my_id'
+        AND   advisergroup.advisergroup_status='Waiting' or files.files_status = 'Waiting'  or files.status_advisor = 'Waiting' or  files.by_advisor04='Waiting' or files.by_advisor06 ='Waiting' or by_advisor07 ='Waiting'  or files.by_advisor08 ='Waiting' or files.by_advisor10 ='Waiting'
           or files.by_advisor11 ='Waiting' or files. by_advisor12 ='Waiting'
-               ";  
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+               ";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
          <li class="nav-item">
             <a href="advisor_request.php" class="nav-link active">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request 
+       Request
                     <span class="right badge badge-danger"><?php echo $count; ?></span>
              </p>
             </a>
           </li>
-    
-    
- 
-  
+
+
+
+
             <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
@@ -199,14 +195,14 @@ to get the desired effect
                   <p>Project Track</p>
                 </a>
               </li>
-         
+
               <li class="nav-item">
                 <a href="proposal_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
                 </a>
               </li>
-                     
+
             </ul>
           </li>
 
@@ -232,12 +228,12 @@ to get the desired effect
                   <p>Project Schedule</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
 
-    
+
 
             <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
@@ -260,13 +256,13 @@ to get the desired effect
                   <p>Topic Require</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
   <li class="nav-item">
             <a href="../committee/committee_request.php" class="nav-link">
-         <i class="nav-icon fa fa-tasks"></i> 
+         <i class="nav-icon fa fa-tasks"></i>
               <p>
                 For Committee
               </p>
@@ -302,7 +298,7 @@ to get the desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  
+
 <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -344,17 +340,17 @@ to get the desired effect
                                        <?php
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
-          $sql = "SELECT advisergroup.*, partnergroup.group_number FROM advisergroup
+$sql = "SELECT advisergroup.*, partnergroup.group_number FROM advisergroup
           LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
          WHERE advisergroup.member_id = '$my_id' AND advisergroup_status = 'Waiting'
           ORDER BY advisergroup.advisergroup_id DESC";
 
-     $i = 1;
-   $count = 1;
+$i = 1;
+$count = 1;
 
-              if($rs = $db->query($sql)){
-                while($row = $rs->fetch_object()){
-              ?>
+if ($rs = $db->query($sql)) {
+    while ($row = $rs->fetch_object()) {
+        ?>
 
 <tr>
                          <td class="text-left" style="font-size: 13px;" width="4%">   <?php echo $count++; ?></td>
@@ -362,7 +358,7 @@ $my_id = $_SESSION['id'];
                 <td class="text-left" style="font-size: 12px;" width="20%" ><?php echo $row->advisergroup_topic; ?></td>
                  <td class="text-left" style="font-size: 12px;" width="50%" ><?php echo get_member_list($row->group_id); ?></td>
                 <td class="text-left" style="font-size: 12px;">
-                  <h6> <?php echo status_01 ($row->advisergroup_status); ?></span>
+                  <h6> <?php echo status_01($row->advisergroup_status); ?></span>
                 </td>
 
 
@@ -387,19 +383,19 @@ $my_id = $_SESSION['id'];
 
 
               <?php
-                     $i++;
-                }
-              }else{
-              }
-              ?>
+$i++;
+    }
+} else {
+}
+?>
 
-                                            
+
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                        
+
 <div class="col-md-6">
                  <div class="card card-primary card-outline">
               <div class="card-header">
@@ -418,8 +414,8 @@ $my_id = $_SESSION['id'];
                  <th style="font-size: 15px;" width="3%" class="text-left"></th>
                 <th style="font-size: 15px;" width="3%" class="text-left"></th>
 
-                           
-              
+
+
                   </tr>
                                         </thead>
                                         <tbody>
@@ -428,40 +424,40 @@ $my_id = $_SESSION['id'];
                                         <?php
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
-    $strSQL = "SELECT advisergroup.*,  files.files_status,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  files.files_status,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  AND files_status = 'Waiting' 
-        
-               ";
-                 $i = 1;
-   $count = 1;
+        WHERE advisergroup.member_id = '$my_id'  AND files_status = 'Waiting'
 
-              if($rs = $db->query($strSQL)){
-                while($row = $rs->fetch_object()){
-              ?>
+               ";
+$i = 1;
+$count = 1;
+
+if ($rs = $db->query($strSQL)) {
+    while ($row = $rs->fetch_object()) {
+        ?>
                 <tr>
 
                     <td class="text-left" style="font-size: 13px;" width="4%">   <?php echo $count++; ?></td>
 
                 <td class="text-left" style="font-size: 12px;" width="20%" ><?php echo $row->advisergroup_topic; ?></td>
                  <td class="text-left" style="font-size: 12px;" width="60%" ><?php echo get_member_list($row->group_id); ?></td>
-             
 
 
-                 
-                  
+
+
+
                     <td class="text-left" style="font-size: 12px;" width="5%" >
-<?php if( $row->files_filename_proposal != ""){ ?>
+<?php if ($row->files_filename_proposal != "") {?>
 
-                      <a href="download.php?pdf=<?php echo $row->files_filename_proposal ;?>">
-                      <span class='badge badge-success btn-xs'>Download 
+                      <a href="download.php?pdf=<?php echo $row->files_filename_proposal; ?>">
+                      <span class='badge badge-success btn-xs'>Download
                            </a></span>
                        </a>
- <?php }else{?>
+ <?php } else {?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
-                    <?php } ?>
+                    <?php }?>
                               </td>
 
 
@@ -477,12 +473,12 @@ $my_id = $_SESSION['id'];
 
                   </tr>
                   <?php
-                                       $i++;
+$i++;
 
-                }
-              }else{
-              }
-              ?>            
+    }
+} else {
+}
+?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -507,7 +503,7 @@ $my_id = $_SESSION['id'];
                 <tr>
 
 
- 
+
 
 
                      <th style="font-size: 15px;" width="2%" class="text-left">No</th>
@@ -515,34 +511,31 @@ $my_id = $_SESSION['id'];
                     <th style="font-size: 15px;" width="40%" class="text-left">Student</th>
                <th style="font-size: 15px;" width="3%" class="text-left"></th>
                  <th style="font-size: 15px;" width="3%" class="text-left"></th>
-            
+
            </tr>
           </thead>
     <tbody>
 
     <?php
 
-
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
-    $strSQL = "SELECT advisergroup.*, files.files_status,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.status_advisor FROM advisergroup
+$strSQL = "SELECT advisergroup.*, files.files_status,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.status_advisor FROM advisergroup
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  AND pf='2' And status_advisor='Waiting'
                ";
 
+$i = 1;
+$count = 1;
 
-  $i = 1;
-   $count = 1;
+if ($rs = $db->query($strSQL)) {
+    while ($row = $rs->fetch_object()) {
+        ?>
 
+                <tr>
 
-              if($rs = $db->query($strSQL)){
-                while($row = $rs->fetch_object()){
-              ?>
-                
-                <tr>                     
-                 
 
                         <td class="text-left" style="font-size: 12px;" width="4%">   <?php echo $count++; ?></td>
 
@@ -550,17 +543,17 @@ $my_id = $_SESSION['id'];
 
                  <td class="text-left" style="font-size: 12px;" width="20%" ><?php echo $row->advisergroup_topic; ?></td>
                    <td class="text-left" style="font-size: 12px;" width="60%" ><?php echo get_member_list($row->group_id); ?></td>
-                 
+
                     <td class="text-left" style="font-size: 12px;" width="3%" >
-<?php if( $row->files_filename_proposal != ""){ ?>
-                      <a href="download.php?pdf=<?php echo $row->files_filename_proposal ;?>">
-                      <span class='badge badge-success btn-xs'>Download 
+<?php if ($row->files_filename_proposal != "") {?>
+                      <a href="download.php?pdf=<?php echo $row->files_filename_proposal; ?>">
+                      <span class='badge badge-success btn-xs'>Download
                            </a></span>
                        </a>
- <?php }else{?>
+ <?php } else {?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
-                    <?php } ?>
+                    <?php }?>
                               </td>
 
 
@@ -588,21 +581,21 @@ $my_id = $_SESSION['id'];
 
                       </tr>
                       <?php
-                         $i++;
-                }
-              }else{
-              }
-              ?>
+$i++;
+    }
+} else {
+}
+?>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-            
-            
-            
+
+
+
             <!-- PF04-->
-                    
+
                        <div class="col-md-6">
                  <div class="card card-warning card-outline">
               <div class="card-header">
@@ -619,9 +612,9 @@ $my_id = $_SESSION['id'];
                 <th style="font-size: 15px;" width="40%" class="text-left">Title project</th>
                 <th style="font-size: 15px;" width="40%" class="text-left">Student</th>
                  <th style="font-size: 15px;" width="5%" class="text-left"></th>
-         
 
-                  
+
+
 
 
                 </tr>
@@ -631,21 +624,20 @@ $my_id = $_SESSION['id'];
 
                                         <?php
 
-
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
-    $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.status_advisor FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.status_advisor FROM advisergroup
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  AND pf='3' And by_advisor04='Waiting'  ";
 
-  $i = 1;
-   $count = 1;
+$i = 1;
+$count = 1;
 
-      if($rs = $db->query($strSQL)){
-                while($row = $rs->fetch_object()){
-              ?>
+if ($rs = $db->query($strSQL)) {
+    while ($row = $rs->fetch_object()) {
+        ?>
                   <tr>
 
 
@@ -676,12 +668,12 @@ $my_id = $_SESSION['id'];
 
                       </tr>
                       <?php
-                         $i++;
-                }
-              }else{
-              }
-              ?>
-                                          
+$i++;
+    }
+} else {
+}
+?>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -710,7 +702,7 @@ $my_id = $_SESSION['id'];
                 <th style="font-size: 15px;" width="40%" class="text-left">Title project</th>
                 <th style="font-size: 15px;" width="40%" class="text-left">Student</th>
                  <th style="font-size: 15px;" width="5%" class="text-left"></th>
-         
+
 
 
            </tr>
@@ -719,21 +711,20 @@ $my_id = $_SESSION['id'];
 
     <?php
 
-
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
-    $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_officer05 FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_officer05 FROM advisergroup
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  AND pf='5' And by_advisor06 ='Waiting'   ";
 
-  $i = 1;
-   $count = 1;
+$i = 1;
+$count = 1;
 
-              if($rs = $db->query($strSQL)){
-                while($row = $rs->fetch_object()){
-              ?>
+if ($rs = $db->query($strSQL)) {
+    while ($row = $rs->fetch_object()) {
+        ?>
                   <tr>
 
 
@@ -770,18 +761,18 @@ $my_id = $_SESSION['id'];
 
                       </tr>
                       <?php
-                         $i++;
-                }
-              }else{
-              }
-              ?>
+$i++;
+    }
+} else {
+}
+?>
 
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-          
+
                       <!-- PF07-->
                        <div class="col-md-6">
                  <div class="card card-info card-outline">
@@ -794,7 +785,7 @@ $my_id = $_SESSION['id'];
               <table  class="table table-sm "  >
                 <thead class="thead-light">
                 <tr>
-                  
+
                       <th style="font-size: 15px;" width="2%" class="text-left">No</th>
                 <th style="font-size: 15px;" width="40%" class="text-left">Title project</th>
                 <th style="font-size: 15px;" width="40%" class="text-left">Student</th>
@@ -806,23 +797,22 @@ $my_id = $_SESSION['id'];
 
                                         <?php
 
-
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
-    $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_officer05 FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_officer05 FROM advisergroup
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  AND pf='6' And by_advisor07 ='Waiting'               ";
 
-  $i = 1;
-   $count = 1;
+$i = 1;
+$count = 1;
 
-              if($rs = $db->query($strSQL)){
-                while($row = $rs->fetch_object()){
-              ?>
+if ($rs = $db->query($strSQL)) {
+    while ($row = $rs->fetch_object()) {
+        ?>
                     <tr>
-          
+
             <td class="text-left" style="font-size: 12px;" width="4%">   <?php echo $count++; ?></td>
                  <td class="text-left" style="font-size: 12px;" width="40%" ><?php echo $row->advisergroup_topic; ?></td>
                    <td class="text-left" style="font-size: 12px;" width="40%" ><?php echo get_member_list($row->group_id); ?></td>
@@ -849,12 +839,12 @@ $my_id = $_SESSION['id'];
 
                       </tr>
                       <?php
-                         $i++;
-                }
-              }else{
-              }
-              ?>
-                                          
+$i++;
+    }
+} else {
+}
+?>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -863,7 +853,7 @@ $my_id = $_SESSION['id'];
 
 
 
-                         <!-- PF08--> 
+                         <!-- PF08-->
 
 
           <!-- Select advisor -->
@@ -889,21 +879,20 @@ $my_id = $_SESSION['id'];
 
     <?php
 
-
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
-    $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_advisor07,files.files_filename_project FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_advisor07,files.files_filename_project FROM advisergroup
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  AND pf='8' And by_advisor08 ='Waiting'   ";
 
-  $i = 1;
-   $count = 1;
+$i = 1;
+$count = 1;
 
-              if($rs = $db->query($strSQL)){
-                while($row = $rs->fetch_object()){
-              ?>
+if ($rs = $db->query($strSQL)) {
+    while ($row = $rs->fetch_object()) {
+        ?>
                   <tr>
                         <td class="text-left" style="font-size: 12px;" width="4%">   <?php echo $count++; ?></td>
 
@@ -911,17 +900,17 @@ $my_id = $_SESSION['id'];
 
                  <td class="text-left" style="font-size: 12px;" width="20%" ><?php echo $row->advisergroup_topic; ?></td>
                    <td class="text-left" style="font-size: 12px;" width="60%" ><?php echo get_member_list($row->group_id); ?></td>
-                 
+
                     <td class="text-left" style="font-size: 12px;" width="3%" >
-<?php if( $row->files_filename_project != ""){ ?>
-                      <a href="download.php?pdf=<?php echo $row->files_filename_project ;?>">
-                      <span class='badge badge-success btn-xs'>Download 
+<?php if ($row->files_filename_project != "") {?>
+                      <a href="download.php?pdf=<?php echo $row->files_filename_project; ?>">
+                      <span class='badge badge-success btn-xs'>Download
                            </a></span>
                        </a>
- <?php }else{?>
+ <?php } else {?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
-                    <?php } ?>
+                    <?php }?>
                               </td>
 
 
@@ -949,19 +938,19 @@ $my_id = $_SESSION['id'];
 
                       </tr>
                       <?php
-                         $i++;
-                }
-              }else{
-              }
-              ?>
+$i++;
+    }
+} else {
+}
+?>
 
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-          
-                    
+
+
                       <div class="col-md-6">
                  <div class="card card-danger card-outline">
               <div class="card-header">
@@ -985,7 +974,6 @@ $my_id = $_SESSION['id'];
 
                                         <?php
 
-
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
 $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_advisor07,files.files_filename_project FROM advisergroup
@@ -993,13 +981,13 @@ $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,file
 LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 LEFT JOIN member ON advisergroup.member_id = member.member_id
 WHERE advisergroup.member_id = '$my_id'  AND pf='9' And by_advisor10 ='Waiting'  ";
- 
-  $i = 1;
-   $count = 1;
 
-              if($rs = $db->query($strSQL)){
-                while($row = $rs->fetch_object()){
-              ?>
+$i = 1;
+$count = 1;
+
+if ($rs = $db->query($strSQL)) {
+    while ($row = $rs->fetch_object()) {
+        ?>
                     <tr>
 
 
@@ -1012,17 +1000,17 @@ WHERE advisergroup.member_id = '$my_id'  AND pf='9' And by_advisor10 ='Waiting' 
 
                  <td class="text-left" style="font-size: 12px;" width="20%" ><?php echo $row->advisergroup_topic; ?></td>
                    <td class="text-left" style="font-size: 12px;" width="60%" ><?php echo get_member_list($row->group_id); ?></td>
-                 
+
                     <td class="text-left" style="font-size: 12px;" width="3%" >
-<?php if( $row->files_filename_project != ""){ ?>
-                      <a href="download.php?pdf=<?php echo $row->files_filename_project ;?>">
-                      <span class='badge badge-success btn-xs'>Download 
+<?php if ($row->files_filename_project != "") {?>
+                      <a href="download.php?pdf=<?php echo $row->files_filename_project; ?>">
+                      <span class='badge badge-success btn-xs'>Download
                            </a></span>
                        </a>
- <?php }else{?>
+ <?php } else {?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
-                    <?php } ?>
+                    <?php }?>
                               </td>
 
 
@@ -1045,17 +1033,17 @@ WHERE advisergroup.member_id = '$my_id'  AND pf='9' And by_advisor10 ='Waiting' 
 
 
                             </td>
-                    
+
 
 
                       </tr>
                       <?php
-                         $i++;
-                }
-              }else{
-              }
-              ?>
-                                       
+$i++;
+    }
+} else {
+}
+?>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -1086,21 +1074,20 @@ WHERE advisergroup.member_id = '$my_id'  AND pf='9' And by_advisor10 ='Waiting' 
 
     <?php
 
-
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
-    $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_advisor11,files.complete_project FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_advisor11,files.complete_project FROM advisergroup
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  AND pf='10' And by_advisor11 ='Waiting'   ";
 
-  $i = 1;
-   $count = 1;
+$i = 1;
+$count = 1;
 
-              if($rs = $db->query($strSQL)){
-                while($row = $rs->fetch_object()){
-              ?>
+if ($rs = $db->query($strSQL)) {
+    while ($row = $rs->fetch_object()) {
+        ?>
                   <tr>
                         <td class="text-left" style="font-size: 12px;" width="4%">   <?php echo $count++; ?></td>
 
@@ -1108,17 +1095,17 @@ $my_id = $_SESSION['id'];
 
                  <td class="text-left" style="font-size: 12px;" width="20%" ><?php echo $row->advisergroup_topic; ?></td>
                    <td class="text-left" style="font-size: 12px;" width="60%" ><?php echo get_member_list($row->group_id); ?></td>
-                 
+
                     <td class="text-left" style="font-size: 12px;" width="3%" >
-<?php if( $row->complete_project != ""){ ?>
-                      <a href="download_pdf.php?pdf=<?php echo $row->complete_project ;?>">
-                      <span class='badge badge-success btn-xs'>Download 
+<?php if ($row->complete_project != "") {?>
+                      <a href="download_pdf.php?pdf=<?php echo $row->complete_project; ?>">
+                      <span class='badge badge-success btn-xs'>Download
                            </a></span>
                        </a>
- <?php }else{?>
+ <?php } else {?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
-                    <?php } ?>
+                    <?php }?>
                               </td>
 
 
@@ -1146,18 +1133,18 @@ $my_id = $_SESSION['id'];
 
                       </tr>
                       <?php
-                         $i++;
-                }
-              }else{
-              }
-              ?>
+$i++;
+    }
+} else {
+}
+?>
 
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-          
+
 
 
           <!-- Select advisor -->
@@ -1182,21 +1169,20 @@ $my_id = $_SESSION['id'];
 
     <?php
 
-
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
-    $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_advisor07,files.files_filename_project FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_advisor07,files.files_filename_project FROM advisergroup
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  AND pf='11' And  by_advisor12 ='Waiting'  ";
 
-  $i = 1;
-   $count = 1;
+$i = 1;
+$count = 1;
 
-              if($rs = $db->query($strSQL)){
-                while($row = $rs->fetch_object()){
-              ?>
+if ($rs = $db->query($strSQL)) {
+    while ($row = $rs->fetch_object()) {
+        ?>
                   <tr>
                         <td class="text-left" style="font-size: 12px;" width="4%">   <?php echo $count++; ?></td>
 
@@ -1204,8 +1190,8 @@ $my_id = $_SESSION['id'];
 
                  <td class="text-left" style="font-size: 12px;" width="20%" ><?php echo $row->advisergroup_topic; ?></td>
                    <td class="text-left" style="font-size: 12px;" width="60%" ><?php echo get_member_list($row->group_id); ?></td>
-                 
-                 
+
+
 
 
                 <td class="text-left"  width="20%" >
@@ -1232,22 +1218,22 @@ $my_id = $_SESSION['id'];
 
                       </tr>
                       <?php
-                         $i++;
-                }
-              }else{
-              }
-              ?>
+$i++;
+    }
+} else {
+}
+?>
 
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-          
 
 
 
-           
+
+
         <?php
 
 include 'phpmailer/line_message.php';
@@ -1262,21 +1248,21 @@ include 'phpmailer/line_message.php';
     <!-- /.content-wrapper -->
 
     <footer class="main-footer">
-      <div class="float-right d-none d-sm-block">   
+      <div class="float-right d-none d-sm-block">
         <class style="font-size: 14px;">   <b>Version</b> 3.0.3-pre
       </div>
        <class style="font-size: 14px;">   <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
 
 
 </div>
-           
+
 
     <!-- /.control-sidebar -->
 
   <!-- ./wrapper -->
 
     <!-- /.content -->
- 
+
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->

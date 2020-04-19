@@ -110,15 +110,15 @@
           <select class="form-control" name="member_id" hidden="">
 
             <?php
-                include '../menu/connect.php';
-                $strSQL = "SELECT admin_id, admin_fullname FROM admin WHERE admin_id ='".$_SESSION['id']."'";
-                if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-                    echo "<option value='".$objResult->admin_id."'>".$objResult->admin_fullname."</option>";
-                  }
-                }else{
-                }
-                ?>
+include '../menu/connect.php';
+$strSQL = "SELECT admin_id, admin_fullname FROM admin WHERE admin_id ='" . $_SESSION['id'] . "'";
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        echo "<option value='" . $objResult->admin_id . "'>" . $objResult->admin_fullname . "</option>";
+    }
+} else {
+}
+?>
           </select>
 
         </div>

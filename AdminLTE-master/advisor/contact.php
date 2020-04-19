@@ -13,20 +13,17 @@ require 'menu/connect.php';
 
 $my_id = $_SESSION['id'];
 
-
-      $strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic ,member.member_email FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  files.files_status,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic ,member.member_email FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.member_id = '$my_id' 
+        WHERE advisergroup.member_id = '$my_id'
                ";
 
-
-
-              if($rs = $db->query($strSQL)){
-                while($row = $rs->fetch_object()){
-              ?>
+if ($rs = $db->query($strSQL)) {
+    while ($row = $rs->fetch_object()) {
+        ?>
 
 
                         <h4 class="text-light">Notification</h4>
@@ -74,10 +71,10 @@ $my_id = $_SESSION['id'];
                             </div>
 
                             <?php
-                }
-              }else{
-              }
-              ?>
+}
+} else {
+}
+?>
 
                     </div>
                 </div>

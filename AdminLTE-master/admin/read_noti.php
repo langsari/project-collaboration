@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 
 ?>
 
@@ -51,30 +51,30 @@ include('../menu/function.php');
       </ul>
 
       <?php
-$conn = new mysqli("localhost","root","","itpromo_track");
-$count=0;
-if(!empty($_POST['add'])) {
-  $subject = mysqli_real_escape_string($conn,$_POST["subject"]);
-  $comment = mysqli_real_escape_string($conn,$_POST["comment"]);
-  $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
-  mysqli_query($conn, $sql);
+$conn = new mysqli("localhost", "root", "", "itpromo_track");
+$count = 0;
+if (!empty($_POST['add'])) {
+    $subject = mysqli_real_escape_string($conn, $_POST["subject"]);
+    $comment = mysqli_real_escape_string($conn, $_POST["comment"]);
+    $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
+    mysqli_query($conn, $sql);
 }
-$sql2="SELECT * FROM notify WHERE status = 0";
-$result=mysqli_query($conn, $sql2);
-$count=mysqli_num_rows($result);
+$sql2 = "SELECT * FROM notify WHERE status = 0";
+$result = mysqli_query($conn, $sql2);
+$count = mysqli_num_rows($result);
 ?>
 
-    
+
 
       <!-- Display the alert of notification -->
 
       <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -88,23 +88,19 @@ $count=mysqli_num_rows($result);
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="../admin/read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="../admin/read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
           <a href="../admin/read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -306,19 +302,18 @@ $count=mysqli_num_rows($result);
     <!-- Main content -->
     <section class="content">
 
-      <?php include ('../menu/connect.php'); ?>
+      <?php include '../menu/connect.php';?>
 
           <?php
-          if (isset($_GET['id']))
-           {
-            $noti_id= $_GET['id'];
+if (isset($_GET['id'])) {
+    $noti_id = $_GET['id'];
 
-            $conn = new mysqli("localhost","root","","itpromo_track");
-            $sql="UPDATE notify SET status=1 WHERE id='$noti_id' ";
-            $result=mysqli_query($conn, $sql);
-          }
+    $conn = new mysqli("localhost", "root", "", "itpromo_track");
+    $sql = "UPDATE notify SET status=1 WHERE id='$noti_id' ";
+    $result = mysqli_query($conn, $sql);
+}
 
-          ?>
+?>
 
 
       <!-- Default box -->
@@ -338,21 +333,21 @@ $count=mysqli_num_rows($result);
 
         <?php
 
-     $strSQL = "SELECT * FROM notify WHERE status=1 ORDER BY id DESC";
+$strSQL = "SELECT * FROM notify WHERE status=1 ORDER BY id DESC";
 
-         ?>
+?>
     <?php
-            
-            if($objQuery = $db->query($strSQL)){
-             while($objResult = $objQuery->fetch_object()){
-            ?>
+
+if ($objQuery = $db->query($strSQL)) {
+    while ($objResult = $objQuery->fetch_object()) {
+        ?>
 
         <div class="card-body">
           <div class="row">
             <div class="col-12 col-md-12">
               <div class="row">
                 <div class="col-12">
-                  
+
                     <div class="post">
                       <div class="user-block">
                         <img class="img-circle img-bordered-sm" src="../dist/img/user1.png" alt="user image">
@@ -362,15 +357,15 @@ $count=mysqli_num_rows($result);
                         <span class="description">Shared publicly -<?php echo $objResult->date; ?></span>
                       </div>
                       <!-- /.user-block -->
-                      
+
                       <p><b><?php echo $objResult->subject; ?></b></p>
                       <p> <?php echo $objResult->comment; ?></p>
-                  
+
                     </div>
  <?php
-                 }
-               }
-                   ?>
+}
+}
+?>
 
                 </div>
               </div>

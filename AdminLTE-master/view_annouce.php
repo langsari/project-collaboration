@@ -33,16 +33,16 @@ require 'menu/connect.php';
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-  
+
     </ul>
 
-   
+
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-        
+
                <li class="nav-item d-none d-sm-inline-block">
         <a href="auth/login.php" class="nav-link">Login</a>
       </li>
@@ -66,7 +66,7 @@ require 'menu/connect.php';
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-     
+
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -75,7 +75,7 @@ require 'menu/connect.php';
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview ">
             <a href="Annoucement.php" class="nav-link active">
-             
+
               <i class="nav-icon fa fa-bullhorn"></i>
               <p>
                 Announcements
@@ -84,8 +84,8 @@ require 'menu/connect.php';
             </a>
           </li>
 
-       
-         
+
+
           <li class="nav-item">
             <a href="show_topic.php" class="nav-link">
               <i class="nav-icon fa fa-file"></i>
@@ -95,7 +95,7 @@ require 'menu/connect.php';
             </a>
           </li>
 
-    
+
           <li class="nav-item">
             <a href="proposal_project.php" class="nav-link">
               <i class="nav-icon fa fa-book"></i>
@@ -174,71 +174,65 @@ require 'menu/connect.php';
 
 
     <!-- Main content -->
-   
+
   <div class="content">
-  
+
         <div class="row">
            <div class="col-lg-12">
                 <div class="card">
                     <div class="card-block">
-                       
+
 
 
                      <?php
 
 $id = $_GET['id'];
 
-
-
-
-   $strSQL = "SELECT  announcement.announcement_id,announcement.announcement_topic, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
-                           FROM announcement,admin 
+$strSQL = "SELECT  announcement.announcement_id,announcement.announcement_topic, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
+                           FROM announcement,admin
                            WHERE announcement.admin_id=admin.admin_id
-                      WHERE announcement.announcement_id = '$id'";     
+                      WHERE announcement.announcement_id = '$id'";
 
-                      
-     if($objQuery = $db->query($strSQL)){
-                  while($objResult = $objQuery->fetch_object()){
+if ($objQuery = $db->query($strSQL)) {
+    while ($objResult = $objQuery->fetch_object()) {
 
-
-
-   ?>
-   
+        ?>
 
 
-  
 
-   
+
+
+
 
             <table class="display datatable table table-stripped" cellspacing="0" width="100%">
 
                   <tbody>
-                  
-                      <td> 
 
-                   
+                      <td>
+
+
 <img class="img-circle img-bordered-sm" src="dist/img/user.png" alt="user image"  width="30" height="30">
                         <span class="username" style="font-size: 15px;">
-               &nbsp;&nbsp;<?php echo $objResult->admin_fullname; ?> 
+               &nbsp;&nbsp;<?php echo $objResult->admin_fullname; ?>
                          <span class="float-right">
                         <span class="description" style="font-size: 13px;">Shared publicly - <?php echo $objResult->announcement_date; ?></span>
                       </span>
                         <!-- /.user-block -->
               <p>   <class style="font-size: 16px;">     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b> <?php echo $objResult->announcement_topic; ?></b></p>
-                      
+
                       <class style="font-size: 15px;">   <?php echo $objResult->announcement_detailn; ?>
-                     
+
   <p>
 
-                 
-                        </td> 
+
+                        </td>
 
             <?php
-                 }
-               }
-                   ?>
-           
-            
+}
+}
+?>
+
+
       </tbody>
       </table>
     </h6>
@@ -249,46 +243,44 @@ $id = $_GET['id'];
 
 
 
-  
+
    <?php
 
 $id = $_GET['id'];
 
-
-
-   $strSQL = "SELECT  announcement.announcement_id,announcement.announcement_topic, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
-                           FROM announcement,admin 
+$strSQL = "SELECT  announcement.announcement_id,announcement.announcement_topic, announcement.announcement_detail,announcement.announcement_date,admin.admin_fullname
+                           FROM announcement,admin
                            WHERE announcement.admin_id=admin.admin_id
-                      WHERE announcement.announcement_id = '$id'";     
+                      WHERE announcement.announcement_id = '$id'";
 
-     if($objQuery = $db->query($strSQL)){
-                  while($objResult = $objQuery->fetch_object()){
+if ($objQuery = $db->query($strSQL)) {
+    while ($objResult = $objQuery->fetch_object()) {
 
-   ?>
-   
+        ?>
+
 
 
             <div class="callout callout-info">
                 <img class="img-circle img-bordered-sm" src="dist/img/user.png" alt="user image"  width="30" height="30">
-<class style="font-size: 15px;">   &nbsp;&nbsp;<?php echo $objResult->admin_fullname;?>  
+<class style="font-size: 15px;">   &nbsp;&nbsp;<?php echo $objResult->admin_fullname; ?>
                    <span class="float-right">
                         <span class="description" style="font-size: 13px;">Shared publicly - <?php echo $objResult->announcement_date; ?></span>
-                      </span> 
+                      </span>
              <p>
 
-             <class style="font-size: 16px;">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b> <?php echo $objResult->announcement_topic;?></b></br>
-            <class style="font-size: 15px;">    <?php echo $objResult->announcement_detail;?>
+             <class style="font-size: 16px;">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b> <?php echo $objResult->announcement_topic; ?></b></br>
+            <class style="font-size: 15px;">    <?php echo $objResult->announcement_detail; ?>
             </div>
-      
 
-   
+
+
 
 
             <?php
-                 }
-               }
-                   ?>
-           
+}
+}
+?>
+
 
 
 
@@ -320,7 +312,7 @@ $id = $_GET['id'];
 
 
     <!-- /.content -->
- 
+
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->

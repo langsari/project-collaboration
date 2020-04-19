@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 ?>
 
 <!DOCTYPE html>
@@ -43,16 +43,16 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+
     </ul>
    <!-- Right navbar links -->
      <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -67,23 +67,19 @@ to get the desired effect
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
           <a href="read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -105,8 +101,8 @@ to get the desired effect
           </a>
         </div>
       </li>
-     
-       
+
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -144,7 +140,7 @@ to get the desired effect
 
                    <li class="nav-item has-treeview ">
             <a href="index.php" class="nav-link ">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -160,9 +156,9 @@ to get the desired effect
        Group Information              </p>
             </a>
           </li>
-    
- 
-  
+
+
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
@@ -178,7 +174,7 @@ to get the desired effect
                   <p>Add Proposal</p>
                 </a>
               </li>
-              
+
               <li class="nav-item">
        <a href="../forms/check_pf.php" class="nav-link" >
                    <i class="far fa-circle nav-icon"></i>
@@ -216,7 +212,7 @@ to get the desired effect
                   <p>Project Schedule</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
@@ -242,7 +238,7 @@ to get the desired effect
                   <p>Topic Require</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
@@ -254,7 +250,7 @@ to get the desired effect
               </p>
             </a>
           </li>
-    
+
 
 
 
@@ -327,7 +323,7 @@ to get the desired effect
 
 
     <!-- /.content -->
- 
+
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->

@@ -2,7 +2,7 @@
 session_start();
 
 require '../../../menu/connect.php';
-include('../../../menu/function.php');
+include '../../../menu/function.php';
 ?>
 
 
@@ -52,21 +52,21 @@ to get the desired effect
       <li class="nav-item d-none d-sm-inline-block">
        <a href="#" class="nav-link" data-toggle="modal" data-target="#notify">Notify</a>
       </li>
-      
+
     </ul>
 
     <?php
-$conn = new mysqli("localhost","root","","itpromo_track");
-$count=0;
-if(!empty($_POST['add'])) {
-  $subject = mysqli_real_escape_string($conn,$_POST["subject"]);
-  $comment = mysqli_real_escape_string($conn,$_POST["comment"]);
-  $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
-  mysqli_query($conn, $sql);
+$conn = new mysqli("localhost", "root", "", "itpromo_track");
+$count = 0;
+if (!empty($_POST['add'])) {
+    $subject = mysqli_real_escape_string($conn, $_POST["subject"]);
+    $comment = mysqli_real_escape_string($conn, $_POST["comment"]);
+    $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
+    mysqli_query($conn, $sql);
 }
-$sql2="SELECT * FROM notify WHERE status = 0";
-$result=mysqli_query($conn, $sql2);
-$count=mysqli_num_rows($result);
+$sql2 = "SELECT * FROM notify WHERE status = 0";
+$result = mysqli_query($conn, $sql2);
+$count = mysqli_num_rows($result);
 ?>
 
       <script type="text/javascript">
@@ -92,16 +92,16 @@ $count=mysqli_num_rows($result);
           });
         });
       </script>
-      
+
 
    <!-- Right navbar links -->
      <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -116,23 +116,19 @@ $count=mysqli_num_rows($result);
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="../../read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="../../read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
           <a href="../../read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -154,8 +150,8 @@ $count=mysqli_num_rows($result);
           </a>
         </div>
       </li>
-     
-       
+
+
     </ul>
   </nav>
 
@@ -233,7 +229,7 @@ $count=mysqli_num_rows($result);
 
           <li class="nav-item has-treeview menu-open">
             <a href="../../../admin/index.php" class="nav-link">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -241,7 +237,7 @@ $count=mysqli_num_rows($result);
               </p>
             </a>
           </li>
-         
+
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fa fa-users"></i>
@@ -256,12 +252,12 @@ $count=mysqli_num_rows($result);
                   <i class="far fa-circle nav-icon"></i>
                   <p>User Request</p>
                   <?php
-                    $con = mysqli_connect('localhost','root','','itpromo_track');
-                    $query="SELECT member_id FROM member WHERE admin_id=0";
-                    $query_num=mysqli_query($con,$query);
-                    $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT member_id FROM member WHERE admin_id=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-                    ?>
+?>
                     <span class="right badge badge-danger"><?php echo $count; ?></span>
                 </a>
               </li>
@@ -279,13 +275,13 @@ $count=mysqli_num_rows($result);
               </li>
             </ul>
           </li>
-        
-        
+
+
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
-                Manage Schedule 
+                Manage Schedule
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -304,9 +300,9 @@ $count=mysqli_num_rows($result);
               </li>
             </ul>
           </li>
-    
 
-  
+
+
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>
@@ -353,7 +349,7 @@ $count=mysqli_num_rows($result);
                   <p>Add Annoucements</p>
                 </a>
               </li>
-             
+
             </ul>
           </li>
 
@@ -401,12 +397,12 @@ $count=mysqli_num_rows($result);
 
 <!-- partial:index.partial.html -->
 
- 
-      
+
+
         <div class="form-wizard">
           <form action="#" method="post"  class="form-horizontal" enctype="multipart/form-data">
 
-             
+
             <div class="form-wizard-header">
               <ul class="list-unstyled form-wizard-steps clearfix">
                 <li class="active" ><span>1</span></li>
@@ -433,14 +429,11 @@ $id = $_GET['id'];
 $sql = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer FROM advisergroup
 LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 LEFT JOIN member ON advisergroup.member_id = member.member_id
-WHERE advisergroup.advisergroup_id = '$id'";  
+WHERE advisergroup.advisergroup_id = '$id'";
 
-
-
-        
-if($result = $db->query($sql)){
-            while($objResult = $result->fetch_object()){
-      ?>
+if ($result = $db->query($sql)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
 
             <fieldset>
             </br>
@@ -455,7 +448,7 @@ if($result = $db->query($sql)){
                         <tr>
                         <th>To do list</th>
 
-                     
+
                           <th><font color='red'> Sign by advisor</font></th>
                           <th></th>
                         </tr>
@@ -466,7 +459,7 @@ if($result = $db->query($sql)){
                           <td>
                             Status
                     <?php echo status_01($objResult->advisergroup_status); ?></span>
-                  
+
                           </td>
                         </tr>
                         <tr>
@@ -474,7 +467,7 @@ if($result = $db->query($sql)){
                           <td>
                             Status
                  <?php echo status_01($objResult->advisergroup_status); ?></span>
-                  
+
                           </td>
                         </tr>
 
@@ -491,8 +484,8 @@ if($result = $db->query($sql)){
 
                            <td class="hidden"> 3 chapter of Proposal
 
-                           
-                
+
+
 
 
 
@@ -502,19 +495,19 @@ if($result = $db->query($sql)){
                             <?php echo status_01_file($objResult->files_status); ?>
                           </td>
 
-  
-                
+
+
 
 
                           <td>
-<?php if( $objResult->files_filename_proposal != ""){ ?>
-                      <a href="download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>">
+<?php if ($objResult->files_filename_proposal != "") {?>
+                      <a href="download.php?pdf=<?php echo $objResult->files_filename_proposal; ?>">
                     <input type="button" class="btn btn-success" value="Download File" >
                        </a>
- <?php }else{?>
+ <?php } else {?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
-                    <?php } ?>
+                    <?php }?>
                               </td>
                         </tr>
                       </tbody>
@@ -538,14 +531,14 @@ if($result = $db->query($sql)){
             </fieldset>
           </form>
 
-      
+
         <div class="form-group clearfix">
 
-                 
+
 <?php if ($objResult->files_status != "Approve") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button> 
-          <?php }else{?>
-            <a href="../form02/pf02.php?id=<?php echo $objResult->advisergroup_id;?>" >
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
+          <?php } else {?>
+            <a href="../form02/pf02.php?id=<?php echo $objResult->advisergroup_id; ?>" >
             <button type="button" class="btn btn-danger float-right" >Next</button></a>
                        <?php }?>
 
@@ -562,13 +555,13 @@ if($result = $db->query($sql)){
               </div>
 
             <?php
-                 } }
-                   ?>
+}}
+?>
 
 
 
     <!-- /.content -->
- 
+
         </div>
       </div>
     </div>
@@ -582,62 +575,60 @@ if($result = $db->query($sql)){
    <link rel="stylesheet" href="../../../assets/comment/style.css">
 
 
-  
+
   <!-- From -->
   <div class="comment-form">
 
   <?php
-          $id = $_GET['id'];
+$id = $_GET['id'];
 
-
-    $strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,advisergroup.advisergroup_id,comment.comment_content,comment.date,comment.member_id,member.member_fullname,comment.form_pf FROM advisergroup
+$strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,advisergroup.advisergroup_id,comment.comment_content,comment.date,comment.member_id,member.member_fullname,comment.form_pf FROM advisergroup
           LEFT JOIN comment ON advisergroup.advisergroup_id = comment.advisergroup_id
 
           LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
 
 
 
-        LEFT JOIN member ON advisergroup.member_id = member.member_id 
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.advisergroup_id = '$id'and comment.form_pf='1'  ";                 
-     if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
+        WHERE advisergroup.advisergroup_id = '$id'and comment.form_pf='1'  ";
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
 
+        ?>
 
-   ?>
- 
 
 
    <div class="callout callout-info">
                 <img class="img-circle img-bordered-sm" src="../../../dist/img/user.png" alt="user image"  width="30" height="30">
-<class style="font-size: 15px;">   &nbsp;&nbsp;<?php echo $objResult->member_id;?>  
+<class style="font-size: 15px;">   &nbsp;&nbsp;<?php echo $objResult->member_id; ?>
 
 
 
 
                    <span class="float-right">
                         <span class="description" style="font-size: 13px;">Shared publicly - <?php echo $objResult->date; ?></span>
-                      </span> 
+                      </span>
              <p>
 
-           
-            <class style="font-size: 15px;">    <?php echo $objResult->comment_content;?>
+
+            <class style="font-size: 15px;">    <?php echo $objResult->comment_content; ?>
             </div>
-      
+
 
 
 
           <?php
-                 }
-               }
-                   ?>   
-           
+}
+}
+?>
+
 
     <!-- /.content -->
   </br>
 </div>
 
-        
+
       </div>
     </div>
   </section>
@@ -646,7 +637,7 @@ if($result = $db->query($sql)){
      </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
        <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights

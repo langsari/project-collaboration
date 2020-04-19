@@ -2,8 +2,8 @@
 <?php
 
 $error = 0;
-if(isset($_GET['error'])){
-  $error = $_GET['error'];
+if (isset($_GET['error'])) {
+    $error = $_GET['error'];
 }
 
 ?>
@@ -34,18 +34,18 @@ if(isset($_GET['error'])){
     <a href="../../index2.html"><b>Log</b>in</a>
   </div>
   <!-- /.login-logo -->
-  
+
     <div class="card card-primary card-outline">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
 
                         <form action="checklogin.php" method="post">
-                                  <?php if($error == 1): ?>
+                                  <?php if ($error == 1): ?>
         <div class="alert alert-danger" role="alert">
           <i class="glyphicon glyphicon-alert"></i> Invalid username or password, or you are not activated by Administrator!
         </div>
-        <?php endif; ?>
+        <?php endif;?>
               <div>
         <div class="input-group mb-3">
       <input type="text" class="form-control" id="username" name="username"placeholder="Enter Username" autocomplete="off" required aria-describedby="basic-addon1">
@@ -73,7 +73,7 @@ if(isset($_GET['error'])){
 
 
 
-     
+
       <p class="mb-1" align="center">
         <a href="register.php" class="text-center">Register a new membership</a>
       </p>
@@ -81,7 +81,7 @@ if(isset($_GET['error'])){
         <a href="../index.php">Homepage</a>
       </p>
 
-   
+
     <!-- /.login-card-body -->
   </div>
 </div>

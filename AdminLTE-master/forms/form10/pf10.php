@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../../menu/connect.php';
-include('../../menu/function.php');
+include '../../menu/function.php';
 
 ?>
 
@@ -44,16 +44,16 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+
     </ul>
    <!-- Right navbar links -->
      <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -68,23 +68,19 @@ to get the desired effect
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="../../student/read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="../../student/read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
           <a href="../../student/read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -106,8 +102,8 @@ to get the desired effect
           </a>
         </div>
       </li>
-     
-       
+
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -144,7 +140,7 @@ to get the desired effect
                    <li class="nav-item has-treeview ">
             <a href="../../student/index.php" class="nav-link ">
 
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -160,9 +156,9 @@ to get the desired effect
        Group Information              </p>
             </a>
           </li>
-    
- 
-  
+
+
+
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>
@@ -215,7 +211,7 @@ to get the desired effect
                   <p>Project Schedule</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
@@ -241,7 +237,7 @@ to get the desired effect
                   <p>Topic Require</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
@@ -253,7 +249,7 @@ to get the desired effect
               </p>
             </a>
           </li>
-    
+
 
 
 
@@ -305,7 +301,7 @@ to get the desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  
+
 
   <!-- PAGE CONTENT -->
 
@@ -330,11 +326,11 @@ to get the desired effect
      <div class="col-md-12 ">
 
             <!-- Profile Image -->
-        
+
             <div class="card card-primary card-outline">
 
 
-   
+
 
 
 
@@ -343,7 +339,7 @@ to get the desired effect
 
 <!-- partial:index.partial.html -->
 
-      
+
         <div class="form-wizard">
           <form action="check_pf10.php" method="post"  class="form-horizontal" enctype="multipart/form-data">
             <div class="form-wizard-header">
@@ -367,22 +363,18 @@ to get the desired effect
             <fieldset class="wizard-fieldset show">
               <h5>PF10</h5>
             <?php
-  
 
-                              $g_id = get_group_id();
-              $ag_id = get_ag_id($g_id);
-    $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.by_advisor10,files.Owner,files.advisergroup_id,files.pf,files.files_filename_project,files.files_id FROM advisergroup
+$g_id = get_group_id();
+$ag_id = get_ag_id($g_id);
+$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.by_advisor10,files.Owner,files.advisergroup_id,files.pf,files.files_filename_project,files.files_id FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.advisergroup_id = '$ag_id'  ";             
+        WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
-
-
-
-     if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-            ?>
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
 
 
             <fieldset>
@@ -398,13 +390,13 @@ to get the desired effect
                         <tr>
                         <th>To do list</th>
 
-                     
+
                           <th><font color='red'> *Sign by advisor</font></th>
                           <th><font color='red'> *Sign by Committee</font></th>
                         </tr>
                       </thead>
                       <tbody>
-                       
+
                         <tr>
                           <td>1).Project Presentation
                             </br>2).Project Revision</td>
@@ -439,11 +431,11 @@ to get the desired effect
                 <input type="hidden"
                             class="form-control"
                                                 name="hdnOldFilen"                                     value="<?php echo $objResult->files_filename_project; ?>">
-                                  
-    <?php if ($objResult->by_advisor10 != "") {?>
-                        <button class="btn btn-warning disabled" disabled="disabled">Upload</button> 
 
-                      <?php }else{?>
+    <?php if ($objResult->by_advisor10 != "") {?>
+                        <button class="btn btn-warning disabled" disabled="disabled">Upload</button>
+
+                      <?php } else {?>
                       <button type="submit" class="btn btn-primary" >Upload</button>
                        <?php }?>
 
@@ -454,14 +446,14 @@ to get the desired effect
 
 
     <td>
-<?php if( $objResult->files_filename_project != ""){ ?>
-                      <a href="../form01/download.php?pdf=<?php echo $objResult->files_filename_project ;?>">
-                        <span class='badge badge-primary'><i class="fa fa-download">Download 
+<?php if ($objResult->files_filename_project != "") {?>
+                      <a href="../form01/download.php?pdf=<?php echo $objResult->files_filename_project; ?>">
+                        <span class='badge badge-primary'><i class="fa fa-download">Download
                           <?php echo $objResult->files_filename_project ?> </i></a></span>
- <?php }else{?>
+ <?php } else {?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
-                    <?php } ?>
+                    <?php }?>
                               </td>
 
 </tr>
@@ -486,13 +478,13 @@ to get the desired effect
             </fieldset>
           </form>
 
-      
+
         <div class="form-group clearfix">
 
                   <a href="../form09/pf09.php" class="btn btn-danger float-left">Previous</a>
           <?php if ($objResult->by_advisor10 != "Pass") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button> 
-          <?php }else{?>
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
+          <?php } else {?>
             <a href="../form11/pf11.php"   >
             <button type="button" class="btn btn-danger float-right" >Next</button></a>
                        <?php }?>
@@ -508,10 +500,10 @@ to get the desired effect
               </div>
 
 
-            
+
             <?php
-                 } }
-                   ?>
+}}
+?>
 
 
 
@@ -525,39 +517,39 @@ to get the desired effect
    <link rel="stylesheet" href="../../assets/comment/style.css">
 
 
-  
+
   <!-- From -->
   <div class="comment-form">
     <!-- Comment Avatar -->
     <div class="comment-avatar">
-         <img src="../../dist/img/user1.png" >  
+         <img src="../../dist/img/user1.png" >
     </div>
 
     <form method="post" action="check_comment.php" class="form" name="form" ng-submit="form.$valid && cmntCtrl.addComment()" >
 
       <div class="form-row">
-        <textarea  class="input" name="comment_content" id="comment_content" 
+        <textarea  class="input" name="comment_content" id="comment_content"
          placeholder="Add comment..." class="form-control"   required></textarea>
 
-             
+
       </div>
 
 
 
   <?php
-                        $strSQL="SELECT * FROM member  WHERE member_id='".$_SESSION['id']."'";
-                        ?>
+$strSQL = "SELECT * FROM member  WHERE member_id='" . $_SESSION['id'] . "'";
+?>
 
                         <?php
-                        if ($result = $db->query($strSQL)) {
-                          while ($row = $result->fetch_object()) {
-                        ?>
+if ($result = $db->query($strSQL)) {
+    while ($row = $result->fetch_object()) {
+        ?>
 
                                 <input type="text" class="form-control" name="member_id" value="<?php echo $_SESSION['name']; ?>" hidden>
-            
+
 <?php
-  }
-  }
+}
+}
 ?>
 
                    <input type="hidden" name="group_id" id="group_id"  />
@@ -566,7 +558,7 @@ to get the desired effect
           <input type="hidden" name="form_pf" id="form_pf"  value="10" />
 
 
-     
+
       <div class="form-row">
         <input type="submit" value="Add Comment">
       </div>
@@ -575,52 +567,50 @@ to get the desired effect
 
 
   <?php
-            $g_id = get_group_id();
-              $ag_id = get_ag_id($g_id);
-              
+$g_id = get_group_id();
+$ag_id = get_ag_id($g_id);
 
-    $strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,advisergroup.advisergroup_id,comment.comment_content,comment.date,comment.member_id,member.member_fullname FROM advisergroup
+$strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,advisergroup.advisergroup_id,comment.comment_content,comment.date,comment.member_id,member.member_fullname FROM advisergroup
           LEFT JOIN comment ON advisergroup.advisergroup_id = comment.advisergroup_id
 
           LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
 
 
 
-        LEFT JOIN member ON advisergroup.member_id = member.member_id 
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.advisergroup_id = '$ag_id' and form_pf='10' ";                 
-     if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
+        WHERE advisergroup.advisergroup_id = '$ag_id' and form_pf='10' ";
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
 
+        ?>
 
-   ?>
- 
 
 
    <div class="callout callout-info">
                 <img class="img-circle img-bordered-sm" src="../../dist/img/user.png" alt="user image"  width="30" height="30">
-<class style="font-size: 15px;">   &nbsp;&nbsp;<?php echo $objResult->member_id;?>  
+<class style="font-size: 15px;">   &nbsp;&nbsp;<?php echo $objResult->member_id; ?>
 
 
 
 
                    <span class="float-right">
                         <span class="description" style="font-size: 13px;">Shared publicly - <?php echo $objResult->date; ?></span>
-                      </span> 
+                      </span>
              <p>
 
-           
-            <class style="font-size: 15px;">    <?php echo $objResult->comment_content;?>
+
+            <class style="font-size: 15px;">    <?php echo $objResult->comment_content; ?>
             </div>
-      
+
 
 
 
           <?php
-                 }
-               }
-                   ?>   
-           
+}
+}
+?>
+
 
     <!-- /.content -->
    <!-- /.content -->
@@ -640,7 +630,7 @@ to get the desired effect
 
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
        <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
@@ -651,10 +641,10 @@ to get the desired effect
 
   <!-- /.control-sidebar -->
 </div>
- 
+
 
     <!-- /.content -->
- 
+
 <!-- ./wrapper -->
 
 <!-- partial -->

@@ -24,8 +24,8 @@
             <div class="col-15 col-sm-8 col-md-12 d-flex align-items-stretch">
                              <main role="main" class="container">
 
-               
-            
+
+
 
                         <h1 class="mt-3">Welcome to Information Technology Project</h1>
                         <p class="lead">ITPromot or Information Technology Project Monitoring and Tracking System.</p>
@@ -55,10 +55,9 @@
                             (โครงงานเทคโนโลยีสารสนเทศ II )</p>
 
                     </main>
-              
+
               </div>
             </div>
           </div>
         </div>
       </section>
-      

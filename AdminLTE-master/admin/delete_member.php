@@ -1,24 +1,17 @@
 <?php
 
-include ("../menu/connect.php");
+include "../menu/connect.php";
 
 extract($_GET);
 $member_id = $id;
-$sql="delete from member where member_id = '$member_id'";
+$sql = "delete from member where member_id = '$member_id'";
 
+if ($db->query($sql)) {
+    $db->close();
 
-	if($db->query($sql)){
-		$db->close();
+    echo "<script>alert('Delete Success');window.location = \"all_member.php\";</script>";
 
-			echo "<script>alert('Delete Success');window.location = \"all_member.php\";</script>";
-
-
-	}else{
-		echo $db->error;
-		$db->close();
-	}
-
-
-
-
-?>
+} else {
+    echo $db->error;
+    $db->close();
+}

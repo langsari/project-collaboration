@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 
 ?>
 <style>
@@ -50,21 +50,21 @@ include('../menu/function.php');
       <li class="nav-item d-none d-sm-inline-block">
        <a href="#" class="nav-link" data-toggle="modal" data-target="#notify">Notify</a>
       </li>
-      
+
     </ul>
 
     <?php
-$conn = new mysqli("localhost","root","","itpromo_track");
-$count=0;
-if(!empty($_POST['add'])) {
-  $subject = mysqli_real_escape_string($conn,$_POST["subject"]);
-  $comment = mysqli_real_escape_string($conn,$_POST["comment"]);
-  $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
-  mysqli_query($conn, $sql);
+$conn = new mysqli("localhost", "root", "", "itpromo_track");
+$count = 0;
+if (!empty($_POST['add'])) {
+    $subject = mysqli_real_escape_string($conn, $_POST["subject"]);
+    $comment = mysqli_real_escape_string($conn, $_POST["comment"]);
+    $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
+    mysqli_query($conn, $sql);
 }
-$sql2="SELECT * FROM notify WHERE status = 0";
-$result=mysqli_query($conn, $sql2);
-$count=mysqli_num_rows($result);
+$sql2 = "SELECT * FROM notify WHERE status = 0";
+$result = mysqli_query($conn, $sql2);
+$count = mysqli_num_rows($result);
 ?>
 
 <script type="text/javascript">
@@ -75,13 +75,13 @@ $count=mysqli_num_rows($result);
       type: "POST",
       processData:false,
       success: function(data){
-        $("#notification-count").remove();          
+        $("#notification-count").remove();
         $("#notification-latest").show();$("#notification-latest").html(data);
       },
-      error: function(){}           
+      error: function(){}
     });
    }
-   
+
    $(document).ready(function() {
     $('body').click(function(e){
       if ( e.target.id != 'notification-icon'){
@@ -89,19 +89,19 @@ $count=mysqli_num_rows($result);
       }
     });
   });
-     
+
   </script>
 
 
    <!-- Display the alert of notification -->
 
   <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
 
     <!-- Right navbar links -->
     <!-- Right navbar links -->
@@ -116,23 +116,19 @@ $count=mysqli_num_rows($result);
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="../admin/read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="../admin/read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
           <a href="../admin/read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -185,7 +181,7 @@ $count=mysqli_num_rows($result);
 
             <li class="nav-item has-treeview ">
             <a href="../admin/index.php" class="nav-link ">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -208,12 +204,12 @@ $count=mysqli_num_rows($result);
                   <i class="far fa-circle nav-icon"></i>
                   <p>User Request</p>
                   <?php
-                    $con = mysqli_connect('localhost','root','','itpromo_track');
-                    $query="SELECT member_id FROM member WHERE admin_id=0";
-                    $query_num=mysqli_query($con,$query);
-                    $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT member_id FROM member WHERE admin_id=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-                    ?>
+?>
                     <span class="right badge badge-danger"><?php echo $count; ?></span>
                 </a>
               </li>
@@ -231,13 +227,13 @@ $count=mysqli_num_rows($result);
               </li>
             </ul>
           </li>
-    
+
 
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
-                Manage Schedule 
+                Manage Schedule
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -256,9 +252,9 @@ $count=mysqli_num_rows($result);
               </li>
             </ul>
           </li>
-    
 
-  
+
+
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
@@ -305,7 +301,7 @@ $count=mysqli_num_rows($result);
                   <p>Add Annoucements</p>
                 </a>
               </li>
-             
+
             </ul>
           </li>
 
@@ -354,7 +350,7 @@ $count=mysqli_num_rows($result);
                   PF Setting
                 </button>
                 </h3>
-        
+
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -380,46 +376,46 @@ $count=mysqli_num_rows($result);
                   </thead>
                   <tbody align="center">
                     <?php
-      $strSQL = "SELECT * FROM  pf_mark";
-        
-        ?>
+$strSQL = "SELECT * FROM  pf_mark";
+
+?>
         <?php
-     if($result = $db->query($strSQL)){
-             while($objResult = $result->fetch_object()){
-            ?>
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
             <tr>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf1;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf2;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf3;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf4;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf5;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf6;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf7;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf8;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf9;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf10;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf11;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf12;?></td>
-            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf13;?></td>
+            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf1; ?></td>
+            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf2; ?></td>
+            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf3; ?></td>
+            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf4; ?></td>
+            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf5; ?></td>
+            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf6; ?></td>
+            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf7; ?></td>
+            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf8; ?></td>
+            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf9; ?></td>
+            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf10; ?></td>
+            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf11; ?></td>
+            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf12; ?></td>
+            <td class="text-center" style="font-size: 15px;"><?php echo $objResult->pf13; ?></td>
             <td>
-           <a href="../admin/accept.php?id=<?php echo $objResult->id;?>"class="btn btn-primary btn-sm">
+           <a href="../admin/accept.php?id=<?php echo $objResult->id; ?>"class="btn btn-primary btn-sm">
                   <i class="fa fa-edit" title="Detail"></i></a>
 
 
-    <a href="delete_approve.php?id=<?php echo $objResult->id;?>"class="btn btn-danger btn-sm" onclick="return confirm('Are You sure Delete?')">
+    <a href="delete_approve.php?id=<?php echo $objResult->id; ?>"class="btn btn-danger btn-sm" onclick="return confirm('Are You sure Delete?')">
                   <i class="fa fa-trash" title="Delete"></i></a>
 
 
                 </td>
-                 
+
             </tr>
 
             <?php
-              }
-               }
-                   ?>
-      
-                
+}
+}
+?>
+
+
               </table>
             </div>
             <!-- /.card-body -->
@@ -433,7 +429,7 @@ $count=mysqli_num_rows($result);
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  
+
 <div class="modal fade" id="notify">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -456,7 +452,7 @@ $count=mysqli_num_rows($result);
           <textarea class="form-control" placeholder="comment" id="comment" name="comment" autocomplete="off" required aria-describedby="basic-addon1">
 
           </textarea>
-          
+
         </div>
       </div>
       <div class="modal-footer justify-content-between">
@@ -481,7 +477,7 @@ $count=mysqli_num_rows($result);
               </button>
             </div>
             <div class="modal-body">
-              
+
     <form id="add" name="add" method="post" action="../admin/check_pf_mark.php"
                                  onsubmit="return checkForm()">
       <div class="user-details">
@@ -666,10 +662,10 @@ $count=mysqli_num_rows($result);
                         <input type="text" id="total" class="form-control" disabled>
                       </div>
                     </div>
-                    
+
                   </div>
 
-                
+
       </div>
             </div>
             <div class="modal-footer justify-content-between">
@@ -703,7 +699,7 @@ $count=mysqli_num_rows($result);
 <!--include message  -->
 
 <?php
-        
+
 include '../notification/notification.php';
 ?>
  <!--end for include message  -->
@@ -743,7 +739,7 @@ $('.tex').keyup(function() {
         sum += Number($(this).val());
     });
     $('#total').val(sum);
-     
+
 });
 
 </script>

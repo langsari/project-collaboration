@@ -2,7 +2,7 @@
 session_start();
 
 require '../../../menu/connect.php';
-include('../../../menu/function.php');
+include '../../../menu/function.php';
 ?>
 
 
@@ -45,7 +45,7 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+
     </ul>
 
 
@@ -58,8 +58,8 @@ to get the desired effect
         <a href="../../auth/logout.php" class="nav-link">Logout</a>
       </li>
       </li>
-     
-       
+
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -94,7 +94,7 @@ to get the desired effect
 
                    <li class="nav-item has-treeview">
             <a href="../../../admin/index.php" class="nav-link">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -102,7 +102,7 @@ to get the desired effect
               </p>
             </a>
           </li>
-         
+
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fa fa-users"></i>
@@ -117,12 +117,12 @@ to get the desired effect
                   <i class="far fa-circle nav-icon"></i>
                   <p>User Request</p>
                   <?php
-                    $con = mysqli_connect('localhost','root','','itpromo_track');
-                    $query="SELECT member_id FROM member WHERE admin_id=0";
-                    $query_num=mysqli_query($con,$query);
-                    $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT member_id FROM member WHERE admin_id=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-                    ?>
+?>
                     <span class="right badge badge-danger"><?php echo $count; ?></span>
                 </a>
               </li>
@@ -140,13 +140,13 @@ to get the desired effect
               </li>
             </ul>
           </li>
-        
-        
+
+
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
-                Manage Schedule 
+                Manage Schedule
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -165,9 +165,9 @@ to get the desired effect
               </li>
             </ul>
           </li>
-    
 
-  
+
+
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>
@@ -214,7 +214,7 @@ to get the desired effect
                   <p>Add Annoucements</p>
                 </a>
               </li>
-             
+
             </ul>
           </li>
 
@@ -237,7 +237,7 @@ to get the desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  
+
 
   <!-- PAGE CONTENT -->
 
@@ -262,11 +262,11 @@ to get the desired effect
      <div class="col-md-12 ">
 
             <!-- Profile Image -->
-        
+
             <div class="card card-primary card-outline">
 
 
-   
+
 
 
 
@@ -275,11 +275,11 @@ to get the desired effect
 
 <!-- partial:index.partial.html -->
 
-      
+
         <div class="form-wizard">
           <form action="check_pf8.php" method="post"  class="form-horizontal" enctype="multipart/form-data">
 
-             
+
             <div class="form-wizard-header">
               <ul class="list-unstyled form-wizard-steps clearfix">
                  <li class="active" ><span>1</span></li>
@@ -302,21 +302,17 @@ to get the desired effect
               <h5>PF08</h5>
             <?php
 
-
-               $id = $_GET['id'];
-
+$id = $_GET['id'];
 
 $strSQL = "SELECT advisergroup.*, advisergroup.group_id,advisergroup.advisergroup_status,files.files_id,files.by_advisor08,files.files_filename_project,files.by_officer,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
 LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
 LEFT JOIN member ON advisergroup.member_id = member.member_id
-WHERE advisergroup.advisergroup_id = '$id'  ";             
+WHERE advisergroup.advisergroup_id = '$id'  ";
 
-
-              
-     if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-            ?>
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
 
             <fieldset>
             </br>
@@ -331,14 +327,14 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
                         <tr>
                         <th>To do list</th>
 
-                     
+
                           <th><font color='red'> Sign by advisor</font></th>
                           <th></th>
                         </tr>
                       </thead>
                       <tbody>
-                       
-                   
+
+
 
                         <tr>
 
@@ -358,7 +354,7 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
                            <td class="hidden"> 5 chapter of project
 <p>
 
-                
+
 
 
                           </td>
@@ -367,18 +363,18 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
                             <?php echo status_08($objResult->by_advisor08); ?>
                           </td>
 
-  
-                
+
+
 
 
                           <td>
-<?php if( $objResult->files_filename_project != ""){ ?>
-                      <a href="download.php?pdf=<?php echo $objResult->files_filename_project ;?>">
+<?php if ($objResult->files_filename_project != "") {?>
+                      <a href="download.php?pdf=<?php echo $objResult->files_filename_project; ?>">
                          <input type="button" class="btn btn-success" value="Download">
- <?php }else{?>
+ <?php } else {?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
-                    <?php } ?>
+                    <?php }?>
                               </td>
                         </tr>
                       </tbody>
@@ -401,14 +397,14 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
             </fieldset>
           </form>
 
-      
+
          <div class="form-group clearfix">
 
-                  <a href="../form07/pf07.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-danger float-left">Previous</a>
+                  <a href="../form07/pf07.php?id=<?php echo $objResult->advisergroup_id; ?>"class="btn btn-danger float-left">Previous</a>
           <?php if ($objResult->by_advisor08 != "Pass") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button> 
-          <?php }else{?>
-            <a href="../form09/pf09.php?id=<?php echo $objResult->advisergroup_id;?>"   >
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
+          <?php } else {?>
+            <a href="../form09/pf09.php?id=<?php echo $objResult->advisergroup_id; ?>"   >
             <button type="button" class="btn btn-danger float-right" >Next</button></a>
                        <?php }?>
 
@@ -426,10 +422,10 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
               </div>
 
 
-               
+
             <?php
-                 } }
-                   ?>
+}}
+?>
   </div>
       </div>
     </div>
@@ -445,57 +441,55 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
    <link rel="stylesheet" href="../../../assets/comment/style.css">
 
 
-  
+
   <!-- From -->
   <div class="comment-form">
 
 
   <?php
-          $id = $_GET['id'];
+$id = $_GET['id'];
 
-
-    $strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,advisergroup.advisergroup_id,comment.comment_content,comment.date,comment.member_id,member.member_fullname FROM advisergroup
+$strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,advisergroup.advisergroup_id,comment.comment_content,comment.date,comment.member_id,member.member_fullname FROM advisergroup
           LEFT JOIN comment ON advisergroup.advisergroup_id = comment.advisergroup_id
 
           LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
 
 
 
-        LEFT JOIN member ON advisergroup.member_id = member.member_id 
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.advisergroup_id = '$id' and form_pf='8'";                 
-     if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
+        WHERE advisergroup.advisergroup_id = '$id' and form_pf='8'";
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
 
+        ?>
 
-   ?>
- 
 
 
    <div class="callout callout-info">
                 <img class="img-circle img-bordered-sm" src="../../../dist/img/user.png" alt="user image"  width="30" height="30">
-<class style="font-size: 15px;">   &nbsp;&nbsp;<?php echo $objResult->member_id;?>  
+<class style="font-size: 15px;">   &nbsp;&nbsp;<?php echo $objResult->member_id; ?>
 
 
 
 
                    <span class="float-right">
                         <span class="description" style="font-size: 13px;">Shared publicly - <?php echo $objResult->date; ?></span>
-                      </span> 
+                      </span>
              <p>
 
-           
-            <class style="font-size: 15px;">    <?php echo $objResult->comment_content;?>
+
+            <class style="font-size: 15px;">    <?php echo $objResult->comment_content; ?>
             </div>
-      
+
 
 
 
           <?php
-                 }
-               }
-                   ?>   
-           
+}
+}
+?>
+
 
     <!-- /.content -->
   </br>
@@ -511,7 +505,7 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
 
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
        <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
@@ -522,13 +516,13 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
 
   <!-- /.control-sidebar -->
 </div>  <!-- /.content -->
- 
+
     <!-- /.content -->
- 
+
 <!-- ./wrapper -->
 
 <!-- partial -->
- 
+
 <!-- partial -->
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="script.js"></script>
 

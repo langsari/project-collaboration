@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,18 +31,18 @@ include('../menu/function.php');
                   </br>
                   <div class="progress progress">
 
-                    
+
 
                  <?php
 
-                    $con = mysqli_connect('localhost','root','','itpromo_track');
-                    $query="SELECT SUM(form_mark) AS total FROM form";
-                    $query_result=mysqli_query($con,$query);
-                     while ($row=mysqli_fetch_assoc($query_result)) {
-                      $sum= $row['total'];
-                     }
-                    ?>
-                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="100" aria-volumemin="0" aria-volumemax="100" style="width: <?php echo $sum;?>%">
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT SUM(form_mark) AS total FROM form";
+$query_result = mysqli_query($con, $query);
+while ($row = mysqli_fetch_assoc($query_result)) {
+    $sum = $row['total'];
+}
+?>
+                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="100" aria-volumemin="0" aria-volumemax="100" style="width: <?php echo $sum; ?>%">
                               </div>
                           </div>
                           <small>

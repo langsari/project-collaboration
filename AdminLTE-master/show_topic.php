@@ -33,16 +33,16 @@ require 'menu/connect.php';
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-  
+
     </ul>
 
-   
+
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-        
+
                <li class="nav-item d-none d-sm-inline-block">
         <a href="auth/login.php" class="nav-link">Login</a>
       </li>
@@ -65,7 +65,7 @@ require 'menu/connect.php';
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-     
+
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -74,7 +74,7 @@ require 'menu/connect.php';
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview ">
             <a href="Annoucement.php" class="nav-link ">
-             
+
               <i class="nav-icon fa fa-bullhorn"></i>
               <p>
                 Announcements
@@ -83,8 +83,8 @@ require 'menu/connect.php';
             </a>
           </li>
 
-       
-         
+
+
           <li class="nav-item">
             <a href="show_topic.php" class="nav-link active">
               <i class="nav-icon fa fa-file"></i>
@@ -94,7 +94,7 @@ require 'menu/connect.php';
             </a>
           </li>
 
-    
+
           <li class="nav-item">
             <a href="proposal_project.php" class="nav-link">
               <i class="nav-icon fa fa-book"></i>
@@ -181,36 +181,33 @@ require 'menu/connect.php';
 
                      <?php
 
-
-
-
 $strSQL = "SELECT  news_topic.news_id,news_topic.news_topic, news_topic.news_detail, news_topic.news_date,member.member_fullname,news_topic.parent_comment_id FROM news_topic
           LEFT JOIN member ON news_topic.member_id = member.member_id
-WHERE news_topic.news_id and parent_comment_id='parent_comment_id' ";      
-     if($objQuery = $db->query($strSQL)){
-                  while($objResult = $objQuery->fetch_object()){
+WHERE news_topic.news_id and parent_comment_id='parent_comment_id' ";
+if ($objQuery = $db->query($strSQL)) {
+    while ($objResult = $objQuery->fetch_object()) {
 
-   ?>
-   
+        ?>
+
 
             <div class="callout callout-info">
 
 
    <img class="img-circle img-bordered-sm" src="dist/img/user.png" alt="user image"  width="30" height="30">
                         <span class="username" style="font-size: 15px;">
-               &nbsp;&nbsp;<?php echo $objResult->member_fullname; ?> 
+               &nbsp;&nbsp;<?php echo $objResult->member_fullname; ?>
                          <span class="float-right">
                         <span class="description" style="font-size: 13px;">Shared publicly - <?php echo $objResult->news_date; ?></span>
                       </span>
                         <!-- /.user-block -->
               <p>   <class style="font-size: 16px;">     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b> <?php echo $objResult->news_topic; ?></b></p>
-                      
+
                       <class style="font-size: 15px;">   <?php echo $objResult->news_detail; ?>
-                     
+
   <p>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <span class="float-right">
-                           <a href="view_newstopic.php?id=<?php echo $objResult->news_id;?>">
+                           <a href="view_newstopic.php?id=<?php echo $objResult->news_id; ?>">
                   Reply </a>
                         </span>
                       </p>
@@ -218,18 +215,18 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id' ";
 </div>
                     <!-- /.post -->
     <?php
-                 }
-               }
-                   ?>
-                 
+}
+}
+?>
+
                   <!-- /.tab-pane -->
-                  
+
                   <!-- /.tab-pane -->
-                  
-                  
+
+
             <!-- /.nav-tabs-custom -->
 
-   
+
     <!-- /.content -->
   </br>
   </div>

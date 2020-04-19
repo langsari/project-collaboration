@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 
 ?>
 
@@ -43,7 +43,7 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+
     </ul>
 
       <!-- Right navbar links -->
@@ -51,13 +51,13 @@ to get the desired effect
 
 
   <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
-     
+?>
+
   <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="fa fa-globe" style="font-size:20px;"></i><span class="badge badge-danger"
@@ -67,23 +67,19 @@ to get the desired effect
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
           <a href="read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -105,8 +101,8 @@ to get the desired effect
           </a>
         </div>
       </li>
-     
-       
+
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -141,7 +137,7 @@ to get the desired effect
 
                    <li class="nav-item has-treeview ">
             <a href="../advisor/index.php" class="nav-link ">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -150,33 +146,33 @@ to get the desired effect
             </a>
           </li>
 
-    <?php 
-  $my_id = $_SESSION['id'];
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06 FROM advisergroup
+    <?php
+$my_id = $_SESSION['id'];
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06 FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  
-        AND   advisergroup.advisergroup_status='Waiting' or files.files_status = 'Waiting'  or files.status_advisor = 'Waiting' or  files.by_advisor04='Waiting' or files.by_advisor06 ='Waiting' or by_advisor07 ='Waiting'  or files.by_advisor08 ='Waiting' or files.by_advisor10 ='Waiting' 
+        WHERE advisergroup.member_id = '$my_id'
+        AND   advisergroup.advisergroup_status='Waiting' or files.files_status = 'Waiting'  or files.status_advisor = 'Waiting' or  files.by_advisor04='Waiting' or files.by_advisor06 ='Waiting' or by_advisor07 ='Waiting'  or files.by_advisor08 ='Waiting' or files.by_advisor10 ='Waiting'
           or files.by_advisor11 ='Waiting' or files. by_advisor12 ='Waiting'
-               ";  
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+               ";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
          <li class="nav-item">
             <a href="../advisor/advisor_request.php" class="nav-link ">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request 
+       Request
                     <span class="right badge badge-danger"><?php echo $count; ?></span>
              </p>
             </a>
           </li>
-    
- 
-  
+
+
+
           <li class="nav-item has-treeview  menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-book"></i>
@@ -198,14 +194,14 @@ to get the desired effect
                   <p>Project Track</p>
                 </a>
               </li>
-         
+
               <li class="nav-item">
                 <a href="../advisor/proposal_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
                 </a>
               </li>
-                      
+
             </ul>
           </li>
 
@@ -231,12 +227,12 @@ to get the desired effect
                   <p>Project Schedule</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
 
-    
+
 
   <li class="nav-item has-treeview  menu-open">
             <a href="#" class="nav-link ">
@@ -259,13 +255,13 @@ to get the desired effect
                   <p>Topic Require</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
   <li class="nav-item">
             <a href="../committee/committee_request.php" class="nav-link active">
-         <i class="nav-icon fa fa-tasks"></i> 
+         <i class="nav-icon fa fa-tasks"></i>
               <p>
                 For Committee
               </p>
@@ -301,12 +297,12 @@ to get the desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  
+
 <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-     
+
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -320,17 +316,17 @@ to get the desired effect
     </section>
   <!-- Main content -->
     <section class="content">
-   
-        
+
+
           <div class="card card-primary card-outline">
             <div class="card-header">
-           
+
      <h6><b>PROPOSAL REVISION REQUEST (PF03)
 </b> </h6>
-                 
+
             </div>
             <!-- /.card-header -->
-           
+
                <div class="card-body">
               <table  id="example1" class="table table-sm">
                 <thead class="thead-light">
@@ -340,19 +336,19 @@ to get the desired effect
                 <th style="font-size: 15px;" width="20%" class="text-left"> Title project</th>
                 <th style="font-size: 15px;" width="20%" class="text-left">Student</th>
                 <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>
-                <th style="font-size: 15px;" width="10%" class="text-left">Files</th>          
+                <th style="font-size: 15px;" width="10%" class="text-left">Files</th>
                 <th style="font-size: 15px;" width="10%" class="text-left">Status</th>
                 <th style="font-size: 15px;" width="10%" class="text-left">View</th>
                 <th style="font-size: 15px;" width="10%" class="text-left">Options</th>
                 </tr>
                 </thead>
                 <tbody>
-                       
+
             <?php
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
 
-      $strSQL = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,committeegroup.member_id,committeegroup.group_id,schedule.schedule_status,schedule.schedule_id,schedule.schedule_type,files.advisergroup_id,committeegroup.status_presentation,files.files_filename_proposal
+$strSQL = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,committeegroup.member_id,committeegroup.group_id,schedule.schedule_status,schedule.schedule_id,schedule.schedule_type,files.advisergroup_id,committeegroup.status_presentation,files.files_filename_proposal
       FROM committeegroup
         LEFT JOIN advisergroup ON committeegroup.member_id = advisergroup.member_id
         LEFT JOIN member ON committeegroup.member_id = member.member_id
@@ -362,15 +358,15 @@ $my_id = $_SESSION['id'];
 
     WHERE committeegroup.member_id  ='$my_id' AND schedule_type='1' ";
 
-    $i = 1;
-   $count = 1;
+$i = 1;
+$count = 1;
 
-     if($result = $db->query($strSQL)){
-             while($objResult = $result->fetch_object()){
-            ?>
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
 
 
-                
+
                     <tr>
 
             <td class="text-left" style="font-size: 14px;" width="5%" >  <?php echo $count++; ?></td>
@@ -378,93 +374,93 @@ $my_id = $_SESSION['id'];
      <td class="text-left" style="font-size: 14px;" width="25%" ><?php echo get_member_list($objResult->group_id); ?></td>
 
 
-        
+
               <td class="text-left" style="font-size: 14px;" width="20%" ><?php echo get_advisor($objResult->group_id); ?></td>
 
              <td class="text-left" style="font-size: 14px;" width="5%" >
-<?php if( $objResult->files_filename_proposal != ""){ ?>
-                      <a href="../advisor/download.php?pdf=<?php echo $objResult->files_filename_proposal ;?>">
-                      <span class='badge badge-primary'><i class="fa fa-download">Download 
+<?php if ($objResult->files_filename_proposal != "") {?>
+                      <a href="../advisor/download.php?pdf=<?php echo $objResult->files_filename_proposal; ?>">
+                      <span class='badge badge-primary'><i class="fa fa-download">Download
                            </i></a></span>
                        </a>
- <?php }else{?>
+ <?php } else {?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
-                    <?php } ?>
+                    <?php }?>
                               </td>
 
                 <td class="text-left"><?php echo $objResult->schedule_status; ?></td>
 
 
 
-            
+
 
 
           <td class="text-left" style="font-size: 14px;" width="5%" >
 
-  <a href="form03.php?id=<?php echo $objResult->group_id;?>"class="btn btn-primary btn-sm">  <i class="fa fa-eye" title="Detail"></i></a>
+  <a href="form03.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-sm">  <i class="fa fa-eye" title="Detail"></i></a>
 
-         
+
 
                 </td>
 
 
-<td>  
+<td>
 
 
 
 
- <?php if ($objResult->status_presentation != "Pass") {?>        
+ <?php if ($objResult->status_presentation != "Pass") {?>
     <a href="check_pass03.php?id=<?php echo $objResult->group_id; ?>"  >
 
             <button type="button" class="btn btn-success btn-xs  float-left" >
               <i class='fa fa-check'></i></button>
-          <?php }else{?>
+          <?php } else {?>
 
-            <button class="btn btn-warning btn-xs disabled float-left" disabled="disabled">      <i class='fa fa-check'></i></button> 
+            <button class="btn btn-warning btn-xs disabled float-left" disabled="disabled">      <i class='fa fa-check'></i></button>
 
           </a>
                        <?php }?>
-              
+
 
 <a href="reject03.php?id=<?php echo $objResult->group_id; ?>"
                     class="btn btn-danger btn-xs float-right" title="Comfirm"><i
                       class='fa fa-times'></i> </a>
 
 </td>
-               
-                    </tr>          
+
+                    </tr>
 
 
                                     <?php
-                                                             $i++;
+$i++;
 
     }
-               }
-                   ?>
+}
+?>
 
 
                 </tbody>
-               
+
 
               </table>
             </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
-     
+
 
 
 
 <!-- Main content -->
-   
-        
+
+
           <div class="card card-warning card-outline">
             <div class="card-header">
                 <h6><b>PROJECT REVISION (PF10)
 </b> </h6>
 
-                 
+
             </div>
             <!-- /.card-header -->
 
@@ -476,21 +472,21 @@ $my_id = $_SESSION['id'];
                 <th style="font-size: 15px;" width="20%" class="text-left"> Title project</th>
                   <th style="font-size: 15px;" width="20%" class="text-left">Student</th>
                  <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>
-                 <th style="font-size: 15px;" width="10%" class="text-left">Files</th>          
+                 <th style="font-size: 15px;" width="10%" class="text-left">Files</th>
                     <th style="font-size: 15px;" width="10%" class="text-left">Status</th>
                     <th style="font-size: 15px;" width="10%" class="text-left">View</th>
                 <th style="font-size: 15px;" width="10%" class="text-left">Options</th>
 
-          
+
                 </tr>
                 </thead>
                 <tbody>
-                       
+
             <?php
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
 
-      $strSQL = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,committeegroup.member_id,committeegroup.group_id,schedule.schedule_status,schedule.schedule_id,schedule.schedule_type,files.advisergroup_id,committeegroup.status_project,committeegroup.group_id,files.files_filename_project
+$strSQL = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,committeegroup.member_id,committeegroup.group_id,schedule.schedule_status,schedule.schedule_id,schedule.schedule_type,files.advisergroup_id,committeegroup.status_project,committeegroup.group_id,files.files_filename_project
       FROM committeegroup
         LEFT JOIN advisergroup ON committeegroup.member_id = advisergroup.member_id
         LEFT JOIN member ON committeegroup.member_id = member.member_id
@@ -500,15 +496,12 @@ $my_id = $_SESSION['id'];
 
     WHERE committeegroup.member_id  ='$my_id'   and schedule.schedule_type='2'  ";
 
+$i = 1;
+$count = 1;
 
-
-
-  $i = 1;
-   $count = 1;
-
-     if($result = $db->query($strSQL)){
-             while($objResult = $result->fetch_object()){
-            ?>
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
 
 
                          <td class="text-left" style="font-size: 14px;" width="5%" >  <?php echo $count++; ?></td>
@@ -516,18 +509,18 @@ $my_id = $_SESSION['id'];
      <td class="text-left" style="font-size: 14px;" width="25%" ><?php echo get_member_list($objResult->group_id); ?></td>
 
 
-        
+
               <td class="text-left" style="font-size: 14px;" width="20%" ><?php echo get_advisor($objResult->group_id); ?></td>
      <td class="text-left" style="font-size: 14px;" width="5%" >
-<?php if( $objResult->files_filename_project != ""){ ?>
-                      <a href="../form01/download.php?pdf=<?php echo $objResult->files_filename_project ;?>">
-                      <span class='badge badge-primary'><i class="fa fa-download">Download 
+<?php if ($objResult->files_filename_project != "") {?>
+                      <a href="../form01/download.php?pdf=<?php echo $objResult->files_filename_project; ?>">
+                      <span class='badge badge-primary'><i class="fa fa-download">Download
                            </i></a></span>
                        </a>
- <?php }else{?>
+ <?php } else {?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
-                    <?php } ?>
+                    <?php }?>
                               </td>
 
                 <td class="text-left"><?php echo $objResult->schedule_status; ?></td>
@@ -536,32 +529,32 @@ $my_id = $_SESSION['id'];
 
                 <td>
 
-  <a href="form10.php?id=<?php echo $objResult->group_id;?>"class="btn btn-primary btn-sm">  <i class="fa fa-eye" title="Detail"></i></a>
+  <a href="form10.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-sm">  <i class="fa fa-eye" title="Detail"></i></a>
 
-         
+
 
                 </td>
-<td>  
+<td>
 
 
 
- <?php if ($objResult->status_project != "Pass") {?>        
+ <?php if ($objResult->status_project != "Pass") {?>
     <a href="check_pass10.php?id=<?php echo $objResult->group_id; ?>"  >
 
             <button type="button" class="btn btn-success btn-xs  float-left" >
               <i class='fa fa-check'></i></button>
-          <?php }else{?>
+          <?php } else {?>
 
-            <button class="btn btn-warning btn-xs disabled float-left" disabled="disabled">      <i class='fa fa-check'></i></button> 
+            <button class="btn btn-warning btn-xs disabled float-left" disabled="disabled">      <i class='fa fa-check'></i></button>
 
           </a>
                        <?php }?>
-              
+
 &nbsp;&nbsp;
 
 
 
-  
+
 
 
 <a href="reject10.php?id=<?php echo $objResult->group_id; ?>"
@@ -569,25 +562,25 @@ $my_id = $_SESSION['id'];
                       class='fa fa-times'></i> </a>
 
 </td>
-               
-                    </tr>          
+
+                    </tr>
 
 
                                     <?php
-                                                             $i++;
+$i++;
 
     }
-               }
-                   ?>
+}
+?>
 
 
 
 
                 </tbody>
-               
+
 
               </table>
-         
+
 
 
 </div>
@@ -611,7 +604,7 @@ include 'phpmailer/line_message.php';
       <class style="font-size: 14px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
     </footer>
 
- 
+
 <!-- ./wrapper -->
 
 <!-- jQuery -->
@@ -630,7 +623,7 @@ include 'phpmailer/line_message.php';
   $(function () {
     $("#example1").DataTable();
     $("#example2").DataTable();
-   
+
   });
 </script>
 </body>

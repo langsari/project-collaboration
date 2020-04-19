@@ -25,15 +25,15 @@
                 <select class="form-control" name="member_id" hidden="">
 
                   <?php
-                include '../menu/connect.php';
-                $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_id ='".$_SESSION['id']."'";
-                if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-                    echo "<option value='".$objResult->member_id."'>".$objResult->member_fullname."</option>";
-                  }
-                }else{
-                }
-                ?>
+include '../menu/connect.php';
+$strSQL = "SELECT member_id, member_fullname FROM member WHERE member_id ='" . $_SESSION['id'] . "'";
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        echo "<option value='" . $objResult->member_id . "'>" . $objResult->member_fullname . "</option>";
+    }
+} else {
+}
+?>
                 </select>
 
               </div>
@@ -60,19 +60,16 @@
 
                       <h6 class="card-title text-bold">Comments</h6></b>
                       <?php
-            $g_id = get_ag_id1();
-  
-              
+$g_id = get_ag_id1();
 
-    $strSQL = "SELECT advisergroup.*,  advisergroup.group_id,chat.chat_massage,chat.chat_date_time,chat.member_id,member.member_fullname FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  advisergroup.group_id,chat.chat_massage,chat.chat_date_time,chat.member_id,member.member_fullname FROM advisergroup
           LEFT JOIN chat ON advisergroup.advisergroup_id = chat.advisergroup_id
-        LEFT JOIN member ON advisergroup.member_id = member.member_id 
-        WHERE advisergroup.advisergroup_id = '$g_id'";                 
-     if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+        WHERE advisergroup.advisergroup_id = '$g_id'";
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
 
-
-   ?>
+        ?>
 
 
 
@@ -92,11 +89,11 @@
 
 
 
-                            &nbsp;&nbsp; <?php echo $objResult->chat_massage;?></br>
+                            &nbsp;&nbsp; <?php echo $objResult->chat_massage; ?></br>
 
 
 
-                            &nbsp;&nbsp;&nbsp; <?php echo $objResult->chat_date_time;?></br>
+                            &nbsp;&nbsp;&nbsp; <?php echo $objResult->chat_date_time; ?></br>
 
 
 
@@ -107,9 +104,9 @@
                           </td>
 
                           <?php
-                 }
-               }
-                   ?>
+}
+}
+?>
                         </tbody>
                       </table>
                     </div>

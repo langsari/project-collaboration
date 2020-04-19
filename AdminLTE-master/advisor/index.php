@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 
 ?>
 
@@ -35,16 +35,16 @@ include('../menu/function.php');
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
-    </ul>
-   <!-- Right navbar links 
-     <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM comment WHERE comment_id=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
 
-  ?>-->
+    </ul>
+   <!-- Right navbar links
+     <?php
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM comment WHERE comment_id=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
+
+?>-->
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -58,7 +58,7 @@ include('../menu/function.php');
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
-          
+
             <div class="dropdown-divider"></div>
           <a href="read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -67,13 +67,13 @@ include('../menu/function.php');
 
 
   <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
-     
+?>
+
   <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="fa fa-globe" style="font-size:20px;"></i><span class="badge badge-danger"
@@ -83,23 +83,19 @@ include('../menu/function.php');
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
           <a href="read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -121,8 +117,8 @@ include('../menu/function.php');
           </a>
         </div>
       </li>
-     
-       
+
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -156,7 +152,7 @@ include('../menu/function.php');
 
                    <li class="nav-item has-treeview ">
             <a href="index.php" class="nav-link active">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -166,33 +162,33 @@ include('../menu/function.php');
           </li>
 
 
-      <?php 
-     $my_id = $_SESSION['id'];
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06,files.by_advisor04,files.by_advisor07,files.by_advisor08,files.by_advisor11,files.by_advisor12 FROM advisergroup
+      <?php
+$my_id = $_SESSION['id'];
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06,files.by_advisor04,files.by_advisor07,files.by_advisor08,files.by_advisor11,files.by_advisor12 FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  
-        AND   advisergroup.advisergroup_status='Waiting' or files.files_status = 'Waiting'  or files.status_advisor = 'Waiting' or  files.by_advisor04='Waiting' or files.by_advisor06 ='Waiting' or files.by_advisor07 ='Waiting'  or files.by_advisor08 ='Waiting' or files.by_advisor10 ='Waiting' 
+        WHERE advisergroup.member_id = '$my_id'
+        AND   advisergroup.advisergroup_status='Waiting' or files.files_status = 'Waiting'  or files.status_advisor = 'Waiting' or  files.by_advisor04='Waiting' or files.by_advisor06 ='Waiting' or files.by_advisor07 ='Waiting'  or files.by_advisor08 ='Waiting' or files.by_advisor10 ='Waiting'
           or files.by_advisor11 ='Waiting' or files.by_advisor12 ='Waiting'
-               ";  
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+               ";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
          <li class="nav-item">
             <a href="advisor_request.php" class="nav-link ">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request 
+       Request
                     <span class="right badge badge-danger"><?php echo $count; ?></span>
              </p>
             </a>
           </li>
-    
- 
-  
+
+
+
             <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
@@ -214,14 +210,14 @@ include('../menu/function.php');
                   <p>Project Track</p>
                 </a>
               </li>
-         
+
               <li class="nav-item">
                 <a href="proposal_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
                 </a>
               </li>
-             
+
             </ul>
           </li>
 
@@ -247,12 +243,12 @@ include('../menu/function.php');
                   <p>Project Schedule</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
 
-    
+
 
             <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
@@ -275,17 +271,17 @@ include('../menu/function.php');
                   <p>Topic Require</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
 
                 <?php
-                require '../menu/connect.php';
-                   $my_id = $_SESSION['id']; 
-                    $con = mysqli_connect('localhost','root','','itpromo_track');
-                   
-  $query = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,committeegroup.member_id,committeegroup.group_id,schedule.schedule_status,schedule.schedule_id,schedule.schedule_type,files.advisergroup_id,committeegroup.status_project,committeegroup.status_presentation,committeegroup.member_id,files.pf,files.status_advisor
+require '../menu/connect.php';
+$my_id = $_SESSION['id'];
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+
+$query = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,committeegroup.member_id,committeegroup.group_id,schedule.schedule_status,schedule.schedule_id,schedule.schedule_type,files.advisergroup_id,committeegroup.status_project,committeegroup.status_presentation,committeegroup.member_id,files.pf,files.status_advisor
       FROM committeegroup
         LEFT JOIN advisergroup ON committeegroup.member_id = advisergroup.member_id
         LEFT JOIN member ON committeegroup.member_id = member.member_id
@@ -293,17 +289,17 @@ include('../menu/function.php');
           LEFT JOIN files ON committeegroup.committeegroup_id = files.files_id
       LEFT JOIN schedule ON committeegroup.group_id = schedule.group_id
         WHERE committeegroup.member_id='$my_id'  and files.pf='3' or files.pf='10'
-        AND   committeegroup.status_presentation='Waiting' and committeegroup.status_project='Waiting' ";  
+        AND   committeegroup.status_presentation='Waiting' and committeegroup.status_project='Waiting' ";
 
-                    $query_num=mysqli_query($con,$query);
-                    $count=mysqli_num_rows($query_num);
-                    ?>
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
+?>
          <li class="nav-item">
             <a href="../committee/committee_request.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
                        For Committee
- 
+
                     <span class="right badge badge-danger"><?php echo $count; ?></span>
              </p>
             </a>
@@ -338,7 +334,7 @@ include('../menu/function.php');
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  
+
 <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -368,15 +364,15 @@ include('../menu/function.php');
 
 
               <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
 
-                $query="SELECT member_id FROM member ORDER BY member_id";
+$query = "SELECT member_id FROM member ORDER BY member_id";
 
-                $query_num=mysqli_query($con,$query);
-                $row=mysqli_num_rows($query_num);
-                echo '<h1>'.$row.'</h1>';
-                echo 'Total User';
-                ?>
+$query_num = mysqli_query($con, $query);
+$row = mysqli_num_rows($query_num);
+echo '<h1>' . $row . '</h1>';
+echo 'Total User';
+?>
 
                 </div>
                 <div class="icon">
@@ -388,25 +384,25 @@ include('../menu/function.php');
               </div>
             </div>
             <!-- ./col -->
-          
- 
+
+
             <div class="col-lg-3 col-6">
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
 
                 <?php
-                $con = mysqli_connect('localhost','root','','itpromo_track');
-                $my_id = $_SESSION['id'];
-                 $query="SELECT advisergroup_id FROM advisergroup 
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$my_id = $_SESSION['id'];
+$query = "SELECT advisergroup_id FROM advisergroup
                   WHERE member_id='$my_id'
                   ORDER BY advisergroup_id";
 
-                $query_num=mysqli_query($con,$query);
-                $row=mysqli_num_rows($query_num);
-                echo '<h1>'.$row.'</h1>';
-                echo 'Group & Tracking';
-                ?>
+$query_num = mysqli_query($con, $query);
+$row = mysqli_num_rows($query_num);
+echo '<h1>' . $row . '</h1>';
+echo 'Group & Tracking';
+?>
                 </div>
                 <div class="icon">
                 <i class="nav-icon fas fa-folder-open"></i>
@@ -435,23 +431,21 @@ include('../menu/function.php');
                 <div class="inner">
 
                 <?php
-                $con = mysqli_connect('localhost','root','','itpromo_track');
-
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
 
 $my_id = $_SESSION['id'];
 
-
-            $query = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM topic_project
+$query = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM topic_project
           LEFT JOIN advisergroup ON topic_project.advisergroup_id = advisergroup.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
                  WHERE advisergroup.member_id = '$my_id' and topic_project.status='6' ";
 
-                $query_num=mysqli_query($con,$query);
-                $row=mysqli_num_rows($query_num);
-                echo '<h1>'.$row.'</h1>';
-                echo 'Graduated Projects';
-                ?>
+$query_num = mysqli_query($con, $query);
+$row = mysqli_num_rows($query_num);
+echo '<h1>' . $row . '</h1>';
+echo 'Graduated Projects';
+?>
                 </div>
                 <div class="icon">
                 <i class="nav-icon fas fa-graduation-cap"></i>
@@ -460,7 +454,7 @@ $my_id = $_SESSION['id'];
               </div>
             </div>
 
-            
+
 
 
             <!-- ./col -->
@@ -534,18 +528,18 @@ $my_id = $_SESSION['id'];
 include 'phpmailer/line_message.php';
 ?>
 
-  
+
     <!-- /.content-wrapper -->
    <footer class="main-footer">
 
-    <div class="float-right d-none d-sm-block">     <class style="font-size: 14px;">   
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 14px;">
       <b>Version</b> 3.0.3-pre
     </div>
        <class style="font-size: 14px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
   </footer>
 
   <!-- ./wrapper -->
- 
+
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->

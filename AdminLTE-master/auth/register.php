@@ -2,8 +2,8 @@
 <?php
 
 $success = 0;
-if(isset($_GET['success'])){
-  $success = $_GET['success'];
+if (isset($_GET['success'])) {
+    $success = $_GET['success'];
 }
 
 ?>
@@ -21,7 +21,7 @@ if(isset($_GET['success'])){
     //if password bigger than 6 give 1 point
     if (password.length > 6) score++;
 
-    //if password has both lower and uppercase characters give 1 point  
+    //if password has both lower and uppercase characters give 1 point
     if ((password.match(/[a-z]/)) && (password.match(/[A-Z]/))) score++;
 
     //if password has at least one number give 1 point
@@ -88,17 +88,17 @@ if(isset($_GET['success'])){
       <a href="../../index2.html"><b>IT PROJECT</b></a>
     </div>
 
-  
+
       <div class="card card-primary card-outline">
       <div class="card-body register-card-body">
         <p class="login-box-msg ">Register a new membership</p>
-      <?php if($success == 1): ?>
+      <?php if ($success == 1): ?>
         <div class="alert alert-success" role="alert">
           <i class="glyphicon glyphicon-ok"></i> Register Successful! Please wait confirmation by Administrator <a href="../index.php">Back to Homepage</a>
         </div>
-        <?php endif; ?>
+        <?php endif;?>
         <form id="add" name="add" method="post" action="checkregis.php" enctype="multipart/form-data" onsubmit="return checkForm()"  >
-                
+
 
           <div class="input-group mb-3 ">
                ID  Student: &nbsp;
@@ -134,12 +134,12 @@ if(isset($_GET['success'])){
               </div>
             </div>
           </div>
-          
+
 
            <div class="input-group mb-3">
                                        Phone: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-              <input type="text" class="form-control" id="member_phone" name="member_phone" 
+              <input type="text" class="form-control" id="member_phone" name="member_phone"
                 placeholder="Example: 083-185-1521" autocomplete="off" required aria-describedby="basic-addon1"
                 onkeypress='validate(event)' maxlength="10">
               <div class="input-group-append">
@@ -196,7 +196,7 @@ if(isset($_GET['success'])){
             <br>
 </center>
 
- 
+
 
 
 
@@ -210,7 +210,7 @@ if(isset($_GET['success'])){
             <div class="col-6">
               <button type="submit" class="btn btn-primary btn-block">Register</button>
             </div>
-            
+
             <!-- /.col -->
 
         </form>

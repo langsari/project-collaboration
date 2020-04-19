@@ -90,7 +90,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 <div class="chat-popup" id="myForm">
   <form action="check_message.php" class="form-container" method="post">
-    
+
 
 
     <h1>Message</h1>
@@ -116,7 +116,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <label for="msg_text"><b><h4>Message</b></label>
     <textarea placeholder="Type message.." name="con" id="con"   required  style="font-size:18px;"></textarea>
 
-       
+
 
 
     <button type="submit" class="btn">Send</button>

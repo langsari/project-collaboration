@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 
 ?>
 
@@ -44,16 +44,16 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+
     </ul>
    <!-- Right navbar links -->
      <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -68,23 +68,19 @@ to get the desired effect
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
           <a href="read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -106,8 +102,8 @@ to get the desired effect
           </a>
         </div>
       </li>
-     
-       
+
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -145,7 +141,7 @@ to get the desired effect
 
                    <li class="nav-item has-treeview ">
             <a href="index.php" class="nav-link ">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -154,34 +150,34 @@ to get the desired effect
             </a>
           </li>
 
-       <?php 
-     $my_id = $_SESSION['id'];
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06 FROM advisergroup
+       <?php
+$my_id = $_SESSION['id'];
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06 FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  
-        AND   advisergroup.advisergroup_status='Waiting' or files.files_status = 'Waiting'  or files.status_advisor = 'Waiting' or  files.by_advisor04='Waiting' or files.by_advisor06 ='Waiting' or by_advisor07 ='Waiting'  or files.by_advisor08 ='Waiting' or files.by_advisor10 ='Waiting' 
+        WHERE advisergroup.member_id = '$my_id'
+        AND   advisergroup.advisergroup_status='Waiting' or files.files_status = 'Waiting'  or files.status_advisor = 'Waiting' or  files.by_advisor04='Waiting' or files.by_advisor06 ='Waiting' or by_advisor07 ='Waiting'  or files.by_advisor08 ='Waiting' or files.by_advisor10 ='Waiting'
           or files.by_advisor11 ='Waiting' or files. by_advisor12 ='Waiting'
-               ";  
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+               ";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
          <li class="nav-item">
             <a href="advisor_request.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request 
+       Request
                     <span class="right badge badge-danger"><?php echo $count; ?></span>
              </p>
             </a>
           </li>
-    
-    
- 
-  
+
+
+
+
             <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-book"></i>
@@ -203,14 +199,14 @@ to get the desired effect
                   <p>Project Track</p>
                 </a>
               </li>
-         
+
               <li class="nav-item">
                 <a href="proposal_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
                 </a>
               </li>
-             
+
             </ul>
           </li>
 
@@ -236,12 +232,12 @@ to get the desired effect
                   <p>Project Schedule</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
 
-    
+
 
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
@@ -264,13 +260,13 @@ to get the desired effect
                   <p>Topic Require</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
   <li class="nav-item">
             <a href="../committee/committee_request.php" class="nav-link">
-         <i class="nav-icon fa fa-tasks"></i> 
+         <i class="nav-icon fa fa-tasks"></i>
               <p>
                 For Committee
               </p>
@@ -306,12 +302,12 @@ to get the desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  
+
 <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-     
+
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -323,7 +319,7 @@ to get the desired effect
         </div>
       </div><!-- /.container-fluid -->
     </section>
-  
+
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -336,7 +332,7 @@ to get the desired effect
                   New Topic Propose
                 </button>
                 </h3>
-        
+
             </div>
 
   <div class="modal fade" id="addtopic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -350,9 +346,9 @@ to get the desired effect
             </div>
 
             <div class="modal-body">
-              
+
           <form id="add" name="add" method="post" action="check_newstopic.php" onsubmit="return checkForm()">
-                  
+
 
       <div class="form-group row">
           <div class="col-md-3">
@@ -364,13 +360,13 @@ to get the desired effect
                   </div>
                 </div>
 
-            
+
                       <div class="form-group row">
                         <div class="col-md-3">
                           <label class="control-label col-form-label">Detail</label>
                         </div>
                         <div class="col-md-9">
-                    
+
 
   <textarea type="text" rows="5" class="form-control" id="news_detail" name="news_detail"
                   placeholder="Project Description" required > </textarea>
@@ -386,15 +382,15 @@ to get the desired effect
                           <select class="form-control" name="member_id" hidden="">
 
                         <?php
-                include '../menu/connect.php';
-                $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_id ='".$_SESSION['id']."'";
-                if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-                    echo "<option value='".$objResult->member_id."'>".$objResult->member_fullname."</option>";
-                  }
-                }else{
-                }
-                ?>
+include '../menu/connect.php';
+$strSQL = "SELECT member_id, member_fullname FROM member WHERE member_id ='" . $_SESSION['id'] . "'";
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        echo "<option value='" . $objResult->member_id . "'>" . $objResult->member_fullname . "</option>";
+    }
+} else {
+}
+?>
                       </select>
                         </div>
                       </div>
@@ -414,7 +410,7 @@ to get the desired effect
 
             </div>
         </div>
-   
+
 
 
             <!-- /.card-header -->
@@ -432,24 +428,24 @@ to get the desired effect
                 </tr>
                 </thead>
                 <tbody>
-                       
+
             <?php
 
 $strSQL = "SELECT  news_topic.news_id,news_topic.news_topic, news_topic.news_detail, news_topic.news_date,member.member_fullname,news_topic.parent_comment_id FROM news_topic
           LEFT JOIN member ON news_topic.member_id = member.member_id
 WHERE news_topic.news_id and parent_comment_id='parent_comment_id'
-   ORDER BY news_topic.news_id='".$_SESSION['id']."'";
-  
- $i = 1;
-   $count = 1;
-         ?>
+   ORDER BY news_topic.news_id='" . $_SESSION['id'] . "'";
+
+$i = 1;
+$count = 1;
+?>
 
               <?php
-     if($result = $db->query($strSQL)){
-             while($objResult = $result->fetch_object()){
-            ?>
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
 
-                
+
                     <tr>
                     <td class="text-left" style="font-size: 15px;">  <?php echo $count++; ?></td>
                  <td class="text-left" style="font-size: 15px;"><?php echo substr($objResult->news_topic, 0, 30); ?></td>
@@ -460,7 +456,7 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id'
 
 
 
-                  <td>   <a href="display_news.php?id=<?php echo $objResult->news_id;?>"class="btn btn-success btn-sm" >Display
+                  <td>   <a href="display_news.php?id=<?php echo $objResult->news_id; ?>"class="btn btn-success btn-sm" >Display
                </a></td>
 <td>
 <button type="button" class="btn btn-warning btn-xs" data-toggle="modal"
@@ -472,11 +468,11 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id'
                         data-target="#show<?php echo $i; ?>">
                       <i class="fa fa-eye"></i></button>
 
-                  <a href="delete_news.php?id=<?php echo $objResult->news_id;?>"class="btn btn-danger btn-xs" onclick="return confirm('Are You sure Delete?')">
+                  <a href="delete_news.php?id=<?php echo $objResult->news_id; ?>"class="btn btn-danger btn-xs" onclick="return confirm('Are You sure Delete?')">
                   <i class="fa fa-trash" title="Delete"></i></a>
 
-                   
-                           
+
+
 
 
                     <!-- Modal -->
@@ -490,12 +486,12 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id'
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-                                                            
+
                                                         </div>
-                                              
+
                                                 <div class="modal-body">
                                                             <form class="form-horizontal" method="post" action="check_edit_news.php">
-                                                            
+
                                                              <div class="form-group row margin-top-10">
                 <div class="col-md-2">
                   <label class="control-label ">Topic</label>
@@ -503,20 +499,20 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id'
                 <div class="col-md-10">
                      <input type="hidden" name="news_id" value="  <?php echo $objResult->news_id; ?>">
 
-    
+
           <input type="text" class="form-control" id="news_topic"
-      name="news_topic" value="  <?php echo$objResult->news_topic; ?>   ">     
+      name="news_topic" value="  <?php echo $objResult->news_topic; ?>   ">
 
 
                 </div>
               </div>
-                                                                                               
+
   <div class="form-group row">
                 <div class="col-md-2">
                   <label class="control-label ">Detail</label>
                 </div>
                 <div class="col-md-10">
- 
+
 
 
 <textarea type="text" rows="8"  class="form-control" id="news_detail"
@@ -526,20 +522,20 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id'
               </div>
 
 
-                                         
+
                                            <div class="form-group row">
                 <div class="col-md-2">
                   <label class="control-label ">Date</label>
                 </div>
                 <div class="col-md-10">
-   <input type="text" class="form-control" name="news_date" id="news_date" 
+   <input type="text" class="form-control" name="news_date" id="news_date"
    value="<?php echo $objResult->news_date; ?>">
 
             </div>
               </div>
 
 
-                                         
+
                                            <div class="form-group row">
                 <div class="col-md-2">
                   <label class="control-label ">By</label>
@@ -551,7 +547,7 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id'
             </div>
               </div>
 
-                   
+
 
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-default"
@@ -576,12 +572,12 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id'
                                                               View Information</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                            
+
                                                         </div>
-                                              
+
                                                 <div class="modal-body">
                                                             <form class="form-horizontal" method="post" action="#">
-                                                            
+
                                                              <div class="form-group row margin-top-10">
                 <div class="col-md-2">
                   <label class="control-label ">Topic</label>
@@ -589,19 +585,19 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id'
                 <div class="col-md-10">
                      <input type="hidden" name="news_id" value="  <?php echo $objResult->news_id; ?>">
 
-    
-         <?php echo$objResult->news_topic; ?>     
+
+         <?php echo $objResult->news_topic; ?>
 
 
                 </div>
               </div>
-                                                                                               
+
   <div class="form-group row">
                 <div class="col-md-2">
                   <label class="control-label ">Detail</label>
                 </div>
                 <div class="col-md-10">
- 
+
 
 
 
@@ -611,7 +607,7 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id'
               </div>
 
 
-                                         
+
                                            <div class="form-group row">
                 <div class="col-md-2">
                   <label class="control-label ">Date</label>
@@ -623,7 +619,7 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id'
               </div>
 
 
-                                         
+
                                            <div class="form-group row">
                 <div class="col-md-2">
                   <label class="control-label ">By</label>
@@ -631,23 +627,23 @@ WHERE news_topic.news_id and parent_comment_id='parent_comment_id'
                 <div class="col-md-10">
   <?php echo $objResult->member_fullname; ?>
 
- 
-               
+
+
 
                   </td>
-                 
+
             </tr>
 
             <?php
-                                                $i++;  
+$i++;
 
-              }
-               }
-                   ?>
-                
+    }
+}
+?>
+
   </tbody>
                                     </table>
-                              
+
           </form>
   </section>
 </div>
@@ -666,7 +662,7 @@ include 'phpmailer/line_message.php';
       </div>
       <class style="font-size: 14px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
     </footer>
-           
+
 
 <!-- ./wrapper -->
 

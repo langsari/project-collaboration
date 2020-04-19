@@ -2,7 +2,7 @@
 session_start();
 
 require '../../../menu/connect.php';
-include('../../../menu/function.php');
+include '../../../menu/function.php';
 ?>
 
 
@@ -45,7 +45,7 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+
     </ul>
 
 
@@ -58,8 +58,8 @@ to get the desired effect
         <a href="../../auth/logout.php" class="nav-link">Logout</a>
       </li>
       </li>
-     
-       
+
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -95,7 +95,7 @@ to get the desired effect
 
                    <li class="nav-item has-treeview">
             <a href="../../../admin/index.php" class="nav-link">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -103,7 +103,7 @@ to get the desired effect
               </p>
             </a>
           </li>
-         
+
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fa fa-users"></i>
@@ -118,12 +118,12 @@ to get the desired effect
                   <i class="far fa-circle nav-icon"></i>
                   <p>User Request</p>
                   <?php
-                    $con = mysqli_connect('localhost','root','','itpromo_track');
-                    $query="SELECT member_id FROM member WHERE admin_id=0";
-                    $query_num=mysqli_query($con,$query);
-                    $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT member_id FROM member WHERE admin_id=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-                    ?>
+?>
                     <span class="right badge badge-danger"><?php echo $count; ?></span>
                 </a>
               </li>
@@ -141,13 +141,13 @@ to get the desired effect
               </li>
             </ul>
           </li>
-        
-        
+
+
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
-                Manage Schedule 
+                Manage Schedule
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -166,9 +166,9 @@ to get the desired effect
               </li>
             </ul>
           </li>
-    
 
-  
+
+
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>
@@ -215,7 +215,7 @@ to get the desired effect
                   <p>Add Annoucements</p>
                 </a>
               </li>
-             
+
             </ul>
           </li>
 
@@ -239,7 +239,7 @@ to get the desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  
+
 
   <!-- PAGE CONTENT -->
 
@@ -264,11 +264,11 @@ to get the desired effect
      <div class="col-md-12 ">
 
             <!-- Profile Image -->
-        
+
             <div class="card card-primary card-outline">
 
 
-   
+
 
 
 
@@ -305,11 +305,11 @@ $id = $_GET['id'];
 $strSQL = "SELECT advisergroup.*,  files.by_advisor04,files.Owner,files.advisergroup_id,files.pf,files.status_advisor,files.files_filename_proposal,files.files_id,files.advisergroup_id FROM advisergroup
 LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 LEFT JOIN member ON advisergroup.member_id = member.member_id
-WHERE advisergroup.advisergroup_id = '$id'  ";             
-      
-     if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-            ?>
+WHERE advisergroup.advisergroup_id = '$id'  ";
+
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
 
 
             <fieldset>
@@ -325,33 +325,33 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
                         <tr>
                         <th>To do list</th>
 
-                     
+
                           <th><font color='red'> *Sign by advisor</font></th>
                           <th><font color='red'> *Sign by Committee</font></th>
                         </tr>
                       </thead>
                       <tbody>
-                       
+
                         <tr>
                           <td>1). Project Proposal Approval</td>
 
                             <td>
                           </br>
-                         
-                            <?php echo status_04($objResult->by_advisor04); ?> 
-                 
+
+                            <?php echo status_04($objResult->by_advisor04); ?>
+
                           <span>
                               <?php echo get_advisor($objResult->group_id); ?></span>
                           </td>
 
                           <td>
-                            
+
                             <span><?php echo get_status_committee($objResult->group_id); ?></span>
                             <p>
 
                           </td>
 
-                    
+
 
 </tr>
                       </tbody>
@@ -373,14 +373,14 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
             </fieldset>
           </form>
 
-      
+
          <div class="form-group clearfix">
 
-                  <a href="../form03/pf03.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-danger float-left">Previous</a>
+                  <a href="../form03/pf03.php?id=<?php echo $objResult->advisergroup_id; ?>"class="btn btn-danger float-left">Previous</a>
           <?php if ($objResult->by_advisor04 != "Pass") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button> 
-          <?php }else{?>
-            <a href="../form05/pf05.php?id=<?php echo $objResult->advisergroup_id;?>"   >
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
+          <?php } else {?>
+            <a href="../form05/pf05.php?id=<?php echo $objResult->advisergroup_id; ?>"   >
             <button type="button" class="btn btn-danger float-right" >Next</button></a>
                        <?php }?>
 
@@ -398,10 +398,10 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
               </div>
 
 
-            
+
             <?php
-                 } }
-                   ?>
+}}
+?>
 
         </div>
       </div>
@@ -409,7 +409,7 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
   </section>
 
     <!-- /.content -->
- 
+
 <!-- ./wrapper -->
 
 <!-- partial -->

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 
 ?>
 
@@ -44,7 +44,7 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+
     </ul>
 
 
@@ -65,15 +65,15 @@ to get the desired effect
           </a>
         </div>
       </li>
-     
-       
+
+
     </ul>
   </nav>
   <!-- /.navbar -->
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-  
+
 
     <a href="index.php" class="brand-link">
         <img src="../dist/img/n2.png" width="100%" >
@@ -101,7 +101,7 @@ to get the desired effect
 
                    <li class="nav-item has-treeview ">
             <a href="../advisor/index.php" class="nav-link ">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -110,36 +110,36 @@ to get the desired effect
             </a>
           </li>
 
-       
 
-     <?php 
-     $my_id = $_SESSION['id'];
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06 FROM advisergroup
+
+     <?php
+$my_id = $_SESSION['id'];
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06 FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  
-        AND   advisergroup.advisergroup_status='Waiting' or files.files_status = 'Waiting'  or files.status_advisor = 'Waiting' or  files.by_advisor04='Waiting' or files.by_advisor06 ='Waiting' or by_advisor07 ='Waiting'  or files.by_advisor08 ='Waiting' or files.by_advisor10 ='Waiting' 
+        WHERE advisergroup.member_id = '$my_id'
+        AND   advisergroup.advisergroup_status='Waiting' or files.files_status = 'Waiting'  or files.status_advisor = 'Waiting' or  files.by_advisor04='Waiting' or files.by_advisor06 ='Waiting' or by_advisor07 ='Waiting'  or files.by_advisor08 ='Waiting' or files.by_advisor10 ='Waiting'
           or files.by_advisor11 ='Waiting' or files. by_advisor12 ='Waiting'
-               ";  
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+               ";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
          <li class="nav-item">
             <a href="../advisor/advisor_request.php" class="nav-link ">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request 
+       Request
                     <span class="right badge badge-danger"><?php echo $count; ?></span>
              </p>
             </a>
           </li>
- 
 
- 
-  
+
+
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>
@@ -161,7 +161,7 @@ to get the desired effect
                   <p>Project Track</p>
                 </a>
               </li>
-         
+
               <li class="nav-item">
                 <a href="../advisor/proposal_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
@@ -206,12 +206,12 @@ to get the desired effect
                   <p>Project Schedule</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
 
-    
+
 
   <li class="nav-item has-treeview">
             <a href="#" class="nav-link ">
@@ -234,13 +234,13 @@ to get the desired effect
                   <p>Topic Require</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
   <li class="nav-item">
             <a href="../committee/committee_request.php" class="nav-link">
-         <i class="nav-icon fa fa-tasks"></i> 
+         <i class="nav-icon fa fa-tasks"></i>
               <p>
                 For Committee
               </p>
@@ -276,7 +276,7 @@ to get the desired effect
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-  
+
 <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -307,7 +307,7 @@ to get the desired effect
                 <thead>
                   <tr>
                       <th>#</th>
-                <th>Student</th>  
+                <th>Student</th>
                <th>Title project</th>
                 <th>Status</th>
 
@@ -320,11 +320,7 @@ to get the desired effect
      <?php
 $my_id = $_SESSION['id'];
 
-
-
-
-
-      $strSQL = "SELECT advisergroup.*,  advisergroup.group_id,advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  advisergroup.group_id,advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic FROM advisergroup
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
@@ -332,33 +328,33 @@ $my_id = $_SESSION['id'];
 
         WHERE advisergroup.member_id = '$my_id'   ";
 
-        ?>
+?>
              <?php
-     if($result = $db->query($strSQL)){
-             while($objResult = $result->fetch_object()){
-            ?>
-         
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
+
             <tr>
                         <td class="text-left"><?php echo $objResult->group_id; ?></td>
                   <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
                   <td class="text-left"><?php echo get_topic($objResult->group_id); ?></td>
- <td><a href="../view track/form01/pf01.php?id=<?php echo $objResult->advisergroup_id;?>"><i class="fa fa-edit"
+ <td><a href="../view track/form01/pf01.php?id=<?php echo $objResult->advisergroup_id; ?>"><i class="fa fa-edit"
                       title="View">View Track</i></a>
 
                 </td>                    </tr>
 
             <?php
-    }
-               }
-                   ?>
-                  
+}
+}
+?>
+
 
 
                 </tbody>
                 <tfoot>
                 <tr>
                   <th>#</th>
-                <th>Student</th>  
+                <th>Student</th>
                <th>Title project</th>
                 <th>Status</th>
 

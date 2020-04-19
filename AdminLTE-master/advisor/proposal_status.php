@@ -40,7 +40,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 
 ?>
 
@@ -83,16 +83,16 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+
     </ul>
    <!-- Right navbar links -->
      <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -107,23 +107,19 @@ to get the desired effect
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
           <a href="read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -145,8 +141,8 @@ to get the desired effect
           </a>
         </div>
       </li>
-     
-       
+
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -180,7 +176,7 @@ to get the desired effect
 
                    <li class="nav-item has-treeview ">
             <a href="index.php" class="nav-link ">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -189,33 +185,33 @@ to get the desired effect
             </a>
           </li>
 
-     <?php 
-     $my_id = $_SESSION['id'];
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06 FROM advisergroup
+     <?php
+$my_id = $_SESSION['id'];
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06 FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  
-        AND   advisergroup.advisergroup_status='Waiting' or files.files_status = 'Waiting'  or files.status_advisor = 'Waiting' or  files.by_advisor04='Waiting' or files.by_advisor06 ='Waiting' or by_advisor07 ='Waiting'  or files.by_advisor08 ='Waiting' or files.by_advisor10 ='Waiting' 
+        WHERE advisergroup.member_id = '$my_id'
+        AND   advisergroup.advisergroup_status='Waiting' or files.files_status = 'Waiting'  or files.status_advisor = 'Waiting' or  files.by_advisor04='Waiting' or files.by_advisor06 ='Waiting' or by_advisor07 ='Waiting'  or files.by_advisor08 ='Waiting' or files.by_advisor10 ='Waiting'
           or files.by_advisor11 ='Waiting' or files. by_advisor12 ='Waiting'
-               ";  
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+               ";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
          <li class="nav-item">
             <a href="advisor_request.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request 
+       Request
                     <span class="right badge badge-danger"><?php echo $count; ?></span>
              </p>
             </a>
           </li>
-    
- 
-  
+
+
+
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>
@@ -237,14 +233,14 @@ to get the desired effect
                   <p>Project Track</p>
                 </a>
               </li>
-         
+
               <li class="nav-item">
                 <a href="proposal_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
                 </a>
               </li>
-         
+
             </ul>
           </li>
 
@@ -270,12 +266,12 @@ to get the desired effect
                   <p>Project Schedule</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
 
-    
+
 
             <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
@@ -298,13 +294,13 @@ to get the desired effect
                   <p>Topic Require</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
   <li class="nav-item">
             <a href="../committee/committee_request.php" class="nav-link">
-         <i class="nav-icon fa fa-tasks"></i> 
+         <i class="nav-icon fa fa-tasks"></i>
               <p>
                 For Committee
               </p>
@@ -340,12 +336,12 @@ to get the desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  
+
 <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-     
+
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -359,9 +355,9 @@ to get the desired effect
     </section>
   <!-- Main content -->
     <section class="content">
-   
-        
-          
+
+
+
             <div class="card card-primary card-outline">
             <div class="card-header">
               <h3 class="card-title">All Final Project Topics</h3>
@@ -385,30 +381,28 @@ to get the desired effect
 
 
 
-           
+
                 <tbody>
                       <?php
-                  //   require 'menu/function.php';
+//   require 'menu/function.php';
 $my_id = $_SESSION['id'];
 
-
-            $strSQL = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy,partnergroup.group_number FROM topic_project
+$strSQL = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy,partnergroup.group_number FROM topic_project
 
           LEFT JOIN advisergroup ON topic_project.advisergroup_id = advisergroup.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
                  WHERE advisergroup.member_id = '$my_id'";
 
-
-                               $i = 1;
-   $count = 1;
-              ?>
+$i = 1;
+$count = 1;
+?>
  <?php
-     if($result = $db->query($strSQL)){
-             while($objResult = $result->fetch_object()){
-            ?>
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
 
-                
+
                     <tr>
 
 
@@ -419,7 +413,7 @@ $my_id = $_SESSION['id'];
                      <td class="text-left" style="font-size: 15px;"><?php echo get_status_project($objResult->status); ?></td>
 
 
-                <td> 
+                <td>
 
 
                  <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
@@ -427,7 +421,7 @@ $my_id = $_SESSION['id'];
                       <i class="fa fa-eye"></i></button>
 
 
-       <a href="delete_project.php?id=<?php echo $objResult->topic_id;?>"class="btn btn-danger btn-xs">
+       <a href="delete_project.php?id=<?php echo $objResult->topic_id; ?>"class="btn btn-danger btn-xs">
                   <i class="fa fa-trash" title="Delete"></i>delete</a>
 
 
@@ -441,7 +435,7 @@ $my_id = $_SESSION['id'];
                             <div class="modal-header bg-info">
                               <h5 class="modal-title">Proposal Detail</h5>
                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                         
+
                     </div>
 
                             <div class="modal-body">
@@ -452,7 +446,7 @@ $my_id = $_SESSION['id'];
                 </div>
                 <div class="col-md-10">
                   <?php echo $objResult->Owner; ?>
-                  
+
                 </div>
               </div>
 
@@ -504,7 +498,7 @@ $my_id = $_SESSION['id'];
 
               <!--get project Proposal status -->
 
-             
+
               <div class="form-group row">
                 <div class="col-md-2">
                   <label class="control-label ">Advisor</label>
@@ -518,7 +512,7 @@ $my_id = $_SESSION['id'];
                   <label class="control-label ">Committee</label>
                 </div>
                 <div class="col-md-10">
-            <?php echo get_committee1($objResult->group_id); ?>       
+            <?php echo get_committee1($objResult->group_id); ?>
                      </div>
               </div>
 
@@ -544,28 +538,28 @@ $my_id = $_SESSION['id'];
               </div>
 
 
-  
 
 
-                  
+
+
                 </td>
 
 <td><button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#editPS"
                     onclick="edit_ps(<?php echo $objResult->advisergroup_id; ?>)"><i class="fa fa-edit"></i> Edit</button>
 </td>
 
-               
-                    </tr>          
+
+                    </tr>
 
 
                                     <?php
-                                      $i++;  
+$i++;
     }
-               }
-                   ?>
+}
+?>
 
 
-          
+
               </table>
             </div>
             <!-- /.card-body -->
@@ -586,7 +580,7 @@ $my_id = $_SESSION['id'];
                             <div class="modal-header bg-info">
                               <h5 class="modal-title">Edit Proposal Status</h5>
                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                         
+
                     </div>
 
                             <div class="modal-body">
@@ -597,7 +591,7 @@ $my_id = $_SESSION['id'];
                 </div>
                 <div class="col-md-10">
                   <input type="text" class="form-control" name="Owner" id="Owner" disabled="">
-                  
+
                 </div>
               </div>
 
@@ -704,10 +698,10 @@ $my_id = $_SESSION['id'];
 
     </form>
     </fieldset>
-        
+
     </section>
     <!-- /.content -->
-  
+
   </div>
 
 </div>

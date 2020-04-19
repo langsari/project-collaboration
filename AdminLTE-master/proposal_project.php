@@ -2,7 +2,7 @@
 <?php
 session_start();
 require 'menu/connect.php';
-include('menu/function.php');
+include 'menu/function.php';
 
 ?>
 
@@ -40,14 +40,14 @@ include('menu/function.php');
 
     </ul>
 
-   
 
-  
+
+
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-        
+
                <li class="nav-item d-none d-sm-inline-block">
         <a href="auth/login.php" class="nav-link">Login</a>
       </li>
@@ -69,7 +69,7 @@ include('menu/function.php');
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-     
+
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -78,7 +78,7 @@ include('menu/function.php');
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview ">
             <a href="Annoucement.php" class="nav-link ">
-             
+
               <i class="nav-icon fa fa-bullhorn"></i>
               <p>
                 Announcements
@@ -87,8 +87,8 @@ include('menu/function.php');
             </a>
           </li>
 
-       
-         
+
+
           <li class="nav-item">
             <a href="show_topic.php" class="nav-link">
               <i class="nav-icon fa fa-file"></i>
@@ -98,7 +98,7 @@ include('menu/function.php');
             </a>
           </li>
 
-    
+
           <li class="nav-item">
             <a href="proposal_project.php" class="nav-link active">
               <i class="nav-icon fa fa-book"></i>
@@ -178,9 +178,9 @@ include('menu/function.php');
           <div class="card card-primary card-outline">
             <div class="card-header">
                <h3 class="card-title">
-                  
+
                 </h3>
-        
+
             </div>
              <div class="card-body">
               <table id="example1" class="table table-sm "  >
@@ -201,23 +201,21 @@ include('menu/function.php');
                   <tbody >
         <?php
 
-
-
-       $strSQL = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM topic_project
+$strSQL = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM topic_project
 
           LEFT JOIN advisergroup ON topic_project.advisergroup_id = advisergroup.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
          WHERE topic_project.advisergroup_id ";
 
-          $i = 1;
-          $count = 1;
-   
-        ?>
+$i = 1;
+$count = 1;
+
+?>
         <?php
-     if($result = $db->query($strSQL)){
-             while($objResult = $result->fetch_object()){
-            ?>
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
                     <tr>
                 <td class="text-left" style="font-size: 16px;">   <?php echo $count++; ?></td>
                 <td class="text-left"style="font-size: 16px;"><?php echo $objResult->group_number; ?></td>
@@ -225,9 +223,9 @@ include('menu/function.php');
                 <td class="text-left" style="font-size: 16px;"><?php echo get_member_list($objResult->group_id, 0, 45); ?></td>
                 <td class="text-left" style="font-size: 16px;"><?php echo $objResult->topic_topic; ?></td>
                 <td class="text-left" style="font-size: 16px;"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
-              
-                <td>               
-                     
+
+                <td>
+
  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                        data-target="#show<?php echo $i; ?>">
                   <i class="fa fa-eye" title="Edit">View</i> </button>
@@ -241,7 +239,7 @@ include('menu/function.php');
                             <div class="modal-header bg-info">
                               <h5 class="modal-title">Project Detail</h5>
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
-                         
+
                         </div>
 
                             <div class="modal-body">
@@ -252,7 +250,7 @@ include('menu/function.php');
                 </div>
                 <div class="col-md-10">
                   <?php echo $objResult->Owner; ?>
-                  
+
                 </div>
               </div>
 
@@ -301,13 +299,13 @@ include('menu/function.php');
               </div>
 
 
-      
+
               <div class="form-group row">
                 <div class="col-md-2">
                   <label class="control-label ">Advisor</label>
                 </div>
                 <div class="col-md-10">
-                <?php echo get_advisor($objResult->group_id); ?>                
+                <?php echo get_advisor($objResult->group_id); ?>
                 </div>
               </div>
 
@@ -316,7 +314,7 @@ include('menu/function.php');
                   <label class="control-label ">Committee</label>
                 </div>
                 <div class="col-md-10">
-            <?php echo get_committee1($objResult->group_id); ?>       
+            <?php echo get_committee1($objResult->group_id); ?>
                      </div>
               </div>
 
@@ -329,14 +327,14 @@ include('menu/function.php');
                 </div>
               </div>
 
-              
+
               <div class="form-group row">
                 <div class="col-md-2">
                   <label class="control-label ">ِAbstract</label>
                 </div>
                 <div class="col-md-10">
                   <?php echo $objResult->topic_abstrack; ?>
-                  
+
                 </div>
               </div>
 
@@ -345,7 +343,7 @@ include('menu/function.php');
 
 
 
-  
+
 
 
     </div>
@@ -360,11 +358,11 @@ include('menu/function.php');
                   </td>
                 </tr>
                              <?php
-                                    $i++;  
+$i++;
     }
-               }
-                   ?>
-                
+}
+?>
+
               </table>
             </div>
             <!-- /.card-body -->
@@ -424,7 +422,7 @@ include('menu/function.php');
     });
   });
 
- 
+
 </script>
 
 

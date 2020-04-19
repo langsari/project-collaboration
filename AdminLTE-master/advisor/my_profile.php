@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 
 ?>
 
@@ -44,16 +44,16 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+
     </ul>
    <!-- Right navbar links -->
      <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -68,23 +68,19 @@ to get the desired effect
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
           <a href="read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -106,8 +102,8 @@ to get the desired effect
           </a>
         </div>
       </li>
-     
-       
+
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -141,7 +137,7 @@ to get the desired effect
 
                    <li class="nav-item has-treeview ">
             <a href="index.php" class="nav-link ">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -150,32 +146,32 @@ to get the desired effect
             </a>
           </li>
 
-   <?php 
-     $my_id = $_SESSION['id'];
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06 FROM advisergroup
+   <?php
+$my_id = $_SESSION['id'];
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06 FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  
-        AND   advisergroup.advisergroup_status='Waiting' or files.files_status = 'Waiting'  or files.status_advisor = 'Waiting' or  files.by_advisor04='Waiting' or files.by_advisor06 ='Waiting' or by_advisor07 ='Waiting'  or files.by_advisor08 ='Waiting' or files.by_advisor10 ='Waiting' 
+        WHERE advisergroup.member_id = '$my_id'
+        AND   advisergroup.advisergroup_status='Waiting' or files.files_status = 'Waiting'  or files.status_advisor = 'Waiting' or  files.by_advisor04='Waiting' or files.by_advisor06 ='Waiting' or by_advisor07 ='Waiting'  or files.by_advisor08 ='Waiting' or files.by_advisor10 ='Waiting'
           or files.by_advisor11 ='Waiting' or files. by_advisor12 ='Waiting'
-               ";  
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+               ";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
          <li class="nav-item">
             <a href="advisor_request.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request 
+       Request
                     <span class="right badge badge-danger"><?php echo $count; ?></span>
              </p>
             </a>
           </li>
-    
-  
+
+
             <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-book"></i>
@@ -197,14 +193,14 @@ to get the desired effect
                   <p>Project Track</p>
                 </a>
               </li>
-         
+
               <li class="nav-item">
                 <a href="proposal_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Project Topics</p>
                 </a>
               </li>
-                      
+
             </ul>
           </li>
 
@@ -230,12 +226,12 @@ to get the desired effect
                   <p>Project Schedule</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
 
-    
+
 
             <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
@@ -258,13 +254,13 @@ to get the desired effect
                   <p>Topic Require</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
   <li class="nav-item">
             <a href="../committee/committee_request.php" class="nav-link">
-         <i class="nav-icon fa fa-tasks"></i> 
+         <i class="nav-icon fa fa-tasks"></i>
               <p>
                 For Committee
               </p>
@@ -301,7 +297,7 @@ to get the desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  
+
 
   <!-- PAGE CONTENT -->
 
@@ -323,15 +319,14 @@ to get the desired effect
   <!-- Main content -->
 
        <?php
-   
-  $strSQL = "SELECT * FROM member  WHERE member_id='".$_SESSION['id']."'";      
 
-  
-        ?>
+$strSQL = "SELECT * FROM member  WHERE member_id='" . $_SESSION['id'] . "'";
+
+?>
         <?php
-     if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-            ?>
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
 
 
 
@@ -342,9 +337,9 @@ to get the desired effect
             <form  class="p-5 bg-white" enctype="multipart/form-data" method="post"
              action="check_edit_profile.php" >
               <center>
-              
+
                 <h2> About me
-                 
+
               </h2>
               </center></br>
               <hr>
@@ -378,7 +373,7 @@ to get the desired effect
                      <input type="text" class="form-control" name="member_idcard" id="member_idcard"  value="<?php echo $objResult->member_idcard; ?>" >
                 </div>
 
-        
+
 
                 <!-- <div class="col-md-6">
                   <label class="text-black" for="lname">ประเภทงาน</label>
@@ -386,13 +381,13 @@ to get the desired effect
                 </div> -->
                 <div class="col-md-4">
                   <label class="text-black" >Faculty</label>
-                       <input type="text" class="form-control" name="member_faculty" id="member_faculty"  value="<?php echo $objResult->member_faculty; ?>" >                                            
+                       <input type="text" class="form-control" name="member_faculty" id="member_faculty"  value="<?php echo $objResult->member_faculty; ?>" >
 
                 </div>
 
        <div class="col-md-4">
                   <label class="text-black" >Department</label>
-              <input type="text" class="form-control" name="member_major" id="member_major"  value="<?php echo $objResult->member_major; ?>" >                                               
+              <input type="text" class="form-control" name="member_major" id="member_major"  value="<?php echo $objResult->member_major; ?>" >
 
                 </div>
 
@@ -405,34 +400,34 @@ to get the desired effect
                        <input type="text" class="form-control" name="member_birthday" id="member_birthday"  value="<?php echo $objResult->member_birthday; ?>" >
                 </div>
 
-        
+
 
                 <!-- <div class="col-md-6">
                   <label class="text-black" for="lname">ประเภทงาน</label>
                   <input type="text" id="lname" class="form-control" required autofocus>
                 </div> -->
-            
+
        <div class="col-md-4">
                   <label class="text-black" >Gender</label>
-                 
+
 
                 <select class="form-control" name="member_gender" id="member_gender" onChange="getTeam(this.value);"  >
-<option  value="<?php echo $objResult->member_gender; ?>"><?php echo $objResult->member_gender;?> </option>
-                                     <option value="Male">Male</option>     
+<option  value="<?php echo $objResult->member_gender; ?>"><?php echo $objResult->member_gender; ?> </option>
+                                     <option value="Male">Male</option>
              <option value="Female">Female</option>
- 
 
-                                        </select>                                         
+
+                                        </select>
 
                 </div>
 
           <div class="col-md-4">
                   <label class="text-black" >Position</label>
-                  
+
 
                            <select class="form-control" name="member_pos" id="member_pos" onChange="getTeam(this.value);"  >
-<option  value="<?php echo $objResult->member_pos; ?>"><?php echo $objResult->member_pos;?> </option>
-                              
+<option  value="<?php echo $objResult->member_pos; ?>"><?php echo $objResult->member_pos; ?> </option>
+
              <option value="Lecturer">Lecturer</option>
              <option value="Student">Student</option>
              <option value="Officer">Officer</option>
@@ -441,19 +436,19 @@ to get the desired effect
 
                 </div>
 
-        
+
   <div class="col-md-8">
                   <label class="text-black" >Password</label>
-              <input type="text" class="form-control" name="member_password" id="member_password"  value="<?php echo $objResult->member_password; ?>" >                                               
+              <input type="text" class="form-control" name="member_password" id="member_password"  value="<?php echo $objResult->member_password; ?>" >
 
                 </div>
 
-                                         
+
 
 
               </div>
 
-            
+
 
 
 
@@ -464,12 +459,12 @@ to get the desired effect
               </p>
               <hr>
 
-         
+
               <div class="row form-group">
                 <div class="col-md-6 mb-4 mb-md-0">
                   <label class="text-black" >Tel</label>
 
-                  <input type="text" class="form-control" name="member_phone" id="member_phone"  value="<?php echo $objResult->member_phone; ?>" >      
+                  <input type="text" class="form-control" name="member_phone" id="member_phone"  value="<?php echo $objResult->member_phone; ?>" >
                 </div>
 
                 <div class="col-md-6">
@@ -477,12 +472,12 @@ to get the desired effect
                  <input type="text" class="form-control" name="member_email" id="member_email"  value="<?php echo $objResult->member_email; ?>" >
 
                 </div>
-            
+
               </div>
 
               <div class="col-md-12">
                   <label class="text-black" >Address</label>
-              <input type="text" class="form-control" name="member_address" id="member_address"  value="<?php echo $objResult->member_address; ?>" >                                               
+              <input type="text" class="form-control" name="member_address" id="member_address"  value="<?php echo $objResult->member_address; ?>" >
 
                 </div>
 
@@ -490,20 +485,20 @@ to get the desired effect
 
 
 
-                                     <input type="hidden" name="member_id" value="<?php echo $objResult->member_id;?>"/>
+                                     <input type="hidden" name="member_id" value="<?php echo $objResult->member_id; ?>"/>
                                      <br>
 
 <center>
      <button type="submit" class="btn btn-success"><i     class="glyphicon glyphicon-ok"></i>
                                                                         Edit</button>
-    
+
 
             </form>
           </div>
                     <?php
-                 }
-               }
-                   ?>
+}
+}
+?>
         </div>
 </div>
         <!-- /.col -->
@@ -533,7 +528,7 @@ to get the desired effect
 
 
     <!-- /.content -->
- 
+
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->

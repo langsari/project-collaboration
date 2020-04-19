@@ -46,21 +46,18 @@
   <?php
 $id = $_GET['id'];
 
-
-        $sql = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,committeegroup.status_presentation,committeegroup.group_id,files.Owner,advisergroup.group_id,files.status_advisor FROM advisergroup
+$sql = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,committeegroup.status_presentation,committeegroup.group_id,files.Owner,advisergroup.group_id,files.status_advisor FROM advisergroup
               LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
           LEFT JOIN committeegroup ON advisergroup.group_id = committeegroup.group_id
           LEFT JOIN files ON advisergroup.group_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.group_id  ='".$_GET['id']."'";  
+        WHERE advisergroup.group_id  ='" . $_GET['id'] . "'";
 
-
-
-        ?>
+?>
   <?php
-     if($result = $db->query($sql)){
-                  while($objResult = $result->fetch_object()){
-            ?>
+if ($result = $db->query($sql)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
   <div class="content">
     <div class="row">
       <div class="col-md-10 ">
@@ -68,7 +65,7 @@ $id = $_GET['id'];
           <div class="card-block">
 
 
-            <form action="check_10.php?id=<?php echo $_GET["id"];?>" name="fromEdit" method="post"
+            <form action="check_10.php?id=<?php echo $_GET["id"]; ?>" name="fromEdit" method="post"
               onsubmit="return checkForm()">
 
 
@@ -161,7 +158,7 @@ $id = $_GET['id'];
 
 
 
-              <input type="hidden" name="files_id" value="<?php echo $objResult->files_id;?>" />
+              <input type="hidden" name="files_id" value="<?php echo $objResult->files_id; ?>" />
 
 
 
@@ -174,6 +171,6 @@ $id = $_GET['id'];
         </div>
       </div>
       <?php
-                 }
-               }
-                   ?>
+}
+}
+?>

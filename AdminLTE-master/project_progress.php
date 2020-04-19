@@ -1,7 +1,7 @@
 <?php
 session_start();
 require 'menu/connect.php';
-include('menu/function.php');
+include 'menu/function.php';
 
 ?>
 
@@ -33,17 +33,17 @@ include('menu/function.php');
     <!-- Left navbar links -->
 
     <?php
-$conn = new mysqli("localhost","root","","itpromo_track");
-$count=0;
-if(!empty($_POST['add'])) {
-  $subject = mysqli_real_escape_string($conn,$_POST["subject"]);
-  $comment = mysqli_real_escape_string($conn,$_POST["comment"]);
-  $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
-  mysqli_query($conn, $sql);
+$conn = new mysqli("localhost", "root", "", "itpromo_track");
+$count = 0;
+if (!empty($_POST['add'])) {
+    $subject = mysqli_real_escape_string($conn, $_POST["subject"]);
+    $comment = mysqli_real_escape_string($conn, $_POST["comment"]);
+    $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
+    mysqli_query($conn, $sql);
 }
-$sql2="SELECT * FROM notify WHERE status = 0";
-$result=mysqli_query($conn, $sql2);
-$count=mysqli_num_rows($result);
+$sql2 = "SELECT * FROM notify WHERE status = 0";
+$result = mysqli_query($conn, $sql2);
+$count = mysqli_num_rows($result);
 ?>
 
 <script type="text/javascript">
@@ -54,13 +54,13 @@ $count=mysqli_num_rows($result);
       type: "POST",
       processData:false,
       success: function(data){
-        $("#notification-count").remove();          
+        $("#notification-count").remove();
         $("#notification-latest").show();$("#notification-latest").html(data);
       },
-      error: function(){}           
+      error: function(){}
     });
    }
-   
+
    $(document).ready(function() {
     $('body').click(function(e){
       if ( e.target.id != 'notification-icon'){
@@ -68,7 +68,7 @@ $count=mysqli_num_rows($result);
       }
     });
   });
-     
+
   </script>
 
 
@@ -102,7 +102,7 @@ $count=mysqli_num_rows($result);
 
           <li class="nav-item has-treeview">
             <a href="index.php" class="nav-link">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -110,7 +110,7 @@ $count=mysqli_num_rows($result);
               </p>
             </a>
           </li>
-         
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link ">
               <i class="nav-icon fa fa-users"></i>
@@ -140,13 +140,13 @@ $count=mysqli_num_rows($result);
               </li>
             </ul>
           </li>
-        
-        
+
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
-                Manage Schedule 
+                Manage Schedule
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -165,7 +165,7 @@ $count=mysqli_num_rows($result);
               </li>
             </ul>
           </li>
-    
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -173,7 +173,7 @@ $count=mysqli_num_rows($result);
     <!-- /.sidebar -->
   </aside>
 
-    
+
 
    <!-- Main content -->
     <section class="content">
@@ -185,7 +185,7 @@ $count=mysqli_num_rows($result);
                   <i class="fas fa-edit"></i>
                   View Track of Students
                 </h3>
-        
+
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -201,7 +201,7 @@ $count=mysqli_num_rows($result);
                   <tbody align="center">
         <?php
 
-       $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_id,files.files_id,files.files_filename_proposal,files.advisergroup_id,advisergroup.advisergroup_topic FROM advisergroup
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 
@@ -209,12 +209,12 @@ $count=mysqli_num_rows($result);
 
         WHERE advisergroup.member_id ";
 
-        ?>
+?>
         <?php
-     if($result = $db->query($strSQL)){
-             while($objResult = $result->fetch_object()){
-            ?>
-          
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
+
                   <td class="text-left"><?php echo $objResult->advisergroup_topic; ?></td>
                   <td class="text-left"><?php echo get_member_list($objResult->group_id); ?></td>
                   <td class="project_progress">
@@ -227,16 +227,16 @@ $count=mysqli_num_rows($result);
                           </small>
                       </td>
                   <td>
-                  <a href="../admin/forms/form01/pf01.php?id=<?php echo $objResult->advisergroup_id;?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
+                  <a href="../admin/forms/form01/pf01.php?id=<?php echo $objResult->advisergroup_id; ?>"class="btn btn-primary">View Track <i class="fa fa-eye" title="View student track"></i></a>
                   </td>
 
 
                 </tr>
             <?php
-              }
-               }
-                   ?>
-                
+}
+}
+?>
+
               </table>
             </div>
             <!-- /.card-body -->

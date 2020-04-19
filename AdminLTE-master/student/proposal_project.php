@@ -2,7 +2,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 
 ?>
 
@@ -36,16 +36,16 @@ include('../menu/function.php');
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+
     </ul>
    <!-- Right navbar links -->
      <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -60,23 +60,19 @@ include('../menu/function.php');
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
           <a href="read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -98,8 +94,8 @@ include('../menu/function.php');
           </a>
         </div>
       </li>
-     
-       
+
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -134,7 +130,7 @@ include('../menu/function.php');
 
                    <li class="nav-item has-treeview ">
             <a href="index.php" class="nav-link ">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -150,9 +146,9 @@ include('../menu/function.php');
        Group Information              </p>
             </a>
           </li>
-    
- 
-  
+
+
+
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>
@@ -168,7 +164,7 @@ include('../menu/function.php');
                   <p>Add Proposal</p>
                 </a>
               </li>
-              
+
               <li class="nav-item">
        <a href="../forms/check_pf.php" class="nav-link" >
                    <i class="far fa-circle nav-icon"></i>
@@ -206,7 +202,7 @@ include('../menu/function.php');
                   <p>Project Schedule</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
@@ -232,7 +228,7 @@ include('../menu/function.php');
                   <p>Topic Require</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
@@ -244,7 +240,7 @@ include('../menu/function.php');
               </p>
             </a>
           </li>
-    
+
 
 
 
@@ -295,12 +291,12 @@ include('../menu/function.php');
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  
+
 <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-     
+
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -314,8 +310,8 @@ include('../menu/function.php');
     </section>
   <!-- Main content -->
     <section class="content">
-   
-        
+
+
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">All Final Project Topics</h3>
@@ -338,26 +334,23 @@ include('../menu/function.php');
                 </thead>
                 <tbody>
                          <?php
-                  //   require 'menu/function.php';
+//   require 'menu/function.php';
 
-
-       $strSQL = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM topic_project
+$strSQL = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM topic_project
 
           LEFT JOIN advisergroup ON topic_project.advisergroup_id = advisergroup.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
          WHERE topic_project.advisergroup_id ";
 
-        
-
-       $i = 1;
-   $count = 1;
-              ?>
+$i = 1;
+$count = 1;
+?>
  <?php
-     if($result = $db->query($strSQL)){
-             while($objResult = $result->fetch_object()){
-            ?>
-                
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
+
                     <tr>
 
      <td class="text-left" style="font-size: 15px;">   <?php echo $count++; ?></td>
@@ -368,9 +361,9 @@ include('../menu/function.php');
 
                     <td class="text-left" style="font-size: 15px;"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
 
-                      
-                
-                  <td>               
+
+
+                  <td>
                      <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
                         data-target="#show<?php echo $i; ?>">
                       <i class="fa fa-eye"></i></button>
@@ -395,7 +388,7 @@ include('../menu/function.php');
                 </div>
                 <div class="col-md-10">
                   <?php echo $objResult->Owner; ?>
-                  
+
                 </div>
               </div>
 
@@ -447,7 +440,7 @@ include('../menu/function.php');
 
               <!--get project Proposal status -->
 
-             
+
               <div class="form-group row">
                 <div class="col-md-2">
                   <label class="control-label ">Advisor</label>
@@ -461,7 +454,7 @@ include('../menu/function.php');
                   <label class="control-label ">Committee</label>
                 </div>
                 <div class="col-md-10">
-            <?php echo get_committee($objResult->group_id); ?>       
+            <?php echo get_committee($objResult->group_id); ?>
                      </div>
               </div>
 
@@ -493,7 +486,7 @@ include('../menu/function.php');
 
 
 
-  
+
 
 
 
@@ -509,11 +502,11 @@ include('../menu/function.php');
                   </td>
                 </tr>
                              <?php
-                                    $i++;  
+$i++;
     }
-               }
-                   ?>
-                
+}
+?>
+
               </table>
             </div>
             <!-- /.card-body -->

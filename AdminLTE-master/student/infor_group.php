@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 
 ?>
 
@@ -45,16 +45,16 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+
     </ul>
    <!-- Right navbar links -->
      <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -69,23 +69,19 @@ to get the desired effect
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
           <a href="read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -107,8 +103,8 @@ to get the desired effect
           </a>
         </div>
       </li>
-     
-       
+
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -143,7 +139,7 @@ to get the desired effect
 
                    <li class="nav-item has-treeview ">
             <a href="index.php" class="nav-link ">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -159,9 +155,9 @@ to get the desired effect
        Group Information              </p>
             </a>
           </li>
-    
- 
-  
+
+
+
             <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
@@ -177,7 +173,7 @@ to get the desired effect
                   <p>Add Proposal</p>
                 </a>
               </li>
-              
+
               <li class="nav-item">
        <a href="../forms/check_pf.php" class="nav-link" >
                    <i class="far fa-circle nav-icon"></i>
@@ -215,7 +211,7 @@ to get the desired effect
                   <p>Project Schedule</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
@@ -241,7 +237,7 @@ to get the desired effect
                   <p>Topic Require</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
@@ -253,7 +249,7 @@ to get the desired effect
               </p>
             </a>
           </li>
-    
+
 
 
 
@@ -304,14 +300,14 @@ to get the desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  
+
 
 
  <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-      
+
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -344,10 +340,10 @@ to get the desired effect
 
                        <?php
 
-        $sql = "SELECT member_fullname, member_phone, member_idcard FROM member WHERE member_id='".$_SESSION['id']."'";  
-              if($result = $db->query($sql)){
-                while($objResult = $result->fetch_object()){
-              ?>
+$sql = "SELECT member_fullname, member_phone, member_idcard FROM member WHERE member_id='" . $_SESSION['id'] . "'";
+if ($result = $db->query($sql)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
 
                   <tbody>
                     <tr>
@@ -355,12 +351,12 @@ to get the desired effect
                     <td class="text-left" style="font-size: 15px;" width="20%">  <?php echo $objResult->member_fullname; ?></td>
                     <td class="text-left" style="font-size: 15px;" width="20%">  <?php echo $objResult->member_phone; ?></td>
                     </tr>
-                   
+
                         <?php
-                }
-              }
-              ?>
-                  
+}
+}
+?>
+
                   </tbody>
                 </table>
               </div>
@@ -368,12 +364,12 @@ to get the desired effect
             </div>
             <!-- /.card -->
           </div>
-  
 
 
 
-          
-                        
+
+
+
           <!-- Modal -->
 <div class="modal fade" id="create_group" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -395,12 +391,12 @@ to get the desired effect
                    <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Close</button>
                   <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Save</button>
-                </div>                   
+                </div>
                 </form>
               </div>
             </div>
           </div>
-                
+
 
   <!-- Star Partner -->
 <div class="modal fade" id="joinpartner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -411,10 +407,10 @@ to get the desired effect
         <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i>Join your partner</h4>
       </div>
       <div class="modal-body">
-         
+
        <form id="add" name="add" method ="post" action ="check_join.php" onsubmit="return checkForm()" >
- 
-            
+
+
 
        <table class="table table-hover text-nowrap">
               <thead>
@@ -429,13 +425,13 @@ to get the desired effect
               <tbody>
               </tbody>
               <?php
-                    // require 'menu/function.php';
-              $sql = "SELECT * FROM partnergroup";
-                  $i = 1;
-   $count = 1;
-              if($rs = $db->query($sql)){
-                while($row = $rs->fetch_object()){
-              ?>
+// require 'menu/function.php';
+$sql = "SELECT * FROM partnergroup";
+$i = 1;
+$count = 1;
+if ($rs = $db->query($sql)) {
+    while ($row = $rs->fetch_object()) {
+        ?>
 
            <tr>
                     <td class="text-left" style="font-size: 13px;" width="4%">   <?php echo $count++; ?></td>
@@ -446,10 +442,10 @@ to get the desired effect
                   </td>
                 </tr>
               <?php
-                }
-              }else{
-              }
-              ?>
+}
+} else {
+}
+?>
 </a>
 </td>
 </tr>
@@ -474,7 +470,7 @@ to get the desired effect
               </div>
               <!-- /.card-header -->
           <div class="card-body">
-             
+
 
   <!-- Display Partner -->
      <button type="button"  class="btn btn-success btn-sm" data-toggle="modal" data-target="#create_group" style="margin-bottom: 13px;">
@@ -482,7 +478,7 @@ to get the desired effect
   </button>
 
 
-   <table class="table table-hover text-nowrap">                  <thead>                  
+   <table class="table table-hover text-nowrap">                  <thead>
 
                                          My Group partner
                                            <tr>
@@ -496,25 +492,24 @@ to get the desired effect
 
                                           <?php
 
+$group_id = get_group_id($_SESSION['id']);
 
-              $group_id = get_group_id($_SESSION['id']);
-             
-                $sql = "SELECT member_fullname, member_phone, member_idcard FROM member WHERE group_id = '$group_id'";
+$sql = "SELECT member_fullname, member_phone, member_idcard FROM member WHERE group_id = '$group_id'";
 
-              if($rs = $db->query($sql)){
-                while($row = $rs->fetch_object()){
-              ?>
+if ($rs = $db->query($sql)) {
+    while ($row = $rs->fetch_object()) {
+        ?>
                 <tr>
                 <td class="text-left" style="font-size: 15px;" width="15%"> <?php echo $row->member_idcard; ?></td>
                 <td class="text-left" style="font-size: 15px;" width="30%"> <?php echo $row->member_fullname; ?></td>
                   <td class="text-left" style="font-size: 15px;" width="10%"> <?php echo $row->member_phone; ?></td>
                 </tr>
               <?php
-                }
-              }else{
-              }
-              ?>
-                                          
+}
+} else {
+}
+?>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -542,7 +537,7 @@ to get the desired effect
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                   
+
 
                           <th style="font-size: 15px;" width="50%" class="text-left">Title project</th>
                 <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>
@@ -558,38 +553,37 @@ $my_group_id = get_group_id($my_id);
 
 //Initialise Value to variable
 
-
 $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id,member.member_id,member.member_fullname FROM advisergroup
          JOIN member ON advisergroup.member_id = member.member_id
-        
+
          WHERE advisergroup.group_id = '$my_group_id'";
 
-              if($rs = $db->query($sql)){
-                while($row = $rs->fetch_object()){
-              ?>
+if ($rs = $db->query($sql)) {
+    while ($row = $rs->fetch_object()) {
+        ?>
                   <tbody>
                     <tr>
                      <td class="text-left" style="font-size: 15px;" width="30%"><?php echo $row->advisergroup_topic; ?></td>
 
                    <td class="text-left" style="font-size: 15px;" width="10%"><?php echo $row->member_fullname; ?></td>
-                          
 
-<td class="text-left" style="font-size: 15px;" width="5%"><?php echo status_01($row->advisergroup_status);?>  <font color='red'> </br>*For Advisor</font> </td>
+
+<td class="text-left" style="font-size: 15px;" width="5%"><?php echo status_01($row->advisergroup_status); ?>  <font color='red'> </br>*For Advisor</font> </td>
 <td>
 
-  
-                     <a href="delete_advisor.php?id=<?php echo $row->advisergroup_id;?>"class="btn btn-danger btn-xs">
+
+                     <a href="delete_advisor.php?id=<?php echo $row->advisergroup_id; ?>"class="btn btn-danger btn-xs">
                   <i class='fa fa-times'></i> </a>
 </td>
 
                     </tr>
 
-                   
+
                         <?php
-                }
-              }
-              ?>
-                  
+}
+}
+?>
+
                   </tbody>
                 </table>
               </div>
@@ -597,7 +591,7 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
             </div>
             <!-- /.card -->
           </div>
-  
+
 
 
 
@@ -610,11 +604,11 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
         <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i>Select your advisor</h4>
       </div>
       <div class="modal-body">
-         
+
        <form id="add" name="add" method ="post" action ="check_selectadvisor.php" onsubmit="return checkForm()" >
-  
-                                               
- <div class="form-group row">           
+
+
+ <div class="form-group row">
        <div class="col-md-3">
              <label class="control-label col-form-label">Choose advisor</label>
            </div>
@@ -622,17 +616,17 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
              <select class="form-control" name="member_id">
               <option value="no">- Lecturer Name -</option>
                 <?php
-                
-                $strSQL = "SELECT member_id, member_fullname FROM member WHERE member_pos ='Lecturer'";
-                if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-                    echo "<option value='".$objResult->member_id."'>".$objResult->member_fullname."</option>";
-                  }
-                }else{
-                }
-                ?>
+
+$strSQL = "SELECT member_id, member_fullname FROM member WHERE member_pos ='Lecturer'";
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        echo "<option value='" . $objResult->member_id . "'>" . $objResult->member_fullname . "</option>";
+    }
+} else {
+}
+?>
               </select>
-      
+
             </div>
           </div>
                 <div class="form-group row">
@@ -645,25 +639,25 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
                                                 </div>
 
 
- <div class="form-group row">           
+ <div class="form-group row">
        <div class="col-md-3">
-           
+
            </div>
              <div class="col-md-9">
              <select class="form-control" name="admin_id" hidden="">
 
                 <?php
-                include '../menu/connect.php';
-                $strSQL = "SELECT admin_id FROM member WHERE member_id ='".$_SESSION['id']."'";
-                if($result = $db->query($strSQL)){
-                  while($objResult = $result->fetch_object()){
-                    echo "<option value='".$objResult->admin_id."'></option>";
-                  }
-                }else{
-                }
-                ?>
+include '../menu/connect.php';
+$strSQL = "SELECT admin_id FROM member WHERE member_id ='" . $_SESSION['id'] . "'";
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        echo "<option value='" . $objResult->admin_id . "'></option>";
+    }
+} else {
+}
+?>
               </select>
-      
+
             </div>
           </div>
 
@@ -671,18 +665,18 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
 
            <input type="hidden" name="group_id" value="<?php echo $group_id; ?>">
             <input type="hidden" name="advisergroup_id" value="<?php echo $advisergroup_id; ?>">
-          
+
              <button type="submit" class="btn btn-primary btn-lg btn-block">Send request</button>
-                          
+
 </div>
 </div>
 </div>
 </div>
 
 
-          
-                        
-        
+
+
+
 
   <!-- Star Partner -->
 <div class="modal fade" id="joinpartner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -693,10 +687,10 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
         <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i>Join your partner</h4>
       </div>
       <div class="modal-body">
-         
+
        <form id="add" name="add" method ="post" action ="check_join.php" onsubmit="return checkForm()" >
- 
-            
+
+
 
        <table class="table table-hover text-nowrap">
               <thead>
@@ -711,13 +705,13 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
               <tbody>
               </tbody>
               <?php
-                    // require 'menu/function.php';
-              $sql = "SELECT * FROM partnergroup";
-                  $i = 1;
-   $count = 1;
-              if($rs = $db->query($sql)){
-                while($row = $rs->fetch_object()){
-              ?>
+// require 'menu/function.php';
+$sql = "SELECT * FROM partnergroup";
+$i = 1;
+$count = 1;
+if ($rs = $db->query($sql)) {
+    while ($row = $rs->fetch_object()) {
+        ?>
 
            <tr>
                     <td class="text-left" style="font-size: 13px;" width="4%">   <?php echo $count++; ?></td>
@@ -728,10 +722,10 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
                   </td>
                 </tr>
               <?php
-                }
-              }else{
-              }
-              ?>
+}
+} else {
+}
+?>
 </a>
 </td>
 </tr>
@@ -756,13 +750,13 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
               </div>
               <!-- /.card-header -->
           <div class="card-body">
-             
+
 
   <!-- Display Partner -->
 
 
 
-   <table class="table table-hover text-nowrap">                  <thead>                  
+   <table class="table table-hover text-nowrap">                  <thead>
 
                                            <tr>
                     <th style="font-size: 15px;" width="20%" class="text-left">Lecturer ID</th>
@@ -775,14 +769,13 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
 
                                          <?php
 
-             
-          $sql = "SELECT committeegroup.committeegroup_id, member.member_fullname,member.member_idcard ,member.member_phone FROM committeegroup
+$sql = "SELECT committeegroup.committeegroup_id, member.member_fullname,member.member_idcard ,member.member_phone FROM committeegroup
           LEFT JOIN member ON committeegroup.member_id = member.member_id
           WHERE committeegroup.group_id = '$group_id'";
 
-              if($rs = $db->query($sql)){
-                while($row = $rs->fetch_object()){
-              ?>
+if ($rs = $db->query($sql)) {
+    while ($row = $rs->fetch_object()) {
+        ?>
 
                 <tr>
                 <td class="text-left" style="font-size: 15px;" width="20%"><?php echo $row->member_idcard; ?></td>
@@ -790,11 +783,11 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
                   <td class="text-left" style="font-size: 15px;" width="10%"><?php echo $row->member_phone; ?></td>
                 </tr>
               <?php
-                }
-              }else{
-              }
-              ?>
-                                          
+}
+} else {
+}
+?>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -804,7 +797,7 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
                     </div>
 
     <!-- /.content -->
- 
+
 <!-- ./wrapper -->
 
 

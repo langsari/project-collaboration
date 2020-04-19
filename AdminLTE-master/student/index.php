@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 
 ?>
 
@@ -58,35 +58,35 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+
     </ul>
 
       <?php
-$conn = new mysqli("localhost","root","","itpromo_track");
-$count=0;
-if(!empty($_POST['add'])) {
-  $subject = mysqli_real_escape_string($conn,$_POST["subject"]);
-  $comment = mysqli_real_escape_string($conn,$_POST["comment"]);
-  $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
-  mysqli_query($conn, $sql);
+$conn = new mysqli("localhost", "root", "", "itpromo_track");
+$count = 0;
+if (!empty($_POST['add'])) {
+    $subject = mysqli_real_escape_string($conn, $_POST["subject"]);
+    $comment = mysqli_real_escape_string($conn, $_POST["comment"]);
+    $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
+    mysqli_query($conn, $sql);
 }
-$sql2="SELECT * FROM notify WHERE status = 0";
-$result=mysqli_query($conn, $sql2);
-$count=mysqli_num_rows($result);
+$sql2 = "SELECT * FROM notify WHERE status = 0";
+$result = mysqli_query($conn, $sql2);
+$count = mysqli_num_rows($result);
 ?>
 
-   
+
 
 
       <!-- Display the alert of notification -->
 
       <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -100,23 +100,19 @@ $count=mysqli_num_rows($result);
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
           <a href="read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -170,7 +166,7 @@ $count=mysqli_num_rows($result);
 
                    <li class="nav-item has-treeview ">
             <a href="index.php" class="nav-link active">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -189,9 +185,9 @@ $count=mysqli_num_rows($result);
 
             </a>
           </li>
-    
- 
-  
+
+
+
             <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
@@ -207,7 +203,7 @@ $count=mysqli_num_rows($result);
                   <p>Add Proposal</p>
                 </a>
               </li>
-              
+
               <li class="nav-item">
        <a href="../forms/check_pf.php" class="nav-link" >
                    <i class="far fa-circle nav-icon"></i>
@@ -242,12 +238,12 @@ $count=mysqli_num_rows($result);
 
 
                     <?php
-                    $con = mysqli_connect('localhost','root','','itpromo_track');
-                    $query="SELECT schedule_id FROM schedule WHERE schedule_type ='1' and  status=0";
-                    $query_num=mysqli_query($con,$query);
-                    $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT schedule_id FROM schedule WHERE schedule_type ='1' and  status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-                    ?>
+?>
 
                                <span class="right badge badge-danger"><?php echo $count; ?></span>
 
@@ -262,17 +258,17 @@ $count=mysqli_num_rows($result);
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Schedule</p>
                    <?php
-                    $con = mysqli_connect('localhost','root','','itpromo_track');
-                    $query="SELECT schedule_id FROM schedule WHERE schedule_type ='2' and  status=0";
-                    $query_num=mysqli_query($con,$query);
-                    $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT schedule_id FROM schedule WHERE schedule_type ='2' and  status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-                    ?>
+?>
 
                                <span class="right badge badge-danger"><?php echo $count; ?></span>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
@@ -300,7 +296,7 @@ $count=mysqli_num_rows($result);
                   <p>Topic Require </p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
@@ -312,7 +308,7 @@ $count=mysqli_num_rows($result);
               </p>
             </a>
           </li>
-    
+
 
 
 
@@ -413,8 +409,8 @@ $count=mysqli_num_rows($result);
                 <a href="../forms/check_pf.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
- 
-          
+
+
             <!-- ./col -->
             <div class="col-lg-3 col-6">
               <!-- small box -->
@@ -444,9 +440,9 @@ $count=mysqli_num_rows($result);
               </div>
             </div>
 
-           
 
-            
+
+
 
 
             <!-- ./col -->
@@ -516,16 +512,16 @@ $count=mysqli_num_rows($result);
 
 
 
-  
+
     <!-- /.content-wrapper -->
    <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
        <class style="font-size: 14px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
     reserved.
   </footer>
-          
+
   <!-- ./wrapper -->
 
 

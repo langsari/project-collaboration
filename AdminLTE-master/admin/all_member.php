@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 
 ?>
 
@@ -31,73 +31,72 @@ include('../menu/function.php');
   <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
 
-        <a href="../admin/index.php" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-       <a href="#" class="nav-link" data-toggle="modal" data-target="#notify">Notify</a>
-      </li>
-      
-    </ul>
+          <a href="../admin/index.php" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link" data-toggle="modal" data-target="#notify">Notify</a>
+        </li>
 
-    <?php
-$conn = new mysqli("localhost","root","","itpromo_track");
-$count=0;
-if(!empty($_POST['add'])) {
-  $subject = mysqli_real_escape_string($conn,$_POST["subject"]);
-  $comment = mysqli_real_escape_string($conn,$_POST["comment"]);
-  $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
-  mysqli_query($conn, $sql);
+      </ul>
+
+      <?php
+$conn = new mysqli("localhost", "root", "", "itpromo_track");
+$count = 0;
+if (!empty($_POST['add'])) {
+    $subject = mysqli_real_escape_string($conn, $_POST["subject"]);
+    $comment = mysqli_real_escape_string($conn, $_POST["comment"]);
+    $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
+    mysqli_query($conn, $sql);
 }
-$sql2="SELECT * FROM notify WHERE status = 0";
-$result=mysqli_query($conn, $sql2);
-$count=mysqli_num_rows($result);
+$sql2 = "SELECT * FROM notify WHERE status = 0";
+$result = mysqli_query($conn, $sql2);
+$count = mysqli_num_rows($result);
 ?>
 
-<script type="text/javascript">
+      <script type="text/javascript">
+        function myFunction() {
+          $.ajax({
+            url: "view_notification.php",
+            type: "POST",
+            processData: false,
+            success: function (data) {
+              $("#notification-count").remove();
+              $("#notification-latest").show();
+              $("#notification-latest").html(data);
+            },
+            error: function () {}
+          });
+        }
 
-  function myFunction() {
-    $.ajax({
-      url: "view_notification.php",
-      type: "POST",
-      processData:false,
-      success: function(data){
-        $("#notification-count").remove();          
-        $("#notification-latest").show();$("#notification-latest").html(data);
-      },
-      error: function(){}           
-    });
-   }
-   
-   $(document).ready(function() {
-    $('body').click(function(e){
-      if ( e.target.id != 'notification-icon'){
-        $("#notification-latest").hide();
-      }
-    });
-  });
-     
-  </script>
+        $(document).ready(function () {
+          $('body').click(function (e) {
+            if (e.target.id != 'notification-icon') {
+              $("#notification-latest").hide();
+            }
+          });
+        });
+      </script>
 
 
-   <!-- Display the alert of notification -->
+      <!-- Display the alert of notification -->
 
-  <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+      <?php
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
 
-    <!-- Right navbar links -->
-    <!-- Right navbar links -->
+      <!-- Right navbar links -->
+      <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
 
         <li class="nav-item dropdown">
@@ -109,25 +108,21 @@ $count=mysqli_num_rows($result);
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="../admin/read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="../admin/read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
-          <a href="../admin/read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
+            <a href="../admin/read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
         </li>
 
@@ -147,15 +142,15 @@ $count=mysqli_num_rows($result);
         </li>
       </ul>
 
-  </nav>
-  <!-- /.navbar -->
+    </nav>
+    <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
 
-        <a href="index.php" class="brand-link">
-        <img src="../dist/img/n2.png" width="100%" >
+      <a href="index.php" class="brand-link">
+        <img src="../dist/img/n2.png" width="100%">
 
         <span class="brand-text font-weight-light"></span>
       </a>
@@ -202,12 +197,12 @@ $count=mysqli_num_rows($result);
                     <i class="far fa-circle nav-icon"></i>
                     <p>User Request</p>
                     <?php
-                    $con = mysqli_connect('localhost','root','','itpromo_track');
-                    $query="SELECT member_id FROM member WHERE admin_id=0";
-                    $query_num=mysqli_query($con,$query);
-                    $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT member_id FROM member WHERE admin_id=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-                    ?>
+?>
                     <span class="right badge badge-danger"><?php echo $count; ?></span>
                   </a>
                 </li>
@@ -343,38 +338,38 @@ $count=mysqli_num_rows($result);
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                   <table id="example1" class="table table-sm "  >
-                <thead class="thead-light">
-                  <tr>
-                       <th style="font-size: 15px;" width="4%" class="text-left">#</th>
-                        <th style="font-size: 15px;" width="5%" class="text-left">ID</th>
-                       <th style="font-size: 15px;" width="15%" class="text-left">Name</th>
-                        <th style="font-size: 15px;" width="6%" class="text-left">Phone</th>
-                        <th style="font-size: 15px;" width="10%" class="text-left">Email</th>
-                        <th style="font-size: 15px;" width="6%" class="text-left">Gender</th>
-                       <th style="font-size: 15px;" width="6%" class="text-left">Position</th>
+                <table id="example1" class="table table-sm ">
+                  <thead class="thead-light">
+                    <tr>
+                      <th style="font-size: 15px;" width="4%" class="text-left">#</th>
+                      <th style="font-size: 15px;" width="5%" class="text-left">ID</th>
+                      <th style="font-size: 15px;" width="15%" class="text-left">Name</th>
+                      <th style="font-size: 15px;" width="6%" class="text-left">Phone</th>
+                      <th style="font-size: 15px;" width="10%" class="text-left">Email</th>
+                      <th style="font-size: 15px;" width="6%" class="text-left">Gender</th>
+                      <th style="font-size: 15px;" width="6%" class="text-left">Position</th>
                       <!-- <th>Status</th> -->
-                       <th style="font-size: 15px;" width="5%" class="text-left">Action</th>
+                      <th style="font-size: 15px;" width="5%" class="text-left">Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
 
-       $strSQL = "SELECT * FROM member WHERE admin_id='1' ORDER BY admin_id desc  ";
-         $i = 1;
-   $count = 1;
-        ?>
+$strSQL = "SELECT * FROM member WHERE admin_id='1' ORDER BY admin_id desc  ";
+$i = 1;
+$count = 1;
+?>
                     <?php
-     if($result = $db->query($strSQL)){
-             while($objResult = $result->fetch_object()){
-            ?>
-                  <td class="text-left" style="font-size: 15px;"> <?php echo $count++; ?></td>
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
+                    <td class="text-left" style="font-size: 15px;"> <?php echo $count++; ?></td>
                     <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_idcard; ?></td>
                     <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_fullname; ?></td>
                     <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_phone; ?></td>
                     <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_email; ?></td>
-                  <td class="text-left" style="font-size: 15px;"><?php echo gender($objResult->member_gender); ?></td>
-                   <td class="text-left" style="font-size: 15px;"><?php echo position($objResult->member_pos); ?></td>
+                    <td class="text-left" style="font-size: 15px;"><?php echo gender($objResult->member_gender); ?></td>
+                    <td class="text-left" style="font-size: 15px;"><?php echo position($objResult->member_pos); ?></td>
                     <!-- <td class="text-left"><?php echo status($objResult->admin_id); ?></td>-->
                     <td>
 
@@ -385,90 +380,90 @@ $count=mysqli_num_rows($result);
                       </center>
 
 
-                 <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
+                      <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
                         data-target="#show<?php echo $i; ?>">
-                      <i class="fa fa-eye"></i></button>
+                        <i class="fa fa-eye"></i></button>
 
-                      <a href="delete_member.php?id=<?php echo $objResult->member_id;?>" class="btn btn-danger btn-xs">
+                      <a href="delete_member.php?id=<?php echo $objResult->member_id; ?>" class="btn btn-danger btn-xs">
                         <i class="fa fa-trash" title="Delete"></i></a>
 
 
 
 
 
-                       
-<div class="modal fade" id="show<?php echo $i; ?>" tabindex="-1" role="dialog"
+
+                      <div class="modal fade" id="show<?php echo $i; ?>" tabindex="-1" role="dialog"
                         aria-labelledby="myModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog modal-lg">
+                        <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header bg-info">
-                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                         <h5 class="modal-title">View Proposal</h5>
-                    </div>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h5 class="modal-title">View Proposal</h5>
+                            </div>
 
-                              <div class="modal-body">
+                            <div class="modal-body">
                               <form class="form-horizontal" method="post" action="check_edit_member.php">
                                 <input type="hidden" name="member_id" value=" <?php echo $objResult->member_id; ?>">
 
-                                       <div class="card-body">
-                  <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">ID Studen</label>
-                    <div class="col-sm-10">
-                                <?php echo $objResult->member_idcard; ?>
-                    </div>
-                  </div>
+                                <div class="card-body">
+                                  <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">ID Studen</label>
+                                    <div class="col-sm-10">
+                                      <?php echo $objResult->member_idcard; ?>
+                                    </div>
+                                  </div>
 
 
 
- <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Username</label>
-                    <div class="col-sm-10">
-<?php echo $objResult->member_username; ?>                    </div>
-                  </div>
+                                  <div class="form-group row">
+                                    <label for="inputPassword3" class="col-sm-2 col-form-label">Username</label>
+                                    <div class="col-sm-10">
+                                      <?php echo $objResult->member_username; ?> </div>
+                                  </div>
 
- <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Student Name</label>
-                    <div class="col-sm-10">
-<?php echo $objResult->member_fullname; ?>         
-         </div>
-                  </div>
-
-
-
- <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
-<?php echo $objResult->member_email; ?>             
-       </div>
-                  </div>
-
- <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Phone</label>
-                    <div class="col-sm-10">
-
-                                  <?php echo $objResult->member_phone; ?>                 </div>
-                  </div>
+                                  <div class="form-group row">
+                                    <label for="inputPassword3" class="col-sm-2 col-form-label">Student Name</label>
+                                    <div class="col-sm-10">
+                                      <?php echo $objResult->member_fullname; ?>
+                                    </div>
+                                  </div>
 
 
-     <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 ">Gender</label>
-                    <div class="col-sm-10">
 
-                                     <?php echo $objResult->member_gender; ?>                    </div>
-                  </div>
+                                  <div class="form-group row">
+                                    <label for="inputPassword3" class="col-sm-2 col-form-label">Email</label>
+                                    <div class="col-sm-10">
+                                      <?php echo $objResult->member_email; ?>
+                                    </div>
+                                  </div>
 
-                   <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 ">Position</label>
-                    <div class="col-sm-10">
+                                  <div class="form-group row">
+                                    <label for="inputPassword3" class="col-sm-2 col-form-label">Phone</label>
+                                    <div class="col-sm-10">
 
-                                     <?php echo $objResult->member_pos; ?>                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+                                      <?php echo $objResult->member_phone; ?> </div>
+                                  </div>
+
+
+                                  <div class="form-group row">
+                                    <label for="inputPassword3" class="col-sm-2 ">Gender</label>
+                                    <div class="col-sm-10">
+
+                                      <?php echo $objResult->member_gender; ?> </div>
+                                  </div>
+
+                                  <div class="form-group row">
+                                    <label for="inputPassword3" class="col-sm-2 ">Position</label>
+                                    <div class="col-sm-10">
+
+                                      <?php echo $objResult->member_pos; ?> </div>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
                       <!-- Modal -->
 
@@ -479,7 +474,7 @@ $count=mysqli_num_rows($result);
                       <div class="modal fade" id="editsub<?php echo $i; ?>" tabindex="-1" role="dialog"
                         aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
-                          
+
                           <div class="modal-content">
                             <div class="modal-header bg-info">
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
@@ -492,61 +487,63 @@ $count=mysqli_num_rows($result);
                               <form class="form-horizontal" method="post" action="check_edit_member.php">
                                 <input type="hidden" name="member_id" value=" <?php echo $objResult->member_id; ?>">
 
-                                       <div class="card-body">
-                  <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">ID Studen</label>
-                    <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="member_idcard" name="member_idcard"
-                                      value="  <?php echo $objResult->member_idcard; ?>">
-                    </div>
-                  </div>
+                                <div class="card-body">
+                                  <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">ID Studen</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="member_idcard" name="member_idcard"
+                                        value="  <?php echo $objResult->member_idcard; ?>">
+                                    </div>
+                                  </div>
 
 
 
- <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Username</label>
-                    <div class="col-sm-10">
- <input type="text" class="form-control" id="member_username" name="member_username"
-                                    value="<?php echo $objResult->member_username; ?>">                    </div>
-                  </div>
+                                  <div class="form-group row">
+                                    <label for="inputPassword3" class="col-sm-2 col-form-label">Username</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="member_username"
+                                        name="member_username" value="<?php echo $objResult->member_username; ?>">
+                                    </div>
+                                  </div>
 
- <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Student Name</label>
-                    <div class="col-sm-10">
- <input type="text" class="form-control" id="member_fullname" name="member_fullname"
-                                    value="<?php echo $objResult->member_fullname; ?>">                    </div>
-                  </div>
-
-
-
- <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
- <input type="text" class="form-control" id="member_email" name="member_email"
-                                        value="<?php echo $objResult->member_email; ?>">                    </div>
-                  </div>
-
- <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Phone</label>
-                    <div class="col-sm-10">
-  <input type="text" class="form-control" id="member_phone" name="member_phone"
-                                      value="<?php echo $objResult->member_phone; ?>">                    </div>
-                  </div>
+                                  <div class="form-group row">
+                                    <label for="inputPassword3" class="col-sm-2 col-form-label">Student Name</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="member_fullname"
+                                        name="member_fullname" value="<?php echo $objResult->member_fullname; ?>">
+                                    </div>
+                                  </div>
 
 
-     <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 ">Gender</label>
-                    <div class="col-sm-10">
 
-                                     <?php echo $objResult->member_gender; ?>                    </div>
-                  </div>
+                                  <div class="form-group row">
+                                    <label for="inputPassword3" class="col-sm-2 col-form-label">Email</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="member_email" name="member_email"
+                                        value="<?php echo $objResult->member_email; ?>"> </div>
+                                  </div>
 
-                   <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 ">Position</label>
-                    <div class="col-sm-10">
+                                  <div class="form-group row">
+                                    <label for="inputPassword3" class="col-sm-2 col-form-label">Phone</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="member_phone" name="member_phone"
+                                        value="<?php echo $objResult->member_phone; ?>"> </div>
+                                  </div>
 
-                                     <?php echo $objResult->member_pos; ?>                    </div>
-                  </div>
+
+                                  <div class="form-group row">
+                                    <label for="inputPassword3" class="col-sm-2 ">Gender</label>
+                                    <div class="col-sm-10">
+
+                                      <?php echo $objResult->member_gender; ?> </div>
+                                  </div>
+
+                                  <div class="form-group row">
+                                    <label for="inputPassword3" class="col-sm-2 ">Position</label>
+                                    <div class="col-sm-10">
+
+                                      <?php echo $objResult->member_pos; ?> </div>
+                                  </div>
 
 
 
@@ -570,10 +567,10 @@ $count=mysqli_num_rows($result);
                     </tr>
 
                     <?php
-                                    $i++;  
+$i++;
     }
-               }
-                   ?>
+}
+?>
 
                 </table>
               </div>
@@ -590,41 +587,43 @@ $count=mysqli_num_rows($result);
     <!-- /.content-wrapper -->
 
     <div class="modal fade" id="notify">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Add Alert</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form name="frmNotification" id="frmNotification" action="" method="post" >
-      <div id="form-header" class="form-row">Add New Message</div>
-      <div class="form-row">
-        <div class="form-label">Subject:</div><div class="error" id="subject"></div>
-        <div class="form-element">
-          <input type="text"  name="subject" id="subject" required>
-          
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Add Alert</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form name="frmNotification" id="frmNotification" action="" method="post">
+              <div id="form-header" class="form-row">Add New Message</div>
+              <div class="form-row">
+                <div class="form-label">Subject:</div>
+                <div class="error" id="subject"></div>
+                <div class="form-element">
+                  <input type="text" name="subject" id="subject" required>
+
+                </div>
+              </div>
+              <p>
+                <div class="form-row">
+                  <div class="form-label">Comment:</div>
+                  <div class="error" id="comment"></div>
+                  <div class="form-element">
+                    <textarea rows="4" cols="30" name="comment" id="comment"></textarea>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-element">
+                    <input type="submit" name="add" id="btn-send" value="Submit">
+                  </div>
+                </div>
+            </form>
+          </div>
         </div>
       </div>
-      <p>
-      <div class="form-row">
-        <div class="form-label">Comment:</div><div class="error" id="comment"></div>
-        <div class="form-element">
-          <textarea rows="4" cols="30" name="comment" id="comment"></textarea>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-element">
-          <input type="submit" name="add" id="btn-send" value="Submit">
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-</div>
-</div>
+    </div>
 
 
     <footer class="main-footer">
@@ -647,7 +646,7 @@ $count=mysqli_num_rows($result);
   <!--include message  -->
 
   <?php
-        
+
 include '../notification/notification.php';
 ?>
   <!--end for include message  -->

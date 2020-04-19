@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 
 ?>
 
@@ -44,16 +44,16 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+
     </ul>
    <!-- Right navbar links -->
      <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -68,23 +68,19 @@ to get the desired effect
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
           <a href="read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -106,8 +102,8 @@ to get the desired effect
           </a>
         </div>
       </li>
-     
-       
+
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -143,7 +139,7 @@ to get the desired effect
 
                    <li class="nav-item has-treeview ">
             <a href="index.php" class="nav-link">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -159,9 +155,9 @@ to get the desired effect
        Group Information              </p>
             </a>
           </li>
-    
- 
-  
+
+
+
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>
@@ -177,7 +173,7 @@ to get the desired effect
                   <p>Add Proposal</p>
                 </a>
               </li>
-              
+
               <li class="nav-item">
        <a href="../forms/check_pf.php" class="nav-link" >
                    <i class="far fa-circle nav-icon"></i>
@@ -215,7 +211,7 @@ to get the desired effect
                   <p>Project Schedule</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
@@ -241,7 +237,7 @@ to get the desired effect
                   <p>Topic Require</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
@@ -253,7 +249,7 @@ to get the desired effect
               </p>
             </a>
           </li>
-    
+
 
 
 
@@ -304,22 +300,22 @@ to get the desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  
+
 
   <!-- PAGE CONTENT -->
   <?php
-  // require 'menu/function.php';
-  $my_id = $_SESSION['id'];
-  $my_group_id = get_group_id($my_id);
-  //Initialise Value to variable
-      $strSQL="SELECT advisergroup.*,advisergroup.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id, member.member_id,member.member_fullname,member.member_idcard ,topic_project.topic_id,topic_project.topic_abstrack,topic_project.topic_keyword ,topic_project.topic_years,topic_project.topic_fieldstudy,partnergroup.group_id,partnergroup.group_number,topic_project.status
+// require 'menu/function.php';
+$my_id = $_SESSION['id'];
+$my_group_id = get_group_id($my_id);
+//Initialise Value to variable
+$strSQL = "SELECT advisergroup.*,advisergroup.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id, member.member_id,member.member_fullname,member.member_idcard ,topic_project.topic_id,topic_project.topic_abstrack,topic_project.topic_keyword ,topic_project.topic_years,topic_project.topic_fieldstudy,partnergroup.group_id,partnergroup.group_number,topic_project.status
         FROM advisergroup
         LEFT JOIN topic_project ON advisergroup.advisergroup_id = topic_project.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
         WHERE advisergroup.group_id = '$my_group_id' AND partnergroup.group_id= '$my_group_id'";
-      if ($result = $db->query($strSQL)) {
-          while ($objResult = $result->fetch_object()) {
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
         ?>
 
         <section class="content-header">
@@ -345,33 +341,33 @@ to get the desired effect
         <div class="card-body ">
           <div class="row d-flex align-items-stretch">
             <div class="col-15 col-sm-8 col-md-12 d-flex align-items-stretch">
-              
+
 
                     <form id="add" name="add" method ="post" action ="check_proposal.php" onsubmit="return checkForm()">
                       <legend class="text-bold margin-top-40">Add proposal</legend>
 
 
                         <?php
-                        $strSQL="SELECT * FROM member  WHERE member_id='".$_SESSION['id']."'";
-                        ?>
+$strSQL = "SELECT * FROM member  WHERE member_id='" . $_SESSION['id'] . "'";
+        ?>
 
                         <?php
-                        if ($result = $db->query($strSQL)) {
-                          while ($row = $result->fetch_object()) {
-                        ?>
+if ($result = $db->query($strSQL)) {
+            while ($row = $result->fetch_object()) {
+                ?>
 
                         <?php
-                        $sql ="SELECT * FROM member WHERE group_id = '$my_group_id'";
-                        if ($rs = $db->query($sql)) {
-                          if ($rs->num_rows > 0) {
-                            while ($ro = $rs->fetch_object()) {
-                              
-                            }
-                          }
+$sql = "SELECT * FROM member WHERE group_id = '$my_group_id'";
+                if ($rs = $db->query($sql)) {
+                    if ($rs->num_rows > 0) {
+                        while ($ro = $rs->fetch_object()) {
+
                         }
-                        ?>
+                    }
+                }
+                ?>
 
-                        
+
 
                         <div class="row">
 
@@ -381,11 +377,11 @@ to get the desired effect
                             <div class="form-group row">
                               <div class="col-md-3">
                                 <label class="control-label ">ID Project</label>
-                                
+
                               </div>
                               <div class="col-md-9">
                                 <td class="form-control" name="group_number" > <?php echo $objResult->group_number; ?>
-                                
+
                               </div>
                             </div>
 
@@ -395,12 +391,12 @@ to get the desired effect
                             <div class="form-group row">
                               <div class="col-md-3">
                                 <label class="control-label ">Project Owner</label>
-                                
+
                               </div>
                               <div class="col-md-9">
-                                
+
                                 <td class="form-control" name="Owner"><?php echo get_member_list($row->group_id); ?></td>
-                                
+
                               </div>
                             </div>
 <!--get Topic   -->
@@ -408,41 +404,41 @@ to get the desired effect
                             <div class="form-group row">
                               <div class="col-md-3">
                                 <label class="control-label col-form-label">Topic</label>
-                                
+
                               </div>
                               <div class="col-md-9">
                                 <input type="text" class="form-control" name="topic_topic" value="<?php echo $objResult->advisergroup_topic; ?>">
-                                
+
                               </div>
-                          
+
                             </div>
 <!--get project Abstarck   -->
 
-                     
 
-<!--get project Keyword  -->      
+
+<!--get project Keyword  -->
 
                              <div class="form-group row">
                               <div class="col-md-3">
                                 <label class="control-label col-form-label">Keyword </label>
-                                
+
                               </div>
                               <div class="col-md-9">
                                 <input type="text" class="form-control" id="topic_keyword" name="topic_keyword" value="<?php echo $objResult->topic_keyword; ?>" required >
-                                
+
                               </div>
-                               
+
                              </div>
 
 <!--get project Filed of Study -->
 
-                                            <div class="form-group row">           
+                                            <div class="form-group row">
                                                  <div class="col-md-3">
                                           <label class="control-label col-form-label">Filed of Study</label>
                                              </div>
                                          <div class="col-md-9">
                                 <select class="form-control" name="topic_fieldstudy" id="topic_fieldstudy" onChange="getTeam(this.value);"  >
-        <option  value="<?php echo $objResult->topic_id;?>"><?php echo $objResult->topic_fieldstudy;?> </option>
+        <option  value="<?php echo $objResult->topic_id; ?>"><?php echo $objResult->topic_fieldstudy; ?> </option>
                                   <option value="Software Engineering">Software Engineering</option>
                                   <option value="Computer Multimedia">Computer Multimedia</option>
                                   <option value="Computer Networking">Computer Networking</option>
@@ -462,39 +458,39 @@ to get the desired effect
                                 <input type="DATE" class="form-control" id="topic_years" name="topic_years" value="<?php echo $objResult->topic_years; ?>"   autocomplete="off" required aria-describedby="basic-addon1" >
                                                     </div>
                                                 </div>
-   
+
 <!--get project Advisors -->
 
                              <div class="form-group row">
                               <div class="col-md-3">
                                 <label class="control-label col-form-label">Advisor </label>
-                                
+
                               </div>
                               <div class="col-md-9">
-                                <input type="text"    class="form-control"  name="adviser" 
+                                <input type="text"    class="form-control"  name="adviser"
                                          value="<?php echo get_advisor($objResult->group_id); ?>">
-                                
+
                               </div>
-                               
+
                              </div>
 <!--get project Proposal status -->
-                      
+
                              <div class="form-group row">
                               <div class="col-md-3">
                                 <label class="control-label ">Proposal status</label>
-                                
+
                               </div>
                               <div class="col-md-9">
   <td class="form-control" name="status"><?php echo get_status_project($objResult->status); ?></td>
 
                               </div>
-                               
+
                              </div>
 
                                     <div class="form-group row">
                               <div class="col-md-3">
                                 <label class="control-label col-form-label">Abstarck</label>
-                                
+
                               </div>
                               <div class="col-md-9">
 
@@ -504,9 +500,9 @@ to get the desired effect
    name="topic_abstrack"> <?php echo $objResult->topic_abstrack; ?> </textarea>
 
                               </div>
-                              
+
                             </div>
-                            
+
                           </div>
 
                           <input type="text" class="form-control" id="position" name="position" value="2" hidden="">
@@ -525,21 +521,21 @@ to get the desired effect
 <center>
                           <button ype="submit" class="btn btn-primary ">Create</button>
 </center>
-                      
-                          
+
+
                  </main>
               </td></tr>
-           
-      
-            
-<?php
-  }
-  }
-?>
+
+
 
 <?php
-    }
-    }
+}
+        }
+        ?>
+
+<?php
+}
+}
 ?>
 
 
@@ -571,7 +567,7 @@ to get the desired effect
 
 
     <!-- /.content -->
- 
+
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->

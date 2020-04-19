@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 
 ?>
 
@@ -51,30 +51,30 @@ include('../menu/function.php');
       </ul>
 
       <?php
-$conn = new mysqli("localhost","root","","itpromo_track");
-$count=0;
-if(!empty($_POST['add'])) {
-  $subject = mysqli_real_escape_string($conn,$_POST["subject"]);
-  $comment = mysqli_real_escape_string($conn,$_POST["comment"]);
-  $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
-  mysqli_query($conn, $sql);
+$conn = new mysqli("localhost", "root", "", "itpromo_track");
+$count = 0;
+if (!empty($_POST['add'])) {
+    $subject = mysqli_real_escape_string($conn, $_POST["subject"]);
+    $comment = mysqli_real_escape_string($conn, $_POST["comment"]);
+    $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
+    mysqli_query($conn, $sql);
 }
-$sql2="SELECT * FROM notify WHERE status = 0";
-$result=mysqli_query($conn, $sql2);
-$count=mysqli_num_rows($result);
+$sql2 = "SELECT * FROM notify WHERE status = 0";
+$result = mysqli_query($conn, $sql2);
+$count = mysqli_num_rows($result);
 ?>
 
-    
+
 
       <!-- Display the alert of notification -->
 
       <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -88,23 +88,19 @@ $count=mysqli_num_rows($result);
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="../admin/read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="../admin/read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
           <a href="../admin/read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -181,12 +177,12 @@ $count=mysqli_num_rows($result);
                     <p>User Request</p>
 
                     <?php
-                    $con = mysqli_connect('localhost','root','','itpromo_track');
-                    $query="SELECT member_id FROM member WHERE admin_id=0";
-                    $query_num=mysqli_query($con,$query);
-                    $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT member_id FROM member WHERE admin_id=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-                    ?>
+?>
                     <span class="right badge badge-danger"><?php echo $count; ?></span>
                   </a>
                 </li>
@@ -242,7 +238,7 @@ $count=mysqli_num_rows($result);
                     <p>Project Track</p>
                   </a>
                 </li>
-                
+
                 <li class="nav-item">
                   <a href="../admin/view_all_project.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
@@ -319,15 +315,15 @@ $count=mysqli_num_rows($result);
 
 
               <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
 
-                $query="SELECT member_id FROM member ORDER BY member_id";
+$query = "SELECT member_id FROM member ORDER BY member_id";
 
-                $query_num=mysqli_query($con,$query);
-                $row=mysqli_num_rows($query_num);
-                echo '<h1>'.$row.'</h1>';
-                echo 'Total User';
-                ?>
+$query_num = mysqli_query($con, $query);
+$row = mysqli_num_rows($query_num);
+echo '<h1>' . $row . '</h1>';
+echo 'Total User';
+?>
 
                 </div>
                 <div class="icon">
@@ -344,17 +340,17 @@ $count=mysqli_num_rows($result);
               <div class="small-box bg-primary">
                 <div class="inner">
                   <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
 
-                $query="SELECT member_id FROM member 
+$query = "SELECT member_id FROM member
                         WHERE member_pos='Lecturer'
                         ORDER BY member_id";
 
-                $query_num=mysqli_query($con,$query);
-                $row=mysqli_num_rows($query_num);
-                echo '<h1>'.$row.'</h1>';
-                echo 'All Lecturers';
-                ?>
+$query_num = mysqli_query($con, $query);
+$row = mysqli_num_rows($query_num);
+echo '<h1>' . $row . '</h1>';
+echo 'All Lecturers';
+?>
                 </div>
                 <div class="icon">
                   <i class="fa fa-users"></i>
@@ -369,18 +365,18 @@ $count=mysqli_num_rows($result);
                 <div class="inner">
 
               <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
 
-              $query = "SELECT member_id 
-                        FROM member  
+$query = "SELECT member_id
+                        FROM member
                         WHERE admin_id ='0'
                         ORDER BY member_id";
 
-                $query_num=mysqli_query($con,$query);
-                $row=mysqli_num_rows($query_num);
-                echo '<h1>'.$row.'</h1>';
-                echo 'Registration request';
-                ?>
+$query_num = mysqli_query($con, $query);
+$row = mysqli_num_rows($query_num);
+echo '<h1>' . $row . '</h1>';
+echo 'Registration request';
+?>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
@@ -394,15 +390,15 @@ $count=mysqli_num_rows($result);
                 <div class="inner">
 
                 <?php
-                $con = mysqli_connect('localhost','root','','itpromo_track');
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
 
-                $query="SELECT advisergroup_id FROM advisergroup ORDER BY advisergroup_id";
+$query = "SELECT advisergroup_id FROM advisergroup ORDER BY advisergroup_id";
 
-                $query_num=mysqli_query($con,$query);
-                $row=mysqli_num_rows($query_num);
-                echo '<h1>'.$row.'</h1>';
-                echo 'Group & Tracking';
-                ?>
+$query_num = mysqli_query($con, $query);
+$row = mysqli_num_rows($query_num);
+echo '<h1>' . $row . '</h1>';
+echo 'Group & Tracking';
+?>
                 </div>
                 <div class="icon">
                 <i class="nav-icon fas fa-folder-open"></i>
@@ -417,15 +413,15 @@ $count=mysqli_num_rows($result);
                 <div class="inner">
 
                 <?php
-                $con = mysqli_connect('localhost','root','','itpromo_track');
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
 
-                $query="SELECT topic_id FROM topic_project ORDER BY topic_id";
+$query = "SELECT topic_id FROM topic_project ORDER BY topic_id";
 
-                $query_num=mysqli_query($con,$query);
-                $row=mysqli_num_rows($query_num);
-                echo '<h1>'.$row.'</h1>';
-                echo 'All Projects';
-                ?>
+$query_num = mysqli_query($con, $query);
+$row = mysqli_num_rows($query_num);
+echo '<h1>' . $row . '</h1>';
+echo 'All Projects';
+?>
                 </div>
                 <div class="icon">
                 <i class="nav-icon fas fa-book"></i>
@@ -440,15 +436,15 @@ $count=mysqli_num_rows($result);
                 <div class="inner">
 
                 <?php
-                $con = mysqli_connect('localhost','root','','itpromo_track');
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
 
-                $query="SELECT topic_id FROM topic_project WHERE status='6' ORDER BY topic_id";
+$query = "SELECT topic_id FROM topic_project WHERE status='6' ORDER BY topic_id";
 
-                $query_num=mysqli_query($con,$query);
-                $row=mysqli_num_rows($query_num);
-                echo '<h1>'.$row.'</h1>';
-                echo 'Graduated Projects';
-                ?>
+$query_num = mysqli_query($con, $query);
+$row = mysqli_num_rows($query_num);
+echo '<h1>' . $row . '</h1>';
+echo 'Graduated Projects';
+?>
                 </div>
                 <div class="icon">
                 <i class="nav-icon fas fa-graduation-cap"></i>
@@ -567,7 +563,7 @@ $count=mysqli_num_rows($result);
           <textarea class="form-control" placeholder="comment" id="comment" name="comment" autocomplete="off" required aria-describedby="basic-addon1">
 
           </textarea>
-          
+
         </div>
       </div>
       <div class="modal-footer justify-content-between">
@@ -587,7 +583,7 @@ $count=mysqli_num_rows($result);
 </br></br></br>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-      <div class="float-right d-none d-sm-block">   
+      <div class="float-right d-none d-sm-block">
         <class style="font-size: 14px;">   <b>Version</b> 3.0.3-pre
       </div>
        <class style="font-size: 14px;">   <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
@@ -605,7 +601,7 @@ $count=mysqli_num_rows($result);
   <!--include message  -->
 
   <?php
-        
+
 include '../notification/notification.php';
 ?>
   <!--end for include message  -->

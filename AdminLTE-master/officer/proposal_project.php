@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 
 ?>
 
@@ -44,16 +44,16 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+
     </ul>
    <!-- Right navbar links -->
      <?php
-  $con = mysqli_connect('localhost','root','','itpromo_track');
-  $query="SELECT * FROM notify WHERE status=0";
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$query = "SELECT * FROM notify WHERE status=0";
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
 
-  ?>
+?>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -68,23 +68,19 @@ to get the desired effect
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-              $con = mysqli_connect('localhost','root','','itpromo_track');
-              $sq="SELECT * FROM notify WHERE status=0";
-              $qu_num=mysqli_query($con,$query);
-              if (mysqli_num_rows($qu_num)>0) 
-              {
-                while($result=mysqli_fetch_assoc($qu_num))
-                {
-                  echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id='.$result['id'].'">'.$result['subject'].'</a>';
-                  echo '<div class="dropdown-divider"></div>';
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
+$sq = "SELECT * FROM notify WHERE status=0";
+$qu_num = mysqli_query($con, $query);
+if (mysqli_num_rows($qu_num) > 0) {
+    while ($result = mysqli_fetch_assoc($qu_num)) {
+        echo '<a class="dropdown-item text-primary font-weight-light" href="read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+        echo '<div class="dropdown-divider"></div>';
 
-                }
-              }
-              else
-              {
-                echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-              }
-            ?>
+    }
+} else {
+    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+}
+?>
             <div class="dropdown-divider"></div>
           <a href="read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
@@ -106,8 +102,8 @@ to get the desired effect
           </a>
         </div>
       </li>
-     
-       
+
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -140,7 +136,7 @@ to get the desired effect
 
                    <li class="nav-item has-treeview ">
             <a href="index.php" class="nav-link ">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -149,30 +145,29 @@ to get the desired effect
             </a>
           </li>
 
-      
-  <?php 
-     $my_id = $_SESSION['id'];
-  $con = mysqli_connect('localhost','root','','itpromo_track');
 
+  <?php
+$my_id = $_SESSION['id'];
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
 
-   $query="SELECT * FROM files WHERE by_officer = 'Waiting' or  by_officer05='Waiting' 
-   or by_officer09='Waiting' or  by_officer13='Waiting' " ;
+$query = "SELECT * FROM files WHERE by_officer = 'Waiting' or  by_officer05='Waiting'
+   or by_officer09='Waiting' or  by_officer13='Waiting' ";
 
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
-  ?>
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
+?>
 
          <li class="nav-item">
             <a href="officer_request.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request 
-               <span class="badge badge-danger right"><?php echo $count; ?></span>       
+       Request
+               <span class="badge badge-danger right"><?php echo $count; ?></span>
              </p>
             </a>
           </li>
-    
- 
+
+
   <li class="nav-item">
                   <a href="../officer/student_track.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
@@ -180,9 +175,9 @@ to get the desired effect
        Student Track              </p>
             </a>
           </li>
-    
 
- 
+
+
             <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-calendar"></i>
@@ -204,14 +199,14 @@ to get the desired effect
                   <p>Create Schedule Project</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
 
 
 
-    
+
 
             <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
@@ -234,7 +229,7 @@ to get the desired effect
                   <p>Topic Require</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
@@ -254,7 +249,7 @@ to get the desired effect
             </a>
           </li>
 
-      
+
 
 
         </ul>
@@ -267,12 +262,12 @@ to get the desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  
+
 <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-     
+
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -286,8 +281,8 @@ to get the desired effect
     </section>
   <!-- Main content -->
     <section class="content">
-   
-        
+
+
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">All Final Project Topics</h3>
@@ -310,28 +305,24 @@ to get the desired effect
                 </thead>
                 <tbody>
                          <?php
-                  //   require 'menu/function.php';
+//   require 'menu/function.php';
 
-
-       $strSQL = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM topic_project
+$strSQL = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topic,topic_project.advisergroup_id,advisergroup.group_id,topic_project.topic_years,topic_project.status,topic_project.group_number,topic_project.topic_keyword,topic_project.topic_abstrack,topic_project.topic_fieldstudy FROM topic_project
 
           LEFT JOIN advisergroup ON topic_project.advisergroup_id = advisergroup.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
          WHERE topic_project.advisergroup_id ";
 
-
-        
-
-       $i = 1;
-   $count = 1;
-              ?>
+$i = 1;
+$count = 1;
+?>
  <?php
-     if($result = $db->query($strSQL)){
-             while($objResult = $result->fetch_object()){
-            ?>
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
 
-                
+
                     <tr>
              <td class="text-left" style="font-size: 15px;">   <?php echo $count++; ?></td>
                 <td class="text-left"style="font-size: 15px;"><?php echo $objResult->group_number; ?></td>
@@ -339,7 +330,7 @@ to get the desired effect
    <td class="text-left" style="font-size: 15px;"><?php echo substr($objResult->Owner, 0, 50); ?></td>
                 <td class="text-left" style="font-size: 15px;"><?php echo $objResult->topic_topic; ?></td>
                     <td class="text-left" style="font-size: 15px;"><?php echo fieldstudy($objResult->topic_fieldstudy); ?></td>
-                  <td>               
+                  <td>
                      <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
                         data-target="#show<?php echo $i; ?>">
                       <i class="fa fa-eye"></i></button>
@@ -364,7 +355,7 @@ to get the desired effect
                 </div>
                 <div class="col-md-10">
                   <?php echo $objResult->Owner; ?>
-                  
+
                 </div>
               </div>
 
@@ -413,11 +404,11 @@ to get the desired effect
               </div>
 
 
-         
+
 
               <!--get project Proposal status -->
 
-             
+
               <div class="form-group row">
                 <div class="col-md-2">
                   <label class="control-label ">Advisor</label>
@@ -431,7 +422,7 @@ to get the desired effect
                   <label class="control-label ">Committee</label>
                 </div>
                 <div class="col-md-10">
-            <?php echo get_committee1($objResult->group_id); ?>       
+            <?php echo get_committee1($objResult->group_id); ?>
                      </div>
               </div>
 
@@ -453,7 +444,7 @@ to get the desired effect
                 <?php echo $objResult->topic_abstrack; ?>
                 </div>
               </div>
-              
+
               </div>
 
       </div>
@@ -463,7 +454,7 @@ to get the desired effect
 
 
 
-  
+
 
 
     </div>
@@ -477,10 +468,10 @@ to get the desired effect
                     </tr>
 
                     <?php
-                                    $i++;  
+$i++;
     }
-               }
-                   ?>
+}
+?>
 
 
 
@@ -495,7 +486,7 @@ to get the desired effect
           </div>
           <!-- /.card -->
      </br>
- 
+
       <!-- /.row -->
     </section>
     <!-- /.content -->
@@ -517,7 +508,7 @@ to get the desired effect
 
   <!-- /.control-sidebar -->
 </div>
- 
+
 
 
 

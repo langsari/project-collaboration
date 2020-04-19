@@ -43,7 +43,7 @@
 <?php
 session_start();
 require '../menu/connect.php';
-include('../menu/function.php');
+include '../menu/function.php';
 
 ?>
 
@@ -86,7 +86,7 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-     
+
     </ul>
 
 
@@ -107,8 +107,8 @@ to get the desired effect
           </a>
         </div>
       </li>
-     
-       
+
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -141,7 +141,7 @@ to get the desired effect
 
                    <li class="nav-item has-treeview ">
             <a href="index.php" class="nav-link ">
-             
+
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashbord
@@ -151,29 +151,28 @@ to get the desired effect
           </li>
 
 
-  <?php 
-     $my_id = $_SESSION['id'];
-  $con = mysqli_connect('localhost','root','','itpromo_track');
+  <?php
+$my_id = $_SESSION['id'];
+$con = mysqli_connect('localhost', 'root', '', 'itpromo_track');
 
+$query = "SELECT * FROM files WHERE by_officer = 'Waiting' or  by_officer05='Waiting'
+   or by_officer09='Waiting' or  by_officer13='Waiting' ";
 
-   $query="SELECT * FROM files WHERE by_officer = 'Waiting' or  by_officer05='Waiting' 
-   or by_officer09='Waiting' or  by_officer13='Waiting' " ;
-
-  $query_num=mysqli_query($con,$query);
-  $count=mysqli_num_rows($query_num);
-  ?>
+$query_num = mysqli_query($con, $query);
+$count = mysqli_num_rows($query_num);
+?>
 
          <li class="nav-item">
             <a href="officer_request.php" class="nav-link">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
-       Request 
-               <span class="badge badge-danger right"><?php echo $count; ?></span>       
+       Request
+               <span class="badge badge-danger right"><?php echo $count; ?></span>
              </p>
             </a>
           </li>
-    
- 
+
+
   <li class="nav-item">
             <a href="view_track.php" class="nav-link active">
              <i class="nav-icon fa fa-paper-plane"></i>
@@ -181,9 +180,9 @@ to get the desired effect
        Student Track              </p>
             </a>
           </li>
-    
 
- 
+
+
             <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-calendar"></i>
@@ -205,14 +204,14 @@ to get the desired effect
                   <p>Create Schedule Project</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
 
 
 
-    
+
 
             <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link ">
@@ -235,7 +234,7 @@ to get the desired effect
                   <p>Topic Require</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
@@ -255,7 +254,7 @@ to get the desired effect
             </a>
           </li>
 
-      
+
 
 
         </ul>
@@ -268,12 +267,12 @@ to get the desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  
+
 <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-     
+
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -286,7 +285,7 @@ to get the desired effect
       </div><!-- /.container-fluid -->
     </section>
   <!-- Main content -->
-    
+
     <!-- /.content -->
 
 

@@ -35,16 +35,16 @@ to get the desired effect
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-  
+
     </ul>
 
-   
+
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-        
+
                <li class="nav-item d-none d-sm-inline-block">
         <a href="auth/login.php" class="nav-link">Login</a>
       </li>
@@ -68,7 +68,7 @@ to get the desired effect
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-     
+
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -77,7 +77,7 @@ to get the desired effect
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview ">
             <a href="Annoucement.php" class="nav-link ">
-             
+
               <i class="nav-icon fa fa-bullhorn"></i>
               <p>
                 Announcements
@@ -86,8 +86,8 @@ to get the desired effect
             </a>
           </li>
 
-       
-         
+
+
           <li class="nav-item">
             <a href="show_topic.php" class="nav-link">
               <i class="nav-icon fa fa-file"></i>
@@ -97,7 +97,7 @@ to get the desired effect
             </a>
           </li>
 
-    
+
           <li class="nav-item">
             <a href="proposal_project.php" class="nav-link ">
               <i class="nav-icon fa fa-book"></i>
@@ -154,7 +154,7 @@ to get the desired effect
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  
+
 
   <!-- PAGE CONTENT -->
 
@@ -215,11 +215,11 @@ to get the desired effect
                       </td>
                        </tr>
                     </tbody>
-                                  
+
                   </table>
-                 
+
                 </div>
-                
+
               </form>
             </div>
             <!-- /.card -->
