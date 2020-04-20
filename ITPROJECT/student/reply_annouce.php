@@ -148,72 +148,112 @@ if (mysqli_num_rows($qu_num) > 0) {
             </a>
           </li>
 
-         <li class="nav-item">
-            <a href="infor_group.php" class="nav-link">
-<i class="nav-icon fa fa-users" aria-hidden="true"></i>
-              <p>
-       Group Information              </p>
-            </a>
-          </li>
+           <li class="nav-item">
+              <a href="infor_group.php" class="nav-link">
+                <i class="nav-icon fa fa-users" aria-hidden="true"></i>
+                <p> Group Information </p>
+                <?php
 
+$my_id = $_SESSION['id'];
+$my_group_id = get_group_id($my_id);
+
+//Initialise Value to variable
+
+$sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id,member.member_id,member.member_fullname FROM advisergroup
+         JOIN member ON advisergroup.member_id = member.member_id
+   WHERE advisergroup.group_id = '$my_group_id' and  advisergroup.advisergroup_status='Approve'";
+
+if ($rs = $db->query($sql)) {
+    while ($row = $rs->fetch_object()) {
+        ?>
+        <span class="right badge fa fa-circle" value="<?php echo $row->advisergroup_id; ?>"> </span>
+                <?php
+}
+}
+?>
+              </a>
+            </li>
+
+            <li class="nav-item has-treeview menu-open">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Projects
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="create_proposal.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Proposal</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="../forms/check_pf.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Project Track</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="proposal_project.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>All Project Topics</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
 
 
             <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Projects
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="create_proposal.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Proposal</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
-       <a href="../forms/check_pf.php" class="nav-link" >
-                   <i class="far fa-circle nav-icon"></i>
-                  <p>Project Track</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="proposal_project.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>All Project Topics</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-calendar"></i>
+                <p>
+                  Schedule
+                  <i class="fas fa-angle-left right"></i>
+                </p>
 
 
-            <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-calendar"></i>
-              <p>
-                Schedule
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="display_schedule_proposal.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Proposal Schedule</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="display_schedule_project.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Schedule</p>
-                </a>
-              </li>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="display_schedule_proposal.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Proposal Schedul </p>
+                    <?php
+$strSQL = "SELECT schedule_id FROM schedule WHERE schedule_type ='1' ";
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
+                    <span class="right badge badge-danger" value="<?php echo $objResult->schedule_id; ?>"> New</span>
+                    <?php
+}
+}
+?>
+                  </a>
+                </li>
 
-            </ul>
-          </li>
+                <li class="nav-item">
+                  <a href="display_schedule_project.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Project Schedule</p>
+                    <?php
+
+$strSQL = "SELECT schedule_id FROM schedule WHERE schedule_type ='2' ";
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
+                    <span class="right badge badge-danger" value="<?php echo $objResult->schedule_id; ?>"> New</span>
+                    <?php
+}
+}
+?>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
 
 
   <li class="nav-item has-treeview menu-open">

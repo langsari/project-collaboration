@@ -291,14 +291,7 @@ $count = mysqli_num_rows($query_num);
             </ul>
           </li>
 
-      <li class="nav-item">
-              <a href="PF_setting.php" class="nav-link">
-                <i class="nav-icon fa fa-check-square"></i>
-                <p>
-                  Project Form Setting
-                </p>
-              </a>
-            </li>
+     
 
         </ul>
       </nav>

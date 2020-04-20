@@ -49,17 +49,18 @@ to get the desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition sidebar-mini">
-<div class="wrapper">
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-      </li>
 
-    </ul>
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+        </li>
+
+      </ul>
 
       <?php
 $conn = new mysqli("localhost", "root", "", "itpromo_track");
@@ -114,7 +115,7 @@ if (mysqli_num_rows($qu_num) > 0) {
 }
 ?>
             <div class="dropdown-divider"></div>
-          <a href="read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
+            <a href="read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
         </li>
 
@@ -138,48 +139,48 @@ if (mysqli_num_rows($qu_num) > 0) {
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index.php" class="brand-link">
-        <img src="../dist/img/n2.png" width="100%" >
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <a href="index.php" class="brand-link">
+        <img src="../dist/img/n2.png" width="100%">
         <span class="brand-text font-weight-light"></span>
       </a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="../dist/img/user1.png" class="img-circle elevation-2" alt="User Image">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="../dist/img/user1.png" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="#" class="d-block"><?php echo $_SESSION['name']; ?></a>
+          </div>
         </div>
-        <div class="info">
-          <a href="#" class="d-block"><?php echo $_SESSION['name']; ?></a>
-        </div>
-      </div>
 
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
 
-                   <li class="nav-item has-treeview ">
-            <a href="index.php" class="nav-link active">
+            <li class="nav-item has-treeview ">
+              <a href="index.php" class="nav-link active">
 
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashbord
-                <span class="right badge badge-danger"></span>
-              </p>
-            </a>
-          </li>
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Dashbord
+                  <span class="right badge badge-danger"></span>
+                </p>
+              </a>
+            </li>
 
-        <li class="nav-item">
-            <a href="infor_group.php" class="nav-link">
-<i class="nav-icon fa fa-users" aria-hidden="true"></i>
-              <p> Group Information  </p>
-            <?php
+            <li class="nav-item">
+              <a href="infor_group.php" class="nav-link">
+                <i class="nav-icon fa fa-users" aria-hidden="true"></i>
+                <p> Group Information </p>
+                <?php
 
 $my_id = $_SESSION['id'];
 $my_group_id = get_group_id($my_id);
@@ -188,188 +189,183 @@ $my_group_id = get_group_id($my_id);
 
 $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id,member.member_id,member.member_fullname FROM advisergroup
          JOIN member ON advisergroup.member_id = member.member_id
-         WHERE advisergroup.group_id = '$my_group_id'";
+         WHERE advisergroup.group_id = '$my_group_id' and  advisergroup.advisergroup_status='Approve'";
 
 if ($rs = $db->query($sql)) {
     while ($row = $rs->fetch_object()) {
         ?>
-            <span class="right badge fa fa-circle"  value="<?php echo $row->advisergroup_id; ?>">  </span>
-
-         <?php
+        <span class="right badge fa fa-circle" value="<?php echo $row->advisergroup_id; ?>"> </span>
+                <?php
 }
 }
 ?>
-            </a>
-          </li>
-
-
+              </a>
+            </li>
 
             <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Projects
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="create_proposal.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Proposal</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
-       <a href="../forms/check_pf.php" class="nav-link" >
-                   <i class="far fa-circle nav-icon"></i>
-                  <p>Project Track</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="proposal_project.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>All Project Topics</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-
-            <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-calendar"></i>
-              <p>
-                Schedule
-                <i class="fas fa-angle-left right"></i>
-              </p>
-
-
-            </a>
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Projects
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
               <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="display_schedule_proposal.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Proposal Schedul  </p>
+                <li class="nav-item">
+                  <a href="create_proposal.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Proposal</p>
+                  </a>
+                </li>
 
-       <?php
+                <li class="nav-item">
+                  <a href="../forms/check_pf.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Project Track</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="proposal_project.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>All Project Topics</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+
+            <li class="nav-item has-treeview menu-open">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-calendar"></i>
+                <p>
+                  Schedule
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+
+
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="display_schedule_proposal.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Proposal Schedul </p>
+                    <?php
 $strSQL = "SELECT schedule_id FROM schedule WHERE schedule_type ='1' ";
 if ($result = $db->query($strSQL)) {
     while ($objResult = $result->fetch_object()) {
         ?>
-             <span class="right badge badge-danger"  value="<?php echo $objResult->schedule_id; ?>"> New</span>
-          <?php
+                    <span class="right badge badge-danger" value="<?php echo $objResult->schedule_id; ?>"> New</span>
+                    <?php
 }
 }
 ?>
+                  </a>
+                </li>
 
-              </a>
-              </li>
-
-          <li class="nav-item">
-                <a href="display_schedule_project.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Schedule</p>
-    <?php
+                <li class="nav-item">
+                  <a href="display_schedule_project.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Project Schedule</p>
+                    <?php
 
 $strSQL = "SELECT schedule_id FROM schedule WHERE schedule_type ='2' ";
 if ($result = $db->query($strSQL)) {
     while ($objResult = $result->fetch_object()) {
         ?>
-        <span class="right badge badge-danger"  value="<?php echo $objResult->schedule_id; ?>"> New</span>
-          <?php
+                    <span class="right badge badge-danger" value="<?php echo $objResult->schedule_id; ?>"> New</span>
+                    <?php
 }
 }
 ?>
-                </a>
-              </li>
+                  </a>
+                </li>
 
-            </ul>
-          </li>
+              </ul>
+            </li>
 
 
             <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-newspaper"></i>
-              <p>
-                News
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="annouce.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Annoucements</p>
-                </a>
-              </li>
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-newspaper"></i>
+                <p>
+                  News
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="annouce.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Annoucements</p>
+                  </a>
+                </li>
 
 
-              <li class="nav-item">
-                <a href="show_topic.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Propose Topic </p>
-                </a>
-              </li>
+                <li class="nav-item">
+                  <a href="show_topic.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Propose Topic </p>
+                  </a>
+                </li>
 
-            </ul>
-          </li>
+              </ul>
+            </li>
 
-  <li class="nav-item">
-            <a href="my_profile.php" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
-              <p>
-                Personal Information
-              </p>
-            </a>
-          </li>
-
-
+            <li class="nav-item">
+              <a href="my_profile.php" class="nav-link">
+                <i class="nav-icon fa fa-user"></i>
+                <p>
+                  Personal Information
+                </p>
+              </a>
+            </li>
 
 
-          <li class="nav-item">
-            <a href="guide.php" class="nav-link">
-        <i class="nav-icon fab fa-glide-g"></i>
-              <p>
-                Guide
-              </p>
-            </a>
-          </li>
-
-                    <li class="nav-item">
-            <a href="course_syllabus.php" class="nav-link">
-              <i class="nav-icon fa fa-calendar"></i>
-              <p>
-                course syllabus
-              </p>
-            </a>
-          </li>
-
-                    <li class="nav-item">
-            <a href="form.php" class="nav-link">
-              <i class="nav-icon fa fa-edit"></i>
-              <p>
-                Forms
-              </p>
-            </a>
-          </li>
 
 
-  <li class="nav-item">
-            <a href="booked.php" class="nav-link">
-              <i class="nav-icon fa fa-book"></i>
-              <p>
-                Books
-              </p>
-            </a>
-          </li>
+            <li class="nav-item">
+              <a href="guide.php" class="nav-link">
+                <i class="nav-icon fab fa-glide-g"></i>
+                <p>
+                  Guide
+                </p>
+              </a>
+            </li>
 
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+            <li class="nav-item">
+              <a href="course_syllabus.php" class="nav-link">
+                <i class="nav-icon fa fa-calendar"></i>
+                <p>
+                  course syllabus
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="form.php" class="nav-link">
+                <i class="nav-icon fa fa-edit"></i>
+                <p>
+                  Forms
+                </p>
+              </a>
+            </li>
+
+
+            <li class="nav-item">
+              <a href="booked.php" class="nav-link">
+                <i class="nav-icon fa fa-book"></i>
+                <p>
+                  Books
+                </p>
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -390,11 +386,11 @@ if ($result = $db->query($strSQL)) {
         </div><!-- /.container-fluid -->
       </div>
       <!-- /.content-header -->
-   <section class="content">
+      <section class="content">
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
           <div class="row">
-             <div class="col-lg-3 col-6">
+            <div class="col-lg-3 col-6">
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
@@ -402,15 +398,16 @@ if ($result = $db->query($strSQL)) {
                   <p>Information</p>
                 </div>
                 <div class="icon">
-                <i class="nav-icon fas fa-book"></i>
+                  <i class="nav-icon fas fa-book"></i>
                 </div>
-                <a href="infor_group.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="infor_group.php" class="small-box-footer">More info <i
+                    class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
 
             <!-- ./col -->
 
-                      <div class="col-lg-3 col-6">
+            <div class="col-lg-3 col-6">
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
@@ -418,10 +415,11 @@ if ($result = $db->query($strSQL)) {
                   <p>Project Track</p>
                 </div>
                 <div class="icon">
-                <i class="nav-icon fas fa-book"></i>
+                  <i class="nav-icon fas fa-book"></i>
                 </div>
 
-                <a href="../forms/check_pf.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="../forms/check_pf.php" class="small-box-footer">More info <i
+                    class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
 
@@ -435,13 +433,14 @@ if ($result = $db->query($strSQL)) {
                   <p>Presentation Schedule </p>
                 </div>
                 <div class="icon">
-                <i class="nav-icon fas fa-book"></i>
+                  <i class="nav-icon fas fa-book"></i>
                 </div>
-                <a href="display_schedule_proposal.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="display_schedule_proposal.php" class="small-box-footer">More info <i
+                    class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
 
-                   <div class="col-lg-3 col-6">
+            <div class="col-lg-3 col-6">
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
@@ -449,9 +448,10 @@ if ($result = $db->query($strSQL)) {
                   <p>Graduated Projects </p>
                 </div>
                 <div class="icon">
-                <i class="nav-icon fas fa-book"></i>
+                  <i class="nav-icon fas fa-book"></i>
                 </div>
-                <a href="proposal_project.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="proposal_project.php" class="small-box-footer">More info <i
+                    class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
 
@@ -464,7 +464,7 @@ if ($result = $db->query($strSQL)) {
           </div>
       </section>
 
-  <!-- Main content -->
+      <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
           <div class="card card-primary card-outline">
@@ -516,25 +516,27 @@ if ($result = $db->query($strSQL)) {
         </div><!-- /.container-fluid -->
       </section>
 
-</br>
-</div>
-
-
-     </div>
-
-
-
-
-
-
-
-    <!-- /.content-wrapper -->
-   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
-      <b>Version</b> 3.0.3-pre
+      </br>
     </div>
-       <class style="font-size: 14px;">   <strong>Copyright © 2019-2020  <a href="#">IT Project Monitoring and Track</a>.</strong> All rights
-    reserved.
+
+
+  </div>
+
+
+
+
+
+
+
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <class style="font-size: 12px;">
+        <b>Version</b> 3.0.3-pre
+    </div>
+    <class style="font-size: 14px;"> <strong>Copyright © 2019-2020 <a href="#">IT Project Monitoring and
+          Track</a>.</strong> All rights
+      reserved.
   </footer>
 
   <!-- ./wrapper -->

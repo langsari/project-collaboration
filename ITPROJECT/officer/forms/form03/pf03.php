@@ -113,7 +113,7 @@ if (mysqli_num_rows($qu_num) > 0) {
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
 
-    <a href="index.php" class="brand-link">
+    <a href="../../index.php" class="brand-link">
         <img src="../../../dist/img/n2.png" width="100%" >
         <span class="brand-text font-weight-light"></span>
       </a>
@@ -418,18 +418,7 @@ if ($result = $db->query($strSQL)) {
 
 
               </fieldset>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
-                        aria-valuemax="100"></div>
-                    </div>
-                  </br>
-                  <div class="progress progress-sm">
-                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="66" aria-volumemin="0" aria-volumemax="100" style="width: 100%">
-                              </div>
-                          </div>
-                          <small>
-                              57% Complete
-                          </small>
+                   
             </fieldset>
           </form>
 

@@ -268,14 +268,6 @@ $count = mysqli_num_rows($query_num);
               </ul>
             </li>
 
-            <li class="nav-item">
-              <a href="PF_setting.php" class="nav-link">
-                <i class="nav-icon fa fa-check-square"></i>
-                <p>
-                  Project Form Setting
-                </p>
-              </a>
-            </li>
 
           </ul>
         </nav>
@@ -467,17 +459,7 @@ echo 'Graduated Projects';
             </div>
              <div class="col-lg-3 col-6">
               <!-- small box -->
-              <div class="small-box bg-white">
-                <div class="inner">
-                  <h4>PF</h4>
-                  <p>Setting</p>
-                </div>
-                <div class="icon">
-                <i class="nav-icon fas fa-cogs"></i>
-                </div>
-                <a href="PF_setting.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
+            
             <!-- ./col -->
           </div>
       </section>

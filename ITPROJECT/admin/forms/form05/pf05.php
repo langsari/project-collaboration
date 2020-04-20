@@ -55,7 +55,7 @@ to get the desired effect
       <li class="nav-item dropdown">
               <li class="nav-item d-none d-sm-inline-block">
         <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../auth/logout.php" class="nav-link">Logout</a>
+<a href="../../../auth/logout.php" class="dropdown-item">  
       </li>
       </li>
 
@@ -184,12 +184,7 @@ $count = mysqli_num_rows($query_num);
                   <p>Project Track</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../../../admin/add_proposal.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Student project proposal</p>
-                </a>
-              </li>
+             
               <li class="nav-item">
                 <a href="../../../admin/view_all_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
@@ -219,14 +214,7 @@ $count = mysqli_num_rows($query_num);
             </ul>
           </li>
 
-      <li class="nav-item">
-              <a href="PF_setting.php" class="nav-link">
-                <i class="nav-icon fa fa-check-square"></i>
-                <p>
-                  Project Form Setting
-                </p>
-              </a>
-            </li>
+
 
 
         </ul>
@@ -352,18 +340,7 @@ if ($result = $db->query($strSQL)) {
 
 
               </fieldset>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
-                        aria-valuemax="100"></div>
-                    </div>
-                  </br>
-                  <div class="progress progress-sm">
-                              <div class="progress-bar bg-green" role="progressbar" aria-volumenow="66" aria-volumemin="0" aria-volumemax="100" style="width: 100%">
-                              </div>
-                          </div>
-                          <small>
-                              57% Complete
-                          </small>
+                    
             </fieldset>
           </form>
 

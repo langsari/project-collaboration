@@ -228,12 +228,7 @@ if (mysqli_num_rows($qu_num) > 0) {
                     <p>Project Track</p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="../admin/add_proposal.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Student project proposal</p>
-                  </a>
-                </li>
+             
                 <li class="nav-item">
                   <a href="../admin/view_all_project.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>

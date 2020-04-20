@@ -411,15 +411,10 @@ if ($result = $db->query($strSQL)) {
    <td class="text-left" style="font-size: 15px;"><?php echo substr($objResult->Owner, 0, 50); ?></td>
                 <td class="text-left" style="font-size: 15px;"><?php echo $objResult->topic_topic; ?></td>
                      <td class="text-left" style="font-size: 15px;"><?php echo get_status_project($objResult->status); ?></td>
-
-
                 <td>
-
-
                  <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
                         data-target="#show<?php echo $i; ?>"> View
                       <i class="fa fa-eye"></i></button>
-
 
        <a href="delete_project.php?id=<?php echo $objResult->topic_id; ?>"class="btn btn-danger btn-xs">
                   <i class="fa fa-trash" title="Delete"></i>delete</a>

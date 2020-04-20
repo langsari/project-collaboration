@@ -206,7 +206,7 @@ $strSQL = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topi
           LEFT JOIN advisergroup ON topic_project.advisergroup_id = advisergroup.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
-         WHERE topic_project.advisergroup_id ";
+         WHERE topic_project.topic_id ";
 
 $i = 1;
 $count = 1;
@@ -305,7 +305,7 @@ if ($result = $db->query($strSQL)) {
                   <label class="control-label ">Advisor</label>
                 </div>
                 <div class="col-md-10">
-                <?php echo get_advisor($objResult->group_id); ?>
+           <?php echo $objResult->adviser; ?>
                 </div>
               </div>
 

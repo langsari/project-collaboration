@@ -291,14 +291,7 @@ $count = mysqli_num_rows($query_num);
               </ul>
             </li>
 
-            <li class="nav-item">
-              <a href="PF_setting.php" class="nav-link">
-                <i class="nav-icon fa fa-check-square"></i>
-                <p>
-                  Project Form Setting
-                </p>
-              </a>
-            </li>
+         
 
           </ul>
         </nav>
@@ -332,7 +325,7 @@ $count = mysqli_num_rows($query_num);
             <div class="card card-primary card-outline">
               <div class="card-header">
                 <h3 class="card-title">
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addmember">
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#AddPS">
                     <i class="nav-icon fas fa-plus"></i>
                     Add New Project
                   </button>
@@ -363,7 +356,7 @@ $strSQL = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topi
           LEFT JOIN advisergroup ON topic_project.advisergroup_id = advisergroup.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
-         WHERE topic_project.advisergroup_id ";
+         WHERE topic_project.topic_id ";
 
 $i = 1;
 $count = 1;
@@ -472,7 +465,7 @@ if ($result = $db->query($strSQL)) {
                                     <label class="control-label ">Advisor</label>
                                   </div>
                                   <div class="col-md-10">
-                                    <?php echo get_advisor($objResult->group_id); ?>
+                                <?php echo $objResult->adviser; ?>
                                   </div>
                                 </div>
 
@@ -599,6 +592,180 @@ $i++;
     </div>
 
 
+  <div class="modal fade" id="AddPS" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header bg-info">
+                              <h5 class="modal-title">Add New Project</h5>
+                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                    </div>
+
+                            <div class="modal-body">
+        <form  method="post" action="check_proposal.php">
+              <div class="form-group row margin-top-10">
+                <div class="col-md-2">
+                  <label class="control-label ">Group Code</label>
+                </div>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" name="group_number" id="group_number" placeholder="Group Code">
+
+                </div>
+              </div>
+
+
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label col-form-label">Owner Project</label>
+                </div>
+                <div class="col-md-10">
+             <textarea rows="2" class="form-control" id="Owner" name="Owner" placeholder=""></textarea>
+                </div>
+              </div>
+
+
+
+
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label col-form-label">Topic</label>
+                </div>
+                <div class="col-md-10">
+                                        <input type="text" class="form-control" id="topic_topic" name="topic_topic"placeholder="Topic" autocomplete="off" required aria-describedby="basic-addon1">
+                </div>
+              </div>
+
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label col-form-label">Keyword</label>
+                </div>
+                <div class="col-md-10">
+                  <input type="text" class="form-control" name="topic_keyword" id="topic_keyword" >
+                </div>
+              </div>
+             
+
+
+<div class="form-group row">           
+       <div class="col-md-2">
+             <label class="control-label col-form-label">Filed of Study</label>
+           </div>
+             <div class="col-md-10">
+                                    <select class="form-control" name="topic_fieldstudy" id="topic_fieldstudy">
+
+        
+           <option value="no"> Select Filed</option>
+                                        <option value="Software Engineering">Software Engineering</option>
+                                        <option value="Computer Multimedia">Computer Multimedia</option>
+                                        <option value="Computer Networking">Computer Networking</option>
+                                        </select>
+      
+            </div>
+          </div>
+
+
+
+
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label col-form-label">Years</label>
+                </div>
+                <div class="col-md-10">
+                  <input type="text" class="form-control" name="topic_years" id="topic_years" placeholder="2020-01-30" >
+                </div>
+              </div>
+
+ <div class="form-group row">           
+       <div class="col-md-2">
+             <label class="control-label col-form-label">Lecturer</label>
+           </div>
+             <div class="col-md-9">
+             <select class="form-control" name="adviser">
+              <option value="no">- Select Lecturer -</option>
+                <?php
+                include '../menu/connect.php';
+                $strSQL = "SELECT member_fullname , member_fullname FROM member WHERE member_pos ='Lecturer'";
+                if($result = $db->query($strSQL)){
+                  while($objResult = $result->fetch_object()){
+                    echo "<option value='".$objResult->member_fullname."'>".$objResult->member_fullname."</option>";
+                  }
+                }else{
+                }
+                ?>
+              </select>
+      
+            </div>
+          </div>
+
+
+   <div class="form-group row">
+                              <div class="col-md-2">
+                                <label class="control-label col-form-label">Abstarck</label>
+
+                              </div>
+                              <div class="col-md-9">
+
+
+
+  <textarea type="text" style="width: 600px; height: 200px"  class="form-control" id="topic_abstrack"
+   name="topic_abstrack"> </textarea>
+
+                              </div>
+
+                            </div>
+
+                      
+              <!--get project Proposal status -->
+
+                    <div class="form-group row">
+                <div class="col-md-2">
+                  <label class="control-label col-form-label">Proposal status</label>
+
+                </div>
+                <div class="col-md-9">
+                  <select class="form-control" name="status" id="status">
+                    <option value="1">Wait for the proposal Trail</option>
+                    <option value="2">Revision Proposal</option>
+                    <option value="3">OK</option>
+                    <option value="4">Reject</option>
+                    <option value="5">Cancel</option>
+                    <option value="6">Graduate</option>
+                    <option value="7">Not Pass</option>
+
+                  </select>
+
+                </div>
+
+              </div>
+
+      </div>
+
+     <input type="text" class="form-control" id="position" name="position" value="1" hidden="">
+
+
+
+
+
+  <div class="modal-footer">
+   <button type="submit" class="btn btn-success">
+    <i class="glyphicon glyphicon-ok"></i>
+      Submit</button>                    </div>
+
+
+
+    </div>
+
+    </form>
+    </fieldset>
+
+    </section>
+    <!-- /.content -->
+
+  </div>
+
+</div>
 
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
