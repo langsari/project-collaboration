@@ -13,7 +13,7 @@ include '../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO</title>
+  <title>ITPROMOT|Dashborad Management</title>
 
 
 
@@ -127,7 +127,7 @@ if (mysqli_num_rows($qu_num) > 0) {
             <a href="../auth/logout.php" class="dropdown-item">
               <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
             </a>
-            <a href="#" class="dropdown-item">
+            <a href="my_profile.php" class="dropdown-item">
               <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
             </a>
           </div>
@@ -293,7 +293,7 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Topic Require </p>
+                  <p>Propose Topic </p>
                 </a>
               </li>
 
@@ -381,7 +381,7 @@ $count = mysqli_num_rows($query_num);
           <div class="row">
              <div class="col-lg-3 col-6">
               <!-- small box -->
-              <div class="small-box bg-warning">
+              <div class="small-box bg-info">
                 <div class="inner">
                   <h4>Group </h4>
                   <p>Information</p>
@@ -428,7 +428,7 @@ $count = mysqli_num_rows($query_num);
 
                    <div class="col-lg-3 col-6">
               <!-- small box -->
-              <div class="small-box bg-light">
+              <div class="small-box bg-success">
                 <div class="inner">
                   <h4>All Project</h4>
                   <p>Graduated Projects </p>
@@ -518,7 +518,7 @@ $count = mysqli_num_rows($query_num);
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 14px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+       <class style="font-size: 14px;">   <strong>Copyright © 2019-2020  <a href="#">IT Project Monitoring and Track</a>.</strong> All rights
     reserved.
   </footer>
 

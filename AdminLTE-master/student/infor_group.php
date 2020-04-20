@@ -12,7 +12,7 @@ include '../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>IT PROMOT</title>
+  <title>ITPROMOT</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Font Awesome -->
@@ -375,8 +375,8 @@ if ($result = $db->query($sql)) {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i>Create Group</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i>Add Group</h4>
       </div>
       <div class="modal-body">
 
@@ -403,8 +403,8 @@ if ($result = $db->query($sql)) {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i>Join partner group</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i>Join your partner</h4>
       </div>
       <div class="modal-body">
 
@@ -600,8 +600,9 @@ if ($rs = $db->query($sql)) {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i>Request advisor</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i>Select your advisor</h4>
+        
       </div>
       <div class="modal-body">
 
@@ -666,7 +667,7 @@ if ($result = $db->query($strSQL)) {
            <input type="hidden" name="group_id" value="<?php echo $group_id; ?>">
             <input type="hidden" name="advisergroup_id" value="<?php echo $advisergroup_id; ?>">
 
-             <button type="submit" class="btn btn-primary btn-lg btn-block">Send request</button>
+             <button type="submit" class="btn btn-primary btn-bm btn-block">Send request</button>
 
 </div>
 </div>
