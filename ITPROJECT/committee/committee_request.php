@@ -110,7 +110,7 @@ if (mysqli_num_rows($qu_num) > 0) {
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-  <a href="index.php" class="brand-link">
+  <a href="../advisor/index.php" class="brand-link">
          <img src="../dist/img/n2.png" width="100%" >
         <span class="brand-text font-weight-light"></span>
       </a>
@@ -189,7 +189,7 @@ $count = mysqli_num_rows($query_num);
                 </a>
               </li>
               <li class="nav-item">
-       <a href="../view track/student_track.php" class="nav-link" >
+       <a href="../advisor/student_track.php" class="nav-link" >
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Track</p>
                 </a>
@@ -252,7 +252,7 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="../advisor/add_general_topic.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Topic Require</p>
+                  <p>Propose Topic </p>
                 </a>
               </li>
 
@@ -336,9 +336,9 @@ $count = mysqli_num_rows($query_num);
                 <th style="font-size: 15px;" width="20%" class="text-left"> Title project</th>
                 <th style="font-size: 15px;" width="20%" class="text-left">Student</th>
                 <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>
+                <th style="font-size: 15px;" width="6%" class="text-left">Status</th>
                 <th style="font-size: 15px;" width="10%" class="text-left">Files</th>
-                <th style="font-size: 15px;" width="10%" class="text-left">Status</th>
-                <th style="font-size: 15px;" width="10%" class="text-left">View</th>
+                <th style="font-size: 15px;" width="13%" class="text-left">View</th>
                 <th style="font-size: 15px;" width="10%" class="text-left">Options</th>
                 </tr>
                 </thead>
@@ -348,14 +348,13 @@ $count = mysqli_num_rows($query_num);
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
 
-$strSQL = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,committeegroup.member_id,committeegroup.group_id,schedule.schedule_status,schedule.schedule_id,schedule.schedule_type,files.advisergroup_id,committeegroup.status_presentation,files.files_filename_proposal
+$strSQL = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,committeegroup.member_id,committeegroup.group_id,schedule.schedule_status,schedule.schedule_id,schedule.schedule_type,files.advisergroup_id,committeegroup.status_presentation,files.files_filename_proposal,files.status_advisor
       FROM committeegroup
         LEFT JOIN advisergroup ON committeegroup.member_id = advisergroup.member_id
         LEFT JOIN member ON committeegroup.member_id = member.member_id
        LEFT JOIN partnergroup ON committeegroup.group_id = partnergroup.group_id
           LEFT JOIN files ON committeegroup.committeegroup_id = files.files_id
       LEFT JOIN schedule ON committeegroup.group_id = schedule.group_id
-
     WHERE committeegroup.member_id  ='$my_id' AND schedule_type='1' ";
 
 $i = 1;
@@ -375,13 +374,14 @@ if ($result = $db->query($strSQL)) {
 
 
 
-              <td class="text-left" style="font-size: 14px;" width="20%" ><?php echo get_advisor($objResult->group_id); ?></td>
+              <td class="text-left" style="font-size: 14px;" width="15%" ><?php echo get_advisor($objResult->group_id); ?></td>
+
+              <td class="text-left"><?php echo status_03($objResult->status_advisor); ?></td>
 
              <td class="text-left" style="font-size: 14px;" width="5%" >
 <?php if ($objResult->files_filename_proposal != "") {?>
                       <a href="../advisor/download.php?pdf=<?php echo $objResult->files_filename_proposal; ?>">
-                      <span class='badge badge-primary'><i class="fa fa-download">Download
-                           </i></a></span>
+                      <span class='badge badge-success btn-xs'>Download </a></span>
                        </a>
  <?php } else {?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
@@ -389,16 +389,12 @@ if ($result = $db->query($strSQL)) {
                     <?php }?>
                               </td>
 
-                <td class="text-left"><?php echo $objResult->schedule_status; ?></td>
-
-
-
-
+              
 
 
           <td class="text-left" style="font-size: 14px;" width="5%" >
 
-  <a href="form03.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-sm">  <i class="fa fa-eye" title="Detail"></i></a>
+  <a href="form03.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-xs">Display</a>
 
 
 
@@ -409,7 +405,6 @@ if ($result = $db->query($strSQL)) {
 
 
 
-
  <?php if ($objResult->status_presentation != "Pass") {?>
     <a href="check_pass03.php?id=<?php echo $objResult->group_id; ?>"  >
 
@@ -417,7 +412,7 @@ if ($result = $db->query($strSQL)) {
               <i class='fa fa-check'></i></button>
           <?php } else {?>
 
-            <button class="btn btn-warning btn-xs disabled float-left" disabled="disabled">      <i class='fa fa-check'></i></button>
+            <button class="btn btn-warning btn-xs disabled float-left" disabled="disabled">  <i class='fa fa-check'></i></button>
 
           </a>
                        <?php }?>
@@ -493,7 +488,6 @@ $strSQL = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id
        LEFT JOIN partnergroup ON committeegroup.group_id = partnergroup.group_id
           LEFT JOIN files ON committeegroup.committeegroup_id = files.files_id
       LEFT JOIN schedule ON committeegroup.group_id = schedule.group_id
-
     WHERE committeegroup.member_id  ='$my_id'   and schedule.schedule_type='2'  ";
 
 $i = 1;
