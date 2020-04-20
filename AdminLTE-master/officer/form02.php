@@ -390,7 +390,10 @@ if ($result = $db->query($sql)) {
 
 
 
-
+  </div>
+      </div>
+    </div>
+  </section>
 
 
 
@@ -403,7 +406,6 @@ if ($result = $db->query($sql)) {
 
    <link rel="stylesheet" href="../assets/comment/style.css">
 
-   <div class="comments-app"  ng-controller="CommentsController as cmntCtrl">
 
 
   <!-- From -->

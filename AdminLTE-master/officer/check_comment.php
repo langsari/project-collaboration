@@ -15,7 +15,7 @@ if (isset($_POST['comment_content'])) {
     if ($db->query($sql)) {
         $db->close();
 
-        echo "<script>alert('Send Comment');window.location = \"form02.php\";</script>";
+        echo '<script> window.location="form02.php?id=' . $advisergroup_id . '"</script> ';
 
     } else {
         echo $db->error;

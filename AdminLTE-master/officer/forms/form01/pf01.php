@@ -487,7 +487,7 @@ $strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_i
 
         LEFT JOIN member ON advisergroup.member_id = member.member_id
 
-        WHERE advisergroup.advisergroup_id = '$id'and comment.form_pf='1'  ";
+        WHERE advisergroup.advisergroup_id = '$id' and comment.form_pf='1'  ";
 if ($result = $db->query($strSQL)) {
     while ($objResult = $result->fetch_object()) {
 

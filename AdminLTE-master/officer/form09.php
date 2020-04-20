@@ -404,7 +404,6 @@ if ($result = $db->query($strSQL)) {
 
    <link rel="stylesheet" href="../assets/comment/style.css">
 
-   <div class="comments-app"  ng-controller="CommentsController as cmntCtrl">
 
 
   <!-- From -->
