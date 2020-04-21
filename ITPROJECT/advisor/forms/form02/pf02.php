@@ -361,11 +361,6 @@ $count = mysqli_num_rows($query_num);
             <fieldset class="wizard-fieldset show">
               <h5>PF02</h5>
 
-
-
-
-
-
             <?php
 
 $id = $_GET['id'];
@@ -380,6 +375,9 @@ if ($result = $db->query($sql)) {
         ?>
 
             <fieldset>
+  <div style="font-size: 15px;"> 
+               <?php echo get_member_list($objResult->group_id); ?>
+             </div>
             </br>
               <h5>Proposal Project Approval Letter </h5>
            <h6><small class="text-muted">Approval Letter Agreed to Sign By Officer</small>

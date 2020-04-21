@@ -415,7 +415,9 @@ $strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_
 if ($result = $db->query($strSQL)) {
     while ($objResult = $result->fetch_object()) {
         ?>
-            <fieldset>
+            <fieldset>  <div style="font-size: 15px;"> 
+               <?php echo get_member_list($objResult->group_id); ?>
+             </div>
             </br>
               <h5>Form of Submit/Receive Project (5 Chapters)</h5>
            <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>

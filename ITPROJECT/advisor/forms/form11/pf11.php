@@ -374,7 +374,9 @@ if ($result = $db->query($strSQL)) {
         ?>
 
 
-            <fieldset>
+            <fieldset>  <div style="font-size: 15px;"> 
+               <?php echo get_member_list($objResult->group_id); ?>
+             </div>
             </br>
               <h5>Project Approval Letter
  </h5>

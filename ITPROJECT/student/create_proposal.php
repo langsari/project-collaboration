@@ -495,7 +495,7 @@ $sql = "SELECT * FROM member WHERE group_id = '$my_group_id'";
                                                         <label class="control-label col-form-label">Years</label>
                                                     </div>
                                                     <div class="col-md-9">
-                                <input type="DATE" class="form-control" id="topic_years" name="topic_years" value="<?php echo $objResult->topic_years; ?>"   autocomplete="off" required aria-describedby="basic-addon1" >
+                                <input type="text" class="form-control" id="topic_years" name="topic_years" value="<?php echo $objResult->topic_years; ?>"   autocomplete="off" required aria-describedby="basic-addon1" >
                                                     </div>
                                                 </div>
 

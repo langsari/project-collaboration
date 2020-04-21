@@ -1,4 +1,4 @@
-<?php
+2<?php
 session_start();
 require '../../menu/connect.php';
 include '../../menu/function.php';
@@ -413,7 +413,9 @@ if ($result = $db->query($strSQL)) {
         ?>
 
 
-            <fieldset>
+            <fieldset>  <div style="font-size: 15px;"> 
+               <?php echo get_member_list($objResult->group_id); ?>
+             </div>
             </br>
               <h5>Submit the Complete project Document of related resources
  </h5>

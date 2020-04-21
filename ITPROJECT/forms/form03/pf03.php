@@ -414,7 +414,9 @@ if ($result = $db->query($strSQL)) {
         ?>
 
 
-            <fieldset>
+            <fieldset>  <div style="font-size: 15px;"> 
+               <?php echo get_member_list($objResult->group_id); ?>
+             </div>
             </br>
               <h5>Proposal Presentation & Proposal Revision </h5>
            <h6><small class="text-muted">Approval Letter Agreed to Approve By Advisor & Committee</small>

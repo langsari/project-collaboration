@@ -673,7 +673,7 @@ $i++;
                   <label class="control-label col-form-label">Years</label>
                 </div>
                 <div class="col-md-10">
-                  <input type="text" class="form-control" name="topic_years" id="topic_years" placeholder="2020-01-30" >
+                  <input type="text" class="form-control" name="topic_years" id="topic_years" placeholder="2018" >
                 </div>
               </div>
 

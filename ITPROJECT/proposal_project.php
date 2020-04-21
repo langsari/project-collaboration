@@ -206,7 +206,8 @@ $strSQL = "SELECT topic_project.*,  topic_project.Owner,topic_project.topic_topi
           LEFT JOIN advisergroup ON topic_project.advisergroup_id = advisergroup.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
-         WHERE topic_project.topic_id ";
+         WHERE topic_project.topic_id  
+           ORDER BY topic_project.topic_id DESC";
 
 $i = 1;
 $count = 1;
