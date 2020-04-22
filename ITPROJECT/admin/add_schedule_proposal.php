@@ -401,10 +401,11 @@ if ($result = $db->query($sql)) {
                           <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                               <div class="modal-header bg-info">
+                                <h5 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
+                                  Edit Schedule Proposal</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
-                                  Edit Schedule Proposal</h4>
+                                
                               </div>
 
 
@@ -452,7 +453,7 @@ if ($result = $db->query($sql)) {
                                       <label class="control-label ">Committee</label>
                                     </div>
                                     <div class="col-md-10">
-                                      <?php echo get_committee($objResult->group_id); ?> </div>
+                                      <?php echo get_committee1($objResult->group_id); ?> </div>
                                   </div>
 
                                   <div class="form-group row">
@@ -524,10 +525,11 @@ if ($result = $db->query($sql)) {
                           <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                               <div class="modal-header bg-info">
+                                <h5 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
+                                  View Schedule Proposal</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-edit"></i>
-                                  View Schedule Proposal</h4>
+                                
                               </div>
 
 
@@ -575,7 +577,7 @@ if ($result = $db->query($sql)) {
                                       <label class="control-label ">Committee</label>
                                     </div>
                                     <div class="col-md-10">
-                                      <?php echo get_committee($objResult->group_id); ?> </div>
+                                      <?php echo get_committee1($objResult->group_id); ?> </div>
                                   </div>
 
                                   <div class="form-group row">

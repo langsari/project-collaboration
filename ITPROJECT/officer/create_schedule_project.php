@@ -535,7 +535,7 @@ if ($result = $db->query($sql)) {
                   <label class="control-label ">Committee</label>
                 </div>
                 <div class="col-md-10">
-<?php echo get_committee($objResult->group_id); ?>              </div>
+<?php echo get_committee1($objResult->group_id); ?>              </div>
               </div>
 
    <div class="form-group row">
@@ -662,7 +662,7 @@ if ($result = $db->query($sql)) {
                   <label class="control-label ">Committee</label>
                 </div>
                 <div class="col-md-10">
-<?php echo get_committee($objResult->group_id); ?>              </div>
+<?php echo get_committee1($objResult->group_id); ?>              </div>
               </div>
 
    <div class="form-group row">

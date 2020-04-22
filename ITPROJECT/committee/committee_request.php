@@ -355,7 +355,7 @@ $strSQL = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id
        LEFT JOIN partnergroup ON committeegroup.group_id = partnergroup.group_id
           LEFT JOIN files ON committeegroup.committeegroup_id = files.files_id
       LEFT JOIN schedule ON committeegroup.group_id = schedule.group_id
-    WHERE committeegroup.member_id  ='$my_id' AND schedule_type='1' ";
+    WHERE committeegroup.member_id  ='$my_id' AND committeegroup.status_presentation='Waiting'";
 
 $i = 1;
 $count = 1;
@@ -363,9 +363,6 @@ $count = 1;
 if ($result = $db->query($strSQL)) {
     while ($objResult = $result->fetch_object()) {
         ?>
-
-
-
                     <tr>
 
             <td class="text-left" style="font-size: 14px;" width="5%" >  <?php echo $count++; ?></td>
@@ -379,6 +376,8 @@ if ($result = $db->query($strSQL)) {
               <td class="text-left"><?php echo status_03($objResult->status_advisor); ?></td>
 
              <td class="text-left" style="font-size: 14px;" width="5%" >
+
+
 <?php if ($objResult->files_filename_proposal != "") {?>
                       <a href="../advisor/download.php?pdf=<?php echo $objResult->files_filename_proposal; ?>">
                       <span class='badge badge-success btn-xs'>Download </a></span>

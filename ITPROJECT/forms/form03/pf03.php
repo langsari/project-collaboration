@@ -167,7 +167,7 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
 if ($rs = $db->query($sql)) {
     while ($row = $rs->fetch_object()) {
         ?>
-        <span class="right badge fa fa-circle" value="<?php echo $row->advisergroup_id; ?>"> </span>
+        <span class="right badge fa fa-bell text-danger" value="<?php echo $row->advisergroup_id; ?>"> </span>
                 <?php
 }
 }
@@ -272,7 +272,7 @@ if ($result = $db->query($strSQL)) {
               <li class="nav-item">
                 <a href="../../student/show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Topic Require</p>
+                  <p>Propose Topic</p>
                 </a>
               </li>
 
@@ -441,7 +441,8 @@ if ($result = $db->query($strSQL)) {
                             </br>2).Project Revision
                           </br>
                           </br><u>Condition:</u>
-                          </br>Student has to upload the last proposal revison
+                          </br>Student has to take the proposal presentation
+                          </br>Afer prestent,Student has to upload the last proposal revison
                           </br>The document must approved by advisor first
                         </br>The document has to approve by committee
                             <td>

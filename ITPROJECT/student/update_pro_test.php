@@ -1,9 +1,18 @@
+
 <?php
 session_start();
 require '../menu/connect.php';
 include '../menu/function.php';
 
 ?>
+<?php
+if(isset($_GET["id"]))
+              {
+
+  $topic_id = $_GET["id"];
+
+              }
+              ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -107,6 +116,7 @@ if (mysqli_num_rows($qu_num) > 0) {
     </ul>
   </nav>
   <!-- /.navbar -->
+  <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
    <!-- Main Sidebar Container -->
@@ -116,7 +126,6 @@ if (mysqli_num_rows($qu_num) > 0) {
         <img src="../dist/img/n2.png" width="100%" >
         <span class="brand-text font-weight-light"></span>
       </a>
-
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -138,7 +147,7 @@ if (mysqli_num_rows($qu_num) > 0) {
 
 
                    <li class="nav-item has-treeview ">
-            <a href="index.php" class="nav-link ">
+            <a href="index.php" class="nav-link">
 
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -175,7 +184,7 @@ if ($rs = $db->query($sql)) {
             </li>
 
             <li class="nav-item has-treeview menu-open">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                   Projects
@@ -184,7 +193,7 @@ if ($rs = $db->query($sql)) {
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="create_proposal.php" class="nav-link">
+                  <a href="create_proposal.php" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Add Proposal</p>
                   </a>
@@ -294,7 +303,7 @@ if ($result = $db->query($strSQL)) {
 
 
           <li class="nav-item">
-            <a href="guide.php" class="nav-link active">
+            <a href="guide.php" class="nav-link">
         <i class="nav-icon fab fa-glide-g"></i>
               <p>
                 Guide
@@ -339,12 +348,7 @@ if ($result = $db->query($strSQL)) {
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-
-
-  <!-- PAGE CONTENT -->
-
-        <section class="content-header">
+    <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -352,80 +356,168 @@ if ($result = $db->query($strSQL)) {
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Guide</li>
+              <li class="breadcrumb-item active">Add proposal</li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
+     <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-edit"></i>
+                Proposal Detail</h3>
+            </div> <!-- /.card-body -->
+             <div class="card-body">
+                <form action="check_edit_pro.php?id=<?php echo $_GET["id"]; ?>" method="post"
+                  onsubmit="return checkForm()">
+
+                  <?php
+                  $id=$_GET['id'];
+
+$strSQL = "SELECT * FROM topic_project  WHERE topic_id=$id ";
+?>
+                  <?php
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
+                  <div class="row">
+                  <div class="col-md-10">
+
+                  <div class="form-group row ">
+                    <div class="col-md-2">
+                      <label class="control-label col-form-label">ID Project</label>
+                    </div>
+
+                    <div class="col-md-9">
+                      <td class="form-control" name="group_number" ><?php echo $objResult->group_number; ?>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-md-2">
+                      <label class="control-label col-form-label">Project Owner</label>
+                    </div>
+                    <div class="col-md-9">
+                      <td class="form-control" name="Owner"><?php echo $objResult->Owner; ?></td>
+                  </div>
+                </div>
+
+                  <div class="form-group row">
+                    <div class="col-md-2">
+                      <label class="control-label col-form-label">Topic</label>
+                    </div>
+                    <div class="col-md-9">
+                     <td class="form-control" name="topic_topic"><?php echo $objResult->topic_topic; ?></td>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-2">
+                      <label class="control-label col-form-label">Keyword</label>
+                    </div>
+                    <div class="col-md-9">
+                     <input type="text" class="form-control" id="topic_keyword" name="topic_keyword" value="<?php echo $objResult->topic_keyword; ?>" required >
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-2">
+                      <label class="control-label col-form-label">Filed of Study</label>
+                    </div>
+                    <div class="col-md-9">
+                     <select class="form-control" name="topic_fieldstudy" id="topic_fieldstudy" onChange="getTeam(this.value);"  >
+                      <option  value="<?php echo $objResult->topic_id; ?>"><?php echo $objResult->topic_fieldstudy; ?> </option>
+                      <option value="Software Engineering">Software Engineering</option>
+                      <option value="Computer Multimedia">Computer Multimedia</option>
+                      <option value="Computer Networking">Computer Networking</option>
+                      </select>
+                      </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-2">
+                      <label class="control-label col-form-label">Year</label>
+                    </div>
+                    <div class="col-md-9">
+                     <input type="date" class="form-control" id="topic_years" name="topic_years" value="<?php echo $objResult->topic_years; ?>" required >
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-2">
+                      <label class="control-label col-form-label">Advisor</label>
+                    </div>
+                    <div class="col-md-9">
+                     <td class="form-control" name="adviser"><?php echo $objResult->adviser; ?></td>
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-2">
+                      <label class="control-label col-form-label">Proposal status</label>
+                    </div>
+                    <div class="col-md-9">
+                     <td class="form-control" name="status"><?php echo get_status_project($objResult->status); ?></td>
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-2">
+                      <label class="control-label col-form-label">Abstarck</label>
+                    </div>
+                    <div class="col-md-9">
+                     <textarea type="text" style="width: 600px; height: 200px"  class="form-control" id="topic_abstrack" name="topic_abstrack"> <?php echo $objResult->topic_abstrack; ?> </textarea>
+                  </div>
+                </div>
+
+  <div align="center"> <input type="hidden" name="topic_id" value="<?php echo $objResult->topic_id; ?>" /></div>
+
+<center>
+
+            <button type="submit" class="btn btn-success" disabled="disabled">Create</button>
+            <button type="submit" class="btn btn-primary">Update</button>
+           <!-- <a href="delete_pro.php?id=<?php echo $objResult->topic_id; ?>" class="btn btn-danger">Reset</a>-->
+</center>
+
+                </form>
+                <?php
+}
+}
+?>
 
 
-      <div class="container-fluid">
-        <div class="row">
-     <div class="col-md-12">
+              </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+    <!-- /.content -->
+  </br></br>
+  </div>
+  <!-- /.content-wrapper -->
 
-            <!-- Profile Image -->
 
-            <div class="card card-primary card-outline">
 
-  <h5 class="mt-3">Direction and Procedure</h5>
+<footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <class style="font-size: 14px;"> <b>Version</b> 3.0.3-pre
+      </div>
+      <class style="font-size: 14px;">  <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
+    </footer>
 
-     <div class="card-body p-0"> <table class="table">
-         <thead>
-      <tr>
-        <!--<th scope="col">Forms ID</th>-->
-        <th scope="col">Document Name</th>
-        <th scope="col">Download</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <!--<th scope="row">PF11</th>-->
-        <td>Procedure</td>
-        <td>
-          <a href="assets/guide/1-Information%20Technology%20Project%20-%20Procedure.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
-        </td>
-      </tr>
-      <tr>
-        <!--<th scope="row">PF11</th>-->
-        <td>Process</td>
-        <td>
-          <a href="assets/guide/Khoeld%20Langsari_โครงงานเทคโนโลยี%20-%20Information%20Technology%20Project%20%20-%20Flow%20Process%202018-2.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
-        </td>
-      </tr>
-      </tbody>
-          </table>
-                                </div>
-                            </div>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+
 
     <!-- /.content -->
 
 <!-- ./wrapper -->
-         </div><!-- /.card-body -->
-          </div>
-        </div><!-- /.container-fluid -->
-      </section>
-      <!-- /.content -->
-
-
-     </div>
-
-
-
-
-
-    <!-- /.content-wrapper -->
-<footer class="main-footer">
-      <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.3-pre
-      </div>
-      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
-    </footer>
-
-
-    <!-- /.control-sidebar -->
-  </div>
-  <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
 

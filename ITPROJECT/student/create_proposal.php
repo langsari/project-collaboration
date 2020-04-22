@@ -12,7 +12,7 @@ include '../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>IT PROMOT</title>
+  <title>ITPROMOT</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -166,7 +166,7 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
 if ($rs = $db->query($sql)) {
     while ($row = $rs->fetch_object()) {
         ?>
-        <span class="right badge fa fa-circle" value="<?php echo $row->advisergroup_id; ?>"> </span>
+        <span class="right badge fa fa-bell text-danger" value="<?php echo $row->advisergroup_id; ?>"> </span>
                 <?php
 }
 }
@@ -175,7 +175,7 @@ if ($rs = $db->query($sql)) {
             </li>
 
             <li class="nav-item has-treeview menu-open">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                   Projects
@@ -184,7 +184,7 @@ if ($rs = $db->query($sql)) {
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="create_proposal.php" class="nav-link">
+                  <a href="create_proposal.php" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Add Proposal</p>
                   </a>
@@ -274,7 +274,7 @@ if ($result = $db->query($strSQL)) {
               <li class="nav-item">
                 <a href="show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Topic Require</p>
+                  <p>Propose Topic </p>
                 </a>
               </li>
 
@@ -377,16 +377,19 @@ if ($result = $db->query($strSQL)) {
     <section class="content">
 
       <!-- Default box -->
-      <div class="card card-solid">
+      <div class="card card-primary card-outline">
+        <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-edit"></i>
+                Add proposal Information</h3>
+            </div> <!-- /.card-body -->
         <div class="card-body ">
           <div class="row d-flex align-items-stretch">
             <div class="col-15 col-sm-8 col-md-12 d-flex align-items-stretch">
 
 
                     <form id="add" name="add" method ="post" action ="check_proposal.php" onsubmit="return checkForm()">
-                      <legend class="text-bold margin-top-40">Add proposal</legend>
-
-
+                      
                         <?php
 $strSQL = "SELECT * FROM member  WHERE member_id='" . $_SESSION['id'] . "'";
         ?>
@@ -444,13 +447,10 @@ $sql = "SELECT * FROM member WHERE group_id = '$my_group_id'";
                             <div class="form-group row">
                               <div class="col-md-3">
                                 <label class="control-label col-form-label">Topic</label>
-
                               </div>
                               <div class="col-md-9">
                                 <input type="text" class="form-control" name="topic_topic" value="<?php echo $objResult->advisergroup_topic; ?>">
-
                               </div>
-
                             </div>
 <!--get project Abstarck   -->
 
@@ -495,7 +495,7 @@ $sql = "SELECT * FROM member WHERE group_id = '$my_group_id'";
                                                         <label class="control-label col-form-label">Years</label>
                                                     </div>
                                                     <div class="col-md-9">
-                                <input type="text" class="form-control" id="topic_years" name="topic_years" value="<?php echo $objResult->topic_years; ?>"   autocomplete="off" required aria-describedby="basic-addon1" >
+                                <input type="date" class="form-control" id="topic_years" name="topic_years" value="<?php echo $objResult->topic_years; ?>"   autocomplete="off" required aria-describedby="basic-addon1" >
                                                     </div>
                                                 </div>
 
@@ -559,7 +559,18 @@ $sql = "SELECT * FROM member WHERE group_id = '$my_group_id'";
 </div>
 
 <center>
-                          <button ype="submit" class="btn btn-primary ">Create</button>
+
+  <?php if ($objResult->topic_abstrack != "") {?>
+            <button type="submit" class="btn btn-success" disabled="disabled">Create</button>
+            <a href="update_pro_test.php?id=<?php echo $objResult->topic_id; ?>"class="btn btn-primary">View Update</a>
+          <!--  <a href="delete_pro.php?id=<?php echo $objResult->topic_id; ?>" class="btn btn-danger">Reset</a>-->
+
+          <?php } else {?>
+            <button type="submit" class="btn btn-success ">Create</button>
+            <button type="" class="btn btn-primary" disabled="disabled">update</button>
+          <!--  <button type="" class="btn btn-danger" disabled="disabled">Delete</button>-->
+
+                       <?php }?>
 </center>
 
 
@@ -577,6 +588,12 @@ $sql = "SELECT * FROM member WHERE group_id = '$my_group_id'";
 }
 }
 ?>
+
+
+
+
+
+
 
 
 

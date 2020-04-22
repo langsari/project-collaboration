@@ -194,7 +194,7 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
 if ($rs = $db->query($sql)) {
     while ($row = $rs->fetch_object()) {
         ?>
-        <span class="right badge fa fa-circle" value="<?php echo $row->advisergroup_id; ?>"> </span>
+        <span class="right badge fa fa-bell text-danger" value="<?php echo $row->advisergroup_id; ?>"> </span>
                 <?php
 }
 }

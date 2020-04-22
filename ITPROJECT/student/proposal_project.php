@@ -11,7 +11,7 @@ include '../menu/function.php';
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | DataTables</title>
+  <title>ITPROMOT</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -156,7 +156,7 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
 if ($rs = $db->query($sql)) {
     while ($row = $rs->fetch_object()) {
         ?>
-        <span class="right badge fa fa-circle" value="<?php echo $row->advisergroup_id; ?>"> </span>
+        <span class="right badge fa fa-bell text-danger" value="<?php echo $row->advisergroup_id; ?>"> </span>
                 <?php
 }
 }
@@ -165,7 +165,7 @@ if ($rs = $db->query($sql)) {
             </li>
 
             <li class="nav-item has-treeview menu-open">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                   Projects
@@ -187,7 +187,7 @@ if ($rs = $db->query($sql)) {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="proposal_project.php" class="nav-link">
+                  <a href="proposal_project.php" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>All Project Topics</p>
                   </a>
@@ -264,7 +264,7 @@ if ($result = $db->query($strSQL)) {
               <li class="nav-item">
                 <a href="show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Topic Require</p>
+                  <p>Propose Topic</p>
                 </a>
               </li>
 

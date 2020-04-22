@@ -85,7 +85,7 @@ if (mysqli_num_rows($qu_num) > 0) {
           <?php echo $_SESSION['name']; ?>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-          <a href="../../../auth/logout.php" class="dropdown-item">
+          <a href="../auth/logout.php" class="dropdown-item">
             <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
           </a>
           <a href="my_profile.php" class="dropdown-item">
@@ -183,13 +183,13 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="create_schedule_proposal.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Proposal</p>
+                  <p>Schedule Proposal</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="create_schedule_project.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Project</p>
+                  <p>Schedule Project</p>
                 </a>
               </li>
 
@@ -219,7 +219,7 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Topic Require</p>
+                  <p>Propose Topic</p>
                 </a>
               </li>
 

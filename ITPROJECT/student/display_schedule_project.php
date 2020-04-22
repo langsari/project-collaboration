@@ -12,7 +12,7 @@ include '../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>ITPROMOT|Schedule Page</title>
 
   <!-- Font Awesome -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -169,7 +169,7 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
 if ($rs = $db->query($sql)) {
     while ($row = $rs->fetch_object()) {
         ?>
-        <span class="right badge fa fa-circle" value="<?php echo $row->advisergroup_id; ?>"> </span>
+        <span class="right badge fa fa-bell text-danger" value="<?php echo $row->advisergroup_id; ?>"> </span>
                 <?php
 }
 }
@@ -210,7 +210,7 @@ if ($rs = $db->query($sql)) {
 
 
             <li class="nav-item has-treeview menu-open">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-calendar"></i>
                 <p>
                   Schedule
@@ -221,7 +221,7 @@ if ($rs = $db->query($sql)) {
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="display_schedule_proposal.php" class="nav-link">
+                  <a href="display_schedule_proposal.php" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Proposal Schedul </p>
                     <?php
@@ -278,7 +278,7 @@ if ($result = $db->query($strSQL)) {
               <li class="nav-item">
                 <a href="show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Topic Require</p>
+                  <p>Propose Topic </p>
                 </a>
               </li>
 

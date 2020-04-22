@@ -351,7 +351,7 @@ if ($rs = $db->query($strSQL)) {
 
           <td class="text-left" style="font-size: 14px;" width="8%" >
 
-  <a href="form02.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-xs">  <i class="fa fa-eye" title="Detail"> View </i></a>
+  <a href="form02.php?id=<?php echo $objResult->advisergroup_id; ?>"class="btn btn-primary btn-xs">  <i class="fa fa-eye" title="Detail"> View </i></a>
 
 
 

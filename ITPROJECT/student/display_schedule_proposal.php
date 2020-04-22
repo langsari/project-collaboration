@@ -165,7 +165,7 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
 if ($rs = $db->query($sql)) {
     while ($row = $rs->fetch_object()) {
         ?>
-        <span class="right badge fa fa-circle" value="<?php echo $row->advisergroup_id; ?>"> </span>
+        <span class="right badge fa fa-bell text-danger" value="<?php echo $row->advisergroup_id; ?>"> </span>
                 <?php
 }
 }
@@ -206,7 +206,7 @@ if ($rs = $db->query($sql)) {
 
 
             <li class="nav-item has-treeview menu-open">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-calendar"></i>
                 <p>
                   Schedule
@@ -234,7 +234,7 @@ if ($result = $db->query($strSQL)) {
                 </li>
 
                 <li class="nav-item">
-                  <a href="display_schedule_project.php" class="nav-link">
+                  <a href="display_schedule_project.php" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Project Schedule</p>
                     <?php
@@ -274,7 +274,7 @@ if ($result = $db->query($strSQL)) {
               <li class="nav-item">
                 <a href="show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Topic Require</p>
+                  <p>Propose Topic </p>
                 </a>
               </li>
 

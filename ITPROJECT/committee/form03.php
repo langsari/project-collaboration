@@ -13,7 +13,7 @@ include '../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>ITPROMOT</title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="../forms/form01/style.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -363,7 +363,7 @@ $id = $_GET['id'];
 $strSQL = "SELECT advisergroup.*,  files.by_officer,files.Owner,files.advisergroup_id,files.pf,files.status_advisor,files.files_filename_proposal,files.files_id,files.advisergroup_id FROM advisergroup
 LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 LEFT JOIN member ON advisergroup.member_id = member.member_id
-WHERE advisergroup.advisergroup_id = '$id'  ";
+WHERE advisergroup.group_id = '$id'  ";
 
 if ($result = $db->query($strSQL)) {
     while ($objResult = $result->fetch_object()) {
@@ -427,7 +427,7 @@ if ($result = $db->query($strSQL)) {
   <td>
 <?php if ($objResult->files_filename_proposal != "") {?>
                       <a href="../forms/form01/download.php?pdf=<?php echo $objResult->files_filename_proposal; ?>">
-                    <input type="button" class="btn btn-success" value="Download File" >
+                    <input type="button" class="btn btn-success btn-sm" value="Download File" >
                        </a>
  <?php } else {?>
                     <a href="#"> <button class="btn btn-danger btn-xs">

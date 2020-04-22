@@ -167,7 +167,7 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
 if ($rs = $db->query($sql)) {
     while ($row = $rs->fetch_object()) {
         ?>
-        <span class="right badge fa fa-circle" value="<?php echo $row->advisergroup_id; ?>"> </span>
+        <span class="right badge fa fa-bell text-danger" value="<?php echo $row->advisergroup_id; ?>"> </span>
                 <?php
 }
 }
@@ -274,7 +274,7 @@ if ($result = $db->query($strSQL)) {
               <li class="nav-item">
                 <a href="../../student/show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Topic Require</p>
+                  <p>Propose Topic</p>
                 </a>
               </li>
 
@@ -443,6 +443,7 @@ if ($result = $db->query($strSQL)) {
                           </br><u>Condition:</u>
                           </br>(1) Student has been uploaded the 3 chapters in the PF01
                           </br>(2) The document has been approved by advisor
+                          </br>(2) Next PF03, after the document has been approved by officer
                           </td>
                           <td>
                             Status
