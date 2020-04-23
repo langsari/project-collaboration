@@ -13,7 +13,7 @@ include '../../../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>ITPROMOT| TRACKING </title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="../form01/style.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
@@ -196,13 +196,13 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="../../create_schedule_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Proposal</p>
+                  <p> Schedule Proposal</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../../create_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Project</p>
+                  <p> Schedule Project</p>
                 </a>
               </li>
 
@@ -230,7 +230,7 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="../../show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Topic Require</p>
+                  <p>Propose Topic </p>
                 </a>
               </li>
 
@@ -350,9 +350,7 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Officer Receive Project Booked
-
- </h5>
+              <h5>Officer Receive Project Booked</h5>
            <h6><small class="text-muted"></small>
 
               </h6>
@@ -362,52 +360,29 @@ if ($result = $db->query($strSQL)) {
                       <thead class="thead-default">
                         <tr>
                         <th>To do list</th>
-
-
-                          <th><font color='red'> *Sign by Officer</font></th>
-
+                          <th><font color='red'>Officer</font></th>
                         </tr>
                       </thead>
                       <tbody>
 
                         <tr>
-                         <td>Submit Complete project Document
-                            </br> and Related resources and
-                          </br>
-                          PF10,PF11 and PF12
-
-                          </td>
-
-
-
+                         <td>Student Submit Complete project Document
+                         </br> and Related resources to officer
+                         </td>
                          <td>
-                          </br>Status</br>
                             <?php echo status_08($objResult->by_officer13); ?>
                           </td>
-
-
-
                         </tr>
-
-                          <input type="hidden" name="files_id"  value="<?php echo $objResult->files_id; ?>">
-                              <input type="hidden" name="advisergroup_id"  value="<?php echo $objResult->advisergroup_id; ?>">
-
-
-</tr>
                       </tbody>
                     </table>
-
-
-
               </fieldset>
-                   
             </fieldset>
           </form>
 
 
          <div class="form-group clearfix">
 
-                  <a href="../form12/pf12.php?id=<?php echo $objResult->advisergroup_id; ?>"class="btn btn-danger float-left">Previous</a>
+                  <a href="../form12/pf12.php?id=<?php echo $objResult->advisergroup_id; ?>"class="btn btn-danger float-left">&laquo; Previous</a>
 
 
 
@@ -442,11 +417,12 @@ if ($result = $db->query($strSQL)) {
        </div>
   <!-- /.content-wrapper -->
 <footer class="main-footer">
-      <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.3-pre
-      </div>
-      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
-    </footer>
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
+      <b>Version</b> 3.0.3-pre
+    </div>
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
+    reserved.
+  </footer>
 
   <!-- Control Sidebar -->
 

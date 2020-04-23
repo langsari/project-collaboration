@@ -422,8 +422,8 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Proposal Project Approval Letter </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Officer</small>
+              <h5>Proposal Project Approval Form </h5>
+           <h6><small class="text-muted">Approval Form Agreed to Sign By Officer</small>
 
               </h6>
                 <div class="card">
@@ -433,7 +433,7 @@ if ($result = $db->query($strSQL)) {
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th><font color='red' >Sign by Officer</th>
+                          <th><font color='red' >Officer</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -441,7 +441,7 @@ if ($result = $db->query($strSQL)) {
                           <td>Student, Submit Proposal, PF01 and related documentation
                           </br>
                           </br>
-                          <small><u>Condition:</u>
+                          <small><u>Note:</u>
                           </br>(1) Student has been uploaded the 3 chapters in the PF01
                           </br>(2) The document has been approved by advisor
                           </br>(2) Next PF03, after the document has been approved by officer

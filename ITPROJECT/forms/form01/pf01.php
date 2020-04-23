@@ -422,18 +422,15 @@ if ($result = $db->query($strSQL)) {
              </div>
             </br>
               <h5>Topic Selection & Proposal Project Approval Letter </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small></h6>
 
-              </h6>
                 <div class="card">
                   <div class="card-block">
                     <table class="table">
                       <thead class="thead-default">
                         <tr>
                         <th>To do list</th>
-
-
-                          <th><font color='red'> Sign by advisor</font></th>
+                          <th><font color='red'>Advisor</font></th>
                           <th></th>
                         </tr>
                       </thead>

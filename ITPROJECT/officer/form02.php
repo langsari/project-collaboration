@@ -162,7 +162,7 @@ $count = mysqli_num_rows($query_num);
 
 
   <li class="nav-item">
-                  <a href="../officer/student_track.php" class="nav-link">
+                  <a href="../officer/student_track.php" class="nav-link active">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
        Student Track              </p>
@@ -335,8 +335,8 @@ if ($result = $db->query($sql)) {
 
             <fieldset>
             </br>
-              <h5>Proposal Project Approval Letter </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+              <h5>Proposal Project Approval Form </h5>
+           <h6><small class="text-muted">Approval Form Agreed to Sign By Officer</small>
 
               </h6>
                 <div class="card">
@@ -346,20 +346,22 @@ if ($result = $db->query($sql)) {
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th>Status</th>
+                          <th><font color='red' >Sign by Officer</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Student, Submit copies of Proposal, PF01 and related documentit
-                          </br><u>Condition:</u>
+                          <td>Student, has been Submit 3 chapters of proposal 
+                           </br>
+                          </br>
+                          <small><u>Note:</u>
                           </br>(1) Student has been uploaded the 3 chapters in the PF01
-                          </br>(2) The document has been approved by advisor
-                        </td>
+                          </br>(2) And the document has been approved by advisor
+                          </small>
+                          </td>
                           <td>
+                            Status
                            <?php echo status_02($objResult->by_officer); ?>
-                            <p>
-                              <font color='red'> *For Officer</font>
                           </td>
                         </tr>
 
@@ -372,22 +374,13 @@ if ($result = $db->query($sql)) {
             </fieldset>
           </form>
 
-
-
               </div>
 
-
-
               </div>
-
-
 
             <?php
 }}
 ?>
-
-
-
 
 
   </div>
@@ -423,7 +416,6 @@ if ($result = $db->query($sql)) {
 
 
       </div>
-
 
 
   <?php
@@ -520,17 +512,9 @@ if ($result = $db->query($strSQL)) {
 }
 ?>
 
-
-    <!-- /.content -->
- </div>
-  </br>
-
- </div>
-  </div>
-
         </div>
       </div>
-    </div>
+    
   </section>
 
    </div>
@@ -541,8 +525,7 @@ if ($result = $db->query($strSQL)) {
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
-    reserved.
+       <class style="font-size: 12px;">  <strong>Copyright © 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

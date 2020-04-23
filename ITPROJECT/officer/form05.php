@@ -12,7 +12,7 @@ include '../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>ITPROMOT| TRACKING </title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="../forms/form01/style.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -161,11 +161,10 @@ $count = mysqli_num_rows($query_num);
           </li>
 
 
-  <li class="nav-item">
-                  <a href="../officer/student_track.php" class="nav-link">
+            <li class="nav-item">
+            <a href="../officer/student_track.php" class="nav-link active">
              <i class="nav-icon fa fa-paper-plane"></i>
-              <p>
-       Student Track              </p>
+              <p>Student Track </p>
             </a>
           </li>
 
@@ -334,8 +333,8 @@ if ($result = $db->query($strSQL)) {
         ?>
             <fieldset>
             </br>
-              <h5>Proposal Project Approval Letter </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+              <h5>Complet Project Proposal submition </h5>
+           <h6><small class="text-muted">Approval form Agreed to Sign By Officer</small>
 
               </h6>
                 <div class="card">
@@ -345,20 +344,21 @@ if ($result = $db->query($strSQL)) {
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th>Status</th>
+                          <th><font color='red'>Officer</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Submit complete project proposal document and PF03 to officer
-                          </br><u>Condition:</u>
-
-                          </br>1). Copy the completed proposal with soft cover
+                          <td>Student has been Submitted the complete project proposal document
+                          </br>
+                          </br>
+                          <small><u>Note:</u>
+                          </br>1). Officer sign the form after Receive the Completed Project Proposal
+                          </small>
                           </td>
                           <td>
+                            Status
                            <?php echo status_05($objResult->by_officer05); ?>
-                            <p>
-                              <font color='red'> *For Officer</font>
                           </td>
                         </tr>
 
@@ -383,17 +383,6 @@ if ($result = $db->query($strSQL)) {
             <?php
 }}
 ?>
-
-
-
-
-
-
-
-
-
-
-
 
  <div class="container-fluid">
         <div class="row">
@@ -515,15 +504,6 @@ if ($result = $db->query($strSQL)) {
 }
 ?>
 
-
-    <!-- /.content -->
- </div>
-  </br>
-
- </div>
-  </div>
-
-        </div>
       </div>
     </div>
   </section>
@@ -536,8 +516,7 @@ if ($result = $db->query($strSQL)) {
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
-    reserved.
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

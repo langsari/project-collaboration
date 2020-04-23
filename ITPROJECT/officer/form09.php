@@ -12,7 +12,7 @@ include '../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>ITPROMOT| TRACKING </title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="../forms/form01/style.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -162,7 +162,7 @@ $count = mysqli_num_rows($query_num);
 
 
   <li class="nav-item">
-                  <a href="../officer/student_track.php" class="nav-link">
+                  <a href="../officer/student_track.php" class="nav-link active">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
        Student Track              </p>
@@ -336,8 +336,8 @@ if ($result = $db->query($strSQL)) {
         ?>
             <fieldset>
             </br>
-              <h5>Form of Submit/Receive Project (5 Chapters)</h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+              <h5>Officer Receive document Of 5 Chapters Project</h5>
+           <h6><small class="text-muted">Approval Form Agreed to Sign By Officer</small>
 
               </h6>
                 <div class="card">
@@ -347,21 +347,23 @@ if ($result = $db->query($strSQL)) {
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th>Status</th>
+                          <th><font color='red'>Officer</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Submit copies of Project and related documents to officer
-                          </br><b><u>Condition:</u></b>
-                          </br>(1). 4 copies of project document, 1 copy for advisor and 3 for committees
-                          </br>(2). submit project document one week before presentation day
-
+                          <td>Student has been Submitted the Project and related documents to officer
+                           </br>
+                          </br>
+                          <small><u>Note:</u>
+                          </br>(1) Student has been uploaded the 5 chapters in the PF08
+                          </br>(2) Officer sign form after recieve the Project document.
+                          </br> 
+                          </small> 
                           </td>
                           <td>
+                            Status
                            <?php echo status_09($objResult->by_officer09); ?>
-                            <p>
-                              <font color='red'> *For Officer</font>
                           </td>
                         </tr>
 
@@ -386,16 +388,6 @@ if ($result = $db->query($strSQL)) {
             <?php
 }}
 ?>
-
-
-
-
-
-
-
-
-
-
 
 
  <div class="container-fluid">
@@ -520,12 +512,7 @@ if ($result = $db->query($strSQL)) {
 
 
     <!-- /.content -->
- </div>
-  </br>
-
- </div>
-  </div>
-
+ 
         </div>
       </div>
     </div>
@@ -539,8 +526,7 @@ if ($result = $db->query($strSQL)) {
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
-    reserved.
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

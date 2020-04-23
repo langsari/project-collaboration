@@ -521,8 +521,6 @@ if ($result = $db->query($strSQL)) {
 
 $g_id = get_group_id();
 $ag_id = get_ag_id($g_id);
-
-
 $strSQL = "SELECT * FROM committeegroup  WHERE committeegroup_id= '$ag_id'   ";
 
 
@@ -530,9 +528,6 @@ $strSQL = "SELECT * FROM committeegroup  WHERE committeegroup_id= '$ag_id'   ";
 if ($result = $db->query($strSQL)) {
     while ($objResult = $result->fetch_object()) {
         ?>
-
-
-
         <div class="form-group clearfix">
 
           <a href="../form02/pf02.php" class="btn btn-danger float-left">&laquo; Previous</a>
@@ -559,7 +554,6 @@ if ($result = $db->query($strSQL)) {
             <?php
 }}
 ?>
-
 
 
 
@@ -689,8 +683,7 @@ if ($result = $db->query($strSQL)) {
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Trackinf</a>.</strong> All rights
-    reserved.
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Trackinf</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

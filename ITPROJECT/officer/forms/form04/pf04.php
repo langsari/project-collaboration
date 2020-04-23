@@ -13,7 +13,7 @@ include '../../../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>ITPROMOT| TRACKING </title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="../form01/style.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
@@ -196,13 +196,13 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="../../create_schedule_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Proposal</p>
+                  <p> Schedule Proposal</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../../create_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Project</p>
+                  <p> Schedule Project</p>
                 </a>
               </li>
 
@@ -230,7 +230,7 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="../../show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Topic Require</p>
+                  <p>Propose Topic</p>
                 </a>
               </li>
 
@@ -352,8 +352,10 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Proposal Project Approval Letter </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+              <h5>Proposal Approval Letter </h5>
+           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor and Committee</small>
+
+              </h6>
 
               </h6>
                 <div class="card">
@@ -362,35 +364,24 @@ if ($result = $db->query($strSQL)) {
                       <thead class="thead-default">
                         <tr>
                         <th>To do list</th>
-
-
-                          <th><font color='red'> *Sign by advisor</font></th>
-                          <th><font color='red'> *Sign by Committee</font></th>
+                          <th><font color='red'> Advisor</font></th>
+                          <th><font color='red'> Committee</font></th>
                         </tr>
                       </thead>
                       <tbody>
 
                         <tr>
                           <td>1). Project Proposal Approval</td>
-
-                            <td>
-                          </br>
-
+                          <td>
                             <?php echo status_04($objResult->by_advisor04); ?>
-
                           <span>
                               <?php echo get_advisor($objResult->group_id); ?></span>
                           </td>
-
                           <td>
-
                             <span><?php echo get_status_committee($objResult->group_id); ?></span>
                             <p>
 
                           </td>
-
-
-
 </tr>
                       </tbody>
                     </table>
@@ -403,18 +394,12 @@ if ($result = $db->query($strSQL)) {
 
          <div class="form-group clearfix">
 
-                  <a href="../form03/pf03.php?id=<?php echo $objResult->advisergroup_id; ?>"class="btn btn-danger float-left">Previous</a>
-          <?php if ($objResult->by_advisor04 != "Pass") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
-          <?php } else {?>
-            <a href="../form05/pf05.php?id=<?php echo $objResult->advisergroup_id; ?>"   >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
-                       <?php }?>
-
-
-
-
-
+        <a href="../form03/pf03.php?id=<?php echo $objResult->advisergroup_id; ?>"class="btn btn-danger float-left">&laquo; Previous</a>
+        
+         
+        <a href="../form05/pf05.php?id=<?php echo $objResult->advisergroup_id; ?>"   >
+            <button type="button" class="btn btn-primary float-right" >Next &raquo;</button></a>
+                      
 
               </div>
 
@@ -443,11 +428,12 @@ if ($result = $db->query($strSQL)) {
        </div>
   <!-- /.content-wrapper -->
 <footer class="main-footer">
-      <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.3-pre
-      </div>
-      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
-    </footer>
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
+      <b>Version</b> 3.0.3-pre
+    </div>
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
+    reserved.
+  </footer>
 
   <!-- Control Sidebar -->
 

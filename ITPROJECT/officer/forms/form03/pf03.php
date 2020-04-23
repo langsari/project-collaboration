@@ -13,7 +13,7 @@ include '../../../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>ITPROMOT| TRACKING </title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="../form01/style.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
@@ -194,13 +194,13 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="../../create_schedule_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Proposal</p>
+                  <p> Schedule Proposal</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../../create_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Project</p>
+                  <p> Schedule Project</p>
                 </a>
               </li>
 
@@ -347,8 +347,8 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Proposal Project Approval Letter </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+              <h5>Proposal Presentation & Proposal Revision </h5>
+           <h6><small class="text-muted">Approval Form Agreed to Approve By Advisor & Committee</small>
 
               </h6>
                 <div class="card">
@@ -357,21 +357,17 @@ if ($result = $db->query($strSQL)) {
                       <thead class="thead-default">
                         <tr>
                         <th>To do list</th>
-
-
-                          <th><font color='red'> *Sign by advisor</font></th>
-                          <th><font color='red'> *Sign by Committee</font></th>
+                          <th><font color='red'>Advisor</font></th>
+                          <th><font color='red'>Committee</font></th>
                         </tr>
                       </thead>
                       <tbody>
 
                         <tr>
                           <td>1).Project Presentation
-                            </br>2).Project Revision</td>
-
-                            <td>
+                          </br>2).Project Revision</td>
+                          <td>
                           </br>
-
                             <?php echo status_03($objResult->status_advisor); ?>
 
                           <span>
@@ -392,25 +388,20 @@ if ($result = $db->query($strSQL)) {
 
 
                         <td class="hidden"> 3 chapter of Proposal Revision<p>
-
-
                                                      <br>
-
-
-
-
 
 
   <td>
 <?php if ($objResult->files_filename_proposal != "") {?>
                       <a href="../form01/download.php?pdf=<?php echo $objResult->files_filename_proposal; ?>">
-                    <input type="button" class="btn btn-success" value="Download File" >
+                    <input type="button" class="btn btn-success btn-sm" value="Download File" >
                        </a>
  <?php } else {?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
                     <?php }?>
                               </td>
+                              <td></td>
                         </tr>
                       </tbody>
                     </table>
@@ -425,14 +416,14 @@ if ($result = $db->query($strSQL)) {
           </form>
 
 
-         <div class="form-group clearfix">
+    <div class="form-group clearfix">
 
-                  <a href="../form02/pf02.php?id=<?php echo $objResult->advisergroup_id; ?>" class="btn btn-danger float-left">Previous</a>
+      <a href="../form02/pf02.php?id=<?php echo $objResult->advisergroup_id; ?>" class="btn btn-danger float-left">&laquo; Previous</a>
           <?php if ($objResult->status_advisor != "Pass") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
             <a href="../form04/pf04.php?id=<?php echo $objResult->advisergroup_id; ?>"   >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+            <button type="button" class="btn btn-primary float-right" >Next &raquo;</button></a>
                        <?php }?>
 
 
@@ -532,11 +523,11 @@ if ($result = $db->query($strSQL)) {
        </div>
   <!-- /.content-wrapper -->
 <footer class="main-footer">
-      <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.3-pre
-      </div>
-      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
-    </footer>
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
+      <b>Version</b> 3.0.3-pre
+    </div>
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Trackinf</a>.</strong> All rights reserved.
+  </footer>
 
   <!-- Control Sidebar -->
 

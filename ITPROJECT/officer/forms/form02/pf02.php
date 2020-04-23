@@ -195,13 +195,13 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="../../create_schedule_proposal.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Proposal</p>
+                  <p>Schedule Proposal</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../../create_schedule_project.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Create Schedule Project</p>
+                  <p>Schedule Project</p>
                 </a>
               </li>
 
@@ -353,8 +353,8 @@ if ($result = $db->query($sql)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Proposal Project Approval Letter </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+              <h5>Proposal Project Approval Form </h5>
+           <h6><small class="text-muted">Approval Form Agreed to Sign By Officer</small>
 
               </h6>
                 <div class="card">
@@ -364,20 +364,24 @@ if ($result = $db->query($sql)) {
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th>Status</th>
+                          <th><font color='red' >Officer</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Student, Submit copies of Proposal, PF01 and related documentit
-                          </br><u>Condition:</u>
+                          <td>Student, Submit Proposal, PF01 and related documentation
+                          </br>
+                          </br>
+                          <small><u>Note:</u>
                           </br>(1) Student has been uploaded the 3 chapters in the PF01
                           </br>(2) The document has been approved by advisor
+                          </br>(2) Next PF03, after the document has been approved by officer
+                          </small>
                           </td>
                           <td>
+                            Status
                            <?php echo status_02($objResult->by_officer); ?>
-                            <p>
-                              <font color='red'> *For Officer</font>
+
                           </td>
                         </tr>
 
@@ -393,12 +397,12 @@ if ($result = $db->query($sql)) {
 
          <div class="form-group clearfix">
 
-                  <a href="../form01/pf01.php?id=<?php echo $objResult->advisergroup_id; ?>"  class="btn btn-danger float-left">Previous</a>
+                  <a href="../form01/pf01.php?id=<?php echo $objResult->advisergroup_id; ?>"  class="btn btn-danger float-left">&laquo; Previous</a>
           <?php if ($objResult->by_officer != "Approve") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
             <a href="../form03/pf03.php?id=<?php echo $objResult->advisergroup_id; ?>"   >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+            <button type="button" class="btn btn-primary float-right" >Next &raquo;</button></a>
                        <?php }?>
 
 
@@ -499,11 +503,11 @@ if ($result = $db->query($strSQL)) {
        </div>
   <!-- /.content-wrapper -->
 <footer class="main-footer">
-      <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.3-pre
-      </div>
-      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
-    </footer>
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
+      <b>Version</b> 3.0.3-pre
+    </div>
+      <class style="font-size: 12px;">  <strong>Copyright © 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
+  </footer>
 
   <!-- Control Sidebar -->
 

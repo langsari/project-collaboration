@@ -168,7 +168,7 @@ include('../menu/function.php');
     
  
   <li class="nav-item">
-                  <a href="../officer/student_track.php" class="nav-link">
+                  <a href="../officer/student_track.php" class="nav-link active">
              <i class="nav-icon fa fa-paper-plane"></i>
               <p>
        Student Track              </p>
@@ -347,9 +347,7 @@ include('../menu/function.php');
         
             <fieldset>
             </br>
-              <h5>Officer Receive Project Booked  
-
- </h5>
+              <h5>Officer Receive Project Booked</h5>
            <h6><small class="text-muted"></small>
 
               </h6>
@@ -359,31 +357,21 @@ include('../menu/function.php');
                       <thead class="thead-default">
                         <tr>
                         <th>To do list</th>
-
-                     
-                          <th><font color='red'> *Sign by Officer</font></th>
-                       
+                        <th><font color='red'>Officer</font></th>
                         </tr>
                       </thead>
                       <tbody>
-                       
                         <tr>
-                         <td>Submit Complete project Document
-                            </br> and Related resources and 
-                          </br>
-                          PF10,PF11 and PF12
-
-                          </td>
-
-                 
-
+                        <td>Student has been Submitted the Complete project Document
+                        </br> and Related resources 
+                        <small></br><u>Note:</u>
+                         </br> Officer Signed Form and Stamped after received
+                         </small>
+                        </td>
                          <td>
                           </br>Status</br>
                             <?php echo status_08($objResult->by_officer13); ?>
                           </td>
-
-                         
-
                         </tr>
 
 
@@ -409,17 +397,7 @@ include('../menu/function.php');
                  } }
                    ?>
 
-    
-
-
-
-
-
-
-
-
-    
- 
+  
  <div class="container-fluid">
         <div class="row">
      <div class="col-md-12 ">
@@ -541,14 +519,6 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
                }
                    ?>   
            
-
-    <!-- /.content -->
- </div>
-  </br>
-
- </div>
-  
-
         </div>
       </div>
     </div>
@@ -562,8 +532,7 @@ WHERE advisergroup.advisergroup_id = '$id'  ";
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">   
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
-    reserved.
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

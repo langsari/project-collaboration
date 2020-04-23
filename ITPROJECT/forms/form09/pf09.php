@@ -436,9 +436,10 @@ if ($result = $db->query($strSQL)) {
                       <tbody>
                         <tr>
                           <td>Submit Project and related documents to officer
-                          </br></br>
-                         <small><u>Note:</u>
-                        </br>(1) Student has been uploaded the 5 chapters in the PF08
+                          </br>
+                          </br>
+                          <small><u>Note:</u>
+                          </br>(1) Student has been uploaded the 5 chapters in the PF08
                           </br>(2) After the document approved by officer
                           </br> Let's check the schedule for presentation 
                           </small> 
@@ -613,8 +614,7 @@ if ($result = $db->query($strSQL)) {
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
-    reserved.
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->
