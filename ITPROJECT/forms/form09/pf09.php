@@ -419,8 +419,8 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Form of Submit/Receive Project (5 Chapters)</h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+              <h5>Officer Receive document Of 5 Chapters Project</h5>
+           <h6><small class="text-muted">Approval Form Agreed to Sign By Officer</small>
 
               </h6>
                 <div class="card">
@@ -430,21 +430,22 @@ if ($result = $db->query($strSQL)) {
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th>Status</th>
+                          <th><font color='red'>Officer</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Submit copies of Project and related documents to officer
-                          </br><b><u>Condition:</u></b>
-                          </br>(1). 4 copies of project document, 1 copy for advisor and 3 for committees
-                          </br>(2). submit project document one week before presentation day
-
+                          <td>Submit Project and related documents to officer
+                          </br></br>
+                         <small><u>Note:</u>
+                        </br>(1) Student has been uploaded the 5 chapters in the PF08
+                          </br>(2) After the document approved by officer
+                          </br> Let's check the schedule for presentation 
+                          </small> 
                           </td>
                           <td>
+                            Status
                            <?php echo status_09($objResult->by_officer09); ?>
-                            <p>
-                              <font color='red'> *For Officer</font>
                           </td>
                         </tr>
 
@@ -462,12 +463,12 @@ if ($result = $db->query($strSQL)) {
 
         <div class="form-group clearfix">
 
-                  <a href="../form08/pf08.php" class="btn btn-danger float-left">Previous</a>
+             <a href="../form08/pf08.php" class="btn btn-danger float-left">&laquo; Previous</a>
           <?php if ($objResult->by_officer09 != "Approve") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
             <a href="../form10/pf10.php"  >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+            <button type="button" class="btn btn-primary float-right" >Next &raquo;</button></a>
                        <?php }?>
 
 
@@ -612,7 +613,7 @@ if ($result = $db->query($strSQL)) {
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
     reserved.
   </footer>
 

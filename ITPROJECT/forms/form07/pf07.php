@@ -409,9 +409,8 @@ if ($result = $db->query($strSQL)) {
 
 $g_id = get_group_id();
 $ag_id = get_ag_id($g_id);
-$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_advisor07,files.Owner,files.advisergroup_id,files.pf,files.files_id FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_advisor07,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
-
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
@@ -422,8 +421,8 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Proposal Project Approval Letter </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+              <h5>Project Seminar </h5>
+           <h6><small class="text-muted">Approval form Agreed to Sign By Advisor</small>
 
               </h6>
                 <div class="card">
@@ -433,40 +432,33 @@ if ($result = $db->query($strSQL)) {
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th>Status</th>
+                          <th><font color='red'>Advisor</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td> Seminar  Pre-Project
-                         </td>
-                          <tr>
-                          <td> Are you ready for Seminar 
-</p>
+                          <td>Seminar  Pre-Project
+                          </br></br>
+                          
+                          </br>&nbsp;&nbsp;Ready To have the Pre-project Seinar  
 
-<?php if ($objResult->by_advisor07 != "Pass") {?>
-    <a href="check_pf07.php?id=<?php echo $objResult->files_id; ?>"  >
-
-            <button type="button" class="btn btn-success btn-xs  float-left" title="Approve" >
-              <i class='fa fa-check'></i></button>
+          <?php if ($objResult->by_advisor07 != "Pass") {?>
+              <a href="check_pf07.php?id=<?php echo $objResult->advisergroup_id; ?>"  >
+                <button type="button" class="btn btn-success btn-xs  float-left" title="Request" >
+                 <i class='fa fa-check'></i></button></a>
           <?php } else {?>
 
-            <button class="btn btn-warning btn-xs disabled float-left" disabled="disabled" title="has been Approved">      <i class='fa fa-check'></i></button>
-
-          </a>
-        </td>
-                       <?php }?>
-
-                         </td>
-
-                          <td>
-                           <?php echo status_07($objResult->by_advisor07); ?>
-                            <p>
-                              <font color='red'> *Sign by Advisor</font>
+                <button class="btn btn-warning btn-xs disabled float-left" disabled="disabled" title="has been Approved"> <i class='fa fa-check'></i></button>
+              <?php }?>
                           </td>
+                          <td>
+                            Status
+                           <?php echo status_07($objResult->by_advisor07); ?>
+                      </td>
                         </tr>
 
                       </tbody>
+
                     </table>
 
 
@@ -480,12 +472,12 @@ if ($result = $db->query($strSQL)) {
 
         <div class="form-group clearfix">
 
-                  <a href="../form06/pf06.php"  class="btn btn-danger float-left">Previous</a>
+          <a href="../form06/pf06.php"  class="btn btn-danger float-left">&laquo; Previous</a>
           <?php if ($objResult->by_advisor07 != "Pass") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
             <a href="../form08/pf08.php"   >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+            <button type="button" class="btn btn-primary float-right" >Next &raquo;</button></a>
                        <?php }?>
 
 
@@ -577,13 +569,8 @@ $ag_id = get_ag_id($g_id);
 
 $strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,advisergroup.advisergroup_id,comment.comment_content,comment.date,comment.member_id,member.member_fullname FROM advisergroup
           LEFT JOIN comment ON advisergroup.advisergroup_id = comment.advisergroup_id
-
           LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
-
-
-
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-
         WHERE advisergroup.advisergroup_id = '$ag_id' and form_pf='7'";
 if ($result = $db->query($strSQL)) {
     while ($objResult = $result->fetch_object()) {
@@ -634,7 +621,7 @@ if ($result = $db->query($strSQL)) {
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
     reserved.
   </footer>
 

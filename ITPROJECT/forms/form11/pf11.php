@@ -419,7 +419,7 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Project Approval Letter
+              <h5>Project Approval Form
  </h5>
            <h6><small class="text-muted">This form will use to insert into Project Booked.</small>
 
@@ -430,109 +430,77 @@ if ($result = $db->query($strSQL)) {
                       <thead class="thead-default">
                         <tr>
                         <th>To do list</th>
-
-
-                          <th><font color='red'> *By Advisor</font></th>
-                          <th><font color='red'> *By Committee</font></th>
-                            <th><font color='red'> *By Head of department</font></th>
-                            <th><font color='red'> *By Dean</font></th>
+                          <th><font color='red'> Advisor</font></th>
+                          <th><font color='red'> Committee</font></th>
+                            <th><font color='red'>Head of department</font></th>
+                            <th><font color='red'> Dean</font></th>
                         </tr>
                       </thead>
                       <tbody>
-
                         <tr>
-                          <td>Project Approve
-                           </td>
-
-                         <td>
-
-                                </br>Status</br>
-
-                            <span><?php echo get_status_committee1($objResult->group_id); ?></span>
-
-
-                          </td>
-
-                          <td>
-                                                    </br>Status</br>
-                            <?php echo status_08($objResult->by_advisor11); ?>
+                          <td>Project Approval
                           </br>
+                         <small> </br><u>Note:</u>
+                         </br> Student has to upload the complete Project
+                          </br> that has been sign by
+                          </br> Advisor,Committee,Head of department and Dean
+                          </br> Student Can download Project Approveal Form (PF11)</small> 
+                          </td>
+                         <td>
+                          <?php echo status_08($objResult->by_advisor11); ?>
                               </span> <?php echo get_advisor($objResult->group_id); ?>
-
-</p>
- <td>
-                          </br>Status</br>
+                          </td>
+                          <td>            
+                            <span><?php echo get_status_committee1($objResult->group_id); ?></span>
+                          <td>
+                            <?php echo status_08($objResult->by_advisor11); ?>
+                          </td>
+                          <td>
                             <?php echo status_08($objResult->by_advisor11); ?>
                           </td>
 
-
-
-<td>
-                          </br>Status</br>
-                            <?php echo status_08($objResult->by_advisor11); ?>
                           </td>
-
-
-
-                          </td>
-
-
 
                         <tr>
-
-   <td>Student, Submit copies of Project, PF11 and related documentit
-                          </br><u>Condition:</u>
-                          </br>(1) 1 copy of complete project
-                          </br>(2) submit proposal one week before presentation day
-                          </td>
-
-                           <td>Project approve sign by
-                            </br> 1). Advisor
-                            </br> 1). Committee
-                            </br> 1). Head, Department of Information Technology
-                            </br> 1). Dean, Faculty of Science and Technology
-                          </td>
-
-                        </tr>
                           <input type="hidden" name="files_id"  value="<?php echo $objResult->files_id; ?>">
                               <input type="hidden" name="advisergroup_id"  value="<?php echo $objResult->advisergroup_id; ?>">
 
 
-                        <td class="hidden"> Upload Complete Project<p>
+                        <td class="hidden"><small>Complete Project (has been sign by Head of department & Dean) </small></br>
 
                             <input type="file" name="complete_project" id="complete_project"
                           value=" <?php echo $objResult->complete_project; ?>"/>
 
 
-                <input type="hidden"
-                            class="form-control"
-                                                name="hdnOldFilen"                                     value="<?php echo $objResult->complete_project; ?>">
+                <input type="hidden" class="form-control" name="hdnOldFilen" value="<?php echo $objResult->complete_project; ?>">
 
     <?php if ($objResult->by_advisor11 != "") {?>
-                        <button class="btn btn-warning disabled" disabled="disabled">Upload</button>
+                        <button class="btn btn-warning disabled btn-sm" disabled="disabled">Upload</button>
 
                       <?php } else {?>
-                      <button type="submit" class="btn btn-primary" >Upload</button>
-                       <?php }?>
+                      <button type="submit" class="btn btn-primary btn-sm" >Upload</button>
+                       <?php }?> </td>
 
 
 
 
-
-
+<td></td>
 
     <td>
-<?php if ($objResult->complete_project != "") {?>
-                      <a href="../form01/download.php?pdf=<?php echo $objResult->complete_project; ?>">
-                        <span class='badge badge-primary'><i class="fa fa-download">Download
-                          <?php echo $objResult->complete_project ?> </i></a></span>
- <?php } else {?>
-                    <a href="#"> <button class="btn btn-danger btn-xs">
+<?php if ($objResult->complete_project != "") 
+{?>
+        </br><a href="../form01/download.php?pdf=<?php echo $objResult->complete_project; ?>">
+                  <input type="button" class="btn btn-success btn-sm" value="Download"></a>
+ <?php } else 
+ {?>
+        </br><a href="#"> <button class="btn btn-danger btn-sm">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
-                    <?php }?>
+<?php }?>
                               </td>
 
-
+<td>
+ </br> <a href="../../assets/forms/PF11%20-%20IT%20Project%20-%20Project%20Approval%20Letter.docx" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">PDF11</a>
+</td>
 
 
 </tr>
@@ -550,12 +518,12 @@ if ($result = $db->query($strSQL)) {
 
         <div class="form-group clearfix">
 
-                  <a href="../form10/pf10.php" class="btn btn-danger float-left">Previous</a>
+                  <a href="../form10/pf10.php" class="btn btn-danger float-left">&laquo; Previous</a>
           <?php if ($objResult->by_advisor11 != "Pass") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
             <a href="../form12/pf12.php"   >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+            <button type="button" class="btn btn-primary float-right" >Next &raquo;</button>
                        <?php }?>
 
 
@@ -702,7 +670,7 @@ if ($result = $db->query($strSQL)) {
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
     reserved.
   </footer>
 

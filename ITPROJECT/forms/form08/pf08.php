@@ -420,8 +420,8 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Proposal Project Approval Letter </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+              <h5>Adviser Project Approval Form </h5>
+           <h6><small class="text-muted">Approval Form Agreed to Sign By Advisor</small>
 
               </h6>
                 <div class="card">
@@ -430,19 +430,12 @@ if ($result = $db->query($strSQL)) {
                       <thead class="thead-default">
                         <tr>
                         <th>To do list</th>
-
-
-                          <th><font color='red'> Sign by advisor</font></th>
+                          <th><font color='red'> Advisor</font></th>
                           <th></th>
                         </tr>
                       </thead>
                       <tbody>
-
-
-
                         <tr>
-
-
                           <!--get Project Owner  -->
 
                           <td class="form-control" name="Owner" hidden="">
@@ -460,20 +453,18 @@ if ($result = $db->query($strSQL)) {
                             <input type="file" name="files_filename_project" id="files_filename_project"
                               required="required" />
 
-
-
-
            <?php if ($objResult->files_filename_project != "") {?>
                         <button class="btn btn-warning disabled" disabled="disabled">Upload</button>
 
                       <?php } else {?>
-                      <button type="submit" class="btn btn-primary" >Upload</button>
+                      <button type="submit" class="btn btn-primary btn-sm" >Upload</button>
                        <?php }?>
 
 
 
                           </td>
                           <td>
+                          </br>
                             Staus
                             <?php echo status_08($objResult->by_advisor08); ?>
                           </td>
@@ -483,14 +474,14 @@ if ($result = $db->query($strSQL)) {
 
     <td>
 <?php if ($objResult->files_filename_project != "") {?>
-                      <a href="../form01/download.php?pdf=<?php echo $objResult->files_filename_project; ?>">
+                      </br><a href="../form01/download.php?pdf=<?php echo $objResult->files_filename_project; ?>">
                           <input type="button" class="btn btn-success btn-sm" value="Download">
 
  <?php } else {?>
                     <a href="#">
 
 
-                      <button class="btn btn-danger btn-sm ">
+                      </br><button class="btn btn-danger btn-sm ">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
                     <?php }?>
                               </td>
@@ -510,12 +501,13 @@ if ($result = $db->query($strSQL)) {
 
         <div class="form-group clearfix">
 
-                  <a href="../form07/pf07.php"  class="btn btn-danger float-left">Previous</a>
+                  <a href="../form07/pf07.php"  class="btn btn-danger float-left">&laquo; Previous
+</a>
           <?php if ($objResult->by_advisor08 != "Pass") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
+              <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
             <a href="../form09/pf09.php"   >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+            <button type="button" class="btn btn-primary float-right" >Next &raquo;</button></a>
                        <?php }?>
 
 
@@ -663,7 +655,7 @@ if ($result = $db->query($strSQL)) {
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
     reserved.
   </footer>
 

@@ -417,9 +417,8 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Submit the Complete project Document of related resources
- </h5>
-           <h6><small class="text-muted"></small>
+              <h5>Submit the Complete project Document of related resources</h5>
+           <h6><small class="text-muted">Approval Form Agreed to Sign By Advisor.</small> </h6>
 
               </h6>
                 <div class="card">
@@ -428,27 +427,21 @@ if ($result = $db->query($strSQL)) {
                       <thead class="thead-default">
                         <tr>
                         <th>To do list</th>
-
-
-                          <th><font color='red'> *Sign by Advisor</font></th>
-
+                          <th><font color='red'>Advisor</font></th>
                         </tr>
                       </thead>
                       <tbody>
 
                         <tr>
-                         <td>1).Complete project Document
-                            </br>2).Related resources</td>
+                         <td>1).Submit Complete project Document 
+                          </br> and Related resources to Advisor</td>
 
 
 
                          <td>
-                          </br>Status</br>
                             <?php echo status_08($objResult->by_advisor12); ?>
                               </span> <?php echo get_advisor($objResult->group_id); ?>
                           </td>
-
-
 
                         </tr>
 
@@ -470,12 +463,12 @@ if ($result = $db->query($strSQL)) {
 
         <div class="form-group clearfix">
 
-                  <a href="../form11/pf11.php" class="btn btn-danger float-left">Previous</a>
+                  <a href="../form11/pf11.php" class="btn btn-danger float-left">&laquo; Previous</a>
           <?php if ($objResult->by_advisor12 != "Pass") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
             <a href="../form13/pf13.php"   >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+            <button type="button" class="btn btn-primary float-right" >Next &raquo;</button></a>
                        <?php }?>
 
 
@@ -620,7 +613,7 @@ if ($result = $db->query($strSQL)) {
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
     reserved.
   </footer>
 

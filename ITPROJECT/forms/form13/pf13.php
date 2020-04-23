@@ -417,9 +417,7 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Officer Receive Project Booked
-
- </h5>
+              <h5>Officer Receive Project Booked</h5>
            <h6><small class="text-muted"></small>
 
               </h6>
@@ -429,9 +427,7 @@ if ($result = $db->query($strSQL)) {
                       <thead class="thead-default">
                         <tr>
                         <th>To do list</th>
-
-
-                          <th><font color='red'> *Sign by Officer</font></th>
+                          <th><font color='red'>Officer</font></th>
 
                         </tr>
                       </thead>
@@ -439,23 +435,15 @@ if ($result = $db->query($strSQL)) {
 
                         <tr>
                          <td>Submit Complete project Document
-                            </br> and Related resources and
-                          </br>
-                          PF10,PF11 and PF12
-
+                         <small></br><u>Note:</u>
+                         </br> Officer Signed Form and Stamped
+                         </small>
                           </td>
-
-
-
                          <td>
-                          </br>Status</br>
+                          Status
                             <?php echo status_08($objResult->by_officer13); ?>
                           </td>
-
-
-
                         </tr>
-
                           <input type="hidden" name="files_id"  value="<?php echo $objResult->files_id; ?>">
                               <input type="hidden" name="advisergroup_id"  value="<?php echo $objResult->advisergroup_id; ?>">
 
@@ -474,7 +462,7 @@ if ($result = $db->query($strSQL)) {
 
         <div class="form-group clearfix">
 
-                  <a href="../form11/pf11.php" class="btn btn-danger float-left">Previous</a>
+                  <a href="../form11/pf11.php" class="btn btn-danger float-left">&laquo; Previous</a>
 
 
 
@@ -621,7 +609,7 @@ if ($result = $db->query($strSQL)) {
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
     reserved.
   </footer>
 
