@@ -419,8 +419,8 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Project Revision </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+              <h5>Project Presentation& Project Revision Form</h5>
+           <h6><small class="text-muted">Approval Form Agreed to Approve By Advisor & Committee</small>
 
               </h6>
                 <div class="card">
@@ -429,18 +429,22 @@ if ($result = $db->query($strSQL)) {
                       <thead class="thead-default">
                         <tr>
                         <th>To do list</th>
-
-
-                          <th><font color='red'> *Sign by advisor</font></th>
-                          <th><font color='red'> *Sign by Committee</font></th>
+                          <th><font color='red'>Advisor</font></th>
+                          <th><font color='red'>Committee</font></th>
                         </tr>
                       </thead>
                       <tbody>
 
                         <tr>
                           <td>1).Project Presentation
-                            </br>2).Project Revision</td>
-
+                          </br>2).Project Revision
+                          </br>
+                         <small></br><u>Note:</u>
+                          </br>Student has to take the Project Presentation
+                          </br>Afer prestent,Student will get the recommendation from Committee
+                          </br>Student has to recorrect then upload  the last file here
+                          </small> 
+                        </td>
                          <td>
                           </br>
                             <?php echo status_10($objResult->by_advisor10); ?>
@@ -456,42 +460,38 @@ if ($result = $db->query($strSQL)) {
 
                         </tr>
 
-                          <input type="hidden" name="files_id"  value="<?php echo $objResult->files_id; ?>">
+                        <input type="hidden" name="files_id"  value="<?php echo $objResult->files_id; ?>">
                               <input type="hidden" name="advisergroup_id"  value="<?php echo $objResult->advisergroup_id; ?>">
 
 
-                        <td class="hidden"> 5 chapter of Project Revision<p>
+                        <td class="hidden"><small>5 chapter of Project Revision</small> </br>
                                <?php echo $objResult->files_filename_project; ?>
 
                             <input type="file" name="files_filename_project" id="files_filename_project"
                           value=" <?php echo $objResult->files_filename_project; ?>"/>
 
-
-                                                     <br>
+                                                    
                 <input type="hidden"
                             class="form-control"
                                                 name="hdnOldFilen"                                     value="<?php echo $objResult->files_filename_project; ?>">
 
     <?php if ($objResult->by_advisor10 != "") {?>
-                        <button class="btn btn-warning disabled" disabled="disabled">Upload</button>
+                        <button class="btn btn-warning disabled btn-sm" disabled="disabled">Upload</button>
 
                       <?php } else {?>
-                      <button type="submit" class="btn btn-primary" >Upload</button>
-                       <?php }?>
-
-
-
-
-
+                      <button type="submit" class="btn btn-primary btn-sm" >Upload</button>
+                       <?php }?></td>
+<td></td>
 
 
     <td>
+
 <?php if ($objResult->files_filename_project != "") {?>
-                      <a href="../form01/download.php?pdf=<?php echo $objResult->files_filename_project; ?>">
+                     </br> <a href="../form01/download.php?pdf=<?php echo $objResult->files_filename_project; ?>">
                                                 <input type="button" class="btn btn-success btn-sm" value="Download">
 
  <?php } else {?>
-                    <a href="#"> <button class="btn btn-danger btn-xs">
+                   </br> <a href="#"> <button class="btn btn-danger btn-sm">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
                     <?php }?>
                               </td>
@@ -531,7 +531,7 @@ if ($result = $db->query($strSQL)) {
 
         <div class="form-group clearfix">
 
-    <a href="../form09/pf09.php" class="btn btn-danger float-left">Previous</a>
+    <a href="../form09/pf09.php" class="btn btn-danger float-left">&laquo; Previous</a>
           <?php if ($objResult->committeegroup_id != "committeegroup_id" and $objResult->status_project != "Pass" ) {?>
             <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
@@ -684,7 +684,7 @@ if ($result = $db->query($strSQL)) {
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
     reserved.
   </footer>
 

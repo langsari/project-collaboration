@@ -102,9 +102,9 @@ function status_07($status)
     if ($status == '') {
         return "<span class='text-danger'></span>";
     } else if ($status == 'Waiting') {
-        return "<span class='badge badge-danger'>Waiting</span>";
+        return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
     } else if ($status == 'No') {
-        return "<span class='badge badge-danger'>No Pass</span>";
+        return "<input type='button' class='btn btn-danger btn-xs' value='No Pass'>";
     } else if ($status == 'Pass') {
         return "<input type='button' class='btn btn-success btn-xs' value='Pass'>";
     }
@@ -116,9 +116,9 @@ function status_08($status)
     if ($status == '') {
         return "<span class='text-danger'></span>";
     } else if ($status == 'Waiting') {
-        return "<span class='badge badge-danger'>Waiting</span>";
+        return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
     } else if ($status == 'No') {
-        return "<span class='badge badge-danger'>No Pass</span>";
+        return "<input type='button' class='btn btn-danger btn-xs' value='No Pass'>";
     } else if ($status == 'Pass') {
         return "<input type='button' class='btn btn-success btn-xs' value='Pass'>";
     }
@@ -129,11 +129,11 @@ function status_09($status)
     if ($status == '') {
         return "<span class='text-danger'></span>";
     } else if ($status == 'Waiting') {
-        return "<span class='badge badge-warning'>Waiting</span>";
+        return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
     } else if ($status == 'Approve') {
-        return "<span class='badge badge-success'>Approved</span>";
+       return "<input type='button' class='btn btn-success btn-xs' value='Approved'>";
     } else if ($status == 'No') {
-        return "<input type='button' class='btn btn-success btn-xs' value='Pass'>";
+        return "<input type='button' class='btn btn-danger btn-xs' value='No Pass'>";
     }
 }
 
@@ -142,9 +142,9 @@ function status_10($status)
     if ($status == '') {
         return "<span class='text-danger'></span>";
     } else if ($status == 'No') {
-        return "<span class='badge badge-danger'>No Pass</span>";
+       return "<input type='button' class='btn btn-danger btn-xs' value='No Pass'>";
     } else if ($status == 'Waiting') {
-        return "<span class='badge badge-danger'>Waiting</span>";
+        return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
     } else if ($status == 'Pass') {
         return "<input type='button' class='btn btn-success btn-xs' value='Pass'>";
     }
@@ -521,7 +521,7 @@ function get_status_committee1($group_id)
         while ($row = $rs->fetch_object()) {
      
 
-                  $rows .= "<p> " . status_03($row->status_project) . " &nbsp;&nbsp; " . $row->member_fullname . "  </p>";
+                  $rows .= "<p> " . status_10($row->status_project) . " &nbsp;&nbsp; " . $row->member_fullname . "  </p>";
         }
         return $rows;
         $db->close();

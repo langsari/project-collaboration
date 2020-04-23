@@ -419,7 +419,7 @@ if ($result = $db->query($strSQL)) {
              </div>
             </br>
               <h5>Proposal Presentation & Proposal Revision </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Approve By Advisor & Committee</small>
+           <h6><small class="text-muted">Approval Form Agreed to Approve By Advisor & Committee</small>
 
               </h6>
                 <div class="card">
@@ -436,14 +436,15 @@ if ($result = $db->query($strSQL)) {
 
                         <tr>
                           <td>1).Project Presentation
-                            </br>2).Project Revision
+                          </br>2).Project Revision
                           </br>
-                          </br><u>Condition:</u>
+                          <small></br><u>Note:</u>
                           </br>Student has to take the proposal presentation
                           </br>Afer prestent,Student has to upload the last proposal revison
                           </br>The document must approved by advisor first
                           </br>The document has to approve by committee
-                            <td>
+                          </small>
+                          <td>
                           </br>
 
                             <?php echo status_03($objResult->status_advisor); ?>
@@ -460,6 +461,7 @@ if ($result = $db->query($strSQL)) {
                           </td>
 
                         </tr>
+                        
 
                           <input type="hidden" name="files_id"  value="<?php echo $objResult->files_id; ?>">
                               <input type="hidden" name="advisergroup_id"  value="<?php echo $objResult->advisergroup_id; ?>">

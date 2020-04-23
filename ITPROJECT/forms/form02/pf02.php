@@ -440,10 +440,12 @@ if ($result = $db->query($strSQL)) {
                         <tr>
                           <td>Student, Submit Proposal, PF01 and related documentation
                           </br>
-                          </br><u>Condition:</u>
+                          </br>
+                          <small><u>Condition:</u>
                           </br>(1) Student has been uploaded the 3 chapters in the PF01
                           </br>(2) The document has been approved by advisor
                           </br>(2) Next PF03, after the document has been approved by officer
+                          </small>
                           </td>
                           <td>
                             Status
@@ -614,10 +616,10 @@ if ($result = $db->query($strSQL)) {
      </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">     <class style="font-size: 14px;">
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
+      <class style="font-size: 12px;">  <strong>Copyright © 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

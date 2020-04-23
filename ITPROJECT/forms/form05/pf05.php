@@ -438,11 +438,11 @@ if ($result = $db->query($strSQL)) {
                       <tbody>
                         <tr>
                           <td>Submit complete project proposal document to officer
-
-                          </br></br>
-                          <u>Note:</u>
-
+                          </br>
+                          </br>
+                          <small><u>Note:</u>
                           </br>1). Form sign after Officer Receive Completed Project Proposal
+                          </small>
                           </td>
                           <td>
                             Status

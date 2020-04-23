@@ -439,9 +439,10 @@ if ($result = $db->query($strSQL)) {
                         <tr>
                           <td>1). Project Proposal Approval
                           </br>
-                          </br><u>Note:</u>
+                          <small></br><u>Note:</u>
                           </br> This PF Advisor & Committee have to confirm 
                           </br> That the student has been passed for proposal revison
+                          </small>
                           </td>
                             <td>
 
@@ -469,32 +470,14 @@ if ($result = $db->query($strSQL)) {
                    
             </fieldset>
           </form>
-                    <?php
-}}
-?>
-
-
-
-    <?php
-
-$g_id = get_group_id();
-$ag_id = get_ag_id($g_id);
-
-
-$strSQL = "SELECT * FROM committeegroup  WHERE committeegroup_id= '$ag_id'   ";
-
-
-
-if ($result = $db->query($strSQL)) {
-    while ($objResult = $result->fetch_object()) {
-        ?>      
+   
 
 
         <div class="form-group clearfix">
 
                   <a href="../form03/pf03.php" class="btn btn-danger float-left">&laquo; Previous</a>
 
-          <?php if ($objResult->committeegroup_id != "committeegroup_id" and $objResult->status_presentation != "Pass" ) {?>
+          <?php if ($objResult->by_advisor04 != "Pass") {?>
             <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
             <a href="../form05/pf05.php"  >

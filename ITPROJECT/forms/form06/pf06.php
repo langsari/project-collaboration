@@ -432,10 +432,10 @@ if ($result = $db->query($strSQL)) {
                         <tr>
                           <td>Consulation Log Book
                           </br></br>
-                          <u>Note:</u>
-
+                          <small><u>Note:</u>
                           </br>1). Student has to meet with advisor at leat 8 times
                           </br>2). Download PF06 for list down while meet with advisor
+                          </small>
                           </td>
                           <td>
                             Status
