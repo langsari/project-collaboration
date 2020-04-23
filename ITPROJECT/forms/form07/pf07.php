@@ -440,6 +440,24 @@ if ($result = $db->query($strSQL)) {
                         <tr>
                           <td> Seminar  Pre-Project
                          </td>
+                          <tr>
+                          <td> Are you ready for Seminar 
+</p>
+<?php if ($objResult->by_advisor07 != "Pass") {?>
+    <a href="check_pf07.php?id=<?php echo $objResult->advisergroup_id; ?>"  >
+
+            <button type="button" class="btn btn-success btn-xs  float-left" title="Approve" >
+              <i class='fa fa-check'></i></button>
+          <?php } else {?>
+
+            <button class="btn btn-warning btn-xs disabled float-left" disabled="disabled" title="has been Approved">      <i class='fa fa-check'></i></button>
+
+          </a>
+        </td>
+                       <?php }?>
+
+                         </td>
+
                           <td>
                            <?php echo status_07($objResult->by_advisor07); ?>
                             <p>

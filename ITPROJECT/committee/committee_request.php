@@ -355,7 +355,7 @@ $strSQL = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id
        LEFT JOIN partnergroup ON committeegroup.group_id = partnergroup.group_id
           LEFT JOIN files ON committeegroup.committeegroup_id = files.files_id
       LEFT JOIN schedule ON committeegroup.group_id = schedule.group_id
-    WHERE committeegroup.member_id  ='$my_id' AND committeegroup.status_presentation='Pass'  AND schedule.schedule_type='1' ";
+    WHERE committeegroup.member_id  ='$my_id'   AND schedule.schedule_type='1' ";
 
 $i = 1;
 $count = 1;
