@@ -419,7 +419,7 @@ if ($result = $db->query($strSQL)) {
              </div>
             </br>
               <h5>Proposal Presentation & Proposal Revision </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Approve By Advisor & Committee</small>
+           <h6><small class="text-muted">Approval Form Agreed to Approve By Advisor & Committee</small>
 
               </h6>
                 <div class="card">
@@ -436,14 +436,15 @@ if ($result = $db->query($strSQL)) {
 
                         <tr>
                           <td>1).Project Presentation
-                            </br>2).Project Revision
+                          </br>2).Project Revision
                           </br>
-                          </br><u>Condition:</u>
+                          <small></br><u>Note:</u>
                           </br>Student has to take the proposal presentation
                           </br>Afer prestent,Student has to upload the last proposal revison
                           </br>The document must approved by advisor first
                           </br>The document has to approve by committee
-                            <td>
+                          </small>
+                          <td>
                           </br>
 
                             <?php echo status_03($objResult->status_advisor); ?>
@@ -460,6 +461,7 @@ if ($result = $db->query($strSQL)) {
                           </td>
 
                         </tr>
+                        
 
                           <input type="hidden" name="files_id"  value="<?php echo $objResult->files_id; ?>">
                               <input type="hidden" name="advisergroup_id"  value="<?php echo $objResult->advisergroup_id; ?>">
@@ -519,8 +521,6 @@ if ($result = $db->query($strSQL)) {
 
 $g_id = get_group_id();
 $ag_id = get_ag_id($g_id);
-
-
 $strSQL = "SELECT * FROM committeegroup  WHERE committeegroup_id= '$ag_id'   ";
 
 
@@ -528,14 +528,11 @@ $strSQL = "SELECT * FROM committeegroup  WHERE committeegroup_id= '$ag_id'   ";
 if ($result = $db->query($strSQL)) {
     while ($objResult = $result->fetch_object()) {
         ?>
-
-
-
         <div class="form-group clearfix">
 
           <a href="../form02/pf02.php" class="btn btn-danger float-left">&laquo; Previous</a>
           
-          <?php if ($objResult->committeegroup_id != "committeegroup_id" and $objResult->status_presentation != "Pass" ) {?>
+          <?php if ($objResult->committeegroup_id != "committeegroup_id" and $objResult->status_presentation = "Pass" ) {?>
             <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
             <a href="../form04/pf04.php"  >
@@ -557,7 +554,6 @@ if ($result = $db->query($strSQL)) {
             <?php
 }}
 ?>
-
 
 
 

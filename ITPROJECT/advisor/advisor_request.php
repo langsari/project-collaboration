@@ -714,7 +714,7 @@ $my_id = $_SESSION['id'];
 $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_officer05 FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  AND pf='5' And by_advisor06 ='Waiting'   ";
+        WHERE advisergroup.member_id = '$my_id'  AND pf='5' And by_advisor06 =''   ";
 
 $i = 1;
 $count = 1;

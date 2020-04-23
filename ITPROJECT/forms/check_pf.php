@@ -4,9 +4,11 @@ require '../menu/connect.php';
 include '../menu/function.php';
 
 $g_id = get_group_id();
+$ag_id = get_ag_id($g_id);
+
 
 $sql = "SELECT pf FROM files
-        WHERE advisergroup_id = '$g_id' ";
+        WHERE advisergroup_id = '$ag_id' ";
 
 if ($result = $db->query($sql)) {
     if ($result->num_rows > 0) {
