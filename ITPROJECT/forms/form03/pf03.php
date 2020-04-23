@@ -428,8 +428,6 @@ if ($result = $db->query($strSQL)) {
                       <thead class="thead-default">
                         <tr>
                         <th>To do list</th>
-
-
                           <th><font color='red'> Advisor</font></th>
                           <th><font color='red'> Committee</font></th>
                         </tr>
@@ -444,7 +442,7 @@ if ($result = $db->query($strSQL)) {
                           </br>Student has to take the proposal presentation
                           </br>Afer prestent,Student has to upload the last proposal revison
                           </br>The document must approved by advisor first
-                        </br>The document has to approve by committee
+                          </br>The document has to approve by committee
                             <td>
                           </br>
 
@@ -535,7 +533,8 @@ if ($result = $db->query($strSQL)) {
 
         <div class="form-group clearfix">
 
-                  <a href="../form02/pf02.php" class="btn btn-danger float-left">&laquo; Previous</a>
+          <a href="../form02/pf02.php" class="btn btn-danger float-left">&laquo; Previous</a>
+          
           <?php if ($objResult->committeegroup_id != "committeegroup_id" and $objResult->status_presentation != "Pass" ) {?>
             <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
@@ -688,7 +687,7 @@ if ($result = $db->query($strSQL)) {
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Trackinf</a>.</strong> All rights
     reserved.
   </footer>
 

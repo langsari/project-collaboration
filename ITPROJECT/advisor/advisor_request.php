@@ -804,7 +804,7 @@ $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,file
 
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  AND pf='6' And by_advisor07 ='Waiting'               ";
+        WHERE advisergroup.member_id = '$my_id'  And by_advisor07 ='Waiting'               ";
 
 $i = 1;
 $count = 1;

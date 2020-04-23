@@ -368,12 +368,6 @@ if ($result = $db->query($strSQL)) {
 
 
 
-
-
-
-
-
-
 <!-- partial:index.partial.html -->
 
 
@@ -420,8 +414,8 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Proposal Project Approval Letter </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+              <h5>Consulatio Log Book Form </h5>
+           <h6><small class="text-muted">This form Agreed to Sign By Advisor</small>
 
               </h6>
                 <div class="card">
@@ -431,21 +425,28 @@ if ($result = $db->query($strSQL)) {
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th>Status</th>
+                          <th><font color='red'>Advisor</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Student has to meet with advisor at leat 8 times
-                          </br><u>Condition:</u>
+                          <td>Consulation Log Book
+                          </br></br>
+                          <u>Note:</u>
 
-                          </br>1). Copy the completed proposal with soft cover
+                          </br>1). Student has to meet with advisor at leat 8 times
+                          </br>2). Download PF06 for list down while meet with advisor
                           </td>
                           <td>
+                            Status
                            <?php echo status_06($objResult->by_advisor06); ?>
-                            <p>
-                              <font color='red'> *Sign by Advisor</font>
-                          </td>
+                          
+                          </br>
+                          </br>
+                          </br>
+                          </br>
+                        <a href="../../assets/forms/PF06%20-%20IT%20Project%20-%20Consultation%20Log%20Book.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">PDF06</a>
+                      </td>
                         </tr>
 
                       </tbody>
@@ -460,13 +461,11 @@ if ($result = $db->query($strSQL)) {
 
         <div class="form-group clearfix">
 
-                  <a href="../form05/pf05.php" class="btn btn-danger float-left">Previous</a>
-          <?php if ($objResult->by_advisor06 != "Pass") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
-          <?php } else {?>
-            <a href="../form07/pf07.php"  >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
-                       <?php }?>
+          <a href="../form05/pf05.php" class="btn btn-danger float-left">&laquo; Previous</a>
+        
+          <a href="../form07/pf07.php"  >
+           <button type="button" class="btn btn-primary float-right" >Next &raquo;</button></a>
+                       
 
 
 
@@ -613,7 +612,7 @@ if ($result = $db->query($strSQL)) {
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
     reserved.
   </footer>
 

@@ -52,11 +52,11 @@ function status_03($status)
     if ($status == '') {
         return "<span class='text-danger'></span>";
     } else if ($status == 'Waiting') {
-        return "<span class='badge badge-danger'>Waiting</span>";
+        return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
     } else if ($status == 'No') {
-        return "<span class='badge badge-danger'>No Pass</span>";
+        return "<input type='button' class='btn btn-danger btn-xs' value='No Pass'>";
     } else if ($status == 'Pass') {
-        return "<span class='badge badge-success'>Pass</span>";
+        return "<input type='button' class='btn btn-success btn-xs' value='Pass'>";
     }
 }
 
@@ -64,8 +64,10 @@ function status_04($status)
 {
     if ($status == '') {
         return "<span class='text-danger'></span>";
+    } else if ($status == 'Waiting') {
+        return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
     } else if ($status == 'No') {
-        return "<span class='badge badge-danger'>No Pass</span>";
+        return "<input type='button' class='btn btn-danger btn-xs' value='No Pass'>";
     } else if ($status == 'Pass') {
         return "<input type='button' class='btn btn-success btn-xs' value='Pass'>";
     }
@@ -74,9 +76,9 @@ function status_04($status)
 function status_05($status)
 {
     if ($status == '') {
-        return "<span class='badge badge-danger'>Waitting</span>";
+        return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
     } else if ($status == 'No') {
-        return "<span class='badge badge-danger'>No Pass</span>";
+        return "<input type='button' class='btn btn-danger btn-xs' value='No Pass'>";
     } else if ($status == 'Pass') {
         return "<input type='button' class='btn btn-success btn-xs' value='Pass'>";
     }
@@ -86,8 +88,10 @@ function status_06($status)
 {
     if ($status == '') {
         return "<span class='text-danger'></span>";
+     } else if ($status == 'Waiting') {
+        return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
     } else if ($status == 'No') {
-        return "<span class='badge badge-danger'>No Pass</span>";
+        return "<input type='button' class='btn btn-danger btn-xs' value='No Pass'>";
     } else if ($status == 'Pass') {
         return "<input type='button' class='btn btn-success btn-xs' value='Pass'>";
     }

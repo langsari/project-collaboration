@@ -421,8 +421,8 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Proposal Project Approval Letter </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+              <h5>Complet Project Proposal submition  </h5>
+           <h6><small class="text-muted">Approval form Agreed to Sign By Officer</small>
 
               </h6>
                 <div class="card">
@@ -432,20 +432,22 @@ if ($result = $db->query($strSQL)) {
                       <thead class="thead-default">
                         <tr>
                           <th>To do list</th>
-                          <th>Status</th>
+                          <th><font color='red'>Officer</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Submit complete project proposal document and PF03 to officer
-                          </br><u>Condition:</u>
+                          <td>Submit complete project proposal document to officer
 
-                          </br>1). Copy the completed proposal with soft cover
+                          </br></br>
+                          <u>Note:</u>
+
+                          </br>1). Form sign after Officer Receive Completed Project Proposal
                           </td>
                           <td>
+                            Status
                            <?php echo status_05($objResult->by_officer05); ?>
-                            <p>
-                              <font color='red'> *For Officer</font>
+                            
                           </td>
                         </tr>
 
@@ -463,12 +465,12 @@ if ($result = $db->query($strSQL)) {
 
         <div class="form-group clearfix">
 
-                  <a href="../form04/pf04.php" class="btn btn-danger float-left">Previous</a>
+                  <a href="../form04/pf04.php" class="btn btn-danger float-left">&laquo; Previous</a>
           <?php if ($objResult->by_officer05 != "Pass") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
             <a href="../form06/pf06.php"  >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+           <button type="button" class="btn btn-primary float-right" >Next &raquo;</button> </a>
                        <?php }?>
 
 
@@ -613,7 +615,7 @@ if ($result = $db->query($strSQL)) {
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
     reserved.
   </footer>
 

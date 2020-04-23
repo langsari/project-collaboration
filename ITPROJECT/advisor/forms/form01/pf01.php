@@ -429,11 +429,6 @@ if ($result = $db->query($sql)) {
 
                            <td class="hidden"> 3 chapter of Proposal
 
-
-
-
-
-
                           </td>
                           <td>
                             Staus
