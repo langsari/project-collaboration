@@ -474,14 +474,14 @@ $i++;
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
 
-$strSQL = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,committeegroup.member_id,committeegroup.group_id,schedule.schedule_status,schedule.schedule_id,schedule.schedule_type,files.advisergroup_id,committeegroup.status_project,committeegroup.group_id,files.files_filename_project
+$strSQL = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,committeegroup.member_id,committeegroup.group_id,schedule.schedule_status,schedule.schedule_id,schedule.schedule_type,files.advisergroup_id,committeegroup.status_project,committeegroup.group_id,files.files_filename_project,schedule.group_id
       FROM committeegroup
         LEFT JOIN advisergroup ON committeegroup.member_id = advisergroup.member_id
         LEFT JOIN member ON committeegroup.member_id = member.member_id
        LEFT JOIN partnergroup ON committeegroup.group_id = partnergroup.group_id
           LEFT JOIN files ON committeegroup.committeegroup_id = files.files_id
       LEFT JOIN schedule ON committeegroup.group_id = schedule.group_id
-    WHERE committeegroup.member_id  ='$my_id'   and schedule.schedule_type='2'  ";
+    WHERE committeegroup.member_id  ='$my_id'  AND schedule.schedule_type='2'  ";
 
 $i = 1;
 $count = 1;

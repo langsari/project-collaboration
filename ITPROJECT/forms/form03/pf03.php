@@ -532,7 +532,7 @@ if ($result = $db->query($strSQL)) {
 
           <a href="../form02/pf02.php" class="btn btn-danger float-left">&laquo; Previous</a>
           
-          <?php if ($objResult->committeegroup_id != "committeegroup_id" and $objResult->status_presentation != "Pass" ) {?>
+          <?php if ($objResult->committeegroup_id != "committeegroup_id" and $objResult->status_presentation = "Pass" ) {?>
             <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
             <a href="../form04/pf04.php"  >
