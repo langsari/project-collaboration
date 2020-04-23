@@ -418,8 +418,8 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Proposal Project Approval Letter </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+              <h5>Proposal Approval Letter </h5>
+           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor and Committee</small>
 
               </h6>
                 <div class="card">
@@ -430,17 +430,20 @@ if ($result = $db->query($strSQL)) {
                         <th>To do list</th>
 
 
-                          <th><font color='red'> *Sign by advisor</font></th>
-                          <th><font color='red'> *Sign by Committee</font></th>
+                          <th><font color='red'> Advisor</font></th>
+                          <th><font color='red'> Committee</font></th>
                         </tr>
                       </thead>
                       <tbody>
 
                         <tr>
-                          <td>1). Project Proposal Approval</td>
-
-                            <td>
+                          <td>1). Project Proposal Approval
                           </br>
+                          </br><u>Note:</u>
+                          </br> This PF Advisor & Committee have to confirm 
+                          </br> That the student has been passed for proposal revison
+                          </td>
+                            <td>
 
                             <?php echo status_04($objResult->by_advisor04); ?>
 
@@ -466,16 +469,36 @@ if ($result = $db->query($strSQL)) {
                    
             </fieldset>
           </form>
+                    <?php
+}}
+?>
+
+
+
+    <?php
+
+$g_id = get_group_id();
+$ag_id = get_ag_id($g_id);
+
+
+$strSQL = "SELECT * FROM committeegroup  WHERE committeegroup_id= '$ag_id'   ";
+
+
+
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>      
 
 
         <div class="form-group clearfix">
 
-                  <a href="../form03/pf03.php" class="btn btn-danger float-left">Previous</a>
-          <?php if ($objResult->by_advisor04 != "Pass") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
+                  <a href="../form03/pf03.php" class="btn btn-danger float-left">&laquo; Previous</a>
+
+          <?php if ($objResult->committeegroup_id != "committeegroup_id" and $objResult->status_presentation != "Pass" ) {?>
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
             <a href="../form05/pf05.php"  >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+            <button type="button" class="btn btn-primary float-right" >Next &raquo;</button></a>
                        <?php }?>
 
 
@@ -625,7 +648,7 @@ if ($result = $db->query($strSQL)) {
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright ©2020  <a href="#">IT Promo and Track</a>.</strong> All rights
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
     reserved.
   </footer>
 

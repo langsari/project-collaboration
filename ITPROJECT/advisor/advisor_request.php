@@ -429,7 +429,6 @@ $strSQL = "SELECT advisergroup.*,  files.files_status,files.pf,files.files_id,fi
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  AND files_status = 'Waiting'
-
                ";
 $i = 1;
 $count = 1;
@@ -522,7 +521,6 @@ $i++;
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
 $strSQL = "SELECT advisergroup.*, files.files_status,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.status_advisor FROM advisergroup
-
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  AND pf='2' And status_advisor='Waiting'
@@ -628,7 +626,6 @@ $i++;
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
 $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.status_advisor FROM advisergroup
-
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  AND pf='3' And by_advisor04='Waiting'  ";
@@ -715,7 +712,6 @@ $i++;
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
 $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_officer05 FROM advisergroup
-
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  AND pf='5' And by_advisor06 ='Waiting'   ";
@@ -801,10 +797,9 @@ $i++;
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
 $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_officer05 FROM advisergroup
-
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.member_id = '$my_id'  AND by_advisor07 ='Waiting'               ";
+        WHERE advisergroup.member_id = '$my_id'  And by_advisor07 ='Waiting'               ";
 
 $i = 1;
 $count = 1;
@@ -883,7 +878,6 @@ $i++;
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
 $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_advisor07,files.files_filename_project,files.by_advisor08 FROM advisergroup
-
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  AND pf='7 ' AND files.by_advisor08 ='Waiting'   ";
@@ -978,7 +972,6 @@ $i++;
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
 $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_advisor07,files.files_filename_project FROM advisergroup
-
 LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 LEFT JOIN member ON advisergroup.member_id = member.member_id
 WHERE advisergroup.member_id = '$my_id'  AND pf='9' And by_advisor10 ='Waiting'  ";
@@ -1078,7 +1071,6 @@ $i++;
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
 $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_advisor11,files.complete_project FROM advisergroup
-
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  AND pf='10' And by_advisor11 ='Waiting'   ";
@@ -1173,7 +1165,6 @@ $i++;
 require '../menu/connect.php';
 $my_id = $_SESSION['id'];
 $strSQL = "SELECT advisergroup.*,  files.by_officer,files.pf,files.files_id,files.files_filename_proposal,advisergroup.advisergroup_topic,files.by_advisor07,files.files_filename_project FROM advisergroup
-
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.member_id = '$my_id'  AND pf='11' And  by_advisor12 ='Waiting'  ";
