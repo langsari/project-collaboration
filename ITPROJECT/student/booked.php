@@ -376,7 +376,7 @@ if ($result = $db->query($strSQL)) {
 
 
     <h4 class="mt-3">Requirement Fulfillment </br>
-     <small class="text-muted">This is explanation steps of the <a href="?page=guide" class="btn-primary btn-sm">Guide/Process</a> of requirement fulfilment after project presentation</small>
+     <small class="text-muted">This is explanation steps of the <a href="guide.php" class="btn-primary btn-sm">Guide/Process</a> of requirement fulfilment after project presentation</small>
     </h4>
 
   <hr>

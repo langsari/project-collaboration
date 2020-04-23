@@ -383,14 +383,14 @@ if ($result = $db->query($strSQL)) {
         <!--<th scope="row">PF11</th>-->
         <td>Procedure</td>
         <td>
-          <a href="assets/guide/1-Information%20Technology%20Project%20-%20Procedure.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
+          <a href="../../assets/guide/1-Information%20Technology%20Project%20-%20Procedure.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
         </td>
       </tr>
       <tr>
         <!--<th scope="row">PF11</th>-->
         <td>Process</td>
         <td>
-          <a href="assets/guide/Khoeld%20Langsari_โครงงานเทคโนโลยี%20-%20Information%20Technology%20Project%20%20-%20Flow%20Process%202018-2.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
+          <a href="../../assets/guide/Khoeld%20Langsari_โครงงานเทคโนโลยี%20-%20Information%20Technology%20Project%20%20-%20Flow%20Process%202018-2.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
         </td>
       </tr>
       </tbody>

@@ -383,14 +383,14 @@ if ($result = $db->query($strSQL)) {
         <!--<th scope="row">PF11</th>-->
         <td>IT2301-322 Schedule</td>
         <td>
-          <a href="assets/schedule/Khoeld%20Langsari%20-%20IT2301-322%20%20Information%20Technology%20Project%20II%20-%20หมวดที่%205%20%20แผนการรดำเนินโครงงาน.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
+          <a href="../../assets/schedule/Khoeld%20Langsari%20-%20IT2301-322%20%20Information%20Technology%20Project%20II%20-%20หมวดที่%205%20%20แผนการรดำเนินโครงงาน.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
         </td>
       </tr>
       <tr>
         <!--<th scope="row">PF11</th>-->
         <td>IT2301-321 Schedule</td>
         <td>
-          <a href="assets/schedule/Khoeld%20Langsari%20-%20IT2301-321%20%20Information%20Technology%20Project%20I%20-%20หมวดที่%205%20%20แผนการรดำเนินโครงงาน.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
+          <a href="../../assets/schedule/Khoeld%20Langsari%20-%20IT2301-321%20%20Information%20Technology%20Project%20I%20-%20หมวดที่%205%20%20แผนการรดำเนินโครงงาน.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
         </td>
       </tr>
       <tr>
@@ -399,7 +399,7 @@ if ($result = $db->query($strSQL)) {
           <!--<mark>Semester 2/2018</mark>-->
         </td>
         <td>
-          <a href="assets/schedule/Khoeld%20Langsari%20-%20IT234-232%20-%20Information%20Technology%20Project%20-%20หมวดที่%205%20%20แผนการรดำเนินโครงงาน.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
+          <a href="../../assets/schedule/Khoeld%20Langsari%20-%20IT234-232%20-%20Information%20Technology%20Project%20-%20หมวดที่%205%20%20แผนการรดำเนินโครงงาน.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
         </td>
       </tr>
       </tbody>

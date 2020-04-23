@@ -12,7 +12,7 @@ include '../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>ITPROMOT</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -384,7 +384,7 @@ if ($result = $db->query($strSQL)) {
         <td>Adviser Proposal Project Approval Letter</td>
         <td>
           <!--<a href="#" class="btn btn-success btn-sm " role="button" aria-pressed="true">DOC</a>-->
-          <a href="assets/forms/PF01%20-%20IT%20Project%20-%20Adviser%20Proposal%20Project%20Approval%20Letter.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
+          <a href="../../assets/forms/PF01%20-%20IT%20Project%20-%20Adviser%20Proposal%20Project%20Approval%20Letter.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
         </td>
       </tr>
       <tr>
@@ -393,7 +393,7 @@ if ($result = $db->query($strSQL)) {
           <small class="text-muted">This form is with officer</small>
         </td>
         <td>
-          <a href="assets/forms/PF02%20-%20IT%20Project%20-%20Officer%20recieve%20copy%20of%20Project%20Proposal.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
+          <a href="../../assets/forms/PF02%20-%20IT%20Project%20-%20Officer%20recieve%20copy%20of%20Project%20Proposal.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
         </td>
       </tr>
       <tr>
@@ -414,7 +414,7 @@ if ($result = $db->query($strSQL)) {
         </td>
 
         <td>
-          <a href="assets/forms/PF04%20-%20IT%20Project%20-%20Project%20Proposal%20Approval%20Letter.docx" class="btn btn-success btn-sm" role="button" aria-pressed="true" target="_blank">.DOCX</a>
+          <a href="../../assets/forms/PF04%20-%20IT%20Project%20-%20Project%20Proposal%20Approval%20Letter.docx" class="btn btn-success btn-sm" role="button" aria-pressed="true" target="_blank">.DOCX</a>
         </td>
       </tr>
       <tr>
@@ -423,14 +423,14 @@ if ($result = $db->query($strSQL)) {
           <small class="text-muted">This form is with officer</small>
         </td>
         <td>
-          <a href="assets/forms/PF05%20-%20IT%20Project%20-%20Officer%20recieve%20Complete%20Project%20Proposal.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
+          <a href="../../assets/forms/PF05%20-%20IT%20Project%20-%20Officer%20recieve%20Complete%20Project%20Proposal.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
         </td>
       </tr>
       <tr>
         <th scope="row">PF06</th>
         <td>Consultation Log Book</td>
         <td>
-          <a href="assets/forms/PF06%20-%20IT%20Project%20-%20Consultation%20Log%20Book.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
+          <a href="../../assets/forms/PF06%20-%20IT%20Project%20-%20Consultation%20Log%20Book.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
         </td>
       </tr>
       <tr>
@@ -444,14 +444,14 @@ if ($result = $db->query($strSQL)) {
         <th scope="row">PF08</th>
         <td>Adviser Project Approval Letter</td>
         <td>
-          <a href="assets/forms/PF08%20-%20IT%20Project%20-%20Adviser%20Project%20Approval%20Letter.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
+          <a href="../../assets/forms/PF08%20-%20IT%20Project%20-%20Adviser%20Project%20Approval%20Letter.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
         </td>
       </tr>
       <tr>
         <th scope="row">PF09</th>
         <td>Officer Receive Copy Of 5 Chapters Project</td>
         <td>
-          <a href="assets/forms/PF09%20-%20IT%20Project%20-%20Officer%20Receive%20Copy%20of%205%20Chapter%20Project.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
+          <a href="../../assets/forms/PF09%20-%20IT%20Project%20-%20Officer%20Receive%20Copy%20of%205%20Chapter%20Project.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
         </td>
       </tr>
       <tr>
@@ -471,14 +471,14 @@ if ($result = $db->query($strSQL)) {
           </small>
         </td>
         <td>
-          <a href="assets/forms/PF11%20-%20IT%20Project%20-%20Project%20Approval%20Letter.docx" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">.DOCX</a>
+          <a href="../../assets/forms/PF11%20-%20IT%20Project%20-%20Project%20Approval%20Letter.docx" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">.DOCX</a>
         </td>
       </tr>
       <tr>
         <th scope="row">PF12</th>
         <td>Free From Adviser Letter</td>
         <td>
-          <a href="assets/forms/PF12%20-%20IT%20Project%20-%20Free%20From%20Adviser%20Letter.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
+          <a href="../../assets/forms/PF12%20-%20IT%20Project%20-%20Free%20From%20Adviser%20Letter.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
         </td>
       </tr>
       <tr>

@@ -12,7 +12,7 @@ include '../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMO</title>
+  <title>ITPROMOT | My Profile</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -337,11 +337,10 @@ if ($result = $db->query($strSQL)) {
             <form  class="p-5 bg-white" enctype="multipart/form-data" method="post"
              action="check_edit_profile.php" >
               <center>
-
-                <h2> About me
-
-              </h2>
-              </center></br>
+        <img src="../dist/img/user1.png" width="7%">
+        
+           <h3> About me </h3>
+     </center></br>
               <hr>
               <p>
                 <h5>1. Profile</h5>
@@ -515,7 +514,7 @@ if ($result = $db->query($strSQL)) {
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 3.0.3-pre
       </div>
-      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
+      <class style="font-size: 12px;">  <strong>Copyright © 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
     </footer>
 
 

@@ -306,9 +306,7 @@ if ($result = $db->query($strSQL)) {
               <center>
           <img src="../dist/img/user1.png" width="7%">
         
-                <h2> About me
-
-              </h2>
+                <h3> About me </h3>
               </center></br>
               <hr>
               <p>

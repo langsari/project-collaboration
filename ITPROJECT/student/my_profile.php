@@ -380,14 +380,11 @@ if ($result = $db->query($strSQL)) {
           <div class="col-md-12 mb-5">
             <form  class="p-5 bg-white" enctype="multipart/form-data" method="post"
              action="check_editprofile.php" >
-
-
-              <center>
-
-                <h2> About me
-
-              </h2>
-              </center></br>
+<center>
+        <img src="../dist/img/user1.png" width="7%">
+        
+           <h3> About me </h3>
+     </center></br>
               <hr>
               <p>
                 <h5>1. Profile</h5>
@@ -572,7 +569,7 @@ if ($result = $db->query($strSQL)) {
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 3.0.3-pre
       </div>
-      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
+      <class style="font-size: 12px;">  <strong>Copyright © 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
     </footer>
 
 
