@@ -356,7 +356,9 @@ CREATE TABLE `news_topic` (
 --
 
 INSERT INTO `news_topic` (`news_id`, `news_topic`, `news_detail`, `news_date`, `member_id`, `parent_comment_id`) VALUES
-(25, 'Assalamulaikum Warahmatullah Wabarakatuh', ' To my dear students who are going to do the final project. \r\nI have some topics for who are interesting to do in filed of programming.These topics may become the closest as you are a student. \r\ncontact me for more information. ', '2020-04-15 06:45:50', 8, 0),
+(25, 'Assalamulaikum Warahmatullah Wabarakatuh', ' To my dear students who are going to do the final project.
+ \r\nI have some topics for who are interesting to do in filed of programming.These topics may become the closest as you are a student.
+  \r\ncontact me for more information. ', '2020-04-15 06:45:50', 8, 0),
 (29, 'Assalamoalaikum', ' I am Tylas \r\nI want this topic', '2020-04-15 07:10:47', 44, 25),
 (30, 'Waalaikumosalam', ' Aj \r\nI am Nik Husnee \r\nHow can you brief us the detail?\r\nWhat is about? ', '2020-04-15 07:17:41', 43, 25);
 

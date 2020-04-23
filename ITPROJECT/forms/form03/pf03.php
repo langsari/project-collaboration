@@ -479,7 +479,7 @@ if ($result = $db->query($strSQL)) {
                                                 name="hdnOldFilen"                                     value="<?php echo $objResult->files_filename_proposal; ?>">
 
 
-                    <?php if ($objResult->status_advisor != "") {?>
+                    <?php if ($objResult->status_advisor != "Approve") {?>
                         <button class="btn btn-warning disabled btn-sm" disabled="disabled">Upload</button>
 
                       <?php } else {?>
@@ -512,11 +512,31 @@ if ($result = $db->query($strSQL)) {
             </fieldset>
           </form>
 
+           <?php
+}}
+?>
+
+
+            <?php
+
+$g_id = get_group_id();
+$ag_id = get_ag_id($g_id);
+
+
+$strSQL = "SELECT * FROM committeegroup  WHERE committeegroup_id= '$ag_id'   ";
+
+
+
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
+
+
 
         <div class="form-group clearfix">
 
                   <a href="../form02/pf02.php" class="btn btn-danger float-left">&laquo; Previous</a>
-          <?php if ($objResult->status_advisor != "Pass") {?>
+          <?php if ($objResult->committeegroup_id != "committeegroup_id" and $objResult->status_presentation != "Pass" ) {?>
             <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
             <a href="../form04/pf04.php"  >

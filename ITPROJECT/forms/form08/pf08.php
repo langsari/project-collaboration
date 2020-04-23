@@ -481,17 +481,21 @@ if ($result = $db->query($strSQL)) {
 
 
 
-
-                          <td>
+    <td>
 <?php if ($objResult->files_filename_project != "") {?>
-                      <a href="download.php?pdf=<?php echo $objResult->files_filename_project; ?>">
-                        <span class='badge badge-primary'><i class="fa fa-download">Download
-                          <?php echo $objResult->files_filename_project ?> </i></a></span>
+                      <a href="../form01/download.php?pdf=<?php echo $objResult->files_filename_project; ?>">
+                          <input type="button" class="btn btn-success btn-sm" value="Download">
+
  <?php } else {?>
-                    <a href="#"> <button class="btn btn-danger btn-xs">
+                    <a href="#">
+
+
+                      <button class="btn btn-danger btn-sm ">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
                     <?php }?>
                               </td>
+
+              
                         </tr>
                       </tbody>
                     </table>

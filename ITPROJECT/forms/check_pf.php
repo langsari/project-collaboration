@@ -41,7 +41,7 @@ if ($result = $db->query($sql)) {
             exit();
         } else if ($_SESSION['rank'] == "7") {
 
-            header("Location: ../forms/form07pf07.php");
+            header("Location: ../forms/form07/pf07.php");
             exit();
         } else if ($_SESSION['rank'] == "8") {
 

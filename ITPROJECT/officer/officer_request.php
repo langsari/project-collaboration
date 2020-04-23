@@ -1,4 +1,4 @@
-<?php
+ <?php
 session_start();
 require '../menu/connect.php';
 include '../menu/function.php';
@@ -289,7 +289,7 @@ $count = mysqli_num_rows($query_num);
           <div class="card card-primary card-outline">
             <div class="card-header">
    <b>
-PROPOSAL PROJECT AND PF01 REQUEST (PF01)
+PROPOSAL PROJECT AND PF01 REQUEST (PF02)
 </b>
 
             </div>
@@ -466,8 +466,8 @@ if ($rs = $db->query($strSQL)) {
              <td class="text-left" style="font-size: 14px;" width="8%" >
 <?php if ($objResult->files_filename_proposal != "") {?>
                       <a href="../advisor/download.php?pdf=<?php echo $objResult->files_filename_proposal; ?>">
-                      <span class='badge badge-primary'><i class="fa fa-download">Download
-                           </i></a></span>
+                                              <span class='badge badge-success btn-xs'>Download </a></span>
+
                        </a>
  <?php } else {?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
@@ -477,9 +477,9 @@ if ($rs = $db->query($strSQL)) {
 
           <td class="text-left" style="font-size: 14px;" width="8%" >
 
-  <a href="form05.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-sm">  <i class="fa fa-eye" title="Detail"></i></a>
 
 
+<a href="form05.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-xs">  <i class="fa fa-eye" title="Detail"> View </i></a>
 
                 </td>
 
@@ -587,7 +587,8 @@ if ($rs = $db->query($strSQL)) {
              <td class="text-left" style="font-size: 14px;" width="8%" >
 <?php if ($objResult->files_filename_project != "") {?>
                       <a href="../advisor/download.php?pdf=<?php echo $objResult->files_filename_project; ?>">
-                      <span class='badge badge-primary'><i class="fa fa-download">Download
+                                              <span class='badge badge-success btn-xs'>Download </a></span>
+
                            </i></a></span>
                        </a>
  <?php } else {?>
@@ -598,7 +599,7 @@ if ($rs = $db->query($strSQL)) {
 
           <td class="text-left" style="font-size: 14px;" width="8%" >
 
-  <a href="form09.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-sm">  <i class="fa fa-eye" title="Detail"> View</i></a>
+  <a href="form09.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-xs">  <i class="fa fa-eye" title="Detail"> View</i></a>
 
 
 
@@ -710,8 +711,8 @@ if ($rs = $db->query($strSQL)) {
              <td class="text-left" style="font-size: 14px;" width="8%" >
 <?php if ($objResult->complete_project != "") {?>
                       <a href="../advisor/download_pdf.php?pdf=<?php echo $objResult->complete_project; ?>">
-                      <span class='badge badge-primary'><i class="fa fa-download">Download
-                           </i></a></span>
+                                                             <span class='badge badge-success btn-xs'>Download </a></span>
+
                        </a>
  <?php } else {?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
@@ -722,7 +723,7 @@ if ($rs = $db->query($strSQL)) {
 
           <td class="text-left" style="font-size: 14px;" width="8%" >
 
-  <a href="form13.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-sm">  <i class="fa fa-eye" title="Detail"></i></a>
+  <a href="form13.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-xs">  <i class="fa fa-eye" title="Detail"></i></a>
 
 
 

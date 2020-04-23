@@ -442,7 +442,7 @@ if ($result = $db->query($strSQL)) {
                             </br>2).Project Revision</td>
 
                          <td>
-                          </br>Status</br>
+                          </br>
                             <?php echo status_10($objResult->by_advisor10); ?>
                               </span> <?php echo get_advisor($objResult->group_id); ?>
                           </td>
@@ -488,8 +488,8 @@ if ($result = $db->query($strSQL)) {
     <td>
 <?php if ($objResult->files_filename_project != "") {?>
                       <a href="../form01/download.php?pdf=<?php echo $objResult->files_filename_project; ?>">
-                        <span class='badge badge-primary'><i class="fa fa-download">Download
-                          <?php echo $objResult->files_filename_project ?> </i></a></span>
+                                                <input type="button" class="btn btn-success btn-sm" value="Download">
+
  <?php } else {?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
@@ -507,15 +507,37 @@ if ($result = $db->query($strSQL)) {
             </fieldset>
           </form>
 
+            <?php
+}}
+?>
+
+
+
+
+          
+ <?php
+
+$g_id = get_group_id();
+$ag_id = get_ag_id($g_id);
+
+
+$strSQL = "SELECT * FROM committeegroup  WHERE committeegroup_id= '$ag_id'   ";
+
+
+
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+        ?>
 
         <div class="form-group clearfix">
 
-                  <a href="../form09/pf09.php" class="btn btn-danger float-left">Previous</a>
-          <?php if ($objResult->by_advisor10 != "Pass") {?>
-            <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
+    <a href="../form09/pf09.php" class="btn btn-danger float-left">Previous</a>
+          <?php if ($objResult->committeegroup_id != "committeegroup_id" and $objResult->status_project != "Pass" ) {?>
+            <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
-            <a href="../form11/pf11.php"   >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+                 <a href="../form11/pf11.php"   >
+
+            <button type="button" class="btn btn-primary float-right" >Next &raquo;</button></a>
                        <?php }?>
 
 

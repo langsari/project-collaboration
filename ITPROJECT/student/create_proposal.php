@@ -562,15 +562,21 @@ $sql = "SELECT * FROM member WHERE group_id = '$my_group_id'";
 
   <?php if ($objResult->topic_abstrack != "") {?>
             <button type="submit" class="btn btn-success" disabled="disabled">Create</button>
-            <a href="update_pro_test.php?id=<?php echo $objResult->topic_id; ?>"class="btn btn-primary">View Update</a>
+            <a href="update_pro_test.php?id=<?php echo $objResult->topic_id; ?>"class="btn btn-primary">View Update</a>    
+
           <!--  <a href="delete_pro.php?id=<?php echo $objResult->topic_id; ?>" class="btn btn-danger">Reset</a>-->
 
           <?php } else {?>
             <button type="submit" class="btn btn-success ">Create</button>
             <button type="" class="btn btn-primary" disabled="disabled">update</button>
-          <!--  <button type="" class="btn btn-danger" disabled="disabled">Delete</button>-->
 
-                       <?php }?>
+                       <?php }?>        
+
+
+  <?php if ($objResult->topic_abstrack != "") {?>
+            <a href="delete_pro.php?id=<?php echo $objResult->topic_id; ?>"class="btn btn-danger">Delete</a>    
+
+         <?php }?>    
 </center>
 
 

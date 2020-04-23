@@ -355,7 +355,7 @@ $strSQL = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id
        LEFT JOIN partnergroup ON committeegroup.group_id = partnergroup.group_id
           LEFT JOIN files ON committeegroup.committeegroup_id = files.files_id
       LEFT JOIN schedule ON committeegroup.group_id = schedule.group_id
-    WHERE committeegroup.member_id  ='$my_id' AND committeegroup.status_presentation='Waiting'";
+    WHERE committeegroup.member_id  ='$my_id' AND committeegroup.status_presentation='Pass'  AND schedule.schedule_type='1' ";
 
 $i = 1;
 $count = 1;
@@ -373,12 +373,12 @@ if ($result = $db->query($strSQL)) {
 
               <td class="text-left" style="font-size: 14px;" width="15%" ><?php echo get_advisor($objResult->group_id); ?></td>
 
-              <td class="text-left"><?php echo status_03($objResult->status_advisor); ?></td>
+                <td class="text-left"><?php echo $objResult->schedule_status; ?></td>
 
-             <td class="text-left" style="font-size: 14px;" width="5%" >
+             <td class="text-left" style="font-size: 14px;" width="8%" >
 
 
-<?php if ($objResult->files_filename_proposal != "") {?>
+<?php if ($objResult->files_filename_proposal != "Pass") {?>
                       <a href="../advisor/download.php?pdf=<?php echo $objResult->files_filename_proposal; ?>">
                       <span class='badge badge-success btn-xs'>Download </a></span>
                        </a>
@@ -389,19 +389,13 @@ if ($result = $db->query($strSQL)) {
                               </td>
 
               
-
-
-          <td class="text-left" style="font-size: 14px;" width="5%" >
+          <td class="text-left" style="font-size: 14px;" width="8%" >
 
   <a href="form03.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-xs">Display</a>
-
-
-
                 </td>
 
 
-<td>
-
+  <td class="text-left" style="font-size: 14px;" width="2%" >
 
 
  <?php if ($objResult->status_presentation != "Pass") {?>
@@ -415,7 +409,6 @@ if ($result = $db->query($strSQL)) {
 
           </a>
                        <?php }?>
-
 
 <a href="reject03.php?id=<?php echo $objResult->group_id; ?>"
                     class="btn btn-danger btn-xs float-right" title="Comfirm"><i
@@ -462,14 +455,15 @@ $i++;
               <table  id="example2" class="table table-sm">
                 <thead class="thead-light">
                 <tr>
-                   <th style="font-size: 15px;" width="5%" class="text-left">No</th>
+       <th style="font-size: 15px;" width="5%" class="text-left">No</th>
                 <th style="font-size: 15px;" width="20%" class="text-left"> Title project</th>
                   <th style="font-size: 15px;" width="20%" class="text-left">Student</th>
-                 <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>
-                 <th style="font-size: 15px;" width="10%" class="text-left">Files</th>
+                 <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>  
                     <th style="font-size: 15px;" width="10%" class="text-left">Status</th>
+                       <th style="font-size: 15px;" width="10%" class="text-left">Files</th>
                     <th style="font-size: 15px;" width="10%" class="text-left">View</th>
                 <th style="font-size: 15px;" width="10%" class="text-left">Options</th>
+
 
 
                 </tr>
@@ -504,25 +498,33 @@ if ($result = $db->query($strSQL)) {
 
 
               <td class="text-left" style="font-size: 14px;" width="20%" ><?php echo get_advisor($objResult->group_id); ?></td>
-     <td class="text-left" style="font-size: 14px;" width="5%" >
-<?php if ($objResult->files_filename_project != "") {?>
-                      <a href="../form01/download.php?pdf=<?php echo $objResult->files_filename_project; ?>">
-                      <span class='badge badge-primary'><i class="fa fa-download">Download
-                           </i></a></span>
+
+
+    
+
+                <td class="text-left"><?php echo $objResult->schedule_status; ?></td>
+
+ <td class="text-left" style="font-size: 14px;" width="5%" >
+
+
+<?php if ($objResult->files_filename_project != "Pass") {?>
+                      <a href="../advisor/download.php?pdf=<?php echo $objResult->files_filename_project; ?>">
+                      <span class='badge badge-primary'>Download
+                          </a></span>
                        </a>
  <?php } else {?>
-                    <a href="#"> <button class="btn btn-danger btn-xs">
+                    <a href="#"> <button class="btn btn-danger btn-sm">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
                     <?php }?>
                               </td>
 
-                <td class="text-left"><?php echo $objResult->schedule_status; ?></td>
-
-
-
                 <td>
 
-  <a href="form10.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-sm">  <i class="fa fa-eye" title="Detail"></i></a>
+  <a href="form10.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-xs">Display</a>
+                </td>
+
+
+
 
 
 

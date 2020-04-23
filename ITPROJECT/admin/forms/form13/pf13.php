@@ -14,7 +14,7 @@ include '../../../menu/function.php';
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
   <title>ITPROMOT | TRACKING PAGE</title>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="style.css">
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="../form01/style.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
   <!-- IonIcons -->

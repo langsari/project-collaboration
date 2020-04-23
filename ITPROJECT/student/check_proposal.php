@@ -17,7 +17,7 @@ $Owner = get_member_list(get_group_id());
 $sql = "INSERT INTO topic_project (group_number,topic_abstrack, topic_keyword,topic_fieldstudy, topic_years,adviser,topic_topic,advisergroup_id,position,Owner) VALUES ('$group_number','$topic_abstrack','$topic_keyword','$topic_fieldstudy','$topic_years','$adviser','$topic_topic','$advisergroup_id','$position','$Owner')";
 if ($rs = $db->query($sql)) {
     $db->close();
-    header("Location: update_pro_test.php");
+    header("Location: create_proposal.php");
 } else {
     echo $db->error;
     $db->close();
