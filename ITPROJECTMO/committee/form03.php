@@ -13,7 +13,7 @@ include '../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMOT</title>
+  <title>ITPROMOT|Tracking</title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="../forms/form01/style.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
@@ -251,7 +251,7 @@ $count = mysqli_num_rows($query_num);
               <li class="nav-item">
                 <a href="../advisor/add_general_topic.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Topic Require</p>
+                  <p>Propose Topic </p>
                 </a>
               </li>
 
@@ -370,22 +370,20 @@ if ($result = $db->query($strSQL)) {
         ?>
 
 
-            <fieldset>
+            <fieldset>  <div style="font-size: 15px;"> 
+               <?php echo get_member_list($objResult->group_id); ?>
+             </div>
             </br>
-              <h5>Proposal Project Approval Letter </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
-
-              </h6>
+              <h5>Proposal Presentation & Proposal Revision </h5>
+           <h6><small class="text-muted">Approval Form Agreed to Approve By Advisor & Committee</small></h6>
                 <div class="card">
                   <div class="card-block">
                     <table class="table">
                       <thead class="thead-default">
                         <tr>
                         <th>To do list</th>
-
-
-                          <th><font color='red'> *Sign by advisor</font></th>
-                          <th><font color='red'> *Sign by Committee</font></th>
+                          <th><font color='red'>Advisor</font></th>
+                          <th><font color='red'>Committee</font></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -409,7 +407,6 @@ if ($result = $db->query($strSQL)) {
                             <p>
 
                           </td>
-
                         </tr>
 
                           <input type="hidden" name="files_id"  value="<?php echo $objResult->files_id; ?>">
@@ -418,12 +415,7 @@ if ($result = $db->query($strSQL)) {
 
                         <td class="hidden"> 3 chapter of Proposal Revision<p>
 
-
                                                      <br>
-
-
-
-
   <td>
 <?php if ($objResult->files_filename_proposal != "") {?>
                       <a href="../forms/form01/download.php?pdf=<?php echo $objResult->files_filename_proposal; ?>">
@@ -434,6 +426,7 @@ if ($result = $db->query($strSQL)) {
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
                     <?php }?>
                               </td>
+                              <td></td>
                         </tr>
                       </tbody>
                     </table>
@@ -581,9 +574,7 @@ if ($result = $db->query($strSQL)) {
 
     <!-- /.content -->
    <!-- /.content -->
- </div>
-  </br>
-
+ 
  </div>
   </div>
 
@@ -597,11 +588,11 @@ if ($result = $db->query($strSQL)) {
 
   <!-- /.content-wrapper -->
 <footer class="main-footer">
-      <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.3-pre
-      </div>
-      <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
-    </footer>
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
+      <b>Version</b> 3.0.3-pre
+    </div>
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
+  </footer>
 
 
   <!-- Control Sidebar -->

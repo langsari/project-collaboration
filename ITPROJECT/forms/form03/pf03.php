@@ -683,7 +683,7 @@ if ($result = $db->query($strSQL)) {
     <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
       <b>Version</b> 3.0.3-pre
     </div>
-       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Trackinf</a>.</strong> All rights reserved.
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

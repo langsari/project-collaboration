@@ -308,7 +308,7 @@ $count = mysqli_num_rows($query_num);
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">For Committee
-</li>
+              </li>
             </ol>
           </div>
         </div>
@@ -318,13 +318,12 @@ $count = mysqli_num_rows($query_num);
     <section class="content">
 
 
-          <div class="card card-primary card-outline">
-            <div class="card-header">
+    <div class="card card-primary card-outline">
+      <div class="card-header">
 
-     <h6><b>PROPOSAL REVISION REQUEST (PF03)
-</b> </h6>
+     <h6><b>PROPOSAL REVISION REQUEST (PF03) </b></h6>
 
-            </div>
+          </div>
             <!-- /.card-header -->
 
                <div class="card-body">
@@ -332,7 +331,7 @@ $count = mysqli_num_rows($query_num);
                 <thead class="thead-light">
                 <tr>
 
-                   <th style="font-size: 15px;" width="5%" class="text-left">No</th>
+                <th style="font-size: 15px;" width="5%" class="text-left">No</th>
                 <th style="font-size: 15px;" width="20%" class="text-left"> Title project</th>
                 <th style="font-size: 15px;" width="20%" class="text-left">Student</th>
                 <th style="font-size: 15px;" width="10%" class="text-left">Advisor</th>
@@ -451,7 +450,7 @@ $i++;
             </div>
             <!-- /.card-header -->
 
-                      <div class="card-body">
+              <div class="card-body">
               <table  id="example2" class="table table-sm">
                 <thead class="thead-light">
                 <tr>
@@ -500,7 +499,6 @@ if ($result = $db->query($strSQL)) {
               <td class="text-left" style="font-size: 14px;" width="20%" ><?php echo get_advisor($objResult->group_id); ?></td>
 
 
-    
 
                 <td class="text-left"><?php echo $objResult->schedule_status; ?></td>
 
@@ -509,7 +507,7 @@ if ($result = $db->query($strSQL)) {
 
 <?php if ($objResult->files_filename_project != "Pass") {?>
                       <a href="../advisor/download.php?pdf=<?php echo $objResult->files_filename_project; ?>">
-                      <span class='badge badge-primary'>Download
+                      <span class='badge badge-success btn-xs'>Download
                           </a></span>
                        </a>
  <?php } else {?>
@@ -523,12 +521,6 @@ if ($result = $db->query($strSQL)) {
   <a href="form10.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-xs">Display</a>
                 </td>
 
-
-
-
-
-
-                </td>
 <td>
 
 
@@ -548,10 +540,6 @@ if ($result = $db->query($strSQL)) {
 &nbsp;&nbsp;
 
 
-
-
-
-
 <a href="reject10.php?id=<?php echo $objResult->group_id; ?>"
                     class="btn btn-danger btn-xs float-right" title="Comfirm"><i
                       class='fa fa-times'></i> </a>
@@ -569,39 +557,26 @@ $i++;
 ?>
 
 
-
-
                 </tbody>
 
 
               </table>
-
-
-
-</div>
-        <!-- /.col -->
+            </div>
+          </div>
+        </section>
       </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+
 <?php
 
 include 'phpmailer/line_message.php';
 ?>
-
-
-  <footer class="main-footer">
+     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
-        <class style="font-size: 14px;">  <b>Version</b> 3.0.3-pre
+        <class style="font-size: 12px;">  <b>Version</b> 3.0.3-pre
       </div>
-      <class style="font-size: 14px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
+      <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
     </footer>
-
-
-<!-- ./wrapper -->
-
+   
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
