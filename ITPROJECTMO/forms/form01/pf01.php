@@ -465,6 +465,9 @@ if ($result = $db->query($strSQL)) {
 
                            <td class="hidden"> 3 chapter of Proposal
 
+ <input type="hidden" class="form-control" id="group_id"
+      name="group_id" value="  <?php echo $objResult->group_id; ?>">
+
                             <input type="file" name="files_filename_proposal" id="files_filename_proposal"
                               required="required" />
 

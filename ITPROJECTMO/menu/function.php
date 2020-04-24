@@ -719,33 +719,3 @@ function never_request_advisor($group_id)
         $db->close();
     }
 }
-
-function g_id_in_ag($ag_id){
-    require 'connect.php';
-    $sql = "SELECT group_id FROM advisergroup WHERE advisergroup_id = '$advisergroup_id' AND advisergroup_status = 'Approve'";
-    if($rs = $db->query($sql)){
-        if($row = $rs->fetch_object()){
-            return $row->group_id;
-        }
-        $db->close();
-    }else{
-        echo $db->error;
-        $db->close();
-    }
-}
-
-//Get ag_id with advisor mb_id
-function get_ag_of_advisor(){
-    $mb_id = $_SESSION['id'];
-    require 'connect.php';
-    $sql = "SELECT advisergroup_id FROM advisergroup WHERE member_id = '$mb_id' AND advisergroup_status = 'Approve'";
-    if($rs = $db->query($sql)){
-        if($row = $rs->fetch_object()){
-            return $row->advisergroup_id;
-        }
-        $db->close();
-    }else{
-        echo $db->error;
-        $db->close();
-    }
-}

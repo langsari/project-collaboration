@@ -345,7 +345,6 @@ if ($result = $db->query($strSQL)) {
     while ($objResult = $result->fetch_object()) {
         echo "<option value='" . $objResult->group_id . "'>" . $objResult->advisergroup_topic . "</option>";
     }
-
 } else {
 
 }

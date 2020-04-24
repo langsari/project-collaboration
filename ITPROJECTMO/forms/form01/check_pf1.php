@@ -6,6 +6,9 @@ include '../../menu/function.php';
 $advisergroup_id = get_ag_id(get_group_id());
 $Owner = get_member_list1(get_group_id());
 $files_status = 'Waiting';
+    $group_id = $_POST['group_id'];
+
+
 $files_filename_proposal = $_REQUEST['files_filename_proposal']; //รับค่าไฟล์จากฟอร์ม
 
 $_FILES['files_filename_proposal']['tmp_name'];
@@ -17,8 +20,8 @@ if ($_FILES['files_filename_proposal']['name'] != "") {
 }
 $files_filename_proposal = $_FILES['files_filename_proposal']['name'];
 
-$sql = "INSERT INTO files (files_filename_proposal,advisergroup_id,Owner,files_status)
-    VALUES('$files_filename_proposal','$advisergroup_id','$Owner','$files_status')";
+$sql = "INSERT INTO files (files_filename_proposal,advisergroup_id,Owner,files_status,group_id)
+    VALUES('$files_filename_proposal','$advisergroup_id','$Owner','$files_status','$group_id')";
 
 $result = mysqli_query($db, $sql) or die("Error in query: $sql " . mysqli_error());
 
