@@ -354,7 +354,7 @@ if ($rs = $db->query($sql)) {
         ?>
 
 <tr>
-                         <td class="text-left" style="font-size: 13px;" width="4%">   <?php echo $count++; ?></td>
+                <td class="text-left" style="font-size: 13px;" width="4%">   <?php echo $count++; ?></td>
 
                 <td class="text-left" style="font-size: 12px;" width="20%" ><?php echo $row->advisergroup_topic; ?></td>
                  <td class="text-left" style="font-size: 12px;" width="50%" ><?php echo get_member_list($row->group_id); ?></td>
@@ -606,10 +606,10 @@ $i++;
               <table  class="table table-sm "  >
                 <thead class="thead-light">
                 <tr>
-
-                       <th style="font-size: 15px;" width="2%" class="text-left">No</th>
+                <th style="font-size: 15px;" width="2%" class="text-left">No</th>
                 <th style="font-size: 15px;" width="40%" class="text-left">Title project</th>
-                <th style="font-size: 15px;" width="40%" class="text-left">Student</th>
+                <th style="font-size: 15px;" width="30%" class="text-left">Student</th>
+                <th style="font-size: 14px;" width="20%" class="text-left">Committe Status</th>
                  <th style="font-size: 15px;" width="5%" class="text-left"></th>
 
 
@@ -642,7 +642,9 @@ if ($rs = $db->query($strSQL)) {
 
             <td class="text-left" style="font-size: 12px;" width="4%">   <?php echo $count++; ?></td>
                  <td class="text-left" style="font-size: 12px;" width="40%" ><?php echo $row->advisergroup_topic; ?></td>
-                   <td class="text-left" style="font-size: 12px;" width="40%" ><?php echo get_member_list($row->group_id); ?></td>
+                   <td class="text-left" style="font-size: 12px;" width="30%" ><?php echo get_member_list($row->group_id); ?></td>
+                   <td class="text-left" style="font-size: 12px;" width="10%" ><?php echo get_status_committee2($row->group_id); ?></td>
+
 
 
 
@@ -674,6 +676,7 @@ $i++;
 
                                         </tbody>
                                     </table>
+                                    <small> <font color="red">After Commitee status Pass, Advisor confirm to make sure student has been passed for proposal revison</font></small>
                                 </div>
                             </div>
                         </div>

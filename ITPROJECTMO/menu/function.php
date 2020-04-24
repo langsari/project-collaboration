@@ -529,6 +529,31 @@ function get_status_committee($group_id)
     }
 }
 
+
+//Function to get button test
+
+function get_status_committee2($group_id)
+{
+    require 'connect.php';
+    $rows = "";
+    $sql = "SELECT  member.member_fullname,committeegroup.status_presentation FROM committeegroup
+                    LEFT JOIN member ON committeegroup.member_id = member.member_id
+                    WHERE committeegroup.group_id = '$group_id'";
+    if ($rs = $db->query($sql)) {
+        while ($row = $rs->fetch_object()) {
+            $rows .= "<p> " . status_03($row->status_presentation) . "  </p>";
+        }
+        return $rows;
+        $db->close();
+    } else {
+        echo $db->error;
+        $db->close();
+    }
+}
+
+
+
+
 //Function to get Committee lsit
 function get_status_committee1($group_id)
 {
