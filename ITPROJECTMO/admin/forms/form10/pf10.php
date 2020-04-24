@@ -56,277 +56,227 @@ to get the desired effect
     </ul>
 
     <?php
-$conn = new mysqli("localhost", "root", "", "projects_itproject");
-$count = 0;
-if (!empty($_POST['add'])) {
-    $subject = mysqli_real_escape_string($conn, $_POST["subject"]);
-    $comment = mysqli_real_escape_string($conn, $_POST["comment"]);
-    $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
-    mysqli_query($conn, $sql);
-}
-$sql2 = "SELECT * FROM notify WHERE status = 0";
-$result = mysqli_query($conn, $sql2);
-$count = mysqli_num_rows($result);
-?>
-
-      <script type="text/javascript">
-        function myFunction() {
-          $.ajax({
-            url: "view_notification.php",
-            type: "POST",
-            processData: false,
-            success: function (data) {
-              $("#notification-count").remove();
-              $("#notification-latest").show();
-              $("#notification-latest").html(data);
-            },
-            error: function () {}
-          });
-        }
-
-        $(document).ready(function () {
-          $('body').click(function (e) {
-            if (e.target.id != 'notification-icon') {
-              $("#notification-latest").hide();
-            }
-          });
-        });
-      </script>
-
-
-   <!-- Right navbar links -->
-     <?php
-$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
-$query = "SELECT * FROM notify WHERE status=0";
-$query_num = mysqli_query($con, $query);
-$count = mysqli_num_rows($query_num);
-
-?>
-
-      <!-- Right navbar links -->
-      <ul class="navbar-nav ml-auto">
-
-
-  <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="fa fa-globe" style="font-size:20px;"></i><span class="badge badge-danger"
-              id="count"><?php echo $count; ?></span>
-
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
-            <?php
-$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
-$sq = "SELECT * FROM notify WHERE status=0";
-$qu_num = mysqli_query($con, $query);
-if (mysqli_num_rows($qu_num) > 0) {
-    while ($result = mysqli_fetch_assoc($qu_num)) {
-        echo '<a class="dropdown-item text-primary font-weight-light" href="../../read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
-        echo '<div class="dropdown-divider"></div>';
-
+    
+    $conn = new mysqli("localhost", "itproject", "qydenygeq", "projects_itproject");
+    $count = 0;
+    if (!empty($_POST['add'])) {
+        $subject = mysqli_real_escape_string($conn, $_POST["subject"]);
+        $comment = mysqli_real_escape_string($conn, $_POST["comment"]);
+        $sql = "INSERT INTO notify (subject,comment) VALUES('" . $subject . "','" . $comment . "')";
+        mysqli_query($conn, $sql);
     }
-} else {
-    echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
-}
-?>
-            <div class="dropdown-divider"></div>
-          <a href="../../read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
-          </div>
-        </li>
-
-
-      <!-- Messages Dropdown Menu -->
+    $sql2 = "SELECT * FROM notify WHERE status = 0";
+    $result = mysqli_query($conn, $sql2);
+    $count = mysqli_num_rows($result);
+    ?>
+    
+          <script type="text/javascript">
+            function myFunction() {
+              $.ajax({
+                url: "view_notification.php",
+                type: "POST",
+                processData: false,
+                success: function (data) {
+                  $("#notification-count").remove();
+                  $("#notification-latest").show();
+                  $("#notification-latest").html(data);
+                },
+                error: function () {}
+              });
+            }
+    
+            $(document).ready(function () {
+              $('body').click(function (e) {
+                if (e.target.id != 'notification-icon') {
+                  $("#notification-latest").hide();
+                }
+              });
+            });
+          </script>
+    
+    
+       <!-- Right navbar links -->
+         <?php
+    $con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+    $query = "SELECT * FROM notify WHERE status=0";
+    $query_num = mysqli_query($con, $query);
+    $count = mysqli_num_rows($query_num);
+    
+    ?>
+    
+          <!-- Right navbar links -->
+          <ul class="navbar-nav ml-auto">
+    
+    
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fa fa-user"></i>
-          <?php echo $_SESSION['name']; ?>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a href="../../../auth/logout.php" class="dropdown-item">
-            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
-          </a>
-          <a href="my_profile.php" class="dropdown-item">
-            <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
-          </a>
-        </div>
-      </li>
-
-
-    </ul>
-  </nav>
-
-        <div class="modal fade" id="notify">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Add Alert</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <a class="nav-link" data-toggle="dropdown" href="#">
+                <i class="fa fa-globe" style="font-size:20px;"></i><span class="badge badge-danger"
+                  id="count"><?php echo $count; ?></span>
+    
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
+                <?php
+    $con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+    $sq = "SELECT * FROM notify WHERE status=0";
+    $qu_num = mysqli_query($con, $query);
+    if (mysqli_num_rows($qu_num) > 0) {
+        while ($result = mysqli_fetch_assoc($qu_num)) {
+            echo '<a class="dropdown-item text-primary font-weight-light" href="../../read_noti.php?id=' . $result['id'] . '">' . $result['subject'] . '</a>';
+            echo '<div class="dropdown-divider"></div>';
+    
+        }
+    } else {
+        echo '<a href="#" class="dropdown-item text-danger font-weight-light"><i class="fas fa-frown"></i> Sorry! No Notification</a>';
+    }
+    ?>
+                <div class="dropdown-divider"></div>
+              <a href="../../read_noti.php" class="dropdown-item dropdown-footer">See All Messages</a>
+              </div>
+            </li>
+    
+    
+          <!-- Messages Dropdown Menu -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="fa fa-user"></i>
+              <?php echo $_SESSION['name']; ?>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a href="../../../auth/logout.php" class="dropdown-item">
+                <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
+              </a>
+              <a href="my_profile.php" class="dropdown-item">
+                <i class="fas fa-user"></i>&nbsp;&nbsp;My Profile
+              </a>
             </div>
-            <div class="modal-body">
-              <form name="frmNotification" id="frmNotification" action="" method="post">
-                <div id="form-header" class="form-row">Add New Message</div>
-                <div class="form-row">
-                  <div class="form-label"> Subject:</div>
-                  <div class="error" id="subject"></div>
-                  <div class="form-element">
-                    <input type="text" name="subject" id="subject" required>
-
-                  </div>
+          </li>
+    
+    
+        </ul>
+      </nav>
+    
+            <div class="modal fade" id="notify">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Add Alert</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
-                <p>
-                  <div class="form-row">
-                    <div class="form-label"> Comment:</div>
-                    <div class="error" id="comment"></div>
-                    <div class="form-element">
-                      <textarea rows="4" cols="30" name="comment" id="comment"></textarea>
+                <div class="modal-body">
+                  <form name="frmNotification" id="frmNotification" action="" method="post">
+                    <div id="form-header" class="form-row">Add New Message</div>
+                    <div class="form-row">
+                      <div class="form-label"> Subject:</div>
+                      <div class="error" id="subject"></div>
+                      <div class="form-element">
+                        <input type="text" name="subject" id="subject" required>
+    
+                      </div>
                     </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-element">
-                      <input type="submit" name="add" id="btn-send" value="Submit">
-                    </div>
-                  </div>
-              </form>
+                    <p>
+                      <div class="form-row">
+                        <div class="form-label"> Comment:</div>
+                        <div class="error" id="comment"></div>
+                        <div class="form-element">
+                          <textarea rows="4" cols="30" name="comment" id="comment"></textarea>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-element">
+                          <input type="submit" name="add" id="btn-send" value="Submit">
+                        </div>
+                      </div>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-
-
-
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-
-
-    <a href="../../index.php" class="brand-link">
-        <img src="../../../dist/img/n2.png" width="100%" >
-        <span class="brand-text font-weight-light"></span>
-      </a>
-
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="../../../dist/img/user1.png" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block"><?php echo $_SESSION['name']; ?></a>
-        </div>
-      </div>
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-
-          <li class="nav-item has-treeview menu-open">
-            <a href="../../../admin/index.php" class="nav-link">
-
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashbord
-                <span class="right badge badge-danger"></span>
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fa fa-users"></i>
-              <p>
-                Manage User
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../../../admin/accept_member.php" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>User Request</p>
-                  <?php
-$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
-$query = "SELECT member_id FROM member WHERE admin_id=0";
-$query_num = mysqli_query($con, $query);
-$count = mysqli_num_rows($query_num);
-
-?>
-                    <span class="right badge badge-danger"><?php echo $count; ?></span>
+    
+    
+    
+      <!-- /.navbar -->
+    
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+    
+    
+        <a href="../../index.php" class="brand-link">
+            <img src="../../../dist/img/n2.png" width="100%" >
+            <span class="brand-text font-weight-light"></span>
+          </a>
+    
+    
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user panel (optional) -->
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+              <img src="../../../dist/img/user1.png" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+              <a href="#" class="d-block"><?php echo $_SESSION['name']; ?></a>
+            </div>
+          </div>
+    
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <!-- Add icons to the links using the .nav-icon class
+                   with font-awesome or any other icon font library -->
+    
+              <li class="nav-item has-treeview menu-open">
+                <a href="../../../admin/index.php" class="nav-link">
+    
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    Dashbord
+                    <span class="right badge badge-danger"></span>
+                  </p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../../../admin/choose_committee.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Choose Committee</p>
+    
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link ">
+                  <i class="nav-icon fa fa-users"></i>
+                  <p>
+                    Manage User
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
                 </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="../../../admin/accept_member.php" class="nav-link ">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>User Request</p>
+                      <?php
+    $con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+    $query = "SELECT member_id FROM member WHERE admin_id=0";
+    $query_num = mysqli_query($con, $query);
+    $count = mysqli_num_rows($query_num);
+    
+    ?>
+                        <span class="right badge badge-danger"><?php echo $count; ?></span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="../../../admin/choose_committee.php" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Choose Committee</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="../../../admin/all_member.php" class="nav-link ">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>View All Users</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
-              <li class="nav-item">
-                <a href="../../../admin/all_member.php" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View All Users</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-calendar"></i>
-              <p>
-                Manage Schedule
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../../../admin/add_schedule_proposal.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Proposal Schedule</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../../admin/add_schedule_project.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Schedule</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-
-
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                Projects
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../../../admin/student_track.php" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Track</p>
-                </a>
-              </li>
-           
-              <li class="nav-item">
-                <a href="../../../admin/view_all_project.php" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>All Project Topics</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+    
 
 
           <li class="nav-item has-treeview menu-open">

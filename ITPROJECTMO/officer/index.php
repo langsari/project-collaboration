@@ -47,7 +47,7 @@ to get the desired effect
     </ul>
    <!-- Right navbar links -->
      <?php
-$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
+$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
 $query = "SELECT * FROM notify WHERE status=0";
 $query_num = mysqli_query($con, $query);
 $count = mysqli_num_rows($query_num);
@@ -67,7 +67,7 @@ $count = mysqli_num_rows($query_num);
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
+$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
 $sq = "SELECT * FROM notify WHERE status=0";
 $qu_num = mysqli_query($con, $query);
 if (mysqli_num_rows($qu_num) > 0) {
@@ -149,7 +149,7 @@ if (mysqli_num_rows($qu_num) > 0) {
 
   <?php
 $my_id = $_SESSION['id'];
-$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
+$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
 
 $query = "SELECT * FROM files WHERE by_officer = 'Waiting' or  by_officer05='Waiting'
    or by_officer09='Waiting' or  by_officer13='Waiting' ";
@@ -292,7 +292,7 @@ $count = mysqli_num_rows($query_num);
 
 
               <?php
-$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
+$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
 
 $query = "SELECT member_id FROM member ORDER BY member_id";
 
@@ -317,7 +317,7 @@ echo 'Total User';
               <div class="small-box bg-primary">
                 <div class="inner">
                   <?php
-$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
+$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
 
 $query = "SELECT member_id FROM member
                         WHERE member_pos='Lecturer'
@@ -343,7 +343,7 @@ echo 'All Lecturers';
                 <div class="inner">
 
                 <?php
-$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
+$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
 $my_id = $_SESSION['id'];
 
 $query = "SELECT advisergroup_id FROM advisergroup ORDER BY advisergroup_id";
@@ -367,7 +367,7 @@ echo 'Group & Tracking';
                 <div class="inner">
 
                 <?php
-$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
+$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
 
 //   require 'menu/function.php';
 $query = "SELECT topic_id FROM topic_project ORDER BY topic_id";

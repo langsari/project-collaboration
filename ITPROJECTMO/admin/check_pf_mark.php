@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "itpromo_track";
+$username = "itproject";
+$password = "qydenygeq";
+$dbname = "projects_itproject";
 
 $db = mysqli_connect($servername, $username, $password, $dbname);
 

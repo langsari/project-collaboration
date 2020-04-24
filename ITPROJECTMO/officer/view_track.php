@@ -153,7 +153,7 @@ to get the desired effect
 
   <?php
 $my_id = $_SESSION['id'];
-$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
+$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
 
 $query = "SELECT * FROM files WHERE by_officer = 'Waiting' or  by_officer05='Waiting'
    or by_officer09='Waiting' or  by_officer13='Waiting' ";
