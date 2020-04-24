@@ -435,9 +435,7 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Officer Receive Project Booked
-
- </h5>
+               <h5>Officer Receive Project Booked</h5>
            <h6><small class="text-muted"></small>
 
               </h6>
@@ -446,34 +444,20 @@ if ($result = $db->query($strSQL)) {
                     <table class="table">
                       <thead class="thead-default">
                         <tr>
-                        <th>To do list</th>
-
-
-                          <th><font color='red'> *Sign by Officer</font></th>
+                      <th>To do list</th>
+                          <th><font color='red'>Officer</font></th>
 
                         </tr>
                       </thead>
                       <tbody>
-
-                        <tr>
-                         <td>Submit Complete project Document
-                            </br> and Related resources and
-                          </br>
-                          PF10,PF11 and PF12
-
-                          </td>
-
-
-
+ <tr>
+                         <td>Student Submit Complete project Document
+                         </br> and Related resources to officer
+                         </td>
                          <td>
-                          </br>Status</br>
                             <?php echo status_08($objResult->by_officer13); ?>
                           </td>
-
-
-
                         </tr>
-
                           <input type="hidden" name="files_id"  value="<?php echo $objResult->files_id; ?>">
                               <input type="hidden" name="advisergroup_id"  value="<?php echo $objResult->advisergroup_id; ?>">
 

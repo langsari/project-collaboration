@@ -439,8 +439,8 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Proposal Project Approval Letter </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+           <h5>Adviser Project Approval Form </h5>
+           <h6><small class="text-muted">Approval Form Agreed to Sign By Advisor</small>
 
               </h6>
                 <div class="card">
@@ -448,11 +448,8 @@ if ($result = $db->query($strSQL)) {
                     <table class="table">
                       <thead class="thead-default">
                         <tr>
-                        <th>To do list</th>
-
-
-                          <th><font color='red'> Sign by advisor</font></th>
-                          <th></th>
+                         <th>To do list</th>
+                          <th><font color='red'> Advisor</font></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -517,7 +514,7 @@ if ($result = $db->query($strSQL)) {
             <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
           <?php } else {?>
             <a href="../form09/pf09.php?id=<?php echo $objResult->advisergroup_id; ?>"   >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+            <button type="button" class="btn btn-primary float-right" >Next</button></a>
                        <?php }?>
 
 

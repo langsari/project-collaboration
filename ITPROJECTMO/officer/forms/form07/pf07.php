@@ -369,7 +369,7 @@ if ($result = $db->query($strSQL)) {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
+                         <tr>
                           <td> Seminar  Pre-Project
                          </td>
                           <td>

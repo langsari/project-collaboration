@@ -384,8 +384,8 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Proposal Project Approval Letter </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+               <h5>Complet Project Proposal submition  </h5>
+           <h6><small class="text-muted">Approval form Agreed to Sign By Officer</small>
 
               </h6>
                 <div class="card">
@@ -394,24 +394,25 @@ if ($result = $db->query($strSQL)) {
                   <table class="table">
                       <thead class="thead-default">
                         <tr>
-                          <th>To do list</th>
-                          <th>Status</th>
+                            <th>To do list</th>
+                          <th><font color='red'>Officer</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Submit complete project proposal document and PF03 to officer
-                          </br><u>Condition:</u>
-
-                          </br>1). Copy the completed proposal with soft cover
+                              <tr>
+                          <td>Submit complete project proposal document to officer
+                          </br>
+                          </br>
+                          <small><u>Note:</u>
+                          </br>1). Form sign after Officer Receive Completed Project Proposal
+                          </small>
                           </td>
                           <td>
+                            Status
                            <?php echo status_05($objResult->by_officer05); ?>
-                            <p>
-                              <font color='red'> *For Officer</font>
+                            
                           </td>
                         </tr>
-
                       </tbody>
                     </table>
 
@@ -430,7 +431,7 @@ if ($result = $db->query($strSQL)) {
             <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
           <?php } else {?>
             <a href="../form06/pf06.php?id=<?php echo $objResult->advisergroup_id; ?>"   >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+            <button type="button" class="btn btn-primary float-right">Next</button></a>
                        <?php }?>
 
 

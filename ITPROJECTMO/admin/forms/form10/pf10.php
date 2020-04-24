@@ -437,8 +437,8 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Project Revision </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small>
+        <h5>Project Presentation& Project Revision Form</h5>
+           <h6><small class="text-muted">Approval Form Agreed to Approve By Advisor & Committee</small>
 
               </h6>
                 <div class="card">
@@ -446,21 +446,18 @@ if ($result = $db->query($strSQL)) {
                     <table class="table">
                       <thead class="thead-default">
                         <tr>
-                        <th>To do list</th>
-
-
-                          <th><font color='red'> *Sign by advisor</font></th>
-                          <th><font color='red'> *Sign by Committee</font></th>
+                       <th>To do list</th>
+                          <th><font color='red'>Advisor</font></th>
+                          <th><font color='red'>Committee</font></th>
                         </tr>
                       </thead>
                       <tbody>
 
-                        <tr>
+                         <tr>
                           <td>1).Project Presentation
-                            </br>2).Project Revision</td>
+                          </br>2).Project Revision</td>
 
-                         <td>
-                          </br>Status</br>
+                         <td></br>
                             <?php echo status_08($objResult->by_advisor10); ?>
                               </span> <?php echo get_advisor($objResult->group_id); ?>
                           </td>
@@ -473,7 +470,6 @@ if ($result = $db->query($strSQL)) {
                           </td>
 
                         </tr>
-
                           <input type="hidden" name="files_id"  value="<?php echo $objResult->files_id; ?>">
                               <input type="hidden" name="advisergroup_id"  value="<?php echo $objResult->advisergroup_id; ?>">
 
@@ -492,18 +488,15 @@ if ($result = $db->query($strSQL)) {
 
 
 
-
-    <td>
+  <td>
 <?php if ($objResult->files_filename_project != "") {?>
                       <a href="../form01/download.php?pdf=<?php echo $objResult->files_filename_project; ?>">
-                        <span class='badge badge-primary'><i class="fa fa-download">Download
-                          <?php echo $objResult->files_filename_project ?> </i></a></span>
+                                                <input type="button" class="btn btn-success btn-sm" value="Download">
  <?php } else {?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
                     <?php }?>
                               </td>
-
 </tr>
                       </tbody>
                     </table>
@@ -524,7 +517,7 @@ if ($result = $db->query($strSQL)) {
             <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
           <?php } else {?>
             <a href="../form11/pf11.php?id=<?php echo $objResult->advisergroup_id; ?>"   >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+            <button type="button"  class="btn btn-primary float-right" >Next</button></a>
                        <?php }?>
 
 

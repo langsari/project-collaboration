@@ -379,9 +379,9 @@ if ($result = $db->query($strSQL)) {
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Submit the Complete project Document of related resources
- </h5>
-           <h6><small class="text-muted"></small>
+               <h5>Submit the Complete project Document of related resources</h5>
+           <h6><small class="text-muted">Approval Form Agreed to Sign By Advisor.</small> </h6>
+
 
               </h6>
                 <div class="card">
@@ -389,29 +389,19 @@ if ($result = $db->query($strSQL)) {
                     <table class="table">
                       <thead class="thead-default">
                         <tr>
-                        <th>To do list</th>
-
-
-                          <th><font color='red'> *Sign by Advisor</font></th>
+                          <th>To do list</th>
+                          <th><font color='red'>Advisor</font></th>
 
                         </tr>
                       </thead>
                       <tbody>
-
-                        <tr>
-                         <td>1).Complete project Document
-                            </br>2).Related resources</td>
-
-
-
+                         <tr>
+                         <td>1).Student Submit Complete project Document 
+                          </br> and Related resources to Advisor</td>
                          <td>
-                          </br>Status</br>
                             <?php echo status_08($objResult->by_advisor12); ?>
                               </span> <?php echo get_advisor($objResult->group_id); ?>
                           </td>
-
-
-
                         </tr>
 
                           <input type="hidden" name="files_id"  value="<?php echo $objResult->files_id; ?>">
@@ -437,7 +427,7 @@ if ($result = $db->query($strSQL)) {
             <button class="btn btn-warning disabled float-right" disabled="disabled">Next</button>
           <?php } else {?>
             <a href="../form13/pf13.php?id=<?php echo $objResult->advisergroup_id; ?>"   >
-            <button type="button" class="btn btn-danger float-right" >Next</button></a>
+            <button type="button" class="btn btn-primary float-right"  >Next</button></a>
                        <?php }?>
 
 
