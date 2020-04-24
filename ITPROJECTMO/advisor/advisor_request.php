@@ -673,7 +673,6 @@ $i++;
 } else {
 }
 ?>
-
                                         </tbody>
                                     </table>
                                     <small> <font color="red">After Commitee status Pass, Advisor confirm to make sure student has been passed for proposal revison</font></small>

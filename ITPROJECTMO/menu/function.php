@@ -550,6 +550,24 @@ function get_status_committee2($group_id)
         $db->close();
     }
 }
+function get_status_committee3($group_id)
+{
+    require 'connect.php';
+    $rows = "";
+    $sql = "SELECT  member.member_fullname,committeegroup.status_presentation FROM committeegroup
+                    LEFT JOIN member ON committeegroup.member_id = member.member_id
+                    WHERE committeegroup.group_id = '$group_id'";
+    if ($rs = $db->query($sql)) {
+        while ($row = $rs->fetch_object()) {
+            $rows .= "<p> " . $row->member_fullname."</p>";
+        }
+        return $rows;
+        $db->close();
+    } else {
+        echo $db->error;
+        $db->close();
+    }
+}
 
 
 

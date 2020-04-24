@@ -451,8 +451,17 @@ if ($result = $db->query($strSQL)) {
                           <?php echo status_08($objResult->by_advisor11); ?>
                               </span> <?php echo get_advisor($objResult->group_id); ?>
                           </td>
-                          <td>            
-                            <span><?php echo get_status_committee1($objResult->group_id); ?></span>
+                          <td>
+
+              <?php if ($objResult->by_advisor11 !="Pass") 
+              {?>
+                      <span><?php echo get_status_committee3($objResult->group_id); ?></span>
+               <?php } else 
+               {?>
+                      <span><?php echo get_status_committee1($objResult->group_id); ?></span>
+              <?php }?>
+                              </td>
+                        
                           <td>
                             <?php echo status_08($objResult->by_advisor11); ?>
                           </td>
@@ -475,7 +484,7 @@ if ($result = $db->query($strSQL)) {
 
                 <input type="hidden" class="form-control" name="hdnOldFilen" value="<?php echo $objResult->complete_project; ?>">
 
-    <?php if ($objResult->by_advisor11 != "") {?>
+    <?php if ($objResult->complete_project != "") {?>
                         <button class="btn btn-warning disabled btn-sm" disabled="disabled">Upload</button>
 
                       <?php } else {?>
