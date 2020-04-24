@@ -342,7 +342,6 @@ $count = mysqli_num_rows($query_num);
                       <th style="font-size: 15px;" width="4%" class="text-left">No</th>
                       <th style="font-size: 15px;" width="10%" class="text-left">User ID</th>
                       <th style="font-size: 15px;" width="10%" class="text-left">Name</th>
-                      <th style="font-size: 15px;" width="10%" class="text-left">Phone</th>
                       <th style="font-size: 15px;" width="10%" class="text-left">Email</th>
                       <th style="font-size: 15px;" width="5%" class="text-left">Gender</th>
                       <th style="font-size: 15px;" width="5%" class="text-left">Position</th>
@@ -364,7 +363,7 @@ if ($result = $db->query($strSQL)) {
                       <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_id; ?></td>
                       <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_idcard; ?></td>
                       <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_fullname; ?></td>
-                      <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_phone; ?></td>
+                
                       <td class="text-left" style="font-size: 15px;"><?php echo $objResult->member_email; ?></td>
                       <td class="text-left" style="font-size: 15px;"><?php echo gender($objResult->member_gender); ?>
                       </td>
@@ -510,16 +509,7 @@ if ($result = $db->query($strSQL)) {
                     <div id="passwordStrength" class="strength0"></div>
                   </center>
                 </div>
-                <div class="input-group mb-3">
-                  <input type="tel" class="form-control" placeholder="Phone: 123-4567-8901" id="member_phone"
-                    name="member_phone" autocomplete="off" required aria-describedby="basic-addon1"
-                    onkeypress='validate(event)' maxlength="10">
-                  <div class="input-group-append">
-                    <div class="input-group-text">
-                      <span class="fas fa-phone"></span>
-                    </div>
-                  </div>
-                </div>
+               
                 <div class="input-group mb-3">
                   <input type="email" class="form-control" placeholder="....@gmail.com" id="member_email"
                     name="member_email" autocomplete="off" aria-describedby="basic-addon1"
