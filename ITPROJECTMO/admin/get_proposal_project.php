@@ -9,7 +9,7 @@ if (isset($_POST["id"])) {
     $id = $_POST['id'];
 
     $output = '';
-    $connect = mysqli_connect("localhost", "root", "", "projects_itproject");
+    $connect = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
     $query = "SELECT * FROM topic_project WHERE topic_id = '$id'";
 
     $objQuery = $connect->query($query);

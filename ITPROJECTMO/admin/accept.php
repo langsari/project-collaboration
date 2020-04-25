@@ -47,7 +47,8 @@ include '../menu/function.php';
       </ul>
 
       <?php
-$conn = new mysqli("localhost", "root", "", "projects_itproject");
+$conn = new mysqli("localhost", "itproject", "qydenygeq", "projects_itproject");
+
 $count = 0;
 if (!empty($_POST['add'])) {
     $subject = mysqli_real_escape_string($conn, $_POST["subject"]);
@@ -88,7 +89,8 @@ $count = mysqli_num_rows($result);
       <!-- Display the alert of notification -->
 
       <?php
-$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
+$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+
 $query = "SELECT * FROM notify WHERE status=0";
 $query_num = mysqli_query($con, $query);
 $count = mysqli_num_rows($query_num);
@@ -190,7 +192,8 @@ $count = mysqli_num_rows($query_num);
                     <i class="far fa-circle nav-icon"></i>
                     <p>Accept Member</p>
                     <?php
-$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
+$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+
 $query = "SELECT member_id FROM member WHERE admin_id=0";
 $query_num = mysqli_query($con, $query);
 $count = mysqli_num_rows($query_num);

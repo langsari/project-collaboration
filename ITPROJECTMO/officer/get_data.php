@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 
-$con = mysqli_connect("localhost", "root", "", "projects_itproject");
+$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
 
 // Check connection
 if (mysqli_connect_errno($con)) {

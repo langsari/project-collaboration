@@ -49,7 +49,7 @@ to get the desired effect
     </ul>
    <!-- Right navbar links -->
      <?php
-$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
+$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
 $query = "SELECT * FROM notify WHERE status=0";
 $query_num = mysqli_query($con, $query);
 $count = mysqli_num_rows($query_num);
@@ -69,7 +69,7 @@ $count = mysqli_num_rows($query_num);
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
+$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
 $sq = "SELECT * FROM notify WHERE status=0";
 $qu_num = mysqli_query($con, $query);
 if (mysqli_num_rows($qu_num) > 0) {
@@ -148,7 +148,7 @@ if (mysqli_num_rows($qu_num) > 0) {
           </li>
   <?php
 $my_id = $_SESSION['id'];
-$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
+$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
 $query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06 FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
