@@ -370,11 +370,6 @@ if ($result = $db->query($strSQL)) {
 
 
 
-
-
-
-
-
 <!-- partial:index.partial.html -->
 
 
