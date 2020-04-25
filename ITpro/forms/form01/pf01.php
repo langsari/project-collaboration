@@ -408,7 +408,7 @@ if ($result = $db->query($strSQL)) {
 
 $g_id = get_group_id();
 $ag_id = get_ag_id($g_id);
-$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf,files.files_id FROM advisergroup
 LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 LEFT JOIN member ON advisergroup.member_id = member.member_id
 WHERE advisergroup.advisergroup_id = '$ag_id'  ";

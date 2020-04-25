@@ -9,15 +9,13 @@ if (empty($submit)) {
 
     $files_id = $_POST['files_id'];
     $advisergroup_id = $_POST['advisergroup_id'];
-    $status_advisor = $_POST['status_advisor'];
+    $files_status = $_POST['files_status'];
 
     $sql = "UPDATE  files SET files_id = '$files_id',
-										 advisergroup_id = '$advisergroup_id',
-                      status_advisor ='Waiting'
+                      advisergroup_id = '$advisergroup_id',
+                      files_status ='Waiting'
 
-
-
-			WHERE files_id = '$files_id'";
+            WHERE files_id = '$files_id'";
 
     $result = mysqli_query($db, $sql) or die("Error in query: $sql " . mysqli_error());
 
@@ -27,11 +25,11 @@ if (empty($submit)) {
     if ($result) {
         echo "<script type='text/javascript'>";
         echo "alert('Upload File Succesfuly');";
-        header("Location:pf03.php");
+        header("Location:pf01.php");
         echo "</script>";
     } else {
         echo "<script type='text/javascript'>";
-        echo "alert('pf03.php');";
+        echo "alert('pf01.php');";
         echo "</script>";
     }
 
@@ -58,11 +56,11 @@ if ($_FILES["files_filename_proposal"]["name"] != "") {
         if ($result) {
             echo "<script type='text/javascript'>";
             echo "alert('Upload File Succesfuly');";
-            header("Location:pf03.php");
+            header("Location:pf01.php");
             echo "</script>";
         } else {
             echo "<script type='text/javascript'>";
-            echo "alert('pf03.php');";
+            echo "alert('pf01.php');";
             echo "</script>";
         }
     }

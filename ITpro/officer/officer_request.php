@@ -373,11 +373,12 @@ if ($rs = $db->query($strSQL)) {
           </a>
                        <?php }?>
 
+<!-- Main content 
 
 <a href="reject_02.php?id=<?php echo $objResult->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs float-right" title="Not Approve"><i
                       class='fa fa-times'></i> </a>
-
+-->
 </td>
 
                     </tr>
@@ -498,12 +499,13 @@ if ($rs = $db->query($strSQL)) {
 
           </a>
                        <?php }?>
+<!-- Main content 
 
 
 <a href="reject05.php?id=<?php echo $objResult->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs float-right" title="Comfirm"><i
                       class='fa fa-times'></i> </a>
-
+-->
 </td>
 
                     </tr>
@@ -620,11 +622,12 @@ if ($rs = $db->query($strSQL)) {
 
           </a>
                        <?php }?>
-
+<!-- Main content
 
 <a href="reject_09.php?id=<?php echo $objResult->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs float-right" title="Comfirm"><i
                       class='fa fa-times'></i> </a>
+ -->
 
 </td>
 
@@ -745,12 +748,13 @@ if ($rs = $db->query($strSQL)) {
 
           </a>
                        <?php }?>
+<!-- Main content
 
 
 <a href="reject_13.php?id=<?php echo $objResult->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs float-right" title="Comfirm"><i
                       class='fa fa-times'></i> </a>
-
+ -->
 </td>
 
                     </tr>

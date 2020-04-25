@@ -38,7 +38,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                         exit();
                     } else if ($_SESSION['rank'] == "Officer") {
 
-                        header("Location: ../officer/index.php");
+                        header("Location: ../Officer/index.php");
                         exit();
                     }
                 } else {

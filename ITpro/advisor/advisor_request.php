@@ -466,7 +466,7 @@ if ($rs = $db->query($strSQL)) {
                         onclick="return confirm_accept('<?php echo $row->files_status; ?>')"><i
                            class='fa fa-check'></i> </a>
 
-                 <a href="check_approve.php?id=<?php echo $row->advisergroup_id; ?>"
+                 <a href="reject_01_1.php?id=<?php echo $row->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs" title="Comfirm"
                     onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
                     class='fa fa-times'></i> </a>
@@ -544,12 +544,12 @@ if ($rs = $db->query($strSQL)) {
                    <td class="text-left" style="font-size: 12px;" width="60%" ><?php echo get_member_list($row->group_id); ?></td>
 
                     <td class="text-left" style="font-size: 12px;" width="3%" >
-<?php if ($row->files_filename_proposal != "") {?>
+           <?php if ($row->files_filename_proposal != "") {?>
                       <a href="download.php?pdf=<?php echo $row->files_filename_proposal; ?>">
                       <span class='badge badge-success btn-xs'>Download
                            </a></span>
                        </a>
- <?php } else {?>
+           <?php } else {?>
                     <a href="#"> <button class="btn btn-danger btn-xs">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
                     <?php }?>
@@ -566,7 +566,7 @@ if ($rs = $db->query($strSQL)) {
                            class='fa fa-check'></i> </a>
 
 
-                  <a href="reject_03.php?id=<?php echo $row->advisergroup_id; ?>"
+            <a href="reject_03.php?id=<?php echo $row->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs" title="Comfirm"
                     onclick="return confirm_accept('<?php echo $row->group_number; ?>')"><i
                     class='fa fa-times'></i> </a>

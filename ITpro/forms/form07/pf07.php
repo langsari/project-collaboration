@@ -409,7 +409,7 @@ if ($result = $db->query($strSQL)) {
 
 $g_id = get_group_id();
 $ag_id = get_ag_id($g_id);
-$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_advisor07,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_advisor07,files.Owner,files.advisergroup_id,files.pf,files.files_id FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
         WHERE advisergroup.advisergroup_id = '$ag_id'  ";
@@ -442,8 +442,9 @@ if ($result = $db->query($strSQL)) {
                           
                           </br>&nbsp;&nbsp;Ready To have the Pre-project Seinar  
 
-          <?php if ($objResult->by_advisor07 != "Pass" OR$objResult->by_advisor07 != "Waiting" ) {?>
-              <a href="check_pf07.php?id=<?php echo $objResult->advisergroup_id; ?>"  >
+                    <?php if ($objResult->by_advisor07 !="" OR $objResult->by_advisor07 !="Null") {?>
+
+              <a href="check_pf07.php?id=<?php echo $objResult->files_id; ?>"  >
                 <button type="button" class="btn btn-success btn-xs  float-left" title="Request" >
                  <i class='fa fa-check'></i></button></a>
           <?php } else {?>

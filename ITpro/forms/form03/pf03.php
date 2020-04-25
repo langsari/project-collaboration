@@ -479,11 +479,15 @@ if ($result = $db->query($strSQL)) {
                                                 name="hdnOldFilen"                                     value="<?php echo $objResult->files_filename_proposal; ?>">
 
 
-                    <?php if ($objResult->status_advisor != "" OR $objResult->status_advisor !="No" ) {?>
+
+                    <?php if ($objResult->status_advisor !="0" AND $objResult->status_advisor !="" ) {?>
                         <button class="btn btn-warning disabled btn-sm" disabled="disabled">Upload</button>
-                     <?php } else {?>
+
+                      <?php } else {?>
                       <button type="submit" class="btn btn-primary btn-sm" >Upload</button>
                        <?php }?>
+
+
 
                           </td>
 

@@ -432,7 +432,7 @@ if ($result = $db->query($sql)) {
                           </td>
                           <td>
                             Staus
-                            <?php echo status_01_file($objResult->files_status); ?>
+                            <?php echo status_01_file_1($objResult->files_status); ?>
                           </td>
 
 

@@ -1,9 +1,11 @@
 <?php
 session_start();
+
 require '../../menu/connect.php';
 include '../../menu/function.php';
-
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,8 +14,8 @@ include '../../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMOT| TRACKING </title>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="../form01/style.css">
+  <title>ITPROMOT| Tracking</title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="style.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
   <!-- IonIcons -->
@@ -48,7 +50,7 @@ to get the desired effect
     </ul>
    <!-- Right navbar links -->
      <?php
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 $query = "SELECT * FROM notify WHERE status=0";
 $query_num = mysqli_query($con, $query);
 $count = mysqli_num_rows($query_num);
@@ -68,7 +70,7 @@ $count = mysqli_num_rows($query_num);
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 $sq = "SELECT * FROM notify WHERE status=0";
 $qu_num = mysqli_query($con, $query);
 if (mysqli_num_rows($qu_num) > 0) {
@@ -109,9 +111,9 @@ if (mysqli_num_rows($qu_num) > 0) {
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
+
 
  <a href="../../student/index.php" class="brand-link">
          <img src="../../dist/img/n2.png" width="100%" >
@@ -163,7 +165,8 @@ $my_group_id = get_group_id($my_id);
 
 $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id,member.member_id,member.member_fullname FROM advisergroup
          JOIN member ON advisergroup.member_id = member.member_id
-  WHERE advisergroup.group_id = '$my_group_id' and  advisergroup.advisergroup_status='Approve'";
+  WHERE advisergroup.group_id = '$my_group_id' and  advisergroup.advisergroup_status='Approve'";         
+
 if ($rs = $db->query($sql)) {
     while ($row = $rs->fetch_object()) {
         ?>
@@ -335,8 +338,6 @@ if ($result = $db->query($strSQL)) {
     <!-- /.sidebar -->
   </aside>
 
-
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -380,110 +381,156 @@ if ($result = $db->query($strSQL)) {
 
 
         <div class="form-wizard">
-          <form action="" method="post" role="form">
+          <form action="check_edit_pf1.php?id=<?php echo $_GET["id"]; ?>" method="post"  class="form-horizontal" enctype="multipart/form-data">
+
+
             <div class="form-wizard-header">
               <ul class="list-unstyled form-wizard-steps clearfix">
-                 <li class="active" ><span>1</span></li>
-           <li class="active" ><span>2</span></li>
-                  <li class="active" ><span>3</span></li>
-                <li class="active" ><span>4</span></li>
-               <li class="active" ><span>5</span></li>
-                <li class="active"><span>6</span></li>
-                <li class="active"><span>7</span></li>
+                <li class="active" ><span>1</span></li>
+          <li><span>2</span></li>
+                <li><span>3</span></li>
+                <li><span>4</span></li>
+                    <li><span>5</span></li>
+                <li><span>6</span></li>
+                <li><span>7</span></li>
                 <li><span>8</span></li>
                 <li><span>9</span></li>
-                <li><span>10</span></li>
+                    <li><span>10</span></li>
                 <li><span>11</span></li>
                 <li><span>12</span></li>
                 <li><span>13</span></li>
               </ul>
             </div>
+
             <fieldset class="wizard-fieldset show">
-              <h5>PF07</h5>
-
-
-
-
-
-          <?php
+              <h5>PF01</h5>
+            <?php
 
 $g_id = get_group_id();
 $ag_id = get_ag_id($g_id);
-$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_advisor07,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
-          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
-        LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.advisergroup_id = '$ag_id'  ";
+$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf,files.files_id,advisergroup.advisergroup_id FROM advisergroup
+LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+LEFT JOIN member ON advisergroup.member_id = member.member_id
+WHERE advisergroup.advisergroup_id = '$ag_id'  ";
 
 if ($result = $db->query($strSQL)) {
     while ($objResult = $result->fetch_object()) {
         ?>
+
             <fieldset>  <div style="font-size: 15px;"> 
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Project Seminar </h5>
-           <h6><small class="text-muted">Approval form Agreed to Sign By Advisor</small>
+              <h5>Topic Selection & Proposal Project Approval Letter </h5>
+           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small></h6>
 
-              </h6>
                 <div class="card">
                   <div class="card-block">
-
-                  <table class="table">
+                    <table class="table">
                       <thead class="thead-default">
                         <tr>
-                          <th>To do list</th>
-                          <th><font color='red'>Advisor</th>
+                        <th>To do list</th>
+                          <th><font color='red'>Advisor</font></th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Seminar  Pre-Project
-                          </br></br>
-                          
-                          </br>&nbsp;&nbsp;Ready To have the Pre-project Seinar  
+                          <td>Proposal Topic Selection</td>
+                          <td>
+                            Status
+                    <?php echo status_01($objResult->advisergroup_status); ?></span>
 
-          <?php if ($objResult->by_advisor07 != "") {?>
-              <a href="check_pf07.php?id=<?php echo $objResult->advisergroup_id; ?>"  >
-                <button type="button" class="btn btn-success btn-xs  float-left" title="Request" >
-                 <i class='fa fa-check'></i></button></a>
-          <?php } else {?>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Select Advisor</td>
+                          <td>
+                            Status
+                 <?php echo status_01($objResult->advisergroup_status); ?></span>
 
-                <button class="btn btn-warning btn-xs disabled float-left" disabled="disabled" title="has been Approved"> <i class='fa fa-check'></i></button>
-              <?php }?>
+                          </td>
+                        </tr>
+
+                        <tr>
+
+
+                          <!--get Project Owner  -->
+
+                          <td class="form-control" name="Owner" hidden="">
+                            <?php echo get_member_list1($objResult->group_id); ?></td>
+
+
+                          <input type="hidden" name="files_id"  value="<?php echo $objResult->files_id; ?>">
+                              <input type="hidden" name="advisergroup_id"  value="<?php echo $objResult->advisergroup_id; ?>">
+                          <!--get Topic   -->
+
+                           <td class="hidden"> 3 chapter of Proposal
+   <?php echo $objResult->files_filename_proposal; ?>
+
+                            <input type="file" name="files_filename_proposal" id="files_filename_proposal"
+                          value=" <?php echo $objResult->files_filename_proposal; ?>"/>
+
+
+                <input type="hidden"
+                            class="form-control"
+                                                name="hdnOldFilen"                                     value="<?php echo $objResult->files_filename_proposal; ?>">
+
+
+                      <?php if ($objResult->files_status != "No") {?>
+                        <button class="btn btn-warning disabled btn-sm" disabled="disabled">Upload</button>
+
+                      <?php } else {?>
+                      <button type="submit" class="btn btn-primary btn-sm" >Upload</button>
+                       <?php }?>
+
                           </td>
                           <td>
                             Status
-                           <?php echo status_07($objResult->by_advisor07); ?>
-                      </td>
+                            <?php echo status_001_file($objResult->files_status); ?>
+                          </td>
+
+
+
+
+
+                          <td>
+<?php if ($objResult->files_filename_proposal != "") {?>
+                      <a href="download.php?pdf=<?php echo $objResult->files_filename_proposal; ?>">
+                          <input type="button" class="btn btn-success btn-sm" value="Download">
+
+ <?php } else {?>
+                    <a href="#">
+
+
+                      <button class="btn btn-danger btn-sm ">
+                        <i class="glyphicon glyphicon-remove"> No file </i></button></a>
+                    <?php }?>
+                              </td>
                         </tr>
-
                       </tbody>
-
                     </table>
 
 
 
 
+                  </div>
+                </div>
               </fieldset>
-                   
+                  </br>
+
             </fieldset>
           </form>
 
 
         <div class="form-group clearfix">
 
-          <a href="../form06/pf06.php"  class="btn btn-danger float-left">&laquo; Previous</a>
-          <?php if ($objResult->by_advisor07 != "Pass") {?>
+          <?php if ($objResult->files_status != "Approve") {?>
             <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
-            <a href="../form08/pf08.php"   >
+            <a href="../form02/pf02.php"  >
             <button type="button" class="btn btn-primary float-right" >Next &raquo;</button></a>
                        <?php }?>
-
-
-
-              </div>
-
               </div>
 
 
@@ -500,9 +547,6 @@ if ($result = $db->query($strSQL)) {
       </div>
     </div>
   </section>
-
-    <!-- /.content -->
-
 
     <!-- /.content -->
  <div class="container-fluid">
@@ -552,7 +596,7 @@ if ($result = $db->query($strSQL)) {
                    <input type="hidden" name="group_id" id="group_id"  />
 
      <input type="hidden" name="advisergroup_id" id="advisergroup_id"  />
-          <input type="hidden" name="form_pf" id="form_pf"  value="7" />
+          <input type="hidden" name="form_pf" id="form_pf"  value="1" />
 
 
 
@@ -571,7 +615,7 @@ $strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_i
           LEFT JOIN comment ON advisergroup.advisergroup_id = comment.advisergroup_id
           LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.advisergroup_id = '$ag_id' and form_pf='7'";
+        WHERE advisergroup.advisergroup_id = '$ag_id' and form_pf='1'";
 if ($result = $db->query($strSQL)) {
     while ($objResult = $result->fetch_object()) {
 
@@ -608,32 +652,32 @@ if ($result = $db->query($strSQL)) {
   </br>
 
 
-        </div>
+
       </div>
     </div>
   </section>
 
-
+   </div>
      </div>
-
+       </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
-      <b>Version</b> 3.0.3-pre
-    </div>
-       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
-    reserved.
-  </footer>
+      <div class="float-right d-none d-sm-block">
+        <class style="font-size: 12px;"> <b>Version</b> 3.0.3-pre
+      </div>
+      <class style="font-size: 12px;">  <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
+    </footer>
 
   <!-- Control Sidebar -->
 
   <!-- /.control-sidebar -->
 </div>
 
+
 <!-- ./wrapper -->
 
 <!-- partial -->
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="../form01/script.js"></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="script.js"></script>
 
 
 
