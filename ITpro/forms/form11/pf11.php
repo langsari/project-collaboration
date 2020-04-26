@@ -447,9 +447,9 @@ if ($result = $db->query($strSQL)) {
                           </br> Advisor,Committee,Head of department and Dean
                           </br> Student Can download Project Approveal Form (PF11)</small> 
                           </td>
-                         <td>
-                          <?php echo status_08($objResult->by_advisor11); ?>
-                              </span> <?php echo get_advisor($objResult->group_id); ?>
+                         <td>   </span> <?php echo get_advisor($objResult->group_id); ?></br>
+                          <?php echo status_11_1($objResult->by_advisor11); ?>
+                           
                           </td>
                           <td>
 
@@ -484,7 +484,7 @@ if ($result = $db->query($strSQL)) {
 
                 <input type="hidden" class="form-control" name="hdnOldFilen" value="<?php echo $objResult->complete_project; ?>">
 
-    <?php if ($objResult->complete_project != "") {?>
+    <?php if ($objResult->by_advisor11 != "") {?>
                         <button class="btn btn-warning disabled btn-sm" disabled="disabled">Upload</button>
 
                       <?php } else {?>
@@ -499,7 +499,7 @@ if ($result = $db->query($strSQL)) {
     <td>
 <?php if ($objResult->complete_project != "") 
 {?>
-        </br><a href="../form01/download.php?pdf=<?php echo $objResult->complete_project; ?>">
+        </br><a href="../form01/download_pdf.php?pdf=<?php echo $objResult->complete_project; ?>">
                   <input type="button" class="btn btn-success btn-sm" value="Download"></a>
  <?php } else 
  {?>

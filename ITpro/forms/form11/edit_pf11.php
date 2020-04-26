@@ -1,11 +1,9 @@
 <?php
 session_start();
-
 require '../../menu/connect.php';
 include '../../menu/function.php';
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,8 +12,8 @@ include '../../menu/function.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>ITPROMOT| Tracking</title>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="style.css">
+  <title>ITPROMOT| TRACKING </title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="../form01/style.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
   <!-- IonIcons -->
@@ -111,9 +109,9 @@ if (mysqli_num_rows($qu_num) > 0) {
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
+   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-
 
  <a href="../../student/index.php" class="brand-link">
          <img src="../../dist/img/n2.png" width="100%" >
@@ -151,7 +149,7 @@ if (mysqli_num_rows($qu_num) > 0) {
             </a>
           </li>
 
-         <li class="nav-item">
+          <li class="nav-item">
             <a href="../../student/infor_group.php" class="nav-link">
 <i class="nav-icon fa fa-users" aria-hidden="true"></i>
     
@@ -165,8 +163,7 @@ $my_group_id = get_group_id($my_id);
 
 $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,advisergroup.advisergroup_topic,advisergroup.group_id,member.member_id,member.member_fullname FROM advisergroup
          JOIN member ON advisergroup.member_id = member.member_id
-  WHERE advisergroup.group_id = '$my_group_id' and  advisergroup.advisergroup_status='Approve'";         
-
+  WHERE advisergroup.group_id = '$my_group_id' and  advisergroup.advisergroup_status='Approve'";
 if ($rs = $db->query($sql)) {
     while ($row = $rs->fetch_object()) {
         ?>
@@ -338,6 +335,7 @@ if ($result = $db->query($strSQL)) {
     <!-- /.sidebar -->
   </aside>
 
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -381,151 +379,167 @@ if ($result = $db->query($strSQL)) {
 
 
         <div class="form-wizard">
-          <form action="check_pf1.php" method="post"  class="form-horizontal" enctype="multipart/form-data">
-
-
+          <form action="check_pf11.php" method="post"  class="form-horizontal" enctype="multipart/form-data">
+            
             <div class="form-wizard-header">
               <ul class="list-unstyled form-wizard-steps clearfix">
-                <li class="active" ><span>1</span></li>
-          <li><span>2</span></li>
-                <li><span>3</span></li>
-                <li><span>4</span></li>
-                    <li><span>5</span></li>
-                <li><span>6</span></li>
-                <li><span>7</span></li>
-                <li><span>8</span></li>
-                <li><span>9</span></li>
-                    <li><span>10</span></li>
-                <li><span>11</span></li>
+               <li class="active" ><span>1</span></li>
+           <li class="active" ><span>2</span></li>
+                  <li class="active" ><span>3</span></li>
+                <li class="active" ><span>4</span></li>
+               <li class="active" ><span>5</span></li>
+                <li class="active"><span>6</span></li>
+                <li class="active"><span>7</span></li>
+                <li class="active"><span>8</span></li>
+               <li class="active"><span>9</span></li>
+                <li class="active"><span>10</span></li>
+                <li class="active"><span>11</span></li>
                 <li><span>12</span></li>
                 <li><span>13</span></li>
               </ul>
             </div>
 
             <fieldset class="wizard-fieldset show">
-              <h5>PF01</h5>
+              <h5>PF11</h5>
             <?php
 
 $g_id = get_group_id();
 $ag_id = get_ag_id($g_id);
-$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf,files.files_id FROM advisergroup
-LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
-LEFT JOIN member ON advisergroup.member_id = member.member_id
-WHERE advisergroup.advisergroup_id = '$ag_id'  ";
+$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.by_advisor10,files.by_advisor11,files.complete_project,files.Owner,files.advisergroup_id,files.pf,files.files_id FROM advisergroup
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+        WHERE advisergroup.advisergroup_id = '$ag_id'   ";
 
 if ($result = $db->query($strSQL)) {
     while ($objResult = $result->fetch_object()) {
         ?>
 
+
             <fieldset>  <div style="font-size: 15px;"> 
                <?php echo get_member_list($objResult->group_id); ?>
              </div>
             </br>
-              <h5>Topic Selection & Proposal Project Approval Letter </h5>
-           <h6><small class="text-muted">Approval Letter Agreed to Sign By Advisor</small></h6>
+              <h5>Project Approval Form
+ </h5>
+           <h6><small class="text-muted">This form will use to insert into Project Booked.</small>
 
+              </h6>
                 <div class="card">
                   <div class="card-block">
                     <table class="table">
                       <thead class="thead-default">
                         <tr>
                         <th>To do list</th>
-                          <th><font color='red'>Advisor</font></th>
-                          <th></th>
+                          <th><font color='red'> Advisor</font></th>
+                          <th><font color='red'> Committee</font></th>
+                            <th><font color='red'>Head of department</font></th>
+                            <th><font color='red'> Dean</font></th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Proposal Topic Selection</td>
+                          <td>Project Approval
+                          </br>
+                         <small> </br><u>Note:</u>
+                         </br> Student has to upload the complete Project
+                          </br> that has been sign by
+                          </br> Advisor,Committee,Head of department and Dean
+                          </br> Student Can download Project Approveal Form (PF11)</small> 
+                          </td>
+                         <td>
+                          <?php echo status_11_1($objResult->by_advisor11); ?>
+                              </span> <?php echo get_advisor($objResult->group_id); ?>
+                          </td>
                           <td>
-                            Status
-                    <?php echo status_01($objResult->advisergroup_status); ?></span>
+
+              <?php if ($objResult->by_advisor11 !="Pass") 
+              {?>
+                      <span><?php echo get_status_committee3($objResult->group_id); ?></span>
+               <?php } else 
+               {?>
+                      <span><?php echo get_status_committee1($objResult->group_id); ?></span>
+              <?php }?>
+                              </td>
+                        
+                          <td>
+                            <?php echo status_08($objResult->by_advisor11); ?>
+                          </td>
+                          <td>
+                            <?php echo status_08($objResult->by_advisor11); ?>
+                          </td>
 
                           </td>
-                        </tr>
-                        <tr>
-                          <td>Select Advisor</td>
-                          <td>
-                            Status
-                 <?php echo status_01($objResult->advisergroup_status); ?></span>
-
-                          </td>
-                        </tr>
 
                         <tr>
+                          <input type="hidden" name="files_id"  value="<?php echo $objResult->files_id; ?>">
+                              <input type="hidden" name="advisergroup_id"  value="<?php echo $objResult->advisergroup_id; ?>">
 
 
-                          <!--get Project Owner  -->
+                        <td class="hidden"><small>Complete Project (has been sign by Head of department & Dean) </small></br>
 
-                          <td class="form-control" name="Owner" hidden="">
-                            <?php echo get_member_list1($objResult->group_id); ?></td>
-
-
-                          <!--get Topic   -->
-
-                           <td class="hidden"> 3 chapter of Proposal
-
- <input type="hidden" class="form-control" id="group_id"
-      name="group_id" value="  <?php echo $objResult->group_id; ?>">
-
-                            <input type="file" name="files_filename_proposal" id="files_filename_proposal"
-                              required="required" />
+                            <input type="file" name="complete_project" id="complete_project"
+                          value=" <?php echo $objResult->complete_project; ?>"/>
 
 
-                      <?php if ($objResult->files_filename_proposal != "") {?>
+                <input type="hidden" class="form-control" name="hdnOldFilen" value="<?php echo $objResult->complete_project; ?>">
+
+    <?php if ($objResult->by_advisor11 != "No") {?>
                         <button class="btn btn-warning disabled btn-sm" disabled="disabled">Upload</button>
 
                       <?php } else {?>
                       <button type="submit" class="btn btn-primary btn-sm" >Upload</button>
-                       <?php }?>
-
-                          </td>
-                          <td>
-                            Status
-                            <?php echo status_01_file_1($objResult->files_status); ?>
-                          </td>
+                       <?php }?> </td>
 
 
 
 
+<td></td>
 
-                          <td>
-<?php if ($objResult->files_filename_proposal != "") {?>
-                      <a href="download.php?pdf=<?php echo $objResult->files_filename_proposal; ?>">
-                          <input type="button" class="btn btn-success btn-sm" value="Download">
-
- <?php } else {?>
-                    <a href="#">
-
-
-                      <button class="btn btn-danger btn-sm ">
+    <td>
+<?php if ($objResult->complete_project != "") 
+{?>
+        </br><a href="../form01/download.php?pdf=<?php echo $objResult->complete_project; ?>">
+                  <input type="button" class="btn btn-success btn-sm" value="Download"></a>
+ <?php } else 
+ {?>
+        </br><a href="#"> <button class="btn btn-danger btn-sm">
                         <i class="glyphicon glyphicon-remove"> No file </i></button></a>
-                    <?php }?>
+<?php }?>
                               </td>
-                        </tr>
+
+<td>
+ </br> <a href="../../assets/forms/PF11%20-%20IT%20Project%20-%20Project%20Approval%20Letter.docx" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">PDF11</a>
+</td>
+
+
+</tr>
+
                       </tbody>
                     </table>
 
 
 
-
-                  </div>
-                </div>
               </fieldset>
-                  </br>
-
+                  
             </fieldset>
           </form>
 
 
         <div class="form-group clearfix">
 
-          <?php if ($objResult->files_status != "Approve") {?>
+                  <a href="../form10/pf10.php" class="btn btn-danger float-left">&laquo; Previous</a>
+          <?php if ($objResult->by_advisor11 != "Pass") {?>
             <button class="btn btn-warning disabled float-right" disabled="disabled">Next &raquo;</button>
           <?php } else {?>
-            <a href="../form02/pf02.php"  >
-            <button type="button" class="btn btn-primary float-right" >Next &raquo;</button></a>
+            <a href="../form12/pf12.php"   >
+            <button type="button" class="btn btn-primary float-right" >Next &raquo;</button>
                        <?php }?>
+
+
+
+              </div>
+
               </div>
 
 
@@ -538,12 +552,9 @@ if ($result = $db->query($strSQL)) {
 }}
 ?>
 
-        </div>
-      </div>
-    </div>
-  </section>
 
-    <!-- /.content -->
+
+
  <div class="container-fluid">
         <div class="row">
      <div class="col-md-12 ">
@@ -591,7 +602,7 @@ if ($result = $db->query($strSQL)) {
                    <input type="hidden" name="group_id" id="group_id"  />
 
      <input type="hidden" name="advisergroup_id" id="advisergroup_id"  />
-          <input type="hidden" name="form_pf" id="form_pf"  value="1" />
+          <input type="hidden" name="form_pf" id="form_pf"  value="11" />
 
 
 
@@ -608,9 +619,14 @@ $ag_id = get_ag_id($g_id);
 
 $strSQL = "SELECT advisergroup.*, partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,advisergroup.group_id,advisergroup.advisergroup_id,comment.comment_content,comment.date,comment.member_id,member.member_fullname FROM advisergroup
           LEFT JOIN comment ON advisergroup.advisergroup_id = comment.advisergroup_id
+
           LEFT JOIN partnergroup ON advisergroup.group_id = partnergroup.group_id
+
+
+
         LEFT JOIN member ON advisergroup.member_id = member.member_id
-        WHERE advisergroup.advisergroup_id = '$ag_id' and form_pf='1'";
+
+        WHERE advisergroup.advisergroup_id = '$ag_id' and form_pf='11' ";
 if ($result = $db->query($strSQL)) {
     while ($objResult = $result->fetch_object()) {
 
@@ -644,24 +660,29 @@ if ($result = $db->query($strSQL)) {
 
 
     <!-- /.content -->
+   <!-- /.content -->
+ </div>
   </br>
 
+ </div>
+  </div>
 
-
+        </div>
       </div>
     </div>
   </section>
 
    </div>
-     </div>
-       </div>
+
+
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-      <div class="float-right d-none d-sm-block">
-        <class style="font-size: 12px;"> <b>Version</b> 3.0.3-pre
-      </div>
-      <class style="font-size: 12px;">  <strong>Copyright &copy; 2019-2020 <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights reserved.
-    </footer>
+    <div class="float-right d-none d-sm-block">     <class style="font-size: 12px;">
+      <b>Version</b> 3.0.3-pre
+    </div>
+       <class style="font-size: 12px;">   <strong>Copyright© 2019-2020  <a href="#">IT Project Monitoring and Tracking</a>.</strong> All rights
+    reserved.
+  </footer>
 
   <!-- Control Sidebar -->
 
@@ -669,10 +690,12 @@ if ($result = $db->query($strSQL)) {
 </div>
 
 
+    <!-- /.content -->
+
 <!-- ./wrapper -->
 
 <!-- partial -->
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="script.js"></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="../form01/script.js"></script>
 
 
 

@@ -480,7 +480,7 @@ if ($rs = $db->query($strSQL)) {
 
 
 
-<a href="form05.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-xs">  <i class="fa fa-eye" title="Detail"> View </i></a>
+<a href="form05.php?id=<?php echo $objResult->advisergroup_id; ?>"class="btn btn-primary btn-xs">  <i class="fa fa-eye" title="Detail"> View </i></a>
 
                 </td>
 
@@ -601,7 +601,7 @@ if ($rs = $db->query($strSQL)) {
 
           <td class="text-left" style="font-size: 14px;" width="8%" >
 
-  <a href="form09.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-xs">  <i class="fa fa-eye" title="Detail"> View</i></a>
+  <a href="form09.php?id=<?php echo $objResult->advisergroup_id; ?>"class="btn btn-primary btn-xs">  <i class="fa fa-eye" title="Detail"> View</i></a>
 
 
 
@@ -726,7 +726,7 @@ if ($rs = $db->query($strSQL)) {
 
           <td class="text-left" style="font-size: 14px;" width="8%" >
 
-  <a href="form13.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-xs">  <i class="fa fa-eye" title="Detail"></i></a>
+  <a href="form13.php?id=<?php echo $objResult->advisergroup_id; ?>"class="btn btn-primary btn-xs">  <i class="fa fa-eye" title="Detail"></i></a>
 
 
 

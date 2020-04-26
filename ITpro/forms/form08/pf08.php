@@ -453,7 +453,8 @@ if ($result = $db->query($strSQL)) {
                             <input type="file" name="files_filename_project" id="files_filename_project"
                               required="required" />
 
-           <?php if ($objResult->files_filename_project != "" OR $objResult->files_filename_project != "No") {?>
+
+           <?php if ($objResult->files_filename_project != "") {?>
                         <button class="btn btn-warning disabled" disabled="disabled">Upload</button>
 
                       <?php } else {?>
@@ -462,11 +463,12 @@ if ($result = $db->query($strSQL)) {
 
 
 
+
                           </td>
                           <td>
                           </br>
                             Staus
-                            <?php echo status_08($objResult->by_advisor08); ?>
+                            <?php echo status_08_1($objResult->by_advisor08); ?>
                           </td>
 
 

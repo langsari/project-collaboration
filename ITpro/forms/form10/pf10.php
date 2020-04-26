@@ -446,9 +446,9 @@ if ($result = $db->query($strSQL)) {
                           </small> 
                         </td>
                          <td>
-                          </br>
-                            <?php echo status_10($objResult->by_advisor10); ?>
-                              </span> <?php echo get_advisor($objResult->group_id); ?>
+                          </br><?php echo get_advisor($objResult->group_id); ?>
+                            <?php echo status_10_1($objResult->by_advisor10); ?>
+                              </span> 
                           </td>
 
                           <td>
@@ -475,8 +475,8 @@ if ($result = $db->query($strSQL)) {
                             class="form-control"
                                                 name="hdnOldFilen"                                     value="<?php echo $objResult->files_filename_project; ?>">
 
-    <?php if ($objResult->by_advisor10 != "" OR objResult->by_advisor10 != "No") {?>
-                        <button class="btn btn-warning disabled btn-sm" disabled="disabled">Upload</button>
+ <?php if ($objResult->by_advisor10 != "") {?>
+                         <button class="btn btn-warning disabled btn-sm" disabled="disabled">Upload</button>
 
                       <?php } else {?>
                       <button type="submit" class="btn btn-primary btn-sm" >Upload</button>
