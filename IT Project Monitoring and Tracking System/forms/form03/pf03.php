@@ -48,7 +48,7 @@ to get the desired effect
     </ul>
    <!-- Right navbar links -->
      <?php
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 $query = "SELECT * FROM notify WHERE status=0";
 $query_num = mysqli_query($con, $query);
 $count = mysqli_num_rows($query_num);
@@ -68,7 +68,7 @@ $count = mysqli_num_rows($query_num);
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 $sq = "SELECT * FROM notify WHERE status=0";
 $qu_num = mysqli_query($con, $query);
 if (mysqli_num_rows($qu_num) > 0) {
@@ -479,12 +479,15 @@ if ($result = $db->query($strSQL)) {
                                                 name="hdnOldFilen"                                     value="<?php echo $objResult->files_filename_proposal; ?>">
 
 
-                    <?php if ($objResult->status_advisor != "") {?>
+
+                    <?php if ($objResult->status_advisor !="0" AND $objResult->status_advisor !="" ) {?>
                         <button class="btn btn-warning disabled btn-sm" disabled="disabled">Upload</button>
 
                       <?php } else {?>
                       <button type="submit" class="btn btn-primary btn-sm" >Upload</button>
                        <?php }?>
+
+
 
                           </td>
 
@@ -517,8 +520,6 @@ if ($result = $db->query($strSQL)) {
         <div class="form-group clearfix">
 
           <a href="../form02/pf02.php" class="btn btn-danger float-left">&laquo; Previous</a>
-          
-
 
               <?php if ($objResult->status_advisor != "Pass") {?>
 

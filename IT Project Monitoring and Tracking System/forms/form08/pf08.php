@@ -48,7 +48,7 @@ to get the desired effect
     </ul>
    <!-- Right navbar links -->
      <?php
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 $query = "SELECT * FROM notify WHERE status=0";
 $query_num = mysqli_query($con, $query);
 $count = mysqli_num_rows($query_num);
@@ -68,7 +68,7 @@ $count = mysqli_num_rows($query_num);
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 $sq = "SELECT * FROM notify WHERE status=0";
 $qu_num = mysqli_query($con, $query);
 if (mysqli_num_rows($qu_num) > 0) {
@@ -453,6 +453,7 @@ if ($result = $db->query($strSQL)) {
                             <input type="file" name="files_filename_project" id="files_filename_project"
                               required="required" />
 
+
            <?php if ($objResult->files_filename_project != "") {?>
                         <button class="btn btn-warning disabled" disabled="disabled">Upload</button>
 
@@ -462,11 +463,12 @@ if ($result = $db->query($strSQL)) {
 
 
 
+
                           </td>
                           <td>
                           </br>
                             Staus
-                            <?php echo status_08($objResult->by_advisor08); ?>
+                            <?php echo status_08_1($objResult->by_advisor08); ?>
                           </td>
 
 

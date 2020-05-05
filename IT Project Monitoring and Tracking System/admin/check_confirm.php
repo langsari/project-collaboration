@@ -20,18 +20,18 @@ $mail->CharSet = "utf-8";
 $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = 'true';
-$mail->Username = 'nikhusnee1003@gmail.com';
-$mail->Password = 'koko4560';
+$mail->Username = 'itpromo123@gmail.com';
+$mail->Password = 'itpromo2019';
 $mail->SMTPSecure = 'tls';
 $mail->Port = 587;
-$mail->setFrom('nikhusnee1003@gmail.com', '
+$mail->setFrom('itpromo123@gmail.com', '
 IT project monitoring and tracking');
 $mail->addAddress($_POST{'member_email'}, 'test');
 $mail->addAttachment('/var/tmp/file.tar.gz');
 $mail->addAttachment('/var/image.jpg', 'new.jpg');
 $mail->isHTML(true);
 $mail->Subject = 'IT Project';
-$mail->Body = 'Welcome .... You are member of IT Project Cause. Go to http://localhost/ITPROMO/Web-Application-IT-Project-Collaboration/itpromo&track/index.php';
+$mail->Body = 'Welcome .... You are member of IT Project Cause. Go to http://localhost/ITPROMO/Web-Application-IT-Project-Collaboration/ITRPO/index.php';
 
 if (!$mail->send()) {
     echo 'Mailer Error' . $mail->ErrorInfo;

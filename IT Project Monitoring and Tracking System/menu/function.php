@@ -1,6 +1,175 @@
-<?php
+ <?php
+function status_01_file_1($status)
+{
+        require 'connect.php';
 
+$g_id = get_group_id();
+$ag_id = get_ag_id($g_id);
+$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf,files.files_id FROM advisergroup
+LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+LEFT JOIN member ON advisergroup.member_id = member.member_id
+WHERE advisergroup.advisergroup_id = '$ag_id'  ";
+
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+  
+
+
+    if ($status == '') {
+        return "<input type='button' class='btn btn-danger btn-xs' ";
+    } else if ($status == 'Waiting') {
+        return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
+    } else if ($status == 'Approve') {
+        return "<input type='button' class='btn btn-success btn-xs' value='Approved'>";
+    }  else if ($status == 'No') {
+        return "<input type='button' class='btn btn-danger btn-xs' value='No Pass'> <a href='../../forms/form01/edit_pf01.php?id=" .$objResult->files_id." '><input type='button' class='btn btn-dark btn-xs' value='Click Here Upload Again' >";
+    }
+}
+
+
+
+}}
+?>
+
+
+
+
+
+
+ <?php
+function status_08_1($status)
+{
+        require 'connect.php';
+
+
+$g_id = get_group_id();
+$ag_id = get_ag_id($g_id);
+
+$strSQL = "SELECT advisergroup.*, advisergroup.group_id,advisergroup.advisergroup_status,files.files_id,files.by_advisor08,files.files_filename_project,files.by_officer,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
+LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+
+LEFT JOIN member ON advisergroup.member_id = member.member_id
+WHERE advisergroup.advisergroup_id = '$ag_id'  ";
+
+
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+  
+
+
+    if ($status == '') {
+        return "<input type='button' class='btn btn-danger btn-xs' ";
+    } else if ($status == 'Waiting') {
+        return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
+    } else if ($status == 'Pass') {
+        return "<input type='button' class='btn btn-success btn-xs' value='Approved'>";
+    }  else if ($status == 'No') {
+        return "<input type='button' class='btn btn-danger btn-xs' value='No Pass'> <a href='../../forms/form08/edit_pf08.php?id=" .$objResult->files_id." '><input type='button' class='btn btn-dark btn-xs' value='Click Here Upload Again' >";
+    }
+}
+
+
+
+}}
+?>
+
+
+
+
+ <?php
+function status_10_1($status)
+{
+        require 'connect.php';
+
+
+$g_id = get_group_id();
+$ag_id = get_ag_id($g_id);
+$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.by_advisor10,files.Owner,files.advisergroup_id,files.pf,files.files_filename_project,files.files_id FROM advisergroup
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+        WHERE advisergroup.advisergroup_id = '$ag_id'  ";
+
+
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+  
+
+
+    if ($status == '') {
+        return "<input type='button' class='btn btn-danger btn-xs' ";
+    } else if ($status == 'Waiting') {
+        return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
+    } else if ($status == 'Pass') {
+        return "<input type='button' class='btn btn-success btn-xs' value='Approved'>";
+    }  else if ($status == 'No') {
+        return "<input type='button' class='btn btn-danger btn-xs' value='No Pass'> <a href='../../forms/form10/edit_pf10.php?id=" .$objResult->files_id." '><input type='button' class='btn btn-dark btn-xs' value='Click Here Upload Again' >";
+    }
+}
+
+
+
+}}
+?>
+
+
+
+
+ <?php
+function status_11_1($status)
+{
+        require 'connect.php';
+
+
+$g_id = get_group_id();
+$ag_id = get_ag_id($g_id);
+$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.by_advisor10,files.by_advisor11,files.complete_project,files.Owner,files.advisergroup_id,files.pf,files.files_id FROM advisergroup
+          LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
+
+        LEFT JOIN member ON advisergroup.member_id = member.member_id
+        WHERE advisergroup.advisergroup_id = '$ag_id'   ";
+
+if ($result = $db->query($strSQL)) {
+    while ($objResult = $result->fetch_object()) {
+  
+
+
+    if ($status == '') {
+        return "<input type='button' class='btn btn-danger btn-xs' ";
+    } else if ($status == 'Waiting') {
+        return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
+    } else if ($status == 'Pass') {
+        return "<input type='button' class='btn btn-success btn-xs' value='Approved'>";
+    }  else if ($status == 'No') {
+        return "<input type='button' class='btn btn-danger btn-xs' value='No Pass'> <a href='../../forms/form11/edit_pf11.php?id=" .$objResult->files_id." '><input type='button' class='btn btn-dark btn-xs' value='Click Here Upload Again' >";
+    }
+}
+
+
+
+}}
+?>
+
+
+
+
+
+<?php
 //All projects function is here and it is includeed in index.php
+function status_01_file($status)
+{
+    if ($status == '') {
+        return "<input type='button' class='btn btn-danger btn-xs' ";
+    } else if ($status == 'Waiting') {
+        return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
+    } else if ($status == 'Approve') {
+        return "<input type='button' class='btn btn-success btn-xs' value='Approved'>";
+    }else if ($status == 'No') {
+        return "<input type='button' class='btn btn-danger btn-xs' value='No Pass'>";
+    }
+}
+
+
 
 function status_to_text1($status)
 {
@@ -25,7 +194,7 @@ function status_01($status)
     }
 }
 
-function status_01_file($status)
+function status_001_file($status)
 {
     if ($status == '') {
         return "<input type='button' class='btn btn-danger btn-xs' ";
@@ -33,8 +202,11 @@ function status_01_file($status)
         return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
     } else if ($status == 'Approve') {
         return "<input type='button' class='btn btn-success btn-xs' value='Approved'>";
+    }else if ($status == 'No') {
+        return "<input type='button' class='btn btn-danger btn-xs' value='No Pass'>";
     }
 }
+
 
 function status_02($status)
 {
@@ -49,9 +221,11 @@ function status_02($status)
 
 function status_03($status)
 {
-    if ($status == '') {
+    if ($status == '0') {
         return "<span class='text-danger'></span>";
-    } else if ($status == 'Waiting') {
+    } else if ($status == '') {
+       return "<input type='button' class='btn btn-danger btn-xs' value='No Pass'>";
+    }else if ($status == 'Waiting') {
         return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
     } else if ($status == 'No') {
         return "<input type='button' class='btn btn-danger btn-xs' value='No Pass'>";
@@ -99,9 +273,11 @@ function status_06($status)
 
 function status_07($status)
 {
-    if ($status == '') {
+   if ($status == '0') {
         return "<span class='text-danger'></span>";
-    } else if ($status == 'Waiting') {
+    } else if ($status == '') {
+       return "<input type='button' class='btn btn-danger btn-xs' value='No Pass'>";
+    }else if ($status == 'Waiting') {
         return "<input type='button' class='btn btn-warning btn-xs' value='Waiting'>";
     } else if ($status == 'No') {
         return "<input type='button' class='btn btn-danger btn-xs' value='No Pass'>";

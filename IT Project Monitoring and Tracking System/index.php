@@ -3,12 +3,43 @@ require 'menu/connect.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+<style>
+* {
+  box-sizing:border-box;
+}
 
+.left {
+  background-color:#2196F3;
+  padding:20px;
+  float:left;
+  width:20%; /* The width is 20%, by default */
+}
+
+.main {
+  background-color:#f1f1f1;
+  padding:20px;
+  float:left;
+  width:60%; /* The width is 60%, by default */
+}
+
+.right {
+  background-color:#4CAF50;
+  padding:20px;
+  float:left;
+  width:20%; /* The width is 20%, by default */
+}
+
+/* Use a media query to add a break point at 800px: */
+@media screen and (max-width:800px) {
+  .left, .main, .right {
+    width:100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+}
+</style>
   <title>ITPROMOT| Homepage</title>
 
   <!-- Font Awesome Icons -->
@@ -20,6 +51,7 @@ require 'menu/connect.php';
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
+
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
     <!-- Navbar -->
@@ -29,7 +61,6 @@ require 'menu/connect.php';
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
         </li>
-
       </ul>
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -42,7 +73,6 @@ require 'menu/connect.php';
         <li class="nav-item d-none d-sm-inline-block">
           <a href="auth/register.php" class="nav-link">Register</a>
         </li>
-
       </ul>
     </nav>
     <!-- /.navbar -->
@@ -50,10 +80,9 @@ require 'menu/connect.php';
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="index.php" class="brand-link">
-        <img src="dist/img/n2.png" width="100%" >
+        <img src="dist/img/n2.png" width="100%">
         <span class="brand-text font-weight-light"></span>
       </a>
-
       <!-- Sidebar -->
       <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
@@ -64,7 +93,6 @@ require 'menu/connect.php';
                with font-awesome or any other icon font library -->
             <li class="nav-item has-treeview ">
               <a href="Annoucement.php" class="nav-link ">
-
                 <i class="nav-icon fa fa-bullhorn"></i>
                 <p>
                   Announcements
@@ -96,7 +124,6 @@ require 'menu/connect.php';
                 </p>
               </a>
             </li>
-
             <li class="nav-item">
               <a href="course_syllabus.php" class="nav-link">
                 <i class="nav-icon fa fa-calendar"></i>
@@ -121,14 +148,12 @@ require 'menu/connect.php';
                 </p>
               </a>
             </li>
-
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
       </div>
       <!-- /.sidebar -->
     </aside>
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -163,9 +188,7 @@ require 'menu/connect.php';
               <p><a href="?page=schedule" class="btn-primary btn-sm">Schedule</a> is present the schedule time
                 table of the project</p>
               <p><a href="?page=form" class="btn-primary btn-sm">Forms</a> is collection of involve forms</p>
-
               <hr>
-
               <h2>The Guide for both:</h2>
               <p class="text-dark"><kbd>IT234-232</kbd> - Information Technology Project
                 (โครงงานเทคโนโลยีสารสนเทศ)</p>
@@ -173,7 +196,6 @@ require 'menu/connect.php';
                 (โครงงานเทคโนโลยีสารสนเทศ I )</p>
               <p class="text-dark"><kbd>IT2301-322</kbd> - Information Technology Project 2
                 (โครงงานเทคโนโลยีสารสนเทศ II )</p>
-
             </div><!-- /.card-body -->
           </div>
         </div><!-- /.container-fluid -->
@@ -181,14 +203,13 @@ require 'menu/connect.php';
       <!-- /.content -->
       </br></br></br></br></br></br>
     </div>
-
     <!-- /.content-wrapper -->
- <footer class="main-footer">
+    <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 3.0.3-pre
       </div>
       <class style="font-size: 12px;"><strong>Copyright &copy; 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights
-      reserved.
+        reserved.
     </footer>
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">

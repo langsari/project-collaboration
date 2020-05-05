@@ -50,7 +50,7 @@ to get the desired effect
     </ul>
    <!-- Right navbar links -->
      <?php
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 $query = "SELECT * FROM notify WHERE status=0";
 $query_num = mysqli_query($con, $query);
 $count = mysqli_num_rows($query_num);
@@ -70,7 +70,7 @@ $count = mysqli_num_rows($query_num);
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 $sq = "SELECT * FROM notify WHERE status=0";
 $qu_num = mysqli_query($con, $query);
 if (mysqli_num_rows($qu_num) > 0) {
@@ -408,7 +408,7 @@ if ($result = $db->query($strSQL)) {
 
 $g_id = get_group_id();
 $ag_id = get_ag_id($g_id);
-$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf FROM advisergroup
+$strSQL = "SELECT advisergroup.*,  advisergroup.advisergroup_status,files.files_status,files.files_filename_proposal,files.by_officer,files.Owner,files.advisergroup_id,files.pf,files.files_id FROM advisergroup
 LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
 LEFT JOIN member ON advisergroup.member_id = member.member_id
 WHERE advisergroup.advisergroup_id = '$ag_id'  ";
@@ -482,7 +482,7 @@ if ($result = $db->query($strSQL)) {
                           </td>
                           <td>
                             Status
-                            <?php echo status_01_file($objResult->files_status); ?>
+                            <?php echo status_01_file_1($objResult->files_status); ?>
                           </td>
 
 

@@ -49,7 +49,7 @@ to get the desired effect
     </ul>
    <!-- Right navbar links -->
      <?php
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 $query = "SELECT * FROM notify WHERE status=0";
 $query_num = mysqli_query($con, $query);
 $count = mysqli_num_rows($query_num);
@@ -69,7 +69,7 @@ $count = mysqli_num_rows($query_num);
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 $sq = "SELECT * FROM notify WHERE status=0";
 $qu_num = mysqli_query($con, $query);
 if (mysqli_num_rows($qu_num) > 0) {
@@ -150,7 +150,7 @@ if (mysqli_num_rows($qu_num) > 0) {
 
   <?php
 $my_id = $_SESSION['id'];
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 
 $query = "SELECT * FROM files WHERE by_officer = 'Waiting' or  by_officer05='Waiting'
    or by_officer09='Waiting' or  by_officer13='Waiting' ";

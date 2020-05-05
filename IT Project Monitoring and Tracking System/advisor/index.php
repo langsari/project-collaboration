@@ -39,7 +39,7 @@ include '../menu/function.php';
     </ul>
    <!-- Right navbar links
      <?php
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 $query = "SELECT * FROM comment WHERE comment_id=0";
 $query_num = mysqli_query($con, $query);
 $count = mysqli_num_rows($query_num);
@@ -67,7 +67,7 @@ $count = mysqli_num_rows($query_num);
 
 
   <?php
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 $query = "SELECT * FROM notify WHERE status=0";
 $query_num = mysqli_query($con, $query);
 $count = mysqli_num_rows($query_num);
@@ -83,7 +83,7 @@ $count = mysqli_num_rows($query_num);
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 $sq = "SELECT * FROM notify WHERE status=0";
 $qu_num = mysqli_query($con, $query);
 if (mysqli_num_rows($qu_num) > 0) {
@@ -164,7 +164,7 @@ if (mysqli_num_rows($qu_num) > 0) {
 
       <?php
 $my_id = $_SESSION['id'];
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 
 $query = "SELECT advisergroup.*,  files.files_status,files.status_advisor,files.by_advisor10,advisergroup.advisergroup_id,partnergroup.group_id,partnergroup.group_number,advisergroup.member_id,member.member_id,advisergroup.advisergroup_status,files.by_advisor06,files.by_advisor04,files.by_advisor07,files.by_advisor08,files.by_advisor11,files.by_advisor12 FROM advisergroup
           LEFT JOIN files ON advisergroup.advisergroup_id = files.advisergroup_id
@@ -279,7 +279,7 @@ $count = mysqli_num_rows($query_num);
 
                 <?php
 $my_id = $_SESSION['id'];
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 
 $query = "SELECT committeegroup.*, schedule.schedule_type,advisergroup.group_id,partnergroup.group_number,partnergroup.group_id,advisergroup.member_id,committeegroup.member_id,committeegroup.group_id,schedule.schedule_status,schedule.schedule_id,schedule.schedule_type,files.advisergroup_id,committeegroup.status_project,committeegroup.status_presentation,committeegroup.member_id,files.pf,files.status_advisor
       FROM committeegroup
@@ -364,7 +364,7 @@ $count = mysqli_num_rows($query_num);
 
 
               <?php
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 
 $query = "SELECT member_id FROM member ORDER BY member_id";
 
@@ -392,7 +392,7 @@ echo 'Total User';
                 <div class="inner">
 
                 <?php
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 $my_id = $_SESSION['id'];
 $query = "SELECT advisergroup_id FROM advisergroup
                   WHERE member_id='$my_id'
@@ -431,7 +431,7 @@ echo 'Group & Tracking';
                 <div class="inner">
 
                 <?php
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 
 $my_id = $_SESSION['id'];
 

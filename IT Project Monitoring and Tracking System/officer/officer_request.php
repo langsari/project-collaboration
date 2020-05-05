@@ -48,7 +48,7 @@ to get the desired effect
     </ul>
    <!-- Right navbar links -->
      <?php
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 $query = "SELECT * FROM notify WHERE status=0";
 $query_num = mysqli_query($con, $query);
 $count = mysqli_num_rows($query_num);
@@ -68,7 +68,7 @@ $count = mysqli_num_rows($query_num);
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header"><?php echo $count; ?> Notifications</span>
             <?php
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 $sq = "SELECT * FROM notify WHERE status=0";
 $qu_num = mysqli_query($con, $query);
 if (mysqli_num_rows($qu_num) > 0) {
@@ -149,7 +149,7 @@ if (mysqli_num_rows($qu_num) > 0) {
 
   <?php
 $my_id = $_SESSION['id'];
-$con = mysqli_connect("localhost", "itproject", "qydenygeq", "projects_itproject");
+$con = mysqli_connect('localhost', 'root', '', 'projects_itproject');
 
 $query = "SELECT * FROM files WHERE by_officer = 'Waiting' or  by_officer05='Waiting'
    or by_officer09='Waiting' or  by_officer13='Waiting' ";
@@ -373,11 +373,12 @@ if ($rs = $db->query($strSQL)) {
           </a>
                        <?php }?>
 
+<!-- Main content 
 
 <a href="reject_02.php?id=<?php echo $objResult->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs float-right" title="Not Approve"><i
                       class='fa fa-times'></i> </a>
-
+-->
 </td>
 
                     </tr>
@@ -479,7 +480,7 @@ if ($rs = $db->query($strSQL)) {
 
 
 
-<a href="form05.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-xs">  <i class="fa fa-eye" title="Detail"> View </i></a>
+<a href="form05.php?id=<?php echo $objResult->advisergroup_id; ?>"class="btn btn-primary btn-xs">  <i class="fa fa-eye" title="Detail"> View </i></a>
 
                 </td>
 
@@ -498,12 +499,13 @@ if ($rs = $db->query($strSQL)) {
 
           </a>
                        <?php }?>
+<!-- Main content 
 
 
 <a href="reject05.php?id=<?php echo $objResult->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs float-right" title="Comfirm"><i
                       class='fa fa-times'></i> </a>
-
+-->
 </td>
 
                     </tr>
@@ -599,7 +601,7 @@ if ($rs = $db->query($strSQL)) {
 
           <td class="text-left" style="font-size: 14px;" width="8%" >
 
-  <a href="form09.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-xs">  <i class="fa fa-eye" title="Detail"> View</i></a>
+  <a href="form09.php?id=<?php echo $objResult->advisergroup_id; ?>"class="btn btn-primary btn-xs">  <i class="fa fa-eye" title="Detail"> View</i></a>
 
 
 
@@ -620,11 +622,12 @@ if ($rs = $db->query($strSQL)) {
 
           </a>
                        <?php }?>
-
+<!-- Main content
 
 <a href="reject_09.php?id=<?php echo $objResult->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs float-right" title="Comfirm"><i
                       class='fa fa-times'></i> </a>
+ -->
 
 </td>
 
@@ -723,7 +726,7 @@ if ($rs = $db->query($strSQL)) {
 
           <td class="text-left" style="font-size: 14px;" width="8%" >
 
-  <a href="form13.php?id=<?php echo $objResult->group_id; ?>"class="btn btn-primary btn-xs">  <i class="fa fa-eye" title="Detail"></i></a>
+  <a href="form13.php?id=<?php echo $objResult->advisergroup_id; ?>"class="btn btn-primary btn-xs">  <i class="fa fa-eye" title="Detail"></i></a>
 
 
 
@@ -745,12 +748,13 @@ if ($rs = $db->query($strSQL)) {
 
           </a>
                        <?php }?>
+<!-- Main content
 
 
 <a href="reject_13.php?id=<?php echo $objResult->advisergroup_id; ?>"
                     class="btn btn-danger btn-xs float-right" title="Comfirm"><i
                       class='fa fa-times'></i> </a>
-
+ -->
 </td>
 
                     </tr>

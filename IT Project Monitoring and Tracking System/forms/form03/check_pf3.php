@@ -13,7 +13,7 @@ if (empty($submit)) {
 
     $sql = "UPDATE  files SET files_id = '$files_id',
 										 advisergroup_id = '$advisergroup_id',
-                      status_advisor ='waiting'
+                      status_advisor ='Waiting'
 
 
 

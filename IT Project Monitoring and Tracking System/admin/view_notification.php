@@ -6,7 +6,7 @@ include '../menu/function.php';
 if (isset($_GET['id'])) {
     $main_id = $_GET['id'];
 
-    $conn = new mysqli("localhost", "itproject", "qydenygeq", "projects_itproject");
+    $conn = new mysqli("localhost", "root", "", "projects_itproject");
 
     $sql = "UPDATE notify SET status=1 WHERE id='$main_id' ";
 
