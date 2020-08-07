@@ -107,10 +107,9 @@ if (mysqli_num_rows($qu_num) > 0) {
     </ul>
   </nav>
   <!-- /.navbar -->
-  <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-    <!-- Main Sidebar Container -->
+   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
@@ -149,7 +148,7 @@ if (mysqli_num_rows($qu_num) > 0) {
             </a>
           </li>
 
-             <li class="nav-item">
+           <li class="nav-item">
               <a href="infor_group.php" class="nav-link">
                 <i class="nav-icon fa fa-users" aria-hidden="true"></i>
                 <p> Group Information </p>
@@ -295,7 +294,7 @@ if ($result = $db->query($strSQL)) {
 
 
           <li class="nav-item">
-            <a href="guide.php" class="nav-link">
+            <a href="guide.php" class="nav-link active">
         <i class="nav-icon fab fa-glide-g"></i>
               <p>
                 Guide
@@ -304,7 +303,7 @@ if ($result = $db->query($strSQL)) {
           </li>
 
                     <li class="nav-item">
-            <a href="course_syllabus.php" class="nav-link active">
+            <a href="course_syllabus.php" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
                 course syllabus
@@ -353,7 +352,7 @@ if ($result = $db->query($strSQL)) {
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active"> Course Syllabus</li>
+              <li class="breadcrumb-item active">Guide</li>
             </ol>
           </div>
         </div>
@@ -369,9 +368,10 @@ if ($result = $db->query($strSQL)) {
 
             <div class="card card-primary card-outline">
 
+  <h5 class="mt-3">Direction and Procedure</h5>
 
      <div class="card-body p-0"> <table class="table">
-      <thead>
+         <thead>
       <tr>
         <!--<th scope="col">Forms ID</th>-->
         <th scope="col">Document Name</th>
@@ -381,29 +381,19 @@ if ($result = $db->query($strSQL)) {
       <tbody>
       <tr>
         <!--<th scope="row">PF11</th>-->
-        <td>IT2301-322 Schedule</td>
+        <td>Procedure</td>
         <td>
-          <a href="../../assets/schedule/Khoeld%20Langsari%20-%20IT2301-322%20%20Information%20Technology%20Project%20II%20-%20หมวดที่%205%20%20แผนการรดำเนินโครงงาน.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
+          <a href="../../legacy-code-project/assets/guide/1-Information%20Technology%20Project%20-%20Procedure.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
         </td>
       </tr>
       <tr>
         <!--<th scope="row">PF11</th>-->
-        <td>IT2301-321 Schedule</td>
+        <td>Process</td>
         <td>
-          <a href="../../assets/schedule/Khoeld%20Langsari%20-%20IT2301-321%20%20Information%20Technology%20Project%20I%20-%20หมวดที่%205%20%20แผนการรดำเนินโครงงาน.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
-        </td>
-      </tr>
-      <tr>
-        <!--<th scope="row">PF11</th>-->
-        <td>IT234-232 Schedule
-          <!--<mark>Semester 2/2018</mark>-->
-        </td>
-        <td>
-          <a href="../../assets/schedule/Khoeld%20Langsari%20-%20IT234-232%20-%20Information%20Technology%20Project%20-%20หมวดที่%205%20%20แผนการรดำเนินโครงงาน.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
+          <a href="../../legacy-code-project/assets/guide/Khoeld%20Langsari_โครงงานเทคโนโลยี%20-%20Information%20Technology%20Project%20%20-%20Flow%20Process%202018-2.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
         </td>
       </tr>
       </tbody>
-          </table> </tbody>
           </table>
                                 </div>
                             </div>
@@ -425,18 +415,17 @@ if ($result = $db->query($strSQL)) {
 
 
     <!-- /.content-wrapper -->
-  <footer class="main-footer">
+<footer class="main-footer">
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 3.0.3-pre
       </div>
       <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
     </footer>
 
+
     <!-- /.control-sidebar -->
   </div>
   <!-- ./wrapper -->
-
-<!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
 

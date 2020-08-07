@@ -107,7 +107,6 @@ if (mysqli_num_rows($qu_num) > 0) {
     </ul>
   </nav>
   <!-- /.navbar -->
-
   <!-- Main Sidebar Container -->
    <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -166,7 +165,7 @@ $sql = "SELECT advisergroup.advisergroup_id, advisergroup.advisergroup_status,ad
 if ($rs = $db->query($sql)) {
     while ($row = $rs->fetch_object()) {
         ?>
-        <span class="right badge fa fa-bell text-danger" value="<?php echo $row->advisergroup_id; ?>"> </span>
+        <span class="right badge fa fa-circle" value="<?php echo $row->advisergroup_id; ?>"> </span>
                 <?php
 }
 }
@@ -274,7 +273,7 @@ if ($result = $db->query($strSQL)) {
               <li class="nav-item">
                 <a href="show_topic.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Propose Topic </p>
+                  <p>Topic Require</p>
                 </a>
               </li>
 
@@ -294,7 +293,7 @@ if ($result = $db->query($strSQL)) {
 
 
           <li class="nav-item">
-            <a href="guide.php" class="nav-link active">
+            <a href="guide.php" class="nav-link">
         <i class="nav-icon fab fa-glide-g"></i>
               <p>
                 Guide
@@ -312,7 +311,7 @@ if ($result = $db->query($strSQL)) {
           </li>
 
                     <li class="nav-item">
-            <a href="form.php" class="nav-link">
+            <a href="form.php" class="nav-link active">
               <i class="nav-icon fa fa-edit"></i>
               <p>
                 Forms
@@ -352,7 +351,7 @@ if ($result = $db->query($strSQL)) {
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Guide</li>
+              <li class="breadcrumb-item active"> Forms</li>
             </ol>
           </div>
         </div>
@@ -368,32 +367,130 @@ if ($result = $db->query($strSQL)) {
 
             <div class="card card-primary card-outline">
 
-  <h5 class="mt-3">Direction and Procedure</h5>
 
-     <div class="card-body p-0"> <table class="table">
-         <thead>
+
+     <div class="card-body p-0">
+      <table class="table">
+      <thead>
       <tr>
-        <!--<th scope="col">Forms ID</th>-->
-        <th scope="col">Document Name</th>
+        <th scope="col">Forms ID</th>
+        <th scope="col">Form Name</th>
         <th scope="col">Download</th>
       </tr>
       </thead>
       <tbody>
       <tr>
-        <!--<th scope="row">PF11</th>-->
-        <td>Procedure</td>
+        <th scope="row">PF01</th>
+        <td>Adviser Proposal Project Approval Letter</td>
         <td>
-          <a href="../../assets/guide/1-Information%20Technology%20Project%20-%20Procedure.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
+          <!--<a href="#" class="btn btn-success btn-sm " role="button" aria-pressed="true">DOC</a>-->
+          <a href="../../legacy-code-project/assets/forms/PF01%20-%20IT%20Project%20-%20Adviser%20Proposal%20Project%20Approval%20Letter.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
         </td>
       </tr>
       <tr>
-        <!--<th scope="row">PF11</th>-->
-        <td>Process</td>
+        <th scope="row">PF02</th>
+        <td>Officer receive copy of Project Proposal <br>
+          <small class="text-muted">This form is with officer</small>
+        </td>
         <td>
-          <a href="../../assets/guide/Khoeld%20Langsari_โครงงานเทคโนโลยี%20-%20Information%20Technology%20Project%20%20-%20Flow%20Process%202018-2.pdf" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">Download</a>
+          <a href="../../legacy-code-project/assets/forms/PF02%20-%20IT%20Project%20-%20Officer%20recieve%20copy%20of%20Project%20Proposal.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">PF03</th>
+        <td>Project Proposal Revision Sheet <br>
+          <small class="text-muted">Student will get this form during proposal presentations defend</small>
+        </td>
+        <td>
+          <a href="#" class="btn btn-primary btn-sm disabled" role="button" aria-pressed="true" target="_blank">PDF</a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">PF04</th>
+        <td>Project Proposal Approval Letter <br>
+          <small class="text-muted">This form will use to insert in Proposal Booked.
+            <span class="text-danger"> Please READ and EDIT the document detail before print and get signature</span>
+          </small>
+        </td>
+
+        <td>
+          <a href="../../legacy-code-project/assets/forms/PF04%20-%20IT%20Project%20-%20Project%20Proposal%20Approval%20Letter.docx" class="btn btn-success btn-sm" role="button" aria-pressed="true" target="_blank">.DOCX</a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">PF05</th>
+        <td>Officer Receive Completed Project Proposal <br>
+          <small class="text-muted">This form is with officer</small>
+        </td>
+        <td>
+          <a href="../../legacy-code-project/assets/forms/PF05%20-%20IT%20Project%20-%20Officer%20recieve%20Complete%20Project%20Proposal.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">PF06</th>
+        <td>Consultation Log Book</td>
+        <td>
+          <a href="../../legacy-code-project/assets/forms/PF06%20-%20IT%20Project%20-%20Consultation%20Log%20Book.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">PF07</th>
+        <td>Project Seminar</td>
+        <td>
+          <a href="#" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">PF08</th>
+        <td>Adviser Project Approval Letter</td>
+        <td>
+          <a href="../../legacy-code-project/assets/forms/PF08%20-%20IT%20Project%20-%20Adviser%20Project%20Approval%20Letter.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">PF09</th>
+        <td>Officer Receive Copy Of 5 Chapters Project</td>
+        <td>
+          <a href="../../legacy-code-project/assets/forms/PF09%20-%20IT%20Project%20-%20Officer%20Receive%20Copy%20of%205%20Chapter%20Project.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">PF10</th>
+        <td>Project Revision Sheet <br>
+          <small class="text-muted">Student will get this form during project presentations defend</small>
+        </td>
+        <td>
+          <a href="#" class="btn btn-primary btn-sm disabled" role="button" aria-pressed="true" target="_blank">PDF</a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">PF11</th>
+        <td>Project Approval Letter <br>
+          <small class="text-muted">This form will use to insert into Project Booked.
+            <span class="text-danger"> Please READ and EDIT the form detail before print and get signature</span>
+          </small>
+        </td>
+        <td>
+          <a href="../../legacy-code-project/assets/forms/PF11%20-%20IT%20Project%20-%20Project%20Approval%20Letter.docx" class="btn btn-success btn-sm " role="button" aria-pressed="true" target="_blank">.DOCX</a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">PF12</th>
+        <td>Free From Adviser Letter</td>
+        <td>
+          <a href="../../legacy-code-project/assets/forms/PF12%20-%20IT%20Project%20-%20Free%20From%20Adviser%20Letter.pdf" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">PF13</th>
+        <td>Officer Receive Project Booked</td>
+        <td>
+          <a href="#" class="btn btn-primary btn-sm " role="button" aria-pressed="true" target="_blank">PDF</a>
         </td>
       </tr>
       </tbody>
+    </table>
+                               </tbody>
           </table>
                                 </div>
                             </div>
@@ -422,10 +519,13 @@ if ($result = $db->query($strSQL)) {
       <class style="font-size: 14px;">  <strong>Copyright © 2019-2020 <a href="#">IT PROJECT</a>.</strong> All rights reserved.
     </footer>
 
-
     <!-- /.control-sidebar -->
   </div>
   <!-- ./wrapper -->
+
+    <!-- /.content -->
+
+<!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
 

@@ -1,5 +1,5 @@
 
-   <link rel="stylesheet" href="../../assets/comment/style.css">
+   <link rel="stylesheet" href="../../legacy-code-project/assets/comment/style.css">
 
    <div class="comments-app"  ng-controller="CommentsController as cmntCtrl">
 
